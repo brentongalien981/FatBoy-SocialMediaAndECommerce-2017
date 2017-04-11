@@ -1,0 +1,49 @@
+textarea {
+    border-radius: 4px;
+}
+
+.message_post {
+    background-color: rgba(153, 255, 153, 0.1);
+    width: 70%;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.message_post h4 {
+    margin: 0;
+    padding: 0;
+    font-weight: 300;        
+}
+
+.message_post h5 {
+    margin: 0;
+    padding: 0;
+    font-size: 60%;
+    font-weight: 100;
+    font-style: italic;
+}
+
+
+.message_post p {
+    font-size: 90%;
+    font-weight: 100;    
+    margin-top: 20px;
+}
+
+.link_reply {
+    color: blue;
+    font-size: 70%;
+    font-weight: 100;
+}
+
+.replyForm {
+    /*margin-left: 8%;*/
+}
+
+
+.replies {
+    background-color: white;
+    font-size: 75%;
+    margin-left: 8%;
+    padding: 7px;
+}
