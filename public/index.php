@@ -1,8 +1,7 @@
-<?php // require_once("../includes/initialize.php"); ?>
-<?php require_once("../private/includes/initializations.php"); ?>
-
-<?php // include_layout_template('header.php'); ?>
-<?php include(PUBLIC_PATH . "/_layouts/header.php"); ?>
+<?php // require_once("../private/includes/initializations.php"); ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+<?php // include(PUBLIC_PATH . "/_layouts/header.php"); ?>
+<?php include("_layouts/header.php"); ?>
 
 
 
@@ -25,6 +24,7 @@ echo "</pre>";
 
 ?>
 
+<link href="_styles/header.css" media="all" rel="stylesheet" type="text/css" />
 <link href="_styles/index.css" rel="stylesheet" type="text/css">
 
 

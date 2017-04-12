@@ -12,7 +12,7 @@
 // /Applications/XAMPP/xamppfiles
 defined('SITE_ROOT') ? null : 
         define('SITE_ROOT', '/Applications/XAMPP/xamppfiles/htdocs/' . 'myPersonalProjects' . '/FatBoy');
-//	define('SITE_ROOT', 'localhost'.DS.'myPersonalProjects'.DS.'FatBoy');
+//	define('SITE_ROOT', 'http://localhost/myPersonalProjects/FatBoy');
 
 define("PRIVATE_PATH", SITE_ROOT . "/private");
 define("PUBLIC_PATH", SITE_ROOT . "/public");
@@ -38,9 +38,16 @@ require_once(PRIVATE_PATH . "/includes/functions_helper/functions_general.php");
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_sqli_escape.php");
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_validation.php");
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_xss_sanitize.php");
+
+require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_request_type.php");
+require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_token.php");
 // load basic functions next so that everything after can use them
 //require_once(LIB_PATH.DS.'functions.php');
 
+
+
+require_once(PUBLIC_PATH .'/__model/my_debug_messenger.php');
+//MyDebugMessenger::initialize_debug_message();
 //// load core objects
 //require_once(LIB_PATH.DS.'session.php');
 require_once(PUBLIC_PATH .'/__model/my_database.php');

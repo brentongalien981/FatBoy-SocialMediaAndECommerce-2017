@@ -1,5 +1,5 @@
-    </main>
-    <footer>
+</main>
+<footer>
     <nav>
         <a href="about_us.php" class="">About Us</a>
         <a href="partners.php" class="">Partners</a>
@@ -9,6 +9,10 @@
 
     <h6>&copy; FatBoy <?php echo date("Y", time()); ?></h6>
 </footer>
-  </body>
+</body>
+
+<!--<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />-->
 </html>
-<?php if(isset($database)) { $database->close_connection(); } ?>
+<?php if (isset($database)) {
+    $database->close_connection();
+} ?>

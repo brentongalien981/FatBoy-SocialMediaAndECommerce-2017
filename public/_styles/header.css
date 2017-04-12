@@ -183,6 +183,11 @@ main {
     font-size: 80%;
 }
 
+.debugMessage {
+    color: red;
+    font-size: 80%;
+}
+
 span {
     /*margin-left: 10px;*/
     padding: 1px;
