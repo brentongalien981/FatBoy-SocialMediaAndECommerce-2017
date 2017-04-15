@@ -10,21 +10,29 @@
 <?php
 echo "tae fatboy<br>";
 
-
-$users = User::read_all();
-
-echo "<pre>";
-foreach ($users as $user) {
-    print_r($user);
-}
-echo "</pre>";
-//global $database;
-//$query = "SELECT * FROM Users";
-////mysqli_query(database->connection)
-
 ?>
 
-<link href="_styles/header.css" media="all" rel="stylesheet" type="text/css" />
+
+
+
+
+
+<?php
+// TODO: LOG
+if (MyDebugMessenger::is_initialized()) {
+    MyDebugMessenger::show_debug_message();
+    MyDebugMessenger::clear_debug_message();
+}
+?>
+
+
+
+
+
+
+
+
+<link href="_styles/header.css" rel="stylesheet" type="text/css" />
 <link href="_styles/index.css" rel="stylesheet" type="text/css">
 
 
@@ -32,6 +40,7 @@ echo "</pre>";
 
 
 <script>
+    // Edit the page title.
     document.getElementById("title").innerHTML += " / home";
 </script>
 

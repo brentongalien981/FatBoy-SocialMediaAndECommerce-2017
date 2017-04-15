@@ -1,4 +1,6 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+
 
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
@@ -17,8 +19,12 @@
                 <?php
                 // TODO
                 echo "<h4>zZzzZz</h4>";
-                echo "<a href='" . LOCAL . "/public/__view/view_signup.php'>Sign-up</a>";
-                ?>
+                if ($session->is_logged_in()) {
+                    echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
+                } else {
+                    echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
+                }
+                ?> 
             </div>
 
 
@@ -34,7 +40,7 @@
 
 
         <nav id="navSide">
-            <a href="<?php echo LOCAL . '/public/index.php'?>" class="">Timeline
+            <a href="<?php echo LOCAL . '/public/index.php'; ?>" class="">Timeline
             </a>
             <a href="profile.php" class="">Profile</a>
             <a href="friends.php" class="">Friends</a>
@@ -42,6 +48,10 @@
             <a href="my_videos.php" class="">MyVideos</a>
             <a href="my_store.php">MyStore</a>
 
-
+            <?php
+            if (!$session->is_logged_in()) {
+                echo "<a href='" . LOCAL . "/public/__view/view_signup.php'>Sign-up</a>";
+            }
+            ?>
         </nav>
         <main id="main">

@@ -8,9 +8,22 @@
 
 
 
-<h4>Sign-up</h4>
 
-<form id="formAdminCreation" action="../__controller/controller_signup.php" method="post">
+<?php
+// If the user is already logged-in, just redirect to home page.
+//global $session;
+if ($session->is_logged_in()) {
+    redirect_to("../index.php");
+}
+?>
+
+
+
+
+
+<h4>Log-in</h4>
+
+<form id="formAdminCreation" action="../__controller/controller_log_in.php" method="post">
     <?php echo get_csrf_token_tag(); ?>
     <h4>Username</h4>
     <input type="text" name="user_name"><br>
@@ -24,7 +37,7 @@
         <option value="3">user</option>     
     </select><br><br>-->
 
-    <input type="submit" name="sign_up" value="sign-up">
+    <input type="submit" name="log_in" value="log-in">
 </form>
 
 

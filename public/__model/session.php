@@ -16,7 +16,8 @@ class Session {
 //    public $message;
 
     function __construct() {
-        session_start();
+        // TODO: How do I deal with this session_start()?
+//        session_start();
 //        $this->check_message();
         $this->check_login();
         if ($this->logged_in) {
