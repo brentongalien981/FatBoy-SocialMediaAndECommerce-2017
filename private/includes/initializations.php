@@ -37,6 +37,7 @@ require_once(PRIVATE_PATH . '/includes/config.php');
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_general.php");
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_sqli_escape.php");
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_validation.php");
+require_once(PRIVATE_PATH . "/includes/functions_helper/functions_validation2.php");
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_xss_sanitize.php");
 
 require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_request_type.php");
@@ -48,6 +49,7 @@ require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_token.php
 
 require_once(PUBLIC_PATH .'/__model/my_debug_messenger.php');
 //MyDebugMessenger::initialize_debug_message();
+require_once(PUBLIC_PATH .'/__model/my_validation_error_logger.php');
 //// load core objects
 //require_once(LIB_PATH.DS.'session.php');
 require_once(PUBLIC_PATH .'/__model/my_database.php');

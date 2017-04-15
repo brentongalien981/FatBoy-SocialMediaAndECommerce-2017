@@ -16,6 +16,10 @@ function u($string) {
 	return urlencode($string);
 }
 
+function my_strip_tags($html_string) {
+    return strip_tags($html_string);
+}
+
 // Usage examples, leave commented out
 // echo h("<h1>Test string</h1><br />");
 // echo j("'}; alert('Gotcha!'); //");
