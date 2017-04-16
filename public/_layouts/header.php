@@ -17,11 +17,11 @@
 
             <div id="divStatus">
                 <?php
-                // TODO
-                echo "<h4>zZzzZz</h4>";
                 if ($session->is_logged_in()) {
+                    echo "<h4>{$session->actual_user_name}</h4>";
                     echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
                 } else {
+                    echo "<h4>zZzzZz</h4>";
                     echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
                 }
                 ?> 

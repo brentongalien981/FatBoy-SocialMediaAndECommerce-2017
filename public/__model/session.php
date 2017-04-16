@@ -49,6 +49,10 @@ class Session {
         if ($user) {
             $this->actual_user_id = $_SESSION["actual_user_id"] = $user->user_id;
             $this->actual_user_name = $_SESSION["actual_user_name"] = $user->user_name;
+            
+            $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $user->user_id;
+            $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $user->user_name;
+            
             $this->logged_in = true;
         }
     }
@@ -56,8 +60,16 @@ class Session {
     public function logout() {
         unset($_SESSION["actual_user_id"]);
         unset($_SESSION["actual_user_name"]);
+        
+        unset($_SESSION["currently_viewed_user_id"]);
+        unset($_SESSION["currently_viewed_user_name"]);        
+        
         unset($this->actual_user_id);
         unset($this->actual_user_name);
+        
+        unset($this->currently_viewed_user_id);
+        unset($this->currently_viewed_user_name);        
+        
         $this->logged_in = false;
         session_unset();
         session_destroy();
@@ -83,10 +95,18 @@ class Session {
         if (isset($_SESSION["actual_user_id"])) {
             $this->actual_user_id = $_SESSION["actual_user_id"];
             $this->actual_user_name = $_SESSION["actual_user_name"];
+        
+            $this->actual_user_id = $_SESSION["currently_viewed_user_id"];
+            $this->actual_user_name = $_SESSION["currently_viewed_user_name"];
+            
             $this->logged_in = true;
         } else {
             unset($this->actual_user_id);
             unset($this->actual_user_name);
+            
+            unset($this->currently_viewed_user_id);
+            unset($this->currently_viewed_user_name);             
+            
             $this->logged_in = false;
         }
     }
