@@ -50,8 +50,21 @@ if (isset($_POST["log_in"])) {
         if ($do_passwords_match) {
             $session->login($logging_user);
             echo "<br>{$logging_user->user_name} is now logged-in.<br>";
+            
             // TODO: DEBUG
-            MyDebugMessenger::add_debug_message("Log-in authenticated.");
+            echo "<pre>";
+            print_r($logging_user);
+            echo "</pre>";
+            
+            echo "<pre>";
+            print_r($session);
+            echo "</pre>";            
+            
+            // TODO: DEBUG
+//            MyDebugMessenger::add_debug_message("Log-in authenticated.");
+//            MyDebugMessenger::add_debug_message("<pre>");
+//            MyDebugMessenger::add_debug_message($logging_user->);
+//            MyDebugMessenger::add_debug_message("</pre>");
             redirect_to("../index.php");
         }
         else {

@@ -1,5 +1,7 @@
 <!--Imports-->
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+
+<!--File session.php is already included in header.php.-->
 <?php require_once(PUBLIC_PATH . "/_layouts/header.php"); ?>
 
 
@@ -61,20 +63,17 @@ echo "view_profile.php";
     <h6>Country</h6>
     <select name="country">
         <?php
-        // Listing the countries.
-        global $connection;
-
         //
-        $query = "SELECT * FROM Country ";
-        $query .= "ORDER BY Name";
-
-
-        $results = mysqli_query($connection, $query);
-        confirm_query($results);
-
-        while ($row = mysqli_fetch_assoc($results)) {
-            echo "<option value='{$row['Code']}'>{$row['Name']}</option>";
+        require_once(PUBLIC_PATH . "/__controller/controller_country.php");
+        
+        //
+        $countries_objects_array = get_countries_objects_array();
+        
+        //
+        foreach ($countries_objects_array as $country_object) {
+            echo "<option value='{$country_object->code}'>{$country_object->name}</option>";
         }
+
         ?>
     </select>       
 
@@ -88,8 +87,8 @@ echo "view_profile.php";
     <?php
     // If the actual user is viewing her own account,
     // display the save address button.
-    if ($_SESSION["actual_username"] == $_SESSION["username"]) {
-        echo "<input type='submit' name='saveAddress' value='save address' />";
+    if ($session->is_viewing_own_account()) {
+        echo "<input type='submit' name='saveAddress' value='save address'>";
     }
     ?>                
 </form>
@@ -102,19 +101,20 @@ echo "view_profile.php";
 
 
 <?php
-// Form for letting the actual user add her likes.
-// If the user is signed-in and actual user is the one viewing her own account,
-// then let the actual user add her likes.
-if ($session->is_viewing_own_account()) {
-
-    echo "<h4>What do you like?</h4>";
-    echo "<form id='formProfile' action='a_like_creation.php' method='post'>";
-    echo "<input name='a_new_like' value='' type='text' /><br>";
-    echo "<input type='submit' name='submit' value='add!' />";
-    echo "</form>";
-
-    echo "<br><br><br>";
-}
+// TODO
+//// Form for letting the actual user add her likes.
+//// If the user is signed-in and actual user is the one viewing her own account,
+//// then let the actual user add her likes.
+//if ($session->is_viewing_own_account()) {
+//
+//    echo "<h4>What do you like?</h4>";
+//    echo "<form id='formProfile' action='a_like_creation.php' method='post'>";
+//    echo "<input name='a_new_like' value='' type='text' /><br>";
+//    echo "<input type='submit' name='submit' value='add!' />";
+//    echo "</form>";
+//
+//    echo "<br><br><br>";
+//}
 ?>
 
 
@@ -126,35 +126,36 @@ if ($session->is_viewing_own_account()) {
 
 <!-- Display of all user's likes. -->
 <?php
-// Sort of, if the account of the user you're trying to view the profile on is set,
-// then display her likes.
-// TODO: Remove this.
-global $connection;
-
-$query = "SELECT * ";
-$query .= "FROM Likes ";
-$query .= "INNER JOIN UsersAndLikes ";
-$query .= "ON Likes.Id = UsersAndLikes.LikeId ";
-$query .= "WHERE UsersAndLikes.UserId = {$_SESSION['user_id']}";
-$results = mysqli_query($connection, $query);
-confirm_query($results);
-
-echo "<table>";
-while ($row = mysqli_fetch_assoc($results)) {
-    echo "<tr>";
-    echo "<td>" . "{$row['Name']}" . "</td>";
-
-    // If the actual user is viewing her own account,
-    // then let her delete her likes.
-    if ($_SESSION["actual_username"] == $_SESSION["username"]) {
-        echo "<td>";
-        echo "<a href='a_like_deletion.php?like_id={$row["LikeId"]}'>delete</a>";
-        echo "</td>";
-    }
-
-    echo "</tr>";
-}
-echo "</table>";
+//// TODO
+//// Sort of, if the account of the user you're trying to view the profile on is set,
+//// then display her likes.
+//// TODO: Remove this.
+//global $connection;
+//
+//$query = "SELECT * ";
+//$query .= "FROM Likes ";
+//$query .= "INNER JOIN UsersAndLikes ";
+//$query .= "ON Likes.Id = UsersAndLikes.LikeId ";
+//$query .= "WHERE UsersAndLikes.UserId = {$_SESSION['user_id']}";
+//$results = mysqli_query($connection, $query);
+//confirm_query($results);
+//
+//echo "<table>";
+//while ($row = mysqli_fetch_assoc($results)) {
+//    echo "<tr>";
+//    echo "<td>" . "{$row['Name']}" . "</td>";
+//
+//    // If the actual user is viewing her own account,
+//    // then let her delete her likes.
+//    if ($_SESSION["actual_username"] == $_SESSION["username"]) {
+//        echo "<td>";
+//        echo "<a href='a_like_deletion.php?like_id={$row["LikeId"]}'>delete</a>";
+//        echo "</td>";
+//    }
+//
+//    echo "</tr>";
+//}
+//echo "</table>";
 ?>
 
 

@@ -28,7 +28,7 @@ class Session {
     }
     
     public function is_viewing_own_account() {
-        if ($actual_user_id == $currently_viewed_user_id) {
+        if ($this->actual_user_id === $this->currently_viewed_user_id) {
             return true;
         }
         else {
@@ -96,8 +96,8 @@ class Session {
             $this->actual_user_id = $_SESSION["actual_user_id"];
             $this->actual_user_name = $_SESSION["actual_user_name"];
         
-            $this->actual_user_id = $_SESSION["currently_viewed_user_id"];
-            $this->actual_user_name = $_SESSION["currently_viewed_user_name"];
+            $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"];
+            $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"];
             
             $this->logged_in = true;
         } else {
