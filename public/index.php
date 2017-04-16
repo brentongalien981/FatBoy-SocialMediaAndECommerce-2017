@@ -32,6 +32,7 @@ if ($session->is_logged_in()) {
 
 
 <?php
+// TODO: A lot yet to be done. Timeline post form, timeline notification, etc.
 // Main Content.
 if ($session->is_logged_in()) {
     // This file takes care of the query for getting all the timeline posts.
@@ -77,6 +78,7 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Scripts-->
+<script src="_scripts/index.js"></script>
 <script>
     // Edit the page title.
     document.getElementById("title").innerHTML += " / home";

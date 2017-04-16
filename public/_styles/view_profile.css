@@ -1,0 +1,44 @@
+form h4 {
+    display: block;
+}
+
+form {
+    margin-top: -15px;
+}
+
+table {
+    margin-top: 15x;
+}
+
+#h4MyAddress {
+    margin-bottom: 0px;
+}
+
+form h6 {
+    margin-top: 7px;
+    margin-bottom: 0px;
+    font-size: 80%;
+}
+
+form label {
+    font-size: 70%;
+    font-weight: 100;
+}
+
+form select {
+    margin-bottom: 7px;
+}
+
+.buttonAddress {
+    margin-bottom: 30px;
+}
+
+#buttonDoneEditingAddress {
+    display: none;
+}
+
+#formAddress {
+    display: none;
+    /*visibility: visible;*/
+    /*display:*/ 
+}

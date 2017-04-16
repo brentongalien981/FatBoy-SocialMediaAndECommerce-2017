@@ -107,3 +107,148 @@ INSERT INTO `TimelinePostReplies` (`id`, `parent_post_id`, `owner_user_id`, `pos
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+--
+-- Table structure for table `Country`
+--
+
+CREATE TABLE `Country` (
+  `id` int(3) NOT NULL,
+  `code` varchar(2) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;  
+
+
+
+
+
+--
+-- Indexes for table `Country`
+--
+ALTER TABLE `Country`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `code` (`code`),
+  ADD KEY `code_2` (`code`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `name` (`name`),
+  ADD KEY `code_3` (`code`),
+  ADD KEY `name_2` (`name`),
+  ADD KEY `id_3` (`id`),
+  ADD KEY `code_4` (`code`);
+  
+  
+  
+  
+  
+--
+-- AUTO_INCREMENT for table `Country`
+--
+ALTER TABLE `Country`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;  
+
+
+
+
+
+
+--
+-- Dumping data for table `Country`
+--
+
+INSERT INTO `Country` (`id`, `code`, `name`) VALUES
+(1, 'CA', 'Canada'),
+(2, 'UA', 'Ukraine'),
+(3, 'US', 'USA'),
+(4, 'GB', 'United Kingdom'),
+(5, 'CN', 'China'),
+(6, 'JP', 'Japan'),
+(7, 'PH', 'Philippines');
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+--
+-- Table structure for table `Address`
+--
+
+CREATE TABLE `Address` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `address_type_code` int(2) NOT NULL,
+  `street1` varchar(500) NOT NULL,
+  `street2` varchar(500) DEFAULT NULL,
+  `city` varchar(100) NOT NULL,
+  `State` varchar(50) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `country_code` varchar(2) NOT NULL,
+  `phone` varchar(20) NOT NULL DEFAULT '(zZz-69-zZz)'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
+--
+-- Indexes for table `Address`
+--
+ALTER TABLE `Address`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `user_id_2` (`user_id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `country_code` (`country_code`),
+  ADD KEY `country_code_2` (`country_code`);
+  
+  
+  
+  
+  
+  
+
+-- AUTO_INCREMENT for table `Address`
+--
+ALTER TABLE `Address`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  
+  
+  
+  
+  
+  
+--
+-- Constraints for table `Address`
+--
+ALTER TABLE `Address`
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`),
+  ADD CONSTRAINT `address_ibfk_2` FOREIGN KEY (`country_code`) REFERENCES `Country` (`code`);  
+  
+  
+
+
+
+
+--
+-- Dumping data for table `Address`
+--
+
+INSERT INTO `Address` (`id`, `user_id`, `address_type_code`, `street1`, `street2`, `city`, `State`, `zip`, `country_code`, `phone`) VALUES
+(8, 1, 1, '78 Monkhouse Rd', '', 'Markham', 'ON', 'L6E 1V5', 'CA', '(zZz-69-zZz)'),
+(10, 8, 1, '16 Florence St', 'Merville Park Subdivision', 'Paranaque', 'Metro Manila', '1709', 'PH', '(zZz-69-zZz)');
+  
