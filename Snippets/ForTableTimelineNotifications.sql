@@ -193,7 +193,7 @@ CREATE TABLE `Address` (
   `street1` varchar(500) NOT NULL,
   `street2` varchar(500) DEFAULT NULL,
   `city` varchar(100) NOT NULL,
-  `State` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
   `zip` varchar(10) NOT NULL,
   `country_code` varchar(2) NOT NULL,
   `phone` varchar(20) NOT NULL DEFAULT '(zZz-69-zZz)'
@@ -248,7 +248,139 @@ ALTER TABLE `Address`
 -- Dumping data for table `Address`
 --
 
-INSERT INTO `Address` (`id`, `user_id`, `address_type_code`, `street1`, `street2`, `city`, `State`, `zip`, `country_code`, `phone`) VALUES
-(8, 1, 1, '78 Monkhouse Rd', '', 'Markham', 'ON', 'L6E 1V5', 'CA', '(zZz-69-zZz)'),
+INSERT INTO `Address` (`id`, `user_id`, `address_type_code`, `street1`, `street2`, `city`, `state`, `zip`, `country_code`, `phone`) VALUES
+(8, 9, 1, '78 Monkhouse Rd', '', 'Markham', 'ON', 'L6E 1V5', 'CA', '(zZz-69-zZz)'),
 (10, 8, 1, '16 Florence St', 'Merville Park Subdivision', 'Paranaque', 'Metro Manila', '1709', 'PH', '(zZz-69-zZz)');
+
+
+
+
+
+
+
+
+
+--
+-- Table structure for table `Likes`
+--
+
+CREATE TABLE `Likes` (
+  `id` int(9) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `Likes`
+--
+ALTER TABLE `Likes`
+  ADD PRIMARY KEY (`id`);
   
+  
+  
+  
+  
+-- AUTO_INCREMENT for table `Likes`
+--
+ALTER TABLE `Likes`
+  MODIFY `id` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  
+  
+  
+  
+  
+--
+-- Dumping data for table `Likes`
+--
+
+INSERT INTO `Likes` (`id`, `name`) VALUES
+(1, 'basketball'),
+(2, 'pingpong'),
+(3, 'computer'),
+(4, 'soccer'),
+(5, 'volley'),
+(6, 'tv'),
+(7, 'fb'),
+(8, 'twitter'),
+(9, 'puta'),
+(10, 'cunt'),
+(11, 'pussy'),
+(12, 'cockY'),
+(13, 'Karate'),
+(14, 'PS4'),
+(15, 'Call of Duty'),
+(16, 'Xbox One'),
+(17, 'Reading horror books'),
+(18, 'munching candies'),
+(19, 'Zen budhi zum'),
+(20, 'mac'),
+(21, 'windows'),
+(22, 'v'),
+(23, 'nothing'),
+(24, 'mangga');  
+
+
+
+
+
+--
+-- Table structure for table `UsersAndLikes`
+--
+
+CREATE TABLE `UsersAndLikes` (
+  `user_id` int(11) NOT NULL,
+  `like_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `UsersAndLikes`
+--
+ALTER TABLE `UsersAndLikes`
+  ADD PRIMARY KEY (`user_id`,`like_id`),
+  ADD KEY `like_id` (`like_id`);
+  
+  
+  
+  
+  
+--
+-- Constraints for table `UsersAndLikes`
+--
+ALTER TABLE `UsersAndLikes`
+  ADD CONSTRAINT `usersandlikes_ibfk_1` FOREIGN KEY (`like_id`) REFERENCES `Likes` (`Id`),
+  ADD CONSTRAINT `usersandlikes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);  
+  
+  
+  
+  
+  
+  
+--
+-- Dumping data for table `UsersAndLikes`
+--
+
+INSERT INTO `UsersAndLikes` (`user_id`, `like_id`) VALUES
+(8, 1),
+(8, 3),
+(8, 20),
+(8, 21),
+(8, 3),
+(8, 5),
+(8, 6),
+(8, 7),
+(8, 19),
+(9, 12),
+(9, 17),
+(9, 18),
+(9, 14),
+(9, 15),
+(9, 16),
+(9, 1),
+(9, 24);  

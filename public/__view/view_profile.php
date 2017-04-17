@@ -101,20 +101,19 @@ echo "view_profile.php";
 
 
 <?php
-// TODO
-//// Form for letting the actual user add her likes.
-//// If the user is signed-in and actual user is the one viewing her own account,
-//// then let the actual user add her likes.
-//if ($session->is_viewing_own_account()) {
-//
-//    echo "<h4>What do you like?</h4>";
-//    echo "<form id='formProfile' action='a_like_creation.php' method='post'>";
-//    echo "<input name='a_new_like' value='' type='text' /><br>";
-//    echo "<input type='submit' name='submit' value='add!' />";
-//    echo "</form>";
-//
-//    echo "<br><br><br>";
-//}
+// Form for letting the actual user add her likes.
+// If the user is signed-in and actual user is the one viewing her own account,
+// then let the actual user add her likes.
+if ($session->is_viewing_own_account()) {
+
+    echo "<h4>What do you like?</h4>";
+    echo "<form id='formProfile' action='../__controller/controller_like.php' method='post'>";
+        echo "<input name='a_new_like' value='' type='text' /><br>";
+        echo "<input type='submit' name='add_like' value='add like' />";
+    echo "</form>";
+
+    echo "<br><br><br>";
+}
 ?>
 
 
