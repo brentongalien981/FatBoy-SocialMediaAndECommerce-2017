@@ -1,5 +1,6 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php
+
 //require_once("../../private/includes/config.php");
 require_once(PRIVATE_PATH . "/includes/config.php");
 
@@ -21,6 +22,10 @@ class MySQLDatabase {
                     " (" . mysqli_connect_errno() . ")"
             );
         }
+    }
+
+    public function get_connection() {
+        return $this->connection;
     }
 
     public function escape_value($string) {

@@ -39,7 +39,7 @@ echo "view_profile.php";
 <h4 id="h4MyAddress">My Address</h4>
 <button id="buttonEditAddress" class="buttonAddress" onclick="displayAddressForm()">edit</button>
 <button id="buttonDoneEditingAddress" class="buttonAddress" onclick="hideAddressForm()">done</button>
-<form id="formAddress" action="address_creation.php" method="post">
+<form id="formAddress" action="../__controller/controller_address.php" method="post">
     <h6>Street1</h6>
     <input type="text" name="street1">
 
@@ -61,7 +61,7 @@ echo "view_profile.php";
 
 
     <h6>Country</h6>
-    <select name="country">
+    <select name="country_code">
         <?php
         //
         require_once(PUBLIC_PATH . "/__controller/controller_country.php");
@@ -79,8 +79,8 @@ echo "view_profile.php";
 
 
     <h6>Address Type</h6>
-    <input type="radio" name="addressTypeCode" value="1" checked="checked"><label>Residential</label>
-    <input type="radio" name="addressTypeCode" value="2"><label>Business</label><br><br>
+    <input type="radio" name="address_type_code" value="1" checked="checked"><label>Residential</label>
+    <input type="radio" name="address_type_code" value="2"><label>Business</label><br><br>
 
 
 
@@ -88,7 +88,7 @@ echo "view_profile.php";
     // If the actual user is viewing her own account,
     // display the save address button.
     if ($session->is_viewing_own_account()) {
-        echo "<input type='submit' name='saveAddress' value='save address'>";
+        echo "<input type='submit' name='save_address' value='save address'>";
     }
     ?>                
 </form>

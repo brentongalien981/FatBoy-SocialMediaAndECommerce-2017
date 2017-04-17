@@ -121,7 +121,7 @@ class TimelinePostReply {
         $query_result = $database->get_result_from_query($query);
 
         if ($query_result) {
-            $this->user_id = $database->get_last_inserted_id();
+            $this->id = $database->get_last_inserted_id();
             return true;
         } else {
             return false;

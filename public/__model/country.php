@@ -83,7 +83,7 @@ class Country {
         $query_result = $database->get_result_from_query($query);
 
         if ($query_result) {
-            $this->user_id = $database->get_last_inserted_id();
+            $this->id = $database->get_last_inserted_id();
             return true;
         } else {
             return false;
@@ -111,6 +111,19 @@ class Country {
         }
         return $attributes;
     }
+    
+    public function to_string() {
+        $object_in_string = "";
+        
+        foreach (self::$db_fields as $field) {
+            if (property_exists($this, $field)) {
+                echo "{$field}: $this->$field<br>";
+                $object_in_string .= "{$field}: $this->$field<br>";
+            }
+        }
+        
+        return $object_in_string;
+    }    
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.

@@ -4,15 +4,20 @@
 // probably smart to require it before we start.
 require_once("my_database.php");
 
-class TimelinePost {
+class Address {
 
-    protected static $table_name = "TimelinePosts";
-    protected static $db_fields = array("id", "owner_user_id", "poster_user_id", "date_posted", "message");
+    protected static $table_name = "Address";
+    protected static $db_fields = array("id", "user_id", "address_type_code", "street1", "street2", "city", "state", "zip", "country_code", "phone");
     public $id;
-    public $owner_user_id;
-    public $poster_user_id;
-    public $date_posted;
-    public $message;
+    public $user_id;
+    public $address_type_code;
+    public $street1;
+    public $street2;
+    public $city;
+    public $state;
+    public $zip;
+    public $country_code;    
+    public $phone;
 
     public static function read_by_id($id = 0) {
 //        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
@@ -38,32 +43,6 @@ class TimelinePost {
         // This could be one or many instantiated objects.
         return $objects_array;
     }
-
-//    // I created this for cases where I need INNER JOINS.
-//    public static function read_by_query($query = "") {
-//        global $database;
-//
-//        $result_set = $database->get_result_from_query($query);
-//
-//        $completely_presented_timeline_notifications_array = array();
-//
-//        while ($row = $database->fetch_array($result_set)) {
-//            $completely_presented_timeline_notification = "<br>";
-//            $completely_presented_timeline_notification .= "<div id='{$row['id']}' class='message_post'>";
-//            $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
-//            $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
-//            $completely_presented_timeline_notification .= "<p>" . "{$row['message']}" . "</p>";
-//
-//            $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply'>reply</button>";
-//            $completely_presented_timeline_notification .= "</div><br><hr>";
-//            
-//            // 
-//            array_push($completely_presented_timeline_notifications_array, $completely_presented_timeline_notification);
-//        }
-//
-//        // This could be one or many instantiated objects.
-//        return $completely_presented_timeline_notifications_array;
-//    }
     
     public static function read_by_query($query = "") {
         global $database;
@@ -75,48 +54,13 @@ class TimelinePost {
         return $result_set;
     }    
 
-//      public static function authenticate_with_user_object_return($user_name = "", $hashed_password = "") {
-//        global $database;
-//        
-//        $user_name = $database->escape_value($user_name);
-//        $hashed_password = $database->escape_value($hashed_password);
-//
-//        $query = "SELECT * FROM " . self::$table_name . " ";
-//        $query .= "WHERE user_name = '{$user_name}' ";
-//        $query .= "AND hashed_password = '{$hashed_password}' ";
-//        $query .= "LIMIT 1";
-//        
-//        // TODO: DEBUG
-//        echo "<br>QUERY query: {$query}<br>";
-//        
-//        $result_user_record = self::read_by_query($query);
-//        
-//        return !empty($result_user_record) ? array_shift($result_user_record) : false;
-//    }
-
-    public static function authenticate_with_user_object_return($user_name = "") {
-        global $database;
-
-        $user_name = $database->escape_value($user_name);
-//        $hashed_password = $database->escape_value($hashed_password);
-
-        $query = "SELECT * FROM " . self::$table_name . " ";
-        $query .= "WHERE user_name = '{$user_name}' ";
-//        $query .= "AND hashed_password = '{$hashed_password}' ";
-        $query .= "LIMIT 1";
-
-        // TODO: DEBUG
-        echo "<br>QUERY query: {$query}<br>";
-
-        $result_user_record = self::read_by_query($query);
-
-        return !empty($result_user_record) ? array_shift($result_user_record) : false;
-    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
+//        $query .= "ORDER BY name ASC";
+        
 
-        $objects_array = self::read_by_query($query);
+        $objects_array = self::read_by_query_and_instantiate($query);
 
         return $objects_array;
     }
@@ -174,6 +118,19 @@ class TimelinePost {
         }
         return $attributes;
     }
+    
+    public function to_string() {
+        $object_in_string = "";
+        
+        foreach (self::$db_fields as $field) {
+            if (property_exists($this, $field)) {
+                echo "{$field}: $this->$field<br>";
+                $object_in_string .= "{$field}: $this->$field<br>";
+            }
+        }
+        
+        return $object_in_string;
+    }    
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.
@@ -186,8 +143,9 @@ class TimelinePost {
             }
         }
 
-        // Because the class attribute $id is not included as a key
-        // in this class's array $db_fields, we assign a value to the $id separately.
+//         NOTE: This doesn't work though. I wonder why not?
+//         Because the class attribute $id is not included as a key
+//         in this class's array $db_fields, we assign a value to the $id separately.
 //        foreach ($record as $attribute => $value) {
 //            if ($attribute == "user_id") {
 //                $object->$attribute = $value;

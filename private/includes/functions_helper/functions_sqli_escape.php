@@ -6,7 +6,7 @@
 function sql_prep($string) {
 	global $database;
 	if($database) {
-		return mysqli_real_escape_string($database, $string);
+		return mysqli_real_escape_string($database-get_connection(), $string);
 	} else {
 		// addslashes is almost the same, but not quite as secure.
 		// Fallback only when there is no database connection available.
