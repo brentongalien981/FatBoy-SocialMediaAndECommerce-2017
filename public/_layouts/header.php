@@ -8,7 +8,7 @@
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />
+        <!--<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />-->
     </head>
     <body>
         <div id="divBanner">

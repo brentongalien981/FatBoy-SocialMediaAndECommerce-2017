@@ -74,7 +74,25 @@ function create_mapping_record_bruh($actual_user_id, $like_id) {
 
 
 <!--Meat-->
-<?php ?>
+<?php 
+// For like deletion.
+if (isset($_POST["delete_like_map"])) {
+    //    
+    $is_deletion_ok = UsersAndLikes::delete($session->actual_user_id,  $_POST["like_id"]);
+    
+    
+    // 
+    if ($is_deletion_ok) {
+        MyDebugMessenger::add_debug_message("SUCCESS deleting a user like.");
+    }
+    else {
+        MyDebugMessenger::add_debug_message("FAIL deleting a user like.");
+    }
+    
+    //
+    redirect_to("../__view/view_profile.php");
+}
+?>
 
 
 

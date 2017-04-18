@@ -6,9 +6,6 @@ form {
     margin-top: -15px;
 }
 
-table {
-    margin-top: 15x;
-}
 
 #h4MyAddress {
     margin-bottom: 0px;
@@ -41,4 +38,15 @@ form select {
     display: none;
     /*visibility: visible;*/
     /*display:*/ 
+}
+
+.form_delete_like {
+    display: inlline;
+}
+
+
+
+table, td {
+    margin-top: 15x;
+    border: 5px solid black;
 }

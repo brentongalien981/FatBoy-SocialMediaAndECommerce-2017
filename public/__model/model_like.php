@@ -91,6 +91,20 @@ class Like {
             return false;
         }
     }
+    
+    public static function delete($id = 0) {
+        global $database;
+        
+        $query = "DELETE FROM " . self::$table_name . " ";
+        $query .= "WHERE id = " . $database->escape_value($id) . " ";
+        $query .= "LIMIT 1";
+        
+        // TODO: DEBUG
+        MyDebugMessenger::add_debug_message("QUERY: {$query}.");
+        
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }    
 
     protected function get_sanitized_attributes() {
         global $database;

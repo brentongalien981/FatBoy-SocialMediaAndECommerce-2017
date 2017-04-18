@@ -20,6 +20,21 @@ class UsersAndLikes {
 //        }
     }
 
+    public static function delete($actual_user_id = 0, $like_id = 0) {
+        global $database;
+
+        $query = "DELETE FROM " . self::$table_name . " ";
+        $query .= "WHERE user_id = " . $database->escape_value($actual_user_id) . " ";
+        $query .= "AND like_id = " . $database->escape_value($like_id) . " ";
+        $query .= "LIMIT 1";
+
+        // TODO: DEBUG
+        MyDebugMessenger::add_debug_message("QUERY: {$query}.");
+
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }
+
     public static function read_by_query_and_instantiate($query = "") {
         global $database;
 
@@ -35,7 +50,7 @@ class UsersAndLikes {
         // This could be one or many instantiated objects.
         return $objects_array;
     }
-    
+
     public static function read_by_query($query = "") {
         global $database;
 
@@ -44,13 +59,12 @@ class UsersAndLikes {
 
         //
         return $result_set;
-    }    
-
+    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
 //        $query .= "ORDER BY name ASC";
-        
+
 
         $objects_array = self::read_by_query_and_instantiate($query);
 
@@ -109,19 +123,19 @@ class UsersAndLikes {
         }
         return $attributes;
     }
-    
+
     public function to_string() {
         $object_in_string = "";
-        
+
         foreach (self::$db_fields as $field) {
             if (property_exists($this, $field)) {
                 echo "{$field}: $this->$field<br>";
                 $object_in_string .= "{$field}: $this->$field<br>";
             }
         }
-        
+
         return $object_in_string;
-    }    
+    }
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.

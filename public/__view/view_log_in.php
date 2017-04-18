@@ -56,7 +56,7 @@ if (MyDebugMessenger::is_initialized()) {
 
 
 
-<!--<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />-->
+<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />
 <style>
     form h4 {
         font-size: 80%;

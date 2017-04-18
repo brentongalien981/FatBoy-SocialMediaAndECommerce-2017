@@ -2,14 +2,13 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/model_like.php"); ?>
 
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
-
 
 
 
 <?php
-// Protected page.
-if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
+//// Protected page.
+////global $session;
+if ((!$session->is_logged_in()) || (!$session->is_viewing_own_account())) {
     redirect_to("../index.php");
 }
 ?>
@@ -94,6 +93,7 @@ function did_user_already_like($like_id) {
     require_once("controller_users_and_likes.php");
 
     //
+    global $session;
     return did_user_already_like_this($session->actual_user_id, $like_id);
 }
 
@@ -113,6 +113,63 @@ function create_mapping_record($like_id) {
         MyDebugMessenger::add_debug_message("FAIL adding record to mapping table.");
     }
 }
+
+function get_completely_presented_user_likes_array() {
+    global $session;
+    
+    //
+    $query = "SELECT * ";
+    $query .= "FROM Likes ";
+    $query .= "INNER JOIN UsersAndLikes ";
+    $query .= "ON Likes.id = UsersAndLikes.like_id ";
+    $query .= "WHERE UsersAndLikes.user_id = {$session->actual_user_id}";
+    
+    
+    //
+    $user_likes_records_result_set = Like::read_by_query($query);    
+    
+    
+    //
+    $completely_presented_user_likes_array = array();    
+    
+
+    //
+    require_once("../__model/my_database.php");
+    global $database;
+    
+    while ($row = $database->fetch_array($user_likes_records_result_set)) {
+//    echo "<td>" . "{$row['Name']}" . "</td>";
+//
+//    // If the actual user is viewing her own account,
+//    // then let her delete her likes.
+//    if ($_SESSION["actual_username"] == $_SESSION["username"]) {
+//        echo "<td>";
+//        echo "<a href='a_like_deletion.php?like_id={$row["LikeId"]}'>delete</a>";
+//        echo "</td>";
+//    }        
+        //
+        $completely_presented_user_like = "<td>{$row['name']}</td>";
+        
+        // TODO: NOW
+        if ($session->is_viewing_own_account()) {
+//            $completely_presented_user_like .= "<td><a>delete</a></td>";
+            $completely_presented_user_like .= "<td>";
+            $completely_presented_user_like .= "<form class='form_delete_like' action='../__controller/controller_users_and_likes.php' method='post'>";
+            $completely_presented_user_like .= "<input type='submit' name='delete_like_map' value='delete'>";
+            $completely_presented_user_like .= "<input type='hidden' name='like_id' value='{$row['id']}'>";  
+            $completely_presented_user_like .= "</form>";
+            $completely_presented_user_like .= "</td>";
+        }
+        
+        
+        //
+        array_push($completely_presented_user_likes_array, $completely_presented_user_like);
+    }
+    
+    
+    // 
+    return $completely_presented_user_likes_array;
+}
 ?>
 
 
@@ -121,6 +178,7 @@ function create_mapping_record($like_id) {
 
 <!--Meat-->
 <?php
+// For like addition.
 if (isset($_POST["add_like"])) {
 //    echo "controller_like.php";
     $can_proceed = false;
@@ -180,6 +238,8 @@ if (isset($_POST["add_like"])) {
         create_mapping_record($the_like_object->id);
     }
     
+    redirect_to("../__view/view_profile.php");
+    
 }
 ?>
 
@@ -188,5 +248,5 @@ if (isset($_POST["add_like"])) {
 
 
 <?php
-redirect_to("../__view/view_profile.php");
+//redirect_to("../__view/view_profile.php");
 ?>
