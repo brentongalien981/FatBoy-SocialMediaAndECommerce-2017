@@ -44,9 +44,7 @@ form select {
     display: inlline;
 }
 
-
-
 table, td {
-    margin-top: 15x;
-    border: 5px solid black;
+    border: none;
+    border-collapse: collapse;
 }

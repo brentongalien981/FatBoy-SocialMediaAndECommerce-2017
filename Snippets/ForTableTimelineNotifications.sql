@@ -384,3 +384,73 @@ INSERT INTO `UsersAndLikes` (`user_id`, `like_id`) VALUES
 (9, 16),
 (9, 1),
 (9, 24);  
+
+
+
+
+
+
+
+
+
+
+--
+-- Table structure for table `MyVideos`
+--
+
+CREATE TABLE `MyVideos` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `embed_code` varchar(1000) NOT NULL,
+  `rating` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `MyVideos`
+--
+ALTER TABLE `MyVideos`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `user_id` (`user_id`);
+  
+  
+  
+  
+  
+--
+-- AUTO_INCREMENT for table `MyVideos`
+--
+ALTER TABLE `MyVideos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  
+  
+  
+  
+  
+-- Constraints for table `MyVideos`
+--
+ALTER TABLE `MyVideos`
+  ADD CONSTRAINT `myvideos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+  
+  
+  
+  
+  
+--
+-- Dumping data for table `MyVideos`
+--
+
+INSERT INTO `MyVideos` (`id`, `user_id`, `title`, `embed_code`, `rating`) VALUES
+(1, 8, 'Hello - Adele Cover', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Rn00vAlcnR4\" frameborder=\"0\" allowfullscreen></iframe>', 8),
+(2, 8, 'Adele - Hello (Emblem3 Cover)', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DDGdEp1fWQU\" frameborder=\"0\" allowfullscreen></iframe>', 7),
+(3, 8, 'Kailan', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZUeLmDsLw5s\" frameborder=\"0\" allowfullscreen></iframe>', 0),
+(4, 8, 'Hello by Leroy Sanchez', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/vlZ9kjCrGJw\" frameborder=\"0\" allowfullscreen></iframe>', 0),
+(5, 8, 'When We Were Young - Adele Cover', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ao7Et8ZqXfs\" frameborder=\"0\" allowfullscreen></iframe>', 0),
+(6, 8, 'James Arthur - When we were young (Adele cover) live acoustic session', '<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe src=\"https://www.youtube.com/embed/SJUPDs5VLsk?ecver=2\" width=\"640\" height=\"360\" frameborder=\"0\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>', 0);
+
+-- --------------------------------------------------------  

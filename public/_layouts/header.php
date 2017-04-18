@@ -8,7 +8,7 @@
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />-->
+        <link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="divBanner">
@@ -44,7 +44,7 @@
             <a href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">Profile</a>
             <a href="friends.php" class="">Friends</a>
 
-            <a href="my_videos.php" class="">MyVideos</a>
+            <a href="<?php echo LOCAL . '/public/__view/view_my_videos.php'; ?>" class="">MyVideos</a>
             <a href="my_store.php">MyStore</a>
 
             <?php

@@ -195,9 +195,12 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<link href="../_styles/header.css" rel="stylesheet" type="text/css" />
 <link href="../_styles/view_profile.css" rel="stylesheet" type="text/css" />
 <style>   
+    table, td {
+        border: none;
+        border-collapse: collapse;
+    }
     
     td {
         /*vertical-align: bottom;*/
