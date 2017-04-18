@@ -6,7 +6,7 @@ require_once("my_database.php");
 
 class MyVideo {
 
-    protected static $table_name = "MyVideo";
+    protected static $table_name = "MyVideos";
     protected static $db_fields = array("id", "user_id", "title", "embed_code", "rating");
     public $id;
     public $user_id;
