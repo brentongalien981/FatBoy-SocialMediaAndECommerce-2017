@@ -125,37 +125,6 @@ if ($session->is_viewing_own_account()) {
 
 <!-- Display of all user's likes. -->
 <?php
-//// TODO
-//// Sort of, if the account of the user you're trying to view the profile on is set,
-//// then display her likes.
-//// TODO: Remove this.
-//global $connection;
-//
-//$query = "SELECT * ";
-//$query .= "FROM Likes ";
-//$query .= "INNER JOIN UsersAndLikes ";
-//$query .= "ON Likes.Id = UsersAndLikes.LikeId ";
-//$query .= "WHERE UsersAndLikes.UserId = {$_SESSION['user_id']}";
-//$results = mysqli_query($connection, $query);
-//confirm_query($results);
-//
-//echo "<table>";
-//while ($row = mysqli_fetch_assoc($results)) {
-//    echo "<tr>";
-//    echo "<td>" . "{$row['Name']}" . "</td>";
-//
-//    // If the actual user is viewing her own account,
-//    // then let her delete her likes.
-//    if ($_SESSION["actual_username"] == $_SESSION["username"]) {
-//        echo "<td>";
-//        echo "<a href='a_like_deletion.php?like_id={$row["LikeId"]}'>delete</a>";
-//        echo "</td>";
-//    }
-//
-//    echo "</tr>";
-//}
-//echo "</table>";
-// 
 require_once("../__controller/controller_like.php");
 
 

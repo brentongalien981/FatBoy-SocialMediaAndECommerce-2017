@@ -29,14 +29,33 @@ if (!$session->is_logged_in()) {
 
 
 
-<!--Main content.-->
-
-<!--Add a new video.-->
+<!--Meat-->
 <?php
+// Show the form for adding a new video.
 if ($session->is_viewing_own_account()) {
     //
     show_add_new_video_form();
 }
+?>
+
+
+
+<?php
+// Display all user's videos.
+echo "<h4>MyVideos</h4>";
+
+
+// 
+$completely_presented_user_videos_array = get_completely_presented_user_videos_array();
+
+//
+echo "<table>";
+//
+foreach ($completely_presented_user_videos_array as $completely_presented_user_video) {
+    echo $completely_presented_user_video;
+}
+//
+echo "</table>";
 ?>
 
 
@@ -62,6 +81,9 @@ MyDebugMessenger::clear_debug_message();
 <!--Styles-->
 <link href="../_styles/view_my_videos.css" rel="stylesheet" type="text/css" />
 <style>   
+    td {
+        padding-top: 100px;
+    }
 </style>
 
 
