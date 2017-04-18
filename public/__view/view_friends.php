@@ -36,9 +36,16 @@ if ($session->is_viewing_own_account()) {
     //
     show_friend_request_for_me();
     
+    // Yes! She accepted my request.
+    show_friend_acceptance();
+    
     //
     show_non_friends();
 }
+
+
+// 
+show_user_friends();
 ?>
 
 

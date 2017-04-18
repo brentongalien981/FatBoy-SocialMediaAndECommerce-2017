@@ -1,6 +1,7 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/my_user.php"); ?>
+<?php require_once("../__model/model_frienship.php"); ?>
 
 
 
@@ -112,20 +113,62 @@ function show_friend_request_for_me() {
         // TODO: NOW
 //        echo "<td>" . "<a href='friendship_acceptance_creation.php?friend_id={$row['notifier_user_id']}'>accept</a>" . "</td>";
         echo "<td>";
-            echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
-                echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
-                echo "<input type='submit' name='accept_friend_request' value='accept'>";
-            echo "</form>";
+        echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
+        echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
+        echo "<input type='submit' name='accept_friend_request' value='accept'>";
+        echo "</form>";
         echo "</td>";
-        
-        
+
+
         echo "<td>";
-            echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
-                echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
-                echo "<input type='submit' name='reject_friend_request' value='reject'>";
-            echo "</form>";
+        echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
+        echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
+        echo "<input type='submit' name='reject_friend_request' value='reject'>";
+        echo "</form>";
         echo "</td>";
+
+
+        echo "</tr>";
+    }
+    echo "</table>";
+}
+
+//<!--Show all the confirmed friend requests from others. -->
+//<!--Here's how it goes.-->
+//<!--You made a friend request, and she accepts it.-->
+//<!--And so you get notified.-->
+//<!--NOTE: That if she rejects it, you won't get any notification.-->
+function show_friend_acceptance() {
+    //
+    global $database;
+    global $session;
+
+    $actual_user_id = $session->actual_user_id;
+    $dub_acceptance_id = 2;
+
+    $query = "SELECT notified_user_id, notifier_user_id, notification_type_id, user_name ";
+    $query .= "FROM FriendshipNotifications ";
+    $query .= "INNER JOIN Users ON FriendshipNotifications.notifier_user_id = Users.user_id ";
+    $query .= "WHERE FriendshipNotifications.notified_user_id = {$actual_user_id} AND notification_type_id = {$dub_acceptance_id}";
+
+    //
+    $friend_acceptances_records_result_set = User::read_by_query($query);
+
+
+    //
+    echo "<h4>Confirmed Friend Requests From Others</h4>";
+    echo "<table>";
+    while ($row = $database->fetch_array($friend_acceptances_records_result_set)) {
+        echo "<tr>";
+        echo "<td>" . "{$row['user_name']} accepted your friend request." . "</td>";
         
+//        echo "<td>" . "<a href='friendship_acceptance_deletion.php?friend_id={$row['NotifierUserId']}'>OK</a>" . "</td>";
+        echo "<td>";
+        echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
+        echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
+        echo "<input type='submit' name='okd_friendship' value='ok'>";
+        echo "</form>";
+        echo "</td>";        
         
         echo "</tr>";
     }
@@ -133,9 +176,51 @@ function show_friend_request_for_me() {
 }
 
 function create_new_friendship($friend_id) {
+    global $session;
+
     MyDebugMessenger::add_debug_message("A new friendship is about to be born.");
-    
+
+    $new_friendship = new Friendship();
+    $new_friendship->user_id = $session->actual_user_id;
+    $new_friendship->friend_id = $friend_id;
+
+    $is_creation_ok = $new_friendship->create_with_bool();
+
+
+    // Here, just reciprocate the friendship.
+    if ($is_creation_ok) {
+        // TODO: LOG
+        MyDebugMessenger::add_debug_message("SUCCESS adding the first side of the friendship.");
+
+        $new_friendship = new Friendship();
+        $new_friendship->user_id = $friend_id;
+        $new_friendship->friend_id = $session->actual_user_id;
+
+        $is_creation_ok = $new_friendship->create_with_bool();
+
+        if ($is_creation_ok) {
+            // TODO: LOG
+            MyDebugMessenger::add_debug_message("SUCCESS adding the second side of the friendship.");
+
+            //
+            require_once("controller_friendship_notification.php");
+
+            //
+            delete_friendship_notification($friend_id);
+        } else {
+            // TODO: LOG
+            MyDebugMessenger::add_debug_message("FAIL adding the second side of the friendship.");
+        }
+    } else {
+        // TODO: LOG
+        MyDebugMessenger::add_debug_message("FAIL adding the first side of the friendship.");
+    }
+
     redirect_to("../__view/view_friends.php");
+}
+
+function show_user_friends() {
+    // TODO: NOW NOW NOW
 }
 ?>
 
@@ -143,5 +228,4 @@ function create_new_friendship($friend_id) {
 
 
 <!--Meat-->
-<?php
-?>
+<?php ?>
