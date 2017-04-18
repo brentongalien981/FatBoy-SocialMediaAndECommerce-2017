@@ -42,7 +42,7 @@
         <nav id="navSide">
             <a href="<?php echo LOCAL . '/public/index.php'; ?>" class="">Timeline</a>
             <a href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">Profile</a>
-            <a href="friends.php" class="">Friends</a>
+            <a href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">Friends</a>
 
             <a href="<?php echo LOCAL . '/public/__view/view_my_videos.php'; ?>" class="">MyVideos</a>
             <a href="my_store.php">MyStore</a>

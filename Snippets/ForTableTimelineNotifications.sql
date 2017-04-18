@@ -1,3 +1,148 @@
+--
+-- Table structure for table `UserTypes`
+--
+
+CREATE TABLE `UserTypes` (
+  `id` int(2) NOT NULL,
+  `type_name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `UserTypes`
+--
+ALTER TABLE `UserTypes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `type_name` (`type_name`),
+  ADD KEY `id` (`id`);
+  
+  
+  
+  
+  
+-- AUTO_INCREMENT for table `UserTypes`
+--
+ALTER TABLE `UserTypes`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  
+  
+  
+  
+  
+--
+-- Dumping data for table `UserTypes`
+--
+
+INSERT INTO `UserTypes` (`id`, `type_name`) VALUES
+(2, 'admin'),
+(1, 'user');
+
+
+
+
+
+
+
+
+
+
+--
+-- Table structure for table `Users`
+--
+
+CREATE TABLE `Users` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `hashed_password` varchar(255) NOT NULL,
+  `user_type_id` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_name` (`user_name`),
+  ADD KEY `user_type_id` (`user_type_id`);
+  
+  
+  
+  
+  
+--
+-- AUTO_INCREMENT for table `Users`
+--
+ALTER TABLE `Users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  
+  
+  
+  
+  
+--
+-- Dumping data for table `Users`
+--
+
+INSERT INTO `Users` (`user_id`, `user_name`, `hashed_password`, `user_type_id`) VALUES
+(8, 'bren', '$2y$10$NUvesdcKf749dWYzg2Ll/Ok88DKAOoJF2gU5eUo3DHMgg55/CfBaW', 1),
+(9, 'c', '$2y$10$K5SpUutbvfrIw2gmi5pDh.SjhfCIah2n.kgmK8W285vwwB/KL0q9.', 1),
+(10, 'ye', '$2y$10$YJ4PuMoBFbjECsCouWi1/OXSM4E9adnyT47LcaXvgEvWOG0yO0VXS', 1),
+(11, 'apesapes123', '$2y$10$aOgIUHN8sb30x7uKA14QMe5QPoqmnmjeKljmCTITY5.HedkxGYsW6', 1),
+(12, 'kobekobe123', '$2y$10$sKJjEP.JlR3zUjs8VxwhiOlCGtiOyGV7S0LKs/WGl3psTHxpwSRkW', 1);
+
+-- --------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+-- Table structure for table `TimelinePosts`
+--
+
+CREATE TABLE `TimelinePosts` (
+  `id` int(11) NOT NULL,
+  `owner_user_id` int(6) NOT NULL,
+  `poster_user_id` int(6) NOT NULL,
+  `date_posted` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `message` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `TimelinePosts`
+--
+ALTER TABLE `TimelinePosts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `owner_user_id` (`owner_user_id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `poster_user_id` (`poster_user_id`);
+
+
+
+
+
+
+
 -- AUTO_INCREMENT for table `TimelinePosts`
 --
 ALTER TABLE `TimelinePosts`
@@ -354,7 +499,7 @@ ALTER TABLE `UsersAndLikes`
 -- Constraints for table `UsersAndLikes`
 --
 ALTER TABLE `UsersAndLikes`
-  ADD CONSTRAINT `usersandlikes_ibfk_1` FOREIGN KEY (`like_id`) REFERENCES `Likes` (`Id`),
+  ADD CONSTRAINT `usersandlikes_ibfk_1` FOREIGN KEY (`like_id`) REFERENCES `Likes` (`id`),
   ADD CONSTRAINT `usersandlikes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);  
   
   
@@ -368,7 +513,6 @@ ALTER TABLE `UsersAndLikes`
 
 INSERT INTO `UsersAndLikes` (`user_id`, `like_id`) VALUES
 (8, 1),
-(8, 3),
 (8, 20),
 (8, 21),
 (8, 3),
@@ -454,3 +598,163 @@ INSERT INTO `MyVideos` (`id`, `user_id`, `title`, `embed_code`, `rating`) VALUES
 (6, 8, 'James Arthur - When we were young (Adele cover) live acoustic session', '<div style=\"position:relative;height:0;padding-bottom:56.25%\"><iframe src=\"https://www.youtube.com/embed/SJUPDs5VLsk?ecver=2\" width=\"640\" height=\"360\" frameborder=\"0\" style=\"position:absolute;width:100%;height:100%;left:0\" allowfullscreen></iframe></div>', 0);
 
 -- --------------------------------------------------------  
+
+
+
+
+
+
+
+
+
+
+--
+-- Table structure for table `Friendship`
+--
+
+CREATE TABLE `Friendship` (
+  `user_id` int(11) NOT NULL,
+  `friend_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `Friendship`
+--
+ALTER TABLE `Friendship`
+  ADD PRIMARY KEY (`user_id`,`friend_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`friend_id`),
+  ADD KEY `friend_id` (`friend_id`);
+  
+  
+  
+  
+  
+  
+--
+-- Constraints for table `Friendship`
+--
+ALTER TABLE `Friendship`
+  ADD CONSTRAINT `friendship_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`),
+  ADD CONSTRAINT `friendship_ibfk_2` FOREIGN KEY (`friend_id`) REFERENCES `Users` (`user_id`);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+--
+-- Table structure for table `NotificationTypes`
+--
+
+CREATE TABLE `NotificationTypes` (
+  `id` int(2) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;  
+
+
+
+
+
+--
+-- Indexes for table `NotificationTypes`
+--
+ALTER TABLE `NotificationTypes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `name` (`name`);
+  
+  
+  
+  
+  
+-- AUTO_INCREMENT for table `NotificationTypes`
+--
+ALTER TABLE `NotificationTypes`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  
+  
+  
+  
+  
+--
+-- Dumping data for table `NotificationTypes`
+--
+
+INSERT INTO `NotificationTypes` (`id`, `name`) VALUES
+(3, 'a post reply'),
+(2, 'dub acceptance'),
+(1, 'dub request');
+
+-- --------------------------------------------------------    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+--
+-- Table structure for table `FriendshipNotifications`
+--
+
+CREATE TABLE `FriendshipNotifications` (
+  `notified_user_id` int(11) NOT NULL,
+  `notifier_user_id` int(11) NOT NULL,
+  `notification_type_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `FriendshipNotifications`
+--
+ALTER TABLE `FriendshipNotifications`
+  ADD PRIMARY KEY (`notified_user_id`,`notifier_user_id`,`notification_type_id`),
+  ADD UNIQUE KEY `notified_user_id` (`notified_user_id`,`notifier_user_id`,`notification_type_id`),
+  ADD KEY `notifier_user_id` (`notifier_user_id`),
+  ADD KEY `notification_type_id` (`notification_type_id`);
+  
+  
+  
+  
+  
+--
+-- Constraints for table `FriendshipNotifications`
+--
+ALTER TABLE `FriendshipNotifications`
+  ADD CONSTRAINT `friendshipnotifications_ibfk_1` FOREIGN KEY (`notified_user_id`) REFERENCES `Users` (`user_id`),
+  ADD CONSTRAINT `friendshipnotifications_ibfk_2` FOREIGN KEY (`notifier_user_id`) REFERENCES `Users` (`user_id`),
+  ADD CONSTRAINT `friendshipnotifications_ibfk_3` FOREIGN KEY (`notification_type_id`) REFERENCES `NotificationTypes` (`id`);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  

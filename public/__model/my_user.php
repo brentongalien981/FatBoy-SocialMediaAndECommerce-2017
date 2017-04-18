@@ -21,8 +21,17 @@ class User {
 //            die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
 //        }
     }
-
+    
     public static function read_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+        //
+        return $result_set;
+    }        
+
+    public static function read_by_query_and_instantiate($query = "") {
         global $database;
 
         $result_set = $database->get_result_from_query($query);
