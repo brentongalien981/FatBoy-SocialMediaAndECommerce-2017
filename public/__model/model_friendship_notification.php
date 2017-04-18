@@ -4,14 +4,13 @@
 // probably smart to require it before we start.
 require_once("my_database.php");
 
-class User {
+class FriendshipNotification {
 
-    protected static $table_name = "Users";
-    protected static $db_fields = array("user_id", "user_name", "hashed_password", "user_type_id");
-    public $user_id;
-    public $user_name;
-    public $hashed_password;
-    public $user_type_id;
+    protected static $table_name = "FriendshipNotifications";
+    protected static $db_fields = array("notified_user_id", "notifier_user_id", "notification_type_id");
+    public $notified_user_id;
+    public $notifier_user_id;
+    public $notification_type_id;
 
     public static function read_by_id($id = 0) {
 //        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
@@ -21,15 +20,6 @@ class User {
 //            die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
 //        }
     }
-    
-    public static function read_by_query($query = "") {
-        global $database;
-
-        $result_set = $database->get_result_from_query($query);
-
-        //
-        return $result_set;
-    }        
 
     public static function read_by_query_and_instantiate($query = "") {
         global $database;
@@ -43,51 +33,30 @@ class User {
             array_push($objects_array, self::instantiate($row));
         }
 
+        // TODO: DEBUG
+        MyDebugMessenger::add_debug_message("METHOD: read_by_query_and_instantiate() called...");
+        
+        // This could be one or many instantiated objects.
         return $objects_array;
     }
     
-//      public static function authenticate_with_user_object_return($user_name = "", $hashed_password = "") {
-//        global $database;
-//        
-//        $user_name = $database->escape_value($user_name);
-//        $hashed_password = $database->escape_value($hashed_password);
-//
-//        $query = "SELECT * FROM " . self::$table_name . " ";
-//        $query .= "WHERE user_name = '{$user_name}' ";
-//        $query .= "AND hashed_password = '{$hashed_password}' ";
-//        $query .= "LIMIT 1";
-//        
-//        // TODO: DEBUG
-//        echo "<br>QUERY query: {$query}<br>";
-//        
-//        $result_user_record = self::read_by_query($query);
-//        
-//        return !empty($result_user_record) ? array_shift($result_user_record) : false;
-//    }
-    
-      public static function authenticate_with_user_object_return($user_name = "") {
+    public static function read_by_query($query = "") {
         global $database;
-        
-        $user_name = $database->escape_value($user_name);
-//        $hashed_password = $database->escape_value($hashed_password);
 
-        $query = "SELECT * FROM " . self::$table_name . " ";
-        $query .= "WHERE user_name = '{$user_name}' ";
-//        $query .= "AND hashed_password = '{$hashed_password}' ";
-        $query .= "LIMIT 1";
-        
-        // TODO: DEBUG
-        echo "<br>QUERY query: {$query}<br>";
-        
-        $result_user_record = self::read_by_query_and_instantiate($query);
-        
-        return !empty($result_user_record) ? array_shift($result_user_record) : false;
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        return $result_set;
     }    
+
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
+//        $query .= "ORDER BY name ASC";
+        
 
-        $objects_array = self::read_by_query($query);
+        $objects_array = self::read_by_query_and_instantiate($query);
 
         return $objects_array;
     }
@@ -105,25 +74,47 @@ class User {
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
         // - single-quotes around all values
         // - escape all values to prevent SQL injection
-        
+
         $attributes = $this->get_sanitized_attributes();
-        
+
         $query = "INSERT INTO " . self::$table_name . " (";
         $query .= join(", ", array_keys($attributes));
         $query .= ") VALUES ('";
         $query .= join("', '", array_values($attributes));
         $query .= "')";
-        
+
         $query_result = $database->get_result_from_query($query);
-        
+
         if ($query_result) {
-            $this->user_id = $database->get_last_inserted_id();
             return true;
         } else {
             return false;
         }
     }
-
+    
+    public static function delete($id = 0) {
+        global $database;
+        
+        $query = "DELETE FROM " . self::$table_name . " ";
+        $query .= "WHERE id = " . $database->escape_value($id) . " ";
+        $query .= "LIMIT 1";
+        
+        // TODO: DEBUG
+        MyDebugMessenger::add_debug_message("QUERY: {$query}.");
+        
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }  
+    
+    public static function delete_by_query($query) {
+        global $database;
+        
+        // TODO: DEBUG
+        MyDebugMessenger::add_debug_message("QUERY DELETE: {$query}.");
+        
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }      
 
     protected function get_sanitized_attributes() {
         global $database;
@@ -146,6 +137,19 @@ class User {
         }
         return $attributes;
     }
+    
+    public function to_string() {
+        $object_in_string = "";
+        
+        foreach (self::$db_fields as $field) {
+            if (property_exists($this, $field)) {
+                echo "{$field}: $this->$field<br>";
+                $object_in_string .= "{$field}: $this->$field<br>";
+            }
+        }
+        
+        return $object_in_string;
+    }    
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.
@@ -157,15 +161,6 @@ class User {
                 $object->$attribute = $value;
             }
         }
-        
-        // Because the class attribute $id is not included as a key
-        // in this class's array $db_fields, we assign a value to the $id separately.
-//        foreach ($record as $attribute => $value) {
-//            if ($attribute == "user_id") {
-//                $object->$attribute = $value;
-//                break;
-//            }
-//        }
         return $object;
     }
 

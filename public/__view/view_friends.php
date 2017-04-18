@@ -34,6 +34,9 @@ if (!$session->is_logged_in()) {
 //
 if ($session->is_viewing_own_account()) {
     //
+    show_friend_request_for_me();
+    
+    //
     show_non_friends();
 }
 ?>
@@ -78,6 +81,20 @@ MyDebugMessenger::clear_debug_message();
     // Edit the page title.
     document.getElementById("title").innerHTML += " / Friends";
 </script>
+
+
+
+
+
+
+
+<?php
+// Alert.
+if (isset($_SESSION["alert_message"])) {
+    echo $_SESSION["alert_message"];
+    $_SESSION["alert_message"] = null;
+}
+?>
 
 
 
