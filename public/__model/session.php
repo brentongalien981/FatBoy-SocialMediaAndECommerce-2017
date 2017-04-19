@@ -110,6 +110,16 @@ class Session {
             $this->logged_in = false;
         }
     }
+    
+    public function set_currently_viewed_user($now_currently_viewed_user_id, $now_currently_viewed_user_name) {
+        $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $now_currently_viewed_user_id;
+        $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $now_currently_viewed_user_name;
+    }
+    
+    public function reset_currently_viewed_user() {
+        $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $_SESSION["actual_user_id"];
+        $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $_SESSION["actual_user_name"];
+    }
 
 //    private function check_message() {
 //        // Is there a message stored in the session?

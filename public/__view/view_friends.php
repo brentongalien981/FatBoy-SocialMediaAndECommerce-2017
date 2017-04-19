@@ -43,15 +43,13 @@ if ($session->is_viewing_own_account()) {
     show_non_friends();
 }
 
+// 
+echo "<br><br><br>";
 
 // 
 show_user_friends();
 ?>
 
-
-
-<?php
-?>
 
 
 

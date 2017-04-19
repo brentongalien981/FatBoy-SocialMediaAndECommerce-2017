@@ -19,12 +19,12 @@ if (!$session->is_logged_in()) {
 
 <?php
 
-function get_completely_presented_timeline_notifications_array($actual_user_id) {
+function get_completely_presented_timeline_notifications_array($currently_viewed_user_id) {
 //    global $connection;
 
     $query = "SELECT * ";
     $query .= "FROM TimelinePosts INNER JOIN Users ON TimelinePosts.poster_user_id = Users.user_id ";
-    $query .= "WHERE owner_user_id = {$actual_user_id} ";
+    $query .= "WHERE owner_user_id = {$currently_viewed_user_id} ";
     $query .= "ORDER BY date_posted DESC";
 
     //

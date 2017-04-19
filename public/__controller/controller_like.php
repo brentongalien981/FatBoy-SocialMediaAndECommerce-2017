@@ -8,7 +8,7 @@
 <?php
 //// Protected page.
 ////global $session;
-if ((!$session->is_logged_in()) || (!$session->is_viewing_own_account())) {
+if (!$session->is_logged_in()) {
     redirect_to("../index.php");
 }
 ?>

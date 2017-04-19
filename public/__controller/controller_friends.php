@@ -10,7 +10,7 @@
 
 <?php
 // Protected page.
-if ((!$session->is_logged_in()) || (!$session->is_viewing_own_account())) {
+if (!$session->is_logged_in()) {
     redirect_to("../index.php");
 }
 ?>
@@ -161,18 +161,92 @@ function show_friend_acceptance() {
     while ($row = $database->fetch_array($friend_acceptances_records_result_set)) {
         echo "<tr>";
         echo "<td>" . "{$row['user_name']} accepted your friend request." . "</td>";
-        
+
 //        echo "<td>" . "<a href='friendship_acceptance_deletion.php?friend_id={$row['NotifierUserId']}'>OK</a>" . "</td>";
         echo "<td>";
         echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
         echo "<input type='submit' name='okd_friendship' value='ok'>";
         echo "</form>";
-        echo "</td>";        
-        
+        echo "</td>";
+
         echo "</tr>";
     }
     echo "</table>";
+}
+
+function show_user_friends() {
+    //
+    global $database;
+    global $session;
+
+    $query = "SELECT * FROM `Users` WHERE user_id IN ( SELECT friend_id FROM Friendship WHERE user_id = {$session->currently_viewed_user_id})";
+
+    //
+    $friends_of_user_records_result_set = User::read_by_query($query);
+
+    //
+    echo "<h4>My Friends</h4>";
+    echo "<table>";
+    while ($row = $database->fetch_array($friends_of_user_records_result_set)) {
+        echo "<tr>";
+        echo "<td>" . "{$row['user_name']}" . "</td>";
+
+        // Here is the form for authenticating the friendship.
+        // In other words, this gives the user the ability to click and view
+        // a friends account if they're actually friends.
+        echo "<td>";
+        echo "<form action='../__controller/controller_friends.php' method='post'>";
+        echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
+        echo "<input type='hidden' name='friend_name' value='{$row['user_name']}'>";
+        echo "<input type='submit' name='view_friend_account' value='view'>";
+        echo "</form>";
+        echo "</td>";
+
+
+        // If the actual user is viewing her own account, 
+        // then show her the button to unfriend her friend.
+        if ($session->is_viewing_own_account()) {
+            // TODO: NOW NOW NOW
+//            echo "<td>" . "<a href='friendship_deletion.php?friend_id={$row['user_id']}'>unfriend</a>" . "</td>";
+            echo "<td>";
+            echo "<form action='../__controller/controller_friends.php' method='post'>";
+            echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
+            echo "<input type='submit' name='unfriend' value='unfriend'>";
+            echo "</form>";
+            echo "</td>";
+        }
+
+        echo "</tr>";
+    }
+    echo "</table>";
+}
+
+function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
+    //
+    $query = "SELECT * FROM Friendship ";
+    $query .= "WHERE (user_id = {$actual_user_id} AND friend_id = {$friend_id}) LIMIT 1";
+
+
+    //
+    global $database;
+    $record_of_result_set = Friendship::read_by_query($query);
+
+    //
+    $num_of_results = $database->get_num_rows_of_result_set($record_of_result_set);
+
+    if ($num_of_results > 0) {
+        //
+        global $session;
+        $session->set_currently_viewed_user($friend_id, $friend_name);
+        MyDebugMessenger::add_debug_message("Friendship is authenticated bruh..");
+    } else {
+        MyDebugMessenger::add_debug_message("Friendship is NOT authenticated bruh..");
+    }
+
+
+    //
+    redirect_to("../index.php");
 }
 
 function create_new_friendship($friend_id) {
@@ -218,14 +292,80 @@ function create_new_friendship($friend_id) {
 
     redirect_to("../__view/view_friends.php");
 }
-
-function show_user_friends() {
-    // TODO: NOW NOW NOW
-}
 ?>
 
 
 
 
 <!--Meat-->
-<?php ?>
+<?php
+if (isset($_POST["view_friend_account"])) {
+    //
+    $actual_user_id = $session->actual_user_id;
+    $friend_id = $_POST["friend_id"];
+    $friend_name = $_POST["friend_name"];
+
+    //
+    if ($actual_user_id === $friend_id) {
+        // echo "YOU ARE JUST TRYING TO VIEW YOUR OWN ACCOUNT";
+        MyDebugMessenger::add_debug_message("YOU ARE JUST TRYING TO VIEW YOUR OWN ACCOUNT");
+        // So just redirect to homepage.
+        //
+        $session->reset_currently_viewed_user();
+
+        redirect_to("../index.php");
+    } else {
+        // echo "Your'e actually trying to view a friend account huh.";
+        // 
+        authenticate_friendship($actual_user_id, $friend_id, $friend_name);
+    }
+}
+
+
+
+if (isset($_POST["unfriend"])) {
+    //
+    if (!$session->is_viewing_own_account()) {
+        redirect_to("../__view/view_friends.php");
+    }
+
+
+    //
+    $actual_user_id = $session->actual_user_id;
+    $friend_id = $_POST["friend_id"];
+
+
+    //
+    $query = "DELETE FROM `Friendship` WHERE user_id = {$actual_user_id} AND friend_id = {$friend_id}";
+
+
+    //
+    $is_deletion_ok = Friendship::delete_by_query($query);
+
+    if ($is_deletion_ok) {
+        MyDebugMessenger::add_debug_message("SUCCESS deleting 1st part of friendship from the mapping table 'Friendship' bruh..");
+
+
+        //
+        // Reciprocate the deletion of friendship.
+        $query = "DELETE FROM `Friendship` WHERE user_id = {$friend_id} AND friend_id = {$actual_user_id}";
+
+
+        //
+        //
+        $is_deletion_ok = Friendship::delete_by_query($query);
+
+        if ($is_deletion_ok) {
+            MyDebugMessenger::add_debug_message("SUCCESS deleting 2nd part of friendship from the mapping table 'Friendship' bruh..");
+        } else {
+            MyDebugMessenger::add_debug_message("FAIL deleting 2nd part of friendship from the mapping table 'Friendship' bruh..");
+        }
+    } else {
+        MyDebugMessenger::add_debug_message("FAIL deleting 1st part of friendship from the mapping table 'Friendship' bruh..");
+    }
+
+
+    //
+    redirect_to("../__view/view_friends.php");
+}
+?>
