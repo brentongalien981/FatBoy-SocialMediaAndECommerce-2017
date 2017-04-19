@@ -200,3 +200,19 @@ span {
     color: white;
     font-size: 75%;
 }
+
+#sub_menus_nav {
+    background-color: #EEE4B9;
+    color: red;
+    width: 100%;
+    height: 30px;
+    margin-left: -35px;
+    padding: 0;
+    padding-top: 10px;
+} 
+
+#sub_menus_nav a {
+    font-size: 85%;
+    font-weight: 100;
+    padding-left: 35px;
+}

@@ -9,7 +9,7 @@
 
 <?php
 // Protected page.
-if ((!$session->is_logged_in()) || (!$session->is_viewing_own_account())) {
+if (!$session->is_logged_in()) {
     redirect_to("../index.php");
 }
 ?>
@@ -111,7 +111,7 @@ function get_completely_presented_user_videos_array() {
     
     //
     $query = "SELECT * FROM MyVideos ";
-    $query .= "WHERE user_id = {$session->actual_user_id} ";
+    $query .= "WHERE user_id = {$session->currently_viewed_user_id} ";
     $query .= "ORDER BY id DESC";
     
     

@@ -207,8 +207,6 @@ function show_user_friends() {
         // If the actual user is viewing her own account, 
         // then show her the button to unfriend her friend.
         if ($session->is_viewing_own_account()) {
-            // TODO: NOW NOW NOW
-//            echo "<td>" . "<a href='friendship_deletion.php?friend_id={$row['user_id']}'>unfriend</a>" . "</td>";
             echo "<td>";
             echo "<form action='../__controller/controller_friends.php' method='post'>";
             echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";

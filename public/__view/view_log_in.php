@@ -21,6 +21,16 @@ if ($session->is_logged_in()) {
 
 
 
+<!--sub-menus nav-->
+<!--I'm currently adding this for my store page.-->
+<a>sub-menu1</a>
+<a>sub-menu2</a>
+</nav>
+
+
+
+
+
 <h4>Log-in</h4>
 
 <form id="formAdminCreation" action="../__controller/controller_log_in.php" method="post">

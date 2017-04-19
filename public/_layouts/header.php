@@ -8,7 +8,7 @@
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />
+        <link href="<?php echo LOCAL . '/public/_styles/header.css'?>" media="all" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="divBanner">
@@ -40,13 +40,24 @@
 
 
         <nav id="navSide">
-            <a href="<?php echo LOCAL . '/public/index.php'; ?>" class="">Timeline</a>
+            <a href="<?php echo LOCAL . '/public/index.php'; ?>" class="">Timeline
+                <?php
+                if ($session->is_logged_in()) {
+                    echo " of {$session->currently_viewed_user_name}";
+                }
+                ?>
+            </a>
+
             <a href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">Profile</a>
+
             <a href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">Friends</a>
 
             <a href="<?php echo LOCAL . '/public/__view/view_my_videos.php'; ?>" class="">MyVideos</a>
-            <a href="my_store.php">MyStore</a>
 
+
+            <a href="<?php echo LOCAL . '/public/__view/view_my_store'; ?>">MyStore</a>
+
+            <!--Sign-up-->
             <?php
             if (!$session->is_logged_in()) {
                 echo "<a href='" . LOCAL . "/public/__view/view_signup.php'>Sign-up</a>";
@@ -54,3 +65,7 @@
             ?>
         </nav>
         <main id="main">
+            
+            <!--Sub-menus-->
+            <nav id="sub_menus_nav">            
+

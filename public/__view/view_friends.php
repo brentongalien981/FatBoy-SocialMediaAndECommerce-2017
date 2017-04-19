@@ -28,6 +28,16 @@ if (!$session->is_logged_in()) {
 
 
 
+<!--sub-menus nav-->
+<!--I'm currently adding this for my store page.-->
+<a>sub-menu1</a>
+<a>sub-menu2</a>
+</nav>
+
+
+
+
+
 
 <!--Meat-->
 <?php

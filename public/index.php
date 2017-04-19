@@ -16,6 +16,16 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
+<!--sub-menus nav-->
+<!--I'm currently adding this for my store page.-->
+<a>sub-menu1</a>
+<a>sub-menu2</a>
+</nav>
+
+
+
+
+
 
 <?php
 echo "tae fatboy<br>";

@@ -1,7 +1,7 @@
 <!--Imports-->
 <!--File initializations.php and session.php is already included in header.php.-->
 <?php require_once("../_layouts/header.php"); ?>
-<?php require_once("../__controller/controller_my_videos.php"); ?>
+<?php // require_once("../__controller/controller_my_videos.php"); ?>
 
 
 
@@ -41,31 +41,9 @@ if (!$session->is_logged_in()) {
 
 <!--Meat-->
 <?php
-// Show the form for adding a new video.
 if ($session->is_viewing_own_account()) {
     //
-    show_add_new_video_form();
 }
-?>
-
-
-
-<?php
-// Display all user's videos.
-echo "<h4>MyVideos</h4>";
-
-
-// 
-$completely_presented_user_videos_array = get_completely_presented_user_videos_array();
-
-//
-echo "<table>";
-//
-foreach ($completely_presented_user_videos_array as $completely_presented_user_video) {
-    echo $completely_presented_user_video;
-}
-//
-echo "</table>";
 ?>
 
 
@@ -89,11 +67,13 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<link href="../_styles/view_my_videos.css" rel="stylesheet" type="text/css" />
+<link href="../_styles/view_my_store.css" rel="stylesheet" type="text/css" />
 <style>   
     td {
-        padding-top: 100px;
+        /*padding-top: 100px;*/
     }
+    
+
 </style>
 
 
@@ -101,10 +81,10 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Scripts-->
-<!--<script src="../_scripts/view_my_videos.js"></script>-->
+<!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / MyVideos";
+    document.getElementById("title").innerHTML += " / MyStore";
 </script>
 
 
