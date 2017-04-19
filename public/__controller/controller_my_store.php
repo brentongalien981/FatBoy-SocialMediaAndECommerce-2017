@@ -1,8 +1,8 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once("../__model/session.php"); ?>
-<?php require_once("../__model/model_my_store_items.php");   ?>
+<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_my_store_items.php"); ?>
 
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php defined("LOCAL") ? null : define("http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
@@ -34,6 +34,7 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 
 // Functions.
+// TODO: NOT USED.
 function show_add_new_video_form() {
     $form = "<h4>Add a New Video<h4>";
     $form .= "<form action='../__controller/controller_my_videos.php' method='post'>";
@@ -60,8 +61,8 @@ function validate_add_new_store_item_form($temporary_new_store_item) {
     $store_item_length = $_POST["store_item_length"];
     $store_item_width = $_POST["store_item_width"];
     $store_item_height = $_POST["store_item_height"];
-    
-    
+
+
     //
     $temporary_new_store_item->id = null;
     $temporary_new_store_item->user_id = $store_item_seller_user_id;
@@ -73,9 +74,9 @@ function validate_add_new_store_item_form($temporary_new_store_item) {
     $temporary_new_store_item->mass = $store_item_mass;
     $temporary_new_store_item->length = $store_item_length;
     $temporary_new_store_item->width = $store_item_width;
-    $temporary_new_store_item->height = $store_item_height;         
-    
-    
+    $temporary_new_store_item->height = $store_item_height;
+
+
     // Fuckin need this everytime you validate.
     MyValidationErrorLogger::initialize();
 
@@ -93,7 +94,7 @@ function validate_add_new_store_item_form($temporary_new_store_item) {
     if (MyValidationErrorLogger::is_empty()) {
         // Proceed to the next validation step.
         MyDebugMessenger::add_debug_message("SUCCESS new store item validation.");
-        
+
         // 
         return true;
     } else {
@@ -105,7 +106,7 @@ function validate_add_new_store_item_form($temporary_new_store_item) {
             MyDebugMessenger::add_debug_message($error);
         }
 
-        
+
         // 
         return false;
     }
@@ -113,17 +114,16 @@ function validate_add_new_store_item_form($temporary_new_store_item) {
 
 function add_new_store_item_record_to_db($new_store_item) {
     //
-    
     //
     $new_store_item_creation_result_flag = $new_store_item->create_with_bool();
-    
+
     // TODO: DEBUG
     echo "<pre>";
     print_r($new_store_item_creation_result_flag);
     echo "</pre>";
 
 
-    
+
     if ($new_store_item_creation_result_flag) {
         MyDebugMessenger::add_debug_message("SUCCESS creation and insertion of store item record.");
     } else {
@@ -131,6 +131,7 @@ function add_new_store_item_record_to_db($new_store_item) {
     }
 }
 
+// TODO: NOT USED.
 function get_completely_presented_user_videos_array() {
     global $session;
 
@@ -172,6 +173,82 @@ function get_completely_presented_user_videos_array() {
     // 
     return $completely_presented_user_videos_array;
 }
+
+function show_user_store_items() {
+    //
+    global $session;
+    $query = "SELECT * FROM MyStoreItems ";
+    $query .= "WHERE user_id = {$session->currently_viewed_user_id}";
+
+
+    //
+    $store_items_record_result_set = MyStoreItems::read_by_query($query);
+
+
+    echo "<h4>MyStore</h4><br>";
+    echo "<table>";
+    
+    //
+    global $database;
+    while ($row = $database->fetch_array($store_items_record_result_set)) {
+        echo "<tr>";
+        echo "<td>";
+        echo "<div>";
+        // Name
+        echo "<h4>{$row['name']}: {$row['quantity']} item";
+        
+        // Singular.. 
+        if ($row['quantity'] == 1) {
+            echo " remaining</h4>";
+        }
+        
+        echo "s remaining</h4>";
+
+        
+        // Price
+        echo "<h5>\${$row['price']}</h5>";
+        // Description
+        echo "<p>{$row['description']}</p>";
+        // Photo
+        echo "<img src='{$row['photo_address']}'><br><br>";
+
+        // If the actual user is viewing her own store,
+        // then don't let her see this button so she won't
+        // be able to buy her own stuffs.
+        // And also, check if the stock quantity is more than zero.
+        // If it is zero, then don't show the button "add to cart".
+        // TODO: CRUCIAL: This should be a form.
+        if ((!$session->is_viewing_own_account()) && ($row["quantity"] > 0)) {
+//            echo "<button><a href='my_cart_item_creation.php?item_id={$row['Id']}&" .
+//            "seller_id={$row['UserId']}&" .
+//            "item_name={$row['Name']}&" .
+//            "item_price={$row['Price']}&" .
+//            "item_quantity=1&" .
+//            "max_quantity={$row['Quantity']}'>Add to my cart" .
+//            "</a>" .
+//            "</button>";
+            echo "<form>";
+            echo "<input type='submit' value='add to my cart'>";
+            echo "</form>";
+        }
+        // This means the actual user is viewing her own account.
+        // So let her see the edit button.
+        else if ($session->is_viewing_own_account()) {
+
+            // TODO: Crucial.
+            echo "<form action='my_store_item_update.php' method='post'>";
+            echo "<input type='submit' value='edit' name='editStoreItem'>";
+            //hiddenStoreItemId
+            echo "<input type='hidden' value='{$row['id']}' name='hiddenStoreItemId'>";
+            echo "</form>";
+        }
+
+        echo "</div><br><br><br><br><hr>";
+        echo "</td>";
+        echo "</tr>";
+    }
+    echo "</table><br><br><br>";
+}
 ?>
 
 
@@ -183,28 +260,25 @@ if (isset($_POST["add_store_item"])) {
     // TODO: LOG
     MyDebugMessenger::add_debug_message("BUTTON 'add_store_item' clicked.");
 
-    
+
     // Prepare a temporary store item object.
     // You might create it if validation is ok,
     // or you might re-edit it if validation fails.
-    $temporary_new_store_item = new MyStoreItems();  
-    
-//    MyStoreItems::set_temporary_object($temporary_new_store_item);
-    
+    $temporary_new_store_item = new MyStoreItems();
 
+//    MyStoreItems::set_temporary_object($temporary_new_store_item);
     //
     $is_validation_ok = validate_add_new_store_item_form($temporary_new_store_item);
-    
+
     //
     if ($is_validation_ok) {
         //
         add_new_store_item_record_to_db($temporary_new_store_item);
-        
-        
+
+
         //
         redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=2&is_creation_ok=1");
-    }    
-    else {
+    } else {
         // GET params for $temporary_new_store_item attributes.
         $params_in_str = "is_validation_ok=0&";
         $params_in_str .= "store_item_name={$temporary_new_store_item->name}&";
@@ -216,13 +290,13 @@ if (isset($_POST["add_store_item"])) {
         $params_in_str .= "store_item_length={$temporary_new_store_item->length}&";
         $params_in_str .= "store_item_width={$temporary_new_store_item->width}&";
         $params_in_str .= "store_item_height={$temporary_new_store_item->height}";
-        
-        
+
+
         //
         redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=2&" . "{$params_in_str}");
     }
-    
-    
+
+
     //
 //    redirect_to(LOCAL . "/public/__view/view_my_store");
 }
