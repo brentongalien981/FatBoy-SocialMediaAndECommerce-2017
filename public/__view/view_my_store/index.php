@@ -30,8 +30,8 @@ if (!$session->is_logged_in()) {
 
 <!--sub-menus nav-->
 <!--I'm currently adding this for my store page.-->
-<a href="index.php?store_content_page=1">sub-menu1</a>
-<a href="index.php?store_content_page=2">sub-menu2</a>
+<a href="index.php?store_content_page=1">MyStore</a>
+<a href="index.php?store_content_page=2">Add Items</a>
 </nav>
 
 
@@ -78,7 +78,7 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<link href="../_styles/view_my_store.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />
 <style>   
     td {
         /*padding-top: 100px;*/

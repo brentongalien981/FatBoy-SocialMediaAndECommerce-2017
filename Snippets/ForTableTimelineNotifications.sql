@@ -750,6 +750,86 @@ ALTER TABLE `FriendshipNotifications`
   
   
   
+--
+-- Table structure for table `MyStoreItems`
+--
+
+CREATE TABLE `MyStoreItems` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` float NOT NULL,
+  `description` varchar(3000) NOT NULL,
+  `photo_address` varchar(1000) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `mass` float DEFAULT NULL,
+  `length` float DEFAULT NULL,
+  `width` float DEFAULT NULL,
+  `height` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `MyStoreItems`
+--
+ALTER TABLE `MyStoreItems`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `name` (`name`),
+  ADD KEY `id_3` (`id`),
+  ADD KEY `user_id_2` (`user_id`),
+  ADD KEY `name_2` (`name`);
+  
+  
+  
+  
+  
+--
+-- AUTO_INCREMENT for table `MyStoreItems`
+--
+ALTER TABLE `MyStoreItems`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  
+  
+  
+  
+  
+--
+-- Constraints for table `MyStoreItems`
+--
+ALTER TABLE `MyStoreItems`
+  ADD CONSTRAINT `mystoreitems_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `Users` (`user_id`);
+
+
+
+
+
+
+--
+-- Dumping data for table `MyStoreItems`
+--
+
+INSERT INTO `MyStoreItems` (`id`, `user_id`, `name`, `price`, `description`, `photo_address`, `quantity`, `mass`, `length`, `width`, `height`) VALUES
+(1, 8, 'ASUS Gaming PC', 1099.97, 'CPU: 4.4GHz Quad Core Intel Core i7 Devil\'s Canyon,\r\n\r\nMotherBoard: MSI Gaming 5 Series,\r\n\r\nMemory: 16GB Kingston HyperX,\r\n\r\nSDD: 512GB Samsung 850 Pro\r\n                                                                                                                                                                                                                                ', 'https://cdn2.pcadvisor.co.uk/cmsdata/reviews/3605095/ViBox_Wildfire_gaming_PC.jpg\r\n\r\n                                                                                                                                                ', 0, 529.09, 24.88, 12, 24.14),
+(2, 8, 'Home-Made Cute Shirt', 5.99, 'Anime-like shirt.<br>\r\n2 shirts for only $4.99.<br>\r\nNot only will you get an awesome shirt, but you\'ll also support me..<br>\r\nThank you so much :)                                                                                                                ', 'http://pre13.deviantart.net/8eb1/th/pre/f/2014/171/b/c/gumball_and_darwin_homemade_t_shirts_by_gumball28-d7n6iba.jpg                                                                                                ', 4, 3.53, 8, 6, 0.5),
+(3, 8, 'File Cabinet Drawer', 20, 'Awesome file drawers.<br>\r\nSlightly worn out.<br>\r\nShips in 2 days...                ', 'http://nebula.wsimg.com/obj/N0E0RkZFMTdEMjI2NkY3REM0NDQ6MWRhZTkzZGQ3YTVmOWU1NWEzZmRjZGIzYjQxYjg0MjI6Ojo6OjA=                ', 2, 1440, 40, 25, 55),
+(4, 9, 'Pink HP Laptop', 430, '2-year old HP laptop.<br>\r\nMemory: 4GB<br>\r\nCPU: 2,7GHz Dual Core Intel Core i3<br>\r\nSSD: 512GB Corsair SSD                ', 'http://idg.bg/test/pcw/2014/9/30/23085-HP_Stream-1.jpg                ', 2, 64, 15, 11, 2),
+(5, 9, '10 foot Teddy Bear', 99, '10 foot Teddy Bear. Fluffy.<br>\r\nCute<br>\r\nSuper huggable.<br>\r\nWho say\'s we need pillows to sleep?                                                                ', 'http://g02.a.alicdn.com/kf/HTB122WxKFXXXXcmXFXXq6xXFXXX9/stuffed-animal-80cm-cute-font-b-teddy-b-font-bear-stripes-design-a-pair-lovers-bear.jpg                                                               ', 1, 1120, 124, 30, 40),
+(9, 8, 'Bose Headphones', 449.95, 'Good quiet comfort headphones.<br>\r\nYou\'ll definitely NOT miss out the world around you.<br>\r\n<a href=\'http://www.nba.com\'>Check it out</a>                                                                                \r\n<h2>The BOSE</h2>', 'http://bpc.h-cdn.co/assets/16/30/980x490/landscape-1469479026-bose-qc35-headphones-promo-2.jpg                                                                         ', 1, 5, 9, 7, 3),
+(10, 10, 'Bucad-Javier Dawes Place Dental - Oral-B Toothbrush', 19.49, 'The predecessor of the toothbrush is the chew stick. Chew sticks were twigs with frayed ends used to brush the teeth while the other end was used as a toothpick. The earliest chew sticks were discovered in Babylonia in 3500 BC,[4] an Egyptian tomb dating from 3000 BC,[3] and mentioned in Chinese records dating from 1600 BC. The Greeks and Romans used toothpicks to clean their teeth and toothpick like twigs have been excavated in Qin Dynasty tombs.[4] Chew sticks remain common in Africa[5] the rural Southern United States[3] and in the Islamic world the use of chewing stick Miswak is considered a pious action and has been prescribed to be used before every prayer five times a day.[6] Miswaks have been used by Muslims since 7th century.                                                                ', 'http://thesweethome.com/wp-content/uploads/sites/3/2013/05/02-electric-toothbrushes1.jpg                                                                ', 15, 1, 8, 3, 2);
+
+-- --------------------------------------------------------
+  
+  
+  
+  
+  
+  
 
   
   
