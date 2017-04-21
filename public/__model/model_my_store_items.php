@@ -39,6 +39,27 @@ class MyStoreItems {
         
         return self::instantiate($row);
     }
+    
+    public function update() {
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - UPDATE table SET key='value', key='value' WHERE condition
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+        $attributes = $this->get_sanitized_attributes();
+        $attribute_pairs = array();
+        
+        foreach ($attributes as $key => $value) {
+            $attribute_pairs[] = "{$key}='{$value}'";
+        }
+        
+        $query = "UPDATE " . self::$table_name . " SET ";
+        $query .= join(", ", $attribute_pairs);
+        $query .= " WHERE id=" . $database->escape_value($this->id);
+        
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }    
 
     public static function read_by_query_and_instantiate($query = "") {
         global $database;

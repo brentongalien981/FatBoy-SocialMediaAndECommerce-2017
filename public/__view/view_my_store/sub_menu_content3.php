@@ -30,14 +30,39 @@ if (!$session->is_logged_in() ||
 
 <!--Meat-->
 <?php
-// If this page loads by NOT updating the current item
+// This is if the button "update" is clicked.
+if (isset($_GET["is_validation_ok"])) {
+    if ($_GET["is_validation_ok"] == 1) {
+        set_currently_edited_store_item_object(-69);
+    }
+    else {
+        $item_attribs_array = array();
+        $item_attribs_array["store_item_id"] = $_GET["store_item_id"];
+        $item_attribs_array["store_item_name"] = $_GET["store_item_name"];
+        $item_attribs_array["store_item_price"] = $_GET["store_item_price"];
+        $item_attribs_array["store_item_quantity"] = $_GET["store_item_quantity"];
+        $item_attribs_array["store_item_description"] = $_GET["store_item_description"];
+        $item_attribs_array["store_item_photo_address"] = $_GET["store_item_photo_address"];
+        $item_attribs_array["store_item_mass"] = $_GET["store_item_mass"];
+        $item_attribs_array["store_item_length"] = $_GET["store_item_length"];
+        $item_attribs_array["store_item_width"] = $_GET["store_item_width"];
+        $item_attribs_array["store_item_height"] = $_GET["store_item_height"];
+        
+        set_currently_edited_store_item_object(-619, $item_attribs_array);
+    }
+} 
+// This is if the button "edit" is clicked or
+// the tag <select> has been changed.
+else {
+    // If this page loads by NOT updating the current item
 // being edited from the tag <select>, then call this following method.
-$item_id = -69;
-if (isset($_GET["item_id"])) {
-    $item_id = $_GET["item_id"];
-}
+    $item_id = -69;
+    if (isset($_GET["item_id"])) {
+        $item_id = $_GET["item_id"];
+    }
 
-set_currently_edited_store_item_object($item_id);
+    set_currently_edited_store_item_object($item_id);
+}
 ?>
 
 

@@ -34,18 +34,70 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 
 // Functions.
-// TODO: NOT USED. Delete this later.
-function show_add_new_video_form() {
-    $form = "<h4>Add a New Video<h4>";
-    $form .= "<form action='../__controller/controller_my_videos.php' method='post'>";
-    $form .= "<h6>Video Title</h6>";
-    $form .= "<input type='text' name='video_title'/>";
-    $form .= "<h6>Embedded Code</h6>";
-    $form .= "<textarea name='embedded_video_code' rows='6' cols='100'></textarea><br>";
-    $form .= "<input type='submit' name='add_video' value='add video' />";
-    $form .= "</form><br><br>";
+function validate_update_store_item_form() {
+// Vars
+    global $session;
 
-    echo $form;
+    $store_item_id = $_POST["store_item_id"];
+    $store_item_seller_user_id = $session->actual_user_id;
+    $store_item_name = $_POST["store_item_name"];
+    $store_item_price = $_POST["store_item_price"];
+    $store_item_quantity = $_POST["store_item_quantity"];
+    $store_item_description = $_POST["store_item_description"];
+    $store_item_photo_address = $_POST["store_item_photo_address"];
+    $store_item_mass = $_POST["store_item_mass"];
+    $store_item_length = $_POST["store_item_length"];
+    $store_item_width = $_POST["store_item_width"];
+    $store_item_height = $_POST["store_item_height"];
+
+
+    //
+    MyStoreItems::$currently_edited_store_item_object->id = $store_item_id;
+    MyStoreItems::$currently_edited_store_item_object->user_id = $store_item_seller_user_id;
+    MyStoreItems::$currently_edited_store_item_object->name = $store_item_name;
+    MyStoreItems::$currently_edited_store_item_object->price = $store_item_price;
+    MyStoreItems::$currently_edited_store_item_object->description = $store_item_description;
+    MyStoreItems::$currently_edited_store_item_object->photo_address = $store_item_photo_address;
+    MyStoreItems::$currently_edited_store_item_object->quantity = $store_item_quantity;
+    MyStoreItems::$currently_edited_store_item_object->mass = $store_item_mass;
+    MyStoreItems::$currently_edited_store_item_object->length = $store_item_length;
+    MyStoreItems::$currently_edited_store_item_object->width = $store_item_width;
+    MyStoreItems::$currently_edited_store_item_object->height = $store_item_height;
+
+
+    // Fuckin need this everytime you validate.
+    MyValidationErrorLogger::initialize();
+
+
+    // Validations
+    $required_fields = array("store_item_name", "store_item_price", "store_item_quantity", "store_item_description", "store_item_photo_address", "store_item_mass", "store_item_length", "store_item_width", "store_item_height");
+    validate_presences($required_fields);
+
+
+    $fields_with_max_lengths = array("store_item_name" => 100, "store_item_description" => 3000, "store_item_photo_address" => 1000);
+    validate_max_lengths($fields_with_max_lengths);
+
+
+    // 
+    if (MyValidationErrorLogger::is_empty()) {
+        // Proceed to the next validation step.
+        MyDebugMessenger::add_debug_message("SUCCESS update store item validation.");
+
+        // 
+        return true;
+    } else {
+        MyDebugMessenger::add_debug_message("FAIL update store item validation.");
+
+        $validation_errors = MyValidationErrorLogger::get_log_array();
+
+        foreach ($validation_errors as $error) {
+            MyDebugMessenger::add_debug_message($error);
+        }
+
+
+        // 
+        return false;
+    }
 }
 
 function validate_add_new_store_item_form($temporary_new_store_item) {
@@ -110,6 +162,11 @@ function validate_add_new_store_item_form($temporary_new_store_item) {
         // 
         return false;
     }
+}
+
+function update_store_item_record_to_db() {
+    $is_update_ok = MyStoreItems::$currently_edited_store_item_object->update();
+    return $is_update_ok;
 }
 
 function add_new_store_item_record_to_db($new_store_item) {
@@ -217,32 +274,52 @@ function get_currently_edited_store_item_object() {
     }
 }
 
-function set_currently_edited_store_item_object($item_id = -69) {
-    // If the currently edite item object isn't set,
-    // I don't have to do anything.
+function set_currently_edited_store_item_object($item_id = -69, $item_attribs_array = null) {
+    // This is if the update button has been clicked.
+    if (isset($item_attribs_array)) {
+        MyStoreItems::$currently_edited_store_item_object = new MyStoreItems();
+
+        //
+        MyStoreItems::$currently_edited_store_item_object->id = $item_attribs_array["store_item_id"];
+        MyStoreItems::$currently_edited_store_item_object->name = $item_attribs_array["store_item_name"];
+        MyStoreItems::$currently_edited_store_item_object->price = $item_attribs_array["store_item_price"];
+        MyStoreItems::$currently_edited_store_item_object->description = $item_attribs_array["store_item_description"];
+        MyStoreItems::$currently_edited_store_item_object->photo_address = $item_attribs_array["store_item_photo_address"];
+        MyStoreItems::$currently_edited_store_item_object->quantity = $item_attribs_array["store_item_quantity"];
+        MyStoreItems::$currently_edited_store_item_object->mass = $item_attribs_array["store_item_mass"];
+        MyStoreItems::$currently_edited_store_item_object->length = $item_attribs_array["store_item_length"];
+        MyStoreItems::$currently_edited_store_item_object->width = $item_attribs_array["store_item_width"];
+        MyStoreItems::$currently_edited_store_item_object->height = $item_attribs_array["store_item_height"];
+    }
+    // This is if the button "edit" was clicked or
+    // tag <select> has been changed.
+    else {
+        // If the currently edite item object isn't set,
+        // I don't have to do anything.
 //    if (!isset(MyStoreItems::$currently_edited_store_item_object)) {
-    if ($item_id == -69) {
-        //
-        global $session;
-        $query = "SELECT * FROM MyStoreItems WHERE user_id = {$session->actual_user_id} LIMIT 1";
+        if ($item_id == -69) {
+            //
+            global $session;
+            $query = "SELECT * FROM MyStoreItems WHERE user_id = {$session->actual_user_id} LIMIT 1";
 
-        //
-        $store_item_record = MyStoreItems::read_by_query($query);
+            //
+            $store_item_record = MyStoreItems::read_by_query($query);
 
-        //
-        $temp_obj = MyStoreItems::get_instantiated_object_by_record($store_item_record);
+            //
+            $temp_obj = MyStoreItems::get_instantiated_object_by_record($store_item_record);
 
-        //
-        MyStoreItems::$currently_edited_store_item_object = $temp_obj;
-    } else {
-        //
-        $store_item_record = MyStoreItems::read_by_id($item_id);
+            //
+            MyStoreItems::$currently_edited_store_item_object = $temp_obj;
+        } else {
+            //
+            $store_item_record = MyStoreItems::read_by_id($item_id);
 
-        //
-        $temp_obj = MyStoreItems::get_instantiated_object_by_record($store_item_record);
+            //
+            $temp_obj = MyStoreItems::get_instantiated_object_by_record($store_item_record);
 
-        //
-        MyStoreItems::$currently_edited_store_item_object = $temp_obj;
+            //
+            MyStoreItems::$currently_edited_store_item_object = $temp_obj;
+        }
     }
 }
 
@@ -365,29 +442,81 @@ if (isset($_POST["add_store_item"])) {
         //
         redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=2&" . "{$params_in_str}");
     }
+}
+
+
+if (isset($_POST["update_store_item"])) {
+    // TODO: LOG
+    MyDebugMessenger::add_debug_message("BUTTON 'update_store_item' clicked.");
+
+    //
+    MyStoreItems::$currently_edited_store_item_object = new MyStoreItems();
+
+    //
+    $is_validation_ok = validate_update_store_item_form();
+       
+
+
 
 
     //
-//    redirect_to(LOCAL . "/public/__view/view_my_store");
+    if ($is_validation_ok) {
+        // TODO: LOG
+        MyDebugMessenger::add_debug_message("SUCCESS update validation.");           
+        
+        //
+        $is_update_ok = update_store_item_record_to_db($temporary_new_store_item);
+
+        //
+        if ($is_update_ok) {
+            // TODO: LOG
+            MyDebugMessenger::add_debug_message("UPDATE is ok.");
+
+            //
+            redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3&is_validation_ok=1&is_update_ok=1");
+        } else {
+            // TODO: LOG
+            MyDebugMessenger::add_debug_message("UPDATE is not ok.");
+
+            //
+            redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3&is_validation_ok=1&is_update_ok=0");
+        }
+    } 
+    else {
+        // TODO: LOG
+        MyDebugMessenger::add_debug_message("FAIL update validation.");       
+        
+        // GET params for the currently edited item attributes.
+        // MyStoreItems::$currently_edited_store_item_object
+        $params_in_str = "is_validation_ok=0&";
+        $params_in_str .= "store_item_id=" . urlencode(MyStoreItems::$currently_edited_store_item_object->id) . "&";
+        $params_in_str .= "store_item_name=" . urlencode(MyStoreItems::$currently_edited_store_item_object->name) . "&";
+        $params_in_str .= "store_item_price=" . urlencode(MyStoreItems::$currently_edited_store_item_object->price) . "&";
+        $params_in_str .= "store_item_description=" . urlencode(MyStoreItems::$currently_edited_store_item_object->description) . "&";
+        $params_in_str .= "store_item_photo_address=" . urlencode(MyStoreItems::$currently_edited_store_item_object->photo_address) . "&";
+        $params_in_str .= "store_item_quantity=" . urlencode(MyStoreItems::$currently_edited_store_item_object->quantity) . "&";
+        $params_in_str .= "store_item_mass=" . urlencode(MyStoreItems::$currently_edited_store_item_object->mass) . "&";
+        $params_in_str .= "store_item_length=" . urlencode(MyStoreItems::$currently_edited_store_item_object->length) . "&";
+        $params_in_str .= "store_item_width=" . urlencode(MyStoreItems::$currently_edited_store_item_object->width) . "&";
+        $params_in_str .= "store_item_height=" . urlencode(MyStoreItems::$currently_edited_store_item_object->height);
+
+        
+        redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3&" . "{$params_in_str}");
+    }
 }
-
-if (isset($_POST["edit_store_item"])) {
-    // TODO: LOG
-//    echo "EDIT STORE ITEM";
-//    
-
-    redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3");
-}
-
 
 
 // This is if the item being updated is changed
 // based on the tag <select>.
-if (isset($_POST["store_item_id"])) {
-    $item_id = $_POST["store_item_id"];
+if (isset($_POST["store_item_id"]) || // Coming from the tag <select>...
+        isset($_POST["edit_store_item"])) { // Coming from the button "edit"...
+    $item_id = isset($_POST["store_item_id"]) ? $_POST["store_item_id"] : $_POST["edit_store_item"];
 
 
     //
     redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3&item_id={$item_id}");
 }
+
+
+
 ?>
