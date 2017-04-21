@@ -8,7 +8,7 @@ class MyStoreItems {
 
     protected static $table_name = "MyStoreItems";
     protected static $db_fields = array("id", "user_id", "name", "price", "description", "photo_address", "quantity", "mass", "length", "width", "height");
-//    private static $temporary_object;
+    
     public $id;
     public $user_id;
     public $name;
@@ -20,19 +20,25 @@ class MyStoreItems {
     public $length;
     public $width;
     public $height;
+    
+    public static $currently_edited_store_item_object;
 
     public static function read_by_id($id = 0) {
-//        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
-//        $stmt = $mysqli->prepare($sql);
-//
-//        if (!$stmt) {
-//            die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
-//        }
+        $query = "SELECT * FROM " . self::$table_name . " WHERE id = {$id}";
+        
+        return self::read_by_query($query);
     }
     
 //    public static function set_temporary_object($temporary_new_store_item) {
 //        self::$temporary_object = $temporary_new_store_item;
 //    }
+    
+    public static function get_instantiated_object_by_record($record) {
+        global $database;
+        $row = $database->fetch_array($record);
+        
+        return self::instantiate($row);
+    }
 
     public static function read_by_query_and_instantiate($query = "") {
         global $database;

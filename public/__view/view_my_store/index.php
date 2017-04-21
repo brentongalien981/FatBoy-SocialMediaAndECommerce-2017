@@ -3,6 +3,8 @@
 <?php require_once("../../_layouts/header.php"); ?>
 <?php // require_once("../__controller/controller_my_videos.php"); ?>
 
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+
 
 
 
@@ -20,7 +22,7 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 // Make sure the actual user is logged-in.
 if (!$session->is_logged_in()) {
-    redirect_to("view_log_in.php");
+    redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
 
@@ -31,7 +33,8 @@ if (!$session->is_logged_in()) {
 <!--sub-menus nav-->
 <!--I'm currently adding this for my store page.-->
 <a href="index.php?store_content_page=1">MyStore</a>
-<a href="index.php?store_content_page=2">Add Items</a>
+<a href="index.php?store_content_page=2">Add Item</a>
+<a href="index.php?store_content_page=3">Edit Item</a>
 </nav>
 
 

@@ -2,7 +2,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_my_store_items.php"); ?>
 
-<?php defined("LOCAL") ? null : define("http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
@@ -34,7 +34,7 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 
 // Functions.
-// TODO: NOT USED.
+// TODO: NOT USED. Delete this later.
 function show_add_new_video_form() {
     $form = "<h4>Add a New Video<h4>";
     $form .= "<form action='../__controller/controller_my_videos.php' method='post'>";
@@ -131,7 +131,42 @@ function add_new_store_item_record_to_db($new_store_item) {
     }
 }
 
-// TODO: NOT USED.
+// TODO: NOW NOW NOW
+function show_completely_presented_user_store_names() {
+    global $database;
+    global $session;
+
+    $query = "SELECT * FROM MyStoreItems ";
+    $query .= "WHERE user_id = {$session->actual_user_id} ";
+    $query .= "ORDER BY name";
+
+
+    $result_set = MyStoreItems::read_by_query($query);
+
+
+    while ($row = $database->fetch_array($result_set)) {
+//        // Just initialize the global var if this page request
+//        // didn't come from a post request. So then there's an
+//        // initially selected store item on the list.
+//        if (!isset($_SESSION["currently_edited_item"])) {
+//            $_SESSION["currently_edited_item"] = $row;
+//        }
+
+        echo "<option value='{$row['id']}'";
+
+        // Just keep the selected item selected on the list
+        // even when the page reloads.
+        if ($row['id'] == get_currently_edited_store_item_object()->id) {
+            echo " selected";
+        }
+
+        echo ">";
+        echo "{$row['name']}";
+        echo "</option>";
+    }
+}
+
+// TODO: NOT USED. Delete this later.
 function get_completely_presented_user_videos_array() {
     global $session;
 
@@ -174,6 +209,43 @@ function get_completely_presented_user_videos_array() {
     return $completely_presented_user_videos_array;
 }
 
+function get_currently_edited_store_item_object() {
+    if (isset(MyStoreItems::$currently_edited_store_item_object)) {
+        return MyStoreItems::$currently_edited_store_item_object;
+    } else {
+        die("MyStoreItems::currently_edited_store_item_object IS NOT SET!");
+    }
+}
+
+function set_currently_edited_store_item_object($item_id = -69) {
+    // If the currently edite item object isn't set,
+    // I don't have to do anything.
+//    if (!isset(MyStoreItems::$currently_edited_store_item_object)) {
+    if ($item_id == -69) {
+        //
+        global $session;
+        $query = "SELECT * FROM MyStoreItems WHERE user_id = {$session->actual_user_id} LIMIT 1";
+
+        //
+        $store_item_record = MyStoreItems::read_by_query($query);
+
+        //
+        $temp_obj = MyStoreItems::get_instantiated_object_by_record($store_item_record);
+
+        //
+        MyStoreItems::$currently_edited_store_item_object = $temp_obj;
+    } else {
+        //
+        $store_item_record = MyStoreItems::read_by_id($item_id);
+
+        //
+        $temp_obj = MyStoreItems::get_instantiated_object_by_record($store_item_record);
+
+        //
+        MyStoreItems::$currently_edited_store_item_object = $temp_obj;
+    }
+}
+
 function show_user_store_items() {
     //
     global $session;
@@ -187,7 +259,7 @@ function show_user_store_items() {
 
     echo "<h4>MyStore</h4><br>";
     echo "<table>";
-    
+
     //
     global $database;
     while ($row = $database->fetch_array($store_items_record_result_set)) {
@@ -196,15 +268,15 @@ function show_user_store_items() {
         echo "<div>";
         // Name
         echo "<h4>{$row['name']}: {$row['quantity']} item";
-        
+
         // Singular.. 
         if ($row['quantity'] == 1) {
             echo " remaining</h4>";
+        } else {
+            echo "s remaining</h4>";
         }
-        
-        echo "s remaining</h4>";
 
-        
+
         // Price
         echo "<h5>\${$row['price']}</h5>";
         // Description
@@ -235,11 +307,9 @@ function show_user_store_items() {
         // So let her see the edit button.
         else if ($session->is_viewing_own_account()) {
 
-            // TODO: Crucial.
-            echo "<form action='my_store_item_update.php' method='post'>";
-            echo "<input type='submit' value='edit' name='editStoreItem'>";
-            //hiddenStoreItemId
-            echo "<input type='hidden' value='{$row['id']}' name='hiddenStoreItemId'>";
+            echo "<form action='" . LOCAL . "/public/__controller/controller_my_store.php' method='post'>";
+            echo "<input type='submit' value='edit' name='edit_store_item'>";
+            echo "<input type='hidden' value='{$row['id']}' name='store_item_id'>";
             echo "</form>";
         }
 
@@ -299,5 +369,25 @@ if (isset($_POST["add_store_item"])) {
 
     //
 //    redirect_to(LOCAL . "/public/__view/view_my_store");
+}
+
+if (isset($_POST["edit_store_item"])) {
+    // TODO: LOG
+//    echo "EDIT STORE ITEM";
+//    
+
+    redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3");
+}
+
+
+
+// This is if the item being updated is changed
+// based on the tag <select>.
+if (isset($_POST["store_item_id"])) {
+    $item_id = $_POST["store_item_id"];
+
+
+    //
+    redirect_to(LOCAL . "/public/__view/view_my_store/index.php?store_content_page=3&item_id={$item_id}");
 }
 ?>

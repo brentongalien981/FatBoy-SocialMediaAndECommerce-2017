@@ -39,6 +39,7 @@ $store_item_width = 0.01;
 $store_item_height = 0.01;
 
 
+
 //
 if (isset($_GET["is_creation_ok"]) && $_GET["is_creation_ok"] == 1) {
     MyDebugMessenger::add_debug_message("SUCCESS creating that store item shit.");
