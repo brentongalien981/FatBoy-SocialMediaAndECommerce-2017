@@ -824,6 +824,126 @@ INSERT INTO `MyStoreItems` (`id`, `user_id`, `name`, `price`, `description`, `ph
 (10, 10, 'Bucad-Javier Dawes Place Dental - Oral-B Toothbrush', 19.49, 'The predecessor of the toothbrush is the chew stick. Chew sticks were twigs with frayed ends used to brush the teeth while the other end was used as a toothpick. The earliest chew sticks were discovered in Babylonia in 3500 BC,[4] an Egyptian tomb dating from 3000 BC,[3] and mentioned in Chinese records dating from 1600 BC. The Greeks and Romans used toothpicks to clean their teeth and toothpick like twigs have been excavated in Qin Dynasty tombs.[4] Chew sticks remain common in Africa[5] the rural Southern United States[3] and in the Islamic world the use of chewing stick Miswak is considered a pious action and has been prescribed to be used before every prayer five times a day.[6] Miswaks have been used by Muslims since 7th century.                                                                ', 'http://thesweethome.com/wp-content/uploads/sites/3/2013/05/02-electric-toothbrushes1.jpg                                                                ', 15, 1, 8, 3, 2);
 
 -- --------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+--
+-- Table structure for table `StoreCart`
+--
+
+CREATE TABLE `StoreCart` (
+  `cart_id` int(11) NOT NULL,
+  `seller_user_id` int(11) NOT NULL,
+  `buyer_user_id` int(11) NOT NULL,
+  `is_complete` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `StoreCart`
+--
+ALTER TABLE `StoreCart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `cart_id` (`cart_id`),
+  ADD KEY `seller_user_id` (`seller_user_id`),
+  ADD KEY `buyer_user_id` (`buyer_user_id`);
+  
+  
+  
+  
+  
+-- AUTO_INCREMENT for table `StoreCart`
+--
+ALTER TABLE `StoreCart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  
+  
+  
+  
+  
+--
+-- Constraints for table `StoreCart`
+--
+ALTER TABLE `StoreCart`
+  ADD CONSTRAINT `storecart_ibfk_1` FOREIGN KEY (`seller_user_id`) REFERENCES `Users` (`user_id`),
+  ADD CONSTRAINT `storecart_ibfk_2` FOREIGN KEY (`buyer_user_id`) REFERENCES `Users` (`user_id`);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+--
+-- Table structure for table `CartItems`
+--
+
+CREATE TABLE `CartItems` (
+  `id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+--
+-- Indexes for table `CartItems`
+--
+ALTER TABLE `CartItems`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cart_id_2` (`cart_id`,`item_id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `cart_id` (`cart_id`),
+  ADD KEY `item_id` (`item_id`);
+  
+  
+  
+  
+  
+  
+--
+-- AUTO_INCREMENT for table `CartItems`
+--
+ALTER TABLE `CartItems`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  
+  
+  
+  
+  
+-- Constraints for table `CartItems`
+--
+ALTER TABLE `CartItems`
+  ADD CONSTRAINT `cartitems_ibfk_1` FOREIGN KEY (`cart_id`) REFERENCES `StoreCart` (`cart_id`),
+  ADD CONSTRAINT `cartitems_ibfk_2` FOREIGN KEY (`item_id`) REFERENCES `MyStoreItems` (`id`);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
   
   
   

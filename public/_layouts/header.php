@@ -8,7 +8,35 @@
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <link href="<?php echo LOCAL . '/public/_styles/header.css'?>" media="all" rel="stylesheet" type="text/css" />
+        <link href="<?php echo LOCAL . '/public/_styles/header.css' ?>" media="all" rel="stylesheet" type="text/css" />
+        <style>
+            #divStatus {
+                color: black;
+            }
+
+            #divStatus h4 {
+                width: fit-content;
+                background-color: red;
+            }
+
+
+
+            #divStatus a {
+                width: fit-content;
+                background-color: greenyellow;
+            }
+
+            #divStatus #user_name {
+                padding-top: 10px;
+                font-size: 130%;
+                width: fit-content;
+                background-color: #D4E6F4;
+            }
+
+            #divWebsite h4 {
+                background-color: orange;
+            }
+        </style>
     </head>
     <body>
         <div id="divBanner">
@@ -18,13 +46,13 @@
             <div id="divStatus">
                 <?php
                 if ($session->is_logged_in()) {
-                    echo "<h4>{$session->actual_user_name}</h4>";
+                    echo "<a id='user_name' href='" . LOCAL . "/public/index.php?is_viewing_actual_user_again=1'>{$session->actual_user_name}</a>";
                     echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
                 } else {
                     echo "<h4>zZzzZz</h4>";
                     echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
                 }
-                ?> 
+                ?>
             </div>
 
 
@@ -65,7 +93,7 @@
             ?>
         </nav>
         <main id="main">
-            
+
             <!--Sub-menus-->
-            <nav id="sub_menus_nav">            
+            <nav id="sub_menus_nav">
 

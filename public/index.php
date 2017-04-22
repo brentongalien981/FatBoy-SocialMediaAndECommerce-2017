@@ -73,6 +73,14 @@ if ($session->is_logged_in()) {
     // TODO: DEBUG
     MyDebugMessenger::add_debug_message("So far so good.");
 }
+
+
+//
+if (isset($_GET["is_viewing_actual_user_again"])) {
+    $session->reset_currently_viewed_user();
+    
+    redirect_to(LOCAL . "/public/index.php");
+}
 ?>
 
 
