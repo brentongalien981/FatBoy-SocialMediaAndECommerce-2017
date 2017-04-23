@@ -1,6 +1,9 @@
 <?php
-//$an_array = array();
-//$an_array("shit") = "tae";
-//
-//echo "{$an_array["shit"]}<br>";
+$an_array = array();
+if (isset($an_array)) {
+    echo "set";
+}
+else {
+    echo "not set";
+}
 ?>

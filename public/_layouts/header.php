@@ -26,7 +26,7 @@
                 background-color: greenyellow;
             }
 
-            #divStatus #user_name {
+            #divStatus .user_name {
                 padding-top: 10px;
                 font-size: 130%;
                 width: fit-content;
@@ -46,10 +46,10 @@
             <div id="divStatus">
                 <?php
                 if ($session->is_logged_in()) {
-                    echo "<a id='user_name' href='" . LOCAL . "/public/index.php?is_viewing_actual_user_again=1'>{$session->actual_user_name}</a>";
+                    echo "<a class='user_name' href='" . LOCAL . "/public/index.php?is_viewing_actual_user_again=1'>{$session->actual_user_name}</a>";
                     echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
                 } else {
-                    echo "<h4>zZzzZz</h4>";
+                    echo "<a class='user_name'>zZzzZz</a>";
                     echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
                 }
                 ?>
@@ -84,6 +84,12 @@
 
 
             <a href="<?php echo LOCAL . '/public/__view/view_my_store'; ?>">MyStore</a>
+            
+            <?php
+            if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+                echo "<a href='" . LOCAL . "/public/__view/view_store_cart.php'>MyCart</a>";
+            }
+            ?>
 
             <!--Sign-up-->
             <?php

@@ -12,6 +12,7 @@ class Session {
     public $actual_user_name;
     public $currently_viewed_user_id;
     public $currently_viewed_user_name;
+    private $cart;
 
 //    public $message;
 
@@ -26,12 +27,27 @@ class Session {
             // actions to take right away if user is not logged in
         }
     }
-    
+
+    public function get_cart() {
+        if ($this->is_logged_in()) {
+            if (isset($this->cart)) {
+                return $this->cart;
+            } else {
+                die("No current cart is available.");
+            }
+        }
+    }
+
+    public function set_cart($new_cart) {
+        if ($this->is_logged_in()) {
+            $this->cart = $new_cart;
+        }
+    }
+
     public function is_viewing_own_account() {
         if ($this->actual_user_id === $this->currently_viewed_user_id) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -49,27 +65,35 @@ class Session {
         if ($user) {
             $this->actual_user_id = $_SESSION["actual_user_id"] = $user->user_id;
             $this->actual_user_name = $_SESSION["actual_user_name"] = $user->user_name;
-            
+
             $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $user->user_id;
             $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $user->user_name;
-            
+
             $this->logged_in = true;
+            
+
+            // Initialize cart.
+            require_once("model_store_cart.php");
+            // This could be an initialized cart object without values in it.
+            $this->cart = $_SESSION["cart"] = StoreCart::get_initialized_cart($this->actual_user_id);            
         }
     }
 
     public function logout() {
         unset($_SESSION["actual_user_id"]);
         unset($_SESSION["actual_user_name"]);
-        
+
         unset($_SESSION["currently_viewed_user_id"]);
-        unset($_SESSION["currently_viewed_user_name"]);        
-        
+        unset($_SESSION["currently_viewed_user_name"]);
+
         unset($this->actual_user_id);
         unset($this->actual_user_name);
-        
+
         unset($this->currently_viewed_user_id);
-        unset($this->currently_viewed_user_name);        
-        
+        unset($this->currently_viewed_user_name);
+
+        // TODO: Maybe don't forget to unset the $cart too.
+
         $this->logged_in = false;
         session_unset();
         session_destroy();
@@ -95,27 +119,29 @@ class Session {
         if (isset($_SESSION["actual_user_id"])) {
             $this->actual_user_id = $_SESSION["actual_user_id"];
             $this->actual_user_name = $_SESSION["actual_user_name"];
-        
+
             $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"];
             $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"];
-            
+
+            $this->cart = $_SESSION["cart"];
+
             $this->logged_in = true;
         } else {
             unset($this->actual_user_id);
             unset($this->actual_user_name);
-            
+
             unset($this->currently_viewed_user_id);
-            unset($this->currently_viewed_user_name);             
-            
+            unset($this->currently_viewed_user_name);
+
             $this->logged_in = false;
         }
     }
-    
+
     public function set_currently_viewed_user($now_currently_viewed_user_id, $now_currently_viewed_user_name) {
         $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $now_currently_viewed_user_id;
         $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $now_currently_viewed_user_name;
     }
-    
+
     public function reset_currently_viewed_user() {
         $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $_SESSION["actual_user_id"];
         $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $_SESSION["actual_user_name"];

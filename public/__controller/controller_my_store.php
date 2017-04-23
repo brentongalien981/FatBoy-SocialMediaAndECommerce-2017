@@ -188,7 +188,6 @@ function add_new_store_item_record_to_db($new_store_item) {
     }
 }
 
-// TODO: NOW NOW NOW
 function show_completely_presented_user_store_names() {
     global $database;
     global $session;
@@ -223,7 +222,6 @@ function show_completely_presented_user_store_names() {
     }
 }
 
-// TODO: NOT USED. Delete this later.
 function get_completely_presented_user_videos_array() {
     global $session;
 
@@ -366,18 +364,10 @@ function show_user_store_items() {
         // be able to buy her own stuffs.
         // And also, check if the stock quantity is more than zero.
         // If it is zero, then don't show the button "add to cart".
-        // TODO: CRUCIAL: This should be a form.
         if ((!$session->is_viewing_own_account()) && ($row["quantity"] > 0)) {
-//            echo "<button><a href='my_cart_item_creation.php?item_id={$row['Id']}&" .
-//            "seller_id={$row['UserId']}&" .
-//            "item_name={$row['Name']}&" .
-//            "item_price={$row['Price']}&" .
-//            "item_quantity=1&" .
-//            "max_quantity={$row['Quantity']}'>Add to my cart" .
-//            "</a>" .
-//            "</button>";
-            echo "<form>";
-            echo "<input type='submit' value='add to my cart'>";
+            echo "<form action='" . LOCAL . "/public/__controller/controller_my_store.php' method='post'>";
+            echo "<input type='hidden' name='item_id' value='{$row['id']}'>";
+            echo "<input type='submit' name='add_item_to_cart' value='add to my cart'>";
             echo "</form>";
         }
         // This means the actual user is viewing her own account.
@@ -519,4 +509,9 @@ if (isset($_POST["store_item_id"]) || // Coming from the tag <select>...
 
 
 
+if (isset($_POST["add_item_to_cart"])) {
+    require_once(PUBLIC_PATH . "/__controller/controller_store_cart.php");
+    
+    add_item_to_cart($_POST["item_id"]);
+}
 ?>
