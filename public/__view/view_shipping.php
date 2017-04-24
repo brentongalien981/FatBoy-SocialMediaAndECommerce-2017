@@ -42,86 +42,55 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 <!--Meat-->
 <?php
-// TODO: NOW: Show shipping form.
+//initialize_ship_to_address_obj();
 ?>
-<form id = "form_shipping" action="" method = "post">
-    <h4>Ship to Address</h4>
-    <?php /* Just retain the values even if the page reloads. */
-    ?>
-    <h6>Street1</h6>                
-    <input type="text" name="street1" value="<?php
-//    if (isset($_SESSION["ship_to_details"])) {
-//        echo "{$_SESSION['ship_to_details']['street1']}";
-//    }
-    ?>">
 
+<?php
+// TODO: DONE: Show shipping details form.
+// TODO: DEBUG
+//    echo "<pre>";
+////    print_r($_POST);
+//    print_r($session->get_ship_to_address_obj());
+//    echo "</pre>";
+//    die("shit");
+//global $session;
+?>
+<form id = "form_shipping" action = "<?php echo LOCAL . '/public/__controller/controller_shipping.php'; ?>" method = "post">
+    <h4>Ship to Address</h4>
+
+    <h6>Street1</h6>                
+    <input type="text" name="street1" value="<?php echo $session->ship_to_address_street1; ?>">
 
     <h6>Street2</h6>
-    <input type="text" name="street2" value="<?php
-//    if (isset($_SESSION["ship_to_details"])) {
-//        echo "{$_SESSION['ship_to_details']['street2']}";
-//    }
-    ?>">
-
+    <input type="text" name="street2" value="<?php echo $session->ship_to_address_street2; ?>">
 
     <h6>City</h6>
-    <input type="text" name="city" value="<?php
-//    if (isset($_SESSION["ship_to_details"])) {
-//        echo "{$_SESSION['ship_to_details']['city']}";
-//    }
-    ?>">               
-
+    <input type="text" name="city" value="<?php echo $session->ship_to_address_city; ?>">
 
     <h6>State</h6>
-    <input type="text" name="state" value="<?php
-//    if (isset($_SESSION["ship_to_details"])) {
-//        echo "{$_SESSION['ship_to_details']['state']}";
-//    }
-    ?>">
-
+    <input type="text" name="state" value="<?php echo $session->ship_to_address_state; ?>">
 
     <h6>ZIP</h6>
-    <input type="text" name="zip" value="<?php
-//    if (isset($_SESSION["ship_to_details"])) {
-//        echo "{$_SESSION['ship_to_details']['zip']}";
-//    }
-    ?>"> 
+    <input type="text" name="zip" value="<?php echo $session->ship_to_address_zip; ?>">
+
 
 
     <h6>Country</h6>
-    <select name="country">
+    <select name="country_code">
         <?php
-//// Listing the countries.
-//        global $connection;
-//
-////
-//        $query = "SELECT * FROM Country ";
-//        $query .= "ORDER BY Name";
-//
-//
-//        $results = mysqli_query($connection, $query);
-//        confirm_query($results);
-//
-//        while ($row = mysqli_fetch_assoc($results)) {
-//            echo "<option value='{$row['Code']}'";
-//
-//            if (isset($_SESSION["ship_to_details"])) {
-//                if ($_SESSION['ship_to_details']['country'] == $row['Code']) {
-//                    echo "selected";
-//                }
-//            }
-//
-//            echo ">{$row['Name']}</option>";
-//        }
+        //
+        show_completely_presented_country_options();
         ?>
-    </select> 
+    </select>    
+
+
+
     <br><br>
-
-
-    <input type="submit" name="set_shipping" value="set shipping">             
+    <input type="submit" name="set_shipping" value="set shipping"> 
 </form>
 <br><br><br><br>
 <hr>
+
 
 
 

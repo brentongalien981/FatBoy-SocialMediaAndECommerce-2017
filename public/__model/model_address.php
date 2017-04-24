@@ -122,10 +122,10 @@ class Address {
     public function to_string() {
         $object_in_string = "";
         
-        foreach (self::$db_fields as $field) {
+        foreach (self::$db_fields as $field => $value) {
             if (property_exists($this, $field)) {
-                echo "{$field}: $this->$field<br>";
-                $object_in_string .= "{$field}: $this->$field<br>";
+//                echo "{$field}: $value<br>";
+                $object_in_string .= "{$field}: $value<br>";
             }
         }
         

@@ -1,17 +1,18 @@
 <?php
 $adr = "";
+$b = "";
 
 //$_SESSION["adr"] = null;
 
 //$adr = $_SESSION["adr"];
 
-if (isset($_SESSION["adr"])) {
-    echo "set";
+//$_SESSION["tae"];
+
+if (empty(trim($_SESSION["tae"]))) {
+    echo "empty";
 }
 else {
-    echo "not set";
+    echo "not empty";
 }
-
-echo "<br>{$_SESSION['adr']}";
 ?>
 
