@@ -50,6 +50,12 @@ class CartItem {
         $database->get_result_from_query($query);
         return ($database->get_num_of_affected_rows() == 1) ? true : false;
     }
+    
+    public static function update_by_query($query) {
+        global $database;
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }    
 
     public static function read_by_query_and_instantiate($query = "") {
         global $database;

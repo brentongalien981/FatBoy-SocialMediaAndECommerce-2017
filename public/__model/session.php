@@ -12,7 +12,12 @@ class Session {
     public $actual_user_name;
     public $currently_viewed_user_id;
     public $currently_viewed_user_name;
+    public $cart_id;
+    public $user_id;
+    public $buyer_user_id;
     private $cart;
+    public $ship_to_address_id;
+    public $ship_to_address_obj;
 
 //    public $message;
 
@@ -28,19 +33,26 @@ class Session {
         }
     }
 
-    public function get_cart() {
-        if ($this->is_logged_in()) {
-            if (isset($this->cart)) {
-                return $this->cart;
-            } else {
-                die("No current cart is available.");
-            }
-        }
-    }
+//    public function get_cart() {
+//        if ($this->is_logged_in()) {
+//            if (isset($this->cart)) {
+//                require_once("model_store_cart.php");
+//                $session_cart = new StoreCart();
+//                
+//                $session_cart->cart_id = $this->
+//                
+//                return $this->cart;
+//            } else {
+//                die("No current cart is available.");
+//            }
+//        }
+//    }
 
     public function set_cart($new_cart) {
         if ($this->is_logged_in()) {
-            $this->cart = $new_cart;
+            $this->cart_id = $_SESSION["cart_id"] = $new_cart->cart_id;
+            $this->seller_user_id = $_SESSION["seller_user_id"] = $new_cart->seller_user_id;
+            $this->buyer_user_id = $_SESSION["buyer_user_id"] = $new_cart->buyer_user_id;
         }
     }
 
@@ -70,12 +82,17 @@ class Session {
             $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $user->user_name;
 
             $this->logged_in = true;
-            
+
 
             // Initialize cart.
             require_once("model_store_cart.php");
             // This could be an initialized cart object without values in it.
-            $this->cart = $_SESSION["cart"] = StoreCart::get_initialized_cart($this->actual_user_id);            
+            $initial_cart_obj = StoreCart::get_initialized_cart($this->actual_user_id);
+//             $this->cart_id = $_SESSION["cart_id"]
+            $this->set_cart($initial_cart_obj);
+
+            //
+            $this->ship_to_address_id = $_SESSION["ship_to_address_id"] = null;
         }
     }
 
@@ -86,13 +103,25 @@ class Session {
         unset($_SESSION["currently_viewed_user_id"]);
         unset($_SESSION["currently_viewed_user_name"]);
 
+        unset($_SESSION["cart_id"]);
+        unset($_SESSION["seller_user_id"]);
+        unset($_SESSION["buyer_user_id"]);
+
+        unset($_SESSION["ship_to_address_id"]);
+
+
+
         unset($this->actual_user_id);
         unset($this->actual_user_name);
 
         unset($this->currently_viewed_user_id);
         unset($this->currently_viewed_user_name);
 
-        // TODO: Maybe don't forget to unset the $cart too.
+        unset($this->cart_id);
+        unset($this->seller_user_id);
+        unset($this->buyer_user_id);
+
+        unset($this->ship_to_address_id);
 
         $this->logged_in = false;
         session_unset();
@@ -123,15 +152,29 @@ class Session {
             $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"];
             $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"];
 
-            $this->cart = $_SESSION["cart"];
+            //        $this->ship_to_address_id = $_SESSION["ship_to_address_id"] = null;
 
             $this->logged_in = true;
+
+            $this->cart_id = $_SESSION["cart_id"];
+            $this->seller_user_id = $_SESSION["seller_user_id"];
+            $this->buyer_user_id = $_SESSION["buyer_user_id"];
+//            
+//            $this->cart = $_SESSION["cart"];
+
+            $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
         } else {
             unset($this->actual_user_id);
             unset($this->actual_user_name);
 
             unset($this->currently_viewed_user_id);
             unset($this->currently_viewed_user_name);
+
+            unset($this->cart_id);
+            unset($this->seller_user_id);
+            unset($this->buyer_user_id);
+
+            unset($this->ship_to_address_id);
 
             $this->logged_in = false;
         }

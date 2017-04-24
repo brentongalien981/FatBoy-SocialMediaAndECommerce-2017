@@ -1,0 +1,35 @@
+table {
+    width: 80%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 10px;
+    vertical-align: middle;
+
+}
+
+td input {
+    margin-top: -15px;
+    padding: 0;
+}
+
+form h4 {
+    font-size: 90%;
+    display: block;
+}
+
+#form_continue_to_shipping {
+    /*background-color: red;*/
+    /*text-align: right*/
+}
+
+/*#form_shipping h6 {
+    margin-top: 7px;
+    margin-bottom: 0px;
+    font-size: 70%;
+}*/
