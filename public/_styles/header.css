@@ -52,6 +52,7 @@ form h4 {
     display: inline;   
     font-size: 70%;  
     font-weight: 100;
+    color: black;
 }
 
 
@@ -86,6 +87,7 @@ form h4 {
     padding-top: 13px;
     padding-left: 35px;
     font-size: 90%;
+    background-color: red;
 }
 
 
@@ -93,9 +95,24 @@ form h4 {
 #divStatus a {
     display: block;
     /*padding-top: 5px;*/
-    padding-left: 35px;
+    /*padding-left: 35px;*/
+
+    /*width: fit-content;*/
+    width: 5%;
+    padding-left: 0;
+    margin-left: 35px;
+    background-color: greenyellow;    
 
     /*font-weight: 100;*/
+}
+
+.user_name {
+    padding-top: 10px;
+    font-size: 130%;
+    /*                width: fit-content;*/
+    /*width: 50%;*/
+    background-color: #D4E6F4;
+    /*background-color: red;*/
 }
 
 #link_actual_user_name {
@@ -112,6 +129,7 @@ form h4 {
 #divWebsite h4 {
     /*text-align: right;*/
     float: right;
+    background-color: orange;
 }
 
 h2, h3, h4, h5, h6 {

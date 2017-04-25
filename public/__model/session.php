@@ -30,6 +30,9 @@ class Session {
     public $ship_to_address_zip;
     public $ship_to_address_country_code;
     public $ship_to_address_phone;
+    
+    //
+    private $can_now_checkout;
 
 //    public $message;
 
@@ -59,6 +62,14 @@ class Session {
 //            }
 //        }
 //    }
+    
+    public function set_can_now_checkout($what) {
+        $this->can_now_checkout = $_SESSION["can_now_checkout"] = $what;
+    }
+    
+    public function get_can_now_checkout() {
+        return $this->can_now_checkout;
+    }    
 
     public function set_cart($new_cart) {
         if ($this->is_logged_in()) {
@@ -96,7 +107,7 @@ class Session {
             $this->ship_to_address_address_type_code = $_SESSION["ship_to_address_address_type_code"] = $one_time_address_type_code;
             $this->ship_to_address_street1 = $_SESSION["ship_to_address_street1"] = "";
             $this->ship_to_address_street2 = $_SESSION["ship_to_address_street2"] = "";
-            $this->ship_to_address_city = $_SESSION["ship_to_address_city"] = "tity city";
+            $this->ship_to_address_city = $_SESSION["ship_to_address_city"] = "";
             $this->ship_to_address_state = $_SESSION["ship_to_address_state"] = "";
             $this->ship_to_address_zip = $_SESSION["ship_to_address_zip"] = "";
             $this->ship_to_address_country_code = $_SESSION["ship_to_address_country_code"] = "";
@@ -187,11 +198,8 @@ class Session {
 //             $this->cart_id = $_SESSION["cart_id"]
             $this->set_cart($initial_cart_obj);
 
-//
-//            $this->ship_to_address_id = $_SESSION["ship_to_address_id"] = null;
-//
-//            //
-//            $this->ship_to_address_obj = $_SESSION["ship_to_address_obj"] = null;
+            //
+            $this->can_now_checkout = $_SESSION["can_now_checkout"] = false;
         }
     }
 
@@ -205,10 +213,8 @@ class Session {
         unset($_SESSION["cart_id"]);
         unset($_SESSION["seller_user_id"]);
         unset($_SESSION["buyer_user_id"]);
-
-//        unset($_SESSION["ship_to_address_id"]);
-//
-//        unset($_SESSION["ship_to_address_obj"]);
+        
+        unset($_SESSION["can_now_checkout"]);
 
 
 
@@ -221,10 +227,10 @@ class Session {
         unset($this->cart_id);
         unset($this->seller_user_id);
         unset($this->buyer_user_id);
-
-//        unset($this->ship_to_address_id);
 //
         unset($this->ship_to_address_obj);
+        
+        unset($this->can_now_checkout);
 
         // TODO: Don't forget to unset the shipping vars and shipping SESSION vars.
 
@@ -279,7 +285,12 @@ class Session {
             $this->ship_to_address_state = $_SESSION["ship_to_address_state"];
             $this->ship_to_address_zip = $_SESSION["ship_to_address_zip"];
             $this->ship_to_address_country_code = $_SESSION["ship_to_address_country_code"];
-            $this->ship_to_address_phone = $_SESSION["ship_to_address_phone"];        
+            $this->ship_to_address_phone = $_SESSION["ship_to_address_phone"];      
+            
+            
+            //
+            $this->can_now_checkout = $_SESSION["can_now_checkout"];
+            
 
         } else {
             unset($this->actual_user_id);
@@ -291,12 +302,12 @@ class Session {
             unset($this->cart_id);
             unset($this->seller_user_id);
             unset($this->buyer_user_id);
-
-//            unset($this->ship_to_address_id);
-//
-//            unset($this->ship_to_address_obj);
             
             // TODO: Don't forget to unset the shipping vars.
+            
+            
+            //
+            unset($this->can_now_checkout);
             
 
             $this->logged_in = false;

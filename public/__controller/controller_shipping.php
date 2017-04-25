@@ -47,7 +47,7 @@ function show_completely_presented_country_options() {
     while ($row = $database->fetch_array($results)) {
         echo "<option value='{$row['code']}'";
 
-        if ($session->ship_to_address_address_type_code == $row['code']) {
+        if ($session->ship_to_address_country_code == $row['code']) {
             echo "selected";
         }
 
@@ -55,58 +55,82 @@ function show_completely_presented_country_options() {
     }
 }
 
-// Helper Methods.
-// Initialized the session var obj.
-//function initialize_ship_to_address_obj() {
+// @return bool.
+function validate_shipping_form() {
 //    //
-//    $one_time_ship_to_address_obj = new Address();
+//    $shipping_address_being_validated = new Address();
 //
 //    // Default values.
-//    // user_id of user "UserForOneTimeAddresses123".
+//    // user_id of user "UserForOneTimeAddresses123 is 14".
 //    $one_time_user_id = 14;
 //    $one_time_address_type_code = 3;
 //
-//    $one_time_ship_to_address_obj->id = isset($session->ship_to_address_id) ? $session->ship_to_address_id : null;
-//    $one_time_ship_to_address_obj->user_id = isset($session->ship_to_address_user_id) ? $session->ship_to_address_user_id : $one_time_user_id;
-//    $one_time_ship_to_address_obj->address_type_code = isset($session->ship_to_address_address_type_code) ? $session->ship_to_address_address_type_code : $one_time_address_type_code;
-//    $one_time_ship_to_address_obj->street1 = isset($session->ship_to_address_street1) ? $session->ship_to_address_street1 : "";
-//    $one_time_ship_to_address_obj->street2 = isset($session->ship_to_address_street2) ? $session->ship_to_address_street2 : "";
-//    $one_time_ship_to_address_obj->city = isset($session->ship_to_address_city) ? $session->ship_to_address_city : "";
-//    $one_time_ship_to_address_obj->state = isset($session->ship_to_address_state) ? $session->ship_to_address_state : "";
-//    $one_time_ship_to_address_obj->zip = isset($session->ship_to_address_zip) ? $session->ship_to_address_zip : "";
-//    $one_time_ship_to_address_obj->country_code = isset($session->ship_to_address_country_code) ? $session->ship_to_address_country_code : "";
-//    $one_time_ship_to_address_obj->phone = isset($session->ship_to_address_phone) ? $session->ship_to_address_phone : "";
-//
-//    // 
-//    global $session;
-//    $session->set_ship_to_address_obj($one_time_ship_to_address_obj);
-//
-//
-////    // TODO: DEBUG
-////    echo "<pre>";
-////    print_r($session->ship_to_address_obj);
-////    echo "</pre>";
-//}
+//    $shipping_address_being_validated->id = null;
+//    $shipping_address_being_validated->user_id = $one_time_user_id;
+//    $shipping_address_being_validated->address_type_code = $one_time_address_type_code;
+//    $shipping_address_being_validated->street1 = $_POST["street1"];
+//    $shipping_address_being_validated->street2 = $_POST["street2"];
+//    $shipping_address_being_validated->city = $_POST["city"];
+//    $shipping_address_being_validated->state = $_POST["state"];
+//    $shipping_address_being_validated->zip = $_POST["zip"];
+//    $shipping_address_being_validated->country_code = $_POST["country_code"];
+//    $shipping_address_being_validated->phone = $_POST["phone"];
 
-/*
-  public $id;
-  public $user_id;
-  public $address_type_code;
-  public $street1;
-  public $street2;
-  public $city;
-  public $state;
-  public $zip;
-  public $country_code;
-  public $phone;
- */
+
+
+    // Fuckin need this everytime you validate.
+    MyValidationErrorLogger::initialize();
+
+
+    // Validations
+    $required_fields = array("street1", "city", "state", "zip");
+    validate_presences($required_fields);
+
+
+    $fields_with_max_lengths = array("street1" => 500, "street2" => 500, "city" => 100, "state" => 50, "zip" => 10, "country_code" => 2);
+    validate_max_lengths($fields_with_max_lengths);
+    
+    
+    
+    
+    // 
+    if (MyValidationErrorLogger::is_empty()) {
+        // Proceed to the next validation step.
+        MyDebugMessenger::add_debug_message("SUCCESS shipping info validation.");
+
+        // 
+        return true;
+    } else {
+        MyDebugMessenger::add_debug_message("FAIL shipping info validation.");
+
+        $validation_errors = MyValidationErrorLogger::get_log_array();
+
+        foreach ($validation_errors as $error) {
+            MyDebugMessenger::add_debug_message($error);
+        }
+
+
+        // 
+        return false;
+    }    
+}
+
+// Helper Methods.
 ?>
+
+
+
+
+
+
+
 
 
 
 
 <!--Meat-->
 <?php
+// TODO: DONE: $_POST["set_shipping"].
 if (isset($_POST["set_shipping"])) {
     // TODO: LOG
     MyDebugMessenger::add_debug_message("BUTTON set_shipping clicked.");
@@ -132,16 +156,31 @@ if (isset($_POST["set_shipping"])) {
     $a_ship_to_address_obj->country_code = $_POST["country_code"];
     $a_ship_to_address_obj->phone = "";
     
-    global $session;
-    $session->set_ship_to_address_vars($a_ship_to_address_obj);
     
+    //
+    $is_validation_ok = validate_shipping_form();
+    
+    global $session;
+    if ($is_validation_ok) {
+        $session->set_can_now_checkout(true);
+    }
+    else {
+        $session->set_can_now_checkout(false);
+    }
+    
+
+    //
+    $session->set_ship_to_address_vars($a_ship_to_address_obj);
+
 //    echo "<pre>";
 //    print_r($_POST);
 //    print_r($a_ship_to_address_obj);
 //    echo "</pre>";
-
-
     //
     redirect_to(LOCAL . "/public/__view/view_shipping.php");
 }
+
+
+
+
 ?>

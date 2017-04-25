@@ -42,18 +42,10 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 <!--Meat-->
 <?php
-//initialize_ship_to_address_obj();
 ?>
 
 <?php
 // TODO: DONE: Show shipping details form.
-// TODO: DEBUG
-//    echo "<pre>";
-////    print_r($_POST);
-//    print_r($session->get_ship_to_address_obj());
-//    echo "</pre>";
-//    die("shit");
-//global $session;
 ?>
 <form id = "form_shipping" action = "<?php echo LOCAL . '/public/__controller/controller_shipping.php'; ?>" method = "post">
     <h4>Ship to Address</h4>
@@ -90,6 +82,43 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 </form>
 <br><br><br><br>
 <hr>
+
+
+
+
+
+
+
+<?php
+// TODO: NOW: Form for shipping options.
+?>
+<form action="payment_preparation.php" method="post">
+    <?php
+// If the shipping address hasn't been set yet,
+// disable the button "checkout".
+    ?>
+    <h4>Shipping Options</h4>
+    <select name="shipping_service_charge">
+        <?php
+        foreach ($cheapest_days_and_rate_pair_array as $a_verified_delivery_option) {
+            if ($a_verified_delivery_option[0] == "zZz") {
+                continue;
+            }
+
+            echo "<option value='{$a_verified_delivery_option[3]}'>{$a_verified_delivery_option[0]} - {$a_verified_delivery_option[1]} - Ships in {$a_verified_delivery_option[2]} days - USD \${$a_verified_delivery_option[3]}</option>";
+        }
+        ?>
+    </select>
+    <hr>
+
+
+    <input type = "submit" name = "checkout" value = "checkout"<?php
+    if (!$session->get_can_now_checkout()) {
+        echo " disabled";
+    }
+    ?>>
+</form>
+
 
 
 
