@@ -100,13 +100,10 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
     <h4>Shipping Options</h4>
     <select name="shipping_service_charge">
         <?php
-        foreach ($cheapest_days_and_rate_pair_array as $a_verified_delivery_option) {
-            if ($a_verified_delivery_option[0] == "zZz") {
-                continue;
-            }
-
-            echo "<option value='{$a_verified_delivery_option[3]}'>{$a_verified_delivery_option[0]} - {$a_verified_delivery_option[1]} - Ships in {$a_verified_delivery_option[2]} days - USD \${$a_verified_delivery_option[3]}</option>";
+        if ($session->get_can_now_checkout()) {
+            populate_shipping_options();
         }
+        
         ?>
     </select>
     <hr>
@@ -176,6 +173,8 @@ MyDebugMessenger::clear_debug_message();
     // Edit the page title.
     document.getElementById("title").innerHTML += " / Shipping Info";
 </script>
+
+
 
 
 

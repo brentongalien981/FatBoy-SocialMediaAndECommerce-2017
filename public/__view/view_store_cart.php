@@ -57,7 +57,8 @@ if (isset($session->cart_id)) {
 
     //
     show_set_shipping_button();
-} else {
+} 
+else {
     MyDebugMessenger::add_debug_message("There's no available cart ready to be checked out.");
 }
 ?>
@@ -134,6 +135,11 @@ MyDebugMessenger::clear_debug_message();
 
 
         var form = document.getElementById("form");
+        
+        
+        // Enable the update button.
+        document.getElementById("update_cart_items").disabled = false;
+        
 
 //    var defaultUrl = "my_cart.php";
 

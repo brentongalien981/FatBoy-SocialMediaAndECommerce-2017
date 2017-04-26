@@ -15,6 +15,8 @@ class Session {
     public $currently_viewed_user_name;
     public $cart_id;
     public $user_id;
+    
+    public $seller_user_id;
     public $buyer_user_id;
     private $cart;
 //    public $ship_to_address_id;
@@ -188,8 +190,6 @@ class Session {
 
             $this->logged_in = true;
 
-            $this->initialize_ship_to_address_vars();
-
 
 // Initialize cart.
             require_once("model_store_cart.php");
@@ -197,6 +197,9 @@ class Session {
             $initial_cart_obj = StoreCart::get_initialized_cart($this->actual_user_id);
 //             $this->cart_id = $_SESSION["cart_id"]
             $this->set_cart($initial_cart_obj);
+            
+            //
+            $this->initialize_ship_to_address_vars();
 
             //
             $this->can_now_checkout = $_SESSION["can_now_checkout"] = false;

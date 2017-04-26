@@ -149,7 +149,8 @@ function show_store_cart_options_form() {
 
 function show_cart_items_form() {
 // Display the items on selected cart.
-    echo "<form id='form' method='post'>";
+    // The attribute "action" for this form will be set by the <script>...
+    echo "<form action='" . LOCAL . "/public/__view/view_store_cart.php' id='form' method='post'>";
     echo "<table>";
 
     show_table_header();
@@ -172,7 +173,7 @@ function show_cart_items_form() {
 
     echo "</table><br>";
 
-    echo "<input id='update_cart_items' type='submit' name='update_cart_items' value='update items'>";
+    echo "<input id='update_cart_items' type='submit' name='update_cart_items' value='update items' disabled='true'>";
 
     echo "</form>";
 }
