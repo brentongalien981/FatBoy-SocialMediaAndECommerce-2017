@@ -180,7 +180,7 @@ function show_cart_items_form() {
 
 // Helper
 function show_set_shipping_button() {
-    echo "<form id='form_continue_to_shipping' action='" . LOCAL . "/public/__view/view_shipping.php' method='post'>";
+    echo "<form id='form_continue_to_shipping' action='" . LOCAL . "/public/__view/view_transaction' method='post'>";
     echo "<input id='continue_to_shipping' type='submit' name='continue_to_shipping' value='continue to shipping >>'>";
 
     echo "</form>";

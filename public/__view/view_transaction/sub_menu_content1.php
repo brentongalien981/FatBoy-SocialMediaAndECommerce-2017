@@ -1,6 +1,4 @@
 <!--Imports-->
-<!--File initializations.php and session.php is already included in header.php.-->
-<?php // require_once("../_layouts/header.php"); ?>
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
 
@@ -9,32 +7,25 @@
 
 
 
-<!--For app debug messenger initialization.-->
-<?php
-if (!MyDebugMessenger::is_initialized()) {
-    MyDebugMessenger::initialize();
-}
-?>
+
+
 
 
 
 
 
 <?php
+// TODO: SECTION: Protected page checking.
 // Make sure the actual user is logged-in.
-if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
-    redirect_to("view_log_in.php");
+if (!$session->is_logged_in() ||
+    !$session->is_viewing_own_account()) {
+    redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
 
 
 
 
-
-<!--sub-menus nav-->
-<!--I'm currently adding this for my store page.-->
-<a href="#">Shipping Info</a>
-</nav>
 
 
 
@@ -93,7 +84,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <?php
 // TODO: NOW: Form for shipping options.
 ?>
-<form action="payment_preparation.php" method="post">
+<form action="<?php echo LOCAL . '/public/__view/view_transaction/index.php?transaction_content_page=2'; ?>" method="post">
     <?php
 // If the shipping address hasn't been set yet,
 // disable the button "checkout".
@@ -116,24 +107,6 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
     }
     ?>>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-<!--Debug/Log-->
-<?php
-// TODO: LOG
-MyDebugMessenger::show_debug_message();
-MyDebugMessenger::clear_debug_message();
-?>
-
 
 
 
@@ -174,12 +147,3 @@ MyDebugMessenger::clear_debug_message();
     // Edit the page title.
     document.getElementById("title").innerHTML += " / Shipping Info";
 </script>
-
-
-
-
-
-
-
-<!--Footer-->
-<?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

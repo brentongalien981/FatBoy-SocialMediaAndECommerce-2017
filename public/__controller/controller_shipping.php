@@ -143,6 +143,194 @@ function get_seller_ship_from_address_obj() {
     return Address::read_by_query_and_instantiate($query)[0];
 }
 
+function show_shipping_details() {
+    echo "<h4>Shipping Address</h4>";
+
+    echo "<table class='shipping_details'>";
+    echo "<tr>";
+    echo "<td>";
+    show_ship_from_details();
+    echo "</td>";
+    echo "<td>";
+    show_ship_to_details();
+    echo "</td>";
+    echo "</tr>";
+    echo "</table><br><br>";
+}
+
+function show_transaction_charges() {
+    $cart_items_result_sets = get_cart_items_result_sets();
+
+    
+    // TODO: DEBUG
+    MyDebugMessenger::add_debug_message("Inside method show_transaction_charges().");
+    
+    
+    // Vars.
+    $subtotal = 0;
+    $sales_tax = 0;
+    $shipping_fee = 0;
+    $total = 0;
+    
+    global $database;        
+    while ($row = $database->fetch_array($cart_items_result_sets)) {
+//        echo "<h3>{$row['name']}: {$row['quantity']}</h3>";
+        $subtotal += ($row["price"] * $row["quantity"]);
+    }
+    
+    
+// For sales tax.
+// TODO: CRUCIAL: Make a table of taxes for all countries and provinces..?
+        $sales_tax = $subtotal * 0.13;
+
+        // TODO: NOTE: That if $_POST['shipping_service_charge'] is not set,
+        //       that means the buyer/user/actual_user is viewing the transaction summary
+        //       not originating from the page "shipping info"--where you got to enter and validate
+        //       the shipping address and choose the shipping option.
+        global $session;
+        if (!isset($session->transaction_shipping_charge)) {
+            MyDebugMessenger::add_debug_message("Please choose a shipping option and checkout your cart.");
+            redirect_to(LOCAL . "/public/__view/view_transaction");
+        }
+//        $shipping_service_charge = $_POST['shipping_service_charge'];
+        $shipping_service_charge = $session->transaction_shipping_charge;
+        $shipping_tax = $shipping_service_charge * 0.13;
+
+// For shipping fee.
+        $shipping_fee = $shipping_service_charge + $shipping_tax;
+
+
+// For total.
+        $total = $subtotal + $sales_tax + $shipping_fee;    
+        
+        
+        
+        
+        // Display the transaction charges.
+        echo "<br><br><h4>Transaction Charges</h4>";
+        echo "<h6>Sub-total: \${$subtotal}</h6>";
+        echo "<h6>Sales Tax: \${$sales_tax}</h6>";
+
+        echo "<h6>Shipping Service Charge: \${$shipping_service_charge}</h6>";
+        echo "<h6>Shipping Tax: \${$shipping_tax}</h6>";
+
+        echo "<h6 id='h6ShippingFee'>Total Shipping Fee: \${$shipping_fee}</h6>";
+
+
+        echo "<hr>";
+        echo "<h6>Total: \${$total}</h6>";        
+}
+
+function show_items() {
+    //
+    show_table_header();
+
+    //
+    show_cart_items();
+}
+
+function get_cart_items_result_sets() {
+    global $session;
+    // Query to display all the items in the cart selected from that store.
+    $query = "SELECT buyer_user_id, CartItems.cart_id, item_id, name, price, CartItems.quantity AS 'quantity', MyStoreItems.quantity AS 'in_stock' ";
+    $query .= "FROM CartItems INNER JOIN MyStoreItems ON CartItems.item_id = MyStoreItems.id ";
+    $query .= "INNER JOIN StoreCart ON CartItems.cart_id = StoreCart.cart_id ";
+    $query .= "WHERE CartItems.cart_id = {$session->cart_id} ";
+    $query .= "AND is_complete = 0 ";
+    $query .= "AND buyer_user_id = {$session->actual_user_id}";
+
+
+    $results = Address::read_by_query($query);
+    return $results;
+}
+
+function show_cart_items() {
+    //
+    $cart_items_result_sets = get_cart_items_result_sets();
+
+    global $database;
+    // TODO: DEBUG
+    MyDebugMessenger::add_debug_message("Inside method show_cart_items().");
+    while ($row = $database->fetch_array($cart_items_result_sets)) {
+
+
+        echo "<tr>";
+        echo "<td>";
+        echo "<h6>{$row['item_id']}</h6>";
+        echo "</td>";
+
+
+        // ItemName
+        echo "<td>";
+        echo "<h5>{$row['name']}</h5>";
+        echo "</td>";
+
+
+        // ItemPrice
+        echo "<td>";
+        echo "<h5>\${$row['price']}</h5>";
+        echo "</td>";
+
+        // Quantity
+        echo "<td>";
+        echo "<h5>{$row['quantity']}</h5>";
+        echo "</td>";
+
+
+        // In stock
+        echo "<td>";
+        echo "<h5>{$row['in_stock']}</h5>";
+        echo "</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+}
+
+function show_table_header() {
+    echo "<h4>Shipping Items</h4>";
+
+    echo "<table class='cart_items'>";
+    echo "<thead>";
+    echo "<td>ItemId</td>";
+    echo "<td>ItemName</td>";
+    echo "<td>Price</td>";
+    echo "<td>Quantity</td>";
+    echo "<td>Stock</td>";
+    echo "</thead>";
+}
+
+function show_ship_to_details() {
+    echo "<div class='shipping_to_details'>";
+    global $session;
+
+    echo "<h3>Ship to</h3>";
+
+    echo "<h5>{$session->ship_to_address_street1}</h5>";
+    echo "<h5>{$session->ship_to_address_street2}</h5>";
+    echo "<h5>{$session->ship_to_address_city}</h5>";
+    echo "<h5>{$session->ship_to_address_state}</h5>";
+    echo "<h5>{$session->ship_to_address_country_code}</h5>";
+    echo "<h5>{$session->ship_to_address_zip}</h5>";
+    echo "</div>";
+}
+
+function show_ship_from_details() {
+    echo "<div class='shipping_from_details'>";
+
+    $ship_from_address_obj = get_seller_ship_from_address_obj();
+
+    echo "<h3>Ship from</h3>";
+    echo "<h5>{$ship_from_address_obj->street1}</h5>";
+    echo "<h5>{$ship_from_address_obj->street2}</h5>";
+    echo "<h5>{$ship_from_address_obj->city}</h5>";
+    echo "<h5>{$ship_from_address_obj->state}</h5>";
+    echo "<h5>{$ship_from_address_obj->country_code}</h5>";
+    echo "<h5>{$ship_from_address_obj->zip}</h5>";
+
+    echo "</div>";
+}
+
 // @returns the validated buyer/actual_user to_address obj.
 function get_buyer_ship_to_address_obj() {
     global $session;
@@ -212,7 +400,6 @@ function set_external_api_shipping_requirements($seller_ship_from_address_obj, $
     //
     require_once(PRIVATE_PATH . "/external_api/easypost-php-master/lib/easypost.php");
 //    require_once(PUBLIC_PATH . "/easypost-php-master/lib/easypost.php");
-
     // Key from github.
     \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
 
@@ -269,6 +456,9 @@ function show_completely_presented_shipping_options($cheapest_days_and_rate_pair
     MyDebugMessenger::add_debug_message("DEBUG: inside function show_completely_presented_shipping_options()");
 }
 
+// Because the EasyPost Shipping API gives back a variety
+// of shipping options, this method basically compares which
+// are the cheaper of all the options and returns those cheap ones.
 function get_cheapest_days_and_rate_pair_array($shipment) {
 
     $cheapest_days_and_rate_pair_array = array();
@@ -472,6 +662,7 @@ if (isset($_POST["set_shipping"])) {
 //    print_r($a_ship_to_address_obj);
 //    echo "</pre>";
     //
-    redirect_to(LOCAL . "/public/__view/view_shipping.php");
+//    redirect_to(LOCAL . "/public/__view/view_shipping.php");
+    redirect_to(LOCAL . "/public/__view/view_transaction");
 }
 ?>

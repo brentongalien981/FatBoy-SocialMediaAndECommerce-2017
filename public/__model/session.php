@@ -33,6 +33,9 @@ class Session {
     public $ship_to_address_country_code;
     public $ship_to_address_phone;
     
+    // Transaction vars.
+    public $transaction_shipping_charge;
+    
     //
     private $can_now_checkout;
 
@@ -294,6 +297,14 @@ class Session {
             //
             $this->can_now_checkout = $_SESSION["can_now_checkout"];
             
+            
+            // For transcation vars.
+            if (isset($_SESSION["transaction_shipping_charge"])) {
+                $this->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"];
+            }
+            
+            
+            
 
         } else {
             unset($this->actual_user_id);
@@ -307,6 +318,8 @@ class Session {
             unset($this->buyer_user_id);
             
             // TODO: Don't forget to unset the shipping vars.
+            
+            // TODO: Don't forget to unset the transaction vars.
             
             
             //
