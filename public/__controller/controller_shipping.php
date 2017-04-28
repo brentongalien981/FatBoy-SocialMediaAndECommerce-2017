@@ -161,64 +161,74 @@ function show_shipping_details() {
 function show_transaction_charges() {
     $cart_items_result_sets = get_cart_items_result_sets();
 
-    
+
     // TODO: DEBUG
     MyDebugMessenger::add_debug_message("Inside method show_transaction_charges().");
-    
-    
+
+
     // Vars.
     $subtotal = 0;
     $sales_tax = 0;
     $shipping_fee = 0;
     $total = 0;
-    
-    global $database;        
+
+    global $database;
     while ($row = $database->fetch_array($cart_items_result_sets)) {
 //        echo "<h3>{$row['name']}: {$row['quantity']}</h3>";
         $subtotal += ($row["price"] * $row["quantity"]);
     }
-    
-    
+
+
 // For sales tax.
 // TODO: CRUCIAL: Make a table of taxes for all countries and provinces..?
-        $sales_tax = $subtotal * 0.13;
+    $sales_tax = $subtotal * 0.13;
 
-        // TODO: NOTE: That if $_POST['shipping_service_charge'] is not set,
-        //       that means the buyer/user/actual_user is viewing the transaction summary
-        //       not originating from the page "shipping info"--where you got to enter and validate
-        //       the shipping address and choose the shipping option.
-        global $session;
-        if (!isset($session->transaction_shipping_charge)) {
-            MyDebugMessenger::add_debug_message("Please choose a shipping option and checkout your cart.");
-            redirect_to(LOCAL . "/public/__view/view_transaction");
-        }
-//        $shipping_service_charge = $_POST['shipping_service_charge'];
-        $shipping_service_charge = $session->transaction_shipping_charge;
-        $shipping_tax = $shipping_service_charge * 0.13;
+    // TODO: NOTE: That if $_POST['shipping_service_charge'] is not set,
+    //       that means the buyer/user/actual_user is viewing the transaction summary
+    //       not originating from the page "shipping info"--where you got to enter and validate
+    //       the shipping address and choose the shipping option.
+    global $session;
+//    if (!isset($session->transaction_shipping_charge)) {
+//        MyDebugMessenger::add_debug_message("Please choose a shipping option and checkout your cart.");
+//        redirect_to(LOCAL . "/public/__view/view_transaction");
+//    }
+    
+    $shipping_service_charge = $_POST['shipping_service_charge'];
+//    $shipping_service_charge = $session->transaction_shipping_charge;
+    $shipping_tax = $shipping_service_charge * 0.13;
 
 // For shipping fee.
-        $shipping_fee = $shipping_service_charge + $shipping_tax;
+    $shipping_fee = $shipping_service_charge + $shipping_tax;
 
 
 // For total.
-        $total = $subtotal + $sales_tax + $shipping_fee;    
-        
-        
-        
-        
-        // Display the transaction charges.
-        echo "<br><br><h4>Transaction Charges</h4>";
-        echo "<h6>Sub-total: \${$subtotal}</h6>";
-        echo "<h6>Sales Tax: \${$sales_tax}</h6>";
-
-        echo "<h6>Shipping Service Charge: \${$shipping_service_charge}</h6>";
-        echo "<h6>Shipping Tax: \${$shipping_tax}</h6>";
-
-        echo "<h6 id='h6ShippingFee'>Total Shipping Fee: \${$shipping_fee}</h6>";
+    $total = $subtotal + $sales_tax + $shipping_fee;
 
 
-        echo "<hr>";
-        echo "<h6>Total: \${$total}</h6>";        
+
+
+    // Display the transaction charges.
+    echo "<br><br><h4>Transaction Charges</h4>";
+    echo "<h6>Sub-total: \${$subtotal}</h6>";
+    echo "<h6>Sales Tax: \${$sales_tax}</h6>";
+
+    echo "<h6>Shipping Service Charge: \${$shipping_service_charge}</h6>";
+    echo "<h6>Shipping Tax: \${$shipping_tax}</h6>";
+
+    echo "<h6 id='h6ShippingFee'>Total Shipping Fee: \${$shipping_fee}</h6>";
+
+
+    echo "<hr>";
+    echo "<h6>Total: \${$total}</h6>";
+
+
+
+    // TODO: DONE: Set $_SESSION transaction vars.    
+    $_SESSION["transaction_shipping_charge"] = $shipping_service_charge;
+    $_SESSION["transaction_subtotal"] = $subtotal;
+    $_SESSION["transaction_sales_tax"] = $sales_tax;
+    $_SESSION["transaction_shipping_fee"] = $shipping_fee;
+    $_SESSION["transaction_total"] = $total;
 }
 
 function show_items() {
@@ -236,6 +246,7 @@ function get_cart_items_result_sets() {
     $query .= "FROM CartItems INNER JOIN MyStoreItems ON CartItems.item_id = MyStoreItems.id ";
     $query .= "INNER JOIN StoreCart ON CartItems.cart_id = StoreCart.cart_id ";
     $query .= "WHERE CartItems.cart_id = {$session->cart_id} ";
+    $query .= "AND CartItems.quantity > 0 ";
     $query .= "AND is_complete = 0 ";
     $query .= "AND buyer_user_id = {$session->actual_user_id}";
 

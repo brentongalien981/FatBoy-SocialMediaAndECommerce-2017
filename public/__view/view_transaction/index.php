@@ -36,9 +36,9 @@ if (!$session->is_logged_in()) {
 <span class="angled_brackets">>></span>
 <a href="index.php?transaction_content_page=1">Shipping Info</a>
 <span class="angled_brackets">>> </span>
-<a href="index.php?transaction_content_page=2">Summary</a>
+<a>Summary</a>
 <span class="angled_brackets">>></span>
-<a href="index.php?transaction_content_page=3">Result</a>
+<a>Result</a>
 </nav>
 
 

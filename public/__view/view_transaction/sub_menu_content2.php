@@ -38,15 +38,16 @@ if (!$session->is_logged_in() ||
 <?php
 // TODO: SECTION: Meat
 // TODO: NOW: Show shipping summary.
-if (isset($_POST["checkout"]) || isset($session->transaction_shipping_charge)) {
-    //
-//    $session->can_now_checkout;
-    if (isset($_POST['shipping_service_charge'])) {
-        $session->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"] = $_POST['shipping_service_charge'];
-    }
-    else {
-        $session->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"];
-    }
+//if (isset($_POST["checkout"]) || isset($session->transaction_shipping_charge)) {
+if (isset($_POST["checkout"])) {
+    
+////    $session->can_now_checkout;
+//    if (isset($_POST['shipping_service_charge'])) {
+//        $session->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"] = $_POST['shipping_service_charge'];
+//    }
+//    else {
+//        $session->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"];
+//    }
     
             
     //
@@ -60,8 +61,8 @@ if (isset($_POST["checkout"]) || isset($session->transaction_shipping_charge)) {
 
 
 
-    //
-    echo "<form id = 'form' action = 'payment.php' method = 'post'>";
+    // TODO: SECTION: Form for paying through PayPal.
+    echo "<form id = 'form' action = '" . LOCAL . "/public/__controller/controller_payment.php' method = 'post'>";
     echo "<input type = 'submit' name = 'pay' value = 'pay'>";
     echo "</form>";
 }
