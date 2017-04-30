@@ -355,12 +355,11 @@ CREATE TABLE `Address` (
 ALTER TABLE `Address`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `user_id_2` (`user_id`),
+  ADD UNIQUE( `user_id`, `address_type_code`),
   ADD KEY `id_2` (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `country_code` (`country_code`),
-  ADD KEY `country_code_2` (`country_code`);
-  
+  ADD KEY `country_code_2` (`country_code`); 
   
   
   
@@ -1001,6 +1000,24 @@ INSERT INTO `UserPayPalAccount` (`id`, `user_id`, `paypal_client_id`, `paypal_se
 -- --------------------------------------------------------  
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+-- Additional Tables created in order.  
+-- CREATE TABLE InvoiceItemStatus.
+-- CREATE TABLE InvoiceItemStatusRecord.
+-- CREATE TABLE InvoiceItem.
+-- CREATE TABLE Invoice.
   
   
   

@@ -6,7 +6,6 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_paypal_account.php"); ?>
 
-<?php // require_once(PUBLIC_PATH . "/__controller/controller_cart_item.php");  ?>
 
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
@@ -140,32 +139,23 @@ if ($can_now_pay) {
         // Execute the payment
         // (See bootstrap.php for more on `ApiContext`)
         $result = $payment->execute($execution, $api);
+
         
+        
+        // TODO: REMINDER: This method "getTransactions()" will return an array in AJAX form
+        // that contains the transaction invoice number. You will need that as a PK for creating 
+        // a record in table Transaction (or maybe Invoice).
+//        $paypal_transactions = $result->getTransactions();
         // TODO: DEBUG
-//        MyDebugMessenger::add_debug_message("result->getTransactions(): {$result->getTransactions()}.");
+        require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
         
-        //
-        $paypal_transactions = $result->getTransactions();
-        $paypal_invoice_number;
-        
-        
-        MyDebugMessenger::add_debug_message("paypal_transactions[0]['invoice_number']: {$paypal_transactions[0]['invoice_number']}");        
-        
-        
-//        foreach ($paypal_transactions as $key => $value) {
-//            MyDebugMessenger::add_debug_message("PayPal Transaction Key: {$key} ----- Value: {$value}.");
-//            
-//            foreach ($value as $sub_key => $sub_value) {
-//                MyDebugMessenger::add_debug_message("PayPal Transaction SubKey: {$sub_key} ----- Value: {$sub_value}.");
-////                if ($sub_key == "invoice_number") {
-//                    
-////                }
-//            }
-//        }
-        
-        
-//        MyDebugMessenger::add_debug_message("PayPal Invoice Number is: {$paypal_invoice_number}.");
-        
+        if (a_debug_function()) {
+            MyDebugMessenger::add_debug_message("Method call 'a_debug_function()' from file 'controller_my_shopping_history.php' is ok.");
+        }
+        else {
+            MyDebugMessenger::add_debug_message("Method call 'a_debug_function()' from file 'controller_my_shopping_history.php' is NOT ok.");
+        }
+
 
         try {
             $payment = Payment::get($paymentId, $api);

@@ -70,9 +70,25 @@ if (isset($_GET["payment_result"])) {
 
 
 <div class="payment_result">
-    <a href="<?php echo LOCAL . '/public/__view/view_store_cart.php'; ?>">Go to MyCart</a><br>
+    <a href="<?php echo LOCAL . '/public/__view/view_store_cart'; ?>">Go to MyCart</a><br>
     <a href="<?php echo LOCAL . '/public/index.php'; ?>">Go to MyWall</a>
 </div>
+
+
+
+
+
+
+
+
+
+
+<?php
+// TODO: DEBUG
+echo "<pre>";
+print_r($_SESSION);
+echo "</pre>";
+?>
 
 
 

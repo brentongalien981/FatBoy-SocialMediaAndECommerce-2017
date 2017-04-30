@@ -1,20 +1,4 @@
-<!--Imports-->
-<!--File initializations.php and session.php is already included in header.php.-->
-<?php // require_once("../_layouts/header.php"); ?>
-<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once("../__controller/controller_store_cart.php"); ?>
-
-<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
-
-
-
-
-<!--For app debug messenger initialization.-->
-<?php
-if (!MyDebugMessenger::is_initialized()) {
-    MyDebugMessenger::initialize();
-}
-?>
+<?php require_once(PUBLIC_PATH . "/__controller/controller_store_cart.php"); ?>
 
 
 
@@ -60,18 +44,6 @@ else {
 
 
 
-
-
-
-
-
-
-<!--Debug/Log-->
-<?php
-// TODO: LOG
-MyDebugMessenger::show_debug_message();
-MyDebugMessenger::clear_debug_message();
-?>
 
 
 
@@ -150,9 +122,3 @@ MyDebugMessenger::clear_debug_message();
     }
 </script>
 
-
-
-
-
-<!--Footer-->
-<?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

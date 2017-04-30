@@ -129,9 +129,12 @@ function get_seller_ship_from_address_obj() {
     // Query to get the address of the seller for shipping calculation requirements.
     global $session;
     $seller_user_id = $session->seller_user_id;
+    $business_address_type_code = 2;
 
     $query = "SELECT * FROM Address ";
-    $query .= "WHERE user_id = {$session->seller_user_id} LIMIT 1";
+    $query .= "WHERE user_id = {$session->seller_user_id} ";
+    $query .= "AND address_type_code = {$business_address_type_code}";
+    $query .= "LIMIT 1";
 
 
     // TODO: LOG
@@ -413,6 +416,12 @@ function set_external_api_shipping_requirements($seller_ship_from_address_obj, $
 //    require_once(PUBLIC_PATH . "/easypost-php-master/lib/easypost.php");
     // Key from github.
     \EasyPost\EasyPost::setApiKey('cueqNZUb3ldeWTNX7MU3Mel8UXtaAMUi');
+    
+    // Production Key for odox700@gmail.com.
+//    \EasyPost\EasyPost::setApiKey('BCZMVeLiKaUJbW9jlZhNyw');
+    
+    // Test Key.
+//    \EasyPost\EasyPost::setApiKey('1SEVj2JbQefTe0JxShMtiw');
 
 
 

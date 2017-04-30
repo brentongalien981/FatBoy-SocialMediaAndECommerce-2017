@@ -58,8 +58,8 @@
             }
 
             #divStatus {
-                width: 40%;
-                /*background-color: pink;*/
+                /*width: 40%;*/
+                background-color: pink;
                 /*float: left;*/
                 display: inline;   
                 font-size: 70%;  
@@ -110,7 +110,7 @@
                 /*padding-left: 35px;*/
 
                 /*width: fit-content;*/
-                width: 3%;
+                width: 7%;
                 padding-left: 0;
                 margin-left: 35px;
                 /*background-color: greenyellow;*/    
@@ -123,7 +123,7 @@
                 font-size: 130%;
                 /*                width: fit-content;*/
                 /*width: 50%;*/
-                background-color: #D4E6F4;
+                /*background-color: #D4E6F4;*/
                 /*background-color: red;*/
             }
 
@@ -256,7 +256,7 @@
             <div id="divStatus">
                 <?php
                 if ($session->is_logged_in()) {
-                    echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>{$session->actual_user_name}</a>";
+                    echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
                     echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
                 } else {
                     echo "<a class='user_name'>zZzzZz</a>";

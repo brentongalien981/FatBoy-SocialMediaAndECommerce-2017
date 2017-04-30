@@ -13,7 +13,7 @@
 <?php
 // Protected page.
 if (!$session->is_logged_in()) {
-    redirect_to("../index.php");
+    redirect_to(LOCAL . "/public/index.php");
 }
 ?>
 
@@ -40,7 +40,7 @@ function add_item_to_cart($item_id) {
     // Make sure the actual user is not buying from her own store.
     global $session;
     if ($session->is_viewing_own_account()) {
-        redirect_to(LOCAL . "/public/__view/view_store_cart.php");
+        redirect_to(LOCAL . "/public/__view/view_store_cart");
     }
 
 
@@ -328,7 +328,8 @@ if (isset($_POST["selected_cart_id"])) {
 
 
     //
-    redirect_to(LOCAL . "/public/__view/view_store_cart.php");
+//    redirect_to(LOCAL . "/public/__view/view_store_cart.php");
+    redirect_to(LOCAL . "/public/__view/view_store_cart");
 }
 
 
@@ -338,6 +339,6 @@ if (isset($_POST["update_cart_items"])) {
 
 
     //
-    redirect_to(LOCAL . "/public/__view/view_store_cart.php");
+    redirect_to(LOCAL . "/public/__view/view_store_cart");
 }
 ?>

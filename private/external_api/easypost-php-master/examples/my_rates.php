@@ -31,7 +31,7 @@ $to_address = \EasyPost\Address::create(
 //        "street2" => "Apt 20",
         "city"    => "Markham",
         "state"   => "ON",
-        "zip"     => "L6E1V5",
+        "zip"     => "L6E 1V5",
         "country" => "CA",
 //        "phone"   => "415-456-7890"
     )
@@ -41,10 +41,10 @@ $to_address = \EasyPost\Address::create(
 $from_address = \EasyPost\Address::create(
     array(
         "company" => "Simpler Postage Inc",
-        "street1" => "50 Thorncliffe Park Dr",
+        "street1" => "105-50 Thorncliffe Park Dr",
         "city"    => "East York",
         "state"   => "ON",
-        "zip"     => "M4H1K5",
+        "zip"     => "M4H 1K4",
         "country" => "CA",
         "phone"   => "620-123-4567"
     )
