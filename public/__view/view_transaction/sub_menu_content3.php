@@ -59,6 +59,10 @@ if (isset($_GET["payment_result"])) {
     // For payment_result=1.
     else if ($_GET["payment_result"] == 1) {
         MyDebugMessenger::add_debug_message("Your payment was a success. Thank you!");
+        
+        //
+        MyDebugMessenger::add_debug_message("Your PayPal Transaction Id is: {$session->paypal_transaction_id}.");
+        
     }
 }
 ?>

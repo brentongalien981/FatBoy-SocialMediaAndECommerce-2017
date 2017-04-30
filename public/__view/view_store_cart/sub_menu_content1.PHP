@@ -1,6 +1,7 @@
 <!--Imports-->
 <!--File initializations.php and session.php is already included in header.php.-->
-<?php require_once("../_layouts/header.php"); ?>
+<?php // require_once("../_layouts/header.php"); ?>
+<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once("../__controller/controller_store_cart.php"); ?>
 
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
@@ -22,19 +23,13 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 // Make sure the actual user is logged-in.
 if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
-    redirect_to("view_log_in.php");
+    redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
 
 
 
 
-
-<!--sub-menus nav-->
-<!--I'm currently adding this for my store page.-->
-<a href="#">MyCart</a>
-<a href="#">My Shopping History</a>
-</nav>
 
 
 
@@ -85,7 +80,7 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<link href="../_styles/view_store_cart.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo LOCAL . '/public/_styles/view_store_cart.css'; ?>" rel="stylesheet" type="text/css" />
 <style>  
     th, td {
         padding: 10px;

@@ -102,6 +102,10 @@ $can_now_pay = false;
 if (isset($_GET["payment_validation_success"])) {
     if ($_GET["payment_validation_success"] == 1) {
         $can_now_pay = true;
+        
+        //
+        global $session;
+        $session->paypal_transaction_id = $_SESSION["paypal_transaction_id"] = $_GET["token"];
     } else {
         // The payment validation failed.
         redirect_to(LOCAL . "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_validation_success=0");
@@ -113,6 +117,8 @@ if (isset($_GET["payment_validation_success"])) {
 
 //
 if ($can_now_pay) {
+    // TODO: DEBUG
+//    die("THIS IS JUST FOR DEBUG: can_now_pay is true.");
 
 
     // Get the payment Object by passing paymentId
@@ -134,6 +140,32 @@ if ($can_now_pay) {
         // Execute the payment
         // (See bootstrap.php for more on `ApiContext`)
         $result = $payment->execute($execution, $api);
+        
+        // TODO: DEBUG
+//        MyDebugMessenger::add_debug_message("result->getTransactions(): {$result->getTransactions()}.");
+        
+        //
+        $paypal_transactions = $result->getTransactions();
+        $paypal_invoice_number;
+        
+        
+        MyDebugMessenger::add_debug_message("paypal_transactions[0]['invoice_number']: {$paypal_transactions[0]['invoice_number']}");        
+        
+        
+//        foreach ($paypal_transactions as $key => $value) {
+//            MyDebugMessenger::add_debug_message("PayPal Transaction Key: {$key} ----- Value: {$value}.");
+//            
+//            foreach ($value as $sub_key => $sub_value) {
+//                MyDebugMessenger::add_debug_message("PayPal Transaction SubKey: {$sub_key} ----- Value: {$sub_value}.");
+////                if ($sub_key == "invoice_number") {
+//                    
+////                }
+//            }
+//        }
+        
+        
+//        MyDebugMessenger::add_debug_message("PayPal Invoice Number is: {$paypal_invoice_number}.");
+        
 
         try {
             $payment = Payment::get($paymentId, $api);

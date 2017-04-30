@@ -37,6 +37,7 @@ class Session {
     public $transaction_sales_tax;
     public $transaction_shipping_fee;
     public $transaction_total;
+    public $paypal_transaction_id;
     //
     private $can_now_checkout;
 
@@ -202,6 +203,7 @@ class Session {
         unset($_SESSION["transaction_shipping_fee"]);
         unset($_SESSION["transaction_total"]);        
         
+        unset($_SESSION["paypal_transaction_id"]);
 
 
 
@@ -238,6 +240,7 @@ class Session {
         unset($this->transaction_shipping_fee);
         unset($this->transaction_total);
 
+        unset($this->paypal_transaction_id);
 
         $this->logged_in = false;
         session_unset();
@@ -305,6 +308,10 @@ class Session {
                 $this->transaction_shipping_fee = $_SESSION["transaction_shipping_fee"];
                 $this->transaction_total = $_SESSION["transaction_total"];
             }
+            
+            if (isset($_SESSION["paypal_transaction_id"])) {
+                $this->paypal_transaction_id = $_SESSION["paypal_transaction_id"];
+            }
         } else {
             unset($this->actual_user_id);
             unset($this->actual_user_name);
@@ -316,9 +323,9 @@ class Session {
             unset($this->seller_user_id);
             unset($this->buyer_user_id);
 
-            // TODO: Don't forget to unset the shipping vars.
-            // TODO: Don't forget to unset the transaction vars.
-            //
+            // TODO: REMINDER: Don't forget to unset the shipping vars.
+            // TODO: REMINDER: Don't forget to unset the transaction vars.
+            // TODO: REMINDER: Don't forget to unset the $_SESSION["paypal_transaction_id"].
             unset($this->can_now_checkout);
 
 

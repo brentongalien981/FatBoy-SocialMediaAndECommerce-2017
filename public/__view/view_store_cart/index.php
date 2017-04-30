@@ -21,7 +21,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
 <?php
 // Make sure the actual user is logged-in.
-if (!$session->is_logged_in()) {
+if (!$session->is_logged_in() ||
+    !$session->is_viewing_own_account()) {
     redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
@@ -31,12 +32,8 @@ if (!$session->is_logged_in()) {
 
 
 <!--sub-menus nav-->
-<!--I'm currently adding this for my store page.-->
-<a href="index.php?store_content_page=1">MyStore</a>
-<a href="index.php?store_content_page=2">Add Item</a>
-<a href="index.php?store_content_page=3">Edit Item</a>
-<a href="#">MySales</a>
-<a href="#">Customer's Refund Requests</a>
+<a href="index.php?store_content_page=1">MyCart</a>
+<a href="index.php?store_content_page=2">My Shopping History</a>
 </nav>
 
 
@@ -83,13 +80,8 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<link href="<?php echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />
+<!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />-->
 <style>   
-    td {
-        /*padding-top: 100px;*/
-    }
-    
-
 </style>
 
 
@@ -100,7 +92,7 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / MyStore";
+    document.getElementById("title").innerHTML += " / Store Cart";
 </script>
 
 

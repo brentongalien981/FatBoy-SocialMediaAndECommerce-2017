@@ -296,13 +296,24 @@
             <a href="<?php echo LOCAL . '/public/__view/view_my_store'; ?>">MyStore</a>
 
             <?php
+            // MyCart
             if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                echo "<a href='" . LOCAL . "/public/__view/view_store_cart.php'>MyCart</a>";
+                echo "<a href='" . LOCAL . "/public/__view/view_store_cart'>MyCart</a>";
             }
             ?>
-
-            <!--Sign-up-->
+            
+            
             <?php
+            // MyRefund
+            if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+                echo "<a href='" . LOCAL . "/public/__view/view_refund'>MyRefund</a>";
+            }
+            ?>            
+            
+
+            
+            <?php
+            // Sign-up
             if (!$session->is_logged_in()) {
                 echo "<a href='" . LOCAL . "/public/__view/view_signup.php'>Sign-up</a>";
             }

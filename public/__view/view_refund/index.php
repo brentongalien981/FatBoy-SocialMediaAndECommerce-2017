@@ -21,7 +21,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
 <?php
 // Make sure the actual user is logged-in.
-if (!$session->is_logged_in()) {
+if (!$session->is_logged_in() ||
+        !$session->is_viewing_own_account()) {
     redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
@@ -32,11 +33,9 @@ if (!$session->is_logged_in()) {
 
 <!--sub-menus nav-->
 <!--I'm currently adding this for my store page.-->
-<a href="index.php?store_content_page=1">MyStore</a>
-<a href="index.php?store_content_page=2">Add Item</a>
-<a href="index.php?store_content_page=3">Edit Item</a>
-<a href="#">MySales</a>
-<a href="#">Customer's Refund Requests</a>
+<a href="index.php?transaction_content_page=1">View my Refunds</a>
+<a href="index.php?transaction_content_page=2">Apply for Refund</a>
+<!--<a>Result</a>-->
 </nav>
 
 
@@ -47,17 +46,15 @@ if (!$session->is_logged_in()) {
 <!--Meat-->
 <?php
 // Decide which main content to display based on the GET param.
-if (isset($_GET["store_content_page"])) {
-    $store_content_page = $_GET["store_content_page"];
-    
-    if (($store_content_page > 0) && ($store_content_page < 4)) {
-        require_once("sub_menu_content{$store_content_page}.php");
-    }   
-    else {
+if (isset($_GET["transaction_content_page"])) {
+    $transaction_content_page = $_GET["transaction_content_page"];
+
+    if (($transaction_content_page > 0) && ($transaction_content_page < 4)) {
+        require_once("sub_menu_content{$transaction_content_page}.php");
+    } else {
         require_once("sub_menu_content1.php");
     }
-}
-else {
+} else {
     require_once("sub_menu_content1.php");
 }
 ?>
@@ -83,13 +80,20 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<link href="<?php echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />
+<!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css';  ?>" rel="stylesheet" type="text/css" />-->
 <style>   
-    td {
-        /*padding-top: 100px;*/
+    form h6 {
+        margin-bottom: 0px;
+    }
+
+    img {
+        width: 630px;
+        height: 400px;
     }
     
-
+    h6 {
+        font-weight: 200;
+    }
 </style>
 
 
@@ -100,7 +104,7 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / MyStore";
+    document.getElementById("title").innerHTML += " / Refund";
 </script>
 
 
