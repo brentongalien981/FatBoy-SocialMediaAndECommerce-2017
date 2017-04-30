@@ -133,7 +133,7 @@ function get_seller_ship_from_address_obj() {
 
     $query = "SELECT * FROM Address ";
     $query .= "WHERE user_id = {$session->seller_user_id} ";
-    $query .= "AND address_type_code = {$business_address_type_code}";
+    $query .= "AND address_type_code = {$business_address_type_code} ";
     $query .= "LIMIT 1";
 
 

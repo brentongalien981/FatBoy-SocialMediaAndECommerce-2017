@@ -543,7 +543,7 @@ INSERT INTO `UserTypes` (`id`, `type_name`) VALUES
 ALTER TABLE `Address`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `user_id_2` (`user_id`,`address_type_code`),
+  --ADD UNIQUE KEY `user_id_2` (`user_id`,`address_type_code`),
   ADD KEY `id_2` (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `country_code` (`country_code`),

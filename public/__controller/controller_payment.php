@@ -146,15 +146,7 @@ if ($can_now_pay) {
         // that contains the transaction invoice number. You will need that as a PK for creating 
         // a record in table Transaction (or maybe Invoice).
 //        $paypal_transactions = $result->getTransactions();
-        // TODO: DEBUG
-        require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
-        
-        if (a_debug_function()) {
-            MyDebugMessenger::add_debug_message("Method call 'a_debug_function()' from file 'controller_my_shopping_history.php' is ok.");
-        }
-        else {
-            MyDebugMessenger::add_debug_message("Method call 'a_debug_function()' from file 'controller_my_shopping_history.php' is NOT ok.");
-        }
+
 
 
         try {
@@ -178,7 +170,12 @@ if ($can_now_pay) {
     
     
     // Successful payment result.
-//    redirect_to("final_payment_success.php");
+    // Create an Invoice/Transaction record to db.
+    require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
+    
+    create_invoice_record();
+    
+    
     redirect_to(LOCAL . "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_result=1");
 }
 
