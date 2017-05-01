@@ -7,11 +7,12 @@ require_once("my_database.php");
 class InvoiceItemStatusRecord {
 
     protected static $table_name = "InvoiceItemStatusRecord";
-    protected static $db_fields = array("id", "invoice_item_id", "invoice_item__status_id", "status_start_date");
+    protected static $db_fields = array("id", "invoice_item_id", "invoice_item__status_id");
     public $id;
     public $invoice_item_id;
     public $invoice_item__status_id;
-    public $status_start_date;
+
+//    public $status_start_date;
 
     public static function read_by_id($id = 0) {
         $query = "SELECT * FROM " . self::$table_name . " WHERE id = {$id}";
@@ -70,8 +71,6 @@ class InvoiceItemStatusRecord {
         return $objects_array;
     }
 
-
-
     public static function read_by_query($query = "") {
         global $database;
 
@@ -81,6 +80,22 @@ class InvoiceItemStatusRecord {
         //
         return $result_set;
     }
+    
+//    // TODO: This method create_by_query() doesn't seem to work. Maybe because of the entry $id.
+//    public static function create_by_query($query = "") {
+//        global $database;
+//
+//        $result_set = $database->get_result_from_query($query);
+//
+//
+//        //
+//        if ($database->get_num_of_affected_rows() > 0) {
+//            return true;
+//        }
+//        else {
+//            return false;
+//        }
+//    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
@@ -115,6 +130,9 @@ class InvoiceItemStatusRecord {
         $query .= "')";
 
         $query_result = $database->get_result_from_query($query);
+
+        // TODO: DEBUG: method create_with_bool().
+        MyDebugMessenger::add_debug_message("QUERY {$query}.");
 
         if ($query_result) {
             $this->id = $database->get_last_inserted_id();

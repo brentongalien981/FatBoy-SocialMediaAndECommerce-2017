@@ -7,10 +7,12 @@ require_once("my_database.php");
 class InvoiceItem {
 
     protected static $table_name = "InvoiceItem";
-    protected static $db_fields = array("id", "invoice_id", "store_item_id");
+    protected static $db_fields = array("id", "invoice_id", "store_item_id", "price_per_item", "quantity");
     public $id;
     public $invoice_id;
     public $store_item_id;
+    public $price_per_item;
+    public $quantity;
 
     public static function read_by_id($id = 0) {
         $query = "SELECT * FROM " . self::$table_name . " WHERE id = {$id}";

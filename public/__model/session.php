@@ -40,6 +40,9 @@ class Session {
     public $paypal_transaction_id;
     //
     private $can_now_checkout;
+    
+    // Invoice.
+    public $invoice_id;
 
 //    public $message;
 
@@ -72,6 +75,10 @@ class Session {
 
     public function set_can_now_checkout($what) {
         $this->can_now_checkout = $_SESSION["can_now_checkout"] = $what;
+    }
+    
+    public function set_invoice_id($new_invoice_id) {
+        $this->invoice_id = $_SESSION["invoice_id"] = $new_invoice_id;
     }
 
     public function get_can_now_checkout() {
@@ -168,6 +175,10 @@ class Session {
 
             //
             $this->can_now_checkout = $_SESSION["can_now_checkout"] = false;
+            
+            
+            //
+            $this->set_invoice_id(null);
         }
     }
 
@@ -205,6 +216,10 @@ class Session {
         
         unset($_SESSION["paypal_transaction_id"]);
 
+        unset($_SESSION["invoice_id"]);
+        
+        
+        
 
 
         unset($this->actual_user_id);
@@ -241,6 +256,9 @@ class Session {
         unset($this->transaction_total);
 
         unset($this->paypal_transaction_id);
+        
+        
+        unset($this->invoice_id);
 
         $this->logged_in = false;
         session_unset();
@@ -311,6 +329,12 @@ class Session {
             
             if (isset($_SESSION["paypal_transaction_id"])) {
                 $this->paypal_transaction_id = $_SESSION["paypal_transaction_id"];
+            }
+            
+            
+            // For invoice.
+            if (isset($_SESSION["invoice_id"])) {
+                $this->set_invoice_id($_SESSION["invoice_id"]);
             }
         } else {
             unset($this->actual_user_id);

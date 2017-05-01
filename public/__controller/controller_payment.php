@@ -173,7 +173,7 @@ if ($can_now_pay) {
     // Create an Invoice/Transaction record to db.
     require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
     
-    create_invoice_record();
+    generate_invoice();
     
     
     redirect_to(LOCAL . "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_result=1");
