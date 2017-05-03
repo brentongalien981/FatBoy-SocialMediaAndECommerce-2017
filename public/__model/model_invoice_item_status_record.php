@@ -81,21 +81,21 @@ class InvoiceItemStatusRecord {
         return $result_set;
     }
     
-//    // TODO: This method create_by_query() doesn't seem to work. Maybe because of the entry $id.
-//    public static function create_by_query($query = "") {
-//        global $database;
-//
-//        $result_set = $database->get_result_from_query($query);
-//
-//
-//        //
-//        if ($database->get_num_of_affected_rows() > 0) {
-//            return true;
-//        }
-//        else {
-//            return false;
-//        }
-//    }
+    
+    public static function create_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($database->get_num_of_affected_rows() > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
@@ -113,34 +113,35 @@ class InvoiceItemStatusRecord {
         return array_key_exists($attribute, $this->get_attributes());
     }
 
-    // Returns bool.
-    public function create_with_bool() {
-        global $database;
-        // Don't forget your SQL syntax and good habits:
-        // - INSERT INTO table (key, key) VALUES ('value', 'value')
-        // - single-quotes around all values
-        // - escape all values to prevent SQL injection
-
-        $attributes = $this->get_sanitized_attributes();
-
-        $query = "INSERT INTO " . self::$table_name . " (";
-        $query .= join(", ", array_keys($attributes));
-        $query .= ") VALUES ('";
-        $query .= join("', '", array_values($attributes));
-        $query .= "')";
-
-        $query_result = $database->get_result_from_query($query);
-
-        // TODO: DEBUG: method create_with_bool().
-        MyDebugMessenger::add_debug_message("QUERY {$query}.");
-
-        if ($query_result) {
-            $this->id = $database->get_last_inserted_id();
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    // TODO: This method create_by_query() doesn't seem to work. Maybe because of the entry $id.
+//    // Returns bool.
+//    public function create_with_bool() {
+//        global $database;
+//        // Don't forget your SQL syntax and good habits:
+//        // - INSERT INTO table (key, key) VALUES ('value', 'value')
+//        // - single-quotes around all values
+//        // - escape all values to prevent SQL injection
+//
+//        $attributes = $this->get_sanitized_attributes();
+//
+//        $query = "INSERT INTO " . self::$table_name . " (";
+//        $query .= join(", ", array_keys($attributes));
+//        $query .= ") VALUES ('";
+//        $query .= join("', '", array_values($attributes));
+//        $query .= "')";
+//
+//        $query_result = $database->get_result_from_query($query);
+//
+//        // TODO: DEBUG: method create_with_bool().
+//        MyDebugMessenger::add_debug_message("QUERY {$query}.");
+//
+//        if ($query_result) {
+//            $this->id = $database->get_last_inserted_id();
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     public static function delete($id = 0) {
         global $database;

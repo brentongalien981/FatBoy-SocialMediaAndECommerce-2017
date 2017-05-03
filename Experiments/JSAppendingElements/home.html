@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <table id="t">
+            <tr>
+                <td>1A</td>
+                <td>1B</td>
+            </tr>
+            <tr>
+                <td>2A</td>
+                <td>2B</td>
+            </tr>
+
+            <tr>
+                <td>3A</td>
+                <td>3B</td>
+            </tr>
+        </table>
+
+        <button id="b">button</button>
+    </body>
+    <style>
+        table, td {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        document.getElementById("b").onclick = function () {
+            window.alert("puta bords");
+//
+//
+//            var new_tr = document.createElement("tr");
+//
+//            var new_td = document.createElement("td");
+//
+//            var text_node = document.createTextNode("Te ni shita chizuwa furukunatteku bakari.");  // Create a text node
+//            new_td.appendChild(text_node);
+//
+//            new_tr.appendChild(new_td);
+//
+//            var parent_table = document.getElementById("t");
+//
+//            parent_table.insertBefore(new_tr, parent_table.childNodes[3]);
+
+
+
+            // Get a reference to the table
+            var tableRef = document.getElementById("t");
+
+            // Insert a row in the table at row index 0
+            var newRow = tableRef.insertRow(2);
+
+            // Insert a cell in the row at index 0
+            var newCell = newRow.insertCell(0);
+            newCell.setAttribute("colspan", "2");
+//            var newCell2 = newRow.insertCell(1);
+
+            // Append a text node to the cell
+            var newText = document.createTextNode('New  rows lksdjfllkj sdf');
+//            var newText2 = document.createTextNode('New  row');
+            newCell.appendChild(newText);
+//            newCell2.appendChild(newText2);
+        };
+    </script>
+</html>

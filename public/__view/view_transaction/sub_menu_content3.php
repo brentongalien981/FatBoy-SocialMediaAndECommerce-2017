@@ -2,7 +2,7 @@
 // TODO: SECTION: Imports
 ?>
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_address.php");    ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_address.php");     ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
 
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
@@ -59,10 +59,17 @@ if (isset($_GET["payment_result"])) {
     // For payment_result=1.
     else if ($_GET["payment_result"] == 1) {
         MyDebugMessenger::add_debug_message("Your payment was a success. Thank you!");
-        
+
         //
         MyDebugMessenger::add_debug_message("Your PayPal Transaction Id is: {$session->paypal_transaction_id}.");
-        
+
+
+
+        // Successful payment result.
+        // Create an Invoice/Transaction record to db.
+        require_once(PUBLIC_PATH . "/__controller/controller_invoice.php");
+
+        on_successful_payment_result();
     }
 }
 ?>

@@ -634,8 +634,9 @@ function get_shipping_parcel_api_obj() {
 
 
 
-<!--Meat-->
+
 <?php
+// TODO: SECTION: Meat.
 // TODO: DONE: $_POST["set_shipping"].
 if (isset($_POST["set_shipping"])) {
     // TODO: LOG

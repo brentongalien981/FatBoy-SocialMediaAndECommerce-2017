@@ -61,16 +61,142 @@ function generate_invoice() {
     global $database;
     while ($row = $database->fetch_array($record_results)) {
 //        MyDebugMessenger::add_debug_message("InvoiceItem.id: {$row['id']}");
-     
         //
         $invoice_item_id = $row['id'];
         // Status Code for "payment being processed".
-        $invoice_item_status_id = 1;     
-        
-        
+        $invoice_item_status_id = 1;
+
+
         // Create InvoiceItemStatusRecord.
         create_invoice_item_status_record($invoice_item_id, $invoice_item_status_id);
     }
+}
+
+function on_successful_payment_result() {
+    generate_invoice();
+
+    // Update the quantities of the store items sold.
+    update_stock_quantity();
+
+
+    // Set cart to complete.
+    finalize_cart();
+}
+
+function finalize_cart() {
+    // TODO: function finalize_cart().
+
+    MyDebugMessenger::add_debug_message("Inside the method finalize_cart().");
+}
+
+function update_stock_quantity() {
+    // TODO: function update_stock_quantity().
+
+    MyDebugMessenger::add_debug_message("Inside the method update_stock_quantity().");
+}
+
+function show_shopping_history_table_header() {
+    echo "<table id='shopping_history_table'>";
+    echo "<thead>";
+    echo "<td>";
+    echo "InvoiceItems";
+    echo "</td>";
+    
+    echo "<td>";
+    echo "InvoiceId";
+    echo "</td>";
+
+//    echo "<td>";
+//    echo "ItemName";
+//    echo "</td>";
+
+    echo "<td>";
+    echo "Seller";
+    echo "</td>";
+
+    echo "<td>";
+    echo "Ship-from Address";
+    echo "</td>";
+
+    echo "<td>";
+    echo "Ship-to Address";
+    echo "</td>";
+    echo "</thead>";
+}
+
+function close_shopping_history_table_element() {
+    echo "</table>";
+}
+
+function show_shopping_history() {
+    //
+    show_shopping_history_table_header();
+
+    //
+    show_shopping_history_items();
+
+    //
+    close_shopping_history_table_element();
+}
+
+function get_all_user_shopping_invoices() {
+    global $session;
+    // TODO: REMINDER: Complete the shopping history address details.
+    $query = "SELECT Invoice.id, Invoice.seller_user_id, Invoice.buyer_user_id, ";
+    $query .= "Invoice.ship_from_address_id, Invoice.ship_to_address_id, Users.user_name, ";
+    $query .= "s.street1 AS seller_street1, b.street1 AS buyer_street1 ";
+    $query .= "FROM Invoice ";
+    $query .= "INNER JOIN Users ON Invoice.seller_user_id = Users.user_id ";
+    $query .= "INNER JOIN Address s ON Invoice.ship_from_address_id = s.id ";
+    $query .= "INNER JOIN Address b ON Invoice.ship_to_address_id = b.id ";
+    $query .= "WHERE buyer_user_id = {$session->actual_user_id}";
+    // TODO: REMINDER: Also, order the query by date by joining it with an invoice item for the date OF PURCHASE.
+
+    $record_results = Invoice::read_by_query($query);
+    return $record_results;
+}
+
+function show_shopping_history_items() {
+    //
+    $record_results = get_all_user_shopping_invoices();
+
+    //
+    global $database;
+
+    while ($row = $database->fetch_array($record_results)) {
+        echo "<tr class='shopping_history_details' id='tr_{$row['id']}'>";
+        
+        echo "<td>";
+        echo "<button id='{$row['id']}' class='button_show_details' onclick='show_details(this)'>show</button>";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['id']}";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['user_name']}";
+        echo "</td>";
+
+//        echo "<td>";
+//        echo "{$row['buyer_user_id']}";
+//        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['seller_street1']}";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['buyer_street1']}";
+        echo "</td>";
+
+        echo "</tr>";
+    }
+    echo "<tr id='tr_puta'>";
+    echo "<td colspan='5'>";
+    echo "ok ok ok";
+    echo "</td>";
+    echo "</tr>";
 }
 
 function create_invoice_item_status_record($invoice_item_id, $invoice_item_status_id) {
@@ -78,23 +204,21 @@ function create_invoice_item_status_record($invoice_item_id, $invoice_item_statu
 //    $new_invoice_item_status_record_obj->id = null;
 //    $new_invoice_item_status_record_obj->invoice_item_id = $invoice_item_id;
 //    $new_invoice_item_status_record_obj->invoice_item_status_id = $invoice_item_status_id;
-    
-//    $now = date("Y-m-d H:i:s"); 
+//    $now = date("Y-m-d H:i:s");
 //    $new_invoice_item_status_record_obj->status_start_date = $now;
 //    $is_creation_ok = $new_invoice_item_status_record_obj->create_with_bool();
-    
+
     $query = "INSERT INTO InvoiceItemStatusRecord (invoice_item_id, invoice_item_status_id) ";
     $query .= "VALUES ({$invoice_item_id}, {$invoice_item_status_id})";
-    
+
     $is_creation_ok = InvoiceItemStatusRecord::create_by_query($query);
-    
+
     MyDebugMessenger::add_debug_message("DEBUG: QUERY: {$query}.");
-            
-    
+
+
     if ($is_creation_ok) {
         MyDebugMessenger::add_debug_message("SUCCESS creation of InvoiceItemStatusRecord.");
-    }
-    else {
+    } else {
         MyDebugMessenger::add_debug_message("FAIL creation of InvoiceItemStatusRecord.");
     }
 }
@@ -107,6 +231,10 @@ function create_invoice_record() {
     $an_id = md5(uniqid(rand(), true));
     $new_invoice->id = md5(uniqid(rand(), true));
     $new_invoice->seller_user_id = $session->seller_user_id;
+
+    // Set the invoice ship-from address.
+    $new_invoice->ship_from_address_id = get_seller_ship_from_address_obj()->id;
+
     $new_invoice->buyer_user_id = $session->actual_user_id;
 
     // For the ship-to-address.
@@ -175,7 +303,7 @@ function create_invoice_item_record() {
         if ($is_creation_ok) {
             MyDebugMessenger::add_debug_message("SUCCESS creation of 1 InvoiceItem:");
 
-//            // TODO: DEBUG:
+//            // TODO: LOG:
 //            MyDebugMessenger::add_debug_message("id: {$new_invoice_item_obj->id}");
 //            MyDebugMessenger::add_debug_message("invoice_id: {$new_invoice_item_obj->invoice_id}");
 //            MyDebugMessenger::add_debug_message("store_item_id: {$new_invoice_item_obj->store_item_id}");

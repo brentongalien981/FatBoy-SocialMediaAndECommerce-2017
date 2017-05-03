@@ -169,11 +169,12 @@ if ($can_now_pay) {
     }
     
     
-    // Successful payment result.
-    // Create an Invoice/Transaction record to db.
-    require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
-    
-    generate_invoice();
+//    // Move this part to the controller.
+//    // Successful payment result.
+//    // Create an Invoice/Transaction record to db.
+//    require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
+//    
+//    generate_invoice();
     
     
     redirect_to(LOCAL . "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_result=1");

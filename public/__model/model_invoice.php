@@ -7,10 +7,11 @@ require_once("my_database.php");
 class Invoice {
 
     protected static $table_name = "Invoice";
-    protected static $db_fields = array("id", "seller_user_id", "buyer_user_id", "ship_to_address_id");
+    protected static $db_fields = array("id", "seller_user_id", "buyer_user_id", "ship_from_address_id", "ship_to_address_id");
     public $id;
     public $seller_user_id;
     public $buyer_user_id;
+    public $ship_from_address_id;
     public $ship_to_address_id;
 
     public static function read_by_id($id = 0) {
