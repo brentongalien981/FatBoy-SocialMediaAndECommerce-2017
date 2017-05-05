@@ -82,9 +82,7 @@ MyDebugMessenger::clear_debug_message();
 <!--Styles-->
 <!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />-->
 <style>   
-    main {
-        width: 75%;
-    }
+
 </style>
 
 

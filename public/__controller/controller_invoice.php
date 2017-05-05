@@ -101,7 +101,7 @@ function show_shopping_history_table_header() {
     echo "<td>";
     echo "InvoiceItems";
     echo "</td>";
-    
+
     echo "<td>";
     echo "InvoiceId";
     echo "</td>";
@@ -124,8 +124,53 @@ function show_shopping_history_table_header() {
     echo "</thead>";
 }
 
+function show_sales_history_table_header() {
+    echo "<table id='sales_history_table'>";
+    echo "<thead>";
+    echo "<td>";
+    echo "InvoiceItems";
+    echo "</td>";
+
+    echo "<td>";
+    echo "InvoiceId";
+    echo "</td>";
+
+//    echo "<td>";
+//    echo "ItemName";
+//    echo "</td>";
+
+    echo "<td>";
+    echo "Buyer";
+    echo "</td>";
+
+    echo "<td>";
+    echo "Ship-from Address";
+    echo "</td>";
+
+    echo "<td>";
+    echo "Ship-to Address";
+    echo "</td>";
+    echo "</thead>";
+}
+
 function close_shopping_history_table_element() {
     echo "</table>";
+}
+
+function close_sales_history_table_element() {
+    echo "</table>";
+}
+
+function show_sales_history() {
+//    echo "METHOD: show_sales_history().";
+    //
+    show_sales_history_table_header();
+    
+    //
+    show_sales_history_items();    
+
+    //
+    close_sales_history_table_element();
 }
 
 function show_shopping_history() {
@@ -156,6 +201,61 @@ function get_all_user_shopping_invoices() {
     return $record_results;
 }
 
+function get_all_user_sales_invoices() {
+    global $session;
+    // TODO: REMINDER: Complete the sales history address details.
+    $query = "SELECT Invoice.id, Invoice.seller_user_id, Invoice.buyer_user_id, ";
+    $query .= "Invoice.ship_from_address_id, Invoice.ship_to_address_id, Users.user_name, ";
+    $query .= "s.street1 AS seller_street1, b.street1 AS buyer_street1 ";
+    $query .= "FROM Invoice ";
+    $query .= "INNER JOIN Users ON Invoice.buyer_user_id = Users.user_id ";
+    $query .= "INNER JOIN Address s ON Invoice.ship_from_address_id = s.id ";
+    $query .= "INNER JOIN Address b ON Invoice.ship_to_address_id = b.id ";
+    $query .= "WHERE Invoice.seller_user_id = {$session->actual_user_id}";
+    // TODO: REMINDER: Also, order the query by date by joining it with an invoice item for the date OF PURCHASE.
+
+    $record_results = Invoice::read_by_query($query);
+    return $record_results;
+}
+
+function show_sales_history_items() {
+    //
+    $record_results = get_all_user_sales_invoices();
+    
+    //
+    global $database;
+
+    while ($row = $database->fetch_array($record_results)) {
+        echo "<tr class='sales_history_details' id='tr_{$row['id']}'>";
+
+        echo "<td>";
+        echo "<button id='{$row['id']}' class='button_show_details' onclick='show_details(this)'>show</button>";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['id']}";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['user_name']}";
+        echo "</td>";
+
+//        echo "<td>";
+//        echo "{$row['buyer_user_id']}";
+//        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['seller_street1']}";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['buyer_street1']}";
+        echo "</td>";
+
+        echo "</tr>";
+    }    
+}
+
 function show_shopping_history_items() {
     //
     $record_results = get_all_user_shopping_invoices();
@@ -165,7 +265,7 @@ function show_shopping_history_items() {
 
     while ($row = $database->fetch_array($record_results)) {
         echo "<tr class='shopping_history_details' id='tr_{$row['id']}'>";
-        
+
         echo "<td>";
         echo "<button id='{$row['id']}' class='button_show_details' onclick='show_details(this)'>show</button>";
         echo "</td>";
@@ -192,11 +292,11 @@ function show_shopping_history_items() {
 
         echo "</tr>";
     }
-    echo "<tr id='tr_puta'>";
-    echo "<td colspan='5'>";
-    echo "ok ok ok";
-    echo "</td>";
-    echo "</tr>";
+//    echo "<tr id='tr_puta'>";
+//    echo "<td colspan='5'>";
+//    echo "ok ok ok";
+//    echo "</td>";
+//    echo "</tr>";
 }
 
 function create_invoice_item_status_record($invoice_item_id, $invoice_item_status_id) {

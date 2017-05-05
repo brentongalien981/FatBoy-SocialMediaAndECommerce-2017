@@ -35,7 +35,6 @@ if (!$session->is_logged_in()) {
 <a href="index.php?store_content_page=1">MyStore</a>
 <a href="index.php?store_content_page=2">Add Item</a>
 <a href="index.php?store_content_page=3">Edit Item</a>
-<a href="#">MySales</a>
 <a href="#">Customer's Refund Requests</a>
 </nav>
 

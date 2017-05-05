@@ -2,14 +2,14 @@ function show_details_row(xhr, this_button) {
 
 
     // Get a reference to the table
-    var table_ref = document.getElementById("shopping_history_table");
+    var table_ref = document.getElementById("sales_history_table");
 
     var id_of_selected_tr = "tr_" + this_button.id;
 
     var new_row;
 
-    for (var i = 0; i < document.getElementsByClassName("shopping_history_details").length; i++) {
-        var current_tr = document.getElementsByClassName("shopping_history_details")[i];
+    for (var i = 0; i < document.getElementsByClassName("sales_history_details").length; i++) {
+        var current_tr = document.getElementsByClassName("sales_history_details")[i];
 
 
 
@@ -19,7 +19,7 @@ function show_details_row(xhr, this_button) {
             new_row = table_ref.insertRow(i + 2);
 
             //
-            new_row.className = "shopping_history_details";
+            new_row.className = "sales_history_details";
 
             //
             new_row.id = "tr_details_" + this_button.id;
@@ -43,29 +43,28 @@ function show_details_row(xhr, this_button) {
 }
 
 function remove_details_row(row_id) {
-        // Get a reference to the table
-    var table_ref = document.getElementById("shopping_history_table");
-    
-    
-    for (var i = 0; i < document.getElementsByClassName("shopping_history_details").length; i++) {
-        var current_tr = document.getElementsByClassName("shopping_history_details")[i];
-        
+    // Get a reference to the table
+    var table_ref = document.getElementById("sales_history_table");
+
+
+    for (var i = 0; i < document.getElementsByClassName("sales_history_details").length; i++) {
+        var current_tr = document.getElementsByClassName("sales_history_details")[i];
+
         if (current_tr.id == row_id) {
 //            table_ref.removeChild(table_ref.childNodes[i + 1]);
             table_ref.deleteRow(i + 1);
-            
+
             break;
         }
 
-    }    
+    }
 }
 
 function show_details(this_button) {
 
     var xhr = new XMLHttpRequest();
 
-//    var url = "http://localhost/myPersonalProjects/FatBoy/public/__view/view_transaction/php_for_ajax_responses/shopping_history_details.php";
-    var url = "php_for_ajax_responses/shopping_history_details.php?invoice_id=" + this_button.id;
+    var url = "php_for_ajax_responses/sales_history_details.php?invoice_id=" + this_button.id;
     xhr.open('GET', url, true);
 
     xhr.onreadystatechange = function () {
@@ -81,7 +80,7 @@ function show_details(this_button) {
             else {
                 var row_id = "tr_details_" + this_button.id;
                 remove_details_row(row_id);
-                
+
                 this_button.innerHTML = "show";
             }
         }
@@ -91,11 +90,35 @@ function show_details(this_button) {
 
 
 
+function update_status(the_select_element, old_status_id, selected_status_id, invoice_item_id) {
+    var is_update_sure = confirm("Are you sure about the\nstatus update of the item?");
 
-//var button_show_details_arr = document.getElementsByClassName("button_show_details");
-//
-//for (var i = 0; i < button_show_details_arr.length; i++) {
-//    var button = button_show_details_arr[i];
-//    button.addEventListener("click", showDetails(this.id));
-//}
+
+    if (is_update_sure) {
+        var xhr = new XMLHttpRequest();
+
+        var url = "php_for_ajax_responses/invoice_item_status_update.php";
+        xhr.open('POST', url, true);
+        // You need this for POST requests.
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            console.log('readyState: ' + xhr.readyState);
+            if (xhr.readyState == 2) {
+//            target.innerHTML = 'Loading...';
+            }
+            if (xhr.readyState == 4 && xhr.status == 200) {
+//            window.alert(xhr.responseText);
+                document.getElementById("for_debug").innerHTML = "FOR DEBUG: " + xhr.responseText;
+            }
+        }
+
+        var post_key_value_pairs = "selected_status_id=" + selected_status_id + "&invoice_item_id=" + invoice_item_id;
+        xhr.send(post_key_value_pairs);
+    }
+    else {
+        // Set it back to the previous value.        
+        the_select_element.value = old_status_id;
+    }
+}
 

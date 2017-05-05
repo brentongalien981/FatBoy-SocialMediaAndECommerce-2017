@@ -303,6 +303,15 @@
             ?>
             
             
+            
+            <?php
+            // MySales
+            if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+                echo "<a href='" . LOCAL . "/public/__view/view_my_sales'>MySales</a>";
+            }
+            ?>                
+            
+            
             <?php
             // MyRefund
             if ($session->is_logged_in() && $session->is_viewing_own_account()) {

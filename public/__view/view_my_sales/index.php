@@ -33,9 +33,8 @@ if (!$session->is_logged_in() ||
 
 <!--sub-menus nav-->
 <!--I'm currently adding this for my store page.-->
-<a href="index.php?transaction_content_page=1">View my Refunds</a>
-<a href="index.php?transaction_content_page=2">Apply for Refund</a>
-<!--<a>Result</a>-->
+<a href="#">MySales</a>
+<a href="#">MySales Graph</a>
 </nav>
 
 
@@ -82,18 +81,6 @@ MyDebugMessenger::clear_debug_message();
 <!--Styles-->
 <!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css';  ?>" rel="stylesheet" type="text/css" />-->
 <style>   
-    form h6 {
-        margin-bottom: 0px;
-    }
-
-    img {
-        width: 630px;
-        height: 400px;
-    }
-    
-    h6 {
-        font-weight: 200;
-    }
 </style>
 
 
@@ -104,8 +91,10 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / Refund";
+    document.getElementById("title").innerHTML += " / MySales";
 </script>
+
+
 
 
 

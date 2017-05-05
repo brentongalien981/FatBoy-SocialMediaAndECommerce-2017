@@ -57,6 +57,10 @@ show_shopping_history();
 <!--Styles-->
 <!--<link href="<?php // echo LOCAL . '/public/_styles/view_store_cart.css';    ?>" rel="stylesheet" type="text/css" />-->
 <style>  
+    main {
+        width: 75%;
+    }    
+    
     table {
         width: 100%;
         border-collapse: collapse;
