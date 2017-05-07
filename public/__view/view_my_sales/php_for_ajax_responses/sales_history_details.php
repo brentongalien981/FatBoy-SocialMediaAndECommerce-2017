@@ -122,7 +122,7 @@ function show_invoice_items_table_details() {
         foreach ($array_of_invoice_items as $key_of_invoice_item_id => $value) {
             // If it is the record of the invoice item that has the latest
             // status date, then display it. Otherwise, just continue looping
-            // to the next record_result.
+            // with the next record_result.
             if (($key_of_invoice_item_id == $row['id']) &&
                     ($value['status_start_date'] == $row['status_start_date'])) {
                 // Display the invoice item row.

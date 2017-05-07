@@ -299,6 +299,7 @@ function show_shopping_history_items() {
 //    echo "</tr>";
 }
 
+// @return bool.
 function create_invoice_item_status_record($invoice_item_id, $invoice_item_status_id) {
 //    $new_invoice_item_status_record_obj = new InvoiceItemStatusRecord();
 //    $new_invoice_item_status_record_obj->id = null;
@@ -318,8 +319,10 @@ function create_invoice_item_status_record($invoice_item_id, $invoice_item_statu
 
     if ($is_creation_ok) {
         MyDebugMessenger::add_debug_message("SUCCESS creation of InvoiceItemStatusRecord.");
+        return true;
     } else {
         MyDebugMessenger::add_debug_message("FAIL creation of InvoiceItemStatusRecord.");
+        return false;
     }
 }
 

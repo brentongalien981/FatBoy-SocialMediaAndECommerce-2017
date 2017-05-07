@@ -83,6 +83,10 @@ if (isset($_POST["fetch_notification_record"])) {
 //            $notification_script_tag .= "<script>";
 //            $notification_script_tag .= "</script>";
             
+            
+            // TODO: See if you can add your own attribute to an element and access and modify that attribute
+            // through js. Like: <div id='myDiv' myAttribute='myValue'></div>. Then 
+            // document.getElementById("myDiv").setAttribute("myAttribute", "myValue2");
 
             // Then set the notification to is_new = 0.
             set_notification_old($row['id']);
