@@ -432,4 +432,9 @@ function create_invoice_item_record() {
 <?php
 
 // TODO: SECTION: Meat.
+if (isset($_POST["do_refund"])) {
+    require_once(PUBLIC_PATH . "/__controller/controller_my_refund.php");
+    
+    prepare_refund_item($_POST["invoice_item_id"]);
+}
 ?>

@@ -31,6 +31,20 @@ class Invoice {
         return self::instantiate($row);
     }
 
+    public static function create_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($database->get_num_of_affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function update() {
         global $database;
         // Don't forget your SQL syntax and good habits:
@@ -70,8 +84,6 @@ class Invoice {
         // This could be one or many instantiated objects.
         return $objects_array;
     }
-
-
 
     public static function read_by_query($query = "") {
         global $database;

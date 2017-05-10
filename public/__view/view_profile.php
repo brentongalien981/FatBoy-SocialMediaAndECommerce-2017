@@ -160,9 +160,9 @@ echo "</table>";
 
 
 
-<!--Debug/Log-->
+
 <?php
-// TODO: LOG
+// TODO: SECTION: LOG
 MyDebugMessenger::show_debug_message();
 MyDebugMessenger::clear_debug_message();
 ?>
@@ -173,7 +173,9 @@ MyDebugMessenger::clear_debug_message();
 
 
 
-<!--Styles-->
+<?php
+// TODO: SECTION: Styles.
+?>
 <link href="../_styles/view_profile.css" rel="stylesheet" type="text/css" />
 <style>   
     table, td {
@@ -196,7 +198,9 @@ MyDebugMessenger::clear_debug_message();
 
 
 
-<!--Scripts-->
+<?php
+// TODO: SECTION: Scripts.
+?>
 <script src="../_scripts/view_profile.js"></script>
 <script>
     // Edit the page title.
@@ -207,6 +211,8 @@ MyDebugMessenger::clear_debug_message();
 
 
 
-<!--Footer-->
+<?php
+// TODO: SECTION: Footer.
+?>
 <?php // include_layout_template('footer.php');    ?>
 <?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

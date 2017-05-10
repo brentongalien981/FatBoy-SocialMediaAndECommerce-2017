@@ -104,7 +104,7 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / Refund";
+    document.getElementById("title").innerHTML += "FatBoy / ";
 </script>
 
 

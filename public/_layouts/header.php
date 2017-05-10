@@ -1,5 +1,11 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+<?php
+if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php"); 
+}
+?>
+
 
 
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
@@ -8,7 +14,7 @@
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'  ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'     ?>" rel="stylesheet" type="text/css" />-->
         <style>
             body {
                 margin: 0;
@@ -246,6 +252,19 @@
                 padding-left: 35px;
             }
 
+            #span_num_of_notifications {
+                /*margin-left: 10px;*/
+                padding: 1px;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 3px;
+                margin-top: -5px;
+                background-color: #ff471a;
+                border-radius: 5px;
+                color: white;
+                font-size: 75%;
+            }
+
         </style>
     </head>
     <body>
@@ -286,6 +305,24 @@
                 ?>
             </a>
 
+
+            <?php
+            // Notifications.
+            if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+                echo "<a href='" . LOCAL . "/public/__view/view_notifications.php'>Notifications";
+
+                if ($session->num_of_notifications > 0) {
+                    echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
+//                    echo "<span id='span_num_of_notifications'>5</span>";
+                }
+                else {
+                   echo "<span id='span_num_of_notifications' style='display: none;'></span>"; 
+                }
+
+                echo "</a>";
+            }
+            ?>            
+
             <a href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">Profile</a>
 
             <a href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">Friends</a>
@@ -301,26 +338,26 @@
                 echo "<a href='" . LOCAL . "/public/__view/view_store_cart'>MyCart</a>";
             }
             ?>
-            
-            
-            
+
+
+
             <?php
             // MySales
             if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 echo "<a href='" . LOCAL . "/public/__view/view_my_sales'>MySales</a>";
             }
             ?>                
-            
-            
+
+
             <?php
             // MyRefund
             if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 echo "<a href='" . LOCAL . "/public/__view/view_refund'>MyRefund</a>";
             }
             ?>            
-            
 
-            
+
+
             <?php
             // Sign-up
             if (!$session->is_logged_in()) {

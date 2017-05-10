@@ -72,10 +72,16 @@ function set_latest_status_date_for_invoice_items($array_of_invoice_items) {
 }
 
 function show_completely_presented_status_options($actual_status_name) {
+    // These are the only invoice item status codes/ids
+    // that the seller can update purchased items to.
+    // 1, 3, 4, 5, 8.
+    
     //
-    $query = "SELECT * FROM InvoiceItemStatus";
+    $query = "SELECT * FROM InvoiceItemStatus ";
+    $query .= "WHERE id IN (1, 3, 4, 5, 8)";
     
     $record_results = InvoiceItem::read_by_query($query);
+    
     
     global $database;
     while ($row = $database->fetch_array($record_results)) {

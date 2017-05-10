@@ -8,6 +8,8 @@
 <?php require_once(PUBLIC_PATH . "/__model/model_invoice_item.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
 
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+
 
 
 
@@ -109,7 +111,7 @@ function show_invoice_items_table_details() {
             if (($key_of_invoice_item_id == $row['id']) &&
                     ($value['status_start_date'] == $row['status_start_date'])) {
                 // Display the invoice item row.
-                echo "<tr>";
+                echo "<tr id='invoice_item_id_tr_{$row['id']}'>";
 
                 echo "<td>";
                 echo "{$row['id']}";
@@ -154,7 +156,8 @@ function show_invoice_items_table_details() {
                 echo "<td>";
                 $code_status_for_delivered_item = 5;
                 if ($row['invoice_item_status_id'] == $code_status_for_delivered_item) {
-                    echo "<button>ask for refund</button>";
+//                    echo "<button onclick='do_refund({$row['id']})'>ask for refund</button>";
+                    show_completely_presented_refund_form($row['id']);
                 }
                 echo "</td>";                
                 
@@ -165,21 +168,13 @@ function show_invoice_items_table_details() {
             }
         }
     }
+}
 
-
-
-//    // TODO: DEBUG
-//    echo "<tr>";
-//    echo "<td colspan='7'>";
-//    echo "DEBUG: array_of_invoice_items:<br>";
-////    echo "<pre>";
-//    foreach ($array_of_invoice_items as $key => $value) {
-//        echo "{$key}: {$value['status_start_date']}<br>";
-//    }
-////    print_r($array_of_invoice_items);
-////    echo "</pre>";
-//    echo "</td>";
-//    echo "</tr>";
+function show_completely_presented_refund_form($invoice_item_id) {
+    echo "<form action='" . LOCAL . "/public/__controller/controller_invoice.php' method='post'>";
+    echo "<input type='hidden' name='invoice_item_id' value='{$invoice_item_id}'>";
+    echo "<input type='submit' name='do_refund' value='ask for refund'>";
+    echo "</form>";
 }
 
 function show_invoice_items_table_header() {

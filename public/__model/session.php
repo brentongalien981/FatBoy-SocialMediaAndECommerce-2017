@@ -40,9 +40,13 @@ class Session {
     public $paypal_transaction_id;
     //
     private $can_now_checkout;
-    
     // Invoice.
     public $invoice_id;
+    // Notifications.
+    public $num_of_notifications;
+    // Refund.
+    public $refund_invoice_item_id;
+    public $refund_item_quantity;
 
 //    public $message;
 
@@ -76,9 +80,17 @@ class Session {
     public function set_can_now_checkout($what) {
         $this->can_now_checkout = $_SESSION["can_now_checkout"] = $what;
     }
-    
+
     public function set_invoice_id($new_invoice_id) {
         $this->invoice_id = $_SESSION["invoice_id"] = $new_invoice_id;
+    }
+
+    public function set_refund_invoice_item_id($id) {
+        $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"] = $id;
+    }
+
+    public function set_refund_item_quantity($quantity) {
+        $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = $quantity;
     }
 
     public function get_can_now_checkout() {
@@ -175,11 +187,24 @@ class Session {
 
             //
             $this->can_now_checkout = $_SESSION["can_now_checkout"] = false;
-            
-            
+
+
             //
             $this->set_invoice_id(null);
+
+
+            //
+            $this->set_num_of_notifications(0);
+
+
+            // Refund.
+            $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"] = null;
+            $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = null;
         }
+    }
+
+    public function set_num_of_notifications($num_of_new_notifications) {
+        $this->num_of_notifications = $_SESSION["num_of_notifications"] = $num_of_new_notifications;
     }
 
     public function logout() {
@@ -206,20 +231,27 @@ class Session {
         unset($_SESSION["ship_to_address_zip"]);
         unset($_SESSION["ship_to_address_country_code"]);
         unset($_SESSION["ship_to_address_phone"]);
-        
+
         // Transaction vars.
         unset($_SESSION["transaction_shipping_charge"]);
         unset($_SESSION["transaction_subtotal"]);
         unset($_SESSION["transaction_sales_tax"]);
         unset($_SESSION["transaction_shipping_fee"]);
-        unset($_SESSION["transaction_total"]);        
-        
+        unset($_SESSION["transaction_total"]);
+
         unset($_SESSION["paypal_transaction_id"]);
 
         unset($_SESSION["invoice_id"]);
-        
-        
-        
+
+        // Refund.
+        unset($_SESSION["refund_invoice_item_id"]);
+        unset($_SESSION["refund_item_quantity"]);
+
+
+
+
+
+
 
 
         unset($this->actual_user_id);
@@ -256,9 +288,14 @@ class Session {
         unset($this->transaction_total);
 
         unset($this->paypal_transaction_id);
-        
-        
+
+
         unset($this->invoice_id);
+
+
+        // Refund.
+        unset($this->refund_invoice_item_id);
+        unset($this->refund_item_quantity);
 
         $this->logged_in = false;
         session_unset();
@@ -326,15 +363,28 @@ class Session {
                 $this->transaction_shipping_fee = $_SESSION["transaction_shipping_fee"];
                 $this->transaction_total = $_SESSION["transaction_total"];
             }
-            
+
             if (isset($_SESSION["paypal_transaction_id"])) {
                 $this->paypal_transaction_id = $_SESSION["paypal_transaction_id"];
             }
-            
-            
+
+
             // For invoice.
             if (isset($_SESSION["invoice_id"])) {
                 $this->set_invoice_id($_SESSION["invoice_id"]);
+            }
+
+
+            // For notifications.
+            if (isset($_SESSION["num_of_notifications"])) {
+                $this->num_of_notifications = $_SESSION["num_of_notifications"];
+            }
+
+
+            // For refunds.
+            if (isset($_SESSION["refund_invoice_item_id"])) {
+                $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"];
+                $this->refund_item_quantity = $_SESSION["refund_item_quantity"];
             }
         } else {
             unset($this->actual_user_id);
@@ -351,6 +401,9 @@ class Session {
             // TODO: REMINDER: Don't forget to unset the transaction vars.
             // TODO: REMINDER: Don't forget to unset the $_SESSION["paypal_transaction_id"].
             unset($this->can_now_checkout);
+
+
+            unset($this->num_of_notifications);
 
 
             $this->logged_in = false;

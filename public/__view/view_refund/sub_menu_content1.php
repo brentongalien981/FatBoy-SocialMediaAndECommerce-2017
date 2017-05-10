@@ -1,8 +1,8 @@
 <!--Imports-->
-<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__controller/controller_my_refund.php"); ?>
 
-<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
@@ -35,6 +35,8 @@ if (!$session->is_logged_in() ||
 <!--Meat-->
 <?php
 echo "<h3>View my Refunds</h3>";
+
+show_my_refund_items();
 ?>
 
 
@@ -60,5 +62,5 @@ echo "<h3>View my Refunds</h3>";
 <!--<script src="../_scripts/view_shipping.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / View my Refunds";
+    document.getElementById("title").innerHTML += "View my Refunds";
 </script>

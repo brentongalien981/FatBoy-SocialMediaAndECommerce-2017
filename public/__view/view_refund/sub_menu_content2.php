@@ -1,8 +1,8 @@
 <!--Imports-->
-<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__controller/controller_my_refund.php"); ?>
 
-<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
@@ -34,23 +34,24 @@ if (!$session->is_logged_in() ||
 
 <!--Meat-->
 <?php
-// TODO: NOW: Form Apply for Refund.
+// TODO: SECTION: Meat.
+$refund_vars_array = get_refund_vars_array();
 ?>
 <br>
-<form id="" action = "<?php // echo LOCAL . '/public/__controller/controller_shipping.php'; ?>" method = "post">
+<form id="" action = "<?php echo LOCAL . '/public/__controller/controller_my_refund.php'; ?>" method = "post">
     <h4>Apply for Refund</h4>
 
-    <h6>Transaction Invoice Id</h6>                
-    <input type="text" name="" value="<?php // echo $session->ship_to_address_street1; ?>">
+    <h6>Invoice Item Id</h6>
+    <h6><?php echo $refund_vars_array['invoice_item_id']; ?></h6>
 
-    <h6>Item Id</h6>
-    <input type="text" name="" value="<?php // echo $session->ship_to_address_street2; ?>">
+    <h6>Invoice Item Id</h6>
+    <input type="text" name="" value="<?php echo $session->refund_invoice_item_id; ?>" disabled="true">
 
     <h6>Quantity</h6>
-    <input type="number" name="" value="<?php // echo $session->ship_to_address_city; ?>">
+    <input type="number" name="" value="<?php echo $session->refund_item_quantity; ?>">
 
     <br><br>
-    <input type="submit" name="" value="apply for refund">
+    <input type="submit" name="apply_for_refund" value="apply for refund">
 </form>
 <br><br><br><br>
 <hr>
