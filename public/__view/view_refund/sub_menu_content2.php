@@ -18,7 +18,7 @@
 // TODO: SECTION: Protected page checking.
 // Make sure the actual user is logged-in.
 if (!$session->is_logged_in() ||
-    !$session->is_viewing_own_account()) {
+        !$session->is_viewing_own_account()) {
     redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
@@ -41,13 +41,22 @@ $refund_vars_array = get_refund_vars_array();
 <form id="" action = "<?php echo LOCAL . '/public/__controller/controller_my_refund.php'; ?>" method = "post">
     <h4>Apply for Refund</h4>
 
-    <h6>Invoice Item Id</h6>
-    <h6><?php echo $refund_vars_array['invoice_item_id']; ?></h6>
+    <h6 class="form_labels">Item Name</h6>
+    <h5 class="values"><?php echo $refund_vars_array['item_name']; ?></h5>
 
-    <h6>Invoice Item Id</h6>
+    <h6 class="form_labels">Invoice #</h6>
+    <h5 class="values"><?php echo $refund_vars_array['invoice_id']; ?></h5>   
+    
+    <h6 class="form_labels">Seller</h6>
+    <h5 class="values"><?php echo $refund_vars_array['seller_user_name']; ?></h5>   
+
+    <h6 class="form_labels">Seller Address</h6>
+    <h5 class="values"><?php echo $refund_vars_array['seller_address']; ?></h5>       
+
+    <h6 class="form_labels">Invoice Item Id</h6>
     <input type="text" name="" value="<?php echo $session->refund_invoice_item_id; ?>" disabled="true">
 
-    <h6>Quantity</h6>
+    <h6 class="form_labels">Quantity</h6>
     <input type="number" name="" value="<?php echo $session->refund_item_quantity; ?>">
 
     <br><br>
@@ -68,6 +77,20 @@ $refund_vars_array = get_refund_vars_array();
 <!--Styles-->
 <!--<link href="../_styles/view_shipping.css" rel="stylesheet" type="text/css" />-->
 <style>  
+    form h6 {
+        margin-bottom: 0px;
+        font-weight: 600;
+    }
+
+    h6 {
+        
+    }
+    h6.form_labels {
+    }
+
+    h5.values {
+        margin-top: 0;
+    }
 </style>
 
 

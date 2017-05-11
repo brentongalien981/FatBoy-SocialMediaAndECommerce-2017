@@ -2,7 +2,7 @@
 
 // A class to help work with Sessions
 // In our case, primarily to manage logging users in and out
-// Keep in mind when working with sessions that it is generally 
+// Keep in mind when working with sessions that it is generally
 // inadvisable to store DB-related objects in sessions
 require_once("model_address.php");
 
@@ -47,6 +47,15 @@ class Session {
     // Refund.
     public $refund_invoice_item_id;
     public $refund_item_quantity;
+    // Ad
+    public $tae;
+    public $ad_name;
+    public $ad_description;
+    public $ad_photo_url_address;
+    public $ad_target_num_airings;
+    public $ad_budget;
+    public $ad_air_time;
+    public $ad_status_id;    
 
 //    public $message;
 
@@ -67,9 +76,9 @@ class Session {
 //            if (isset($this->cart)) {
 //                require_once("model_store_cart.php");
 //                $session_cart = new StoreCart();
-//                
+//
 //                $session_cart->cart_id = $this->
-//                
+//
 //                return $this->cart;
 //            } else {
 //                die("No current cart is available.");
@@ -92,7 +101,46 @@ class Session {
     public function set_refund_item_quantity($quantity) {
         $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = $quantity;
     }
+    
+//    public function set_ad_vars($ad_obj) {
+//        $this->ad_name = $_SESSION["ad_name"] = $ad_obj->ad_name;
+//        $this->ad_description = $_SESSION["ad_description"] = $ad_obj->description;
+//        $this->ad_photo_url_address = $_SESSION["ad_photo_url_address"] = $ad_obj->photo_url_address;
+//        $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"] = $ad_obj->target_num_airings;
+//        $this->ad_budget = $_SESSION["ad_budget"] = $ad_obj->budget;
+//        $this->ad_air_time = $_SESSION["ad_air_time"] = $ad_obj->air_time;
+//        $this->ad_status_id = $_SESSION["ad_status_id"] = $ad_obj->status_id;       
+//    }
+    
+    public function set_ad_name($ad_name) {
+        $this->ad_name = $_SESSION["ad_name"] = $ad_name;
+    }
 
+    public function set_ad_description($ad_description) {
+        $this->ad_description = $_SESSION["ad_description"] = $ad_description;
+    }
+
+    public function set_ad_photo_url_address($ad_photo_url_address) {
+        $this->ad_photo_url_address = $_SESSION["ad_photo_url_address"] = $ad_photo_url_address;
+    }
+
+    public function set_ad_target_num_airings($ad_target_num_airings) {
+        $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"] = $ad_target_num_airings;
+    }
+
+    public function set_ad_budget($ad_budget) {
+        $this->ad_budget = $_SESSION["ad_budget"] = $ad_budget;
+    }
+
+    public function set_ad_air_time($ad_air_time) {
+        $this->ad_air_time = $_SESSION["ad_air_time"] = $ad_air_time;
+    }
+
+    public function set_ad_status_id($ad_status_id) {
+        $this->ad_status_id = $_SESSION["ad_status_id"] = $ad_status_id;
+    }
+
+    
     public function get_can_now_checkout() {
         return $this->can_now_checkout;
     }
@@ -200,6 +248,17 @@ class Session {
             // Refund.
             $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"] = null;
             $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = null;
+
+
+            // Ad.
+            $this->tae = $_SESSION["tae"] = null;
+            $this->ad_name = $_SESSION["ad_name"] = null;
+            $this->ad_description = $_SESSION["ad_description"] = null;
+            $this->ad_photo_url_address = $_SESSION["ad_photo_url_address"] = null;
+            $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"] = null;
+            $this->ad_budget = $_SESSION["ad_budget"] = null;
+            $this->ad_air_time = $_SESSION["ad_air_time"] = null;
+            $this->ad_status_id = $_SESSION["ad_status_id"] = null;       
         }
     }
 
@@ -246,6 +305,18 @@ class Session {
         // Refund.
         unset($_SESSION["refund_invoice_item_id"]);
         unset($_SESSION["refund_item_quantity"]);
+        
+        
+        // Ad.
+        unset($_SESSION["tae"]);  
+        unset($_SESSION["ad_name"]);  
+        unset($_SESSION["ad_description"]);  
+        unset($_SESSION["ad_photo_url_address"]);  
+        unset($_SESSION["ad_target_num_airings"]);  
+        unset($_SESSION["ad_budget"]);  
+        unset($_SESSION["ad_air_time"]);  
+        unset($_SESSION["ad_status_id"]);  
+  
 
 
 
@@ -296,6 +367,23 @@ class Session {
         // Refund.
         unset($this->refund_invoice_item_id);
         unset($this->refund_item_quantity);
+        
+        
+        // Ad.
+        unset($this->tae);
+        unset($this->ad_name);  
+        unset($this->ad_description);  
+        unset($this->ad_photo_url_address);  
+        unset($this->ad_target_num_airings);  
+        unset($this->ad_budget);  
+        unset($this->ad_air_time);  
+        unset($this->ad_status_id);  
+        
+            
+             
+        
+        
+        
 
         $this->logged_in = false;
         session_unset();
@@ -333,7 +421,7 @@ class Session {
             $this->cart_id = $_SESSION["cart_id"];
             $this->seller_user_id = $_SESSION["seller_user_id"];
             $this->buyer_user_id = $_SESSION["buyer_user_id"];
-//            
+//
 //            $this->cart = $_SESSION["cart"];
 //            $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
 //
@@ -386,6 +474,19 @@ class Session {
                 $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"];
                 $this->refund_item_quantity = $_SESSION["refund_item_quantity"];
             }
+
+
+            // Ad.
+            if (isset($_SESSION["ad_name"])) {
+                $this->tae = $_SESSION["tae"];                
+                $this->ad_name = $_SESSION["ad_name"];
+                $this->ad_description = $_SESSION["ad_description"];
+                $this->ad_photo_url_address = $_SESSION["ad_photo_url_address"];
+                $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"];
+                $this->ad_budget = $_SESSION["ad_budget"];
+                $this->ad_air_time = $_SESSION["ad_air_time"];
+                $this->ad_status_id = $_SESSION["ad_status_id"];               
+            }
         } else {
             unset($this->actual_user_id);
             unset($this->actual_user_name);
@@ -404,6 +505,19 @@ class Session {
 
 
             unset($this->num_of_notifications);
+            
+            // Ad
+            unset($this->tae);
+            
+            unset($this->ad_name);
+            unset($this->ad_description);
+            unset($this->ad_photo_url_address);
+            unset($this->ad_target_num_airings);
+            unset($this->ad_budget);
+            unset($this->ad_air_time);
+            unset($this->ad_status_id);
+            
+            
 
 
             $this->logged_in = false;

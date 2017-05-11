@@ -328,6 +328,9 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             <a href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">Friends</a>
 
             <a href="<?php echo LOCAL . '/public/__view/view_my_videos.php'; ?>" class="">MyVideos</a>
+            
+            
+            <a href="<?php echo LOCAL . '/public/__view/view_my_ads'; ?>">MyAds</a>            
 
 
             <a href="<?php echo LOCAL . '/public/__view/view_my_store'; ?>">MyStore</a>

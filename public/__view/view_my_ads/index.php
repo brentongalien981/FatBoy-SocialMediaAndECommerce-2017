@@ -33,8 +33,8 @@ if (!$session->is_logged_in() ||
 
 <!--sub-menus nav-->
 <!--I'm currently adding this for my store page.-->
-<a href="index.php?transaction_content_page=1">View my Refunds</a>
-<a href="index.php?transaction_content_page=2">Apply for Refund</a>
+<a href="index.php?content_page=1">Produce Ad</a>
+<a href="index.php?content_page=2">Ad Market</a>
 <!--<a>Result</a>-->
 </nav>
 
@@ -46,11 +46,11 @@ if (!$session->is_logged_in() ||
 <!--Meat-->
 <?php
 // Decide which main content to display based on the GET param.
-if (isset($_GET["transaction_content_page"])) {
-    $transaction_content_page = $_GET["transaction_content_page"];
+if (isset($_GET["content_page"])) {
+    $content_page = $_GET["content_page"];
 
-    if (($transaction_content_page > 0) && ($transaction_content_page < 4)) {
-        require_once("sub_menu_content{$transaction_content_page}.php");
+    if (($content_page > 0) && ($content_page < 4)) {
+        require_once("sub_menu_content{$content_page}.php");
     } else {
         require_once("sub_menu_content1.php");
     }
@@ -93,7 +93,7 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += "FatBoy / ";
+//    document.getElementById("title").innerHTML += "FatBoy / ";
 </script>
 
 

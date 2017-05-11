@@ -88,30 +88,32 @@ function show_my_refund_items() {
 
 function get_refund_vars_array() {
     //
+    global $session;
     if (isset($session->refund_invoice_item_id)) {
         //
-        $query = "";
+//        $query = "SELECT ri.id AS refund_id, ri.invoice_item_id, ri.quantity AS refund_quantity, ";
+        $query = "SELECT i.id AS invoice_id, ";
+        $query .= "msi.name AS item_name, ";
+        $query .= "ii.price_per_item, ii.quantity AS bought_quantity, ";
+        $query .= "u.user_name AS seller_user_name, ";
+        $query .= "a.street1 AS seller_address, ";
+        $query .= "iisr.invoice_item_status_id, ";
+        $query .= "iis.name AS status_name ";
+//        $query .= "FROM RefundItem ri ";
+        $query .= "FROM InvoiceItem ii ";
+//        $query .= "INNER JOIN InvoiceItem ii ON ri.invoice_item_id = ii.id ";
+        $query .= "INNER JOIN Invoice i ON ii.invoice_id = i.id ";
+        $query .= "INNER JOIN MyStoreItems msi ON ii.store_item_id = msi.id ";
+        $query .= "INNER JOIN Users u ON i.seller_user_id = u.user_id ";
+        $query .= "INNER JOIN Address a ON i.ship_from_address_id = a.id ";
+        $query .= "INNER JOIN InvoiceItemStatusRecord iisr ON ii.id = iisr.invoice_item_id ";
+        $query .= "INNER JOIN InvoiceItemStatus iis ON iisr.invoice_item_status_id = iis.id ";
+//        $query .= "WHERE ri.invoice_item_id = {$session->refund_invoice_item_id} ";
+        $query .= "WHERE ii.id = {$session->refund_invoice_item_id} ";
+        $query .= "AND iisr.status_start_date = (SELECT MAX(iisr_b.status_start_date) FROM InvoiceItemStatusRecord iisr_b WHERE iisr_b.invoice_item_id = {$session->refund_invoice_item_id})";
         
-        /*
-         SELECT ri.id AS refund_id, ri.invoice_item_id, ri.quantity AS refund_quantity,
-i.id AS invoice_id,
-msi.name,
-ii.price_per_item, ii.quantity AS bought_quantity,
-u.user_name AS seller_user_name,
-a.street1 AS seller_address,
-iisr.invoice_item_status_id,
-iis.name
-	FROM RefundItem ri
-    INNER JOIN InvoiceItem ii ON ri.invoice_item_id = ii.id
-    INNER JOIN Invoice i ON ii.invoice_id = i.id
-    INNER JOIN MyStoreItems msi ON ii.store_item_id = msi.id
-    INNER JOIN Users u ON i.seller_user_id = u.user_id
-    INNER JOIN Address a ON i.ship_from_address_id = a.id
-    INNER JOIN InvoiceItemStatusRecord iisr ON ii.id = iisr.invoice_item_id
-    INNER JOIN InvoiceItemStatus iis ON iisr.invoice_item_status_id = iis.id
-    	WHERE ri.invoice_item_id = 44
-        AND iisr.status_start_date = (SELECT MAX(iisrb.status_start_date) FROM InvoiceItemStatusRecord iisrb WHERE iisrb.invoice_item_id = 44)
-         */
+        //
+        $record_result = Invoice::read_by_query($query);
         
         
         //
@@ -119,9 +121,16 @@ iis.name
         
         global $database;
         
-        while ($row = $database->fetch_array()) {
-            
+        while ($row = $database->fetch_array($record_result)) {
+            $refund_vars_array["item_name"] = $row["item_name"];
+            $refund_vars_array["invoice_id"] = $row["invoice_id"];
+            $refund_vars_array["seller_user_name"] = $row["seller_user_name"];
+            $refund_vars_array["seller_address"] = $row["seller_address"];
         }
+        
+        
+        //
+        return $refund_vars_array;
     }
     else {
         MyDebugMessenger::add_debug_message("The invoice item id is not set for refund.");
