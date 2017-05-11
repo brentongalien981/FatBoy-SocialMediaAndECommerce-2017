@@ -35,7 +35,7 @@ if (!$session->is_logged_in() ||
 <!--I'm currently adding this for my store page.-->
 <a href="index.php?content_page=1">Produce Ad</a>
 <a href="index.php?content_page=2">Ad Market</a>
-<!--<a>Result</a>-->
+<a href="index.php?content_page=3">MyHosted Ads</a>
 </nav>
 
 

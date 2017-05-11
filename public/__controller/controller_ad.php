@@ -5,6 +5,7 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_ad.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_user_hosted_ad.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item.php");     ?>
 <?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item_status_record.php");     ?>
 
@@ -124,6 +125,10 @@ function show_table_header() {
     echo "</thead>";
 }
 
+function get_ad_record($ad_id) {
+    return Ad::read_by_id($ad_id);
+}
+
 function show_ad_items() {
     //
     $query = "SELECT * FROM Ad a ";
@@ -190,7 +195,8 @@ function show_ad_items() {
 
         // Form.
         echo "<td>";
-        echo "<form>";
+        echo "<form action='" . LOCAL . "/public/__controller/controller_ad.php' method='post'>";
+        echo "<input type='hidden' name='ad_id' value='{$row['id']}'>";
         echo "<input type='submit' name='host_ad' value='host ad'>";
         echo "</form>";
         echo "</td>";         
@@ -294,6 +300,107 @@ function set_session_ad_vars() {
     // 2 is the AdStatus.id for inactive.
     $session->set_ad_status_id(2);
 }
+
+function is_user_already_hosting_ad($ad_id) {
+    //
+    global $session;
+    
+    $query = "SELECT * FROM UserHostedAd ";
+    $query .= "WHERE user_id = {$session->actual_user_id} ";
+    $query .= "AND ad_id = {$ad_id}";
+    
+    $record_results = UserHostedAd::read_by_query($query);
+    
+    global $database;
+    $num_existing_record = $database->get_num_rows_of_result_set($record_results);
+    
+    if ($num_existing_record > 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function create_user_hosted_ad_record_bruh($ad_id) {
+    global $session;
+    
+    $new_hosted_ad_obj = new UserHostedAd();
+    $new_hosted_ad_obj->id = null;
+    $new_hosted_ad_obj->user_id = $session->actual_user_id;
+    $new_hosted_ad_obj->ad_id = $ad_id;
+    $new_hosted_ad_obj->num_air_hosted = 0; // Default
+    $new_hosted_ad_obj->allotment_percentage = 0.0; // Default
+    $new_hosted_ad_obj->status_id = 1; // Default: 1 for active.
+    
+    $is_creation_ok = $new_hosted_ad_obj->create_with_bool();
+    
+    return $is_creation_ok;
+}
+
+function show_user_hosted_ads() {
+    // 
+    global $session;
+    $query = "SELECT * FROM UserHostedAd uha ";
+    $query .= "INNER JOIN Ad a ON uha.ad_id = a.id ";
+    $query .= "INNER JOIN Users u ON a.producer_user_id = u.user_id ";
+    $query .= "WHERE uha.user_id = {$session->actual_user_id}";
+    
+    $record_results = UserHostedAd::read_by_query($query);
+    
+    global $database;
+    
+    echo "<table>";
+    
+    while ($row = $database->fetch_array($record_results)) {
+        echo "<tr>";
+        
+        echo "<td>";
+        echo "{$row['ad_name']}";
+        echo "</td>";
+
+        echo "<td>";
+        echo "{$row['hosted_date']}";
+        echo "</td>";
+        
+        echo "</tr>";
+    }
+    
+    echo "</table>";
+}
+
+function create_user_hosted_ad_record($ad_id) {
+    // Check if the ad is not yet already being 
+    // hosted by the user.
+    
+    // If
+    if (is_user_already_hosting_ad($ad_id)) {
+        //
+        MyDebugMessenger::add_debug_message("NOTE User is already hosting that ad.");
+        
+        // Redirect to the same page.
+        redirect_to(LOCAL . "/public/__view/view_my_ads/index.php?content_page=2");
+    }
+    else {
+        // Create an actual UserHostedAd record.
+        $is_creation_ok = create_user_hosted_ad_record_bruh($ad_id);
+        
+        //
+        if ($is_creation_ok) {
+            //
+            MyDebugMessenger::add_debug_message("SUCCEESS UserHosted record creation.");
+            
+            // Redirect and highlight the row for that hosted ad table.
+            redirect_to(LOCAL . "/public/__view/view_my_ads/index.php?content_page=3&newly_hosted_ad_id={$ad_id}");            
+        }
+        else {
+            //
+            MyDebugMessenger::add_debug_message("FAIL UserHosted record creation.");
+            //
+            redirect_to(LOCAL . "/public/__view/view_my_ads/index.php?content_page=2");
+        }
+    }    
+}
 ?>
 
 
@@ -343,5 +450,12 @@ if (isset($_POST["produce_ad"])) {
 
         redirect_to(LOCAL . "/public/__view/view_my_ads");
     }
+}
+
+
+
+if (isset($_POST["host_ad"])) {
+    //
+    create_user_hosted_ad_record($_POST["ad_id"]);
 }
 ?>

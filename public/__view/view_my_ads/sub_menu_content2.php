@@ -65,6 +65,11 @@ show_produced_ads();
         margin-bottom: 0px;
         font-weight: 200;
     }
+    
+    div.ad_sample {
+        /*background-color: red;*/
+        padding: 20px;
+    }
 
     iframe {
         width: 640px;
