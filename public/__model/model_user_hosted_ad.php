@@ -45,6 +45,20 @@ class UserHostedAd {
             return false;
         }
     }
+    
+    public static function update_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($database->get_num_of_affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }        
+    }
 
     public function update() {
         global $database;

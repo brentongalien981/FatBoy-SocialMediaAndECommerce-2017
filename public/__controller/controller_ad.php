@@ -72,6 +72,71 @@ function show_produced_ads() {
     show_ad_items();
 }
 
+function show_user_hosted_ads_table_header() {
+    //
+    echo "<table id='table_hosted_ads'>";
+    
+    echo "<thead>";
+    
+    echo "<td>";
+    echo "Producer";
+    echo "</td>";
+    
+    echo "<td>";
+    echo "Ad Title";
+    echo "</td>";  
+    
+    echo "<td>";
+    echo "Budget";
+    echo "</td>";      
+    
+    echo "<td>";
+    echo "Pays";
+    echo "</td>";     
+
+    echo "<td>";
+    echo "Aired by Me";
+    echo "</td>"; 
+    
+    echo "<td>";
+    echo "Aired by Public";
+    echo "</td>"; 
+    
+    echo "<td>";
+    echo "Target";
+    echo "</td>";  
+    
+    echo "<td>";
+    echo "Completion";
+    echo "</td>";  
+
+    echo "<td>";
+    echo "Air Time";
+    echo "</td>";  
+    
+    echo "<td>";
+    echo "Sample";
+    echo "</td>"; 
+    
+    echo "<td>";
+    echo "Hosted Date";
+    echo "</td>";  
+    
+    echo "<td>";
+    echo "Allotment";
+    echo "</td>";          
+    
+    echo "<td>";
+    echo "Allotment Percentage";
+    echo "</td>";      
+    
+//    echo "<td>";
+//    echo "Sample Ad Photo";
+//    echo "</td>";    
+    
+    echo "</thead>";
+}
+
 function show_table_header() {
     //
     echo "<table id='table_ad_market'>";
@@ -339,9 +404,16 @@ function create_user_hosted_ad_record_bruh($ad_id) {
 }
 
 function show_user_hosted_ads() {
+    //
+    show_user_hosted_ads_table_header();
+    
+    
     // 
     global $session;
-    $query = "SELECT * FROM UserHostedAd uha ";
+    $query = "SELECT uha.ad_id, uha.num_air_hosted, uha.allotment_percentage, uha.status_id AS hosting_status_id, uha.hosted_date, ";
+    $query .= "a.ad_name, a.num_aired, a.target_num_airings, a.budget, a.air_time, ";
+    $query .= "u.user_name ";
+    $query .= "FROM UserHostedAd uha ";
     $query .= "INNER JOIN Ad a ON uha.ad_id = a.id ";
     $query .= "INNER JOIN Users u ON a.producer_user_id = u.user_id ";
     $query .= "WHERE uha.user_id = {$session->actual_user_id}";
@@ -350,23 +422,99 @@ function show_user_hosted_ads() {
     
     global $database;
     
-    echo "<table>";
-    
     while ($row = $database->fetch_array($record_results)) {
-        echo "<tr>";
+        echo "<tr id='tr_{$row['ad_id']}' class='hosted_ads_trs'>";
+        
+        echo "<td>";
+        echo "{$row['user_name']}";
+        echo "</td>";        
         
         echo "<td>";
         echo "{$row['ad_name']}";
         echo "</td>";
+        
+        echo "<td>";
+        echo "{$row['budget']}";
+        echo "</td>";    
+        
+        
+        $pays = $row['budget'] / $row['target_num_airings'];
+        $pays *= 100.00;
+        echo "<td>";
+        echo "&cent;{$pays} per view";
+        echo "</td>";      
+        
+        
+        
+        echo "<td>";
+        echo "{$row['num_air_hosted']} times";
+        echo "</td>";  
+        
+        
+        echo "<td>";
+        echo "{$row['num_aired']} times";
+        echo "</td>";   
+        
+        echo "<td>";
+        echo "{$row['target_num_airings']} airings";
+        echo "</td>";         
+        
+        
+        //
+        $completion = $row['num_aired'] / $row['target_num_airings'];
+        $completion *= 100;
+        
+        echo "<td>";
+        echo "{$completion}%";
+        echo "</td>";   
+        
+        echo "<td>";
+        echo "{$row['air_time']} sec";
+        echo "</td>";       
+        
+        echo "<td>";
+        echo "<button id='button_show_ad_{$row['ad_id']}' onclick='show_ad_sample({$row['ad_id']})'>view ad</button>";
+        echo "</td>";         
+        
 
         echo "<td>";
         echo "{$row['hosted_date']}";
         echo "</td>";
         
+        
+        //
+        echo "<td>";
+//        echo "{$row['allotment_percentage']}%";
+        echo "<input type='range' id='allotment_range_{$row['ad_id']}' step='0.01' min='0' max='100' value='{$row['allotment_percentage']}' onchange='update_allotment_via_range({$row['ad_id']}, {$row['allotment_percentage']})'>";
+        echo "</td>";
+        
+        echo "<td>";
+        echo "<input type='number' id='allotment_percentage_{$row['ad_id']}' step='0.01' min='0' max='100' value='{$row['allotment_percentage']}' onchange='update_allotment_via_percentage({$row['ad_id']}, {$row['allotment_percentage']})'>%";
+        echo "</td>";        
+        
         echo "</tr>";
     }
     
     echo "</table>";
+}
+
+function update_allotment_percentage($ad_id, $update_allotment_percentage) {
+    $query = "UPDATE UserHostedAd SET allotment_percentage = {$update_allotment_percentage} ";
+    $query .= "WHERE ad_id = {$ad_id}";
+    
+    $is_update_ok = UserHostedAd::update_by_query($query);
+    
+    if ($is_update_ok) {
+        echo "update is ok";
+    }
+    else {
+        // This should be the only echo value as a responseText for
+        // AJAX so that the html percentage and range will revert back
+        // to it's old value.
+        echo "failed_update_allotment_percentage";
+    }
+    
+    echo "update is ok";
 }
 
 function create_user_hosted_ad_record($ad_id) {
