@@ -91,24 +91,28 @@ echo "</table>";
 // Global variables
     var interval_handle;
     var count = 0;
-    var update_interval = 1000;
+    var update_interval = 30000;
 
     window.onload = function () {
-        interval_handle = setInterval(start_ad_displayer, update_interval);
+        setTimeout(start_ad_displayer, 4000);
+        setTimeout(start_looping_ad, 30000);
     };
+    
+    function start_looping_ad() {
+        interval_handle = setInterval(start_ad_displayer, update_interval);
+    }
 
 
 
-    function start_ad_displayer() {
+    function xxx() {
 
         // For the ad.
         var div_ad = document.getElementsByClassName("ad")[0];
 
         div_ad.style.backgroundColor = "red";
 
-//        div_ad.innerHTML = "<img class='ad' src='<?php // echo LOCAL . '/public/_photos/nike_lebron_witness.jpg'; ?>'>";
+//        div_ad.innerHTML = "<img class='ad' src='<?php // echo LOCAL . '/public/_photos/nike_lebron_witness.jpg';  ?>'>";
 
-        funcer();
     }
 
 
@@ -119,16 +123,13 @@ echo "</table>";
 
 
 
-    function funcer() {
-        //        window.alert("updated");
+    function start_ad_displayer() {
         //
-//        var element_range = document.getElementById("allotment_range_" + ad_id);
-
-        // Also reflect update it to input "allotment_percentage".
-//        var element_percentage = document.getElementById("allotment_percentage_" + ad_id);
-
-
-
+        var ad_element = document.getElementsByClassName("ad")[0];//.innerHTML = xhr.responseText.trim();
+        
+        ad_element.style.display = "none";        
+        
+        
 
         // AJAX
         var xhr = new XMLHttpRequest();
@@ -144,11 +145,13 @@ echo "</table>";
 
                 // If there's a successful response..
                 if (xhr.responseText.trim().length > 0) {
-                    var ad_element = document.getElementsByClassName("ad")[0];//.innerHTML = xhr.responseText.trim();
+
+                    ad_element.style.display = "block";
+
                     ad_element.src = xhr.responseText.trim();
-                    window.alert(xhr.responseText.trim());
+//                    window.alert(xhr.responseText.trim());
                 } else {
-                    
+
                 }
 
             }

@@ -185,9 +185,9 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             main {
-                width: 55%;
+                width: 47%;
                 margin-top: 0;
-                /*margin-left: 20px;*/
+                /*margin-left: 1%;*/
                 padding: 1%;
                 padding-top: 0;
                 padding-left: 35px;
@@ -197,7 +197,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #navSide {
-                width: 15%;
+                width: 12%;
                 height: 250px;
                 padding: 1%;
                 padding-left: 35px;
@@ -208,12 +208,13 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             .ad {
-                width: 350px;
-                height: 216px;
+                width: 400px;
+                height: 247px;
                 margin: 0;
                 padding: 0;
-                background-color: yellowgreen;
+                /*background-color: yellowgreen;*/
                 float: right;
+                display: none;
             }
 
             #navSide a {

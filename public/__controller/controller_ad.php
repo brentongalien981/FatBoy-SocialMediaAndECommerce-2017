@@ -6,8 +6,8 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_ad.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_user_hosted_ad.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item.php");            ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item_status_record.php");            ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item.php");              ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item_status_record.php");              ?>
 
 <?php // require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
 
@@ -26,8 +26,7 @@
 
 // TODO: SECTION: Protected page checking.
 // Make sure the actual user is logged-in.
-if (!$session->is_logged_in() ||
-        !$session->is_viewing_own_account()) {
+if (!$session->is_logged_in()) {
     redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
@@ -87,10 +86,33 @@ function get_sum_airs_of_active_user_hosted_ads($currently_viewed_user_id) {
         break;
     }
 
-    if ($sum_airs_of_active_user_hosted_ads != 0) {
-        return $sum_airs_of_active_user_hosted_ads;
-    } else {
-        return 0;
+    return $sum_airs_of_active_user_hosted_ads;
+}
+
+function get_initial_ad_id_for_airing() {
+    global $session;
+    $query = "SELECT ad_id, photo_url_address ";
+    $query .= "FROM UserHostedAd ";
+    $query .= "INNER JOIN Ad ON UserHostedAd.ad_id = Ad.id ";
+    $query .= "WHERE UserHostedAd.user_id = {$session->currently_viewed_user_id} ";
+    $query .= "AND UserHostedAd.status_id = 1 "; // 1 is active.
+    $query .= "AND Ad.status_id = 1 "; // 1 is active.    
+    $query .= "AND allotment_percentage > 0";
+
+
+    $record_results = UserHostedAd::read_by_query($query);
+
+    global $database;
+    
+    $num_record_results = $database->get_num_rows_of_result_set($record_results);
+    
+    if ($num_record_results == 0) {
+        return -69;
+    }
+
+    while ($row = $database->fetch_array($record_results)) {
+        // 
+        return $row['ad_id'];
     }
 }
 
@@ -99,9 +121,48 @@ function show_ad($currently_viewed_user_id) {
     $sum_airs_of_active_user_hosted_ads = get_sum_airs_of_active_user_hosted_ads($currently_viewed_user_id);
 
     // TODO: REMINDER: If $sum_airs_of_active_user_hosted_ads is 0, just
-    // show the very first that has the highest allotment_percentage..
+    // show any user_hosted_ad that is active host-wise and market-wise, and has
+    // allotment_percentage that is greater than 0.
+    if ($sum_airs_of_active_user_hosted_ads == null) {
+        return;
+    }
+    
     if ($sum_airs_of_active_user_hosted_ads == 0) {
-        echo "DEBUG: Just show the hosted ad that has\n the highest allotment_percentage...";
+//        echo "DEBUG: Just show the hosted ad that has\n the highest allotment_percentage...";
+        $initial_ad_id_for_airing = get_initial_ad_id_for_airing();
+        
+        //
+        if ($initial_ad_id_for_airing == -69) {
+            return;
+        }
+
+        // Increment ad market airing.
+        $is_update_ok = increment_general_num_aired_for_ad($initial_ad_id_for_airing);
+
+        if (!$is_update_ok) {
+            // Error could be query update or num_aired has reached the target limit.
+            // But most likely, it's the target limit.
+            // So just set that user_hosted_ad's allotment_rating to "undef" and
+            // loop back to search for the ad to be shown.
+//            echo "FAIL METHOD increment_general_num_aired_for_ad().";
+            return;
+        }
+
+        //
+        // Increment the num_air_hosted for table UserHostedAd.
+        $is_update_ok = increment_num_aired_for_user_hosted_ad($initial_ad_id_for_airing);
+
+        if ($is_update_ok) {
+            //
+            respond_with_ad_src($initial_ad_id_for_airing);
+        } else {
+//            echo "FAIL METHOD increment_num_aired_for_user_hosted_ad().";
+        }
+
+
+
+        //
+        return;
     }
 
 
@@ -146,10 +207,9 @@ function show_ad($currently_viewed_user_id) {
             // loop back to search for the ad to be shown.
 //            echo "FAIL METHOD increment_general_num_aired_for_ad()";
             $hosted_ads_with_allotment_ratings_arr["{$least_rated_ad_id}"] = "undef";
-            
+
             continue;
-        }
-        else {
+        } else {
             break;
         }
     }
@@ -205,9 +265,11 @@ function increment_general_num_aired_for_ad($least_rated_ad_id) {
 }
 
 function increment_num_aired_for_user_hosted_ad($least_rated_ad_id) {
+    global $session;
     $query = "UPDATE UserHostedAd ";
     $query .= "SET UserHostedAd.num_air_hosted = (UserHostedAd.num_air_hosted + 1) ";
-    $query .= "WHERE ad_id = {$least_rated_ad_id}";
+    $query .= "WHERE ad_id = {$least_rated_ad_id} ";
+    $query .= "AND user_id = {$session->currently_viewed_user_id}";
 
     $is_update_ok = UserHostedAd::update_by_query($query);
 
@@ -340,16 +402,19 @@ function respond_with_ad_src($least_rated_ad_id) {
 
     while ($row = $database->fetch_array($record_result)) {
 
-        // TODO: REMIDNER: For now, show the ad in <img>. Later, change this to <iframe>.
+        // 
         echo "{$row['photo_url_address']}";
     }
 }
 
 function get_hosted_ads_with_allotment_ratings_arr($hosted_ads_with_airing_percentages_arr) {
     global $session;
-    $query = "SELECT * ";
+    $query = "SELECT ad_id, allotment_percentage ";
     $query .= "FROM UserHostedAd ";
-    $query .= "WHERE UserHostedAd.user_id = {$session->currently_viewed_user_id}";
+    $query .= "INNER JOIN Ad ON UserHostedAd.ad_id = Ad.id ";
+    $query .= "WHERE UserHostedAd.user_id = {$session->currently_viewed_user_id} ";
+    $query .= "AND UserHostedAd.status_id = 1 "; // 1 is active.
+    $query .= "AND Ad.status_id = 1"; // 1 is active.
 
     $record_results = UserHostedAd::read_by_query($query);
 
@@ -371,9 +436,12 @@ function get_hosted_ads_with_allotment_ratings_arr($hosted_ads_with_airing_perce
 
 function get_hosted_ads_with_airing_percentages_arr($sum_airs_of_active_user_hosted_ads) {
     global $session;
-    $query = "SELECT * ";
+    $query = "SELECT ad_id,  num_air_hosted ";
     $query .= "FROM UserHostedAd ";
-    $query .= "WHERE UserHostedAd.user_id = {$session->currently_viewed_user_id}";
+    $query .= "INNER JOIN Ad ON UserHostedAd.ad_id = Ad.id ";
+    $query .= "WHERE UserHostedAd.user_id = {$session->currently_viewed_user_id} ";
+    $query .= "AND UserHostedAd.status_id = 1 "; // 1 is active.
+    $query .= "AND Ad.status_id = 1"; // 1 is active.
 
     $record_results = UserHostedAd::read_by_query($query);
 

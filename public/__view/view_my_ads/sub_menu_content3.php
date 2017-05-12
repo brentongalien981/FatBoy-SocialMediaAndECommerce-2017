@@ -54,7 +54,7 @@ show_user_hosted_ads();
 <?php
 if (isset($_GET["newly_hosted_ad_id"])) {
     // TODO: REMINDER: Highlight the fucking row.
-    die("Highlight the fucking row.");
+//    die("Highlight the fucking row.");
 }
 ?>
 
