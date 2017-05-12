@@ -1,6 +1,6 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once("../__model/session.php"); ?>
-<?php require_once("../__model/model_my_videos.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_my_videos.php"); ?>
 
 
 
@@ -124,7 +124,7 @@ function get_completely_presented_user_videos_array() {
     
 
     //
-    require_once("../__model/my_database.php");
+    require_once(PUBLIC_PATH . "/__model/my_database.php");
     global $database;
     
     while ($row = $database->fetch_array($user_videos_records_result_set)) {

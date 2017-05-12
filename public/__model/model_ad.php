@@ -13,7 +13,6 @@ class Ad {
     public $ad_name;
     public $description;
     public $photo_url_address;
-    
     public $num_aired;
     public $target_num_airings;
     public $budget;
@@ -70,6 +69,20 @@ class Ad {
 
         $database->get_result_from_query($query);
         return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }
+
+    public static function update_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($database->get_num_of_affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function read_by_query_and_instantiate($query = "") {

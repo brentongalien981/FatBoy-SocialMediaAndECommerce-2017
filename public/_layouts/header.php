@@ -2,7 +2,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php
 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php"); 
+    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php");
 }
 ?>
 
@@ -14,7 +14,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'     ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'      ?>" rel="stylesheet" type="text/css" />-->
         <style>
             body {
                 margin: 0;
@@ -27,13 +27,15 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             a {
                 text-decoration: none;
             }
+            
+            
 
             a:hover {
                 color: red;
             }
 
             table a {
-                color: orange; 
+                color: orange;
             }
 
             table {
@@ -67,8 +69,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 /*width: 40%;*/
                 background-color: pink;
                 /*float: left;*/
-                display: inline;   
-                font-size: 70%;  
+                display: inline;
+                font-size: 70%;
                 font-weight: 100;
                 color: black;
             }
@@ -79,11 +81,11 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #divWebsite {
                 width: 30%;
-                /*background-color: yellow;*/  
+                /*background-color: yellow;*/
                 float: right;
                 margin-top: -25px;
                 /*clear: none;*/
-                /*display: inline;*/    
+                /*display: inline;*/
             }
 
 
@@ -119,7 +121,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 width: 7%;
                 padding-left: 0;
                 margin-left: 35px;
-                /*background-color: greenyellow;*/    
+                /*background-color: greenyellow;*/
 
                 /*font-weight: 100;*/
             }
@@ -134,7 +136,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #link_actual_user_name {
-                /*font-size: 110%;*/    
+                /*font-size: 110%;*/
                 padding-top: 15px;
                 color: black;
                 font-weight: 300;
@@ -170,7 +172,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 /*background-color: bisque;*/
                 text-align: center;
                 font-size: 80%;
-                font-weight: 100;        
+                font-weight: 100;
             }
 
             footer h6 {
@@ -205,8 +207,17 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 float: left;
             }
 
+            .ad {
+                width: 350px;
+                height: 216px;
+                margin: 0;
+                padding: 0;
+                background-color: yellowgreen;
+                float: right;
+            }
+
             #navSide a {
-                text-decoration: none; 
+                text-decoration: none;
                 margin-bottom: 5px;
                 display: block;
             }
@@ -244,7 +255,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-left: -35px;
                 padding: 0;
                 padding-top: 10px;
-            } 
+            }
 
             #sub_menus_nav a {
                 font-size: 85%;
@@ -314,23 +325,22 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 if ($session->num_of_notifications > 0) {
                     echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
 //                    echo "<span id='span_num_of_notifications'>5</span>";
-                }
-                else {
-                   echo "<span id='span_num_of_notifications' style='display: none;'></span>"; 
+                } else {
+                    echo "<span id='span_num_of_notifications' style='display: none;'></span>";
                 }
 
                 echo "</a>";
             }
-            ?>            
+            ?>
 
             <a href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">Profile</a>
 
             <a href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">Friends</a>
 
-            <a href="<?php echo LOCAL . '/public/__view/view_my_videos.php'; ?>" class="">MyVideos</a>
-            
-            
-            <a href="<?php echo LOCAL . '/public/__view/view_my_ads'; ?>">MyAds</a>            
+            <a href="<?php echo LOCAL . '/public/__view/view_my_videos'; ?>" class="">MyVideos</a>
+
+
+            <a href="<?php echo LOCAL . '/public/__view/view_my_ads'; ?>">MyAds</a>
 
 
             <a href="<?php echo LOCAL . '/public/__view/view_my_store'; ?>">MyStore</a>
@@ -349,7 +359,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 echo "<a href='" . LOCAL . "/public/__view/view_my_sales'>MySales</a>";
             }
-            ?>                
+            ?>
 
 
             <?php
@@ -357,7 +367,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 echo "<a href='" . LOCAL . "/public/__view/view_refund'>MyRefund</a>";
             }
-            ?>            
+            ?>
 
 
 
@@ -368,6 +378,29 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
             ?>
         </nav>
+
+
+
+
+
+
+
+
+
+        <iframe class="ad">
+            ad
+        </iframe>
+
+
+
+
+
+
+
+
+
+
+
         <main id="main">
 
             <!--Sub-menus-->

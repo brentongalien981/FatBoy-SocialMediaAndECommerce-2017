@@ -58,16 +58,6 @@ if (isset($_GET["newly_hosted_ad_id"])) {
 }
 ?>
 
-<!--<table>
-    <tr>
-        <td>
-            <form>
-                <input type="range" min="0" step="0.01" max="100">
-            </form>
-        </td>
-    </tr>
-</table>-->
-
 
 
 
@@ -277,7 +267,7 @@ if (isset($_GET["newly_hosted_ad_id"])) {
                 if (xhr.responseText.trim().length > 0 &&
                     xhr.responseText.trim() != "failed_update_allotment_percentage") {
                 
-                    window.alert("success ajax " + xhr.responseText.trim());
+//                    window.alert("success ajax " + xhr.responseText.trim());
                 }
                 else {
                     // Else it's a failed AJAX request, so just revert to the old value.
@@ -323,7 +313,7 @@ if (isset($_GET["newly_hosted_ad_id"])) {
                 if (xhr.responseText.trim().length > 0 &&
                     xhr.responseText.trim() != "failed_update_allotment_percentage") {
                 
-                    window.alert("success ajax " + xhr.responseText.trim());
+//                    window.alert("success ajax " + xhr.responseText.trim());
                 }
                 else {
                     // Else it's a failed AJAX request, so just revert to the old value.
