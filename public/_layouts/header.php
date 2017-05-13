@@ -208,13 +208,15 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             .ad {
-                width: 400px;
-                height: 247px;
+                width: 350px;
+                height: 220px;
                 margin: 0;
                 padding: 0;
                 /*background-color: yellowgreen;*/
                 float: right;
                 display: none;
+                
+                 
             }
 
             #navSide a {
@@ -388,7 +390,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-        <iframe class="ad">
+        <iframe id="the_ad" class="ad" frameborder="0" allowfullscreen="false" mozallowfullscreen="false" scrolling="no" seamless="">
             ad
         </iframe>
 

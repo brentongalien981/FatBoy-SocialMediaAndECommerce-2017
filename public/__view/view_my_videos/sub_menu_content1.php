@@ -91,13 +91,13 @@ echo "</table>";
 // Global variables
     var interval_handle;
     var count = 0;
-    var update_interval = 30000;
+    var update_interval = 50000;
 
     window.onload = function () {
-        setTimeout(start_ad_displayer, 4000);
-        setTimeout(start_looping_ad, 30000);
+        setTimeout(start_ad_displayer, 1000);
+        setTimeout(start_looping_ad, 1000);
     };
-    
+
     function start_looping_ad() {
         interval_handle = setInterval(start_ad_displayer, update_interval);
     }
@@ -111,7 +111,7 @@ echo "</table>";
 
         div_ad.style.backgroundColor = "red";
 
-//        div_ad.innerHTML = "<img class='ad' src='<?php // echo LOCAL . '/public/_photos/nike_lebron_witness.jpg';  ?>'>";
+//        div_ad.innerHTML = "<img class='ad' src='<?php // echo LOCAL . '/public/_photos/nike_lebron_witness.jpg';   ?>'>";
 
     }
 
@@ -125,11 +125,12 @@ echo "</table>";
 
     function start_ad_displayer() {
         //
-        var ad_element = document.getElementsByClassName("ad")[0];//.innerHTML = xhr.responseText.trim();
-        
-        ad_element.style.display = "none";        
-        
-        
+        var ad_element = document.getElementsByClassName("ad")[0];
+//        var ad_element = iframe.getElementById("the_ad");//.innerHTML = xhr.responseText.trim();
+
+        ad_element.style.display = "none";
+
+
 
         // AJAX
         var xhr = new XMLHttpRequest();
@@ -149,6 +150,13 @@ echo "</table>";
                     ad_element.style.display = "block";
 
                     ad_element.src = xhr.responseText.trim();
+
+
+//                    var the_ad = iframe.getElementById('the_ad').mute();
+//                    ad_element.mute();
+//                    the_ad.mute();
+                    
+                    
 //                    window.alert(xhr.responseText.trim());
                 } else {
 
