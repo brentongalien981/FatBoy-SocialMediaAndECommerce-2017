@@ -51,15 +51,22 @@ $refund_vars_array = get_refund_vars_array();
     <h5 class="values"><?php echo $refund_vars_array['seller_user_name']; ?></h5>   
 
     <h6 class="form_labels">Seller Address</h6>
-    <h5 class="values"><?php echo $refund_vars_array['seller_address']; ?></h5>       
+    <h5 class="values"><?php echo $refund_vars_array['seller_address']; ?></h5>     
+    
+    <h6 class="form_labels">Bought Price per Item in USD</h6>
+    <h5 class="values">$<?php echo $refund_vars_array['price_per_item']; ?></h5> 
+    
+    <h6 class="form_labels">Bought Quantity</h6>
+    <h5 class="values"><?php echo $refund_vars_array['bought_quantity'] . " pcs"; ?></h5>     
 
     <h6 class="form_labels">Invoice Item Id</h6>
     <input type="text" name="" value="<?php echo $session->refund_invoice_item_id; ?>" disabled="true">
 
-    <h6 class="form_labels">Quantity</h6>
-    <input type="number" name="" value="<?php echo $session->refund_item_quantity; ?>">
+    <h6 class="form_labels">Refund Quantity</h6>
+    <input type="number" name="refund_item_quantity" min="1" max="<?php echo $refund_vars_array['bought_quantity']; ?>" value="<?php echo $session->refund_item_quantity; ?>">
 
     <br><br>
+    <input type="hidden" name="bought_quantity" value="<?php echo $refund_vars_array['bought_quantity']; ?>">
     <input type="submit" name="apply_for_refund" value="apply for refund">
 </form>
 <br><br><br><br>

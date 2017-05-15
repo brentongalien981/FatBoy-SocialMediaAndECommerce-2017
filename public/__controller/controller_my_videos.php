@@ -2,6 +2,8 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_my_videos.php"); ?>
 
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+
 
 
 
@@ -34,7 +36,7 @@ if (!MyDebugMessenger::is_initialized()) {
 // Functions.
 function show_add_new_video_form() {
     $form = "<h4>Add a New Video<h4>";
-    $form .= "<form action='../__controller/controller_my_videos.php' method='post'>";
+    $form .= "<form action='" . LOCAL . "/public/__controller/controller_my_videos.php' method='post'>";
     $form .= "<h6>Video Title</h6>";
     $form .= "<input type='text' name='video_title'/>";
     $form .= "<h6>Embedded Code</h6>";
@@ -131,7 +133,7 @@ function get_completely_presented_user_videos_array() {
         //
         $completely_presented_user_video = "<tr>";
             $completely_presented_user_video .= "<td>";
-                $completely_presented_user_video .= "<div>";
+                $completely_presented_user_video .= "<div class='timeline_iframe_video_div'>";
                     $completely_presented_user_video .= "<h4>{$row['title']}</h4>";
                     $completely_presented_user_video .= "{$row['embed_code']}<br>";
                     $completely_presented_user_video .= "<a>lupetness</a>";
@@ -168,6 +170,6 @@ if (isset($_POST["add_video"])) {
 
 
     // 
-    redirect_to("../__view/view_my_videos.php");
+    redirect_to(LOCAL . "/public/__view/view_my_videos");
 }
 ?>

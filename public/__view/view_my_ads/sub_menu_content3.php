@@ -37,7 +37,9 @@ if (!$session->is_logged_in() ||
 <?php
 echo "<h3>MyHosted Ads</h3>";
 
-//
+// TODO: REMINDER: Remember to refine the functionality of the allotment range by having a maximum 
+// of 100% as a sum of all allotments. You know what this is.. It's like setting attributes for
+// MyPlayer on 2K...
 show_user_hosted_ads();
 ?>
 

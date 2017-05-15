@@ -72,6 +72,11 @@ echo "</table>";
     td {
         padding-top: 100px;
     }
+    
+    div.timeline_iframe_video_div iframe {
+        width: 560px;
+        height: 315px;
+    }
 </style>
 
 

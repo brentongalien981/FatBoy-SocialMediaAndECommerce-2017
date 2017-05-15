@@ -109,6 +109,7 @@ if (isset($_POST["notification_name"])) {
     var update_interval = 3000;
 
     window.onload = function () {
+        // TODO: REMINDER: Activiate this later.
 //        interval_handle = setInterval(start_notification_fetcher, update_interval);
     };
 

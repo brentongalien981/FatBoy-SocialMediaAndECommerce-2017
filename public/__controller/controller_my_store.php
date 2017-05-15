@@ -222,47 +222,47 @@ function show_completely_presented_user_store_names() {
     }
 }
 
-function get_completely_presented_user_videos_array() {
-    global $session;
-
-    //
-    $query = "SELECT * FROM MyVideos ";
-    $query .= "WHERE user_id = {$session->currently_viewed_user_id} ";
-    $query .= "ORDER BY id DESC";
-
-
-    //
-    $user_videos_records_result_set = MyVideo::read_by_query($query);
-
-
-    //
-    $completely_presented_user_videos_array = array();
-
-
-    //
-    require_once("../__model/my_database.php");
-    global $database;
-
-    while ($row = $database->fetch_array($user_videos_records_result_set)) {
-        //
-        $completely_presented_user_video = "<tr>";
-        $completely_presented_user_video .= "<td>";
-        $completely_presented_user_video .= "<div>";
-        $completely_presented_user_video .= "<h4>{$row['title']}</h4>";
-        $completely_presented_user_video .= "{$row['embed_code']}<br>";
-        $completely_presented_user_video .= "<a>lupetness</a>";
-        $completely_presented_user_video .= "</div>";
-        $completely_presented_user_video .= "</td>";
-        $completely_presented_user_video .= "</tr>";
-
-        //
-        array_push($completely_presented_user_videos_array, $completely_presented_user_video);
-    }
-
-
-    // 
-    return $completely_presented_user_videos_array;
-}
+//function get_completely_presented_user_videos_array() {
+//    global $session;
+//
+//    //
+//    $query = "SELECT * FROM MyVideos ";
+//    $query .= "WHERE user_id = {$session->currently_viewed_user_id} ";
+//    $query .= "ORDER BY id DESC";
+//
+//
+//    //
+//    $user_videos_records_result_set = MyVideo::read_by_query($query);
+//
+//
+//    //
+//    $completely_presented_user_videos_array = array();
+//
+//
+//    //
+//    require_once("../__model/my_database.php");
+//    global $database;
+//
+//    while ($row = $database->fetch_array($user_videos_records_result_set)) {
+//        //
+//        $completely_presented_user_video = "<tr>";
+//        $completely_presented_user_video .= "<td>";
+//        $completely_presented_user_video .= "<div>";
+//        $completely_presented_user_video .= "<h4>{$row['title']}</h4>";
+//        $completely_presented_user_video .= "{$row['embed_code']}<br>";
+//        $completely_presented_user_video .= "<a>lupetness</a>";
+//        $completely_presented_user_video .= "</div>";
+//        $completely_presented_user_video .= "</td>";
+//        $completely_presented_user_video .= "</tr>";
+//
+//        //
+//        array_push($completely_presented_user_videos_array, $completely_presented_user_video);
+//    }
+//
+//
+//    // 
+//    return $completely_presented_user_videos_array;
+//}
 
 function get_currently_edited_store_item_object() {
     if (isset(MyStoreItems::$currently_edited_store_item_object)) {

@@ -77,8 +77,8 @@ function show_completely_presented_status_options($actual_status_name) {
     // 1, 3, 4, 5, 8.
     
     //
-    $query = "SELECT * FROM InvoiceItemStatus ";
-    $query .= "WHERE id IN (1, 3, 4, 5, 8)";
+    $query = "SELECT * FROM InvoiceItemStatus";
+//    $query .= "WHERE id IN (1, 3, 4, 5, 8)";
     
     $record_results = InvoiceItem::read_by_query($query);
     
@@ -89,6 +89,9 @@ function show_completely_presented_status_options($actual_status_name) {
         
         if ($row['name'] == $actual_status_name) {
             echo " selected";
+        }
+        if ($row['id'] == 6) {
+            echo " disabled";
         }
         
         echo ">{$row['name']}</option>";
