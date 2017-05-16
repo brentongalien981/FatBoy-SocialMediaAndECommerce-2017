@@ -57,7 +57,7 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
 
         
         $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply'>reply</button>";
-        $completely_presented_timeline_notification .= "</div><br><hr>";
+        $completely_presented_timeline_notification .= "</div><br>";
 
         // Put that one specific post to the array of user's posts.
         array_push($completely_presented_timeline_notifications_array, $completely_presented_timeline_notification);
