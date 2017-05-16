@@ -27,6 +27,7 @@ function createForm(parentPostId) {
     replyButton.setAttribute("name", "submit");
     replyButton.setAttribute("value", "submit");
 
+    cancelButton.id = "cancelButton";
     cancelButton.innerHTML = "cancel";
     cancelButton.onclick = function () {
         document.getElementById(parentPostId).removeChild(replyForm);
@@ -41,9 +42,10 @@ function createForm(parentPostId) {
     replyForm.appendChild(parentPostHiddenInput);
     replyForm.appendChild(document.createElement("br"));
     replyForm.appendChild(replyButton);
+    replyForm.appendChild(cancelButton);
 
     document.getElementById(parentPostId).appendChild(replyForm);
-    document.getElementById(parentPostId).appendChild(cancelButton);
+//    document.getElementById(parentPostId).appendChild(cancelButton);
 
 
 }

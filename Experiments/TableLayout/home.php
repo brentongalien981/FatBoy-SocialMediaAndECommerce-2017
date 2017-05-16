@@ -8,7 +8,13 @@
 
     <body>
         <div id="banner">
-
+            <table>
+                <tr>
+                    <td class="header" id="status">Status</td>
+                    <td class="header" id="search">Search</td>
+                    <td class="header" id="site_logo">SiteLogo</td>
+                </tr>
+            </table>
         </div>
 
         <div id="main">
@@ -24,40 +30,40 @@
 
                     <td id="middle">
                         <div class="post">
-                            
+
                         </div>
-                        
+
                         <div class="post">
-                            
+
                         </div>   
-                        
-                       <div class="post">
-                            
-                        </div>
-                        
+
                         <div class="post">
-                            
+
+                        </div>
+
+                        <div class="post">
+
                         </div>                           
                     </td>
-                    
+
                     <td id="right">
                         <div id="ad">
-                            
+
                         </div>
                     </td>
                 </tr>
             </table>
         </div>
-        
+
         <div id="footer">
 
         </div>     
-        
-  
-        
-        
+
+
+
+
         <div id="notification">
-            
+
         </div>
     </body>
 
@@ -130,7 +136,7 @@
             margin-top: 0;
             padding-top: 0;
         }
-        
+
         .post {
             margin: 0;
             padding: 0;
@@ -141,7 +147,7 @@
             margin-bottom: 20px;
             padding-top: 0;
         } 
-        
+
         #notification {
             margin: 0;
             padding: 0;
@@ -153,7 +159,38 @@
             left: 200px;
             top: 0px;
             border-radius: 10px;
-        }        
+        }   
+
+
+
+
+
+        #banner table {
+            border-collapse: collapse;
+            width: 100%;
+            height: 100%;
+        }
+
+        td.header {
+            /*            width: 200px;*/
+            /*height: 50px;*/
+            background-color: red;
+        }
+
+        #status {
+            background-color: blue;
+            width: 20%;
+        }
+
+        #search {
+            background-color: yellow;
+            width: 60%;
+        }
+
+        #site_logo {
+            background-color: green;
+            width: 20%;
+        }
     </style>
 </html>
 

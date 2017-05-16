@@ -45,7 +45,7 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
         $completely_presented_timeline_notification .= "<div id='{$row['id']}' class='message_post'>";
         $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
         $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
-        $completely_presented_timeline_notification .= "<p>" . "{$row['message']}" . "</p>";
+        $completely_presented_timeline_notification .= "<p>" . "{$row['message']}" . "</p><br><hr><br>";
 
 
         // Attach all the replies on this specific post.
@@ -56,7 +56,7 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
         }
 
         
-        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply'>reply</button>";
+        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply'><a href='#'>reply</a></button>";
         $completely_presented_timeline_notification .= "</div><br>";
 
         // Put that one specific post to the array of user's posts.

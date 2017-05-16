@@ -14,7 +14,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'             ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                    ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -25,13 +25,13 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             body {
                 margin: 0;
                 padding: 0;
-                background-color: rgb(245, 245, 245);
+                /*background-color: rgb(150, 150, 150);*/
                 width: 100%;
                 font-family: sans-serif;
                 font-size: 100%;
                 color: gray;
                 background-image: url("_photos/background5.jpg");
-                /*background-repeat:*/ 
+                /*background-repeat:*/
             }
 
 
@@ -84,12 +84,12 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #divStatus {
                 /*width: 40%;*/
-                background-color: pink;
+                /*background-color: pink;*/
                 /*float: left;*/
-                display: inline;
-                font-size: 70%;
-                font-weight: 100;
-                color: white;
+                /*display: inline;*/
+                /*font-size: 70%;*/
+                /*font-weight: 100;*/
+                /*color: white;*/
             }
 
 
@@ -97,11 +97,11 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
             #divWebsite {
-                width: 30%;
+                /*width: 30%;*/
                 /*background-color: yellow;*/
-                float: right;
-                margin-top: -25px;
-                color: white;
+                /*float: right;*/
+                /*margin-top: -25px;*/
+                /*color: white;*/
                 /*clear: none;*/
                 /*display: inline;*/
             }
@@ -109,41 +109,41 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
             #divBanner h4 {
-                width: 40%;
+                /*width: 40%;*/
                 /*text-align: right;*/
-                margin: 0;
-                padding: 0;
+                /*margin: 0;*/
+                /*padding: 0;*/
                 /*padding-top: 15px;*/
                 /*padding-right: 20px;*/
-                font-size: 110%;
-                font-weight: 200;
+                /*font-size: 110%;*/
+                /*font-weight: 200;*/
                 /*background-color: yellowgreen;*/
                 /*float: right;*/
             }
 
             #divStatus h4 {
-                padding-top: 13px;
-                padding-left: 35px;
-                font-size: 90%;
-                background-color: red;
+                /*                padding-top: 13px;
+                                padding-left: 35px;
+                                font-size: 90%;
+                                background-color: red;*/
             }
 
 
 
             #divStatus a {
-                display: block;
+                /*display: block;*/
                 /*padding-top: 5px;*/
                 /*padding-left: 35px;*/
 
                 /*width: fit-content;*/
-                width: 7%;
-                padding-left: 0;
-                margin-left: 40px;
+                /*width: 7%;*/
+                /*padding-left: 0;*/
+                /*margin-left: 40px;*/
                 /*margin-left: 3%;*/
                 /*background-color: greenyellow;*/
 
                 /*font-weight: 100;*/
-                color: white;
+                /*color: white;*/
             }
 
             .user_name {
@@ -169,7 +169,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #divWebsite h4 {
                 /*text-align: right;*/
-                float: right;
+                /*float: right;*/
                 /*background-color: orange;*/
             }
 
@@ -241,7 +241,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-top: 0;
                 padding-top: 15px;
                 padding-bottom: 25px;
-                border-radius: 10px;
+                border-radius: 5px;
 
 
             }
@@ -265,7 +265,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-top: 0;
                 margin-right: 3%;
                 padding-top: 0;
-                border-radius: 10px;
+                border-radius: 5px;
 
 
 
@@ -280,7 +280,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-top: 0;
                 margin-bottom: 20px;
                 padding-top: 0;
-            } 
+            }
 
             #navSide a {
                 /*width: fit-content;*/
@@ -288,7 +288,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-bottom: 5px;
                 display: block;
                 color: black;
-                margin-left: 40px;
+                margin-left: 20px;
                 margin-right: 40px;
                 font-size: 90%;
                 /*background-color: red;*/
@@ -389,7 +389,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #main {
-                margin-top: 25px;
+                margin-top: 35px;
                 /*padding-top: 10px;*/
             }
 
@@ -404,25 +404,45 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-            <div id="divStatus">
-                <?php
-                if ($session->is_logged_in()) {
-                    echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
-                    echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
-                } else {
-                    echo "<a class='user_name'>zZzzZz</a>";
-                    echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
-                }
-                ?>
-            </div>
 
+            <table>
+                <tr>
+                    <td class="header" id="status">
+                        <div id="divStatus">
+                            <?php
+                            if ($session->is_logged_in()) {
+//                                echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
+//                                echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
+                                echo "<a href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>";
+                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
+//                                echo "Hello {$session->actual_user_name}!";
+                                echo "</a>";
+                            } else {
+//                                echo "<a class='user_name'>zZzzZz</a>";
+//                                echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
+                            }
+                            ?>
+                        </div>
+                    </td>
 
+                    <td class="header" id="search">
+                        <div>
+                            <input id="search_input" placeholder="Search...">
+                            <a id="search_a" href="">
+                                <img id="search_img" src="<?php echo LOCAL . '/public/_photos/icon_search.png'; ?>" class="header_icon">
+                            </a>
+                        </div>
+                    </td>
 
+                    <td class="header" id="site_logo">
+                        <h4 id="">FatBoy &reg;</h4>
+                        <!--                        <div id="divWebsite">
+                                                    <h4 id="h4Website">FatBoy &reg;</h4>
+                                                </div>-->
+                    </td>
+                </tr>
+            </table>
 
-
-            <div id="divWebsite">
-                <h4 id="h4Website">FatBoy &reg;</h4>
-            </div>
         </div>
 
 
@@ -523,7 +543,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                             // MyRefund
                             if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 echo "<a href='" . LOCAL . "/public/__view/view_refund'>";
-                                echo "<img src='" . LOCAL . "/public/_photos/icon_refund2.png' class='icon'>";
+                                echo "<img src='" . LOCAL . "/public/_photos/icon_refund.png' class='icon'>";
                                 echo "MyRefund</a>";
                             }
                             ?>
@@ -536,20 +556,20 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 echo "<a href='" . LOCAL . "/public/__view/view_signup.php'>Sign-up</a>";
                             }
                             ?>
-                        </nav>                        
+                        </nav>
                     </td>
 
-                    <td id="middle" class="main">                         
+                    <td id="middle" class="main">
                     </td>
 
                     <td id="right" class="main">
                         <iframe id="the_ad" class="ad" frameborder="0" allowfullscreen="false" mozallowfullscreen="false" scrolling="no" seamless="">
                             ad
-                        </iframe>                        
+                        </iframe>
                     </td>
                 </tr>
             </table>
-        </div>   
+        </div>
 
 
 
@@ -563,14 +583,14 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
         <!--Sub-menus-->
         <!--<nav id="sub_menus_nav">-->
-        
-        
-        
+
+
+
         <style>
             td.main {
                 /*background-color: white;*/
             }
-            
+
             .icon {
                 width: 22px;
                 height: 22px;
@@ -579,7 +599,122 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 /*background-color: yellow;*/
                 margin-bottom: -5px;
             }
-        </style>        
+
+            #divStatus a {
+                /*background-color: red;*/
+                margin-left: 20px;
+
+                /*padding: 5px;*/
+            }
+
+            img.header_icon {
+                width: 30px;
+                height: 30px;
+                background-color: rgb(90, 90, 90);
+                margin-top: 17px;
+                padding: 2px;
+                padding-top: 1px;
+                border-radius: 3px;
+
+                /*padding-top: 20px;*/
+                /*margin-right: 10px;*/
+                /*background-color: yellow;*/
+                /*margin-bottom: -5px;*/
+            }
+
+            img.header_icon:hover {
+                background-color: rgb(200, 200, 200);
+            }
+
+
+
+
+
+            #divBanner table {
+                border-collapse: collapse;
+                width: 100%;
+                height: 100%;
+            }
+
+            td.header {
+                /*            width: 200px;*/
+                /*height: 50px;*/
+                /*background-color: red;*/
+            }
+
+            #status {
+                /*background-color: blue;*/
+                width: 20%;
+            }
+
+            #search {
+                /*background-color: yellow;*/
+                width: 60%;
+            }
+
+            #search div {
+                width: 500px;
+                height: 100%;
+                /*background-color: pink;*/
+                margin: 0;
+                padding: 0;
+                margin-left: auto;
+                margin-right: auto;
+                /*vertical-align: middle;*/
+            }
+
+            #search_input {
+                margin: 0;
+                padding: 0;
+                margin-top: 18px;
+                width: 430px;
+                height: 36px;
+                /*background-color: gray;*/
+                vertical-align: top;
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+                padding-left: 10px;
+                margin-right: -5px;
+            }
+
+            #search_a {
+                /*background-color: green;*/
+                margin-bottom: 0;
+                padding-bottom: 0;
+
+            }
+
+            #search_img {
+                /*background-color: orange;*/
+                background-color: rgb(150, 150, 150);
+                border-top-left-radius: 0px;
+                border-bottom-left-radius: 0px;
+                margin-left: 0;
+                margin-top: 18px;
+                height: 30px;
+                padding: 3px;
+                /*padding-top: 1px;*/
+            }
+            
+                        #search_img:hover {
+                background-color: rgb(200, 200, 200);
+            }
+
+
+
+            #site_logo {
+                /*background-color: green;*/
+                width: 20%;
+                color: white;
+                /*                padding-left: 2%;*/
+            }
+
+            #site_logo h4 {
+                margin-top: 10px;
+                /*background-color: pink;*/
+                margin-left: 30px;
+            }
+        </style>
 
 
 
