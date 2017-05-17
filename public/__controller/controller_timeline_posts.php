@@ -41,11 +41,11 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
     
     while ($row = $database->fetch_array($timeline_notifications_records_result_set)) {
         // TODO: Complete the HTML parts.
-        $completely_presented_timeline_notification = "<br>";
+        $completely_presented_timeline_notification = "<div class='post_background'>";
         $completely_presented_timeline_notification .= "<div id='{$row['id']}' class='message_post'>";
         $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
         $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
-        $completely_presented_timeline_notification .= "<p>" . "{$row['message']}" . "</p><br><hr><br>";
+        $completely_presented_timeline_notification .= "<p>" . "{$row['message']}" . "</p><br>";
 
 
         // Attach all the replies on this specific post.
@@ -56,8 +56,10 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
         }
 
         
-        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply'><a href='#'>reply</a></button>";
-        $completely_presented_timeline_notification .= "</div><br>";
+//        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
+        $completely_presented_timeline_notification .= "</div>";
+        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
+        $completely_presented_timeline_notification .= "</div>";
 
         // Put that one specific post to the array of user's posts.
         array_push($completely_presented_timeline_notifications_array, $completely_presented_timeline_notification);
@@ -66,5 +68,21 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
 
 
     return $completely_presented_timeline_notifications_array;
+}
+?>
+
+
+
+
+
+
+
+
+
+
+<?php
+// TODO: SECTION: Meat.
+if (isset($_POST['submit'])) {
+    
 }
 ?>

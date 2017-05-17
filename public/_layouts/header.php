@@ -2,6 +2,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php
 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    // Start the notification notifier fetcher...
     require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php");
 }
 ?>
@@ -14,7 +15,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                    ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                       ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -27,11 +28,18 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 padding: 0;
                 /*background-color: rgb(150, 150, 150);*/
                 width: 100%;
+
                 font-family: sans-serif;
                 font-size: 100%;
                 color: gray;
                 background-image: url("_photos/background5.jpg");
                 /*background-repeat:*/
+            }
+
+            #divBanner, 
+            #main,
+            footer {
+                min-width: 960px;
             }
 
 
@@ -360,19 +368,37 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #sub_menus_nav {
-                background-color: #EEE4B9;
+                /*margin: 0;*/
+                /*background-color: #EEE4B9;*/
+                /*background-color: blue;*/
                 color: red;
                 width: 100%;
                 height: 30px;
                 /*margin-left: -35px;*/
-                padding: 0;
+                /*padding: 0;*/
                 padding-top: 10px;
+                                border-radius: 5px;
+                background-color: rgba(252, 224, 121, 0.80);
+                color: black;
             }
 
             #sub_menus_nav a {
-                font-size: 85%;
+                font-size: 13px;
                 font-weight: 100;
-                padding-left: 35px;
+                /*padding-left: 35px;*/
+                margin-left: 20px;
+                margin-right: 20px;
+                /*background-color: pink;*/
+                padding: 10px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                border-radius: 3px;
+                color: black;
+            }
+            
+            #sub_menus_nav a:hover {
+                background-color: rgb(100, 100, 100);
+                color: rgba(252, 224, 121, 0.80);
             }
 
             #span_num_of_notifications {
@@ -397,6 +423,42 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 background-color: white;
             }
 
+            #pop_up_for_link_home {
+                margin: 0;
+                padding: 0;
+                width: 100px;
+                height: 80px;
+                background-color: rgba(255, 157, 45, 0.70);
+                /*background-color: pink;*/
+                position: absolute;
+                left: 55px;
+                top: 7px;
+                border-radius: 5px;
+                display: none;
+            }        
+
+            #pop_up_for_link_home a {
+                width: 50px;
+                margin-left: 20px;
+                margin-top: 10px;
+                color: black;
+
+                /*background-color: pink;*/
+                border-radius: 3px;
+                font-size: 12px;
+                font-weight: 100;
+                padding: 3px;
+                display: block;
+            }
+
+            #first_pop_up_link {
+                margin-bottom: -25px;
+            }
+
+            #pop_up_for_link_home a:hover {
+                background-color: white;
+            }
+
         </style>
     </head>
     <body>
@@ -413,17 +475,42 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                             if ($session->is_logged_in()) {
 //                                echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
 //                                echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
-                                echo "<a href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>";
+                                echo "<a id='link_home' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>";
                                 echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
 //                                echo "Hello {$session->actual_user_name}!";
                                 echo "</a>";
                             } else {
 //                                echo "<a class='user_name'>zZzzZz</a>";
 //                                echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
+                                echo "<a id='link_home' href='#'>";
+                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
+                                echo "</a>";
                             }
                             ?>
                         </div>
                     </td>
+
+
+                    <?php
+                    if ($session->is_logged_in()) {
+                        echo "<div id='pop_up_for_link_home'>";
+//                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php>Log-in</a><br>";
+//                        echo "<a href='' class='pop_up_links'>Sign-up</a><br>";
+                        
+                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
+                        echo "</div>";
+                    } else {
+                        echo "<div id='pop_up_for_link_home'>";
+                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a><br>";
+                        echo "<a href='" . LOCAL . "/public/__view/view_signup.php' class='pop_up_links'>Sign-up</a><br>";
+                        echo "</div>";
+                    }
+                    ?>
+                    
+
+
+
+
 
                     <td class="header" id="search">
                         <div>
@@ -550,12 +637,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                            <?php
-                            // Sign-up
-                            if (!$session->is_logged_in()) {
-                                echo "<a href='" . LOCAL . "/public/__view/view_signup.php'>Sign-up</a>";
-                            }
-                            ?>
+
                         </nav>
                     </td>
 
@@ -695,8 +777,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 padding: 3px;
                 /*padding-top: 1px;*/
             }
-            
-                        #search_img:hover {
+
+            #search_img:hover {
                 background-color: rgb(200, 200, 200);
             }
 
@@ -711,10 +793,101 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #site_logo h4 {
                 margin-top: 10px;
+                text-align: right;
                 /*background-color: pink;*/
-                margin-left: 30px;
+                /*margin-left: 30px;*/
+                margin-right: 20px;
             }
+
+
+
+
+
+            main {
+                border-radius: 5px;
+                /*background-color: rgb(220, 220, 220);*/
+                color: black;
+            }
+
+/*            #sub_menus_nav {
+                border-radius: 5px;
+                background-color: rgba(252, 224, 121, 0.80);
+                color: black;
+            }
+
+            #sub_menus_nav a {
+                color: black;
+            }            */
         </style>
+
+
+
+
+
+
+
+
+
+        <?php
+        // TODO: SECTION: Script for popping-in and 
+        // popping out of the sign-in, sign-up links.
+        ?>
+        <script>
+            // Vars.
+            var timeout_handler;
+//            clearTimeout(myVar);
+
+
+            function close_pop_up_in_sec() {
+                document.getElementById("pop_up_for_link_home").style.display = "none";
+//                window.alert("onmouseout");
+            }
+
+            document.getElementById("link_home").onmouseover = function () {
+//                window.alert("howver");
+                clearTimeout(timeout_handler);
+                document.getElementById("pop_up_for_link_home").style.display = "block";
+
+            };
+
+            document.getElementById("link_home").onmouseout = function () {
+                timeout_handler = setTimeout(close_pop_up_in_sec, 1000);
+
+            };
+
+            document.getElementById("pop_up_for_link_home").onmouseover = function () {
+//                window.alert("howver");
+                clearTimeout(timeout_handler);
+                document.getElementById("pop_up_for_link_home").style.display = "block";
+
+            };
+
+
+            document.getElementById("pop_up_for_link_home").onmouseout = function () {
+//                window.alert("howver");
+//                document.getElementById("pop_up_for_link_home").style.display = "block";
+                timeout_handler = setTimeout(close_pop_up_in_sec, 1000);
+
+
+            };
+
+            for (var i = 0; i < 2; i++) {
+                document.getElementsByClassName("pop_up_links")[i].onmouseover = function () {
+                    //                window.alert("howver");
+                    clearTimeout(timeout_handler);
+                    document.getElementById("pop_up_for_link_home").style.display = "block";
+                };
+            }
+
+
+
+            document.getElementById("pop_up_for_link_home").onmouseover = function () {
+//                window.alert("howver");
+                clearTimeout(timeout_handler);
+                document.getElementById("pop_up_for_link_home").style.display = "block";
+//                this.style.display = "block";
+            };
+        </script>
 
 
 

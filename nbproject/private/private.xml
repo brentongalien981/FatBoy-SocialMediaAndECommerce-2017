@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/Experiments/LinkToSectionOfPage/home.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/example_notifier.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/controller_country.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/example_for_notifications.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/controller_timeline_posts.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/Experiments/TableLayout/home.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/index.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/Experiments/TableLayout/sample.html</file>
         </group>
     </open-files>
 </project-private>
