@@ -7,11 +7,11 @@ require_once("my_database.php");
 class TimelinePost {
 
     protected static $table_name = "TimelinePosts";
-    protected static $db_fields = array("id", "owner_user_id", "poster_user_id", "date_posted", "message");
+    protected static $db_fields = array("id", "owner_user_id", "poster_user_id",/*"date_posted",*/ "message");
     public $id;
     public $owner_user_id;
     public $poster_user_id;
-    public $date_posted;
+//    public $date_posted;
     public $message;
 
     public static function read_by_id($id = 0) {
