@@ -1,7 +1,7 @@
 <?php require_once("../_layouts/header.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_notifications.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/session.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_my_store_items.php"); ?>
+<?php // require_once(PUBLIC_PATH . "/__model/session.php");  ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_my_store_items.php");  ?>
 
 <?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
@@ -42,12 +42,13 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php
-// TODO: SECTION: Sub-menus.
-?>
-<a>sub-menu1</a>
-<a>sub-menu2</a>
-</nav>
+<main id="middle_content">
+
+    <!--Sub-menus-->
+    <nav id="sub_menus_nav">
+        <a id="tae" href="#">Sub-menu1</a>
+        <a href="#">Sub-menu2</a>
+    </nav>
 
 
 
@@ -60,10 +61,9 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php
-
+    <?php
 // TODO: SECTION: Functions.
-?>
+    ?>
 
 
 
@@ -76,11 +76,11 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php
+    <?php
 // TODO: SECTION: Meat.
-echo "<h3>Notifications</h3>";
-show_sales_notifications();
-?>
+    echo "<h3>Notifications</h3>";
+    show_sales_notifications();
+    ?>
 
 
 
@@ -91,12 +91,12 @@ show_sales_notifications();
 
 
 
-<?php
+    <?php
 // TODO: SECTION: LOG
-MyDebugMessenger::show_debug_message();
-MyDebugMessenger::clear_debug_message();
-?>
-
+    MyDebugMessenger::show_debug_message();
+    MyDebugMessenger::clear_debug_message();
+    ?>
+</main>
 
 
 
@@ -120,7 +120,24 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_profile.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML = "FatBoy / Notifications";
+    document.getElementById("title").innerHTML = "Notifications / FatBoy";
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<?php
+// TODO: SECTION: This appends the content of the main content to the main placeholder.
+?>
+<script>
+    document.getElementById("middle").appendChild(document.getElementById("middle_content"));
 </script>
 
 

@@ -30,32 +30,45 @@ if (!$session->is_logged_in()) {
 
 
 
-<!--sub-menus nav-->
-<!--I'm currently adding this for my store page.-->
-<a href="index.php?content_page=1">My Videos</a>
-<a href="#">Ad Video</a>
-</nav>
 
 
 
 
 
 
-<!--Meat-->
-<?php
+<main id="middle_content">
+
+
+
+    <!--Sub-menus-->
+    <nav id="sub_menus_nav">
+        <a href="index.php?content_page=1">My Videos</a>
+        <a href="#">Add Video</a>
+    </nav>
+
+
+
+
+
+
+
+
+
+    <!--Meat-->
+    <?php
 // Decide which main content to display based on the GET param.
-if (isset($_GET["content_page"])) {
-    $content_page = $_GET["content_page"];
+    if (isset($_GET["content_page"])) {
+        $content_page = $_GET["content_page"];
 
-    if (($content_page > 0) && ($content_page < 4)) {
-        require_once("sub_menu_content{$content_page}.php");
+        if (($content_page > 0) && ($content_page < 4)) {
+            require_once("sub_menu_content{$content_page}.php");
+        } else {
+            require_once("sub_menu_content1.php");
+        }
     } else {
         require_once("sub_menu_content1.php");
     }
-} else {
-    require_once("sub_menu_content1.php");
-}
-?>
+    ?>
 
 
 
@@ -64,12 +77,13 @@ if (isset($_GET["content_page"])) {
 
 
 
-<!--Debug/Log-->
-<?php
+    <!--Debug/Log-->
+    <?php
 // TODO: LOG
-MyDebugMessenger::show_debug_message();
-MyDebugMessenger::clear_debug_message();
-?>
+    MyDebugMessenger::show_debug_message();
+    MyDebugMessenger::clear_debug_message();
+    ?>
+</main>
 
 
 
@@ -78,9 +92,20 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css';  ?>" rel="stylesheet" type="text/css" />-->
-<style>   
 
+<style>   
+    #middle_content {
+        background-color: beige;
+        /*padding: 30px;*/
+        border-radius: 5px;
+        /*margin-top: 20px;*/
+        padding-bottom: 30px;
+    }
+
+
+
+    #sub_menus_nav {
+    }
 </style>
 
 
@@ -90,8 +115,23 @@ MyDebugMessenger::clear_debug_message();
 <!--Scripts-->
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
-    // Edit the page title.
-//    document.getElementById("title").innerHTML += "FatBoy / ";
+//    document.getElementById("title").innerHTML = "FatBoy / ";
+</script>
+
+
+
+
+
+
+
+
+
+
+<?php
+// TODO: SECTION: This appends the content of the main content to the main placeholder.
+?>
+<script>
+    document.getElementById("middle").appendChild(document.getElementById("middle_content"));
 </script>
 
 

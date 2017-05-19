@@ -15,7 +15,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                       ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                          ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -32,7 +32,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 font-family: sans-serif;
                 font-size: 100%;
                 color: gray;
-                background-image: url("_photos/background5.jpg");
+                background-image: url("<?php echo LOCAL . "/public/_photos/background5.jpg"; ?>");
                 /*background-repeat:*/
             }
 
@@ -247,7 +247,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 background-color: rgba(221, 244, 159, 0.80);
                 margin-left: 3%;
                 margin-top: 0;
-                padding-top: 15px;
+                /*padding-top: 15px;*/
                 padding-bottom: 25px;
                 border-radius: 5px;
 
@@ -269,7 +269,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 padding: 0;
                 width: 97%;
                 height: 250px;
-                background-color: rgba(178, 215, 247, 0.80);
+                /*background-color: rgba(178, 215, 247, 0.80);*/
+                background-color: red;
                 margin-top: 0;
                 margin-right: 3%;
                 padding-top: 0;
@@ -340,6 +341,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 /*background-color: darkgoldenrod;*/
                 width: 20%;
                 padding-left: 20px;
+                border-radius: 5px;
             }
 
 
@@ -377,10 +379,52 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 /*margin-left: -35px;*/
                 /*padding: 0;*/
                 padding-top: 10px;
-                                border-radius: 5px;
-                background-color: rgba(252, 224, 121, 0.80);
+
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                background-color: rgba(252, 224, 121, 0.70);
                 color: black;
             }
+
+            #context_sensitive_nav {
+                /*                margin: 0;
+                                padding: 0;*/
+                width: 100%;
+                background-color: rgba(60, 60, 60, 1.0);
+                height: 20px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                color: rgba(200, 200, 200, 1.0);
+                font-size: 11px;
+                font-weight: 100;
+                padding-top: 8px;
+                margin-bottom: 10px;
+            }
+
+
+
+            #context_sensitive_nav a.guide_nav {
+                margin: 0;
+                padding: 0;
+                display: inline;
+                /*background-color: gray;*/
+                margin-left: 30px;
+                /*        padding-top: 3px;
+                        padding-bottom: 3px;*/
+                color: rgba(200, 200, 200, 1.0);
+            }
+
+            #first_context_sensitive_a {
+                /*margin-left: 50px;*/
+            }
+
+
+            #context_sensitive_nav a.guide_nav:hover {
+                color: orange;
+                background-color: rgba(60, 60, 60, 1.0);
+                cursor: pointer; cursor: hand;
+
+            }              
 
             #sub_menus_nav a {
                 font-size: 13px;
@@ -395,7 +439,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 border-radius: 3px;
                 color: black;
             }
-            
+
             #sub_menus_nav a:hover {
                 background-color: rgb(100, 100, 100);
                 color: rgba(252, 224, 121, 0.80);
@@ -421,6 +465,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #navSide a:hover {
                 background-color: white;
+                cursor: pointer; cursor: hand;
             }
 
             #pop_up_for_link_home {
@@ -492,11 +537,12 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
                     <?php
+                    // Pop-up when home icon is hovered.
                     if ($session->is_logged_in()) {
                         echo "<div id='pop_up_for_link_home'>";
 //                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php>Log-in</a><br>";
 //                        echo "<a href='' class='pop_up_links'>Sign-up</a><br>";
-                        
+
                         echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
                         echo "</div>";
                     } else {
@@ -506,7 +552,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                         echo "</div>";
                     }
                     ?>
-                    
+
 
 
 
@@ -558,6 +604,18 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 <tr>
                     <td id="left" class="main">
                         <nav id="navSide">
+
+
+                            <!--Context-sensitive navigation-->
+                            <div id="context_sensitive_nav">
+                                <a id="first_context_sensitive_a" class="guide_nav" href="#">MyVideos</a>
+                                <a class="guide_nav">&gt;</a>
+                                <a class="guide_nav" href="#">Edit Videos</a>
+                            </div>                            
+
+
+
+
                             <a href="<?php echo LOCAL . '/public/index.php'; ?>" class="">
                                 <img src="<?php echo LOCAL . '/public/_photos/icon_wall_pin.png'; ?>" class="icon">Timeline
                                 <?php
@@ -809,15 +867,15 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 color: black;
             }
 
-/*            #sub_menus_nav {
-                border-radius: 5px;
-                background-color: rgba(252, 224, 121, 0.80);
-                color: black;
-            }
-
-            #sub_menus_nav a {
-                color: black;
-            }            */
+            /*            #sub_menus_nav {
+                            border-radius: 5px;
+                            background-color: rgba(252, 224, 121, 0.80);
+                            color: black;
+                        }
+            
+                        #sub_menus_nav a {
+                            color: black;
+                        }            */
         </style>
 
 

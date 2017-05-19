@@ -1,6 +1,6 @@
-<?php // require_once("../private/includes/initializations.php");                      ?>
-<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                      ?>
-<?php // include(PUBLIC_PATH . "/_layouts/header.php");                      ?>
+<?php // require_once("../private/includes/initializations.php");                        ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                        ?>
+<?php // include(PUBLIC_PATH . "/_layouts/header.php");                        ?>
 <?php include("_layouts/header.php"); ?>
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
@@ -38,18 +38,19 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
     <?php
-    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    if ($session->is_logged_in()) {
         echo "<div id='create_post_form'>";
         echo "<textarea id='message_post_textarea' rows='6' cols='100' placeholder='What u be thinking...'></textarea><br>";
 
         echo "<input id='create_post_button' type='button' class='form_buttons' value='Yow!'>";
         echo "</div>";
+
+
+        // This is just a refernce node for appending new post element...
+
+        echo "<div id='div_tae'>";
+        echo "</div>";
     }
-
-    // This is just a refernce node for appending new post element...
-
-    echo "<div id='div_tae'>";
-    echo "</div>";
     ?>
 
 
@@ -105,15 +106,6 @@ if (!MyDebugMessenger::is_initialized()) {
     MyDebugMessenger::show_debug_message();
     MyDebugMessenger::clear_debug_message();
     ?>
-
-
-
-
-
-
-
-
-
 </main>
 
 
@@ -122,9 +114,19 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
+
+
+
+
+
+
+
+
+
+
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                    ?>" rel="stylesheet" type="text/css">-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                    ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                      ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                      ?>" rel="stylesheet" type="text/css">-->
 <style>
 
 
@@ -404,6 +406,10 @@ if (!MyDebugMessenger::is_initialized()) {
 
                     //
                     new_div_background.id = "";
+                    
+                    
+                    // Clear the textarea.
+                    document.getElementById("message_post_textarea").value = "";
                 } else {
 //                    window.alert("ajax returned empty");
                 }

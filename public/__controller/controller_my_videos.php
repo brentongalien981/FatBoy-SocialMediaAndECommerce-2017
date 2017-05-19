@@ -35,13 +35,13 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 // Functions.
 function show_add_new_video_form() {
-    $form = "<h4>Add a New Video<h4>";
-    $form .= "<form action='" . LOCAL . "/public/__controller/controller_my_videos.php' method='post'>";
+    $form = "<h4>Add a new video<h4>";
+    $form .= "<form id='add_video_form' action='" . LOCAL . "/public/__controller/controller_my_videos.php' method='post'>";
     $form .= "<h6>Video Title</h6>";
-    $form .= "<input type='text' name='video_title'/>";
+    $form .= "<input class='form_input' type='text' name='video_title'/>";
     $form .= "<h6>Embedded Code</h6>";
-    $form .= "<textarea name='embedded_video_code' rows='6' cols='100'></textarea><br>";
-    $form .= "<input type='submit' name='add_video' value='add video' />";
+    $form .= "<textarea class='form_input' name='embedded_video_code' rows='6' cols='100'></textarea><br>";
+    $form .= "<input type='submit' class='form_button' name='add_video' value='add video' />";
     $form .= "</form><br><br>";
 
     echo $form;
@@ -133,10 +133,10 @@ function get_completely_presented_user_videos_array() {
         //
         $completely_presented_user_video = "<tr>";
             $completely_presented_user_video .= "<td>";
-                $completely_presented_user_video .= "<div class='timeline_iframe_video_div'>";
+                $completely_presented_user_video .= "<div class='timeline_iframe_video_div section'>";
                     $completely_presented_user_video .= "<h4>{$row['title']}</h4>";
-                    $completely_presented_user_video .= "{$row['embed_code']}<br>";
-                    $completely_presented_user_video .= "<a>lupetness</a>";
+                    $completely_presented_user_video .= "{$row['embed_code']}";
+                    $completely_presented_user_video .= "<a id='lupetness_a' href='#'>lupetness</a>";
                 $completely_presented_user_video .= "</div>";
             $completely_presented_user_video .= "</td>";
         $completely_presented_user_video .= "</tr>";

@@ -66,7 +66,6 @@ function show_non_friends() {
 
 
     // If the code goes here, the query is ok.
-    echo "<br><br><br>";
     echo "<h4>Suggested Friends</h4>";
     echo "<table>";
     while ($row = $database->fetch_array($non_friends_records_result_set)) {
@@ -74,8 +73,8 @@ function show_non_friends() {
         echo "<td>" . "{$row['user_name']}" . "</td>";
         echo "<td>";
         echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
-        echo "<input type='submit' name='create_friendship_notification' value='add friend'>";
-        echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
+        echo "<input type='submit' class='form_button' name='create_friendship_notification' value='add friend'>";
+        echo "<input type='hidden' class='form_button' name='friend_id' value='{$row['user_id']}'>";
         echo "</form>";
         echo "</td>";
 
@@ -115,7 +114,7 @@ function show_friend_request_for_me() {
         echo "<td>";
         echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
-        echo "<input type='submit' name='accept_friend_request' value='accept'>";
+        echo "<input type='submit' class='form_button' name='accept_friend_request' value='accept'>";
         echo "</form>";
         echo "</td>";
 
@@ -123,7 +122,7 @@ function show_friend_request_for_me() {
         echo "<td>";
         echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
-        echo "<input type='submit' name='reject_friend_request' value='reject'>";
+        echo "<input type='submit' class='form_button' name='reject_friend_request' value='reject'>";
         echo "</form>";
         echo "</td>";
 
@@ -166,7 +165,7 @@ function show_friend_acceptance() {
         echo "<td>";
         echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['notifier_user_id']}'>";
-        echo "<input type='submit' name='okd_friendship' value='ok'>";
+        echo "<input type='submit' class='form_button' name='okd_friendship' value='ok'>";
         echo "</form>";
         echo "</td>";
 
@@ -199,7 +198,7 @@ function show_user_friends() {
         echo "<form action='../__controller/controller_friends.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
         echo "<input type='hidden' name='friend_name' value='{$row['user_name']}'>";
-        echo "<input type='submit' name='view_friend_account' value='view'>";
+        echo "<input type='submit' class='form_button' name='view_friend_account' value='view'>";
         echo "</form>";
         echo "</td>";
 
@@ -210,7 +209,7 @@ function show_user_friends() {
             echo "<td>";
             echo "<form action='../__controller/controller_friends.php' method='post'>";
             echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
-            echo "<input type='submit' name='unfriend' value='unfriend'>";
+            echo "<input type='submit' class='form_button' name='unfriend' value='unfriend'>";
             echo "</form>";
             echo "</td>";
         }

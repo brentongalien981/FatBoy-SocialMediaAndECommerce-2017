@@ -49,6 +49,8 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
         $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
         $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
         $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
+        
+        // This div is just to have a reference for appending the reply form.
         $completely_presented_timeline_notification .= "<div class='empty_div_shit'></div>";
 
 

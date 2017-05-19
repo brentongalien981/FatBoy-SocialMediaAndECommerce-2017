@@ -148,14 +148,14 @@ function get_completely_presented_user_likes_array() {
 //        echo "</td>";
 //    }        
         //
-        $completely_presented_user_like = "<td>{$row['name']}</td>";
+        $completely_presented_user_like = "<td><label class='like_name'>{$row['name']}</label></td>";
         
         // TODO: NOW
         if ($session->is_viewing_own_account()) {
 //            $completely_presented_user_like .= "<td><a>delete</a></td>";
             $completely_presented_user_like .= "<td>";
             $completely_presented_user_like .= "<form class='form_delete_like' action='../__controller/controller_users_and_likes.php' method='post'>";
-            $completely_presented_user_like .= "<input type='submit' name='delete_like_map' value='delete'>";
+            $completely_presented_user_like .= "<input type='submit' class='form_button' name='delete_like_map' value='delete'>";
             $completely_presented_user_like .= "<input type='hidden' name='like_id' value='{$row['id']}'>";  
             $completely_presented_user_like .= "</form>";
             $completely_presented_user_like .= "</td>";
