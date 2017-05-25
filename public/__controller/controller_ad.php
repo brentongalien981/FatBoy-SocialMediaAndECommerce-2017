@@ -458,63 +458,64 @@ function get_hosted_ads_with_airing_percentages_arr($sum_airs_of_active_user_hos
 
 function show_user_hosted_ads_table_header() {
     //
+    echo "<div id='container_for_table_hosted_ads'>";
     echo "<table id='table_hosted_ads'>";
 
     echo "<thead>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Producer";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Ad Title";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Budget";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Pays";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Aired by Me";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Aired by Public";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Target";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Completion";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Air Time";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Sample";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Hosted Date";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Allotment";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Allotment Percentage";
     echo "</td>";
 
-//    echo "<td>";
+//    echo "<td class='header_cells'>";
 //    echo "Sample Ad Photo";
 //    echo "</td>";    
 
@@ -523,49 +524,50 @@ function show_user_hosted_ads_table_header() {
 
 function show_table_header() {
     //
+    echo "<div id='container_table_ad_market'>";
     echo "<table id='table_ad_market'>";
 
-    echo "<thead>";
+    echo "<thead id='thead_ad_market'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Producer";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Ad Title";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Budget";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Pays";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Aired";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Target";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Completion";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Air Time";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Sample";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
-    echo "<td>";
+    echo "<td class='header_cells'>";
     echo "Action";
-    echo "</td>";
+    echo "</td class='header_cells'>";
 
 //    echo "<td>";
 //    echo "Sample Ad Photo";
@@ -637,7 +639,7 @@ function show_ad_items() {
 
 
         echo "<td>";
-        echo "<button id='button_show_ad_{$row['id']}' onclick='show_ad_sample({$row['id']})'>view ad</button>";
+        echo "<button id='button_show_ad_{$row['id']}' class='form_button' onclick='show_ad_sample({$row['id']})'>view ad</button>";
         echo "</td>";
 
 
@@ -646,7 +648,7 @@ function show_ad_items() {
         echo "<td>";
         echo "<form action='" . LOCAL . "/public/__controller/controller_ad.php' method='post'>";
         echo "<input type='hidden' name='ad_id' value='{$row['id']}'>";
-        echo "<input type='submit' name='host_ad' value='host ad'>";
+        echo "<input type='submit' name='host_ad' class='form_button' value='host ad'>";
         echo "</form>";
         echo "</td>";
 
@@ -664,6 +666,7 @@ function show_ad_items() {
 
 
     echo "</table>";
+    echo "</div>";
 }
 
 function validate_produce_ad_fields() {
@@ -856,7 +859,7 @@ function show_user_hosted_ads() {
         echo "</td>";
 
         echo "<td>";
-        echo "<button id='button_show_ad_{$row['ad_id']}' onclick='show_ad_sample({$row['ad_id']})'>view ad</button>";
+        echo "<button id='button_show_ad_{$row['ad_id']}' class='form_button' onclick='show_ad_sample({$row['ad_id']})'>view</button>";
         echo "</td>";
 
 
@@ -879,6 +882,7 @@ function show_user_hosted_ads() {
     }
 
     echo "</table>";
+    echo "</div>";
 }
 
 function update_allotment_percentage($ad_id, $update_allotment_percentage) {

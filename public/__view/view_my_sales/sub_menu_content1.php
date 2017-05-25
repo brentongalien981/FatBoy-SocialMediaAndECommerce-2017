@@ -34,7 +34,7 @@ if (!$session->is_logged_in() ||
 
 <!--Meat-->
 <?php
-echo "<h3>MySales</h3>";
+//echo "<h3>MySales</h3>";
 
 //
 show_sales_history();
@@ -67,31 +67,111 @@ echo "<h1 id='for_debug'>FOR DEBUG: </h1>";
 <!--Styles-->
 <!--<link href="../_styles/view_shipping.css" rel="stylesheet" type="text/css" />-->
 <style>  
-    main {
-        width: 75%;
-    }    
 
-    table {
-        width: 100%;
+    #left {
+        width: 250px;
+    }
+    #right {
+        display: none;
+    }
+    #middle {
+        width: calc(80% + 100px);
+        padding-right: 15px;
+    }
+
+
+
+    #middle_content {
+        background-color: rgba(230, 230, 230, 0.8);
+        padding-bottom: 30px;
+
+    }
+
+    #container_sales_history {
+        margin: 30px;
+        padding: 30px;
+        padding-top: 40px;
+        border-radius: 5px;
+        background-color: rgb(240, 240,240);
+        box-shadow: 5px 5px 5px rgb(150, 150, 150);
+    }
+
+    #container_sales_history table {
+        width: 90%;
         border-collapse: collapse;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        color: black;
+    }
+    
+       table.invoice_items_details {
+        margin: 20px;
+    }
+    
+    table.invoice_items_details select {
+        height: 20px;
+        background-color: rgb(224, 255, 193);
+        /*background-color: rgb(240, 240, 240);*/
+        /*color: white;*/
     }
 
-    table.invoice_items_details {
-        width: 95%;
-        margin-left: 2%;
-    }
-
-    table, th, td {
+    #container_sales_history td {
         border: 1px solid black;
-    }    
-
-    td {
         padding: 10px;
-        vertical-align: middle;
+        font-size: 12px;
+        font-weight: 100;
+    }
 
+    #container_sales_history #td_header {
+        /*background-color: rgb(255, 221, 178);*/
+        background-color: rgb(220, 220, 220);
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    #container_sales_history table tr:nth-child(even) {
+        /*background-color: rgb(242, 255, 253);*/
+        background-color: rgb(242, 252, 255);
+
+    }
+
+    #container_sales_history table tr:nth-child(odd) {
+        background-color: rgb(255, 254, 219);
+        background-color: white;
     }    
+    
+    .form_button {
+        /*text-align: center;*/
+        margin: 0;
+        /*width: 60px;*/
+        /*border: 1px solid rgb(224, 255, 193);*/
+        border: none;
+        background-color: rgb(224, 255, 193);
+        /*color: white;*/
+    }    
+    /*    main {
+            width: 75%;
+        }    
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    
+        table.invoice_items_details {
+            width: 95%;
+            margin-left: 2%;
+        }
+    
+        table, th, td {
+            border: 1px solid black;
+        }    
+    
+        td {
+            padding: 10px;
+            vertical-align: middle;
+    
+        }    */
 </style>
 
 
@@ -99,7 +179,7 @@ echo "<h1 id='for_debug'>FOR DEBUG: </h1>";
 
 
 <!--Scripts-->
-<!--<script src="<?php // echo LOCAL . '/public/_scripts/view_my_sales_history_details.js';    ?>"></script>-->
+<!--<script src="<?php // echo LOCAL . '/public/_scripts/view_my_sales_history_details.js';      ?>"></script>-->
 <script>
     function show_details_row(xhr, this_button) {
 
@@ -195,7 +275,7 @@ echo "<h1 id='for_debug'>FOR DEBUG: </h1>";
 
     function update_status(the_select_element, old_status_id, selected_status_id, invoice_item_id) {
 //        window.alert("puta nanaman invoiceid:" + invoice_id);
-    var is_update_sure = confirm("Are you sure about the\nstatus update of the item?");
+        var is_update_sure = confirm("Are you sure about the\nstatus update of the item?");
 
 
         if (is_update_sure) {

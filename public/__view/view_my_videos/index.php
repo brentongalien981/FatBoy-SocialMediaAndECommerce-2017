@@ -94,11 +94,15 @@ if (!$session->is_logged_in()) {
 <!--Styles-->
 
 <style>   
-    #middle_content {
+/*    #middle_content {
         background-color: beige;
-        /*padding: 30px;*/
+        padding: 30px;
         border-radius: 5px;
-        /*margin-top: 20px;*/
+        margin-top: 20px;
+        padding-bottom: 30px;
+    }*/
+    #middle_content {
+        background-color: rgba(230, 230, 230, 0.8);
         padding-bottom: 30px;
     }
 

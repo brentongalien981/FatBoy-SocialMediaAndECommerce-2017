@@ -6,8 +6,8 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_invoice.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_sales_notification.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item.php");      ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item_status_record.php");      ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item.php");       ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_invoice_item_status_record.php");       ?>
 
 <?php require_once(PUBLIC_PATH . "/__controller/controller_invoice.php"); ?>
 
@@ -86,44 +86,45 @@ function create_refund_record($refund_invoice_item_id, $refund_item_quantity) {
 }
 
 function show_my_refund_items() {
+    echo "<div id='container_my_refund'>";
     echo "<table>";
     echo "<thead>";
 
-    echo "<tr>";
+//    echo "<tr>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Invoice<br>Item<br>Id";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Invoice Id";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Seller";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Item Name";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Refund<br>Quantity";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Price per Item<br>in USD";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Seller Address";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Status";
     echo "</td>";
 
-    echo "</tr>";
+//    echo "</tr>";
 
     echo "</thead>";
 
@@ -205,6 +206,7 @@ function show_my_refund_items() {
         echo "</tr>";
     }
     echo "</table>";
+    echo "</div>";
 }
 
 function get_refund_vars_array() {
@@ -287,16 +289,16 @@ if (isset($_POST["apply_for_refund"])) {
         MyDebugMessenger::add_debug_message("Error starting the transaction.");
         redirect_to(LOCAL . "/public/__view/view_refund/index.php?transaction_content_page=2");
     }
-    
+
     //
     if ($_POST["refund_item_quantity"] > $_POST["bought_quantity"]) {
         MyDebugMessenger::add_debug_message("refund_item_quantity can't be greater than bought_quantity bruh..");
-        redirect_to(LOCAL . "/public/__view/view_refund/index.php?transaction_content_page=2");        
-    }    
+        redirect_to(LOCAL . "/public/__view/view_refund/index.php?transaction_content_page=2");
+    }
 
-    
-    
-    
+
+
+
 
     // Here, $can_start_transaction is true.
     // Flag vars.
@@ -314,19 +316,14 @@ if (isset($_POST["apply_for_refund"])) {
     // TODO: REMINDER: Now check if the refund item quantity from the past of that particular invoice item id plus
     // the refund quantity of this refund item is less than or equal to the bought quantity of
     // that invoice item id.     
-
-    
-    
-    
-    
     // Update the status of the invoice item.
     // invoice_item_status_code for "being applied for refund" is 6.
     $invoice_item_status_id = 6;
     $is_invoice_item_status_record_creation_ok = create_invoice_item_status_record($session->refund_invoice_item_id, $invoice_item_status_id);
-    
-    
-    
-    
+
+
+
+
 
     // TODO: REMINDER: Create a table for RefundNotification because with what I did here,
     // storing a refund notification record to table SalesNotification produces a wierd notification
@@ -356,53 +353,50 @@ if (isset($_POST["apply_for_refund"])) {
 
     // Now create the obj.
     $is_sales_notification_creation_ok = $a_sales_notification_obj->create_with_bool();
-    
 
-    
-    
-    
+
+
+
+
     // Create RefundItem record.
-    $is_refund_record_creation_ok = create_refund_record($session->refund_invoice_item_id, $_POST["refund_item_quantity"]);    
-      
-    
-    
-    
-   
+    $is_refund_record_creation_ok = create_refund_record($session->refund_invoice_item_id, $_POST["refund_item_quantity"]);
+
+
+
+
+
     // If everything is ok...
     if ($is_invoice_item_status_record_creation_ok &&
-        $is_sales_notification_creation_ok &&
-        $is_refund_record_creation_ok) 
-    {
+            $is_sales_notification_creation_ok &&
+            $is_refund_record_creation_ok) {
         //
         $query = "COMMIT";
 
-        $has_commit = Invoice::read_by_query($query);       
-        
+        $has_commit = Invoice::read_by_query($query);
+
         if ($has_commit) {
             // Reset the value.
             $session->set_refund_invoice_item_id(null);
-            
+
             //
             MyDebugMessenger::add_debug_message("SUCCESS Refund is ok.");
-        }
-        else {
+        } else {
             //
             $query = "ROLLBACK";
 
-            Invoice::read_by_query($query);    
-            
+            Invoice::read_by_query($query);
+
             //
-            MyDebugMessenger::add_debug_message("FAIL Refund.");            
+            MyDebugMessenger::add_debug_message("FAIL Refund.");
         }
-    }
-    else {
+    } else {
         //
         $query = "ROLLBACK";
 
-        Invoice::read_by_query($query);    
-        
+        Invoice::read_by_query($query);
+
         //
-        MyDebugMessenger::add_debug_message("FAIL Refund.");                    
+        MyDebugMessenger::add_debug_message("FAIL Refund.");
     }
 
 

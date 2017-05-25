@@ -98,27 +98,27 @@ function update_stock_quantity() {
 function show_shopping_history_table_header() {
     echo "<table id='shopping_history_table'>";
     echo "<thead>";
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "InvoiceItems";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "InvoiceId";
     echo "</td>";
 
-//    echo "<td>";
+//    echo "<td id='td_header'>";
 //    echo "ItemName";
 //    echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Seller";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Ship-from Address";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Ship-to Address";
     echo "</td>";
     echo "</thead>";
@@ -127,27 +127,27 @@ function show_shopping_history_table_header() {
 function show_sales_history_table_header() {
     echo "<table id='sales_history_table'>";
     echo "<thead>";
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "InvoiceItems";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "InvoiceId";
     echo "</td>";
 
-//    echo "<td>";
+//    echo "<td id='td_header'>";
 //    echo "ItemName";
 //    echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Buyer";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Ship-from Address";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Ship-to Address";
     echo "</td>";
     echo "</thead>";
@@ -164,6 +164,7 @@ function close_sales_history_table_element() {
 function show_sales_history() {
 //    echo "METHOD: show_sales_history().";
     //
+    echo "<div id='container_sales_history'>";
     show_sales_history_table_header();
     
     //
@@ -171,10 +172,12 @@ function show_sales_history() {
 
     //
     close_sales_history_table_element();
+    echo "</div>";
 }
 
 function show_shopping_history() {
     //
+    echo "<div id='container_shopping_history'>";
     show_shopping_history_table_header();
 
     //
@@ -182,6 +185,7 @@ function show_shopping_history() {
 
     //
     close_shopping_history_table_element();
+    echo "</div>";
 }
 
 function get_all_user_shopping_invoices() {
@@ -229,7 +233,7 @@ function show_sales_history_items() {
         echo "<tr class='sales_history_details' id='tr_{$row['id']}'>";
 
         echo "<td>";
-        echo "<button id='{$row['id']}' class='button_show_details' onclick='show_details(this)'>show</button>";
+        echo "<button id='{$row['id']}' class='button_show_details form_button' onclick='show_details(this)'>show</button>";
         echo "</td>";
 
         echo "<td>";
@@ -267,7 +271,7 @@ function show_shopping_history_items() {
         echo "<tr class='shopping_history_details' id='tr_{$row['id']}'>";
 
         echo "<td>";
-        echo "<button id='{$row['id']}' class='button_show_details' onclick='show_details(this)'>show</button>";
+        echo "<button id='{$row['id']}' class='button_show_details form_button' onclick='show_details(this)'>show</button>";
         echo "</td>";
 
         echo "<td>";

@@ -184,6 +184,12 @@ if (!$session->is_logged_in()) {
         background-color: rgba(255, 157, 45, 0.50);
         cursor: pointer; cursor: hand;
     }
+    
+    #ad_container {
+        /*background-color: red;*/
+        /*display: none;*/
+/*        visibility: hidden;*/
+    }
 </style>
 
 

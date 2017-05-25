@@ -105,6 +105,8 @@ function add_item_to_cart($item_id) {
     redirect_to(LOCAL . "/public/__view/view_my_store");
 }
 
+// Show the drop-down list for the store that
+// has the your history cart.
 function show_store_cart_options_form() {
 // A list of your incomplete carts from the respective seller stores.
 // Query to select all the incomplete carts that
@@ -143,7 +145,6 @@ function show_store_cart_options_form() {
     }
 
     echo "</select>";
-    echo "<br><br><br>";
     echo "</form>";
 }
 
@@ -173,7 +174,7 @@ function show_cart_items_form() {
 
     echo "</table><br>";
 
-    echo "<input id='update_cart_items' type='submit' name='update_cart_items' value='update items' disabled='true'>";
+    echo "<input id='update_cart_items' class='form_button' type='submit' name='update_cart_items' value='update items' disabled='true'>";
 
     echo "</form>";
 }
@@ -181,30 +182,30 @@ function show_cart_items_form() {
 // Helper
 function show_set_shipping_button() {
     echo "<form id='form_continue_to_shipping' action='" . LOCAL . "/public/__view/view_transaction' method='post'>";
-    echo "<input id='continue_to_shipping' type='submit' name='continue_to_shipping' value='continue to shipping >>'>";
+    echo "<input id='continue_to_shipping' class='form_button' type='submit' name='continue_to_shipping' value='continue to shipping >>'>";
 
     echo "</form>";
 }
 
 function show_table_header() {
     echo "<thead>";
-    echo "<td>";
+    echo "<td id='puta' clas='header_cells'>";
     echo "ItemId";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='puta' clas='header_cells'>";
     echo "ItemName";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='puta' clas='header_cells'>";
     echo "Price";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='puta' clas='header_cells'>";
     echo "Quantity";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='puta' clas='header_cells'>";
     echo "Stock";
     echo "</td>";
     echo "</thead>";

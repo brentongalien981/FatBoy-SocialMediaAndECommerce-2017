@@ -42,8 +42,10 @@ if (isset($_GET["ad_id"])) {
         echo "<div class='ad_sample'>";
         echo "<h3>{$row['ad_name']}</h3>";
         
-        echo "<iframe src='{$row['photo_url_address']}'>";
+        echo "<div id='ad_sample_container'>";
+        echo "<iframe class='ad_iframe' src='{$row['photo_url_address']}'>";
         echo "</iframe>";
+        echo "</div>";
         
         echo "<p>{$row['description']}</p>";
         

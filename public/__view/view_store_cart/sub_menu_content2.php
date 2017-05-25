@@ -36,9 +36,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <!--Meat-->
 <?php
 // TODO: SECTION: Meat.
-echo "<h3>My Shopping History</h3>";
-
-
+//echo "<h3>My Shopping History</h3>";
 // 
 show_shopping_history();
 ?>
@@ -58,33 +56,104 @@ show_shopping_history();
 
 
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/view_store_cart.css';        ?>" rel="stylesheet" type="text/css" />-->
-<style>  
-    main {
-        width: 75%;
-    }    
+<!--<link href="<?php // echo LOCAL . '/public/_styles/view_store_cart.css';           ?>" rel="stylesheet" type="text/css" />-->
+<style> 
+    #left {
+        width: 250px;
+    }
+    #right {
+        display: none;
+    }
+    #middle {
+        width: calc(80% + 100px);
+        padding-right: 15px;
+    }
 
-    table {
-        width: 100%;
+
+
+    #middle_content {
+        background-color: rgba(230, 230, 230, 0.8);
+        padding-bottom: 30px;
+
+    }
+
+    #container_shopping_history {
+
+        margin: 30px;
+        padding: 30px;
+        padding-top: 40px;
+        border-radius: 5px;
+        background-color: rgb(240, 240,240);
+    }
+
+    #container_shopping_history table {
+        width: 90%;
         border-collapse: collapse;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        color: black;
     }
-
+    
     table.invoice_items_details {
-        width: 95%;
-        margin-left: 3%;
+        margin: 20px;
     }
 
-    table, th, td {
+    #container_shopping_history td {
         border: 1px solid black;
-    }    
-
-    td {
         padding: 10px;
-        vertical-align: middle;
+                font-size: 12px;
+        font-weight: 100;
+    }
+
+    #container_shopping_history #td_header {
+        background-color: rgb(255, 221, 178);
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    #container_shopping_history table tr:nth-child(even) {
+        background-color: rgb(242, 255, 253);
 
     }
+
+    #container_shopping_history table tr:nth-child(odd) {
+        background-color: rgb(255, 254, 219);
+    }
+
+    .form_button {
+        /*text-align: center;*/
+        margin: 0;
+        /*width: 60px;*/
+        /*border: 1px solid rgb(224, 255, 193);*/
+        border: none;
+        background-color: rgb(224, 255, 193);
+        /*color: white;*/
+    }
+
+
+    /*    main {
+            width: 75%;
+        }    
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+    
+        table.invoice_items_details {
+            width: 95%;
+            margin-left: 3%;
+        }
+    
+        table, th, td {
+            border: 1px solid black;
+        }    
+    
+        td {
+            padding: 10px;
+            vertical-align: middle;
+    
+        }*/
 </style>
 
 
@@ -92,10 +161,10 @@ show_shopping_history();
 
 
 <!--Scripts-->
-<!--<script src="<?php // echo LOCAL . '/public/_scripts/view_my_shopping_history_details.js';    ?>"></script>-->
+<!--<script src="<?php // echo LOCAL . '/public/_scripts/view_my_shopping_history_details.js';       ?>"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML = "FatBoy / My Shopping History";
+    document.getElementById("title").innerHTML = "My Shopping History / FatBoy";
 
 
 </script>
@@ -262,7 +331,7 @@ if (!isset($_GET["shopping_history_item_status_update"])) {
 
     // TODO: REMINDER: Also, don't forget to highlight the actual invoice item that has been updated.
     // Highlight the row with the invoice item id.
-//        document.getElementById("invoice_item_id_tr_<?php // echo $_GET['invoice_item_id'];     ?>").style.backgroundColor = "#e8a0b8";
+//        document.getElementById("invoice_item_id_tr_<?php // echo $_GET['invoice_item_id'];        ?>").style.backgroundColor = "#e8a0b8";
 
 </script>
 

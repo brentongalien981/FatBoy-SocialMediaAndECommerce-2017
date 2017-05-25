@@ -88,6 +88,7 @@ echo "</table>";
         padding: 30px;
         border-radius: 5px;
         box-shadow: 5px 5px 5px rgb(150, 150, 150);
+        
 
     }
 
@@ -125,13 +126,15 @@ echo "</table>";
         width: 300px;
         height: 35px;
         padding: 10px;
+        border-radius: 3px;
     }
 
     textarea.form_input {
-        width: 800px;
+        width: 600px;
         height: 180px;
         padding: 10px;
         margin-bottom: 20px;
+        border-radius: 3px;
     }
 
     #my_videos_table .timeline_iframe_video_div {
@@ -168,6 +171,10 @@ echo "</table>";
     #my_videos_table td {
         /*margin-bottom: 30px;*/
     }
+    
+/*    #ad_container {
+        visibility: hidden;
+    }*/
 </style>
 
 

@@ -34,8 +34,7 @@ if (!$session->is_logged_in() ||
 if (isset($_GET["is_validation_ok"])) {
     if ($_GET["is_validation_ok"] == 1) {
         set_currently_edited_store_item_object(-69);
-    }
-    else {
+    } else {
         $item_attribs_array = array();
         $item_attribs_array["store_item_id"] = $_GET["store_item_id"];
         $item_attribs_array["store_item_name"] = $_GET["store_item_name"];
@@ -47,10 +46,10 @@ if (isset($_GET["is_validation_ok"])) {
         $item_attribs_array["store_item_length"] = $_GET["store_item_length"];
         $item_attribs_array["store_item_width"] = $_GET["store_item_width"];
         $item_attribs_array["store_item_height"] = $_GET["store_item_height"];
-        
+
         set_currently_edited_store_item_object(-619, $item_attribs_array);
     }
-} 
+}
 // This is if the button "edit" is clicked or
 // the tag <select> has been changed.
 else {
@@ -66,9 +65,9 @@ else {
 ?>
 
 
-<br><br>
-<form action="<?php echo LOCAL . '/public/__controller/controller_my_store.php'; ?>" method="post" name="edit_store_item_form">
-    <h4>Edit Store Item</h4>
+<form id="form_edit_item" action="<?php echo LOCAL . '/public/__controller/controller_my_store.php'; ?>" method="post" name="edit_store_item_form">
+    <!--<h4>Edit Store Item</h4>-->
+    <h5>Store Item's Basic Info</h5> 
 
     <h6>Which item do you wanna edit?</h6>
     <!--<input type="text" name="store_item_name"/>-->
@@ -77,8 +76,9 @@ else {
     </select>
 
 
+    
     <h6>Name</h6>
-    <input type="text" name="store_item_name" maxlength="100" value="<?php echo get_currently_edited_store_item_object()->name; ?>">     
+    <input type="text" name="store_item_name" id="input_name" maxlength="100" value="<?php echo get_currently_edited_store_item_object()->name; ?>">     
 
 
     <h6>Price in USD</h6>
@@ -109,11 +109,7 @@ else {
     ?>     
 
 
-    <br><br>
-
-
-
-    <h5>Dimensions and Mass When Boxed For Shipping</h5>      
+    <h5 id="h5_dimensions">Dimensions and Mass When Boxed For Shipping</h5>      
 
 
     <h6>Mass in ounces (oz)</h6>
@@ -141,7 +137,7 @@ else {
 
 
     <br>            
-    <input type="submit" name="update_store_item" value="update">
+    <input type="submit" class="form_button" name="update_store_item" value="update">
 </form>    
 
 <?php
@@ -151,3 +147,72 @@ else {
 //print_r(get_currently_edited_store_item_object());
 //echo "</pre>";
 ?>
+
+
+
+
+
+
+
+
+
+
+<style>
+    #form_edit_item {
+        background-color: red;
+        background-color: rgba(50, 50, 50, 0.1);
+        margin: 30px;
+        /*margin-top: 0;*/
+        padding: 20px;
+        border-radius: 5px;
+        /*margin-bottom: 60px;*/
+        box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.80);
+    }
+    
+    #form_edit_item select {
+        height: 25px;
+    }
+
+    #form_edit_item h6 {
+        font-size: 13px;
+        font-weight: 100;
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+
+
+
+    #form_edit_item input {
+        width: 90px;
+        height: 25px;
+        border-radius: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #form_edit_item #input_name {
+        width: 200px;
+    }
+
+    #form_edit_item textarea {
+        width: 600px;
+        border-radius: 3px;
+        padding: 10px;
+    }
+
+    #form_edit_item img {
+        width: 600px;
+        height: 360px;
+    }
+
+    #form_edit_item h5 {
+        font-size: 15px;
+        font-weight: 400;
+        /*margin-top: 40px;*/
+        margin-bottom: 30px;
+    }
+
+    #h5_dimensions {
+        margin-top: 80px;
+    }
+</style>

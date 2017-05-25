@@ -13,7 +13,7 @@
 <?php
 // Make sure the actual user is logged-in.
 if (!$session->is_logged_in() ||
-    !$session->is_viewing_own_account()) {
+        !$session->is_viewing_own_account()) {
     redirect_to(LOCAL . "/public/__view/view_log_in.php");
 }
 ?>
@@ -50,7 +50,7 @@ if (isset($_GET["is_creation_ok"]) && $_GET["is_creation_ok"] == 1) {
 // the controller validations don't pass.
 if (isset($_GET["is_validation_ok"]) && $_GET["is_validation_ok"] == 0) {
     MyDebugMessenger::add_debug_message("GET['is_validation_ok'] is set and there's a validation problem.");
-    
+
     // TODO: NOW: Set the vasr.
     $store_item_name = $_GET["store_item_name"];
     $store_item_price = $_GET["store_item_price"];
@@ -60,16 +60,16 @@ if (isset($_GET["is_validation_ok"]) && $_GET["is_validation_ok"] == 0) {
     $store_item_mass = $_GET["store_item_mass"];
     $store_item_length = $_GET["store_item_length"];
     $store_item_width = $_GET["store_item_width"];
-    $store_item_height = $_GET["store_item_height"];   
+    $store_item_height = $_GET["store_item_height"];
 }
 ?>
 
 
-<h4>Add a New Store Item<h4>
-<form action="<?php echo LOCAL . '/public/__controller/controller_my_store.php'; ?>" method="post">
-    <h5>Basic Info</h5> 
+<!--<h4>Add a New Store Item<h4>-->
+<form id="form_add_item" action="<?php echo LOCAL . '/public/__controller/controller_my_store.php'; ?>" method="post">
+    <h5>Store Item's Basic Info</h5> 
     <h6>Name</h6>
-    <input type="text" name="store_item_name" value="<?php echo $store_item_name; ?>">
+    <input type="text" name="store_item_name" id="input_name" value="<?php echo $store_item_name; ?>">
 
     <?php
     // TODO: Also add the functionality for checking that this is a valid decimal value.
@@ -101,12 +101,12 @@ if (isset($_GET["is_validation_ok"]) && $_GET["is_validation_ok"] == 0) {
               oninput="this.onchange()"><?php echo $store_item_photo_address; ?></textarea><br>
 
     <h6>Photo Preview</h6>
-    <img id="photo_preview" alt="Store Item Photo"><br>
+    <img id="photo_preview" alt="store item photo preview..">
 
 
 
-    <br><br>
-    <h5>Dimensions and Mass When Boxed For Shipping</h5>                
+
+    <h5 id="h5_dimensions">Dimensions and Mass When Boxed For Shipping</h5>                
 
 
     <h6>Mass in ounces (oz)</h6>
@@ -142,6 +142,87 @@ if (isset($_GET["is_validation_ok"]) && $_GET["is_validation_ok"] == 0) {
     ?> 
 
 
-    <br><br>
-    <input type="submit" name="add_store_item" value="add" />
+    <br>
+    <input type="submit" name="add_store_item" class="form_button" value="add" />
 </form>
+
+
+
+
+
+
+
+
+
+
+<style>
+    #form_add_item {
+        background-color: red;
+        background-color: rgba(50, 50, 50, 0.1);
+        margin: 30px;
+        /*margin-top: 0;*/
+        padding: 20px;
+        border-radius: 5px;
+        /*margin-bottom: 60px;*/
+        box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.80);
+    }
+
+    #form_add_item h5 {
+        font-size: 15px;
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+    
+    #form_add_item h6 {
+        font-size: 13px;
+        font-weight: 100;
+        margin-top: 25px;
+        margin-bottom: 5px;
+    }
+
+
+
+    #form_add_item input {
+        width: 90px;
+        height: 25px;
+        border-radius: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #form_add_item #input_name {
+        width: 200px;
+    }
+
+
+
+    #form_add_item textarea {
+        width: 600px;
+        border-radius: 3px;
+        padding: 10px;
+    }
+    
+    #form_add_item img {
+        width: 600px;
+        height: 360px;
+    }
+    
+    #h5_dimensions {
+        margin-top: 80px;
+    }
+
+    #form_add_item .form_button {
+        /*display: block;*/
+        /*width: 100px;*/
+        /*margin-top: 0;*/
+        /*padding-left: 0;*/
+        /*width: fit-content;*/
+        
+        /*background-color: red;*/
+    }
+</style>
+
+
+<?php
+// TODO: REMINDER: Copy the implemented the JS method for the image photo preview..
+?>

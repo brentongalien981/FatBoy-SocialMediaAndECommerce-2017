@@ -35,8 +35,6 @@ if (!$session->is_logged_in() ||
 
 <!--Meat-->
 <?php
-echo "<h3>MyHosted Ads</h3>";
-
 // TODO: REMINDER: Remember to refine the functionality of the allotment range by having a maximum 
 // of 100% as a sum of all allotments. You know what this is.. It's like setting attributes for
 // MyPlayer on 2K...
@@ -73,53 +71,138 @@ if (isset($_GET["newly_hosted_ad_id"])) {
 <!--Styles-->
 <!--<link href="../_styles/view_shipping.css" rel="stylesheet" type="text/css" />-->
 <style>   
-    form {
-        margin-top: auto;
-        margin-bottom: auto;
-        /*padding: 0;*/
-        vertical-align: middle;
+     #left {
+        width: 250px;
+    }
+    #right {
+        display: none;
+    }
+    #middle {
+        width: calc(80% + 100px);
+        padding-right: 15px;
     }
 
-    form h6 {
-        margin-bottom: 0px;
+
+
+    #middle_content {
+        background-color: rgba(230, 230, 230, 0.8);
+        padding-bottom: 30px;
+
+    }
+
+    #container_for_table_hosted_ads {
+        margin: 30px;
+        padding: 30px;
+        padding-top: 40px;
+        border-radius: 5px;
+        background-color: beige;
+    }
+
+    #table_hosted_ads {
+        /*width: 100%;*/
+        border-collapse: collapse;
+        /*background-color: pink;*/
+        color: black;
+        font-size: 13px;
+        font-weight: 100;
+        /*margin: 30px;*/
+        /*margin-right: 30px;*/
+
+
+
+    }
+
+    #table_hosted_ads,
+    #table_hosted_ads thead,
+    table_hosted_ads tr,
+    #table_hosted_ads td {
+        border: 1px solid black;
+    }
+
+
+    #table_hosted_ads tr td {
+        /*        font-size: 10px;
+                font-weight: 100;*/
+    }
+
+    td.header_cells {
+        background-color: rgba(130, 130, 130, 0.8);
+        font-size: 14px;
         font-weight: 200;
     }
 
-    div.ad_sample {
-        /*background-color: red;*/
-        padding: 20px;
-    }
 
-    iframe {
-        width: 640px;
-        height: 400px;
-    }
-
-    img {
-        width: 640px;
-        height: 480px;        
-    }
-
-    main {
-        width: 75%;
-    }    
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 30px;
-        margin-bottom: 30px;
-    }
-
-    table, th, td {
-        border: 1px solid black;
-    }    
-
-    td {
+    #table_hosted_ads td {
         padding: 10px;
         vertical-align: middle;
 
-    }  
+    }
+
+    #table_hosted_ads tr:nth-child(even) {
+        background-color: rgba(178, 225, 255, 0.2);
+    }
+
+    #table_hosted_ads tr:nth-child(odd) {
+        background-color: rgba(255, 249, 178, 0.2);
+    }
+    
+    #table_hosted_ads input {
+        padding: 3px;
+        border-radius: 3px;
+        /*background-color: red;*/
+    }
+
+    .form_button {
+        margin: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding: 2px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+
+
+
+
+
+
+
+/*    div.ad_sample:parent {
+        width: inherit;
+        background-color: violet;
+    }*/
+
+    div.ad_sample {
+
+        /*background-color: red;*/
+        margin-left: 30px;
+        padding: 20px;
+    }
+
+    div.ad_sample h3,
+    div.ad_sample p {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 640px;
+    }
+
+    #ad_sample_container {
+        width: 640px;
+        height: 400px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 5px;
+        background-color: rgba(50, 50, 50, 0.6);
+    }
+
+
+    iframe.ad_iframe {
+        margin-left: auto;
+        margin-right: auto;
+        width: 640px;
+        height: 400px;
+    } 
 </style>
 
 
@@ -130,7 +213,7 @@ if (isset($_GET["newly_hosted_ad_id"])) {
 <!--<script src="../_scripts/view_shipping.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / MyHosted Ads";
+    document.getElementById("title").innerHTML = "MyHosted Ads / FatBoy";
 </script>
 
 <script>
@@ -177,7 +260,7 @@ if (isset($_GET["newly_hosted_ad_id"])) {
 
 
         // Change the text of the button.
-        document.getElementById("button_show_ad_" + ad_id).innerHTML = "hide ad";
+        document.getElementById("button_show_ad_" + ad_id).innerHTML = "hide";
     }
 
     function remove_ad_sample_details(id_of_ad_sample_row) {
@@ -213,17 +296,17 @@ if (isset($_GET["newly_hosted_ad_id"])) {
                     // Get the button element that's been clicked..
                     var the_button = document.getElementById("button_show_ad_" + ad_id);
 
-                    if (the_button.innerHTML == "view ad") {
+                    if (the_button.innerHTML == "view") {
                         show_ad_sample_details(ad_id, xhr.responseText.trim());
                     }
-                    // Else, means the button text is "hide ad".
+                    // Else, means the button text is "hide".
                     else {
                         var id_of_ad_sample_row = "tr_ad_sample_" + ad_id;
                         remove_ad_sample_details(id_of_ad_sample_row);
 
 
                         // Set the button's text back to default.
-                        the_button.innerHTML = "view ad";
+                        the_button.innerHTML = "view";
                     }
                 }
             }

@@ -173,47 +173,47 @@ function show_invoice_items_table_details() {
 function show_completely_presented_refund_form($invoice_item_id) {
     echo "<form action='" . LOCAL . "/public/__controller/controller_invoice.php' method='post'>";
     echo "<input type='hidden' name='invoice_item_id' value='{$invoice_item_id}'>";
-    echo "<input type='submit' name='do_refund' value='ask for refund'>";
+    echo "<input type='submit' name='do_refund' class='form_button' value='ask for refund'>";
     echo "</form>";
 }
 
 function show_invoice_items_table_header() {
     echo "<table class='invoice_items_details'>";
     echo "<thead>";
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Id";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "InvoiceId";
     echo "</td>";
 
-//    echo "<td>";
+//    echo "<td id='td_header'>";
 //    echo "StoreItemId";
 //    echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "ItemName";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "PricePerItem";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Quantity";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Status";
     echo "</td>";
 
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "StatusStartDate";
     echo "</td>";
     
     
-    echo "<td>";
+    echo "<td id='td_header'>";
     echo "Action";
     echo "</td>";    
 

@@ -301,11 +301,11 @@ if (!$session->is_logged_in()) {
         cursor: pointer; cursor: hand;
     }
 
-    .form_button {
+/*    .form_button {
         margin-bottom: 30px;
         margin-top: 20px;
         color: black;
-        /*        background-color: rgb(200, 200, 200);*/
+                background-color: rgb(200, 200, 200);
         background-color: rgba(255, 157, 45, 0.20);
         box-shadow: 3px 3px 3px rgb(130, 130, 130);
         border: 1px solid;
@@ -317,12 +317,12 @@ if (!$session->is_logged_in()) {
         padding-bottom: 5px;
         border-radius: 3px;
         margin-right: 10px;        
-    }
+    }*/
 
-    .form_button:hover {
+/*    .form_button:hover {
         background-color: rgba(255, 157, 45, 0.50);
         cursor: pointer; cursor: hand;
-    }
+    }*/
 
     .like_name {
         font-size: 13px;

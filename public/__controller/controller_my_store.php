@@ -332,15 +332,16 @@ function show_user_store_items() {
     $store_items_record_result_set = MyStoreItems::read_by_query($query);
 
 
-    echo "<h4>MyStore</h4><br>";
-    echo "<table>";
+//    echo "<h4>MyStore</h4><br>";
+//    echo "<div id='container_for_table_store_items'>";
+    echo "<table id='table_store_items'>";
 
     //
     global $database;
     while ($row = $database->fetch_array($store_items_record_result_set)) {
         echo "<tr>";
         echo "<td>";
-        echo "<div>";
+        echo "<div class='section_item'>";
         // Name
         echo "<h4>{$row['name']}: {$row['quantity']} item";
 
@@ -367,7 +368,7 @@ function show_user_store_items() {
         if ((!$session->is_viewing_own_account()) && ($row["quantity"] > 0)) {
             echo "<form action='" . LOCAL . "/public/__controller/controller_my_store.php' method='post'>";
             echo "<input type='hidden' name='item_id' value='{$row['id']}'>";
-            echo "<input type='submit' name='add_item_to_cart' value='add to my cart'>";
+            echo "<input type='submit' name='add_item_to_cart' class='form_button' value='add to my cart'>";
             echo "</form>";
         }
         // This means the actual user is viewing her own account.
@@ -375,16 +376,17 @@ function show_user_store_items() {
         else if ($session->is_viewing_own_account()) {
 
             echo "<form action='" . LOCAL . "/public/__controller/controller_my_store.php' method='post'>";
-            echo "<input type='submit' value='edit' name='edit_store_item'>";
+            echo "<input type='submit' class='form_button' value='edit' name='edit_store_item'>";
             echo "<input type='hidden' value='{$row['id']}' name='store_item_id'>";
             echo "</form>";
         }
 
-        echo "</div><br><br><br><br><hr>";
+        echo "</div>";
         echo "</td>";
         echo "</tr>";
     }
-    echo "</table><br><br><br>";
+    echo "</table>";
+//    echo "</div>";
 }
 ?>
 

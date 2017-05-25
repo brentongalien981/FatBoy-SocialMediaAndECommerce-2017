@@ -30,11 +30,15 @@ if (!$session->is_logged_in() ||
 
 
 
+<main id="middle_content">
 
-<!--sub-menus nav-->
+
+
+    <!--Sub-menus-->
+    <nav id="sub_menus_nav">
 <a href="index.php?store_content_page=1">MyCart</a>
 <a href="index.php?store_content_page=2">My Shopping History</a>
-</nav>
+    </nav>
 
 
 
@@ -72,6 +76,7 @@ else {
 MyDebugMessenger::show_debug_message();
 MyDebugMessenger::clear_debug_message();
 ?>
+</main>
 
 
 
@@ -82,7 +87,23 @@ MyDebugMessenger::clear_debug_message();
 <!--Styles-->
 <!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />-->
 <style>   
-
+    #middle_content {
+        /*background-color: rgba(230, 230, 230, 0.8);*/
+        background-color: rgb(250, 250, 250);
+        padding-bottom: 30px;
+        color: black;
+    }
+    
+    #sub_menus_nav {
+        /*background-color: rgb(211, 255, 247);*/
+        background-color: rgba(60, 60, 60, 1.0);
+        /*color: rgba(200, 200, 200, 1.0);*/
+        
+    }
+    
+    #sub_menus_nav a {
+        color: rgba(210, 210, 210, 1.0);
+    }
 </style>
 
 
@@ -93,7 +114,14 @@ MyDebugMessenger::clear_debug_message();
 <!--<script src="../_scripts/view_my_store.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += " / Store Cart";
+    document.getElementById("title").innerHTML = "Store Cart / FatBoy";
+</script>
+
+<?php
+// TODO: SECTION: This appends the content of the main content to the main placeholder.
+?>
+<script>
+    document.getElementById("middle").appendChild(document.getElementById("middle_content"));
 </script>
 
 

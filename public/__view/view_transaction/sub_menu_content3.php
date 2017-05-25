@@ -2,7 +2,7 @@
 // TODO: SECTION: Imports
 ?>
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_address.php");     ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_address.php");      ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
 
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
@@ -76,8 +76,8 @@ if (isset($_GET["payment_result"])) {
 
 
 
-<div class="payment_result">
-    <a href="<?php echo LOCAL . '/public/__view/view_store_cart'; ?>">Go to MyCart</a><br>
+<div class="div_payment_result">
+    <a href="<?php echo LOCAL . '/public/__view/view_store_cart'; ?>">Go to MyCart</a><br><br>
     <a href="<?php echo LOCAL . '/public/index.php'; ?>">Go to MyWall</a>
 </div>
 
@@ -92,9 +92,10 @@ if (isset($_GET["payment_result"])) {
 
 <?php
 // TODO: DEBUG
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
+//echo "DEBUG:";
+//echo "<pre>";
+//print_r($_SESSION);
+//echo "</pre>";
 ?>
 
 
@@ -113,8 +114,26 @@ echo "</pre>";
 ?>
 <!--<link href="../_styles/view_shipping.css" rel="stylesheet" type="text/css" />-->
 <style> 
-    .payment_result a {
-        font-size: 80%;
+    .div_payment_result {
+        background-color: rgba(220, 220, 220, 0.3);
+        /*background-color: pink;*/
+        color: black;
+        margin: 30px;
+        /*margin-top: 0;*/
+        padding: 20px;
+        border-radius: 5px;
+        /*margin-bottom: 60px;*/
+        box-shadow: 5px 5px 5px rgba(100, 100, 100, 0.80);
+    }
+
+    .div_payment_result a {
+        color: blue;
+        font-size: 13px;
+        font-weight: 100;
+    }
+
+    .div_payment_result a:hover {
+        color: orange;
     }
 </style>
 
@@ -133,5 +152,5 @@ echo "</pre>";
 <!--<script src="../_scripts/view_shipping.js"></script>-->
 <script>
     // Edit the page title.
-    document.getElementById("title").innerHTML += "Payment Result";
+    document.getElementById("title").innerHTML = "Payment Result";
 </script>

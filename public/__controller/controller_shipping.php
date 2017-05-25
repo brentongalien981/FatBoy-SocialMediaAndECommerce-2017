@@ -147,6 +147,8 @@ function get_seller_ship_from_address_obj() {
 }
 
 function show_shipping_details() {
+    echo "<div id='shipping_details'>";
+    
     echo "<h4>Shipping Address</h4>";
 
     echo "<table class='shipping_details'>";
@@ -158,7 +160,7 @@ function show_shipping_details() {
     show_ship_to_details();
     echo "</td>";
     echo "</tr>";
-    echo "</table><br><br>";
+    echo "</table></div>";
 }
 
 function show_transaction_charges() {
@@ -211,7 +213,8 @@ function show_transaction_charges() {
 
 
     // Display the transaction charges.
-    echo "<br><br><h4>Transaction Charges</h4>";
+    echo "<div id='div_transaction_charges'>";
+    echo "<h4>Transaction Charges</h4>";
     echo "<h6>Sub-total: \${$subtotal}</h6>";
     echo "<h6>Sales Tax: \${$sales_tax}</h6>";
 
@@ -223,6 +226,7 @@ function show_transaction_charges() {
 
     echo "<hr>";
     echo "<h6>Total: \${$total}</h6>";
+    echo "<div>";
 
 
 
@@ -235,11 +239,14 @@ function show_transaction_charges() {
 }
 
 function show_items() {
+    
     //
+    echo "<div id='div_cart_items'>";
     show_table_header();
 
     //
     show_cart_items();
+    echo "</div>";
 }
 
 function get_cart_items_result_sets() {
@@ -302,15 +309,16 @@ function show_cart_items() {
 }
 
 function show_table_header() {
+    
     echo "<h4>Shipping Items</h4>";
 
     echo "<table class='cart_items'>";
     echo "<thead>";
-    echo "<td>ItemId</td>";
-    echo "<td>ItemName</td>";
-    echo "<td>Price</td>";
-    echo "<td>Quantity</td>";
-    echo "<td>Stock</td>";
+    echo "<td id='header_tds'>ItemId</td>";
+    echo "<td id='header_tds'>ItemName</td>";
+    echo "<td id='header_tds'>Price</td>";
+    echo "<td id='header_tds'>Quantity</td>";
+    echo "<td id='header_tds'>Stock</td>";
     echo "</thead>";
 }
 
@@ -318,7 +326,7 @@ function show_ship_to_details() {
     echo "<div class='shipping_to_details'>";
     global $session;
 
-    echo "<h3>Ship to</h3>";
+    echo "<h4>Ship to</h4>";
 
     echo "<h5>{$session->ship_to_address_street1}</h5>";
     echo "<h5>{$session->ship_to_address_street2}</h5>";
@@ -334,7 +342,7 @@ function show_ship_from_details() {
 
     $ship_from_address_obj = get_seller_ship_from_address_obj();
 
-    echo "<h3>Ship from</h3>";
+    echo "<h4>Ship from</h4>";
     echo "<h5>{$ship_from_address_obj->street1}</h5>";
     echo "<h5>{$ship_from_address_obj->street2}</h5>";
     echo "<h5>{$ship_from_address_obj->city}</h5>";
