@@ -29,6 +29,7 @@
     </div>
 
     <div id="container_output">tae</div>
+    <div id="container_output2">tae2</div>
 </div>
 
 
@@ -52,27 +53,31 @@
 //
 //
 
+    var mouse_x;
+    var mouse_y;
+
+    var magnified_message_emoji = null;
 
 
-        function append_emoji(emoji_code) {
-            var the_textarea = document.getElementById("pseudo_textarea");
-            var presented_emoji = "<span class='putang_span' onmouseover='magnify_typed_emoji(this)'>&#" + emoji_code + ";</span>";
-            //&#032;
-
-
-
-            var old_msg = document.getElementById("pseudo_textarea").innerHTML;
-            var new_msg = old_msg + presented_emoji;
-
-            document.getElementById("pseudo_textarea").innerHTML = new_msg;
-
-            show_pop_up_effect(emoji_code);
-        }
+    function append_emoji(emoji_code) {
+        var the_textarea = document.getElementById("pseudo_textarea");
+        var presented_emoji = "<span class='putang_span' onmouseout='remove_magnified_message_emoji()' onmouseover='magnify_typed_emoji(this)'>&#" + emoji_code + ";</span>";
+        //&#032;
 
 
 
+        var old_msg = document.getElementById("pseudo_textarea").innerHTML;
+        var new_msg = old_msg + presented_emoji;
 
-        window.alert("putatattagtattt");
+        document.getElementById("pseudo_textarea").innerHTML = new_msg;
+
+        show_pop_up_effect(emoji_code);
+    }
+
+
+
+
+    window.alert("putatattagtattt");
 
 //        var emoji_buttons_arr = document.getElementsByClassName("input_emoji");
 //
@@ -82,34 +87,38 @@
 //            };
 //        }
 
-//        $( "#the_body" ).mousemove(function( event ) {
-//            var msg = "Handler for .mousemove() called at ";
-//            msg += event.pageX + ", " + event.pageY;
-//            
-//            $("#container_output").html("MSG: " + msg);
-//        });
 
 
 
 
 
+    function remove_magnified_message_emoji() {
+//        setTimeout(function () {
+            if (magnified_message_emoji != null) {
+                magnified_message_emoji.style.display = "none";
+                document.getElementById("the_body").removeChild(magnified_message_emoji);
+                magnified_message_emoji = null;
+            }
+//        }, 100);
+    }
 
 
-        function magnify_typed_emoji(clicked_element) {
+    function magnify_typed_emoji(clicked_element) {
+
+//
+
+        if ((mouse_x - clicked_element.offsetLeft) <= 18) {
+//                window.alert("MAGNIFY!!!");
+
+
+
 
 
             var the_main_div = document.getElementById("main_div");
-
             var the_pseudo_textarea = document.getElementById("pseudo_textarea");
-
-
-
             var new_div = document.createElement("div");
             new_div.style.display = "inline";
-
-
             new_div.innerHTML = "&#128512;";
-
 //        new_div.style.width = "15px";
 //        new_div.style.height = "15px";
             new_div.style.position = "relative";
@@ -128,14 +137,13 @@
 //        var offset_left = the_clicked_emoji.offsetLeft + (the_main_div.offsetLeft / 2) - 2;
 
 
-            new_div.style.left = "0px";//clicked_element.offsetLeft;
+            new_div.style.left = "0px"; //clicked_element.offsetLeft;
 //new_div.style.left = clicked_element.left;
-            new_div.style.top = "0px";//clicked_element.offsetTop
+            new_div.style.top = "0px"; //clicked_element.offsetTop
 //        new_div.innerHTML = "&#" + id_of_clicked_emoji + ";";
 
 
             clicked_element.appendChild(new_div);
-
 //        new_div.style.position = "absolute";
 
 
@@ -153,31 +161,39 @@
 //        cln.style.backgroundColor = "rgba(255, 255, 255, 0.0)";
             cln.style.backgroundColor = "beige";
             cln.style.zoom = "200%";
-
-
 //        
 //        window.alert("new_div: " + clicked_element.offsetWidth);
 //        window.alert("new_div: " + new_div.offsetLeft);
 //        window.alert("cln.: " + new_div.offsetLeft);
 
             document.getElementById("the_body").appendChild(cln);
+
+            magnified_message_emoji = cln;
 //document.appendChild(cln);
 
 
             new_div.style.display = "none";
             clicked_element.removeChild(new_div);
 
+            clicked_element.style.cursor = "pointer";
 
+//            clicked_element.onmouseout = function () {
+//                cln.style.display = "none";
+//                document.getElementById("the_body").removeChild(cln);
+////                window.alert("YOU'RE HOVERING BUT not on the image");
+//
+//            };
 
-            clicked_element.onmouseout = function () {
-                cln.style.display = "none";
-                document.getElementById("the_body").removeChild(cln);
-
-            };
-
+        } else {
+            clicked_element.style.cursor = "text";
         }
 
-        function show_pop_up_effect(id_of_clicked_emoji) {
+
+
+        document.getElementById("container_output2").innerHTML = document.getElementById("pseudo_textarea").innerHTML;
+    }
+
+    function show_pop_up_effect(id_of_clicked_emoji) {
 //                div_result.innerHTML = "left: " + the_span.getBoundingClientRect().left + "<br>" +
 //                               "top: " + the_span.getBoundingClientRect().top + "<br>" + 
 //                               "right: " + the_span.getBoundingClientRect().right;
@@ -189,67 +205,46 @@
 
 
 
-            var the_clicked_emoji = document.getElementById(id_of_clicked_emoji);
-
-            var the_container_emoji = document.getElementById("container_emoji");
-
-            var the_main_div = document.getElementById("main_div");
-
-
-            var new_div = document.createElement("div");
-            new_div.style.width = "15px";
-            new_div.style.height = "15px";
-            new_div.style.position = "absolute";
-            new_div.style.backgroundColor = "yellow";
-            new_div.style.textAlign = "center";
+        var the_clicked_emoji = document.getElementById(id_of_clicked_emoji);
+        var the_container_emoji = document.getElementById("container_emoji");
+        var the_main_div = document.getElementById("main_div");
+        var new_div = document.createElement("div");
+        new_div.style.width = "15px";
+        new_div.style.height = "15px";
+        new_div.style.position = "absolute";
+        new_div.style.backgroundColor = "yellow";
+        new_div.style.textAlign = "center";
 //        new_div.style.display = "table";
 //        new_div.style.verticalAlign = "middle";
-            new_div.style.padding = "10px";
+        new_div.style.padding = "10px";
 //        new_div.style.zoom = "130%";
-            new_div.id = "pautananaman";
-
-            var offset_top = the_clicked_emoji.offsetTop - the_container_emoji.scrollTop - 35;
+        new_div.id = "pautananaman";
+        var offset_top = the_clicked_emoji.offsetTop - the_container_emoji.scrollTop - 35;
 //        var offset_left = the_container_emoji.offsetLeft + the_clicked_emoji.offsetLeft;
-            var offset_left = the_clicked_emoji.offsetLeft + (the_main_div.offsetLeft / 2) - 2;
-
-
-            new_div.style.left = offset_left;
-            new_div.style.top = offset_top
-            new_div.innerHTML = "&#" + id_of_clicked_emoji + ";";
-
-
-            the_container_emoji.appendChild(new_div);
-
-
+        var offset_left = the_clicked_emoji.offsetLeft + (the_main_div.offsetLeft / 2) - 2;
+        new_div.style.left = offset_left;
+        new_div.style.top = offset_top
+        new_div.innerHTML = "&#" + id_of_clicked_emoji + ";";
+        the_container_emoji.appendChild(new_div);
 //        document.getElementById("pseudo_textarea").innerHTML = document.getElementById("pseudo_textarea").innerHTML;
 
 
 
 
-            setTimeout(function () {
-                new_div.style.display = "none";
+        setTimeout(function () {
+            new_div.style.display = "none";
 //            document.getElementById("pseudo_textarea").focus();
-            }, 200);
-
-
-
-
-
-            var the_pseudo_textarea = document.getElementById("pseudo_textarea");
-
-
-
-            var message_being_typed = remove_div_tags(the_pseudo_textarea.innerHTML);
-
-            the_pseudo_textarea.innerHTML = message_being_typed;
+        }, 250);
+        var the_pseudo_textarea = document.getElementById("pseudo_textarea");
+        var message_being_typed = remove_div_tags(the_pseudo_textarea.innerHTML);
+        the_pseudo_textarea.innerHTML = message_being_typed;
 //        
 //        the_pseudo_textarea.innerHTML = remove_div_tags(message_being_typed);
 
 
-            // Put the cursor at the end of the current message being typed.
-            // From stackoverflow.
-            setEndOfContenteditable(document.getElementById("pseudo_textarea"));
-
+        // Put the cursor at the end of the current message being typed.
+        // From stackoverflow.
+        setEndOfContenteditable(document.getElementById("pseudo_textarea"));
 //            window.alert("AFTER:\n" + document.getElementById("pseudo_textarea").innerHTML);
 
 
@@ -258,19 +253,19 @@
 //        window.alert("offsetLeft: " + offset_left);
 //        var the_container_output = document.getElementById("container_output");
 //        the_container_output.innerHTML = "the_main_div: " + the_main_div.offsetLeft;
-        }
+    }
 
-        function br2nl(varTest) {
-            return varTest.replace(/<br\s*\/?>/ig, "\r");
-        }
+    function br2nl(varTest) {
+        return varTest.replace(/<br\s*\/?>/ig, "\r");
+    }
 
-        function remove_div_tags(the_str) {
-            var replacement = "";
-            var the_replacement = the_str.split("<div>").join("<br>");
-            the_replacement = the_replacement.split("</div>").join("");
-            the_replacement = the_replacement.split("&nbsp;").join(" ");
-            the_replacement = the_replacement.split("<br><br>").join("<br>");
-            the_replacement = the_replacement.split("<br></span>").join("</span>");
+    function remove_div_tags(the_str) {
+        var replacement = "";
+        var the_replacement = the_str.split("<div>").join("<br>");
+        the_replacement = the_replacement.split("</div>").join("");
+        the_replacement = the_replacement.split("&nbsp;").join(" ");
+        the_replacement = the_replacement.split("<br><br>").join("<br>");
+        the_replacement = the_replacement.split("<br></span>").join("</span>");
 //        the_replacement = the_replacement.split(";").join("");
 //        the_replacement = the_replacement.split("<y0ldz></y0ldz>").join("");
 //        the_replacement = the_replacement.split("</span>").join("");
@@ -280,44 +275,40 @@
 
 //        the_replacement = the_replacement.split("&nbsp;").join("");
 
-            return the_replacement;
-        }
+        return the_replacement;
+    }
 
-        function setEndOfContenteditable(contentEditableElement)
+    function setEndOfContenteditable(contentEditableElement)
+    {
+        var range, selection;
+        if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
         {
-            var range, selection;
-            if (document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
-            {
-                range = document.createRange();//Create a range (a range is a like the selection but invisible)
-                range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
-                range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-                selection = window.getSelection();//get the selection object (allows you to change selection)
-                selection.removeAllRanges();//remove any selections already made
-                selection.addRange(range);//make the range you have just created the visible selection
-            } else if (document.selection)//IE 8 and lower
-            {
-                range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
-                range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
-                range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-                range.select();//Select the range (make it the visible selection
-            }
+            range = document.createRange(); //Create a range (a range is a like the selection but invisible)
+            range.selectNodeContents(contentEditableElement); //Select the entire contents of the element with the range
+            range.collapse(false); //collapse the range to the end point. false means collapse to end rather than the start
+            selection = window.getSelection(); //get the selection object (allows you to change selection)
+            selection.removeAllRanges(); //remove any selections already made
+            selection.addRange(range); //make the range you have just created the visible selection
+        } else if (document.selection)//IE 8 and lower
+        {
+            range = document.body.createTextRange(); //Create a range (a range is a like the selection but invisible)
+            range.moveToElementText(contentEditableElement); //Select the entire contents of the element with the range
+            range.collapse(false); //collapse the range to the end point. false means collapse to end rather than the start
+            range.select(); //Select the range (make it the visible selection
         }
+    }
 
 
 
-        function func_tae() {
-            window.alert("CLICK INPUT SEND");
-        }
 
 
 
-        // Anonymouse events.
-        document.getElementById("input_send").onclick = function () {
+
+    // Anonymouse events.
+    document.getElementById("input_send").onclick = function () {
 //            window.alert("CLICK INPUT SEND");
-            func_tae();
-        };
-
-
+        func_tae();
+    };
 //    });
 
 
@@ -325,7 +316,25 @@
 
 
 
-<script src="jquery-3.2.1.js"></script>
+<script src="jquery-3.2.1.js">
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        window.alert("shit");
+        $("#the_body").mousemove(function (event) {
+            var msg = "Handler for .mousemove() called at ";
+            msg += event.pageX + ", " + event.pageY;
+            $("#container_output").html("MSG: " + msg);
+            mouse_x = event.pageX;
+            mouse_y = event.pageY;
+        });
+    });
+    function func_tae() {
+        window.alert("CLICK INPUT SEND");
+    }
+</script>
 
 
 
@@ -346,6 +355,7 @@
     #pautananaman {
         /*vertical-align: middle;*/
         /*padding-top: 10px;*/
+        /*cursor:*/ 
     }
 
     #main_div {
@@ -364,12 +374,14 @@
 
     span.tae {
         background-color: yellow;
+        /*cursor: d*/
     }
 
     span.putang_span {
         display: inline;
         /*        background-color: rgba(255, 255, 255, 0.0);*/
-        /*padding: 10px;*/
+        background-color: yellow;
+        /*padding: px;*/
         margin: 0;
         padding: 0;
         /*padding-top: -5px;;*/
@@ -412,7 +424,7 @@
 
     .putang_span:hover {
         /*position: absolute;*/
-        cursor: pointer;
+        /*cursor: pointer;*/
         /*zoom: 300%;*/
     }
 
