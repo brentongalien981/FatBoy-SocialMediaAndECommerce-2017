@@ -111,7 +111,7 @@
 
 //        array_of_start_index_of_emojis.push($('#container_output2').html());
 
-//        show_pop_up_effect(emoji_code);
+        show_pop_up_effect(emoji_code);
 
 
 //        window.alert("POSITION OF CURSOR: " + $('#container_output2').html());
@@ -209,7 +209,7 @@
         console.log("document.getElementById('pseudo_textarea').value.length:" + document.getElementById("pseudo_textarea").value.length);
 
 
-        
+
     }
 
     function post_chat_msg(chat_msg) {
@@ -240,7 +240,7 @@
         var post_key_value_pairs = "chat_msg=" + chat_msg;
         xhr.send(post_key_value_pairs);
     }
-    
+
     function fetch_chat_msg() {
         // AJAX
         var xhr = new XMLHttpRequest();
@@ -257,12 +257,33 @@
                 // If there's a successful response..
                 if (xhr.responseText.trim().length > 0) {
                     document.getElementById("ajax_result").innerHTML = "AJAX FETCH RESULT: " + xhr.responseText.trim();
+
+//                    var the_new_div = document.createElement("div");
+//                    the_new_div.innerHTML = xhr.responseText.trim();
+//                    the_new_div.style.zoom = "300%";
+//                    document.getElementById("main_div").appendChild(the_new_div);
+//                    window.alert(xhr.responseText.trim());
+
+
+//                    var chat_msg = xhr.responseText.trim();
+//
+//                    for (var i=0; i<chat_msg.length; i++) {
+//                        console.log("chat_msg[" + i + "]: " + chat_msg[i] + " <==> " + chat_msg.charCodeAt(i));
+//            //            var n = str.charCodeAt(0);
+//                    }
+
+//                    var chat_msg = xhr.responseText.trim();
+
+                    var presented_msg = surround_chat_msg_emojis_with_span_tags(xhr.responseText.trim())
+
+                    console.log("presented_msg after surround(): " + presented_msg);
+                    
+                    
                     
                     var the_new_div = document.createElement("div");
-                    the_new_div.innerHTML = xhr.responseText.trim();
-                    the_new_div.style.zoom = "300%";
-                    document.getElementById("main_div").appendChild(the_new_div);
-//                    window.alert(xhr.responseText.trim());
+                    the_new_div.className = "chat_post";
+                    the_new_div.innerHTML = presented_msg;
+                    document.getElementById("chat_wall").appendChild(the_new_div);
                 } else {
 
                 }
@@ -275,8 +296,8 @@
         var post_key_value_pairs = "decode=yes";
         xhr.send(post_key_value_pairs);
     }
-    
-    document.getElementById("decode").onclick = function() {
+
+    document.getElementById("decode").onclick = function () {
         fetch_chat_msg();
     };
 
@@ -294,48 +315,73 @@
     }
 
 
-    function surround_chat_msg_emojis_with_span_tags() {
-        var chat_msg_to_be_posted = $("#pseudo_textarea").html();
+    function surround_chat_msg_emojis_with_span_tags(chat_msg) {
+//        var chat_msg_to_be_posted = $("#pseudo_textarea").html();
 
-        console.log("chat_msg_to_be_posted.length: " + chat_msg_to_be_posted.length);
+//        console.log("chat_msg_to_be_posted.length: " + chat_msg_to_be_posted.length);
 
         var the_presented_msg = "";
 
-        for (var i = 0, j = 0; i < chat_msg_to_be_posted.length; ) {
-            if (i == array_of_start_index_of_emojis[j]) {
+        for (var i = 0; i < chat_msg.length; ) {
+//            console.log("chat_msg[" + i + "]: " + chat_msg[i] + " <==> " + chat_msg.charCodeAt(i));
+            //            var n = str.charCodeAt(0);
+
+
+            if (chat_msg.charCodeAt(i) > 255) {
                 the_presented_msg += "<span>";
 
-                the_presented_msg += chat_msg_to_be_posted.charAt(i);
-                the_presented_msg += chat_msg_to_be_posted.charAt(i + 1);
+                the_presented_msg += chat_msg.charAt(i);
+                the_presented_msg += chat_msg.charAt(i + 1);
 
                 the_presented_msg += "</span>";
+
                 i += 2;
-                ++j;
+
                 continue;
             }
+
+
+            the_presented_msg += chat_msg.charAt(i);
+            ++i;
+        }
+
+//        for (var i = 0, j = 0; i < chat_msg.length; ) {
+//            if (i == array_of_start_index_of_emojis[j]) {
+//                the_presented_msg += "<span>";
 //
-//            if (i == (array_of_start_index_of_emojis[j] + 2)) {
-//                the_presented_msg += "</span>";
 //                the_presented_msg += chat_msg_to_be_posted.charAt(i);
+//                the_presented_msg += chat_msg_to_be_posted.charAt(i + 1);
+//
+//                the_presented_msg += "</span>";
+//                i += 2;
 //                ++j;
 //                continue;
 //            }
-
-            the_presented_msg += chat_msg_to_be_posted.charAt(i);
-            ++i;
-
-
-
-//        console.log(the_msg.charAt(i));
-        }
+////
+////            if (i == (array_of_start_index_of_emojis[j] + 2)) {
+////                the_presented_msg += "</span>";
+////                the_presented_msg += chat_msg_to_be_posted.charAt(i);
+////                ++j;
+////                continue;
+////            }
+//
+//            the_presented_msg += chat_msg_to_be_posted.charAt(i);
+//            ++i;
+//
+//
+//
+////        console.log(the_msg.charAt(i));
+//        }
 //    document.createElement("div");
 
+        return the_presented_msg;
+
         // Reset the array.
-        array_of_start_index_of_emojis = [];
-
-        $("#pseudo_textarea").html("");
-
-        console.log("the_presented_msg: " + the_presented_msg);
+//        array_of_start_index_of_emojis = [];
+//
+//        $("#pseudo_textarea").html("");
+//
+//        console.log("the_presented_msg: " + the_presented_msg);
     }
 
 
@@ -572,7 +618,15 @@
     document.getElementById("input_send").onclick = function () {
 //        surround_chat_msg_emojis_with_span_tags();
 //        post_chat_msg();
-        post_chat_msg(document.getElementById("pseudo_textarea").value);
+//        post_chat_msg(document.getElementById("pseudo_textarea").value);
+
+//        var chat_msg = document.getElementById("pseudo_textarea").value;
+//        
+//        for (var i=0; i<chat_msg.length; i++) {
+//            console.log("chat_msg[" + i + "]: " + chat_msg[i] + " <==> " + chat_msg.charCodeAt(i));
+////            var n = str.charCodeAt(0);
+//        }
+
     };
 
 
@@ -703,6 +757,22 @@
         background-color: rgb(227, 255, 224);
 
     }
+    
+    div.chat_post {
+        background-color: yellow;
+        border-radius: 10px;
+        width: fit-content;
+        margin: 5px;
+        /*margin-right: 5%;*/
+        
+        /*margin-left: 100%;*/
+        
+        padding: 5px;
+        
+        float: right;
+        
+        text-align: center;
+    }
 
     span.tae {
         background-color: yellow;
@@ -765,6 +835,7 @@
         width: 500px;
         height: 200px;
         /*padding: 10px;*/
+        /*padding-right: -200px;*/
         border-radius: 5px;
         margin: 20px;
         margin-left: auto;

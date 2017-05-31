@@ -42,9 +42,40 @@ if (!$session->is_logged_in()) {
 
     <!--Sub-menus-->
     <nav id="sub_menus_nav">
-        <a href="index.php?content_page=1">My Videos</a>
-        <a href="#">Add Video</a>
+        <a href="index.php?content_page=1" id="sub_nav_chat_with">Chat with</a>
+        <a href="index.php?content_page=2" id="sub_nav_chat_window">Chat Window</a>
     </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>   
+
+        #middle_content {
+            background-color: rgb(250, 250, 250);
+            padding-bottom: 30px;
+            color: black;
+        }
+
+        #sub_menus_nav {
+            background-color: rgb(60, 60, 60);
+        }#sub_menus_nav a {
+            color: rgb(220, 220, 220);
+        }
+    </style>
+
+
+
+
+
 
 
 
@@ -93,44 +124,26 @@ if (!$session->is_logged_in()) {
 
 <!--Styles-->
 
-<style>   
-/*    #middle_content {
-        background-color: beige;
-        padding: 30px;
-        border-radius: 5px;
-        margin-top: 20px;
-        padding-bottom: 30px;
-    }*/
+<!--<style>   
+
     #middle_content {
-        background-color: rgba(230, 230, 230, 0.8);
+        background-color: rgb(250, 250, 250);
         padding-bottom: 30px;
+        color: black;
     }
-
-
 
     #sub_menus_nav {
+        background-color: rgb(60, 60, 60);
+    }#sub_menus_nav a {
+        color: rgb(220, 220, 220);
     }
-</style>
+</style>-->
 
 
 
 
 
 <!--Scripts-->
-<!--<script src="../_scripts/view_my_store.js"></script>-->
-<script>
-//    document.getElementById("title").innerHTML = "FatBoy / ";
-</script>
-
-
-
-
-
-
-
-
-
-
 <?php
 // TODO: SECTION: This appends the content of the main content to the main placeholder.
 ?>

@@ -55,7 +55,10 @@ class Session {
     public $ad_target_num_airings;
     public $ad_budget;
     public $ad_air_time;
-    public $ad_status_id;    
+    public $ad_status_id;
+    // Chat
+    public $chat_thread_id;
+//    public $chat_with_user_id;
 
 //    public $message;
 
@@ -101,7 +104,7 @@ class Session {
     public function set_refund_item_quantity($quantity) {
         $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = $quantity;
     }
-    
+
 //    public function set_ad_vars($ad_obj) {
 //        $this->ad_name = $_SESSION["ad_name"] = $ad_obj->ad_name;
 //        $this->ad_description = $_SESSION["ad_description"] = $ad_obj->description;
@@ -111,7 +114,15 @@ class Session {
 //        $this->ad_air_time = $_SESSION["ad_air_time"] = $ad_obj->air_time;
 //        $this->ad_status_id = $_SESSION["ad_status_id"] = $ad_obj->status_id;       
 //    }
-    
+
+    public function set_chat_thread_id($chat_thread_id) {
+        $this->chat_thread_id = $_SESSION["chat_thread_id"] = $chat_thread_id;
+    }
+
+//    public function set_chat_with_user_id($chat_with_user_id) {
+//        $this->chat_with_user_id = $_SESSION["chat_with_user_id"] = chat_with_user_id;
+//    }
+
     public function set_ad_name($ad_name) {
         $this->ad_name = $_SESSION["ad_name"] = $ad_name;
     }
@@ -140,7 +151,6 @@ class Session {
         $this->ad_status_id = $_SESSION["ad_status_id"] = $ad_status_id;
     }
 
-    
     public function get_can_now_checkout() {
         return $this->can_now_checkout;
     }
@@ -258,7 +268,11 @@ class Session {
             $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"] = null;
             $this->ad_budget = $_SESSION["ad_budget"] = null;
             $this->ad_air_time = $_SESSION["ad_air_time"] = null;
-            $this->ad_status_id = $_SESSION["ad_status_id"] = null;       
+            $this->ad_status_id = $_SESSION["ad_status_id"] = null;
+
+            // Chat
+            $this->chat_thread_id = $_SESSION["chat_thread_id"] = null;
+//            $this->chat_with_user_id = $_SESSION["chat_with_user_id"] = null;
         }
     }
 
@@ -305,18 +319,22 @@ class Session {
         // Refund.
         unset($_SESSION["refund_invoice_item_id"]);
         unset($_SESSION["refund_item_quantity"]);
-        
-        
+
+
         // Ad.
-        unset($_SESSION["tae"]);  
-        unset($_SESSION["ad_name"]);  
-        unset($_SESSION["ad_description"]);  
-        unset($_SESSION["ad_photo_url_address"]);  
-        unset($_SESSION["ad_target_num_airings"]);  
-        unset($_SESSION["ad_budget"]);  
-        unset($_SESSION["ad_air_time"]);  
-        unset($_SESSION["ad_status_id"]);  
-  
+        unset($_SESSION["tae"]);
+        unset($_SESSION["ad_name"]);
+        unset($_SESSION["ad_description"]);
+        unset($_SESSION["ad_photo_url_address"]);
+        unset($_SESSION["ad_target_num_airings"]);
+        unset($_SESSION["ad_budget"]);
+        unset($_SESSION["ad_air_time"]);
+        unset($_SESSION["ad_status_id"]);
+
+
+        // Chat.           
+        unset($_SESSION["chat_thread_id"]);
+//        unset($_SESSION["chat_with_user_id"]);
 
 
 
@@ -367,23 +385,25 @@ class Session {
         // Refund.
         unset($this->refund_invoice_item_id);
         unset($this->refund_item_quantity);
-        
-        
+
+
         // Ad.
         unset($this->tae);
-        unset($this->ad_name);  
-        unset($this->ad_description);  
-        unset($this->ad_photo_url_address);  
-        unset($this->ad_target_num_airings);  
-        unset($this->ad_budget);  
-        unset($this->ad_air_time);  
-        unset($this->ad_status_id);  
-        
-            
-             
-        
-        
-        
+        unset($this->ad_name);
+        unset($this->ad_description);
+        unset($this->ad_photo_url_address);
+        unset($this->ad_target_num_airings);
+        unset($this->ad_budget);
+        unset($this->ad_air_time);
+        unset($this->ad_status_id);
+
+        // Chat.           
+        unset($this->chat_thread_id);
+//        unset($this->chat_with_user_id);
+
+
+
+
 
         $this->logged_in = false;
         session_unset();
@@ -478,14 +498,20 @@ class Session {
 
             // Ad.
             if (isset($_SESSION["ad_name"])) {
-                $this->tae = $_SESSION["tae"];                
+                $this->tae = $_SESSION["tae"];
                 $this->ad_name = $_SESSION["ad_name"];
                 $this->ad_description = $_SESSION["ad_description"];
                 $this->ad_photo_url_address = $_SESSION["ad_photo_url_address"];
                 $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"];
                 $this->ad_budget = $_SESSION["ad_budget"];
                 $this->ad_air_time = $_SESSION["ad_air_time"];
-                $this->ad_status_id = $_SESSION["ad_status_id"];               
+                $this->ad_status_id = $_SESSION["ad_status_id"];
+            }
+
+            // Chat.
+            if (isset($_SESSION["chat_thread_id"])) {
+                $this->chat_thread_id = $_SESSION["chat_thread_id"];
+//                $this->chat_with_user_id = $_SESSION["chat_with_user_id"];
             }
         } else {
             unset($this->actual_user_id);
@@ -505,10 +531,10 @@ class Session {
 
 
             unset($this->num_of_notifications);
-            
+
             // Ad
             unset($this->tae);
-            
+
             unset($this->ad_name);
             unset($this->ad_description);
             unset($this->ad_photo_url_address);
@@ -516,8 +542,13 @@ class Session {
             unset($this->ad_budget);
             unset($this->ad_air_time);
             unset($this->ad_status_id);
-            
-            
+
+
+            // Chat.           
+            unset($this->chat_thread_id);
+//            unset($this->chat_with_user_id);
+
+
 
 
             $this->logged_in = false;

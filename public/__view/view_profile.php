@@ -3,7 +3,7 @@
 
 <!--File session.php is already included in header.php.-->
 <?php require_once("../_layouts/header.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__controller/controller_like.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__controller/controller_profile.php"); ?>
 
 
 
@@ -33,151 +33,148 @@ if (!$session->is_logged_in()) {
 <main id="middle_content">
 
 
+
     <!--Sub-menus-->
     <nav id="sub_menus_nav">
-        <a id="tae" href="#">Sub-menu1</a>
-        <a href="#">Sub-menu2</a>
+        <a href="" id="sub_nav_chat_with">Sub-menu A</a>
     </nav>
 
-    <div id="main_div">
-        <div id="context_sensitive_nav">
-            <a href="#">Address</a>
-            <a>&gt;</a>
-            <a href="#">Edit Address</a>
-        </div>
 
 
 
 
-
-        <!--Main content.-->
-        <div class="section">
-            <!--My Address From-->
-
-            <button id="buttonEditAddress" class="buttonAddress" onclick="displayAddressForm()">edit address</button>
-            <button id="buttonDoneEditingAddress" class="buttonAddress" onclick="hideAddressForm()">done</button>
-            <form id="formAddress" action="../__controller/controller_address.php" method="post">
-                <h4 id="h4MyAddress">My Address</h4>
-
-                <h6>Street1</h6>
-                <input type="text" class="form_text_input" name="street1">
+    <!--Main content.-->
+    <?php
+    show_user_profile_summary();
+    ?>
 
 
-                <h6>Street2</h6>
-                <input type="text" class="form_text_input" name="street2">
+    <div class="section">
+        <!--My Address From-->
+
+        <button id="buttonEditAddress" class="buttonAddress" onclick="displayAddressForm()">edit address</button>
+        <button id="buttonDoneEditingAddress" class="buttonAddress" onclick="hideAddressForm()">done</button>
+        <form id="formAddress" action="../__controller/controller_address.php" method="post">
+            <h4 id="h4MyAddress">My Address</h4>
+
+            <h6>Street1</h6>
+            <input type="text" class="form_text_input" name="street1">
 
 
-                <h6>City</h6>
-                <input type="text" class="form_text_input" name="city">                
+            <h6>Street2</h6>
+            <input type="text" class="form_text_input" name="street2">
 
 
-                <h6>State</h6>
-                <input type="text" class="form_text_input" name="state">
+            <h6>City</h6>
+            <input type="text" class="form_text_input" name="city">                
 
 
-                <h6>ZIP</h6>
-                <input type="text" class="form_text_input" name="zip">   
+            <h6>State</h6>
+            <input type="text" class="form_text_input" name="state">
 
 
-                <h6>Country</h6>
-                <select class="form_text_input" name="country_code">
-                    <?php
-                    //
-                    require_once(PUBLIC_PATH . "/__controller/controller_country.php");
-
-                    //
-                    $countries_objects_array = get_countries_objects_array();
-
-                    //
-                    foreach ($countries_objects_array as $country_object) {
-                        echo "<option value='{$country_object->code}'>{$country_object->name}</option>";
-                    }
-                    ?>
-                </select>       
+            <h6>ZIP</h6>
+            <input type="text" class="form_text_input" name="zip">   
 
 
-                <h6>Address Type</h6>
-                <input class="radio_buttons" type="radio" name="address_type_code" value="1" checked="checked"><label class="label">Residential</label>
-                <input class="radio_buttons" type="radio" name="address_type_code" value="2"><label class="label">Business</label><br><br>
-
-
-
+            <h6>Country</h6>
+            <select class="form_text_input" name="country_code">
                 <?php
-                // If the actual user is viewing her own account,
-                // display the save address button.
-                if ($session->is_viewing_own_account()) {
-                    echo "<input type='submit' class='buttonAddress' name='save_address' value='save address'>";
+                //
+                require_once(PUBLIC_PATH . "/__controller/controller_country.php");
+
+                //
+                $countries_objects_array = get_countries_objects_array();
+
+                //
+                foreach ($countries_objects_array as $country_object) {
+                    echo "<option value='{$country_object->code}'>{$country_object->name}</option>";
                 }
-                ?>                
-            </form>
-        </div>
-        <!--        <br>
-                <br>
-                <br>-->
+                ?>
+            </select>       
+
+
+            <h6>Address Type</h6>
+            <input class="radio_buttons" type="radio" name="address_type_code" value="1" checked="checked"><label class="label">Residential</label>
+            <input class="radio_buttons" type="radio" name="address_type_code" value="2"><label class="label">Business</label><br><br>
 
 
 
-
-        <div class="section">
-            <h4>Likes</h4>
             <?php
+            // If the actual user is viewing her own account,
+            // display the save address button.
+            if ($session->is_viewing_own_account()) {
+                echo "<input type='submit' class='buttonAddress' name='save_address' value='save address'>";
+            }
+            ?>                
+        </form>
+    </div>
+    <!--        <br>
+            <br>
+            <br>-->
+
+
+
+
+    <div class="section">
+        <h4>Likes</h4>
+        <?php
 // Form for letting the actual user add her likes.
 // If the user is signed-in and actual user is the one viewing her own account,
 // then let the actual user add her likes.
-            if ($session->is_viewing_own_account()) {
+        if ($session->is_viewing_own_account()) {
 
-                echo "<h5>What do you like?</h5>";
-                echo "<form id='formProfile' action='" . LOCAL . "/public/__controller/controller_like.php' method='post'>";
-                echo "<input class='form_text_input' name='a_new_like' value='' type='text' /><br>";
-                echo "<input class='form_button' type='submit' name='add_like' value='add like' />";
-                echo "</form>";
+            echo "<h5>What do you like?</h5>";
+            echo "<form id='formProfile' action='" . LOCAL . "/public/__controller/controller_like.php' method='post'>";
+            echo "<input class='form_text_input' name='a_new_like' value='' type='text' /><br>";
+            echo "<input class='form_button' type='submit' name='add_like' value='add like' />";
+            echo "</form>";
 
-                echo "<br><br><br>";
-            }
-            ?>
-
-
+            echo "<br><br><br>";
+        }
+        ?>
 
 
 
 
-            <h4>My Likes</h4>
 
-            <!-- Display of all user's likes. -->
-            <?php
-            require_once(PUBLIC_PATH . "/__controller/controller_like.php");
+
+        <h4>My Likes</h4>
+
+        <!-- Display of all user's likes. -->
+        <?php
+        require_once(PUBLIC_PATH . "/__controller/controller_like.php");
 
 
 // 
-            $completely_presented_user_likes_array = get_completely_presented_user_likes_array();
+        $completely_presented_user_likes_array = get_completely_presented_user_likes_array();
 
 //
-            echo "<table id='like_table'>";
+        echo "<table id='like_table'>";
 
 //
-            foreach ($completely_presented_user_likes_array as $completely_presented_user_like) {
-                echo "<tr>";
-                echo $completely_presented_user_like;
-                echo "</tr>";
-            }
+        foreach ($completely_presented_user_likes_array as $completely_presented_user_like) {
+            echo "<tr>";
+            echo $completely_presented_user_like;
+            echo "</tr>";
+        }
 
 //
-            echo "</table>";
-            ?>
-        </div>
-
-
-
-
-
-
-
-        <?php
-// TODO: SECTION: LOG
-        MyDebugMessenger::show_debug_message();
-        MyDebugMessenger::clear_debug_message();
+        echo "</table>";
         ?>
     </div>
+
+
+
+
+
+
+
+    <?php
+// TODO: SECTION: LOG
+    MyDebugMessenger::show_debug_message();
+    MyDebugMessenger::clear_debug_message();
+    ?>
 </main>
 
 
@@ -191,16 +188,33 @@ if (!$session->is_logged_in()) {
 ?>
 <!--<link href="../_styles/view_profile.css" rel="stylesheet" type="text/css" />-->
 <style> 
-    #main_div {
-        background-color: beige;
-        /*padding: 30px;*/
-        border-radius: 5px;
-        margin-top: 20px;
+    /*    #main_div {
+            background-color: beige;
+            padding: 30px;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding-bottom: 30px;
+        }*/
+
+    #middle_content {
+        background-color: rgb(250, 250, 250);
         padding-bottom: 30px;
+        color: black;
+    }
+
+    #sub_menus_nav {
+        background-color: rgb(60, 60, 60);
+    }#sub_menus_nav a {
+        color: rgb(220, 220, 220);
+    }
+    
+    #menu_profile {
+        /*background-color: rgb(60, 60, 60);*/
+        background-color: rgb(250, 250, 250);
     }
 
     .section {
-        background-color: rgba(240, 240, 240, 1.0);
+        background-color: rgb(245, 245, 245);
         margin: 30px;
         padding: 30px;
         border-radius: 5px;
@@ -208,30 +222,54 @@ if (!$session->is_logged_in()) {
 
     }
 
-    #context_sensitive_nav {
-        width: 100%;
-        background-color: rgba(50, 50, 50, 1.0);
-        height: 20px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        color: rgba(200, 200, 200, 1.0);
-        font-size: 11px;
+    #div_about_me {
+        /*background-color: pink;*/
+        margin-top: 20px;
+        min-height: 256px;
+    }
+
+    #div_about_me img {
+        width: 256px;
+        height: 256px;
+        border-radius: 3px;
+        float: left;
+        margin: 0;
+        margin-right: 15px;
+        margin-bottom: 0px;
+        padding: 0;
+    }
+
+    #div_about_me p {
+        font-size: 13px;
         font-weight: 100;
-        padding-top: 8px;
+        margin: 0;
+        padding: 0;
     }
 
-    #context_sensitive_nav a {
-        /*background-color: gray;*/
-        margin-left: 30px;
-        /*        padding-top: 3px;
-                padding-bottom: 3px;*/
-        color: rgba(200, 200, 200, 1.0);
-    }
-
-    #context_sensitive_nav a:hover {
-        color: orange;
-        
-    }
+    /*    #context_sensitive_nav {
+            width: 100%;
+            background-color: rgba(50, 50, 50, 1.0);
+            height: 20px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            color: rgba(200, 200, 200, 1.0);
+            font-size: 11px;
+            font-weight: 100;
+            padding-top: 8px;
+        }
+    
+        #context_sensitive_nav a {
+            background-color: gray;
+            margin-left: 30px;
+                    padding-top: 3px;
+                    padding-bottom: 3px;
+            color: rgba(200, 200, 200, 1.0);
+        }
+    
+        #context_sensitive_nav a:hover {
+            color: orange;
+    
+        }*/
 
     form h4 {
         display: block;
@@ -283,9 +321,10 @@ if (!$session->is_logged_in()) {
         margin-top: 20px;
         color: black;
         /*        background-color: rgb(200, 200, 200);*/
-        background-color: rgba(255, 157, 45, 0.20);
+        /*background-color: rgba(255, 157, 45, 0.20);*/
+        background-color: rgb(224, 255, 193);
         box-shadow: 3px 3px 3px rgb(130, 130, 130);
-        border: 1px solid;
+        /*border: 1px solid;*/
         font-size: 10px;
         font-weight: 100;
         padding-left: 10px;
@@ -301,28 +340,28 @@ if (!$session->is_logged_in()) {
         cursor: pointer; cursor: hand;
     }
 
-/*    .form_button {
-        margin-bottom: 30px;
-        margin-top: 20px;
-        color: black;
-                background-color: rgb(200, 200, 200);
-        background-color: rgba(255, 157, 45, 0.20);
-        box-shadow: 3px 3px 3px rgb(130, 130, 130);
-        border: 1px solid;
-        font-size: 10px;
-        font-weight: 100;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border-radius: 3px;
-        margin-right: 10px;        
-    }*/
+    /*    .form_button {
+            margin-bottom: 30px;
+            margin-top: 20px;
+            color: black;
+                    background-color: rgb(200, 200, 200);
+            background-color: rgba(255, 157, 45, 0.20);
+            box-shadow: 3px 3px 3px rgb(130, 130, 130);
+            border: 1px solid;
+            font-size: 10px;
+            font-weight: 100;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 3px;
+            margin-right: 10px;        
+        }*/
 
-/*    .form_button:hover {
-        background-color: rgba(255, 157, 45, 0.50);
-        cursor: pointer; cursor: hand;
-    }*/
+    /*    .form_button:hover {
+            background-color: rgba(255, 157, 45, 0.50);
+            cursor: pointer; cursor: hand;
+        }*/
 
     .like_name {
         font-size: 13px;
@@ -382,10 +421,10 @@ if (!$session->is_logged_in()) {
 <?php
 // TODO: SECTION: Scripts.
 ?>
-<script src="../_scripts/view_profile.js"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/view_profile.js"; ?>"></script>
 <script>
-                // Edit the page title.
-                document.getElementById("title").innerHTML += "Profile / FatBoy";
+            // Edit the page title.
+            document.getElementById("title").innerHTML = "Profile / FatBoy";
 </script>
 
 

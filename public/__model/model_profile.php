@@ -4,14 +4,13 @@
 // probably smart to require it before we start.
 require_once("my_database.php");
 
-class ChatMessage {
+class Profile {
 
-    protected static $table_name = "ChatMessage";
-    protected static $db_fields = array("id", "chat_thread_id", "chatter_user_id", "message");
-    public $id;
-    public $chat_thread_id;
-    public $chatter_user_id;
-    public $message;
+    protected static $table_name = "Profile";
+    protected static $db_fields = array("user_id", "description", "pic_url");
+    public $user_id;
+    public $description;
+    public $pic_url;
 
     public static function read_by_id($id = 0) {
 //        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
@@ -93,7 +92,7 @@ class ChatMessage {
         $query_result = $database->get_result_from_query($query);
 
         if ($query_result) {
-            $this->id = $database->get_last_inserted_id();
+            $this->user_id = $database->get_last_inserted_id();
             return true;
         } else {
             return false;

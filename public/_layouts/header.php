@@ -1,5 +1,6 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_profile.php"); ?>
 <?php
 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     // Start the notification notifier fetcher...
@@ -15,7 +16,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                              ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                    ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -230,7 +231,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 width: 100%;
 
             }
-            
+
             #container_for_nav_side {
                 margin-left: 3%;
                 background-color: white;
@@ -253,7 +254,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 /*background-color: rgb(244, 244, 244);*/
                 background-color: rgba(221, 244, 159, 0.80);
                 /*background-color: rgba(211, 242, 9, 0.7);*/
-/*                margin-left: 3%;*/
+                /*                margin-left: 3%;*/
                 margin-top: 0;
                 /*padding-top: 15px;*/
                 padding-bottom: 25px;
@@ -267,9 +268,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-top: 20px;
                 color: black;
                 /*        background-color: rgb(200, 200, 200);*/
-                background-color: rgba(255, 157, 45, 0.20);
+                /*background-color: rgba(255, 157, 45, 0.20);*/
+                background-color: rgb(224, 255, 193);
                 box-shadow: 3px 3px 3px rgb(130, 130, 130);
-                border: 1px solid;
+                /*border: 1px solid;*/
                 font-size: 10px;
                 font-weight: 100;
                 padding-left: 10px;
@@ -503,7 +505,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #navSide a:hover {
-                background-color: white;
+                background-color: rgb(255, 235, 160);
                 cursor: pointer; cursor: hand;
             }
 
@@ -556,18 +558,43 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                     <td class="header" id="status">
                         <div id="divStatus">
                             <?php
+                            $profile_pic_url = "/public/_photos/icon_home.png";
+
                             if ($session->is_logged_in()) {
 //                                echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
 //                                echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
                                 echo "<a id='link_home' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>";
-                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
+
+                                //
+                                global $session;
+                                $query = "SELECT * FROM Profile ";
+                                $query .= "WHERE user_id = {$session->actual_user_id}";
+
+                                $record_result = Profile::read_by_query($query);
+
+
+                                global $database;
+                                while ($row = $database->fetch_array($record_result)) {
+                                    $profile_pic_url = $row["pic_url"];
+
+                                    if ($profile_pic_url == null || $profile_pic_url == "") {
+                                        $profile_pic_url = "/public/_photos/icon_home.png";
+                                    }
+
+                                    break;
+                                }
+
+//                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
+                                echo "<img src='" . LOCAL . "{$profile_pic_url}' class='header_icon'>";
 //                                echo "Hello {$session->actual_user_name}!";
                                 echo "</a>";
                             } else {
+                                $profile_pic_url = "/public/_photos/icon_home.png";
+
 //                                echo "<a class='user_name'>zZzzZz</a>";
 //                                echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
                                 echo "<a id='link_home' href='#'>";
-                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
+                                echo "<img src='" . LOCAL . "{$profile_pic_url}' class='header_icon'>";
                                 echo "</a>";
                             }
                             ?>
@@ -575,22 +602,22 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                     </td>
 
 
-                    <?php
-                    // Pop-up when home icon is hovered.
-                    if ($session->is_logged_in()) {
-                        echo "<div id='pop_up_for_link_home'>";
+<?php
+// Pop-up when home icon is hovered.
+if ($session->is_logged_in()) {
+    echo "<div id='pop_up_for_link_home'>";
 //                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php>Log-in</a><br>";
 //                        echo "<a href='' class='pop_up_links'>Sign-up</a><br>";
 
-                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
-                        echo "</div>";
-                    } else {
-                        echo "<div id='pop_up_for_link_home'>";
-                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a><br>";
-                        echo "<a href='" . LOCAL . "/public/__view/view_signup.php' class='pop_up_links'>Sign-up</a><br>";
-                        echo "</div>";
-                    }
-                    ?>
+    echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
+    echo "</div>";
+} else {
+    echo "<div id='pop_up_for_link_home'>";
+    echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a><br>";
+    echo "<a href='" . LOCAL . "/public/__view/view_signup.php' class='pop_up_links'>Sign-up</a><br>";
+    echo "</div>";
+}
+?>
 
 
 
@@ -657,35 +684,72 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <a href="<?php echo LOCAL . '/public/index.php'; ?>" class="">
-                                    <img src="<?php echo LOCAL . '/public/_photos/icon_wall_pin.png'; ?>" class="icon">Timeline
-                                    <?php
-                                    if ($session->is_logged_in()) {
-                                        echo " of {$session->currently_viewed_user_name}";
-                                    }
-                                    ?>
-                                </a>
+<?php
+// For the timeline icon.
+//
+                                if ($session->is_logged_in()) {
+    global $session;
+    $query = "SELECT * FROM Profile ";
+//                                $query .= "WHERE user_id = {$session->currently_viewed_user_id}";
+    $query .= "WHERE user_id = {$session->currently_viewed_user_id}";
+
+    $record_result = Profile::read_by_query($query);
+
+    $timeline_pic_url = "/public/_photos/icon_wall_pin.png";
+
+    global $database;
+    while ($row = $database->fetch_array($record_result)) {
+        $timeline_pic_url = $row["pic_url"];
+
+        // If there's no valid image.
+        if ($timeline_pic_url == null || $timeline_pic_url == "") {
+            $timeline_pic_url = "/public/_photos/icon_wall_pin.png";
+        }
+        break;
+    }
+
+    echo "<a href='" . LOCAL . "/public/index.php' class=''>";
+    echo "<img src='" . LOCAL . "{$timeline_pic_url}' class='icon'>Timeline";
 
 
-                                <?php
-                                // Notifications.
-                                if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_notifications.php'>";
-                                    echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
-                                    echo "Notifications";
+    echo " of {$session->currently_viewed_user_name}";
 
-                                    if ($session->num_of_notifications > 0) {
-                                        echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
+
+    echo "</a>";
+}
+?>
+
+
+
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';     ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';     ?>" class="icon">Timeline-->
+<?php
+//                                    if ($session->is_logged_in()) {
+//                                        echo " of {$session->currently_viewed_user_name}";
+//                                    }
+?>
+                                <!--</a>-->
+
+
+<?php
+// Notifications.
+if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    echo "<a href='" . LOCAL . "/public/__view/view_notifications.php'>";
+    echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
+    echo "Notifications";
+
+    if ($session->num_of_notifications > 0) {
+        echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
 //                    echo "<span id='span_num_of_notifications'>5</span>";
-                                    } else {
-                                        echo "<span id='span_num_of_notifications' style='display: none;'></span>";
-                                    }
+    } else {
+        echo "<span id='span_num_of_notifications' style='display: none;'></span>";
+    }
 
-                                    echo "</a>";
-                                }
-                                ?>
+    echo "</a>";
+}
+?>
 
-                                <a href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">
+                                <a id="menu_profile" href="<?php echo LOCAL . '/public/__view/view_profile.php'; ?>" class="">
                                     <img src="<?php echo LOCAL . '/public/_photos/icon_profile.png'; ?>" class="icon">Profile
                                 </a>
 
@@ -697,6 +761,16 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                     <img src="<?php echo LOCAL . '/public/_photos/icon_video.png'; ?>" class="icon">MyVideos</a>
 
 
+<?php
+// Chat
+if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    echo "<a href='" . LOCAL . "/public/__view/view_chat'>";
+    echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
+    echo "Chat</a>";
+}
+?>                                    
+
+
                                 <a href="<?php echo LOCAL . '/public/__view/view_my_ads'; ?>">
                                     <img src="<?php echo LOCAL . '/public/_photos/icon_ad.png'; ?>" class="icon">MyAds</a>
 
@@ -704,35 +778,35 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <a href="<?php echo LOCAL . '/public/__view/view_my_store'; ?>">
                                     <img src="<?php echo LOCAL . '/public/_photos/icon_store.png'; ?>" class="icon">MyStore</a>
 
-                                <?php
-                                // MyCart
-                                if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_store_cart'>";
-                                    echo "<img src='" . LOCAL . "/public/_photos/icon_cart.png' class='icon'>";
-                                    echo "MyCart</a>";
-                                }
-                                ?>
+<?php
+// MyCart
+if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    echo "<a href='" . LOCAL . "/public/__view/view_store_cart'>";
+    echo "<img src='" . LOCAL . "/public/_photos/icon_cart.png' class='icon'>";
+    echo "MyCart</a>";
+}
+?>
 
 
 
-                                <?php
-                                // MySales
-                                if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_my_sales'>";
-                                    echo "<img src='" . LOCAL . "/public/_photos/icon_sales.png' class='icon'>";
-                                    echo "MySales</a>";
-                                }
-                                ?>
+<?php
+// MySales
+if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    echo "<a href='" . LOCAL . "/public/__view/view_my_sales'>";
+    echo "<img src='" . LOCAL . "/public/_photos/icon_sales.png' class='icon'>";
+    echo "MySales</a>";
+}
+?>
 
 
-                                <?php
-                                // MyRefund
-                                if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_refund'>";
-                                    echo "<img src='" . LOCAL . "/public/_photos/icon_refund.png' class='icon'>";
-                                    echo "MyRefund</a>";
-                                }
-                                ?>
+<?php
+// MyRefund
+if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    echo "<a href='" . LOCAL . "/public/__view/view_refund'>";
+    echo "<img src='" . LOCAL . "/public/_photos/icon_refund.png' class='icon'>";
+    echo "MyRefund</a>";
+}
+?>
 
 
 
@@ -782,6 +856,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-right: 10px;
                 /*background-color: yellow;*/
                 margin-bottom: -5px;
+                border-radius: 3px;
             }
 
             #divStatus a {
@@ -798,7 +873,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-top: 17px;
                 padding: 2px;
                 padding-top: 1px;
-                border-radius: 3px;
+                border-radius: 5px;
 
                 /*padding-top: 20px;*/
                 /*margin-right: 10px;*/
@@ -942,10 +1017,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-        <?php
-        // TODO: SECTION: Script for popping-in and 
-        // popping out of the sign-in, sign-up links.
-        ?>
+<?php
+// TODO: SECTION: Script for popping-in and 
+// popping out of the sign-in, sign-up links.
+?>
         <script>
             // Vars.
             var timeout_handler;
@@ -986,11 +1061,15 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             };
 
             for (var i = 0; i < 2; i++) {
-                document.getElementsByClassName("pop_up_links")[i].onmouseover = function () {
-                    //                window.alert("howver");
-                    clearTimeout(timeout_handler);
-                    document.getElementById("pop_up_for_link_home").style.display = "block";
-                };
+                if (document.getElementsByClassName("pop_up_links")[i] != null) {
+                    document.getElementsByClassName("pop_up_links")[i].onmouseover = function () {
+                        clearTimeout(timeout_handler);
+                        document.getElementById("pop_up_for_link_home").style.display = "block";
+                    };
+
+                }
+
+
             }
 
 
