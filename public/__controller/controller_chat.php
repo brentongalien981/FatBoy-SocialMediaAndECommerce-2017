@@ -1,6 +1,7 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_chat.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_profile.php"); ?>
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
@@ -51,34 +52,147 @@ function get_new_chat_msgs() {
     return $record_results;
 }
 
+function get_user_profile_pic_src($user_id) {
+    $query = "SELECT * FROM Profile ";
+    $query .= "WHERE user_id = {$user_id}";
+
+    $record_result = Profile::read_by_query($query);
+
+    $pic_url;
+
+    global $database;
+    while ($row = $database->fetch_array($record_result)) {
+        $pic_url = $row["pic_url"];
+
+        if (empty($pic_url) || is_null($pic_url)) {
+            $pic_url = "/public/_photos/mochi.png";
+        }
+
+        break;
+    }
+
+    return $pic_url;
+}
+
 function show_completely_presented_chat_msgs() {
     global $session;
     $query = "SELECT * FROM ChatMessage ";
     $query .= "WHERE chat_thread_id = {$session->chat_thread_id} ";
-    $query .= "AND is_new = 0 ";
+//    $query .= "AND is_new = 0 ";
     $query .= "ORDER BY date_posted ASC";
 
+
+    //
     $record_results = ChatMessage::read_by_query($query);
 
 
     global $database;
     while ($row = $database->fetch_array($record_results)) {
-        // If the chat_msg is from the actual user, put a flag code "1" at the
+        // TODO: DEBUG:
+        MyDebugMessenger::add_debug_message("Inside method show_completely_presented_chat_msgs()");
+
+        // If the chat_msg is new..
+        if ($row["is_new"] == 1) {
+            // ..check if it hasn't been seen by the user.
+            $current_chat_msg_id = $row["id"];
+
+            // TODO: DEBUG:
+            MyDebugMessenger::add_debug_message("VAR \$current_chat_msg_id: {$current_chat_msg_id}");
+
+
+            $is_log_creation_ok;
+
+            if (!has_user_seen_chat_msg($current_chat_msg_id)) {
+                $is_log_creation_ok = create_chat_msg_seen_log_record($current_chat_msg_id);
+
+                // If there's an error, disregard everything.
+                if (!$is_log_creation_ok) {
+                    return;
+                }
+            }
+
+            //
+            if (has_chat_msg_seen_by_all($current_chat_msg_id)) {
+                $is_update_ok = set_chat_msg_old($current_chat_msg_id);
+
+                // Error? Then quit..
+                if (!$is_update_ok) {
+                    return;
+                }
+            }
+        }
+
+
+
+        // If the chat_msg is from the actual user,
         // add the attribute "class=user_chat_post", else
         // "class=chat_post".
         if ($row["chatter_user_id"] == $session->actual_user_id) {
-            echo "<div class='chat_post user_chat_post' ";
-        } else {
-            echo "<div class='chat_post' ";
-        }
-        
-        echo "title='{$row['date_posted']}'>";
+            echo "<div class='chat_post user_chat_post' title='{$row['date_posted']}'>";
 
-        echo "<h5>chatter_user_id: {$row['chatter_user_id']}</h5>";
-        echo "<p>{$row['message']}</p>";
+            // TODO: uki
+            $user_profile_pic_src = get_user_profile_pic_src($row["chatter_user_id"]);
+            echo "<img src='" . LOCAL . "{$user_profile_pic_src}' class='chatter_img user_chatter_img'>";
+        } else {
+            echo "<div class='chat_post' title='{$row['date_posted']}'>";
+
+            //
+            $user_profile_pic_src = get_user_profile_pic_src($row["chatter_user_id"]);
+            echo "<img src='" . LOCAL . "{$user_profile_pic_src}' class='chatter_img'>";
+        }
+
+//        echo "title='{$row['date_posted']}'>";
+//        echo "<h5>chatter_user_id: {$row['chatter_user_id']}</h5>";
+
+        $spanned_chat_msg = span_surround_emojis_in_msg($row['message']);
+
+//        echo "<p>{$row['message']}</p>";
+
+        if ($row["chatter_user_id"] == $session->actual_user_id) {
+            echo "<p class='actual_user_msg'>{$spanned_chat_msg}</p>";
+        } else {
+            echo "<p>{$spanned_chat_msg}</p>";
+        }
+
 
         echo "</div>";
     }
+}
+
+function span_surround_emojis_in_msg($chat_msg) {
+    $spanned_msg = "";
+
+//    MyDebugMessenger::add_debug_message("<br>chat_msg: {$chat_msg}");
+
+    for ($i = 0; $i < strlen($chat_msg);) {
+        if (ord($chat_msg[$i]) > 128) {
+            $spanned_msg .= "<span class='span_emoji'>";
+
+            // Html renders html entities/emojis as 2 unicode chars.
+            $spanned_msg .= $chat_msg[$i];
+            $spanned_msg .= $chat_msg[$i + 1];
+            $spanned_msg .= $chat_msg[$i + 2];
+            $spanned_msg .= $chat_msg[$i + 3];
+
+            $spanned_msg .= "</span>";
+
+//            // TODO: DEBUG:
+//            MyDebugMessenger::add_debug_message("chat_msg[i]: {$chat_msg[$i]}" . ord($chat_msg[$i]));
+//            MyDebugMessenger::add_debug_message("chat_msg[i + 1]: {$chat_msg[$i + 1]}" . ord($chat_msg[$i + 1]));
+//            MyDebugMessenger::add_debug_message("chat_msg[i + 1]: {$chat_msg[$i + 2]}" . ord($chat_msg[$i + 2]));
+//            MyDebugMessenger::add_debug_message("chat_msg[i + 1]: {$chat_msg[$i + 3]}" . ord($chat_msg[$i + 3]));
+            // 2 unicode chars added to the_presented_msg, so hop on two chars.
+            $i += 4;
+
+            continue;
+        }
+
+        // For regular chars, just simply add 'em to the message.
+        $spanned_msg .= $chat_msg[$i];
+        ++$i;
+    }
+
+    return $spanned_msg;
 }
 
 function has_user_seen_chat_msg($current_chat_msg_id) {
@@ -162,8 +276,21 @@ function get_completely_presented_chat_msgs() {
 
             // This is the date. 19 chars long. Just use method subsstring() in AJAX js.
             $completely_presented_chat_msgs .= "{$row['date_posted']}";
-            $completely_presented_chat_msgs .= "<h5>chatter_user_id: {$row['chatter_user_id']}</h5>";
-            $completely_presented_chat_msgs .= "<p>{$row['message']}</p>";
+//            uki
+//            
+            // User chat pic.
+            if ($row["chatter_user_id"] == $session->actual_user_id) {
+                $user_profile_pic_src = get_user_profile_pic_src($row["chatter_user_id"]);
+                $completely_presented_chat_msgs .= "<img src='" . LOCAL . "{$user_profile_pic_src}' class='chatter_img user_chatter_img'>";
+                $completely_presented_chat_msgs .= "<p class='actual_user_msg'>{$row['message']}</p>";
+            } else {
+                //
+                $user_profile_pic_src = get_user_profile_pic_src($row["chatter_user_id"]);
+                $completely_presented_chat_msgs .= "<img src='" . LOCAL . "{$user_profile_pic_src}' class='chatter_img'>";
+                $completely_presented_chat_msgs .= "<p>{$row['message']}</p>";
+            }
+
+
 
 
             //
@@ -265,7 +392,7 @@ function create_new_chat_thread() {
 
     $is_creation_ok = ChatMessage::create_by_query($query);
 
-    MyDebugMessenger::add_debug_message("QUERY: {$query}");
+//    MyDebugMessenger::add_debug_message("QUERY: {$query}");
 
     if ($is_creation_ok) {
         //    

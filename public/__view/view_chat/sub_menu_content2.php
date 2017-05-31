@@ -76,6 +76,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <!--Styles-->
 <!--<link href="../_styles/view_my_videos.css" rel="stylesheet" type="text/css" />-->
 <style>
+    
     a#sub_nav_chat_window {
         color: rgb(194, 255, 119);
         /*color: black;*/
@@ -96,6 +97,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
     #chat_pod {
         /*box-shadow: 5px -5px 5px rgb(150, 150, 150);*/
+        
     }
 
     #chat_wall {
@@ -104,6 +106,8 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
         height: 280px;
         padding: 10px;
         overflow-y: auto;
+        /*overflow-x: no-content;*/
+        /*word-wrap: break-word;*/
         border-radius: 5px;
         margin: 20px;
         margin-top: 5px;
@@ -113,26 +117,31 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
     div.chat_post {
         /*background-color: rgb(242, 252, 255);*/
-        background-color: rgb(230, 252, 255);
+/*        background-color: rgb(230, 252, 255);*/
         border-radius: 15px;
         width: fit-content;
+        max-width: 360px;
         margin: 5px;
         /*margin-right: 5%;*/
 
         /*margin-left: 100%;*/
 
-        padding: 15px;
+        padding: 0;
 
         float: left;
 
-        text-align: center;
+        /*text-align: center;*/
         clear: both;
-        max-width: 80%;
+        /*max-width: 80%;*/
+        word-wrap: break-word;
     }
 
     div.user_chat_post {
-        background-color: rgb(224, 255, 193);
+/*        background-color: rgb(224, 255, 193);*/
         float: right;
+        /*word-wrap: break-word;*/
+
+        /*white*/
     }
 
     div.chat_post h5 {
@@ -140,9 +149,56 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
         font-weight: 100;
     }
 
+    div.chat_post img {
+        width: 24px;
+        height: 24px;
+        float: left;
+        /*background-color: yellow;*/
+        border-radius: 12px;
+/*        padding: 0;
+        padding-right: 6px;*/
+        margin: 0;
+        margin-right: 6px;
+        box-shadow: 3px 3px 3px rgb(150, 150, 150);
+    }
+
+    div.chat_post img.user_chatter_img {
+        float: right;
+/*        padding: 0;
+        padding-left: 6px;*/
+        margin: 0;
+        margin-left: 6px;
+    }
+
     div.chat_post p {
         font-size: 12px;
         font-weight: 100;
+        float: left;
+        max-width: 300px;
+        /*word-wrap: break-word;*/
+        white-space: pre-line;
+        padding: 15px;
+        padding-top: 10px;
+        /*background-color:*/ 
+        /*background-color: rgb(224, 255, 193);*/
+        background-color: rgb(230, 252, 255);
+        border-radius: 15px;
+        box-shadow: 3px 3px 3px rgb(150, 150, 150);
+    }
+
+    div.chat_post p.actual_user_msg {
+        float: right;
+        background-color: rgb(224, 255, 193);
+        /*white-space: pre-line;*/
+    }
+
+    span.span_emoji {
+        margin: 0;
+        padding: 0;
+        padding-left: 1px;
+        padding-right: 1px;
+        background-color: inherit;
+        /*zoom: 200%;*/
     }
 
     #the_textarea {
@@ -349,7 +405,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
                     var the_new_div = document.createElement("div");
 
-                    var finalized_chat_msg = surround_chat_msg_emojis_with_span_tags(xhr.responseText.trim());
+                    var finalized_chat_msg = xhr.responseText.trim();
 
                     // If it's the actual user who posted the chat msg....
                     if (finalized_chat_msg.charAt(0) == "1") {
@@ -364,6 +420,10 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
                     // Remove the first char owner-flag-code...
                     finalized_chat_msg = finalized_chat_msg.substring(20);
+
+
+                    // Surround emojis with tag "span".
+                    finalized_chat_msg = surround_chat_msg_emojis_with_span_tags(finalized_chat_msg);
 
                     the_new_div.innerHTML = finalized_chat_msg;
                     document.getElementById("chat_wall").appendChild(the_new_div);
@@ -420,7 +480,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
         for (var i = 0; i < chat_msg.length; ) {
             if (chat_msg.charCodeAt(i) > 255) {
-                the_presented_msg += "<span>";
+                the_presented_msg += "<span class='span_emoji'>";
 
                 // Html renders html entities/emojis as 2 unicode chars.
                 the_presented_msg += chat_msg.charAt(i);
