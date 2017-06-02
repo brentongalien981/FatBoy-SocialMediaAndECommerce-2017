@@ -122,7 +122,7 @@ function get_completely_presented_user_likes_array() {
     $query .= "FROM Likes ";
     $query .= "INNER JOIN UsersAndLikes ";
     $query .= "ON Likes.id = UsersAndLikes.like_id ";
-    $query .= "WHERE UsersAndLikes.user_id = {$session->actual_user_id}";
+    $query .= "WHERE UsersAndLikes.user_id = {$session->currently_viewed_user_id}";
     
     
     //

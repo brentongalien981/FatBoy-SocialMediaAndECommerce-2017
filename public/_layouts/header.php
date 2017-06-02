@@ -753,7 +753,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                     <img src="<?php echo LOCAL . '/public/_photos/icon_profile.png'; ?>" class="icon">Profile
                                 </a>
 
-                                <a href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">
+                                <a id="menu_friends" href="<?php echo LOCAL . '/public/__view/view_friends.php'; ?>" class="">
                                     <img src="<?php echo LOCAL . '/public/_photos/icon_friends.png'; ?>" class="icon">Friends
                                 </a>
 

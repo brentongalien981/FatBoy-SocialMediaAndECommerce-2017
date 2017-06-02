@@ -46,6 +46,8 @@ if (!$session->is_logged_in()) {
     <!--Main content.-->
     <?php
     show_user_profile_summary();
+
+    show_work_experience();
     ?>
 
 
@@ -207,7 +209,7 @@ if (!$session->is_logged_in()) {
     }#sub_menus_nav a {
         color: rgb(220, 220, 220);
     }
-    
+
     #menu_profile {
         /*background-color: rgb(60, 60, 60);*/
         background-color: rgb(250, 250, 250);
@@ -270,6 +272,12 @@ if (!$session->is_logged_in()) {
             color: orange;
     
         }*/
+
+    hr {
+        height: 1px;
+        background-color: rgb(100, 100, 100);
+        margin-top: 10px;
+    }
 
     form h4 {
         display: block;
@@ -339,6 +347,191 @@ if (!$session->is_logged_in()) {
         background-color: rgba(255, 157, 45, 0.50);
         cursor: pointer; cursor: hand;
     }
+
+
+
+
+
+    form table, form td, div.a_work_experience table, div.a_work_experience table td {
+        border-collapse: collapse;
+    }
+
+    div.a_work_experience table {
+        /*background-color: aqua;*/
+    }
+
+    div.a_work_experience table td {
+        padding-bottom: 10px;
+        /*background-color: green;*/
+    }
+
+    td#td_edit {
+        padding: 0;
+        /*padding-bottom: -10px;*/
+    }
+
+
+    form.form_work_experience,
+    div.a_work_experience {
+
+        margin: 0;
+        margin-top: 30px;
+        padding: 20px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        border-radius: 5px;
+        /*background-color: rgb(247, 247, 247);*/
+        background-color: rgb(240, 252, 255);
+        box-shadow: 5px 5px 5px rgb(150, 150, 150);
+        display: none;
+    }
+
+    div.a_work_experience {
+        box-shadow: none;
+        margin-top: 20px;
+        padding-top: 10px;
+        background-color: rgb(248, 248, 248);
+    }
+
+    div.a_work_experience {
+        display: block;
+    }
+
+    form.form_work_experience h5,
+    div.a_work_experience h5 {
+        font-size: 13px;
+        font-weight: 200;
+        margin-bottom: 20px;
+        color: black;
+    }
+
+    div.a_work_experience h5 {
+        /*color: black;*/
+
+        /*margin-right: 50px;*/
+        /*background-color: bisque;*/
+        display: inline;
+    }
+
+    div.a_work_experience ul {
+        margin-left: 40px;
+        /*background-color: pink;*/
+        font-size: 12px;
+        font-weight: 100;
+    }
+
+    div.a_work_experience li {
+        width: 520px;
+        margin-top: 5px;
+        color: black;
+        /*background-color: yellow;*/
+    }    
+
+
+
+    /*    input.form_button_edit,
+        input#form_button_edit {
+            margin: 0;
+            display: none;
+            margin-bottom: 20px;
+        }*/
+
+    input.form_button_edit {
+        position: relative;
+        margin: 0;
+        left: -55px;
+        top: 0px;
+        visibility: hidden;
+    }
+
+    form.form_work_experience table {
+        /*background-color: pink;*/
+    }
+
+    form.form_work_experience table td input {
+        /*display: inline;*/
+        /*background-color: aquamarine;*/
+        width: 200px;
+        height: 30px;
+        border-radius: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 200;
+        border: 1px solid rgb(235, 235, 235);
+
+    }
+
+    input.right_aligned {
+        margin-left: 160px;
+        text-align: right;
+    }
+
+    td.td_right_aligned {
+        text-align: right;
+    }
+
+
+
+    form.form_work_experience table td {
+        word-wrap: break-word;
+
+    }
+
+    #h4_work_experience {
+        display: inline;
+    }
+
+    #container_button_add_work_experience {
+        /*display: inline;*/
+    }
+
+    button.form_button {
+        margin: 0;
+        margin-left: 10px;
+        /*margin-top: -20px;*/
+        /*border-bottom: 10px solid black;*/
+        display: inline;
+    }
+
+    form.form_work_experience table td textarea.work_experience_description {
+        /*background-color: aquamarine;*/
+        border-radius: 3px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+        padding: 10px;
+
+        width: 540px;
+        max-width: 540px;
+        height: 60px;
+        max-height: 60px;
+        word-wrap: break-word;
+        white-space: pre-line;
+
+        font-size: 11px;
+        font-weight: 100;
+        border: 1px solid rgb(235, 235, 235);
+    }
+
+    form.form_work_experience table td input.form_button {
+        /*background-color: aquamarine;*/
+        margin: 0;
+        margin-right: 10px;
+        /*max-width: fit-content;*/
+        /*widows:*/ 
+        /*height: fit-content;*/
+        width: 50px;
+        height: 25px;
+        font-size: 10px;
+        font-weight: 100;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+
+    }
+
+
 
     /*    .form_button {
             margin-bottom: 30px;
@@ -442,6 +635,140 @@ if (!$session->is_logged_in()) {
 ?>
 <script>
     document.getElementById("middle").appendChild(document.getElementById("middle_content"));
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+    window.onload = function () {
+        var form_add_work_experience = document.getElementById("form_add_work_experience");
+        var button_add_work_experience = document.getElementById("button_add_work_experience");
+        var button_ok_add_work_experience = document.getElementById("button_ok_add_work_experience");
+
+        // Add work experience.
+        button_add_work_experience.addEventListener("click", function () {
+            show_form_add_work_experience();
+            this.style.display = "none";
+        });
+
+
+        // Cancel add work experience.
+        button_cancel_add_work_experience.addEventListener("click", function () {
+            form_add_work_experience.style.display = "none";
+            button_add_work_experience.style.display = "inline";
+        });
+
+        // Ok add work experience.
+        button_ok_add_work_experience.addEventListener("click", function () {
+            // TODO: REMINDER: Show spinner.
+
+
+            //
+            add_work_experience();
+        });
+
+
+        // Make the edit button visible if a div of a work experience is hovered.
+        add_event_listeners_to_work_exp_divs();
+        
+        
+
+
+
+        function add_event_listeners_to_work_exp_divs() {
+            var work_exp_divs = document.getElementsByClassName("a_work_experience");
+            var num_of_work_exp = work_exp_divs.length;
+
+            for (var i = 0; i < num_of_work_exp; i++) {
+                // Event mouseover.
+                work_exp_divs[i].addEventListener("mouseover", function (event) {
+                    // Id of the edit button of that div.
+                    var edit_button_id = "form_button_edit" + this.id;
+                    console.log("edit_button_id: " + edit_button_id);
+
+                    document.getElementById(edit_button_id).style.visibility = "visible";
+                });
+
+                // Event mouseout.
+                work_exp_divs[i].addEventListener("mouseout", function (event) {
+                    // Id of the edit button of that div.
+                    var edit_button_id = "form_button_edit" + this.id;
+//                    console.log("edit_button_id: " + edit_button_id);
+
+                    document.getElementById(edit_button_id).style.visibility = "hidden";
+                });
+            }
+
+
+        }
+
+
+        function show_form_add_work_experience() {
+
+            form_add_work_experience.style.display = "block";
+        }
+
+        function add_work_experience() {
+            var xhr = new XMLHttpRequest();
+
+            var url = "<?php echo LOCAL . '/public/__controller/controller_profile.php'; ?>";
+            xhr.open('POST', url, true);
+            // You need this for AJAX POST requests.
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                // If ready..
+                if (xhr.readyState == 4 && xhr.status == 200) {
+
+                    // If there's a successful response..
+                    if (xhr.responseText.trim().length > 0) {
+
+                        if (xhr.responseText.trim() != "0") {
+                            console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+
+                            form_add_work_experience.style.display = "none";
+
+                            button_add_work_experience.style.display = "inline";
+                        } else {
+                            window.alert("Required Fields are missing.");
+                        }
+
+                    }
+
+                }
+            }
+
+
+
+            //
+            var company_name = document.getElementById("company_name").value;
+            var place = document.getElementById("place").value;
+            var position = document.getElementById("position").value;
+            var time_frame = document.getElementById("time_frame").value;
+            var work_experience_description1 = document.getElementById("work_experience_description1").value;
+            var work_experience_description2 = document.getElementById("work_experience_description2").value;
+            var work_experience_description3 = document.getElementById("work_experience_description3").value;
+
+            //
+            var post_key_value_pairs = "add_work_experience=yes";
+            post_key_value_pairs += "&company_name=" + company_name;
+            post_key_value_pairs += "&place=" + place;
+            post_key_value_pairs += "&position=" + position;
+            post_key_value_pairs += "&time_frame=" + time_frame;
+            post_key_value_pairs += "&work_experience_description1=" + work_experience_description1;
+            post_key_value_pairs += "&work_experience_description2=" + work_experience_description2;
+            post_key_value_pairs += "&work_experience_description3=" + work_experience_description3;
+
+            xhr.send(post_key_value_pairs);
+        }
+    };
 </script>
 
 

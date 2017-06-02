@@ -198,6 +198,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
         padding-left: 1px;
         padding-right: 1px;
         background-color: inherit;
+        color: black;
         /*zoom: 200%;*/
     }
 

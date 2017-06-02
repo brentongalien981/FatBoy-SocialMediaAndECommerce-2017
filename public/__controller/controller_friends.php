@@ -2,6 +2,8 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/my_user.php"); ?>
 <?php require_once("../__model/model_frienship.php"); ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_profile.php");    ?>
+<?php require_once(PUBLIC_PATH . "/__controller/controller_profile.php"); ?>
 
 
 
@@ -67,16 +69,33 @@ function show_non_friends() {
 
     // If the code goes here, the query is ok.
     echo "<h4>Suggested Friends</h4>";
-    echo "<table>";
+    echo "<table id='table_suggested_friends'>";
     while ($row = $database->fetch_array($non_friends_records_result_set)) {
         echo "<tr>";
-        echo "<td>" . "{$row['user_name']}" . "</td>";
+
+//        echo "<td>";
+//        echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
+//        echo "<input type='submit' class='form_button' name='create_friendship_notification' value='add friend'>";
+//        echo "<input type='hidden' class='form_button' name='friend_id' value='{$row['user_id']}'>";
+//        echo "</form>";
+//        echo "</td>";
+
         echo "<td>";
+        $profile_pic_src = LOCAL . get_profile_pic_src($row['user_id']);
+        echo "<img src='{$profile_pic_src}'>";
+        echo "</td>";
+
+        echo "<td>" . "<h4>{$row['user_name']}</h4>";
+
+//        echo "<br>";
+
         echo "<form action='../__controller/controller_friendship_notification.php' method='post'>";
         echo "<input type='submit' class='form_button' name='create_friendship_notification' value='add friend'>";
         echo "<input type='hidden' class='form_button' name='friend_id' value='{$row['user_id']}'>";
         echo "</form>";
+
         echo "</td>";
+
 
         // TODO: It is supposed to be like this:
         // TODO: "<td>" . "<a href='friendship_notification_creation.php?friend_id={$row['UserId']}'>add</a>" . "</td>";
@@ -186,34 +205,44 @@ function show_user_friends() {
 
     //
     echo "<h4>My Friends</h4>";
-    echo "<table>";
+    echo "<table id='table_user_friends'>";
     while ($row = $database->fetch_array($friends_of_user_records_result_set)) {
         echo "<tr>";
-        echo "<td>" . "{$row['user_name']}" . "</td>";
+        
+        echo "<td>";
+        $profile_pic_src = LOCAL . get_profile_pic_src($row['user_id']);
+        echo "<img src='{$profile_pic_src}'>";
+        echo "</td>";        
+        
+//        echo "<td>" . "{$row['user_name']}" . "</td>";
 
         // Here is the form for authenticating the friendship.
         // In other words, this gives the user the ability to click and view
         // a friends account if they're actually friends.
         echo "<td>";
+        
+        echo "<h4>{$row['user_name']}</h4>";
+        
         echo "<form action='../__controller/controller_friends.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
         echo "<input type='hidden' name='friend_name' value='{$row['user_name']}'>";
         echo "<input type='submit' class='form_button' name='view_friend_account' value='view'>";
         echo "</form>";
-        echo "</td>";
+//        echo "</td>";
 
 
         // If the actual user is viewing her own account, 
         // then show her the button to unfriend her friend.
         if ($session->is_viewing_own_account()) {
-            echo "<td>";
+//            echo "<td>";
             echo "<form action='../__controller/controller_friends.php' method='post'>";
             echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
             echo "<input type='submit' class='form_button' name='unfriend' value='unfriend'>";
             echo "</form>";
-            echo "</td>";
+//            echo "</td>";
         }
 
+        echo "</td>";
         echo "</tr>";
     }
     echo "</table>";
