@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/Experiments/Emoji/home.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/view_profile.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/model_work_experience.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/view_refund/sub_menu_content2.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/Experiments/Emoji/absolute_position.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/controller_profile.php</file>
         </group>
     </open-files>
 </project-private>

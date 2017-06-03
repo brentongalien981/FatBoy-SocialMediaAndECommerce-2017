@@ -68,7 +68,7 @@ if (!$session->is_logged_in()) {
 
 
             <h6>City</h6>
-            <input type="text" class="form_text_input" name="city">                
+            <input type="text" class="form_text_input" name="city">
 
 
             <h6>State</h6>
@@ -76,7 +76,7 @@ if (!$session->is_logged_in()) {
 
 
             <h6>ZIP</h6>
-            <input type="text" class="form_text_input" name="zip">   
+            <input type="text" class="form_text_input" name="zip">
 
 
             <h6>Country</h6>
@@ -93,7 +93,7 @@ if (!$session->is_logged_in()) {
                     echo "<option value='{$country_object->code}'>{$country_object->name}</option>";
                 }
                 ?>
-            </select>       
+            </select>
 
 
             <h6>Address Type</h6>
@@ -108,7 +108,7 @@ if (!$session->is_logged_in()) {
             if ($session->is_viewing_own_account()) {
                 echo "<input type='submit' class='buttonAddress' name='save_address' value='save address'>";
             }
-            ?>                
+            ?>
         </form>
     </div>
     <!--        <br>
@@ -148,7 +148,7 @@ if (!$session->is_logged_in()) {
         require_once(PUBLIC_PATH . "/__controller/controller_like.php");
 
 
-// 
+//
         $completely_presented_user_likes_array = get_completely_presented_user_likes_array();
 
 //
@@ -189,7 +189,7 @@ if (!$session->is_logged_in()) {
 // TODO: SECTION: Styles.
 ?>
 <!--<link href="../_styles/view_profile.css" rel="stylesheet" type="text/css" />-->
-<style> 
+<style>
     /*    #main_div {
             background-color: beige;
             padding: 30px;
@@ -259,7 +259,7 @@ if (!$session->is_logged_in()) {
             font-weight: 100;
             padding-top: 8px;
         }
-    
+
         #context_sensitive_nav a {
             background-color: gray;
             margin-left: 30px;
@@ -267,10 +267,10 @@ if (!$session->is_logged_in()) {
                     padding-bottom: 3px;
             color: rgba(200, 200, 200, 1.0);
         }
-    
+
         #context_sensitive_nav a:hover {
             color: orange;
-    
+
         }*/
 
     hr {
@@ -340,7 +340,7 @@ if (!$session->is_logged_in()) {
         padding-top: 5px;
         padding-bottom: 5px;
         border-radius: 3px;
-        margin-right: 10px;        
+        margin-right: 10px;
     }
 
     .buttonAddress:hover {
@@ -427,7 +427,7 @@ if (!$session->is_logged_in()) {
         margin-top: 5px;
         color: black;
         /*background-color: yellow;*/
-    }    
+    }
 
 
 
@@ -521,7 +521,7 @@ if (!$session->is_logged_in()) {
         margin: 0;
         margin-right: 10px;
         /*max-width: fit-content;*/
-        /*widows:*/ 
+        /*widows:*/
         /*height: fit-content;*/
         width: 50px;
         height: 25px;
@@ -550,7 +550,7 @@ if (!$session->is_logged_in()) {
             padding-top: 5px;
             padding-bottom: 5px;
             border-radius: 3px;
-            margin-right: 10px;        
+            margin-right: 10px;
         }*/
 
     /*    .form_button:hover {
@@ -572,12 +572,12 @@ if (!$session->is_logged_in()) {
     #formAddress {
         display: none;
         /*visibility: visible;*/
-        /*display:*/ 
+        /*display:*/
     }
 
     .form_delete_like {
         display: inlline;
-    }  
+    }
 
     #like_table {
         margin-top: 20px;
@@ -817,8 +817,10 @@ if (!$session->is_logged_in()) {
                         }
 
 
+
+
                         // AJAX.
-                        update_work_experience(form_edit_work_experience, updated_work_details_array);
+                        update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array);
                     });
 
                     // Set the cancel event of the form_edit_work_experience.
@@ -862,13 +864,161 @@ if (!$session->is_logged_in()) {
 
         }
 
+        function show_loading_image(form_edit_work_experience) {
+            //
+            var loading_img_element = document.createElement("div");
+            loading_img_element.style.backgroundColor = "rgb(26, 26, 26)";
+            loading_img_element.style.width = (form_edit_work_experience.offsetWidth - 40) + "px";
+            loading_img_element.style.height = (form_edit_work_experience.offsetHeight - 50) + "px";
+            loading_img_element.innerHTML = "<div style='text-align: center;'><img src='<?php echo LOCAL . '/public/_photos/loading1.gif'; ?>' width='270' height='200' style='margin-top: 50px;'></div>";
+
+            // Hide the form table.
+            form_edit_work_experience.childNodes[0].style.display = "none";
+
+            // Append the loading div element to the form.
+            form_edit_work_experience.appendChild(loading_img_element);
+
+
+
+            // This is to match the color of the loading gif.
+            form_edit_work_experience.style.backgroundColor = "rgb(26, 26, 26)";
+
+            return loading_img_element;
+
+        }
+
+        function reset_work_exp_div(the_work_exp_div, json) {
+            // Set the values of the tds-ish from JSON.
+            console.log("json.company_name: " + json.company_name);
+            console.log("json.place: " + json.place);
+            console.log("json.position: " + json.position);
+            console.log("json.time_frame: " + json.time_frame);
+
+            console.log("json.work_experience_description1: " + json.work_experience_description1);
+            console.log("json.work_experience_description2: " + json.work_experience_description2);
+            console.log("json.work_experience_description3: " + json.work_experience_description3);
+
+            // For the work main details.
+            var element_company_name = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
+            var element_place = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[1].childNodes[0];
+            var element_position = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
+            var element_time_frame = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[1].childNodes[0];
+
+            element_company_name.innerHTML = json.company_name;
+            element_place.innerHTML = json.place;
+            element_position.innerHTML = json.position;
+            element_time_frame.innerHTML = json.time_frame;
+
+
+
+            /* For the work descriptions. */
+            var element_work_experience_description_container = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0];
+
+            var num_of_actual_descriptions = 0;
+
+            var element_work_experience_description1 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[0];
+            // If it returned an empty string, then deleted the previous <li>
+            // if it existed before update. If it didn't exist before update, then
+            // just do nothing.
+            if (json.work_experience_description1 == "" || json.work_experience_description1 == null) {
+                if (element_work_experience_description1 != null) {
+                    element_work_experience_description_container.removeChild(element_work_experience_description1);
+                }
+            } else if (json.work_experience_description1 != null) {
+                ++num_of_actual_descriptions;
+                // Check if a nth <li> existed before the edit.
+                // Otherwise, create a new one.
+                if (element_work_experience_description1 != null) {
+                    element_work_experience_description1.innerHTML = json.work_experience_description1;
+                } else {
+                    element_work_experience_description1 = document.createElement("li")
+                    element_work_experience_description1.innerHTML = json.work_experience_description1;
+                    element_work_experience_description_container.appendChild(element_work_experience_description1);
+                }
+            }
+
+
+
+            var element_work_experience_description2 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[1];
+
+            // If it returned an empty string, then deleted the previous <li>
+            // if it existed before update. If it didn't exist before update, then
+            // just do nothing.
+            if (json.work_experience_description2 == "" || json.work_experience_description2 == null) {
+                if (element_work_experience_description2 != null) {
+                    element_work_experience_description_container.removeChild(element_work_experience_description2);
+                }
+            } else if (json.work_experience_description2 != null) {
+                ++num_of_actual_descriptions;
+                // Check if a nth <li> existed before the edit.
+                // Otherwise, create a new one.
+                if (element_work_experience_description2 != null) {
+                    element_work_experience_description2.innerHTML = json.work_experience_description2;
+                } else {
+                    element_work_experience_description2 = document.createElement("li")
+                    element_work_experience_description2.innerHTML = json.work_experience_description2;
+                    element_work_experience_description_container.appendChild(element_work_experience_description2);
+                }
+            }
+
+
+
+
+            var element_work_experience_description3 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[2];
+
+            // If it returned an empty string, then deleted the previous <li>
+            // if it existed before update. If it didn't exist before update, then
+            // just do nothing.
+            if (json.work_experience_description3 == "" || json.work_experience_description3 == null) {
+                if (element_work_experience_description3 != null) {
+                    element_work_experience_description_container.removeChild(element_work_experience_description3);
+                }
+            } else if (json.work_experience_description3 != null) {
+                ++num_of_actual_descriptions;
+                // Check if a nth <li> existed before the edit.
+                // Otherwise, create a new one.
+                if (element_work_experience_description3 != null) {
+                    element_work_experience_description3.innerHTML = json.work_experience_description3;
+                } else {
+                    element_work_experience_description3 = document.createElement("li")
+                    element_work_experience_description3.innerHTML = json.work_experience_description3;
+                    element_work_experience_description_container.appendChild(element_work_experience_description3);
+                }
+            }
+
+
+            // Delete stupid trash <li>.
+            for ( ; ; ) {
+                var length = element_work_experience_description_container.childNodes.length;
+
+                if (num_of_actual_descriptions == length) {
+                    break;
+                }
+                
+                var trash_element = element_work_experience_description_container.childNodes[length - 1];
+                
+                element_work_experience_description_container.removeChild(trash_element);
+            }
+
+
+
+
+
+            //
+            the_work_exp_div.style.display = "block";
+        }
+
 
         function show_form_add_work_experience() {
 
             form_add_work_experience.style.display = "block";
         }
 
-        function update_work_experience(form_edit_work_experience, updated_work_details_array) {
+        function update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array) {
+            //
+            var loading_image = show_loading_image(form_edit_work_experience);
+
+
             var xhr = new XMLHttpRequest();
 
             var url = "<?php echo LOCAL . '/public/__controller/controller_profile.php'; ?>";
@@ -909,11 +1059,36 @@ if (!$session->is_logged_in()) {
 
 
 
-//                            // If update is successful...
+                            // If update is successful...
+                            var json = JSON.parse(xhr.responseText.trim());
+
+                            reset_work_exp_div(the_work_exp_div, json);
 //                            the_work_exp_div.style.display = "block";
-//                            the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
+
+                            // Remove the form_edit_work...
+                            the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
                         } else {
-                            window.alert("Required Fields are missing.");
+//                            //
+//                             window.alert("Required Fields are missing.");
+
+                            // Remove the loading imag elemetn.
+                            form_edit_work_experience.removeChild(loading_image);
+//                            loading_image.style.display = "none";
+
+
+                            // Re-show the form table.
+                            form_edit_work_experience.childNodes[0].style.display = "block";
+
+                            // Change back the color of the form.
+                            form_edit_work_experience.style.backgroundColor = "rgb(240, 252, 255)";
+
+
+                            // Show the error mesg.
+                            var form_header = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
+                            form_header.style.color = "red";
+                            form_header.style.fontWeight = "500";
+                            form_header.innerHTML = "Required Fields are missing.";
+
                         }
 
                     }
@@ -923,7 +1098,7 @@ if (!$session->is_logged_in()) {
 
 
 
-//            //
+            // For POST vars.
             var work_experience_id = updated_work_details_array["work_experience_id"];
             var company_name = updated_work_details_array["company_name"];
             var place = updated_work_details_array["place"];
