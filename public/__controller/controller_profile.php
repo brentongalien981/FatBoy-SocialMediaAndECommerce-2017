@@ -136,12 +136,22 @@ function display_work_experience() {
 
     global $database;
     while ($row = $database->fetch_array($record_results)) {
-        echo "<div id='{$row['id']}' class='a_work_experience'>";
+        echo "<div id='{$row['id']}' class='a_work_experience' ";
+
+        // I created this personal attributes for the div
+        // so I can access the work experience details directly.
+        echo "company_name='{$row['company_name']}' ";
+        echo "place='{$row['place']}' ";
+        echo "position='{$row['position']}' ";
+        echo "time_frame='{$row['time_frame']}'";
+
+        echo ">";
+
+
 
         if ($session->is_viewing_own_account()) {
             echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_edit' name='' value='edit'>";
-        }
-        else {
+        } else {
             // This is just an invisible button so that the style is not messed up.
             echo "<input type='button' class='form_button form_button_edit' name='' value='edit'>";
         }
@@ -203,6 +213,10 @@ function display_work_experience_task($work_experience_id) {
 
     global $database;
     while ($row = $database->fetch_array($record_results)) {
+        if (empty($row['description']) || $row['description'] == "") {
+            continue;
+        }
+        
         echo "<li>";
         echo "{$row['description']}";
         echo "</li>";
@@ -285,6 +299,92 @@ function get_profile_pic_src($user_id = -69) {
     }
 }
 
+function update_work_experience_description_record() {
+    // Max # of Work Task Descriptions per Work(id)...
+    $max = 3;
+
+    //
+    $query = "SELECT * FROM WorkTaskDescription ";
+    $query .= "WHERE work_experience_id = {$_POST['work_experience_id']}";
+    
+    echo "QUERY: {$query}";
+
+    $record_results = WorkExperience::read_by_query($query);
+    
+    $work_experience_descriptions_array = array();
+    
+    $j = 0;
+    global $database;
+    while ($row = $database->fetch_array($record_results)) {
+        $work_experience_descriptions_array[$j] = $row['id'];
+        ++$j;
+    }
+    
+    
+
+
+
+    for ($i = 1; $i <= $max; $i++) {
+
+        //
+        $description_index = "work_experience_description{$i}";
+        echo "DEBUG: \$description_index = {$description_index}\n";
+
+        if (is_null($_POST[$description_index])) {
+            
+            // I commented this out cause maybe,
+            // the user wants to remove that description..
+            // So empty string is ok.
+//                $_POST[$description_index] == "") {
+            continue;
+        }
+
+
+        //
+        $the_description = $_POST[$description_index];
+
+
+        // If there's still a previously existing work experience description,
+        // use the id of that for the update query.
+//        global $database;
+//        $row = $database->fetch_array($record_results);
+        if (isset($work_experience_descriptions_array[$i-1])) {
+            // If update is ok..
+            if (update_a_work_experience_description_record($work_experience_descriptions_array[$i-1], $the_description)) {
+                echo "SUCCESS update_a_work_experience_description_record for: {$the_description}";
+            }
+            else {
+                echo "No change on update_a_work_experience_description_record for: {$the_description}";
+            }
+            
+        }
+        else {
+            // Meaning, there's a new task description added.
+            if (add_a_work_experience_description_record($_POST['work_experience_id'], $the_description)) {
+                echo "SUCCESS UPDATE Adding a_work_experience_description_record: {$the_description}";
+            }
+            else {
+                echo "FAIL UPDATE Adding a_work_experience_description_record: {$the_description}";
+            }
+        }
+
+    }
+
+
+    // Everything is ok.
+    echo "1";
+}
+
+function update_a_work_experience_description_record($id, $the_description) {
+    $query = "UPDATE WorkTaskDescription SET ";
+    $query .= "description = '{$the_description}' ";
+    $query .= "WHERE id = {$id}";
+    
+    $is_update_ok = WorkExperience::update_by_query($query);
+    
+    return $is_update_ok;
+}
+
 function add_work_experience_description_record($work_experience_id) {
     // Max # of Work Task Descriptions per Work(id)...
     $max = 3;
@@ -304,16 +404,16 @@ function add_work_experience_description_record($work_experience_id) {
 
         //
         $the_description = $_POST[$description_index];
-        echo "DEBUG: \$the_description = {$the_description}\n";
+//        echo "DEBUG: \$the_description = {$the_description}\n";
+//
+//        $query = "INSERT INTO WorkTaskDescription ";
+//        $query .= "VALUES (NULL, {$work_experience_id}, '{$the_description}')";
+//
+//        echo "DEBUG: \$query = {$query}\n";
+//
+//        $is_creation_ok = WorkExperience::create_by_query($query);
 
-        $query = "INSERT INTO WorkTaskDescription ";
-        $query .= "VALUES (NULL, {$work_experience_id}, '{$the_description}')";
-
-        echo "DEBUG: \$query = {$query}\n";
-
-        $is_creation_ok = WorkExperience::create_by_query($query);
-
-        if (!$is_creation_ok) {
+        if (!add_a_work_experience_description_record($work_experience_id, $the_description)) {
             echo "0";
             return;
         }
@@ -322,6 +422,40 @@ function add_work_experience_description_record($work_experience_id) {
 
     // Everything is ok.
     echo "1";
+}
+
+function add_a_work_experience_description_record($work_experience_id, $the_description) {
+    //
+//    $the_description = $_POST[$description_index];
+    echo "DEBUG: \$the_description = {$the_description}\n";
+
+    $query = "INSERT INTO WorkTaskDescription ";
+    $query .= "VALUES (NULL, {$work_experience_id}, '{$the_description}')";
+
+    echo "DEBUG: \$query = {$query}\n";
+
+    $is_creation_ok = WorkExperience::create_by_query($query);
+
+    return $is_creation_ok;
+}
+
+function update_work_experience_record() {
+    //
+    $query = "UPDATE WorkExperience SET ";
+    $query .= "company_name = '{$_POST['company_name']}', ";
+    $query .= "position = '{$_POST['position']}', ";
+    $query .= "place = '{$_POST['place']}', ";
+    $query .= "time_frame = '{$_POST['time_frame']}' ";
+    $query .= "WHERE id = {$_POST['work_experience_id']}";
+
+    $is_update_ok = WorkExperience::update_by_query($query);
+
+    if ($is_update_ok) {
+        echo "SUCCESS update.";
+    } else {
+        echo "No changes made.\n";
+//        echo "QUERY: {$query}\n";
+    }
 }
 
 function add_work_experience_record() {
@@ -359,7 +493,7 @@ function are_required_fields_filled() {
     validate_max_lengths($fields_with_max_lengths);
 
 
-    // 
+    //
     if (MyValidationErrorLogger::is_empty()) {
         // Proceed to the next validation step.
         MyDebugMessenger::add_debug_message("SUCCESS work experience validation.");
@@ -394,5 +528,21 @@ if (isset($_POST["add_work_experience"])) {
     }
 
     add_work_experience_record();
+}
+
+if (isset($_POST["update_work_experience"])) {
+    if (!are_required_fields_filled()) {
+        // 0 means it's not all filled.
+        echo "0";
+        return;
+    }
+
+//    echo "REQUIRED FIELDS ARE OK";
+
+    update_work_experience_record();
+    update_work_experience_description_record();
+//    echo "POST[work_experience_id]: {$_POST['work_experience_id']}\n";
+//    echo "POST[company_name]: {$_POST['company_name']}\n";
+//    echo "POST[work_experience_description1]: {$_POST['work_experience_description1']}\n";
 }
 ?>

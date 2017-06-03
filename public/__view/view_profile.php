@@ -237,7 +237,7 @@ if (!$session->is_logged_in()) {
         float: left;
         margin: 0;
         margin-right: 15px;
-        margin-bottom: 0px;
+        margin-bottom: 5px;
         padding: 0;
     }
 
@@ -386,16 +386,18 @@ if (!$session->is_logged_in()) {
         display: none;
     }
 
+    form.form_edit_work_experience {
+        display: block;
+    }
+
     div.a_work_experience {
         box-shadow: none;
         margin-top: 20px;
         padding-top: 10px;
         background-color: rgb(248, 248, 248);
-    }
-
-    div.a_work_experience {
         display: block;
     }
+
 
     form.form_work_experience h5,
     div.a_work_experience h5 {
@@ -651,6 +653,9 @@ if (!$session->is_logged_in()) {
         var form_add_work_experience = document.getElementById("form_add_work_experience");
         var button_add_work_experience = document.getElementById("button_add_work_experience");
         var button_ok_add_work_experience = document.getElementById("button_ok_add_work_experience");
+        var button_cancel_add_work_experience = document.getElementById("button_cancel_add_work_experience");
+
+//        var form_edit_work_experience = form_add_work_experience.cloneNode(true);
 
         // Add work experience.
         button_add_work_experience.addEventListener("click", function () {
@@ -677,9 +682,157 @@ if (!$session->is_logged_in()) {
 
         // Make the edit button visible if a div of a work experience is hovered.
         add_event_listeners_to_work_exp_divs();
-        
-        
 
+        //
+        add_event_listeners_to_edit_work_buttons();
+
+
+
+        function add_event_listeners_to_edit_work_buttons() {
+            var edit_work_buttons = document.getElementsByClassName("form_button_edit");
+            var num_of_work_exp = edit_work_buttons.length;
+
+            for (var i = 0; i < num_of_work_exp; i++) {
+                // Event click.
+                edit_work_buttons[i].addEventListener("click", function (event) {
+
+                    //
+                    var the_work_exp_div = this.parentElement;
+
+                    // Hide the work experience.
+                    the_work_exp_div.style.display = "none";
+
+
+                    // Show the form for editing that work experienc
+                    var form_edit_work_experience = form_add_work_experience.cloneNode(true);
+                    form_edit_work_experience.classList.add("form_edit_work_experience");
+                    the_work_exp_div.parentElement.insertBefore(form_edit_work_experience, the_work_exp_div);
+
+                    // Old eetails of the work experience.
+//                    console.log("company_name: " + the_work_exp_div.getAttribute("company_name"));
+                    var old_company_name = the_work_exp_div.getAttribute("company_name");
+                    var old_place = the_work_exp_div.getAttribute("place");
+                    var old_position = the_work_exp_div.getAttribute("position");
+                    var old_time_frame = the_work_exp_div.getAttribute("time_frame");
+
+                    // Get the old values of the work task descriptions.
+                    var task_description1 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[0];
+                    var task_description2 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[1];
+                    var task_description3 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[2];
+
+                    var old_task_description1 = "";
+                    var old_task_description2 = "";
+                    var old_task_description3 = "";
+
+                    if (task_description1 != null) {
+                        old_task_description1 = task_description1.innerHTML;
+                    }
+
+                    if (task_description2 != null) {
+                        old_task_description2 = task_description2.innerHTML;
+                    }
+
+                    if (task_description3 != null) {
+                        old_task_description3 = task_description3.innerHTML;
+                    }
+
+
+
+
+                    // Set the initial values of the edit form.
+                    // The element h5 of the edit form.
+                    var edit_form_h5 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
+//                    console.log("edit_form_h5.innerHTML: " + edit_form_h5.innerHTML);
+                    edit_form_h5.innerHTML = "Editing Work Experience...";
+
+
+                    // The element input of the company name of the edit form.
+                    var company_name_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
+                    company_name_edit_input.value = old_company_name;
+
+
+                    // The element input of the company place of the edit form.
+                    var place_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[1];
+                    place_edit_input.value = old_place;
+
+                    //
+                    var position_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[2].childNodes[0].childNodes[0];
+                    position_edit_input.value = old_position;
+
+                    //
+                    var time_frame_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[2].childNodes[0].childNodes[1];
+                    time_frame_edit_input.value = old_time_frame;
+
+
+                    // Task descripitons.
+                    //
+                    var description_text1 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[3].childNodes[0].childNodes[0];
+                    if (old_task_description1 != "") {
+
+                        description_text1.value = old_task_description1;
+                    }
+
+                    //
+                    var description_text2 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[4].childNodes[0].childNodes[0];
+                    if (old_task_description2 != "") {
+
+                        description_text2.value = old_task_description2;
+                    }
+
+                    //
+                    var description_text3 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[5].childNodes[0].childNodes[0];
+                    if (old_task_description3 != "") {
+
+                        description_text3.value = old_task_description3;
+                    }
+
+
+
+
+
+                    // Set the ok event of the form_edit_work_experience.
+                    var the_ok_button = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[6].childNodes[0].childNodes[0];
+                    the_ok_button.id = "button_ok_edit_work_experience" + the_work_exp_div.id;
+                    the_ok_button.addEventListener("click", function (event) {
+                        var updated_work_details_array = [];
+                        updated_work_details_array["work_experience_id"] = the_work_exp_div.id;
+                        updated_work_details_array["company_name"] = company_name_edit_input.value;
+                        updated_work_details_array["place"] = place_edit_input.value;
+                        updated_work_details_array["position"] = position_edit_input.value;
+                        updated_work_details_array["time_frame"] = time_frame_edit_input.value;
+
+                        if (description_text1.value != null && description_text1.value != "") {
+                            updated_work_details_array["description_text1"] = description_text1.value;
+
+                        }
+
+                        if (description_text2.value != null && description_text2.value != "") {
+                            updated_work_details_array["description_text2"] = description_text2.value;
+
+                        }
+
+                        if (description_text3.value != null && description_text3.value != "") {
+                            updated_work_details_array["description_text3"] = description_text3.value;
+
+                        }
+
+
+                        // AJAX.
+                        update_work_experience(form_edit_work_experience, updated_work_details_array);
+                    });
+
+                    // Set the cancel event of the form_edit_work_experience.
+                    var the_cancel_button = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[6].childNodes[0].childNodes[1];
+                    the_cancel_button.id = "button_cancel_edit_work_experience" + the_work_exp_div.id;
+                    the_cancel_button.addEventListener("click", function (event) {
+//                        window.alert("cancel clicked");
+//                        form_edit_work_experience.style.display = "none";
+                        the_work_exp_div.style.display = "block";
+                        the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
+                    });
+                });
+            }
+        }
 
 
         function add_event_listeners_to_work_exp_divs() {
@@ -713,6 +866,106 @@ if (!$session->is_logged_in()) {
         function show_form_add_work_experience() {
 
             form_add_work_experience.style.display = "block";
+        }
+
+        function update_work_experience(form_edit_work_experience, updated_work_details_array) {
+            var xhr = new XMLHttpRequest();
+
+            var url = "<?php echo LOCAL . '/public/__controller/controller_profile.php'; ?>";
+            xhr.open('POST', url, true);
+            // You need this for AJAX POST requests.
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                // If ready..
+                if (xhr.readyState == 4 && xhr.status == 200) {
+
+                    // If there's a successful response..
+                    if (xhr.responseText.trim().length > 0) {
+
+                        if (xhr.responseText.trim() != "0") {
+                            console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+
+//                            //
+////                            console.log("AJAX updated_work_details_array[company_name]: " + updated_work_details_array["company_name"]);
+//                            console.log("AJAX updated_work_details_array[place]: " + updated_work_details_array["place"]);
+//                            console.log("AJAX updated_work_details_array[position]: " + updated_work_details_array["position"]);
+//                            console.log("AJAX updated_work_details_array[time_frame]: " + updated_work_details_array["time_frame"]);
+//
+//                            if (updated_work_details_array["description_text1"] != null &&
+//                                    updated_work_details_array["description_text1"] != "") {
+//                                console.log("AJAX updated_work_details_array[description_text1]: " + updated_work_details_array["description_text1"]);
+//                            }
+//
+//                            if (updated_work_details_array["description_text2"] != null &&
+//                                    updated_work_details_array["description_text2"] != "") {
+//                                console.log("AJAX updated_work_details_array[description_text2]: " + updated_work_details_array["description_text2"]);
+//                            }
+//
+//                            if (updated_work_details_array["description_text3"] != null &&
+//                                    updated_work_details_array["description_text3"] != "") {
+//                                console.log("AJAX updated_work_details_array[description_text3]: " + updated_work_details_array["description_text3"]);
+//                            }
+
+
+
+//                            // If update is successful...
+//                            the_work_exp_div.style.display = "block";
+//                            the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
+                        } else {
+                            window.alert("Required Fields are missing.");
+                        }
+
+                    }
+
+                }
+            }
+
+
+
+//            //
+            var work_experience_id = updated_work_details_array["work_experience_id"];
+            var company_name = updated_work_details_array["company_name"];
+            var place = updated_work_details_array["place"];
+            var position = updated_work_details_array["position"];
+            var time_frame = updated_work_details_array["time_frame"];
+
+
+
+            var work_experience_description1 = "";
+            if (updated_work_details_array["description_text1"] != null &&
+                    updated_work_details_array["description_text1"] != "") {
+                work_experience_description1 = updated_work_details_array["description_text1"];
+            }
+
+//            var work_experience_description2 = document.getElementById("work_experience_description2").value;
+            var work_experience_description2 = "";
+            if (updated_work_details_array["description_text2"] != null &&
+                    updated_work_details_array["description_text2"] != "") {
+                work_experience_description2 = updated_work_details_array["description_text2"];
+            }
+
+
+//            var work_experience_description3 = document.getElementById("work_experience_description3").value;
+            var work_experience_description3 = "";
+            if (updated_work_details_array["description_text3"] != null &&
+                    updated_work_details_array["description_text3"] != "") {
+                work_experience_description3 = updated_work_details_array["description_text3"];
+            }
+
+
+            //
+            var post_key_value_pairs = "update_work_experience=yes";
+            post_key_value_pairs += "&work_experience_id=" + work_experience_id;
+            post_key_value_pairs += "&company_name=" + company_name;
+            post_key_value_pairs += "&place=" + place;
+            post_key_value_pairs += "&position=" + position;
+            post_key_value_pairs += "&time_frame=" + time_frame;
+            post_key_value_pairs += "&work_experience_description1=" + work_experience_description1;
+            post_key_value_pairs += "&work_experience_description2=" + work_experience_description2;
+            post_key_value_pairs += "&work_experience_description3=" + work_experience_description3;
+
+            xhr.send(post_key_value_pairs);
         }
 
         function add_work_experience() {
