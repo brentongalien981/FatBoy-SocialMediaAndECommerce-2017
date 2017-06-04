@@ -224,6 +224,7 @@ if (!$session->is_logged_in()) {
 
     }
 
+
     #div_about_me {
         /*background-color: pink;*/
         margin-top: 20px;
@@ -386,6 +387,9 @@ if (!$session->is_logged_in()) {
         display: none;
     }
 
+
+
+
     form.form_edit_work_experience {
         display: block;
     }
@@ -397,6 +401,8 @@ if (!$session->is_logged_in()) {
         background-color: rgb(248, 248, 248);
         display: block;
     }
+
+
 
 
     form.form_work_experience h5,
@@ -644,8 +650,8 @@ if (!$session->is_logged_in()) {
 
 
 
-
-
+<script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
+</script>
 
 
 <script>
@@ -654,6 +660,7 @@ if (!$session->is_logged_in()) {
         var button_add_work_experience = document.getElementById("button_add_work_experience");
         var button_ok_add_work_experience = document.getElementById("button_ok_add_work_experience");
         var button_cancel_add_work_experience = document.getElementById("button_cancel_add_work_experience");
+        var form_add_work_experience_loading_image = null;
 
 //        var form_edit_work_experience = form_add_work_experience.cloneNode(true);
 
@@ -687,153 +694,195 @@ if (!$session->is_logged_in()) {
         add_event_listeners_to_edit_work_buttons();
 
 
+        //
+        hide_test_work_exp_div();
+
+
+        function hide_test_work_exp_div() {
+            document.getElementById("-69").style.display = "none";
+        }
+
+        function add_listeners_to_edit_button_bruh(edit_button) {
+
+            // Event click.
+            edit_button.addEventListener("click", function (event) {
+
+                //
+                var the_work_exp_div = this.parentElement;
+
+                // Hide the work experience.
+                the_work_exp_div.style.display = "none";
+
+
+                // Show the form for editing that work experienc
+                var form_edit_work_experience = form_add_work_experience.cloneNode(true);
+                form_edit_work_experience.id = "form_edit_work_experience";
+                form_edit_work_experience.classList.add("form_edit_work_experience");
+                the_work_exp_div.parentElement.insertBefore(form_edit_work_experience, the_work_exp_div);
+                form_edit_work_experience.style.display = "block";
+
+                // Old eetails of the work experience.
+//                    console.log("company_name: " + the_work_exp_div.getAttribute("company_name"));
+                var old_company_name = the_work_exp_div.getAttribute("company_name");
+                var old_place = the_work_exp_div.getAttribute("place");
+                var old_position = the_work_exp_div.getAttribute("position");
+                var old_time_frame = the_work_exp_div.getAttribute("time_frame");
+
+                // Get the old values of the work task descriptions.
+                var task_description1 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[0];
+                var task_description2 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[1];
+                var task_description3 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[2];
+
+                var old_task_description1 = "";
+                var old_task_description2 = "";
+                var old_task_description3 = "";
+
+                if (task_description1 != null) {
+                    old_task_description1 = task_description1.innerHTML;
+                }
+
+                if (task_description2 != null) {
+                    old_task_description2 = task_description2.innerHTML;
+                }
+
+                if (task_description3 != null) {
+                    old_task_description3 = task_description3.innerHTML;
+                }
+
+
+
+
+                // Set the initial values of the edit form.
+                // The element h5 of the edit form.
+                var edit_form_h5 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
+//                    console.log("edit_form_h5.innerHTML: " + edit_form_h5.innerHTML);
+                edit_form_h5.innerHTML = "Editing Work Experience...";
+
+
+                // The element input of the company name of the edit form.
+                var company_name_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
+                company_name_edit_input.value = old_company_name;
+
+
+                // The element input of the company place of the edit form.
+                var place_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[1];
+                place_edit_input.value = old_place;
+
+                //
+                var position_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[2].childNodes[0].childNodes[0];
+                position_edit_input.value = old_position;
+
+                //
+                var time_frame_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[2].childNodes[0].childNodes[1];
+                time_frame_edit_input.value = old_time_frame;
+
+
+                // Task descripitons.
+                //
+                var description_text1 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[3].childNodes[0].childNodes[0];
+                if (old_task_description1 != "") {
+
+                    description_text1.value = old_task_description1;
+                }
+
+                //
+                var description_text2 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[4].childNodes[0].childNodes[0];
+                if (old_task_description2 != "") {
+
+                    description_text2.value = old_task_description2;
+                }
+
+                //
+                var description_text3 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[5].childNodes[0].childNodes[0];
+                if (old_task_description3 != "") {
+
+                    description_text3.value = old_task_description3;
+                }
+
+
+
+
+
+                // Set the ok event of the form_edit_work_experience.
+                var the_ok_button = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[6].childNodes[0].childNodes[0];
+                the_ok_button.id = "button_ok_edit_work_experience" + the_work_exp_div.id;
+                the_ok_button.addEventListener("click", function (event) {
+                    var updated_work_details_array = [];
+                    updated_work_details_array["work_experience_id"] = the_work_exp_div.id;
+                    updated_work_details_array["company_name"] = company_name_edit_input.value;
+                    updated_work_details_array["place"] = place_edit_input.value;
+                    updated_work_details_array["position"] = position_edit_input.value;
+                    updated_work_details_array["time_frame"] = time_frame_edit_input.value;
+
+                    if (description_text1.value != null && description_text1.value != "") {
+                        updated_work_details_array["description_text1"] = description_text1.value;
+
+                    }
+
+                    if (description_text2.value != null && description_text2.value != "") {
+                        updated_work_details_array["description_text2"] = description_text2.value;
+
+                    }
+
+                    if (description_text3.value != null && description_text3.value != "") {
+                        updated_work_details_array["description_text3"] = description_text3.value;
+
+                    }
+
+
+
+
+                    // AJAX.
+                    update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array);
+                });
+
+                // Set the cancel event of the form_edit_work_experience.
+                var the_cancel_button = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[6].childNodes[0].childNodes[1];
+                the_cancel_button.id = "button_cancel_edit_work_experience" + the_work_exp_div.id;
+                the_cancel_button.addEventListener("click", function (event) {
+//                        window.alert("cancel clicked");
+//                        form_edit_work_experience.style.display = "none";
+                    the_work_exp_div.style.display = "block";
+                    the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
+                });
+            });
+
+        }
+
+
 
         function add_event_listeners_to_edit_work_buttons() {
             var edit_work_buttons = document.getElementsByClassName("form_button_edit");
             var num_of_work_exp = edit_work_buttons.length;
 
-            for (var i = 0; i < num_of_work_exp; i++) {
+
+            // Start with index 1 instead of 0,
+            // cause the 0th <input> with class "form_button_edit"
+            // is the template.
+            for (var i = 1; i < num_of_work_exp; i++) {
                 // Event click.
-                edit_work_buttons[i].addEventListener("click", function (event) {
-
-                    //
-                    var the_work_exp_div = this.parentElement;
-
-                    // Hide the work experience.
-                    the_work_exp_div.style.display = "none";
-
-
-                    // Show the form for editing that work experienc
-                    var form_edit_work_experience = form_add_work_experience.cloneNode(true);
-                    form_edit_work_experience.classList.add("form_edit_work_experience");
-                    the_work_exp_div.parentElement.insertBefore(form_edit_work_experience, the_work_exp_div);
-
-                    // Old eetails of the work experience.
-//                    console.log("company_name: " + the_work_exp_div.getAttribute("company_name"));
-                    var old_company_name = the_work_exp_div.getAttribute("company_name");
-                    var old_place = the_work_exp_div.getAttribute("place");
-                    var old_position = the_work_exp_div.getAttribute("position");
-                    var old_time_frame = the_work_exp_div.getAttribute("time_frame");
-
-                    // Get the old values of the work task descriptions.
-                    var task_description1 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[0];
-                    var task_description2 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[1];
-                    var task_description3 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[2];
-
-                    var old_task_description1 = "";
-                    var old_task_description2 = "";
-                    var old_task_description3 = "";
-
-                    if (task_description1 != null) {
-                        old_task_description1 = task_description1.innerHTML;
-                    }
-
-                    if (task_description2 != null) {
-                        old_task_description2 = task_description2.innerHTML;
-                    }
-
-                    if (task_description3 != null) {
-                        old_task_description3 = task_description3.innerHTML;
-                    }
-
-
-
-
-                    // Set the initial values of the edit form.
-                    // The element h5 of the edit form.
-                    var edit_form_h5 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
-//                    console.log("edit_form_h5.innerHTML: " + edit_form_h5.innerHTML);
-                    edit_form_h5.innerHTML = "Editing Work Experience...";
-
-
-                    // The element input of the company name of the edit form.
-                    var company_name_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
-                    company_name_edit_input.value = old_company_name;
-
-
-                    // The element input of the company place of the edit form.
-                    var place_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[1].childNodes[0].childNodes[1];
-                    place_edit_input.value = old_place;
-
-                    //
-                    var position_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[2].childNodes[0].childNodes[0];
-                    position_edit_input.value = old_position;
-
-                    //
-                    var time_frame_edit_input = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[2].childNodes[0].childNodes[1];
-                    time_frame_edit_input.value = old_time_frame;
-
-
-                    // Task descripitons.
-                    //
-                    var description_text1 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[3].childNodes[0].childNodes[0];
-                    if (old_task_description1 != "") {
-
-                        description_text1.value = old_task_description1;
-                    }
-
-                    //
-                    var description_text2 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[4].childNodes[0].childNodes[0];
-                    if (old_task_description2 != "") {
-
-                        description_text2.value = old_task_description2;
-                    }
-
-                    //
-                    var description_text3 = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[5].childNodes[0].childNodes[0];
-                    if (old_task_description3 != "") {
-
-                        description_text3.value = old_task_description3;
-                    }
-
-
-
-
-
-                    // Set the ok event of the form_edit_work_experience.
-                    var the_ok_button = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[6].childNodes[0].childNodes[0];
-                    the_ok_button.id = "button_ok_edit_work_experience" + the_work_exp_div.id;
-                    the_ok_button.addEventListener("click", function (event) {
-                        var updated_work_details_array = [];
-                        updated_work_details_array["work_experience_id"] = the_work_exp_div.id;
-                        updated_work_details_array["company_name"] = company_name_edit_input.value;
-                        updated_work_details_array["place"] = place_edit_input.value;
-                        updated_work_details_array["position"] = position_edit_input.value;
-                        updated_work_details_array["time_frame"] = time_frame_edit_input.value;
-
-                        if (description_text1.value != null && description_text1.value != "") {
-                            updated_work_details_array["description_text1"] = description_text1.value;
-
-                        }
-
-                        if (description_text2.value != null && description_text2.value != "") {
-                            updated_work_details_array["description_text2"] = description_text2.value;
-
-                        }
-
-                        if (description_text3.value != null && description_text3.value != "") {
-                            updated_work_details_array["description_text3"] = description_text3.value;
-
-                        }
-
-
-
-
-                        // AJAX.
-                        update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array);
-                    });
-
-                    // Set the cancel event of the form_edit_work_experience.
-                    var the_cancel_button = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[6].childNodes[0].childNodes[1];
-                    the_cancel_button.id = "button_cancel_edit_work_experience" + the_work_exp_div.id;
-                    the_cancel_button.addEventListener("click", function (event) {
-//                        window.alert("cancel clicked");
-//                        form_edit_work_experience.style.display = "none";
-                        the_work_exp_div.style.display = "block";
-                        the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
-                    });
-                });
+                add_listeners_to_edit_button_bruh(edit_work_buttons[i]);
             }
+        }
+
+        function add_event_listeners_to_work_exp_div_bruh(work_exp_div) {
+            // Event mouseover.
+            work_exp_div.addEventListener("mouseover", function (event) {
+                // Id of the edit button of that div.
+                var edit_button_id = "form_button_edit" + this.id;
+                console.log("edit_button_id: " + edit_button_id);
+
+                document.getElementById(edit_button_id).style.visibility = "visible";
+            });
+
+            // Event mouseout.
+            work_exp_div.addEventListener("mouseout", function (event) {
+                // Id of the edit button of that div.
+                var edit_button_id = "form_button_edit" + this.id;
+//                    console.log("edit_button_id: " + edit_button_id);
+
+                document.getElementById(edit_button_id).style.visibility = "hidden";
+            });
         }
 
 
@@ -841,47 +890,32 @@ if (!$session->is_logged_in()) {
             var work_exp_divs = document.getElementsByClassName("a_work_experience");
             var num_of_work_exp = work_exp_divs.length;
 
-            for (var i = 0; i < num_of_work_exp; i++) {
-                // Event mouseover.
-                work_exp_divs[i].addEventListener("mouseover", function (event) {
-                    // Id of the edit button of that div.
-                    var edit_button_id = "form_button_edit" + this.id;
-                    console.log("edit_button_id: " + edit_button_id);
+            for (var i = 1; i < num_of_work_exp; i++) {
+                add_event_listeners_to_work_exp_div_bruh(work_exp_divs[i]);
 
-                    document.getElementById(edit_button_id).style.visibility = "visible";
-                });
-
-                // Event mouseout.
-                work_exp_divs[i].addEventListener("mouseout", function (event) {
-                    // Id of the edit button of that div.
-                    var edit_button_id = "form_button_edit" + this.id;
-//                    console.log("edit_button_id: " + edit_button_id);
-
-                    document.getElementById(edit_button_id).style.visibility = "hidden";
-                });
             }
 
 
         }
 
-        function show_loading_image(form_edit_work_experience) {
+        function show_loading_image(a_form) {
             //
             var loading_img_element = document.createElement("div");
             loading_img_element.style.backgroundColor = "rgb(26, 26, 26)";
-            loading_img_element.style.width = (form_edit_work_experience.offsetWidth - 40) + "px";
-            loading_img_element.style.height = (form_edit_work_experience.offsetHeight - 50) + "px";
+            loading_img_element.style.width = (a_form.offsetWidth - 40) + "px";
+            loading_img_element.style.height = (a_form.offsetHeight - 50) + "px";
             loading_img_element.innerHTML = "<div style='text-align: center;'><img src='<?php echo LOCAL . '/public/_photos/loading1.gif'; ?>' width='270' height='200' style='margin-top: 50px;'></div>";
 
             // Hide the form table.
-            form_edit_work_experience.childNodes[0].style.display = "none";
+            a_form.childNodes[0].style.display = "none";
 
             // Append the loading div element to the form.
-            form_edit_work_experience.appendChild(loading_img_element);
+            a_form.appendChild(loading_img_element);
 
 
 
             // This is to match the color of the loading gif.
-            form_edit_work_experience.style.backgroundColor = "rgb(26, 26, 26)";
+            a_form.style.backgroundColor = "rgb(26, 26, 26)";
 
             return loading_img_element;
 
@@ -903,6 +937,11 @@ if (!$session->is_logged_in()) {
             var element_place = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[1].childNodes[0];
             var element_position = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
             var element_time_frame = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[1].childNodes[0];
+
+            the_work_exp_div.setAttribute('company_name', json.company_name);
+            the_work_exp_div.setAttribute('place', json.place);
+            the_work_exp_div.setAttribute('position', json.position);
+            the_work_exp_div.setAttribute('time_frame', json.time_frame);
 
             element_company_name.innerHTML = json.company_name;
             element_place.innerHTML = json.place;
@@ -988,15 +1027,15 @@ if (!$session->is_logged_in()) {
 
 
             // Delete stupid trash <li>.
-            for ( ; ; ) {
+            for (; ; ) {
                 var length = element_work_experience_description_container.childNodes.length;
 
                 if (num_of_actual_descriptions == length) {
                     break;
                 }
-                
+
                 var trash_element = element_work_experience_description_container.childNodes[length - 1];
-                
+
                 element_work_experience_description_container.removeChild(trash_element);
             }
 
@@ -1012,6 +1051,44 @@ if (!$session->is_logged_in()) {
         function show_form_add_work_experience() {
 
             form_add_work_experience.style.display = "block";
+        }
+
+        function add_work_exp_div(the_work_exp_main_div, json) {
+            // TODO: REMINDER: uki
+            // The initially hidden template div now becomes an active work_exp_div.
+            var new_work_exp_div = the_work_exp_main_div.childNodes[4];
+
+            // This cloned div off of the initially hidden template will
+            // become the next template for others.
+            var template_work_exp_div = new_work_exp_div.cloneNode(true);
+
+
+
+
+//            // This jquery doesn't work as I would like it to.
+//            $("#-1500").insertAfter("#-69");
+
+
+            /* Display new_work_exp_div in my way by manipulating the DOM. */
+            the_work_exp_main_div.insertBefore(template_work_exp_div, new_work_exp_div);
+            
+
+
+            // Set the new_work_exp_div attributes.
+            new_work_exp_div.id = json.id;
+
+            // Set the id of the edit button of this div.
+            new_work_exp_div.childNodes[0].id = "form_button_edit" + json.id;
+
+            //
+            reset_work_exp_div(new_work_exp_div, json);
+
+            // Set the event listener for this div's edit button.
+            add_listeners_to_edit_button_bruh(new_work_exp_div.childNodes[0]);
+            
+            
+            // 
+            add_event_listeners_to_work_exp_div_bruh(new_work_exp_div);            
         }
 
         function update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array) {
@@ -1144,6 +1221,9 @@ if (!$session->is_logged_in()) {
         }
 
         function add_work_experience() {
+            var loading_image = show_loading_image(form_add_work_experience);
+//            form_add_work_experience_loading_image = loading_image;
+
             var xhr = new XMLHttpRequest();
 
             var url = "<?php echo LOCAL . '/public/__controller/controller_profile.php'; ?>";
@@ -1161,16 +1241,62 @@ if (!$session->is_logged_in()) {
                         if (xhr.responseText.trim() != "0") {
                             console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
 
+
+                            // If update is successful...
+                            var json = JSON.parse(xhr.responseText.trim());
+
+                            //
+                            var the_work_exp_main_div = form_add_work_experience.parentElement;
+                            add_work_exp_div(the_work_exp_main_div, json);
+
+
+                            // Re-show the form table.
+                            form_add_work_experience.childNodes[0].style.display = "block";
+
+                            // Change back the color of the form.
+                            form_add_work_experience.style.backgroundColor = "rgb(240, 252, 255)";
+
+
+                            // Show the error mesg.
+                            var form_header = form_add_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
+                            form_header.style.color = "black";
+                            form_header.style.fontWeight = "100";
+                            form_header.innerHTML = "Additional Work Experience.";
+
+
                             form_add_work_experience.style.display = "none";
 
                             button_add_work_experience.style.display = "inline";
                         } else {
-                            window.alert("Required Fields are missing.");
+//                            window.alert("Required Fields are missing.");
+
+
+
+
+                            // Re-show the form table.
+                            form_add_work_experience.childNodes[0].style.display = "block";
+
+                            // Change back the color of the form.
+                            form_add_work_experience.style.backgroundColor = "rgb(240, 252, 255)";
+
+
+                            // Show the error mesg.
+                            var form_header = form_add_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
+                            form_header.style.color = "red";
+                            form_header.style.fontWeight = "500";
+                            form_header.innerHTML = "Required Fields are missing.";
                         }
 
                     }
 
+                    //
+                    form_add_work_experience.removeChild(loading_image);
+
+
+
                 }
+
+
             }
 
 

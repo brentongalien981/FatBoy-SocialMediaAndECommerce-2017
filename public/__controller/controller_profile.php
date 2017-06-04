@@ -130,33 +130,54 @@ function display_work_experience() {
     //
     global $session;
     $query = "SELECT * FROM WorkExperience ";
-    $query .= "WHERE user_id = {$session->currently_viewed_user_id}";
+    $query .= "WHERE user_id = {$session->currently_viewed_user_id} ";
+    $query .= "ORDER BY id DESC";
 
     $record_results = WorkExperience::read_by_query($query);
-
+    
+    
+    // This is just a template work_experience_div, so that I can clone it
+    // when adding a new work_experience record as parent.childNodes[4]...
+    $test_row = array();
+    $test_row['id'] = "-69";
+    $test_row['company_name'] = "tae69";
+    $test_row['place'] = "tae69";
+    $test_row['position'] = "tae69";
+    $test_row['time_frame'] = "tae69";
+    
+    display_a_work_experience($test_row);
+    
+    
+    // These are the real work_experiences.
     global $database;
     while ($row = $database->fetch_array($record_results)) {
-        echo "<div id='{$row['id']}' class='a_work_experience' ";
+        display_a_work_experience($row);
+    }
+}
 
-        // I created this personal attributes for the div
-        // so I can access the work experience details directly.
-        echo "company_name='{$row['company_name']}' ";
-        echo "place='{$row['place']}' ";
-        echo "position='{$row['position']}' ";
-        echo "time_frame='{$row['time_frame']}'";
+// @param $row: A work experience record.
+function display_a_work_experience($row) {
+    echo "<div id='{$row['id']}' class='a_work_experience' ";
 
-        echo ">";
+    // I created this personal attributes for the div
+    // so I can access the work experience details directly.
+    echo "company_name='{$row['company_name']}' ";
+    echo "place='{$row['place']}' ";
+    echo "position='{$row['position']}' ";
+    echo "time_frame='{$row['time_frame']}'";
+
+    echo ">";
 
 
+    global $session;
+    if ($session->is_viewing_own_account()) {
+        echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_edit' name='' value='edit'>";
+    } else {
+        // This is just an invisible button so that the style is not messed up.
+        echo "<input type='button' class='form_button form_button_edit' name='' value='edit'>";
+    }
 
-        if ($session->is_viewing_own_account()) {
-            echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_edit' name='' value='edit'>";
-        } else {
-            // This is just an invisible button so that the style is not messed up.
-            echo "<input type='button' class='form_button form_button_edit' name='' value='edit'>";
-        }
-
-        echo "<table>";
+    echo "<table>";
 
 //        echo "<tr>";
 //        echo "<td colspan='2' id='td_edit'>";
@@ -165,41 +186,40 @@ function display_work_experience() {
 //        echo "</td>";
 //        echo "</tr>";
 
-        echo "<tr>";
-        echo "<td>";
-        echo "<h5>{$row['company_name']}</h5>";
-        echo "</td>";
+    echo "<tr>";
+    echo "<td>";
+    echo "<h5>{$row['company_name']}</h5>";
+    echo "</td>";
 
-        echo "<td class='td_right_aligned'>";
-        echo "<h5>{$row['place']}</h5>";
-        echo "</td>";
-        echo "</tr>";
+    echo "<td class='td_right_aligned'>";
+    echo "<h5>{$row['place']}</h5>";
+    echo "</td>";
+    echo "</tr>";
 
-        echo "<tr>";
-        echo "<td>";
-        echo "<h5>{$row['position']}</h5>";
-        echo "</td>";
+    echo "<tr>";
+    echo "<td>";
+    echo "<h5>{$row['position']}</h5>";
+    echo "</td>";
 
-        echo "<td class='td_right_aligned'>";
-        echo "<h5>{$row['time_frame']}</h5>";
-        echo "</td>";
-        echo "</tr>";
+    echo "<td class='td_right_aligned'>";
+    echo "<h5>{$row['time_frame']}</h5>";
+    echo "</td>";
+    echo "</tr>";
 
-        echo "<tr>";
-        echo "<td colspan='2'>";
-        echo "<ul>";
+    echo "<tr>";
+    echo "<td colspan='2'>";
+    echo "<ul>";
 
-        display_work_experience_task($row['id']);
+    display_work_experience_task($row['id']);
 
 
-        echo "</ul>";
-        echo "</td>";
-        echo "</tr>";
+    echo "</ul>";
+    echo "</td>";
+    echo "</tr>";
 
-        echo "</table>";
+    echo "</table>";
 
-        echo "</div>";
-    }
+    echo "</div>";
 }
 
 function display_work_experience_task($work_experience_id) {
@@ -303,7 +323,8 @@ function update_work_experience_description_record($work_details_array) {
     // Max # of Work Task Descriptions per Work(id)...
     $max = 3;
 
-    //
+    // Query to get all the ids of the existing descriptions
+    // for that one particular work_experience_id.
     $query = "SELECT * FROM WorkTaskDescription ";
     $query .= "WHERE work_experience_id = {$_POST['work_experience_id']} ";
     $query .= "ORDER BY id ASC";
@@ -402,19 +423,18 @@ function update_work_experience_description_record($work_details_array) {
         if (!isset($work_experience_descriptions_array[$z])) {
             break;
         }
-        
+
         //
         $query = "DELETE FROM WorkTaskDescription ";
         $query .= "WHERE id = {$work_experience_descriptions_array[$z]}";
-        
+
         //
 //        echo "QUERY: {$query}\n";
-        
         //
         $is_deletion_ok = WorkExperience::delete_by_query($query);
     }
 
-    
+
     // Everything is ok.
     // This is JSON.
     return $work_details_array;
@@ -431,43 +451,64 @@ function update_a_work_experience_description_record($id, $the_description) {
     return $is_update_ok;
 }
 
-function add_work_experience_description_record($work_experience_id) {
+function add_work_experience_description_record($work_experience_id, $work_details_array) {
     // Max # of Work Task Descriptions per Work(id)...
     $max = 3;
 
+
+    // This var will be used as an index for the work_description json.
+    // Like this: let's say this is the form submitted for update..
+    //      ...
+    //      work_description1: klsjfad lksadjf lksajdf
+    //      work_description2: 
+    //      work_description3: klsjfad lksadjf lksajdf
+    // Now, the code I have here for the db update will be fine.
+    // But the returned json will also display these in the form. And I don't 
+    // want that. What I want after the re-population of the work_experience_div is this...
+    //      ...
+    //      work_description1: klsjfad lksadjf lksajdf
+    //      work_description2: klsjfad lksadjf lksajdf   
+    // The work_description3 is moved up to the empty 2nd <li>...
+    // Thus I'll use this var $x.
+    $x = 0;
     for ($i = 1; $i <= $max; $i++) {
 
         //
         $description_index = "work_experience_description{$i}";
-        echo "DEBUG: \$description_index = {$description_index}\n";
+//        echo "DEBUG: \$description_index = {$description_index}\n";
+
+        $the_description = $_POST[$description_index];
+
+        // For JSON.
+        // The description for what I'm doing here is above...
+        $json_index = $i - $x;
+        $json_description_index = "work_experience_description{$json_index}";
 
         if (empty($_POST[$description_index]) ||
                 is_null($_POST[$description_index]) ||
                 $_POST[$description_index] == "") {
+            ++$x;
             continue;
         }
 
 
-        //
-        $the_description = $_POST[$description_index];
-//        echo "DEBUG: \$the_description = {$the_description}\n";
-//
-//        $query = "INSERT INTO WorkTaskDescription ";
-//        $query .= "VALUES (NULL, {$work_experience_id}, '{$the_description}')";
-//
-//        echo "DEBUG: \$query = {$query}\n";
-//
-//        $is_creation_ok = WorkExperience::create_by_query($query);
+//        //
+//        $the_description = $_POST[$description_index];
+        // For JSON.
+        $work_details_array[$json_description_index] = $the_description;
+
 
         if (!add_a_work_experience_description_record($work_experience_id, $the_description)) {
-            echo "0";
-            return;
+//            echo "0";
+            return 0;
         }
     }
 
 
-    // Everything is ok.
-    echo "1";
+//    // Everything is ok.
+//    echo "1";
+    // This is JSON.
+    return $work_details_array;
 }
 
 function add_a_work_experience_description_record($work_experience_id, $the_description) {
@@ -514,7 +555,7 @@ function update_work_experience_record($work_details_array) {
     return $work_details_array;
 }
 
-function add_work_experience_record() {
+function add_work_experience_record($work_details_array) {
     global $session;
     $new_work_experience_obj = new WorkExperience();
     $new_work_experience_obj->id = null;
@@ -527,9 +568,19 @@ function add_work_experience_record() {
     $is_creation_ok = $new_work_experience_obj->create_with_bool();
 
     if ($is_creation_ok) {
-        add_work_experience_description_record($new_work_experience_obj->id);
+        //
+        $work_details_array['id'] = $new_work_experience_obj->id;
+        $work_details_array['company_name'] = $_POST['company_name'];
+
+        $work_details_array['position'] = $_POST['position'];
+        $work_details_array['place'] = $_POST['place'];
+        $work_details_array['time_frame'] = $_POST['time_frame'];
+
+        return add_work_experience_description_record($new_work_experience_obj->id, $work_details_array);
     } else {
-        echo "0";
+//        echo "0";
+
+        return 0;
     }
 }
 
@@ -577,17 +628,34 @@ function are_required_fields_filled() {
 
 // TODO: SECTION: Meat.
 if (isset($_POST["add_work_experience"])) {
+    sleep(1);
     if (!are_required_fields_filled()) {
         // 0 means it's not all filled.
         echo "0";
         return;
     }
 
-    add_work_experience_record();
+
+
+
+    // This array will contain all the details
+    // of the work experience including the descriptions.
+    $work_details_array = array();
+
+    // Because PHP is weird and doesn't accept a reference param, but just copies it, set the var again..
+    $work_details_array = add_work_experience_record($work_details_array);
+
+    if ($work_details_array != 0) {
+        echo json_encode($work_details_array);
+    } else {
+        echo "0";
+    }
+
+    //
 }
 
 if (isset($_POST["update_work_experience"])) {
-    sleep(2);
+    sleep(1);
 
     if (!are_required_fields_filled()) {
         // 0 means it's not all filled.
@@ -608,9 +676,6 @@ if (isset($_POST["update_work_experience"])) {
     //
     echo json_encode($work_details_array);
 //    echo 'SHITE';
-
-
-
 //    echo "POST[work_experience_id]: {$_POST['work_experience_id']}\n";
 //    echo "POST[company_name]: {$_POST['company_name']}\n";
 //    echo "POST[work_experience_description1]: {$_POST['work_experience_description1']}\n";
