@@ -275,7 +275,7 @@ echo "<h1 id='for_debug'>FOR DEBUG: </h1>";
 
     function update_status(the_select_element, old_status_id, selected_status_id, invoice_item_id) {
 //        window.alert("puta nanaman invoiceid:" + invoice_id);
-        var is_update_sure = confirm("Are you sure about the\nstatus update of the item?");
+        var is_update_sure = window.confirm("Are you sure about the\nstatus update of the item?");
 
 
         if (is_update_sure) {

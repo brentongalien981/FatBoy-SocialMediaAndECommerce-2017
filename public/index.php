@@ -1,7 +1,7 @@
-<?php // require_once("../private/includes/initializations.php");                        ?>
-<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                        ?>
-<?php // include(PUBLIC_PATH . "/_layouts/header.php");                        ?>
-<?php include("_layouts/header.php"); ?>
+<?php // require_once("../private/includes/initializations.php");                         ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                         ?>
+<?php // include(PUBLIC_PATH . "/_layouts/header.php");                         ?>
+<?php require_once("_layouts/header.php"); ?>
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
@@ -125,8 +125,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                      ?>" rel="stylesheet" type="text/css">-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                      ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                       ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                       ?>" rel="stylesheet" type="text/css">-->
 <style>
 
 
@@ -406,8 +406,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
                     //
                     new_div_background.id = "";
-                    
-                    
+
+
                     // Clear the textarea.
                     document.getElementById("message_post_textarea").value = "";
                 } else {
@@ -438,7 +438,10 @@ if (!MyDebugMessenger::is_initialized()) {
     }
 
     window.onload = function () {
-        document.getElementById("create_post_button").onclick = create_post;
+        var create_post_button = document.getElementById("create_post_button");
+        if (create_post_button != null) {
+            create_post_button.onclick = create_post;
+        }
     };
 </script>
 

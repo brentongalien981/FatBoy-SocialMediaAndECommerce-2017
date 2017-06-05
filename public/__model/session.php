@@ -8,6 +8,7 @@ require_once("model_address.php");
 
 class Session {
 
+//    public $my_static_counter;
     private $logged_in = false;
     public $actual_user_id;
     public $actual_user_name;
@@ -154,6 +155,13 @@ class Session {
     public function get_can_now_checkout() {
         return $this->can_now_checkout;
     }
+    
+    public static function get_my_static_counter() {
+        return ++$_SESSION["my_static_counter"];
+        
+    }
+    
+    
 
     public function set_cart($new_cart) {
         if ($this->is_logged_in()) {
@@ -224,6 +232,8 @@ class Session {
 
 
         if ($user) {
+            $_SESSION["my_static_counter"] = 0;
+            
             $this->actual_user_id = $_SESSION["actual_user_id"] = $user->user_id;
             $this->actual_user_name = $_SESSION["actual_user_name"] = $user->user_name;
 

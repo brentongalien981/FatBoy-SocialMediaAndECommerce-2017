@@ -171,10 +171,17 @@ function display_a_work_experience($row) {
 
     global $session;
     if ($session->is_viewing_own_account()) {
-        echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_edit' name='' value='edit'>";
+        echo "<div class='work_exp_action_div user_work_exp_action_div'>";
+        echo "<input id='form_button_delete{$row['id']}' type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";        
+        echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
+        echo "</div>";
     } else {
         // This is just an invisible button so that the style is not messed up.
-        echo "<input type='button' class='form_button form_button_edit' name='' value='edit'>";
+        // This won't show because the id is not set which is used to loop and attach mouseover listeners...
+        echo "<div class='work_exp_action_div'>";
+        echo "<input type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";        
+        echo "<input type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
+        echo "</div>";        
     }
 
     echo "<table>";
@@ -511,6 +518,22 @@ function add_work_experience_description_record($work_experience_id, $work_detai
     return $work_details_array;
 }
 
+function delete_a_work_experience_description_record($work_experience_id) {
+    $query = "DELETE FROM WorkTaskDescription WHERE work_experience_id = {$work_experience_id}";
+   
+    $is_deletion_ok = WorkExperience::delete_by_query($query);
+
+    return $is_deletion_ok;    
+}
+
+function delete_a_work_experience_record($work_experience_id) {
+    $query = "DELETE FROM WorkExperience WHERE id = {$work_experience_id}";
+   
+    $is_deletion_ok = WorkExperience::delete_by_query($query);
+
+    return $is_deletion_ok;    
+}
+
 function add_a_work_experience_description_record($work_experience_id, $the_description) {
     //
 //    $the_description = $_POST[$description_index];
@@ -679,5 +702,28 @@ if (isset($_POST["update_work_experience"])) {
 //    echo "POST[work_experience_id]: {$_POST['work_experience_id']}\n";
 //    echo "POST[company_name]: {$_POST['company_name']}\n";
 //    echo "POST[work_experience_description1]: {$_POST['work_experience_description1']}\n";
+}
+
+if (isset($_POST["delete_work_experience"])) {
+    $all_deletion_ok = false;
+    
+    //
+    if (delete_a_work_experience_description_record($_POST['work_experience_id'])) {
+        if (delete_a_work_experience_record($_POST['work_experience_id'])) {
+            $all_deletion_ok = true;
+
+        }
+    }
+    
+    //
+    if ($all_deletion_ok) {
+        echo "1";
+    }
+    else {
+        echo "0";
+    }
+    
+//    echo "delete_work_experience = HSIT\n";
+//    echo "work_experience_id = {$_POST['work_experience_id']}";
 }
 ?>

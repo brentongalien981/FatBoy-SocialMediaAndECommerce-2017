@@ -397,7 +397,7 @@ if (!$session->is_logged_in()) {
     div.a_work_experience {
         box-shadow: none;
         margin-top: 20px;
-        padding-top: 10px;
+        padding-top: 0;
         background-color: rgb(248, 248, 248);
         display: block;
     }
@@ -447,9 +447,44 @@ if (!$session->is_logged_in()) {
     input.form_button_edit {
         position: relative;
         margin: 0;
-        left: -55px;
-        top: 0px;
-        visibility: hidden;
+        /*left: -55px;*/
+        /*left: 0px;*/
+        /*top: 0px;*/
+        /*        visibility: hidden;*/
+        background-color: yellow;
+    }
+
+    input.form_button_actions {
+        display: inline;
+        margin: 0;
+        padding: 5px;
+        margin-right: 8px;
+        font-size: 8px;
+        font-weight: 100;
+        visibility: hidden;        
+
+    }
+
+    input.form_button_delete {
+        background-color: red;
+    }
+
+    div.work_exp_action_div {
+        display: block;
+        /*background-color: orange;*/
+        margin-top: 0;
+        margin-bottom: 25px;
+        margin-left: -20px;
+        /*border-radius:*/ 
+        padding: 0;
+        padding-top: 0;
+        max-height: fit-content;
+        /*height: 30px;*/
+        /*display: block;*/
+    }
+
+    div.user_work_exp_action_div {
+
     }
 
     form.form_work_experience table {
@@ -691,6 +726,9 @@ if (!$session->is_logged_in()) {
         add_event_listeners_to_work_exp_divs();
 
         //
+        add_event_listeners_to_delete_work_buttons();
+
+        //
         add_event_listeners_to_edit_work_buttons();
 
 
@@ -702,13 +740,31 @@ if (!$session->is_logged_in()) {
             document.getElementById("-69").style.display = "none";
         }
 
+        function add_listeners_to_delete_button_bruh(delete_button) {
+
+            // Event click.
+            delete_button.addEventListener("click", function (event) {
+
+                // TODO: REMINDER: Do this.
+                var is_deletion_sure = window.confirm("Are you sure about \ndeleting this?");
+
+                if (is_deletion_sure) {
+                    console.log("sure");
+                    var the_work_exp_div = this.parentElement.parentElement;
+                    delete_work_experience(the_work_exp_div);
+                } else {
+                    console.log("nont sure");
+                }
+            });
+        }
+
         function add_listeners_to_edit_button_bruh(edit_button) {
 
             // Event click.
             edit_button.addEventListener("click", function (event) {
 
                 //
-                var the_work_exp_div = this.parentElement;
+                var the_work_exp_div = this.parentElement.parentElement;
 
                 // Hide the work experience.
                 the_work_exp_div.style.display = "none";
@@ -865,23 +921,41 @@ if (!$session->is_logged_in()) {
             }
         }
 
+        function add_event_listeners_to_delete_work_buttons() {
+            var delete_work_buttons = document.getElementsByClassName("form_button_delete");
+            var num_of_work_exp = delete_work_buttons.length;
+
+
+            // Start with index 1 instead of 0,
+            // cause the 0th <input> with class "form_button_edit"
+            // is the template.
+            for (var i = 1; i < num_of_work_exp; i++) {
+                // Event click.
+                add_listeners_to_delete_button_bruh(delete_work_buttons[i]);
+            }
+        }
+
         function add_event_listeners_to_work_exp_div_bruh(work_exp_div) {
             // Event mouseover.
             work_exp_div.addEventListener("mouseover", function (event) {
                 // Id of the edit button of that div.
                 var edit_button_id = "form_button_edit" + this.id;
+                var delete_button_id = "form_button_delete" + this.id;
                 console.log("edit_button_id: " + edit_button_id);
 
                 document.getElementById(edit_button_id).style.visibility = "visible";
+                document.getElementById(delete_button_id).style.visibility = "visible";
             });
 
             // Event mouseout.
             work_exp_div.addEventListener("mouseout", function (event) {
                 // Id of the edit button of that div.
                 var edit_button_id = "form_button_edit" + this.id;
+                var delete_button_id = "form_button_delete" + this.id;
 //                    console.log("edit_button_id: " + edit_button_id);
 
                 document.getElementById(edit_button_id).style.visibility = "hidden";
+                document.getElementById(delete_button_id).style.visibility = "hidden";
             });
         }
 
@@ -1071,24 +1145,28 @@ if (!$session->is_logged_in()) {
 
             /* Display new_work_exp_div in my way by manipulating the DOM. */
             the_work_exp_main_div.insertBefore(template_work_exp_div, new_work_exp_div);
-            
+
 
 
             // Set the new_work_exp_div attributes.
             new_work_exp_div.id = json.id;
 
             // Set the id of the edit button of this div.
-            new_work_exp_div.childNodes[0].id = "form_button_edit" + json.id;
+            new_work_exp_div.childNodes[0].childNodes[0].id = "form_button_delete" + json.id;
+            new_work_exp_div.childNodes[0].childNodes[1].id = "form_button_edit" + json.id;
 
-            //
+            // Set all the contents of the fields.
             reset_work_exp_div(new_work_exp_div, json);
 
+            // Set the event listener for this div's delete button.
+            add_listeners_to_delete_button_bruh(new_work_exp_div.childNodes[0].childNodes[0]);
+
             // Set the event listener for this div's edit button.
-            add_listeners_to_edit_button_bruh(new_work_exp_div.childNodes[0]);
-            
-            
-            // 
-            add_event_listeners_to_work_exp_div_bruh(new_work_exp_div);            
+            add_listeners_to_edit_button_bruh(new_work_exp_div.childNodes[0].childNodes[1]);
+
+
+            // Set the event listener of the div.
+            add_event_listeners_to_work_exp_div_bruh(new_work_exp_div);
         }
 
         function update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array) {
@@ -1216,6 +1294,59 @@ if (!$session->is_logged_in()) {
             post_key_value_pairs += "&work_experience_description1=" + work_experience_description1;
             post_key_value_pairs += "&work_experience_description2=" + work_experience_description2;
             post_key_value_pairs += "&work_experience_description3=" + work_experience_description3;
+
+            xhr.send(post_key_value_pairs);
+        }
+
+        function delete_work_experience(the_work_exp_div) {
+//            var loading_image = show_loading_image(form_add_work_experience);
+//            form_add_work_experience_loading_image = loading_image;
+            
+            // TODO: DEBUG
+            console.log("Insie method delete_work_experience().");
+            console.log("the_work_exp_div.id: " + the_work_exp_div.id);
+            
+
+            var xhr = new XMLHttpRequest();
+
+            var url = "<?php echo LOCAL . '/public/__controller/controller_profile.php'; ?>";
+            xhr.open('POST', url, true);
+            // You need this for AJAX POST requests.
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                // If ready..
+                if (xhr.readyState == 4 && xhr.status == 200) {
+
+                    // If there's a successful response..
+                    if (xhr.responseText.trim().length > 0) {
+
+                        if (xhr.responseText.trim() == "1") {
+                            // TODO: LOG
+                            console.log("SUCCESS db deleteion");
+                            console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+                            console.log("the_work_exp_div.id: " + the_work_exp_div.id);
+                            
+
+                            // If update is successful...
+                            the_work_exp_div.parentElement.removeChild(the_work_exp_div);
+                            console.log("SUCCESS removing the_work_exp_div");
+                            
+                        } 
+                        else {
+                            console.log("FAIL AJAX PHP returned 0.");
+                        }
+
+                    }
+
+                }
+
+
+            }
+
+            //
+            var post_key_value_pairs = "delete_work_experience=yes";
+            post_key_value_pairs += "&work_experience_id=" + the_work_exp_div.id;
 
             xhr.send(post_key_value_pairs);
         }
