@@ -70,7 +70,9 @@ function get_new_notifications_records() {
 
 
 function show_sales_notifications() {
+    echo "<div id='sales_notifications' class='section'>";
     echo "<h4>Sales Notifications</h4>";
+//    echo "<hr>";
     echo "<table>";
 
     //
@@ -102,6 +104,7 @@ function show_sales_notifications() {
 
 
     echo "</table>";
+    echo "</div>";
 }
 ?>
 

@@ -1,9 +1,108 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+<?php require_once(PRIVATE_PATH . "/includes/swiftmailer/config.php"); ?>
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 <?php
 
-echo "controller_signup.php";
+// TODO: LOG
+if (!MyDebugMessenger::is_initialized()) {
+    MyDebugMessenger::initialize();
+}
+?>
+
+<?php
+// TODO: SECTION: Functions.
+function show_welcome_msg($signup_token) {
+        $query = "SELECT * FROM Users ";
+    $query .= "WHERE signup_token = '{$signup_token}' LIMIT 1";
+    
+    $record_result = User::read_by_query($query);
+    
+    global $databse;
+    while ($row = $databse->fetch_array($record_result)) {
+        echo "<h4>Welcome {$row['user_name']}</h4>";
+        echo "<p>You've successfully created your account.</p>";
+        echo "<p>This account verification came from your email {$row['email']}</p>";
+    }
+}
+
+function is_signup_token_valid($token) {
+    $query = "SELECT * FROM Users ";
+    $query .= "WHERE signup_token = '{$token}' LIMIT 1";
+    
+    $record_result = User::read_by_query($query);
+    
+    global $databse;
+    
+    if ($database->get_num_rows_of_result_set($record_result > 0)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function send_sign_up_email($to, $signup_token) {
+    $from = ['bren@fatninjar.sytes.net' => 'FatNinjar'];
+
+
+    /*
+     * TODO: REMINDER: Maybe encrypt this..
+     * Login details for mail server
+     */
+    $smtp_server = 'mail.noip.com';
+    $smtp_username = 'bren@fatninjar.sytes.net';
+    $smtp_password = 'mnBS8bo3BLGk';
+
+    $msg = "Thank you for joining FatNinjar. Just click the link below to complete your sign-up fatninjar.sytes.net/signup_completion.php?token=" . $signup_token;
+
+//    MyDebugMessenger::add_debug_message("\$smtp_server: {$smtp_server}");
+
+    try {
+        $message = (new Swift_Message())
+
+                // Give the message a subject
+                ->setSubject('FatNinjar Account Sign-up Completion')
+
+                // Set the From address with an associative array
+                ->setFrom($from)
+
+                // Set the To addresses with an associative array (setTo/setCc/setBcc)
+                ->setTo($to)
+
+                // Give it a body
+                // TODO: REMINDER: Create an HTML link instead of plain text.
+                ->setBody($msg);
+
+        // create the transport
+        $transport = (new Swift_SmtpTransport($smtp_server, 587, 'tls'))
+                ->setUsername($smtp_username)
+                ->setPassword($smtp_password);
+
+        // Create the Mailer using your created Transport
+        $mailer = new Swift_Mailer($transport);
+
+
+        $result = $mailer->send($message);
+        if ($result) {
+            MyDebugMessenger::add_debug_message("SUCCESS sending signup email.");
+            return true;
+//            echo "Number of emails sent: $result";
+        } else {
+            MyDebugMessenger::add_debug_message("FAIL sending signup email.");
+//            echo "Couldn't send email";
+            return false;
+        }
+    } catch (Exception $e) {
+        MyDebugMessenger::add_debug_message("FAIL " . $e->getMessage());
+        return false;
+//        echo $e->getMessage();
+    }
+}
+
+function generate_hashed_token() {
+    return md5(uniqid(rand()));
+}
 ?>
 
 <?php
@@ -40,12 +139,7 @@ echo "controller_signup.php";
 
 <?php
 
-// TODO: LOG
-if (!MyDebugMessenger::is_initialized()) {
-    MyDebugMessenger::initialize();
-}
-
-$allowed_assoc_indexes_for_post = array('user_name', 'password');
+$allowed_assoc_indexes_for_post = array('email', 'user_name', 'password');
 
 $dirty_array = [];
 $sanitized_array = [];
@@ -105,9 +199,9 @@ if ($can_proceed) {
 //
 if ($can_proceed) {
     MyValidationErrorLogger::initialize();
-    
+
     // Validate that there's no empty, space, or tab only character.
-    $required_fields = array("user_name", "password");
+    $required_fields = array("email", "user_name", "password");
     validate_presences($required_fields);
 
 //    // 
@@ -124,6 +218,11 @@ if ($can_proceed) {
     // For password.
     if (!has_length($dirty_array["password"], ["min" => 8, "max" => 50])) {
         MyValidationErrorLogger::log("Password doesn't meet the length requirements. Min is 8 characters and max is 50 characters.");
+    }
+
+    // For email.
+    if (!has_length($dirty_array["email"], ["min" => 5, "max" => 200])) {
+        MyValidationErrorLogger::log("Email doesn't meet the length requirements. Min is 5 characters and max is 200 characters.");
     }
 
 
@@ -168,6 +267,16 @@ if ($can_proceed) {
     // For at least 5 letters.
     if (!has_alphabet_chars($dirty_array["password"], 5)) {
         MyValidationErrorLogger::log("Password does not have at least 5 alphabet characters.");
+    }
+
+
+
+
+    // TODO: REMINDER: Use Swiftmailer's validation code for email.
+    // For email.
+    // validate email address
+    if (!Swift_Validate::email($dirty_array["email"])) {
+        MyValidationErrorLogger::log("Email is not valid.");
     }
 }
 
@@ -219,7 +328,7 @@ if ($can_proceed) {
 $sanitized_array = $dirty_array;
 // TODO: DEBUG
 //MyDebugMessenger::add_debug_message($additional_message);
-echo  "<pre>";
+echo "<pre>";
 print_r($sanitized_array);
 echo "</pre>";
 
@@ -234,33 +343,53 @@ echo "</pre>";
 if ($can_proceed) {
 //    $password = $_POST["password"];
 //    $user_name = $_POST["user_name"];
-    
     // @@@method password_hash() is built-in.
     $hashed_password = password_hash($sanitized_array["password"], PASSWORD_BCRYPT);
 
 //    $do_passwords_match = password_verify($password, $hashed_password);
-    
+
     $new_user = new User();
-    
+
     $user_type_id_for_regular_user = 1;
-    
+
 //    $new_user->user_name = null;
     $new_user->user_name = $sanitized_array["user_name"];
+    $new_user->email = $sanitized_array["email"];
     $new_user->hashed_password = $hashed_password;
     $new_user->user_type_id = $user_type_id_for_regular_user;
-    
-    $user_creation_result = $new_user->create_with_bool();
-    
+
+    $signup_token = generate_hashed_token();
+    $new_user->signup_token = $signup_token;
+
+    $user_creation_result = null;
+
+    if (User::make_query("START TRANSACTION")) {
+        $user_creation_result = $new_user->create_with_bool();
+    }
+
+
+
     if ($user_creation_result) {
 //        MyDebugMessenger::clear_debug_message();
-        MyDebugMessenger::add_debug_message("We sent you an email at {$user_name}.");
-        echo "We sent you an email at {$user_name}.<br>";
-        MyDebugMessenger::add_debug_message("Check it to complete your account creation.");
-        echo "Check it to complete your account creation.<br>";
-        redirect_to("../index.php");
-    }
-    else {
-        echo "FAILURE User creation.";
+        // TODO: REMINDER: Send the email with the signup token.
+        $to = [$new_user->email => $new_user->user_name];
+
+        if (send_sign_up_email($to, $signup_token)) {
+            MyDebugMessenger::add_debug_message("We sent you an email to {$new_user->email}.");
+            MyDebugMessenger::add_debug_message("Check it to complete your account creation.");
+            echo "Check it to complete your account creation.<br>";
+
+            User::make_query("COMMIT");
+        } else {
+            MyDebugMessenger::add_debug_message("FAILURE sending email.");
+            User::make_query("ROLLBACK");
+        }
+
+
+//        redirect_to("../index.php");
+    } else {
+//        echo "FAILURE User creation.";
+        MyDebugMessenger::add_debug_message("FAILURE User creation.");
     }
 }
 
@@ -270,7 +399,7 @@ if ($can_proceed) {
 
 // Redirect after everything.
 // TODO: DEBUG: This link is just for debugging. Delete this later.
-echo "<a href='../__view/view_signup.php'>go to view_signup.php</a>";
-//redirect_to("../__view/view_signup.php");
+//echo "<a href='../__view/view_signup.php'>go to view_signup.php</a>";
+redirect_to(LOCAL . "/public/__view/view_signup.php");
 ?>
 

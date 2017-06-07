@@ -7,11 +7,14 @@ require_once("my_database.php");
 class User {
 
     protected static $table_name = "Users";
-    protected static $db_fields = array("user_id", "user_name", "hashed_password", "user_type_id");
+    protected static $db_fields = array("user_id", "user_name", "email", "hashed_password", "user_type_id", "signup_token");
     public $user_id;
     public $user_name;
+    public $email;
     public $hashed_password;
     public $user_type_id;
+    public $signup_token;
+    
 
     public static function read_by_id($id = 0) {
 //        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
@@ -21,7 +24,7 @@ class User {
 //            die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
 //        }
     }
-    
+
     public static function read_by_query($query = "") {
         global $database;
 
@@ -29,7 +32,7 @@ class User {
 
         //
         return $result_set;
-    }        
+    }
 
     public static function read_by_query_and_instantiate($query = "") {
         global $database;
@@ -45,7 +48,7 @@ class User {
 
         return $objects_array;
     }
-    
+
 //      public static function authenticate_with_user_object_return($user_name = "", $hashed_password = "") {
 //        global $database;
 //        
@@ -64,10 +67,10 @@ class User {
 //        
 //        return !empty($result_user_record) ? array_shift($result_user_record) : false;
 //    }
-    
-      public static function authenticate_with_user_object_return($user_name = "") {
+
+    public static function authenticate_with_user_object_return($user_name = "") {
         global $database;
-        
+
         $user_name = $database->escape_value($user_name);
 //        $hashed_password = $database->escape_value($hashed_password);
 
@@ -75,14 +78,14 @@ class User {
         $query .= "WHERE user_name = '{$user_name}' ";
 //        $query .= "AND hashed_password = '{$hashed_password}' ";
         $query .= "LIMIT 1";
-        
+
         // TODO: DEBUG
         echo "<br>QUERY query: {$query}<br>";
-        
+
         $result_user_record = self::read_by_query_and_instantiate($query);
-        
+
         return !empty($result_user_record) ? array_shift($result_user_record) : false;
-    }    
+    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
@@ -105,17 +108,17 @@ class User {
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
         // - single-quotes around all values
         // - escape all values to prevent SQL injection
-        
+
         $attributes = $this->get_sanitized_attributes();
-        
+
         $query = "INSERT INTO " . self::$table_name . " (";
         $query .= join(", ", array_keys($attributes));
         $query .= ") VALUES ('";
         $query .= join("', '", array_values($attributes));
         $query .= "')";
-        
+
         $query_result = $database->get_result_from_query($query);
-        
+
         if ($query_result) {
             $this->user_id = $database->get_last_inserted_id();
             return true;
@@ -124,6 +127,19 @@ class User {
         }
     }
 
+    public static function make_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($result_set) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     protected function get_sanitized_attributes() {
         global $database;
@@ -157,7 +173,7 @@ class User {
                 $object->$attribute = $value;
             }
         }
-        
+
         // Because the class attribute $id is not included as a key
         // in this class's array $db_fields, we assign a value to the $id separately.
 //        foreach ($record as $attribute => $value) {
