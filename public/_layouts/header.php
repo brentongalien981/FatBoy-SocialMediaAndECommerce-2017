@@ -11,6 +11,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php // defined('LOCAL') ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 <!doctype>
 <html>
@@ -733,10 +734,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                     }
 
                                     echo "<a href='" . LOCAL . "/public/index.php' class=''>";
-                                    echo "<img src='" . LOCAL . "{$timeline_pic_url}' class='icon'>Timeline";
+                                    echo "<img src='" . LOCAL . "{$timeline_pic_url}' class='icon'>";
 
 
-                                    echo " of {$session->currently_viewed_user_name}";
+                                    echo "{$session->currently_viewed_user_name}";
 
 
                                     echo "</a>";

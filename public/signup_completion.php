@@ -1,12 +1,16 @@
-<?php // require_once("../../private/includes/initializations.php");       ?>
-<?php // include(PUBLIC_PATH . "/_layouts/header.php");       ?>
-<?php include("_layouts/header.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__controller/controller_signup_completion.php"); ?>
+<?php // require_once("../../private/includes/initializations.php");            ?>
+<?php // include(PUBLIC_PATH . "/_layouts/header.php");            ?>
+<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/my_user.php"); ?>
+<?php // require_once(PUBLIC_PATH . "/__controller/controller_signup_completion.php");     ?>
+<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
 
 <?php
+
 // TODO: LOG
 //if (MyDebugMessenger::is_initialized()) {
 //    MyDebugMessenger::show_debug_message();
@@ -27,7 +31,9 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <?php
+
 // Make sure the actual user is NOT logged-in.
+global $session;
 if ($session->is_logged_in()) {
     redirect_to(LOCAL . "/public/index.php");
 }
@@ -38,91 +44,53 @@ if ($session->is_logged_in()) {
 
 
 
-<main id="middle_content">
 
-    <!--Sub-menus-->
-    <nav id="sub_menus_nav">
-        <a href="#">Sub-menu1</a>
-    </nav>
+<?php
 
+// TODO: SECTION: Functions.
+function log_in_user($signup_token) {
+    $query = "SELECT * FROM Users ";
+    $query .= "WHERE signup_token = '{$signup_token}' LIMIT 1";
 
+    $record_result = User::read_by_query($query);
 
+    global $database;
+    while ($row = $database->fetch_array($record_result)) {
+        global $session;
+        $logging_user = User::authenticate_with_user_object_return($row['user_name']);
+        $session->login($logging_user);
+        break;
+    }
+}
 
+function is_signup_token_valid($token) {
+    $query = "SELECT * FROM Users ";
+    $query .= "WHERE signup_token = '{$token}' LIMIT 1";
 
-    <div class="section">
-        <?php
-        if (isset($_GET['token']) && is_signup_token_valid($_GET['token'])) {
-            show_welcome_msg($_GET['token']);
-        }
-        else {
-            echo "<h4>Sorry, but your account can't be verified.</h4>";
-        }
-        ?>
-    </div>
+    $record_result = User::read_by_query($query);
 
+    global $database;
 
+    if ($database->get_num_rows_of_result_set($record_result) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
+function create_user_profile() {
+    global $session;
+    $query = "INSERT INTO Profile(user_id) VALUES({$session->actual_user_id})";
 
+    $is_creation_ok = User::create_by_query($query);
 
-
-
-
-
-
-
-
-
-
-
-
-    <?php
-// TODO: SECTION: LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
-    ?>
-</main>
-
-
-
-
-
-<!--<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />-->
-<style>
-    #middle_content {
-        background-color: rgb(250, 250, 250);
-        padding-bottom: 30px;
-        color: black;
+    if ($is_creation_ok) {
+        return true;
     }
 
-    #sub_menus_nav {
-        background-color: rgb(60, 60, 60);
-    }#sub_menus_nav a {
-        color: rgb(220, 220, 220);
-    }
-    
-    .section {
-        background-color: rgb(245, 245, 245);
-        margin: 30px;
-        padding: 30px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 5px rgb(150, 150, 150);
-
-    }    
-
-    form h4 {
-        font-size: 80%;
-        /*display: block;*/
-    }
-
-    .debugMessage {
-        color: red;
-        font-size: 70%;
-    }
-</style>
-
-
-
-
+    return false;
+}
+?>
 
 
 
@@ -130,10 +98,17 @@ if ($session->is_logged_in()) {
 
 
 <?php
-// TODO: SECTION: This appends the content of the main content to the main placeholder.
-?>
-<script>
-    document.getElementById("middle").appendChild(document.getElementById("middle_content"));
-</script>
 
-<?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>
+$account_validated = "no";
+if (isset($_GET['token']) && is_signup_token_valid($_GET['token'])) {
+    log_in_user($_GET['token']);
+
+    if (create_user_profile()) {
+        $account_validated = "yes";
+    }
+}
+
+
+//
+redirect_to(LOCAL . "/public/signup_completion_bruh.php?account_validated={$account_validated}");
+?>

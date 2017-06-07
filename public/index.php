@@ -2,7 +2,7 @@
 <?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                         ?>
 <?php // include(PUBLIC_PATH . "/_layouts/header.php");                         ?>
 <?php require_once("_layouts/header.php"); ?>
-<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 

@@ -100,6 +100,20 @@ class User {
         // Will return true or false
         return array_key_exists($attribute, $this->get_attributes());
     }
+    
+    public static function create_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($database->get_num_of_affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }    
 
     // Returns bool.
     public function create_with_bool() {

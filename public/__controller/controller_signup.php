@@ -3,7 +3,6 @@
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 <?php
-
 // TODO: LOG
 if (!MyDebugMessenger::is_initialized()) {
     MyDebugMessenger::initialize();
@@ -54,7 +53,7 @@ function send_sign_up_email($to, $signup_token) {
     $smtp_username = 'bren@fatninjar.sytes.net';
     $smtp_password = 'mnBS8bo3BLGk';
 
-    $msg = "Thank you for joining FatNinjar. Just click the link below to complete your sign-up fatninjar.sytes.net/signup_completion.php?token=" . $signup_token;
+    $msg = "Thank you for joining FatNinjar. Just click the link below to complete your sign-up " . LOCAL . "/public/signup_completion.php?token=" . $signup_token;
 
 //    MyDebugMessenger::add_debug_message("\$smtp_server: {$smtp_server}");
 
