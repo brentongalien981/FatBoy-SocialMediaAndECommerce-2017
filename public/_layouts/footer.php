@@ -1,10 +1,10 @@
 <!--</main>-->
 <footer>
     <nav>
-        <a href="about_us.php" class="">About Us</a>
-        <a href="partners.php" class="">Partners</a>
-        <a href="advertise.php" class="">Advertise</a>  
-        <a href="site_map.php" class="">Site Map</a>
+        <a href="#" class="">About Us</a>
+        <a href="#" class="">Contact Us</a>
+        <a href="#" class="">Advertise</a>  
+        <!--<a href="site_map.php" class="">Site Map</a>-->
     </nav><br>
 
     <h6>&copy; FatBoy <?php echo date("Y", time()); ?></h6>
