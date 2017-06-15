@@ -22,7 +22,7 @@ function validate_presences($required_fields) {
         $value = trim($_POST[$field]);
         if (!has_presence($value)) {
 //  		$errors[$field] = fieldname_as_text($field) . " can't be blank";
-            MyValidationErrorLogger::log("{$field} can not be blank.");
+            MyValidationErrorLogger::log("{$field}::: can not be blank.");
         }
     }
 }

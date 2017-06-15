@@ -3,7 +3,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/timeline_posts.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/my_database.php"); ?>
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
-    
+
 
 
 
@@ -49,7 +49,7 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
         $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
         $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
         $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
-        
+
         // This div is just to have a reference for appending the reply form.
         $completely_presented_timeline_notification .= "<div class='empty_div_shit'></div>";
 
@@ -76,22 +76,32 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
     return $completely_presented_timeline_notifications_array;
 }
 
+function is_csrf_token_legit() {
+    if (is_csrf_token_valid()) {
+//        MyValidationErrorLogger::log("csrf_token::: valid.");
+
+        if (is_csrf_token_recent()) {
+//            MyValidationErrorLogger::log("csrf_token::: recent.");
+            return true;
+        } else {
+            MyValidationErrorLogger::log("csrf_token::: not recent.");
+            return false;
+        }
+    } else {
+        MyValidationErrorLogger::log("csrf_token::: invalid.");
+        return false;
+    }
+}
+
 function create_timeline_post_record() {
-    $is_validation_ok = validate_new_timeline_post();
-    
     //
-    $is_creation_ok = false;
-    
-    
-    if ($is_validation_ok) {
-        $is_creation_ok = create_timeline_post_record_bruh();
-    }
-    
-    
+    $is_creation_ok = create_timeline_post_record_bruh();
+
+
+
     if ($is_creation_ok) {
-         return_completely_presented_post();
+        return_completely_presented_post();
     }
-    
 }
 
 function return_completely_presented_post() {
@@ -102,14 +112,14 @@ function return_completely_presented_post() {
     $query .= "WHERE owner_user_id = {$session->currently_viewed_user_id} ";
     $query .= "AND date_posted = ";
     $query .= "(SELECT MAX(date_posted) FROM TimelinePosts WHERE owner_user_id = {$session->currently_viewed_user_id})";
-    
-    
+
+
     $record_result = TimelinePost::read_by_query($query);
-    
-    
+
+
     global $database;
     $completely_presented_timeline_notification = "";
-    
+
     while ($row = $database->fetch_array($record_result)) {
         // TODO: Complete the HTML parts.
 //        $completely_presented_timeline_notification .= "<div class='post_background'>";
@@ -121,66 +131,84 @@ function return_completely_presented_post() {
         $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
 //        $completely_presented_timeline_notification .= "</div>";    
     }
-    
+
     echo $completely_presented_timeline_notification;
 }
 
 function create_timeline_post_record_bruh() {
     global $session;
     $new_timeline_post_obj = new TimelinePost();
-    
+
 //    $new_timeline_post_obj->id = null;
     $new_timeline_post_obj->owner_user_id = $session->currently_viewed_user_id;
     $new_timeline_post_obj->poster_user_id = $session->actual_user_id;
     $new_timeline_post_obj->message = $_POST["message_post"];
-    
+
     $is_creation_ok = $new_timeline_post_obj->create_with_bool();
-    
+
     if ($is_creation_ok) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 
-function validate_new_timeline_post() {
+// Use only allowable GET and POST variables. 
+// Maybe put an array like: $allowed_gets = array();
+// @return:
+//      - valid POST arrays, or
+//      - 0 if there's any tampered/invalid var.
+function are_post_vars_valid($allowed_assoc_indexes_for_post) {
+    $dirty_array = array();
 
-    // Fuckin need this everytime you validate.
-    MyValidationErrorLogger::initialize();
+    foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
 
+        if (isset($_POST[$assoc_index])) {
+            $dirty_array[$assoc_index] = $_POST[$assoc_index];
+//            MyValidationErrorLogger::log("post_vars::: {$assoc_index} ok.");
+        } else {
+            MyValidationErrorLogger::log("post_vars::: tampered.");
+            return 0;
+        }
+    }
 
-    // Validations
-    // Check if the specific POST global var is not empty.
-    $required_fields = array("message_post");
-    validate_presences($required_fields);
+    return $dirty_array;
 
+//// TODO: DEBUG
+//    foreach ($dirty_array as $value) {
+//        MyDebugMessenger::add_debug_message("VAR ARRAY dirty_array: {$value}.");
+//    }
+}
 
-    $fields_with_max_lengths = array("message_post" => 1000);
-    validate_max_lengths($fields_with_max_lengths);
+// @param $var_lengts_arr: Post vars that need their length validated.
+function validate_new_timeline_post($var_lengts_arr) {
+    
+//    //  
+//    $var_lengts_arr = array("message_post" => ["min" => 1, "max" => 1000]);
+    
     
 
-
-    // 
-    if (MyValidationErrorLogger::is_empty()) {
-        // Proceed to the next validation step.
-        MyDebugMessenger::add_debug_message("SUCCESS create post validation.");
-        
-        // 
-        return true;
-    } else {
-        MyDebugMessenger::add_debug_message("FAIL create post validation.");
-
-        $validation_errors = MyValidationErrorLogger::get_log_array();
-
-        foreach ($validation_errors as $error) {
-            MyDebugMessenger::add_debug_message($error);      
+    //
+    foreach ($var_lengts_arr as $key => $value) {
+        // Validate presence.
+        if (!has_presence($_POST[$key])) {
+            MyValidationErrorLogger::log("{$key}::: can not be blank");
+            
+            return false;
         }
-
-
-        // 
-        return false;
+        
+        // Validate the length.   
+        if (!has_length($_POST[$key], $value)) {
+            MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
+            
+            // 1 mistake alone, return false right away.
+            return false;
+        }
     }
+    
+    // If all tests passed.
+    return true;
+
 }
 ?>
 
@@ -196,11 +224,70 @@ function validate_new_timeline_post() {
 <?php
 
 // TODO: SECTION: Meat.
-if (isset($_POST["create_post"]) && $_POST["create_post"] == "yes") {
+if (is_request_post() &&
+        isset($_POST["create_post"]) &&
+        $_POST["create_post"] == "yes") {
+
+    // Fuckin need this everytime you validate.
+    MyValidationErrorLogger::initialize();
+
+    // Validation vars.
+    $can_proceed = false;
+    $allowed_assoc_indexes_for_post = array('message_post');
+    $dirty_array = [];
+    $sanitized_array = [];
+
+    // Check csrf_token.
+    if (is_csrf_token_legit()) {
+        $can_proceed = true;
+    } else {
+        $can_proceed = false;
+        echo "0";
+    }
+    
+    
+
+
+    // White listing POST vars.
+    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
+    if ($can_proceed && $dirty_array != 0) {
+        $can_proceed = true;
+    } else {
+        $can_proceed = false;
+        echo "0";
+    }
+    
+
+
+
+    // Validate inputs.
+    $var_lengts_arr = array("message_post" => ["min" => 1, "max" => 1000]);
+    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) { $can_proceed = true; } 
+    else { $can_proceed = false; echo "0"; }
+
+
+
+    // Copy the error messages to the app status messenger.
+    foreach (MyValidationErrorLogger::get_log_array() as $log_error_msg) {
+        echo "\n" . $log_error_msg;
+    }
+
+
+    MyValidationErrorLogger::reset();
+
+
+
     //
-    create_timeline_post_record();
+    if ($can_proceed) {
+        create_timeline_post_record();
+    }
     
     
-//    echo "\nmessage post: {$_POST["message_post"]}";
+    
+//   // TODO: DEBUG
+//    echo "POST CSRF: {$_POST['csrf_token']}\n";
+//    echo "SESSION CSRF: {$_SESSION['csrf_token']}\n";
+//    return;     
+    
 }
 ?>

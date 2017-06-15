@@ -45,36 +45,37 @@ function has_length($value, $options = []) {
 function has_numeric_chars($str, $min) {
     $strlen = strlen($str);
     $count = 0;
-    
+
     for ($i = 0; $i <= $strlen; $i++) {
         $char = substr($str, $i, 1);
         if (is_numeric($char)) {
             ++$count;
         }
-        
+
         if ($count == $min) {
-           return true; 
+            return true;
         }
     }
-    
+
     return false;
 }
+
 //
 function has_alphabet_chars($str, $min) {
     $strlen = strlen($str);
     $count = 0;
-    
+
     for ($i = 0; $i <= $strlen; $i++) {
         $char = substr($str, $i, 1);
         if (ctype_alpha($char)) {
             ++$count;
         }
-        
+
         if ($count == $min) {
-           return true; 
+            return true;
         }
     }
-    
+
     return false;
 }
 
@@ -126,9 +127,22 @@ function has_exclusion_from($value, $set = []) {
 // Also consider whether you want to trim whitespace, or make the query 
 // case-sentitive or not.
 //
-// function has_uniqueness($value, $table, $column) {
-//   $escaped_value = mysql_escape($value);
-//   sql = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = '{$escaped_value}';"
-//   if count > 0 then value is already present and not unique
-// }
+function is_unique($value, $table, $column) {
+    global $database;
+    $escaped_value = $database->escape_value($value);
+    $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = '{$escaped_value}'";
+
+    $result_set = $database->get_result_from_query($query);
+
+    //
+    while($row = $database->fetch_array($result_set)) {
+        if ($row['count'] > 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+}
+
 ?>

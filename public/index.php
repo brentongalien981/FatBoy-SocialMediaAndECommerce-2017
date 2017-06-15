@@ -1,8 +1,14 @@
-<?php // require_once("../private/includes/initializations.php");                         ?>
-<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                         ?>
-<?php // include(PUBLIC_PATH . "/_layouts/header.php");                         ?>
+<?php // require_once("../private/includes/initializations.php");                                 ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                                 ?>
+<?php // include(PUBLIC_PATH . "/_layouts/header.php");                                 ?>
 <?php require_once("_layouts/header.php"); ?>
-<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy");         ?>
+
+<?php
+// TODO: REMINDERS: 
+//      - Edit the code so that long posts be truncated and not go past 
+//        beyond the width of the 600px.
+?>
 
 
 
@@ -39,11 +45,12 @@ if (!MyDebugMessenger::is_initialized()) {
 
     <?php
     if ($session->is_logged_in()) {
-        echo "<div id='create_post_form'>";
+        echo "<form id='create_post_form'>";
+//        echo get_csrf_token_tag();
         echo "<textarea id='message_post_textarea' rows='6' cols='100' placeholder='What u be thinking...'></textarea><br>";
 
         echo "<input id='create_post_button' type='button' class='form_buttons' value='Yow!'>";
-        echo "</div>";
+        echo "</form>";
 
 
         // This is just a refernce node for appending new post element...
@@ -101,6 +108,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
+
+
     <?php
 // TODO: LOG
     MyDebugMessenger::show_debug_message();
@@ -125,8 +134,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                       ?>" rel="stylesheet" type="text/css">-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                       ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                               ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                               ?>" rel="stylesheet" type="text/css">-->
 <style>
 
 
@@ -359,91 +368,6 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php
-// TODO: SECTION: Script for posting a new post.
-?>
-<script>
-    function create_post() {
-        // Check if textarea is empty.
-        if (is_textarea_empty(document.getElementById("message_post_textarea"))) {
-            return;
-        }
-
-
-        // AJAX
-        var xhr = new XMLHttpRequest();
-
-        var url = "<?php echo LOCAL . "/public/__controller/controller_timeline_posts.php"; ?>";
-        xhr.open('POST', url, true);
-        // You need this for POST requests.
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                if (xhr.responseText.trim().length > 0) {
-//                    window.alert("puta ko: " + xhr.responseText.trim());
-
-                    // Append the new post.
-                    // This is just a "uniquer/clever" way of appending it..
-                    // Ok it's not clever, but just "maparaan".
-                    var new_div_background = document.createElement("div");
-                    new_div_background.id = "newly_inserted_post";
-                    new_div_background.setAttribute("class", "post_background");
-                    new_div_background.innerHTML = xhr.responseText.trim();
-
-                    //
-                    var div_tae = document.getElementById("div_tae");
-                    var middle_content = document.getElementById("middle_content");
-                    middle_content.insertBefore(new_div_background, div_tae);
-
-                    //
-                    middle_content.removeChild(div_tae);
-
-                    //
-                    var new_div_tae = document.createElement("div");
-                    new_div_tae.id = "div_tae";
-                    middle_content.insertBefore(new_div_tae, new_div_background);
-
-                    //
-                    new_div_background.id = "";
-
-
-                    // Clear the textarea.
-                    document.getElementById("message_post_textarea").value = "";
-                } else {
-//                    window.alert("ajax returned empty");
-                }
-
-            }
-        }
-
-
-        //
-        var post_key_value_pairs = "create_post=yes&";
-        post_key_value_pairs += "message_post=" + document.getElementById("message_post_textarea").value.trim();
-
-        xhr.send(post_key_value_pairs);
-
-
-//        window.alert("puta");
-    }
-
-    function is_textarea_empty(textarea) {
-        if (textarea.value.trim() == 0) {
-            return true;
-
-        } else {
-            return false;
-        }
-    }
-
-    window.onload = function () {
-        var create_post_button = document.getElementById("create_post_button");
-        if (create_post_button != null) {
-            create_post_button.onclick = create_post;
-        }
-    };
-</script>
 
 
 
@@ -481,7 +405,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 //        replyForm.setAttribute("action", "timeline_posts_reply.php");
 //        replyForm.setAttribute("method", "post");
-        replyForm.id = "replyForm";
+        replyForm.id = "replyForm" + parentPostId;
         replyForm.setAttribute("class", "replyForm");
 
 //        replyTextAre.setAttribute("name", "reply_text_area");
@@ -499,7 +423,9 @@ if (!MyDebugMessenger::is_initialized()) {
 //        replyButton.setAttribute("class", "reply_form_buttons");
         replyButton.setAttribute("class", "form_buttons");
 
-        replyButton.onclick = create_reply_post;
+        replyButton.onclick = function () {
+            create_reply_post(parentPostId);
+        };
 
         cancelButton.setAttribute("type", "button");
         cancelButton.setAttribute("value", "cancel");
@@ -525,14 +451,15 @@ if (!MyDebugMessenger::is_initialized()) {
         replyForm.appendChild(cancelButton);
 
 //        document.getElementById(parentPostId).appendChild(replyForm);
-        document.getElementById(parentPostId).insertBefore(replyForm, document.getElementById(parentPostId).childNodes[4]);
+        document.getElementById(parentPostId).insertBefore(replyForm, document.getElementById(parentPostId).childNodes[3]);
 //    document.getElementById(parentPostId).appendChild(cancelButton);
 
 
     }
 
-    function create_reply_post() {
+    function create_reply_post(parentPostId) {
 //        window.alert("the_parent_post_id: " + the_parent_post_id);
+        var the_reply_form = document.getElementById("replyForm" + parentPostId);
 
         // AJAX
         var xhr = new XMLHttpRequest();
@@ -542,20 +469,23 @@ if (!MyDebugMessenger::is_initialized()) {
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                if (xhr.responseText.trim().length > 0) {
+                var response = xhr.responseText.trim();
+                if (response.length > 0 && response.substring(0, 1) != "0") {
+                    console.log("OK post response: " + response);
 
 //                    $completely_presented_reply_post .= "<div id='{$row['id']}' class='replies'>";
                     var new_reply_post_div = document.createElement("div");
                     new_reply_post_div.className = "replies";
-                    new_reply_post_div.innerHTML = xhr.responseText.trim();
+                    new_reply_post_div.innerHTML = response;
 //                    window.alert("ajas: " + xhr.responseText.trim());
 
                     // Remove the reply form.
-                    document.getElementById(the_parent_post_id).removeChild(document.getElementById("replyForm"));
+
+                    document.getElementById(parentPostId).removeChild(the_reply_form);
 
 
                     // Append the new reply post.
-                    document.getElementById(the_parent_post_id).appendChild(new_reply_post_div);
+                    document.getElementById(parentPostId).appendChild(new_reply_post_div);
 
 
                     // Change the color back of the reply button.
@@ -563,36 +493,163 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
                     // Re-enable the reply button.
-                    document.getElementById("replyButton" + the_parent_post_id).removeAttribute("disabled");
-
-//        // Append.
-//        var parent_node = document.getElementById(the_parent_post_id);
-//        var new_div = document.createElement("div");
-//        new_div.innerHTML = "bagong div";
-//        var reference_node = parent_node.childNodes[4];
-//        parent_node.insertBefore(new_div, reference_node);
-
-
-
+                    document.getElementById("replyButton" + parentPostId).removeAttribute("disabled");
+                } else {
+                    console.log("BAD post response: " + response);
                 }
             }
+
+
         }
+
+
+
+
+
+
+        // Create a dynamic hidden csrf_token input.
+        var input_csrf_token = document.createElement("input");
+        input_csrf_token.id = "input_csrf_token";
+        input_csrf_token.setAttribute("type", "hidden");
+        input_csrf_token.setAttribute("value", get_csrf_token());
+
+        // Dynamically append a hidden csrf input to the form "create_post_form".
+        var reference_div = document.getElementById("div_tae");
+        reference_div.appendChild(input_csrf_token);
+
 
 
         //
         var post_key_value_pairs = "create_reply_post=yes";
 
-        post_key_value_pairs += "&parent_post_id=" + the_parent_post_id;
+        post_key_value_pairs += "&parent_post_id=" + parentPostId;
 
 
         // Get the content of the textarea of the form that popped-up for reply.
-        var reply_message = document.getElementById(the_parent_post_id).childNodes[4].childNodes[0].value;
+//        var the_textarea = document.getElementById(the_parent_post_id).childNodes[4].childNodes[0];
+//        var reply_message = the_textarea.value.trim();
+        var reply_message = the_reply_form.childNodes[0].value;
+        console.log("DEBUG: the_reply_form.id: " + the_reply_form.id);
+        console.log("DEBUG: reply_message: " + reply_message);
 
-        post_key_value_pairs += "&reply_message=" + reply_message.trim();
+        post_key_value_pairs += "&reply_message=" + reply_message;
+        post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
 
 
         xhr.send(post_key_value_pairs);
+
+
+        // Right away, remove the hidden csrf input from the form "create_post_form".
+        reference_div.removeChild(input_csrf_token);
     }
+
+
+
+    function create_post() {
+        // Check if textarea is empty.
+        if (is_textarea_empty(document.getElementById("message_post_textarea"))) {
+            return;
+        }
+
+
+        // AJAX
+        var xhr = new XMLHttpRequest();
+
+        var url = "<?php echo LOCAL . "/public/__controller/controller_timeline_posts.php"; ?>";
+        xhr.open('POST', url, true);
+        // You need this for POST requests.
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = xhr.responseText.trim();
+                if (response.length > 0 && response.substring(0, 1) != "0") {
+                    console.log("OK post response: " + response);
+//                    window.alert("puta ko: " + response);
+
+                    // Append the new post.
+                    // This is just a "uniquer/clever" way of appending it..
+                    // Ok it's not clever, but just "maparaan".
+                    var new_div_background = document.createElement("div");
+                    new_div_background.id = "newly_inserted_post";
+                    new_div_background.setAttribute("class", "post_background");
+                    new_div_background.innerHTML = response;
+
+                    // div_tae is just a hidden div reference for insertion.
+                    var div_tae = document.getElementById("div_tae");
+                    var middle_content = document.getElementById("middle_content");
+                    middle_content.insertBefore(new_div_background, div_tae);
+
+                    // Remove div_tae.
+                    middle_content.removeChild(div_tae);
+
+                    // Create a new div_tae for the next hidden reference.
+                    var new_div_tae = document.createElement("div");
+                    new_div_tae.id = "div_tae";
+                    middle_content.insertBefore(new_div_tae, new_div_background);
+
+                    //
+                    new_div_background.id = "";
+
+
+                    // Clear the textarea.
+                    document.getElementById("message_post_textarea").value = "";
+                } else {
+                    console.log("BAD post response: " + response);
+                }
+
+            }
+        }
+
+        // Create a dynamic hidden csrf_token input.
+        var input_csrf_token = document.createElement("input");
+        input_csrf_token.id = "input_csrf_token";
+        input_csrf_token.setAttribute("type", "hidden");
+        input_csrf_token.setAttribute("value", get_csrf_token());
+
+        // Dynamically append a hidden csrf input to the form "create_post_form".
+//        var create_post_form = document.getElementById("create_post_form");
+//        create_post_form.appendChild(input_csrf_token);
+        var reference_div = document.getElementById("div_tae");
+        reference_div.appendChild(input_csrf_token);
+
+
+        //
+        var post_key_value_pairs = "create_post=yes";
+        post_key_value_pairs += "&csrf_token=" + input_csrf_token.value;
+        post_key_value_pairs += "&message_post=" + document.getElementById("message_post_textarea").value.trim();
+
+        xhr.send(post_key_value_pairs);
+
+        // Right away, remove the hidden csrf input from the form "create_post_form".
+//        create_post_form.removeChild(input_csrf_token);
+        reference_div.removeChild(input_csrf_token);
+    }
+    
+    // I did this function cause with this line
+    //      input_csrf_token.setAttribute("value", <php echo sessionize_csrf_token(); >);
+    // for methods create_post() and create_reply_post(),
+    // PHP runs that line enclosed in php tags twice, making the $_SESSION['csrf_token']
+    // different. I made this method so it will only run once..
+    function get_csrf_token() {
+        return "<?php echo sessionize_csrf_token(); ?>";
+    }
+
+    function is_textarea_empty(textarea) {
+        if (textarea.value.trim() == 0) {
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    window.onload = function () {
+        var create_post_button = document.getElementById("create_post_button");
+        if (create_post_button != null) {
+            create_post_button.onclick = create_post;
+        }
+    };
 </script>
 
 
@@ -611,5 +668,5 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <!--Footer-->
-<?php // include_layout_template('footer.php');      ?>
+<?php // include_layout_template('footer.php');          ?>
 <?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

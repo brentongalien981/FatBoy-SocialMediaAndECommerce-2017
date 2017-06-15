@@ -252,7 +252,7 @@ width: 100%;
             }
 
             #container_for_nav_side {
-                margin-left: 3%;
+                margin-left: 10px;
                 background-color: white;
                 border-radius: 5px;
             }
@@ -359,7 +359,7 @@ width: 100%;
                 width: 1350px;
                 min-width: 1350px;
                 /*height: 1080px;*/
-                min-height: 960px;
+                min-height: 900px;
                 /*background-color: pink;*/
                 border-collapse: collapse;
                 border-spacing: 0;
@@ -387,10 +387,16 @@ width: 100%;
             #right {
                 /*background-color: darkgoldenrod;*/
                 /*width: 20%;*/
-                width: 350px;
-                min-width: 300px;
+                width: 330px;
+                min-width: 330px;
                 padding-left: 20px;
                 border-radius: 5px;
+            }
+            
+            #middle_content {
+                /*height: 900px;*/
+                max-height: 900px;
+                overflow-y: auto;
             }
 
 

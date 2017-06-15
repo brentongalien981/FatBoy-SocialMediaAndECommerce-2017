@@ -3,6 +3,7 @@
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 <?php
+
 // TODO: LOG
 if (!MyDebugMessenger::is_initialized()) {
     MyDebugMessenger::initialize();
@@ -10,13 +11,14 @@ if (!MyDebugMessenger::is_initialized()) {
 ?>
 
 <?php
+
 // TODO: SECTION: Functions.
 function show_welcome_msg($signup_token) {
-        $query = "SELECT * FROM Users ";
+    $query = "SELECT * FROM Users ";
     $query .= "WHERE signup_token = '{$signup_token}' LIMIT 1";
-    
+
     $record_result = User::read_by_query($query);
-    
+
     global $databse;
     while ($row = $databse->fetch_array($record_result)) {
         echo "<h4>Welcome {$row['user_name']}</h4>";
@@ -28,15 +30,14 @@ function show_welcome_msg($signup_token) {
 function is_signup_token_valid($token) {
     $query = "SELECT * FROM Users ";
     $query .= "WHERE signup_token = '{$token}' LIMIT 1";
-    
+
     $record_result = User::read_by_query($query);
-    
+
     global $databse;
-    
+
     if ($database->get_num_rows_of_result_set($record_result > 0)) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -116,6 +117,11 @@ function generate_hashed_token() {
 //    
 //    
 // 3) Validate inputs.
+//      - presence
+//      - type (string, number, etc.)
+//      - format
+//      - within set of values (ex. between 2 and 8 etc)
+//      - uniqueness
 // 
 // 
 // 4) Strip tags.
@@ -140,6 +146,11 @@ function generate_hashed_token() {
 
 $allowed_assoc_indexes_for_post = array('email', 'user_name', 'password');
 
+// These value are for error logs.
+$json_array = array("error_user_name" => "", "error_email" => "", "error_password" => "", "email" => "", "is_sign_up_ok" => false, "csrf_token" => "bad");
+
+MyValidationErrorLogger::initialize();
+
 $dirty_array = [];
 $sanitized_array = [];
 $can_proceed = false;
@@ -155,6 +166,7 @@ if (is_request_post() && isset($_POST["sign_up"])) {
         MyDebugMessenger::add_debug_message("VALID FORM SUBMISSION");
         if (is_csrf_token_recent()) {
             MyDebugMessenger::add_debug_message("CSRF token is recent.");
+            $json_array['csrf_token'] = "ok";
             $can_proceed = true;
         } else {
             MyDebugMessenger::add_debug_message("CSRF token is NOT recent.");
@@ -166,6 +178,11 @@ if (is_request_post() && isset($_POST["sign_up"])) {
     // form not submitted or was GET request
     MyDebugMessenger::add_debug_message("Please login.");
 }
+
+
+
+
+
 
 
 
@@ -192,36 +209,31 @@ if ($can_proceed) {
 
 
 
-
 // 3) Validate inputs.
 //
 //
 if ($can_proceed) {
-    MyValidationErrorLogger::initialize();
-
     // Validate that there's no empty, space, or tab only character.
     $required_fields = array("email", "user_name", "password");
     validate_presences($required_fields);
 
-//    // 
-//    $fields_with_max_lengths = array("user_name" => 40, "password" => 50);
-//    validate_max_lengths($fields_with_max_lengths);
+
     // Validate the length.
     // For user_name.
     // If the user name's length doesn't meet the requirements, 
     // then log an error.
-    if (!has_length($dirty_array["user_name"], ["min" => 8, "max" => 40])) {
-        MyValidationErrorLogger::log("User name doesn't meet the length requirements. Min is 8 characters and max is 40 characters.");
+    if (!has_length($dirty_array["user_name"], ["min" => 6, "max" => 40])) {
+        MyValidationErrorLogger::log("user_name::: should be between 6 to 40 characters.");
     }
 
     // For password.
     if (!has_length($dirty_array["password"], ["min" => 8, "max" => 50])) {
-        MyValidationErrorLogger::log("Password doesn't meet the length requirements. Min is 8 characters and max is 50 characters.");
+        MyValidationErrorLogger::log("password::: should be between 8 to 50 characters.");
     }
 
     // For email.
-    if (!has_length($dirty_array["email"], ["min" => 5, "max" => 200])) {
-        MyValidationErrorLogger::log("Email doesn't meet the length requirements. Min is 5 characters and max is 200 characters.");
+    if (!has_length($dirty_array["email"], ["min" => 6, "max" => 80])) {
+        MyValidationErrorLogger::log("email::: should be between 6 to 80 characters.");
     }
 
 
@@ -233,49 +245,68 @@ if ($can_proceed) {
     // Regex: Check if user_name contains invalid chars.
     $my_regex = '/[^a-zA-Z0-9_\-\.]/';
     if (has_format_matching($dirty_array["user_name"], $my_regex)) {
-        MyValidationErrorLogger::log("Username contains invalid chars.");
+        MyValidationErrorLogger::log("user_name::: contains invalid chars.");
     }
 
-    // For at least 2 numeric chars.
-    if (!has_numeric_chars($dirty_array["user_name"], 2)) {
-        MyValidationErrorLogger::log("Username does not have at least 2 numeric characters.");
+    // For at least 1 numeric chars.
+    if (!has_numeric_chars($dirty_array["user_name"], 1)) {
+        MyValidationErrorLogger::log("user_name::: should have at least 1 numeric characters.");
     }
 
     // For at least 5 letters.
     if (!has_alphabet_chars($dirty_array["user_name"], 5)) {
-        MyValidationErrorLogger::log("Username does not have at least 5 alphabet characters.");
+        MyValidationErrorLogger::log("user_name::: should have at least 5 alphabet characters.");
     }
 
 
 
 
 
-    // TODO: NOW: Other validations.    
+
     // For password.
-    // Regex: Check if password contains invalid chars.
+    // Regex: Check if password has at least one special char.
     $my_regex = '/[^a-zA-Z0-9_\-\.]/';
-    if (has_format_matching($dirty_array["password"], $my_regex)) {
-        MyValidationErrorLogger::log("Password contains invalid chars.");
+    if (!has_format_matching($dirty_array["password"], $my_regex)) {
+        MyValidationErrorLogger::log("password::: should have at least 1 special character.");
     }
 
-    // For at least 2 numeric chars.
-    if (!has_numeric_chars($dirty_array["password"], 3)) {
-        MyValidationErrorLogger::log("Password does not have at least 3 numeric characters.");
+    // For at least 1 numeric chars.
+    if (!has_numeric_chars($dirty_array["password"], 1)) {
+        MyValidationErrorLogger::log("password::: should have at least 1 numeric character.");
     }
 
     // For at least 5 letters.
-    if (!has_alphabet_chars($dirty_array["password"], 5)) {
-        MyValidationErrorLogger::log("Password does not have at least 5 alphabet characters.");
+    if (!has_alphabet_chars($dirty_array["password"], 6)) {
+        MyValidationErrorLogger::log("password::: should have at least 6 alphabet characters.");
     }
 
 
 
 
-    // TODO: REMINDER: Use Swiftmailer's validation code for email.
+
     // For email.
     // validate email address
     if (!Swift_Validate::email($dirty_array["email"])) {
-        MyValidationErrorLogger::log("Email is not valid.");
+        MyValidationErrorLogger::log("email::: is not valid.");
+    }
+
+
+
+
+
+    // TODO: NOW: Validate uniqeness.
+    // Username.
+    $table = "Users";
+    $column = "user_name";
+    if (!is_unique($dirty_array["user_name"], $table, $column)) {
+        MyValidationErrorLogger::log("user_name::: is already taken.");
+    }
+
+
+    // Email.
+    $column = "email";
+    if (!is_unique($dirty_array["email"], $table, $column)) {
+        MyValidationErrorLogger::log("email::: is already taken.");
     }
 }
 
@@ -295,10 +326,28 @@ if (MyValidationErrorLogger::is_empty()) {
 
 //
 // Copy the error messages to the app status messenger.
+
 foreach (MyValidationErrorLogger::get_log_array() as $log_error_msg) {
     MyDebugMessenger::add_debug_message($log_error_msg);
+    
+//    echo "\$log_error_msg: $log_error_msg\n";
+
+    // Find which field that error is based on "field::: is bad" log_error_msg.
+    // $pos = position of :::
+    $pos = strpos($log_error_msg, ":::");
+//    echo "\$pos: $pos\n";
+
+    $error_field = "error_" . substr($log_error_msg, 0, $pos);
+//    echo "\$error_field: $error_field\n";
+
+    // If the error_field in the $json_array doesn't have value yet,
+    // add the log_error_msg.
+    if ($json_array[$error_field] == "") {
+        $json_array[$error_field] = "* " . substr($log_error_msg, $pos + 4);
+    }
 }
 
+//uki
 MyValidationErrorLogger::reset();
 
 
@@ -325,20 +374,14 @@ if ($can_proceed) {
 // TODO: This is temporary insertion to db.
 //       There's gotta be a lot more validations.
 $sanitized_array = $dirty_array;
-// TODO: DEBUG
-//MyDebugMessenger::add_debug_message($additional_message);
-echo "<pre>";
-print_r($sanitized_array);
-echo "</pre>";
 
 
 
 
 
 
-// TODO: This is temporary creation of the user account.
-//       In production, you should first use the PHP mailer and send an
-//       email for the user to be validated as authentic and not a bot.
+
+// TODO: REMINDER: Add the captcha functionality.
 if ($can_proceed) {
 //    $password = $_POST["password"];
 //    $user_name = $_POST["user_name"];
@@ -376,18 +419,24 @@ if ($can_proceed) {
         if (send_sign_up_email($to, $signup_token)) {
             MyDebugMessenger::add_debug_message("We sent you an email to {$new_user->email}.");
             MyDebugMessenger::add_debug_message("Check it to complete your account creation.");
-            echo "Check it to complete your account creation.<br>";
+            
+            //
+            $json_array["email"] = $new_user->email;
 
             User::make_query("COMMIT");
+            
+            $can_proceed = true;
         } else {
             MyDebugMessenger::add_debug_message("FAILURE sending email.");
             User::make_query("ROLLBACK");
+            $can_proceed = false;
         }
 
 
 //        redirect_to("../index.php");
     } else {
 //        echo "FAILURE User creation.";
+        $can_proceed = false;
         MyDebugMessenger::add_debug_message("FAILURE User creation.");
     }
 }
@@ -396,9 +445,11 @@ if ($can_proceed) {
 
 
 
-// Redirect after everything.
-// TODO: DEBUG: This link is just for debugging. Delete this later.
-//echo "<a href='../__view/view_signup.php'>go to view_signup.php</a>";
-redirect_to(LOCAL . "/public/__view/view_signup.php");
+if ($can_proceed) {
+    // Everything is ok. So redirect to log-in. No need for the json errors.
+    $json_array['is_sign_up_ok'] = true;
+}
+
+echo json_encode($json_array);
 ?>
 

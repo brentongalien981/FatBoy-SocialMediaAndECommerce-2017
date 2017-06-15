@@ -1389,7 +1389,7 @@ if (!$session->is_logged_in()) {
 
 
                             // Show the error mesg.
-                            var form_header = form_add_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
+                            var form_header = form_add_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
                             form_header.style.color = "black";
                             form_header.style.fontWeight = "100";
                             form_header.innerHTML = "Additional Work Experience.";

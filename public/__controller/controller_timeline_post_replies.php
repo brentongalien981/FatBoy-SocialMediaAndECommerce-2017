@@ -3,6 +3,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__model/timeline_posts.php");    ?>
 <?php require_once(PUBLIC_PATH . "/__model/my_database.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__controller/controller_timeline_posts.php"); ?>
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
@@ -192,11 +193,50 @@ function create_reply_post_record_bruh() {
 <?php
 
 // TODO: SECTION: Meat.
-if (isset($_POST["create_reply_post"]) && $_POST["create_reply_post"] == "yes") {
-    //
-    create_reply_post_record();
+if (is_request_post() && isset($_POST["create_reply_post"]) && $_POST["create_reply_post"] == "yes") {
+    // Fuckin need this everytime you validate.
+    MyValidationErrorLogger::initialize();   
+    
+    // Validation vars.
+    $can_proceed = false;
+    $allowed_assoc_indexes_for_post = array('reply_message');
+    $dirty_array = [];
+    $sanitized_array = [];
+    
+    
+    // Check csrf_token.
+    if (is_csrf_token_legit()) { $can_proceed = true; } 
+    else { $can_proceed = false; echo "0"; }
+    
+    
+    
+    // White listing POST vars.
+    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
+    if ($can_proceed && $dirty_array != 0) { $can_proceed = true; }
+    else { $can_proceed = false; echo "0"; }  
+    
+    
+    
+    
+    
+    // Validate inputs.
+    $var_lengts_arr = array("reply_message" => ["min" => 2, "max" => 100]);
+    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) { $can_proceed = true; echo "1"; } 
+    else { $can_proceed = false; echo "0"; }    
+    
+    
+    
+    // Copy the error messages to the app status messenger.
+    foreach (MyValidationErrorLogger::get_log_array() as $log_error_msg) {
+        echo "\n" . $log_error_msg;
+    }
 
-//    echo "FUCKIN reply_message: {$_POST['reply_message']}";
-//    echo "AYOS AJAX is ok..";
+
+    MyValidationErrorLogger::reset();    
+    
+    
+    //
+    return;
+//    create_reply_post_record();
 }
 ?>

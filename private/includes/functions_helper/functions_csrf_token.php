@@ -16,6 +16,10 @@ function sessionize_csrf_token() {
     return $token;
 }
 
+
+
+
+
 // Destroys a token by removing it from the session.
 function destroy_csrf_token() {
     $_SESSION['csrf_token'] = null;
@@ -28,7 +32,7 @@ function destroy_csrf_token() {
 // Usage: echo csrf_token_tag();
 function get_csrf_token_tag() {
     $token = sessionize_csrf_token();
-    return "<input type=\"hidden\" name=\"csrf_token\" value=\"" . $token . "\">";
+    return "<input type=\"hidden\" id=\"csrf_token\" name=\"csrf_token\" value=\"" . $token . "\">";
 }
 
 // Returns true if user-submitted POST token is
