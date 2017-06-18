@@ -124,6 +124,7 @@ if (!$session->is_logged_in()) {
 
         <h6>Street1</h6>
         <input id="street1" type="text" class="form_text_input" name="street1">
+        <!--<label class="error_msg" id="error_street1"></label>-->
 
 
         <h6>Street2</h6>
@@ -163,8 +164,8 @@ if (!$session->is_logged_in()) {
         <input id="residential_address_type_code" class="radio_buttons" type="radio" name="address_type_code" value="1" checked="checked"><label class="label">Residential</label>
         <input id="business_address_type_code" class="radio_buttons" type="radio" name="address_type_code" value="2"><label class="label">Business</label><br><br>
 
-        <input id="save_address" type='button' class='buttonAddress' name='save_address' value='save address'>
-        <input id="cancel_address" type='button' class='buttonAddress' name='cancel' value='cancel'>
+        <input id="save_address_button" type='button' class='buttonAddress' name='save_address' value='save address'>
+        <input id="cancel_address_button" type='button' class='buttonAddress' name='cancel' value='cancel'>
 
 
         <?php
@@ -556,6 +557,12 @@ if (!$session->is_logged_in()) {
         text-align: right;
     }
 
+    label.error_msg {
+        font-size: 12px;
+        font-weight: 100;
+        color: red;
+    }    
+
 
 
     form.form_work_experience table td {
@@ -737,7 +744,7 @@ if (!$session->is_logged_in()) {
 <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
 </script>
 
-<!--<script src="<?php // echo LOCAL . "/public/_scripts/profile_address.js";             ?>"></script>-->
+<!--<script src="<?php // echo LOCAL . "/public/_scripts/profile_address.js";                          ?>"></script>-->
 
 
 <script>
@@ -825,6 +832,10 @@ if (!$session->is_logged_in()) {
                         xhr.status == 200 &&
                         xhr.responseText.trim().length > 0) {
 
+                    // LOG
+                    console.log("LOG: xhr.responseText.trim(): " + xhr.responseText.trim());
+
+
                     if (xhr.responseText.trim() == "0") {
                         address_details.innerHTML = "n/a";
                     } else {
@@ -847,6 +858,8 @@ if (!$session->is_logged_in()) {
                             address_details.innerHTML += ",<br>" + address_obj_json.phone;
                         }
                     }
+
+
 
                     // Append the details to address row.
                     address_td.appendChild(address_details);
@@ -923,7 +936,7 @@ if (!$session->is_logged_in()) {
                 });
             }
         }
-        
+
         var current_address_form = null;
 
         function show_add_address_form() {
@@ -948,10 +961,14 @@ if (!$session->is_logged_in()) {
             //                 maybe use document.getElemById("save_address_button"), cause I might have
             //                 problems with other browsers referencing childNodes[crazy number]...
             // Add event listeners to the_add_address_form's buttons.
-            var save_address_button = the_add_address_form.childNodes[39];
-            var cancel_button = the_add_address_form.childNodes[41];
+//            var save_address_button = the_add_address_form.childNodes[39];
+            var save_address_button = document.getElementById("save_address_button");
+
+//            var cancel_button = the_add_address_form.childNodes[41];
+            var cancel_button = document.getElementById("cancel_address_button");
 
             save_address_button.addEventListener("click", function (event) {
+//                window.alert("puta");
                 add_address(the_add_address_form);
             });
 
@@ -987,35 +1004,87 @@ if (!$session->is_logged_in()) {
                 // If there's a successful response..
                 if (xhr.readyState == 4 &&
                         xhr.status == 200 &&
-                        xhr.responseText.trim().length > 0 &&
-                        xhr.responseText.trim() != "0") {
+                        xhr.responseText.trim().length > 0)
+                {
 
-                    // 
+                    //
+                    var json = JSON.parse(xhr.responseText.trim());
+
+
+                    if (json.is_address_ok) {
+                        // 
+                        console.log("SUCCESS AJAX for method add_address().");
+
+
+                        // Resurrect the formAddres.
+                        var form_address_template = the_add_address_form.cloneNode(true);
+                        resurrect_form_address(form_address_template);
+
+
+                        // Remove the_add_address_form.
+                        remove_form(the_add_address_form);
+
+                        // 
+                        populate_address();
+                    } else {
+                        // 
+                        console.log("FAIL AJAX for method add_address().");
+                    }
+
+                    // AJAX JSON log.
                     console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+                    for (var key in json) {
+                        if (json.hasOwnProperty(key)) {
+                            var val = json[key];
 
+                            // Display in the console.
+                            console.log(key + " => " + val);
 
-                    // Resurrect the formAddres.
-                    var form_address_template = the_add_address_form.cloneNode(true);
-                    resurrect_form_address(form_address_template);
+//                            // Display in the form.
+//                            var error_label = document.getElementById(key);
+//                            if (error_label != null) {
+//                                error_label.innerHTML = value;
+//                            }
 
-
-                    // Remove the_add_address_form.
-                    remove_form(the_add_address_form);
-
-//                    the_add_address_form.parentElement.removeChild(the_add_address_form);
-
-
-                    // 
-                    populate_address();
+                        }
+                    }
                 }
+
             }
 
 
 
+
+            // Create a dynamic hidden csrf_token input.
+            var input_csrf_token = document.createElement("input");
+            input_csrf_token.id = "input_csrf_token";
+            input_csrf_token.setAttribute("type", "hidden");
+            input_csrf_token.setAttribute("value", get_csrf_token());
+
+            // Dynamically append a hidden csrf input to the form "create_post_form".
+            the_add_address_form.appendChild(input_csrf_token);
+
+
             //
             var post_key_value_pairs = "add_address=yes";
+            post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
             post_key_value_pairs += "&street1=" + document.getElementById("street1").value;
+            post_key_value_pairs += "&street2=" + document.getElementById("street2").value;
+            post_key_value_pairs += "&city=" + document.getElementById("city").value;
+            post_key_value_pairs += "&state=" + document.getElementById("state").value;
+            post_key_value_pairs += "&zip=" + document.getElementById("zip").value;
+            post_key_value_pairs += "&country_code=" + document.getElementById("country_code").value;
+
+            if (document.getElementById("residential_address_type_code").checked) {
+                post_key_value_pairs += "&address_type_code=" + document.getElementById("residential_address_type_code").value;
+            } else {
+                post_key_value_pairs += "&address_type_code=" + document.getElementById("business_address_type_code").value;
+            }
+
             xhr.send(post_key_value_pairs);
+
+            // Right away, remove the hidden csrf input from the form.
+            the_add_address_form.removeChild(input_csrf_token);
         }
 
         function resurrect_form_address(template_form) {
@@ -1024,6 +1093,10 @@ if (!$session->is_logged_in()) {
             template_form.id = "formAddress";
             template_form.style.display = "none";
             document.getElementById("middle_content").appendChild(template_form);
+        }
+
+        function get_csrf_token() {
+            return "<?php echo sessionize_csrf_token(); ?>";
         }
 
         function display_form_address(the_add_address_form) {

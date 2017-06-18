@@ -347,7 +347,7 @@ foreach (MyValidationErrorLogger::get_log_array() as $log_error_msg) {
     }
 }
 
-//uki
+
 MyValidationErrorLogger::reset();
 
 
