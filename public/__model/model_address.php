@@ -16,18 +16,21 @@ class Address {
     public $city;
     public $state;
     public $zip;
-    public $country_code;    
+    public $country_code;
     public $phone;
 
     public static function read_by_id($id = 0) {
-//        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
-//        $stmt = $mysqli->prepare($sql);
-//
-//        if (!$stmt) {
-//            die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
-//        }
+        $query = "SELECT * FROM " . self::$table_name . " WHERE user_id = {$id}";
+
+        global $database;
+        $a_record = $database->get_result_from_query($query);
+
+        while ($row = $database->fetch_array($a_record)) {
+            return self::instantiate($row);
+        }
     }
 
+    // @return: This could be one or many instantiated objects.
     public static function read_by_query_and_instantiate($query = "") {
         global $database;
 
@@ -43,7 +46,7 @@ class Address {
         // This could be one or many instantiated objects.
         return $objects_array;
     }
-    
+
     public static function read_by_query($query = "") {
         global $database;
 
@@ -52,13 +55,12 @@ class Address {
 
         //
         return $result_set;
-    }    
-
+    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
 //        $query .= "ORDER BY name ASC";
-        
+
 
         $objects_array = self::read_by_query_and_instantiate($query);
 
@@ -118,19 +120,19 @@ class Address {
         }
         return $attributes;
     }
-    
+
     public function to_string() {
         $object_in_string = "";
-        
+
         foreach (self::$db_fields as $field => $value) {
             if (property_exists($this, $field)) {
 //                echo "{$field}: $value<br>";
                 $object_in_string .= "{$field}: $value<br>";
             }
         }
-        
+
         return $object_in_string;
-    }    
+    }
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.

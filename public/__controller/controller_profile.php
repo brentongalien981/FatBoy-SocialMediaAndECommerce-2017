@@ -1,6 +1,7 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_profile.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_address.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_work_experience.php"); ?>
 
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
@@ -111,8 +112,26 @@ function display_form_work_experience() {
 
 function show_work_experience() {
     echo "<div class='section'>";
+
+
+
+
+    echo "<table>";
+    echo "<tbody>";
+    echo "<tr>";
+    echo "<td>";
     echo "<h4 id='h4_work_experience'>Work Experience</h4>";
+    echo "</td>";
+
+    echo "<td>";
     display_button_add_work_experience();
+    echo "</td>";
+    echo "</tr>";
+    echo "</tbody>";
+    echo "</table>";
+
+
+
     echo "<hr>";
 
 //    display_button_add_work_experience();
@@ -134,8 +153,8 @@ function display_work_experience() {
     $query .= "ORDER BY id DESC";
 
     $record_results = WorkExperience::read_by_query($query);
-    
-    
+
+
     // This is just a template work_experience_div, so that I can clone it
     // when adding a new work_experience record as parent.childNodes[4]...
     $test_row = array();
@@ -144,10 +163,10 @@ function display_work_experience() {
     $test_row['place'] = "tae69";
     $test_row['position'] = "tae69";
     $test_row['time_frame'] = "tae69";
-    
+
     display_a_work_experience($test_row);
-    
-    
+
+
     // These are the real work_experiences.
     global $database;
     while ($row = $database->fetch_array($record_results)) {
@@ -172,16 +191,16 @@ function display_a_work_experience($row) {
     global $session;
     if ($session->is_viewing_own_account()) {
         echo "<div class='work_exp_action_div user_work_exp_action_div'>";
-        echo "<input id='form_button_delete{$row['id']}' type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";        
+        echo "<input id='form_button_delete{$row['id']}' type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";
         echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
         echo "</div>";
     } else {
         // This is just an invisible button so that the style is not messed up.
         // This won't show because the id is not set which is used to loop and attach mouseover listeners...
         echo "<div class='work_exp_action_div'>";
-        echo "<input type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";        
+        echo "<input type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";
         echo "<input type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
-        echo "</div>";        
+        echo "</div>";
     }
 
     echo "<table>";
@@ -250,6 +269,8 @@ function display_work_experience_task($work_experience_id) {
     }
 }
 
+
+
 function display_button_add_work_experience() {
     global $session;
     if ($session->is_viewing_own_account()) {
@@ -262,6 +283,7 @@ function display_button_add_work_experience() {
 function show_user_profile_summary() {
     echo "<div class='section'>";
     echo "<h4>About Me</h4>";
+    echo "<hr><br>";
 
     echo "<div id='div_about_me'>";
 
@@ -274,6 +296,41 @@ function show_user_profile_summary() {
     echo "</p>";
 
     echo "</div>";
+    echo "</div>";
+}
+
+function show_contact_info() {
+//    global $session;
+//    $home_address_obj = Address::read_by_id($session->currently_viewed_user_id);
+
+    echo "<div class='section'>";
+
+    // Contact Info Header table.
+    echo "<table>";
+    echo "<tbody>";
+    echo "<tr>";
+    echo "<td>";
+    echo "<h4>Contact Info</h4>";
+    echo "</td>";
+
+    echo "<td>";
+    echo "</td>";
+    echo "</tr>";
+    echo "</tbody>";
+    echo "</table>";
+
+    echo "<hr>";
+    
+    // Contact info details table.
+    echo "<table id='contact_info'>";
+    echo "<tbody>";
+    
+    // Address row.
+    echo "<tr>";
+    echo "</tr>";
+    
+    echo "</tbody>";
+    echo "</table>";
     echo "</div>";
 }
 
@@ -520,18 +577,18 @@ function add_work_experience_description_record($work_experience_id, $work_detai
 
 function delete_a_work_experience_description_record($work_experience_id) {
     $query = "DELETE FROM WorkTaskDescription WHERE work_experience_id = {$work_experience_id}";
-   
+
     $is_deletion_ok = WorkExperience::delete_by_query($query);
 
-    return $is_deletion_ok;    
+    return $is_deletion_ok;
 }
 
 function delete_a_work_experience_record($work_experience_id) {
     $query = "DELETE FROM WorkExperience WHERE id = {$work_experience_id}";
-   
+
     $is_deletion_ok = WorkExperience::delete_by_query($query);
 
-    return $is_deletion_ok;    
+    return $is_deletion_ok;
 }
 
 function add_a_work_experience_description_record($work_experience_id, $the_description) {
@@ -706,23 +763,21 @@ if (isset($_POST["update_work_experience"])) {
 
 if (isset($_POST["delete_work_experience"])) {
     $all_deletion_ok = false;
-    
+
     //
     if (delete_a_work_experience_description_record($_POST['work_experience_id'])) {
         if (delete_a_work_experience_record($_POST['work_experience_id'])) {
             $all_deletion_ok = true;
-
         }
     }
-    
+
     //
     if ($all_deletion_ok) {
         echo "1";
-    }
-    else {
+    } else {
         echo "0";
     }
-    
+
 //    echo "delete_work_experience = HSIT\n";
 //    echo "work_experience_id = {$_POST['work_experience_id']}";
 }

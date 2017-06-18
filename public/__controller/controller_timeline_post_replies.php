@@ -93,6 +93,7 @@ function return_completely_presented_reply_post($new_reply_post_id) {
     echo $completely_presented_reply_post;
 }
 
+// Not used.
 function validate_reply_post() {
 
     // Fuckin need this everytime you validate.
@@ -133,31 +134,14 @@ function validate_reply_post() {
 }
 
 function create_reply_post_record() {
-    // TODO: REMINDER
-    $is_validation_ok = validate_reply_post();
-
-
     //
     $new_reply_post_id = false;
-
-    //
-    if ($is_validation_ok) {
-        $new_reply_post_id = create_reply_post_record_bruh();
-    }
-
+    $new_reply_post_id = create_reply_post_record_bruh();
+    
     //
     if ($new_reply_post_id) {
         return_completely_presented_reply_post($new_reply_post_id);
     }
-
-
-//    
-//    //
-//    if (true) {
-//        $reply_post_id = return_completely_presented_reply_post();
-//    }
-//    
-//    echo "reply_post_id: {$reply_post_id}";
 }
 
 function create_reply_post_record_bruh() {
@@ -221,7 +205,7 @@ if (is_request_post() && isset($_POST["create_reply_post"]) && $_POST["create_re
     
     // Validate inputs.
     $var_lengts_arr = array("reply_message" => ["min" => 2, "max" => 100]);
-    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) { $can_proceed = true; echo "1"; } 
+    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) { $can_proceed = true; } 
     else { $can_proceed = false; echo "0"; }    
     
     
@@ -235,8 +219,9 @@ if (is_request_post() && isset($_POST["create_reply_post"]) && $_POST["create_re
     MyValidationErrorLogger::reset();    
     
     
-    //
-    return;
-//    create_reply_post_record();
+
+    if ($can_proceed) {
+        create_reply_post_record();
+    }
 }
 ?>

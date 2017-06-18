@@ -17,7 +17,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                    ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                        ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -29,7 +29,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin: 0;
                 padding: 0;
                 /*width: 1350px;*/
-/*                min-width: 1350px;*/
+                /*                min-width: 1350px;*/
                 /*background-color: rgb(150, 150, 150);*/
                 /*width: 100%;*/
                 /*min-width: 960px;*/
@@ -41,14 +41,14 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 background-image: url("<?php echo LOCAL . "/public/_photos/background5.jpg"; ?>");
                 /*background-repeat:*/
             }
-            
+
             div#wrapper {
-/*                width: 1350px;
-                min-width: 1350px;
-                margin: 0;
-                padding: 0;
-                margin-left: auto;
-                margin-right: auto;*/
+                /*                width: 1350px;
+                                min-width: 1350px;
+                                margin: 0;
+                                padding: 0;
+                                margin-left: auto;
+                                margin-right: auto;*/
             }
 
 
@@ -94,18 +94,18 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #divBanner,
             footer {
-/*                width: 100%;*/
-width: 100%;
+                /*                width: 100%;*/
+                width: 100%;
                 min-width: 1350px;
                 height: 60px;
                 margin: 0;
                 padding: 0;
                 /*background-color: #AFEEEE;*/
-                background-color: rgb(80, 80, 80);                
-            }   
-            
+                background-color: rgb(80, 80, 80);
+            }
+
             table#header {
-                            width: 100%;
+                width: 100%;
                 min-width: 1350px;
             }
 
@@ -392,7 +392,7 @@ width: 100%;
                 padding-left: 20px;
                 border-radius: 5px;
             }
-            
+
             #middle_content {
                 /*height: 900px;*/
                 max-height: 900px;
@@ -564,9 +564,18 @@ width: 100%;
                 background-color: white;
             }
 
+
+
         </style>
     </head>
     <body>
+        <!-- Website spinner -->
+        <div id="the_spinner_div">
+            <img id="the_spinner_mg" src="<?php echo LOCAL . "/public/_photos/loading1.gif"; ?>">
+        </div>
+
+
+
         <input id="input_currently_viewed_user_id" type="hidden"
         <?php
         global $session;
@@ -769,8 +778,8 @@ width: 100%;
 
 
 
-                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                     ?>" class="">-->
-                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                     ?>" class="icon">Timeline-->
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                         ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                         ?>" class="icon">Timeline-->
                                 <?php
 //                                    if ($session->is_logged_in()) {
 //                                        echo " of {$session->currently_viewed_user_name}";
@@ -914,7 +923,7 @@ width: 100%;
                     <td id="right" class="main">
                         <div id="ad_container">
                             <iframe id="the_ad" class="ad" frameborder="0" allowfullscreen="false" mozallowfullscreen="false" scrolling="no" seamless="">
-                               
+
                             </iframe>
                         </div>
                     </td>
@@ -1112,12 +1121,33 @@ width: 100%;
 
             footer nav a:visited {
                 color: rgb(240, 240, 240);
-            }            
+            }
 
             footer h6 {
                 color: rgb(240, 240, 240);
                 /*color: red;*/
             }
+            
+            div#the_spinner_div {
+                width: 100%;
+                height: 150%;
+                margin: 0;
+                padding: 0;
+                background-color: rgb(26, 26, 26);
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+
+            #the_spinner_mg {
+                display: block;
+                width: 200px;
+                height: 150px;
+                background-color: rgb(26, 26, 26);
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 200px;;
+            }            
         </style>
 
 
@@ -1132,12 +1162,13 @@ width: 100%;
 // TODO: SECTION: Script for popping-in and
 // popping out of the sign-in, sign-up links.
         ?>
+
         <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
         </script>
 
         <script>
             window.onfocus = function () {
-//                window.alert("main content loaded");
+                //                window.alert("main content loaded");
                 console.log("this tab is now focused and active: " + document.getElementById("title").innerHTML);
                 set_session_currently_viewed_user_id();
             };
@@ -1174,16 +1205,16 @@ width: 100%;
         <script>
             // Vars.
             var timeout_handler;
-//            clearTimeout(myVar);
+            //            clearTimeout(myVar);
 
 
             function close_pop_up_in_sec() {
                 document.getElementById("pop_up_for_link_home").style.display = "none";
-//                window.alert("onmouseout");
+                //                window.alert("onmouseout");
             }
 
             document.getElementById("link_home").onmouseover = function () {
-//                window.alert("howver");
+                //                window.alert("howver");
                 clearTimeout(timeout_handler);
                 document.getElementById("pop_up_for_link_home").style.display = "block";
 
@@ -1195,7 +1226,7 @@ width: 100%;
             };
 
             document.getElementById("pop_up_for_link_home").onmouseover = function () {
-//                window.alert("howver");
+                //                window.alert("howver");
                 clearTimeout(timeout_handler);
                 document.getElementById("pop_up_for_link_home").style.display = "block";
 
@@ -1203,8 +1234,8 @@ width: 100%;
 
 
             document.getElementById("pop_up_for_link_home").onmouseout = function () {
-//                window.alert("howver");
-//                document.getElementById("pop_up_for_link_home").style.display = "block";
+                //                window.alert("howver");
+                //                document.getElementById("pop_up_for_link_home").style.display = "block";
                 timeout_handler = setTimeout(close_pop_up_in_sec, 500);
 
 
@@ -1225,10 +1256,10 @@ width: 100%;
 
 
             document.getElementById("pop_up_for_link_home").onmouseover = function () {
-//                window.alert("howver");
+                //                window.alert("howver");
                 clearTimeout(timeout_handler);
                 document.getElementById("pop_up_for_link_home").style.display = "block";
-//                this.style.display = "block";
+                //                this.style.display = "block";
             };
         </script>
 

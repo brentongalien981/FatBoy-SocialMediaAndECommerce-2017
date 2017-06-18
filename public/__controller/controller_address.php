@@ -36,6 +36,23 @@ if (!MyDebugMessenger::is_initialized()) {
 // TODO: NOW
 $can_procced = false;
 
+if (isset($_POST["add_address"]) && $_POST["add_address"] == "yes") {
+//    echo "1";
+    echo $_POST['street1'];
+}
+
+
+if (isset($_POST["populate_address"]) && $_POST["populate_address"] == "yes") {
+    populate_address();
+}
+
+if (isset($_POST["show_address_button"]) && $_POST["show_address_button"] == "yes") {
+    show_address_button($_POST['has_address']);
+}
+
+
+
+
 if (isset($_POST["save_address"])) {
     // Kind of encode the vars in a form that is
     // harmless to db. Avoid SQL injection.    
@@ -117,16 +134,47 @@ if ($can_procced) {
 
 <?php
 
-function f() {
+function populate_address() {
+    global $session;
+    $home_address_obj = Address::read_by_id($session->currently_viewed_user_id);    
+
+    
+    // Display the address.
+    if (isset($home_address_obj)) {
+        echo json_encode($home_address_obj);
+//        echo "<h5>";
+//        echo "{$home_address_obj->street1}, {$home_address_obj->city}<br>{$home_address_obj->state}, {$home_address_obj->zip}, {$home_address_obj->country_code}";
+//        if ($home_address_obj->phone != "") {
+//            echo ", {$home_address_obj->phone}";
+//        }
+//        echo "</h5>";
+
+    } else {
+//        echo "<h5>n/a</h5>";
+        echo "0";
+    }
+    
     
 }
-?>
 
-
-
-
-
-<?php
-
-//redirect_to("../__view/view_log_in.php");
+function show_address_button($has_address) {
+    global $session;
+    //
+    if ($session->is_viewing_own_account() ) {
+        // If actual user already has an address, 
+        // show the edit button.
+        if ($has_address == "yes") {
+            echo "<button class='form_button address_action_button' myAction='edit'>* edit address</button>";
+        }
+        // Actual user doesn't have an address yet,
+        // so show the add button.
+        else {
+            echo "<button class='form_button address_action_button' myAction='add'>+ add address</button>";
+        }
+        
+    }
+    else {
+        echo "0";
+    }
+}
 ?>
