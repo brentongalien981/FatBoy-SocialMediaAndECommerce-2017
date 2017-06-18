@@ -124,23 +124,27 @@ if (!$session->is_logged_in()) {
 
         <h6>Street1</h6>
         <input id="street1" type="text" class="form_text_input" name="street1">
-        <!--<label class="error_msg" id="error_street1"></label>-->
+        <label class="error_msg" id="error_street1"></label>
 
 
         <h6>Street2</h6>
         <input id="street2" type="text" class="form_text_input" name="street2">
+        <label class="error_msg" id="error_street2"></label>
 
 
         <h6>City</h6>
         <input id="city" type="text" class="form_text_input" name="city">
+        <label class="error_msg" id="error_city"></label>
 
 
         <h6>State</h6>
         <input id="state" type="text" class="form_text_input" name="state">
+        <label class="error_msg" id="error_state"></label>
 
 
         <h6>ZIP</h6>
         <input id="zip" type="text" class="form_text_input" name="zip">
+        <label class="error_msg" id="error_zip"></label>
 
 
         <h6>Country</h6>
@@ -160,11 +164,13 @@ if (!$session->is_logged_in()) {
         </select>
 
 
+
         <h6>Address Type</h6>
         <input id="residential_address_type_code" class="radio_buttons" type="radio" name="address_type_code" value="1" checked="checked"><label class="label">Residential</label>
         <input id="business_address_type_code" class="radio_buttons" type="radio" name="address_type_code" value="2"><label class="label">Business</label><br><br>
+        <label class="error_msg" id="error_address_type_code"></label>
 
-        <input id="save_address_button" type='button' class='buttonAddress' name='save_address' value='save address'>
+        <input id="form_action_address_button" type='button' class='buttonAddress form_action_address_button' name='form_action_address_button' value='{action} address'>
         <input id="cancel_address_button" type='button' class='buttonAddress' name='cancel' value='cancel'>
 
 
@@ -744,7 +750,7 @@ if (!$session->is_logged_in()) {
 <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
 </script>
 
-<!--<script src="<?php // echo LOCAL . "/public/_scripts/profile_address.js";                          ?>"></script>-->
+<!--<script src="<?php // echo LOCAL . "/public/_scripts/profile_address.js";                             ?>"></script>-->
 
 
 <script>
@@ -797,7 +803,9 @@ if (!$session->is_logged_in()) {
         //
         populate_address();
 
-
+        // This var will be used for adding and editing
+        // the currently manipulated address.
+        var currently_edited_address_id = -69;
 
         function populate_address() {
             console.log("Inside method populate_address().");
@@ -834,11 +842,14 @@ if (!$session->is_logged_in()) {
 
                     // LOG
                     console.log("LOG: xhr.responseText.trim(): " + xhr.responseText.trim());
+                    
+                    
 
 
                     if (xhr.responseText.trim() == "0") {
                         address_details.innerHTML = "n/a";
-                    } else {
+                    } 
+                    else {
                         has_address = "yes";
                         console.log("SUCCESS AJAX response for method populate_address()");
 
@@ -857,9 +868,13 @@ if (!$session->is_logged_in()) {
                         if (address_obj_json.phone != "") {
                             address_details.innerHTML += ",<br>" + address_obj_json.phone;
                         }
+                        
+                        //
+                        currently_edited_address_id = address_obj_json.id;
                     }
 
 
+                    
 
                     // Append the details to address row.
                     address_td.appendChild(address_details);
@@ -920,7 +935,7 @@ if (!$session->is_logged_in()) {
 
         function set_address_action_button_event_listener() {
 
-            //
+            //uki
             var address_action_button = document.getElementsByClassName("address_action_button");
 
             for (var i = 0; i < address_action_button.length; i++) {
@@ -929,8 +944,7 @@ if (!$session->is_logged_in()) {
                     if (action == "add") {
                         show_add_address_form();
                     } else if (action == "edit") {
-                        // TODO: REMINDER:
-//                        show_edit_address_form();
+                        show_edit_address_form();
                     }
 
                 });
@@ -938,6 +952,47 @@ if (!$session->is_logged_in()) {
         }
 
         var current_address_form = null;
+
+        function show_edit_address_form() {
+            console.log("Inside method: show_edit_address_form().");
+
+            // Clone the formAddress.
+            var form_address_template = document.getElementById("formAddress");
+            var the_edit_address_form = form_address_template.cloneNode(true);
+            current_address_form = the_edit_address_form;
+
+            // Change the the_add_address_form's id and style
+            // to avoid conflict with the cloned from form.
+            the_edit_address_form.id = "the_edit_address_form";
+            the_edit_address_form.style.display = "block";
+
+
+            // Display the formAddress.
+            display_form_address(the_edit_address_form);
+
+            // TODO:REMINDER: Make the appropriate edit on the ids and values of these buttons
+            //                on function show_add_address_form() and resurrect()...
+            var edit_address_button = document.getElementById("form_action_address_button");
+            var cancel_button = document.getElementById("cancel_address_button");
+
+            // Change the value of the action_addres_button.
+            document.getElementsByClassName("form_action_address_button")[0].value = "edit address";
+
+            edit_address_button.addEventListener("click", function (event) {
+//                window.alert("puta");
+                edit_address(the_edit_address_form);
+            });
+
+            cancel_button.addEventListener("click", function (event) {
+                resurrect_form_address(current_address_form);
+                populate_address();
+            });
+
+
+            // Remove the form_address_template to avoid conflict with the inputs's ids
+            // when POSTing.
+            form_address_template.parentElement.removeChild(form_address_template);
+        }
 
         function show_add_address_form() {
             console.log("Inside method: show_add_address_form().");
@@ -956,19 +1011,15 @@ if (!$session->is_logged_in()) {
             // Display the formAddress.
             display_form_address(the_add_address_form);
 
+            // Change the value of the action_addres_button.
+            document.getElementsByClassName("form_action_address_button")[0].value = "save address";
 
-            // TODO: REMINDER: Maybe instead of var cancel_button = the_add_address_form.childNodes[41],
-            //                 maybe use document.getElemById("save_address_button"), cause I might have
-            //                 problems with other browsers referencing childNodes[crazy number]...
-            // Add event listeners to the_add_address_form's buttons.
-//            var save_address_button = the_add_address_form.childNodes[39];
-            var save_address_button = document.getElementById("save_address_button");
 
-//            var cancel_button = the_add_address_form.childNodes[41];
+            //
+            var save_address_button = document.getElementById("form_action_address_button");
             var cancel_button = document.getElementById("cancel_address_button");
 
             save_address_button.addEventListener("click", function (event) {
-//                window.alert("puta");
                 add_address(the_add_address_form);
             });
 
@@ -989,6 +1040,111 @@ if (!$session->is_logged_in()) {
 
         }
 
+        function edit_address(the_edit_address_form) {
+            console.log("Inside method edit_address().");
+
+            var xhr = new XMLHttpRequest();
+
+            var url = the_edit_address_form.getAttribute("action");
+
+            xhr.open('POST', url, true);
+            // You need this for AJAX POST requests.
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onreadystatechange = function () {
+                // If there's a successful response..
+                if (xhr.readyState == 4 &&
+                        xhr.status == 200 &&
+                        xhr.responseText.trim().length > 0)
+                {
+
+                    // Log before JSON parsing.
+                    console.log("*** Log before JSON parsing ***");
+                    console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+
+
+                    //
+                    var json = JSON.parse(xhr.responseText.trim());
+
+
+//                    if (json.is_address_ok) {
+//                        // 
+//                        console.log("SUCCESS AJAX for method add_address().");
+//
+//
+//                        // Resurrect the formAddres.
+//                        var form_address_template = the_add_address_form.cloneNode(true);
+//                        resurrect_form_address(form_address_template);
+//
+//
+//                        // Remove the_add_address_form.
+//                        remove_form(the_add_address_form);
+//
+//                        // 
+//                        populate_address();
+//                    } 
+//                    else {
+//                        // 
+//                        console.log("FAIL AJAX for method add_address().");
+//                    }
+
+                    // AJAX JSON log.
+                    console.log("*** AJAX JSON log Formatted ***");
+                    for (var key in json) {
+                        if (json.hasOwnProperty(key)) {
+                            var val = json[key];
+
+                            // Display in the console.
+                            console.log(key + " => " + val);
+
+                            // Display in the form.
+                            var error_label = document.getElementById(key);
+                            if (error_label != null) {
+                                error_label.innerHTML = val;
+                            }
+
+                        }
+                    }
+                }
+
+            }
+
+
+
+
+            // Create a dynamic hidden csrf_token input.
+            var input_csrf_token = document.createElement("input");
+            input_csrf_token.id = "input_csrf_token";
+            input_csrf_token.setAttribute("type", "hidden");
+            input_csrf_token.setAttribute("value", get_csrf_token());
+
+            // Dynamically append a hidden csrf input to the form "create_post_form".
+            the_edit_address_form.appendChild(input_csrf_token);
+
+
+            //
+            var post_key_value_pairs = "edit_address=yes";
+            post_key_value_pairs += "&address_id=" + currently_edited_address_id;
+            post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
+            post_key_value_pairs += "&street1=" + document.getElementById("street1").value;
+            post_key_value_pairs += "&street2=" + document.getElementById("street2").value;
+            post_key_value_pairs += "&city=" + document.getElementById("city").value;
+            post_key_value_pairs += "&state=" + document.getElementById("state").value;
+            post_key_value_pairs += "&zip=" + document.getElementById("zip").value;
+            post_key_value_pairs += "&country_code=" + document.getElementById("country_code").value;
+
+            if (document.getElementById("residential_address_type_code").checked) {
+                post_key_value_pairs += "&address_type_code=" + document.getElementById("residential_address_type_code").value;
+            } else {
+                post_key_value_pairs += "&address_type_code=" + document.getElementById("business_address_type_code").value;
+            }
+
+            xhr.send(post_key_value_pairs);
+
+            // Right away, remove the hidden csrf input from the form.
+            the_edit_address_form.removeChild(input_csrf_token);
+        }
+
         function add_address(the_add_address_form) {
             console.log("Inside method add_address().");
 
@@ -1006,6 +1162,11 @@ if (!$session->is_logged_in()) {
                         xhr.status == 200 &&
                         xhr.responseText.trim().length > 0)
                 {
+
+                    // Log before JSON parsing.
+                    console.log("*** Log before JSON parsing ***");
+                    console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+
 
                     //
                     var json = JSON.parse(xhr.responseText.trim());
@@ -1032,7 +1193,7 @@ if (!$session->is_logged_in()) {
                     }
 
                     // AJAX JSON log.
-                    console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
+//                    console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
                     for (var key in json) {
                         if (json.hasOwnProperty(key)) {
                             var val = json[key];
@@ -1040,11 +1201,11 @@ if (!$session->is_logged_in()) {
                             // Display in the console.
                             console.log(key + " => " + val);
 
-//                            // Display in the form.
-//                            var error_label = document.getElementById(key);
-//                            if (error_label != null) {
-//                                error_label.innerHTML = value;
-//                            }
+                            // Display in the form.
+                            var error_label = document.getElementById(key);
+                            if (error_label != null) {
+                                error_label.innerHTML = val;
+                            }
 
                         }
                     }
@@ -1087,7 +1248,13 @@ if (!$session->is_logged_in()) {
             the_add_address_form.removeChild(input_csrf_token);
         }
 
+
+
         function resurrect_form_address(template_form) {
+            // Reset the id of the action_addres_button.
+//            document.getElementsByClassName("form_action_address_button")[0].id = "form_action_address_button";
+            document.getElementsByClassName("form_action_address_button")[0].value = "{action} address";
+
             // Change the the_add_address_form's id and style
             // to avoid conflict with the cloned from form.
             template_form.id = "formAddress";
@@ -1099,7 +1266,7 @@ if (!$session->is_logged_in()) {
             return "<?php echo sessionize_csrf_token(); ?>";
         }
 
-        function display_form_address(the_add_address_form) {
+        function display_form_address(the_address_form) {
             // Get the table element "contact_info".
             var the_table = document.getElementById("contact_info");
 
@@ -1111,7 +1278,7 @@ if (!$session->is_logged_in()) {
 
             // Create the <td> placeholder for the formAddress.
             the_td = document.createElement("td");
-            the_td.appendChild(the_add_address_form);
+            the_td.appendChild(the_address_form);
 
             // Append the_td.
             the_tr.appendChild(the_td);

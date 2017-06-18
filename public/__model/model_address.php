@@ -19,8 +19,19 @@ class Address {
     public $country_code;
     public $phone;
 
-    public static function read_by_id($id = 0) {
-        $query = "SELECT * FROM " . self::$table_name . " WHERE user_id = {$id}";
+//    public static function read_by_id($id = 0) {
+//        $query = "SELECT * FROM " . self::$table_name . " WHERE user_id = {$id}";
+//
+//        global $database;
+//        $a_record = $database->get_result_from_query($query);
+//
+//        while ($row = $database->fetch_array($a_record)) {
+//            return self::instantiate($row);
+//        }
+//    }
+    
+    public static function read_by($user_id = 0, $address_type_code = 0) {
+        $query = "SELECT * FROM " . self::$table_name . " WHERE user_id = {$user_id} AND address_type_code = {$address_type_code}";
 
         global $database;
         $a_record = $database->get_result_from_query($query);
@@ -28,7 +39,14 @@ class Address {
         while ($row = $database->fetch_array($a_record)) {
             return self::instantiate($row);
         }
-    }
+    }    
+    
+    public static function update_by_query($query = "") {
+        global $database;
+
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }    
 
     // @return: This could be one or many instantiated objects.
     public static function read_by_query_and_instantiate($query = "") {

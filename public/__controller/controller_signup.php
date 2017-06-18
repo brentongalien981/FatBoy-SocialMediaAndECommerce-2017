@@ -121,7 +121,9 @@ function generate_hashed_token() {
 //      - type (string, number, etc.)
 //      - format
 //      - within set of values (ex. between 2 and 8 etc)
-//      - uniqueness
+//      - uniqueness (TODO:REMINDER: Get back on this later. Maybe modify the db for many-to-many...
+//                                   For ex, the address used by User "OneTimeUserForOneTimeAddress"
+//                                   that is used whenever checking out for the PayPal address...)
 // 
 // 
 // 4) Strip tags.
