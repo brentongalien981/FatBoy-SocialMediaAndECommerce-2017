@@ -2,6 +2,7 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/model_like.php"); ?>
 
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
@@ -9,7 +10,7 @@
 //// Protected page.
 ////global $session;
 if (!$session->is_logged_in()) {
-    redirect_to("../index.php");
+    redirect_to(LOCAL . "/public/index.php");
 }
 ?>
 
@@ -170,6 +171,13 @@ function get_completely_presented_user_likes_array() {
     // 
     return $completely_presented_user_likes_array;
 }
+
+function show_add_a_like_button() {
+    global $session;
+    if ($session->is_viewing_own_account()) {
+        echo "<button id='add_a_like_button' class='form_button'>+add a like</button>";
+    }
+}
 ?>
 
 
@@ -241,12 +249,4 @@ if (isset($_POST["add_like"])) {
     redirect_to("../__view/view_profile.php");
     
 }
-?>
-
-
-
-
-
-<?php
-//redirect_to("../__view/view_profile.php");
 ?>

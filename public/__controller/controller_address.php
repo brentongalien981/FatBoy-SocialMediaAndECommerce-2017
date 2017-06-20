@@ -11,7 +11,7 @@
 <?php
 
 // Protected page.
-if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
+if (!$session->is_logged_in()) {
     redirect_to("../index.php");
 }
 ?>
@@ -189,6 +189,8 @@ function populate_address() {
     // Display the address.
     if (isset($home_address_obj)) {
         echo json_encode($home_address_obj);
+//        echo "shit";
+        
     } else {
         echo "0";
     }
