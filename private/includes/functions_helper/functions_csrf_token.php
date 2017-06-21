@@ -16,6 +16,23 @@ function sessionize_csrf_token() {
     return $token;
 }
 
+function is_csrf_token_legit() {
+    if (is_csrf_token_valid()) {
+//        MyValidationErrorLogger::log("csrf_token::: valid.");
+
+        if (is_csrf_token_recent()) {
+//            MyValidationErrorLogger::log("csrf_token::: recent.");
+            return true;
+        } else {
+            MyValidationErrorLogger::log("csrf_token::: not recent.");
+            return false;
+        }
+    } else {
+        MyValidationErrorLogger::log("csrf_token::: invalid.");
+        return false;
+    }
+}
+
 
 
 

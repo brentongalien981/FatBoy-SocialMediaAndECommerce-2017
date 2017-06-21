@@ -41,6 +41,57 @@ function has_length($value, $options = []) {
     return true;
 }
 
+// Use only allowable GET and POST variables. 
+// Maybe put an array like: $allowed_gets = array();
+// @return:
+//      - valid POST arrays ==> THIS IS BEFORE ONLY... NOW IT SHOULD RETURN..
+//      - true
+//      or
+//      - false if there's any tampered/invalid var.
+function are_post_vars_valid($allowed_assoc_indexes_for_post) {
+
+    foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
+
+
+        if (!isset($_POST[$assoc_index])) {
+            MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
+            return false;
+        }
+    }
+
+    return true;
+}
+
+
+// @param $var_lengts_arr: Post vars that need their length validated.
+// @return $return_value: 1 error alone, this will be false.
+function validate_vars_lengths($var_lengts_arr) {
+    // 
+    $return_value = true;
+
+    //
+    foreach ($var_lengts_arr as $key => $value) {
+        // Validate presence.
+        if (!has_presence($_POST[$key])) {
+            MyValidationErrorLogger::log("{$key}::: can not be blank");
+
+            $return_value = false;
+        }
+
+        // Validate the length.   
+        if (!has_length($_POST[$key], $value)) {
+            MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
+
+            $return_value = false;
+        }
+    }
+
+
+    return $return_value;
+}
+
+
+
 // @param $min: The minimum number of numeric characters that should be present in $str.
 function has_numeric_chars($str, $min) {
     $strlen = strlen($str);
@@ -135,11 +186,10 @@ function is_unique($value, $table, $column) {
     $result_set = $database->get_result_from_query($query);
 
     //
-    while($row = $database->fetch_array($result_set)) {
+    while ($row = $database->fetch_array($result_set)) {
         if ($row['count'] > 0) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

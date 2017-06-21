@@ -1,7 +1,7 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/model_address.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__controller/controller_timeline_posts.php");      ?>
+<?php // require_once(PUBLIC_PATH . "/__controller/controller_timeline_posts.php");       ?>
 
 <?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
@@ -40,36 +40,37 @@ if (!MyDebugMessenger::is_initialized()) {
 
 <?php
 
-// Use only allowable GET and POST variables. 
-// Maybe put an array like: $allowed_gets = array();
-// @return:
-//      - valid POST arrays, or
-//      - 0 if there's any tampered/invalid var.
-function are_post_vars_valid($allowed_assoc_indexes_for_post) {
-    $dirty_array = array();
-
-    foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
-
-        if (isset($_POST[$assoc_index])) {
-            $dirty_array[$assoc_index] = $_POST[$assoc_index];
-//            MyValidationErrorLogger::log("post_vars::: {$assoc_index} ok.");
-        } else {
-            MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
-            return 0;
-        }
-    }
-
-    return $dirty_array;
-}
+// TODO:REMINDER: Delett this.
+//// Use only allowable GET and POST variables. 
+//// Maybe put an array like: $allowed_gets = array();
+//// @return:
+////      - valid POST arrays, or
+////      - 0 if there's any tampered/invalid var.
+//function are_post_vars_valid($allowed_assoc_indexes_for_post) {
+//    $dirty_array = array();
+//
+//    foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
+//
+//        if (isset($_POST[$assoc_index])) {
+//            $dirty_array[$assoc_index] = $_POST[$assoc_index];
+////            MyValidationErrorLogger::log("post_vars::: {$assoc_index} ok.");
+//        } else {
+//            MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
+//            return 0;
+//        }
+//    }
+//
+//    return $dirty_array;
+//}
 
 function create_address_record($allowed_assoc_indexes_for_post) {
     global $session;
     $new_address = new Address();
-    
+
     foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
         $new_address->$assoc_index = $_POST[$assoc_index];
     }
-    
+
 //    // Kind of encode the vars in a form that is
 //    // harmless to db. Avoid SQL injection.    
 //    $street1 = $_POST["street1"];
@@ -106,25 +107,25 @@ function create_address_record($allowed_assoc_indexes_for_post) {
 
 function edit_address_record($allowed_assoc_indexes_for_post, $json_errors_array) {
     global $session;
-    
+
     $query = "UPDATE Address SET ";
-    
+
     foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
         $query .= "{$assoc_index} = '{$_POST[$assoc_index]}'";
-        
+
         // Cause address_type_code is the last index, don't add comma..
         if ($assoc_index != "address_type_code") {
             $query .= ", ";
         }
-    } 
-    
+    }
+
     $query .= " WHERE id = {$_POST['address_id']}";
-    
+
     // TODO:DEBUG
     $json_errors_array['edit_query'] = $query;
 
     $is_update_ok = Address::update_by_query($query);
-    
+
     return $json_errors_array;
 
 
@@ -135,50 +136,52 @@ function edit_address_record($allowed_assoc_indexes_for_post, $json_errors_array
 //    }
 }
 
-// @param $var_lengts_arr: Post vars that need their length validated.
-// @return $return_value: 1 error alone, this will be false.
-function validate_vars_lengths($var_lengts_arr) {
-    // 
-    $return_value = true;
 
-    //
-    foreach ($var_lengts_arr as $key => $value) {
-        // Validate presence.
-        if (!has_presence($_POST[$key])) {
-            MyValidationErrorLogger::log("{$key}::: can not be blank");
-            
-            $return_value = false;
-        }
-        
-        // Validate the length.   
-        if (!has_length($_POST[$key], $value)) {
-            MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
-            
-            $return_value = false;
-        }
-    }
-    
+// TODO:REMINDER: Delete tis tlater.
+//// @param $var_lengts_arr: Post vars that need their length validated.
+//// @return $return_value: 1 error alone, this will be false.
+//function validate_vars_lengths($var_lengts_arr) {
+//    // 
+//    $return_value = true;
+//
+//    //
+//    foreach ($var_lengts_arr as $key => $value) {
+//        // Validate presence.
+//        if (!has_presence($_POST[$key])) {
+//            MyValidationErrorLogger::log("{$key}::: can not be blank");
+//
+//            $return_value = false;
+//        }
+//
+//        // Validate the length.   
+//        if (!has_length($_POST[$key], $value)) {
+//            MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
+//
+//            $return_value = false;
+//        }
+//    }
+//
+//
+//    return $return_value;
+//}
 
-    return $return_value;
-
-}
-
-function is_csrf_token_legit() {
-    if (is_csrf_token_valid()) {
-//        MyValidationErrorLogger::log("csrf_token::: valid.");
-
-        if (is_csrf_token_recent()) {
-//            MyValidationErrorLogger::log("csrf_token::: recent.");
-            return true;
-        } else {
-            MyValidationErrorLogger::log("csrf_token::: not recent.");
-            return false;
-        }
-    } else {
-        MyValidationErrorLogger::log("csrf_token::: invalid.");
-        return false;
-    }
-}
+// TODO:SECTION:Function is_csrf_token_legit().
+//function is_csrf_token_legit() {
+//    if (is_csrf_token_valid()) {
+////        MyValidationErrorLogger::log("csrf_token::: valid.");
+//
+//        if (is_csrf_token_recent()) {
+////            MyValidationErrorLogger::log("csrf_token::: recent.");
+//            return true;
+//        } else {
+//            MyValidationErrorLogger::log("csrf_token::: not recent.");
+//            return false;
+//        }
+//    } else {
+//        MyValidationErrorLogger::log("csrf_token::: invalid.");
+//        return false;
+//    }
+//}
 
 function populate_address() {
     global $session;
@@ -190,7 +193,6 @@ function populate_address() {
     if (isset($home_address_obj)) {
         echo json_encode($home_address_obj);
 //        echo "shit";
-        
     } else {
         echo "0";
     }
@@ -227,6 +229,7 @@ function show_address_button($has_address) {
 
 
 <?php
+
 // TODO:SECTION: Meat.
 // This is sort of like the event handlers, isn't it..
 // For adding address.
@@ -254,8 +257,9 @@ if (is_request_post() && isset($_POST["add_address"]) && $_POST["add_address"] =
 
 
     // White listing POST vars.
-    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
-    if ($can_proceed && $dirty_array != 0) {
+//    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
+//    if ($can_proceed && $dirty_array != 0) {
+    if ($can_proceed && are_post_vars_valid($allowed_assoc_indexes_for_post)) {
         $can_proceed = true;
     } else {
         $can_proceed = false;
@@ -265,13 +269,13 @@ if (is_request_post() && isset($_POST["add_address"]) && $_POST["add_address"] =
 
     // Validate inputs.
     $var_lengts_arr = array("street1" => ["min" => 2, "max" => 500],
-                            "street2" => ["min" => 2, "max" => 500],
-                            "city" => ["min" => 2, "max" => 100],
-                            "state" => ["min" => 2, "max" => 50],
-                            "zip" => ["min" => 2, "max" => 10],
-                            "country_code" => ["min" => 2, "max" => 2],
-                            "address_type_code" => ["min" => 1, "max" => 1]);
-    
+        "street2" => ["min" => 2, "max" => 500],
+        "city" => ["min" => 2, "max" => 100],
+        "state" => ["min" => 2, "max" => 50],
+        "zip" => ["min" => 2, "max" => 10],
+        "country_code" => ["min" => 2, "max" => 2],
+        "address_type_code" => ["min" => 1, "max" => 1]);
+
     if ($can_proceed && validate_vars_lengths($var_lengts_arr)) {
         $can_proceed = true;
     } else {
@@ -314,8 +318,8 @@ if (is_request_post() && isset($_POST["add_address"]) && $_POST["add_address"] =
 
     MyValidationErrorLogger::reset();
 
-    
-    
+
+
     // Try to add record to db.
     if ($can_proceed && create_address_record($allowed_assoc_indexes_for_post)) {
         // Everything is ok.
@@ -352,8 +356,9 @@ if (is_request_post() && isset($_POST["edit_address"]) && $_POST["edit_address"]
 
 
     // White listing POST vars.
-    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
-    if ($can_proceed && $dirty_array != 0) {
+//    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
+//    if ($can_proceed && $dirty_array != 0) {
+    if ($can_proceed && are_post_vars_valid($allowed_assoc_indexes_for_post)) {
         $can_proceed = true;
     } else {
         $can_proceed = false;
@@ -362,13 +367,13 @@ if (is_request_post() && isset($_POST["edit_address"]) && $_POST["edit_address"]
 
     // Validate inputs.
     $var_lengts_arr = array("street1" => ["min" => 2, "max" => 500],
-                            "street2" => ["min" => 2, "max" => 500],
-                            "city" => ["min" => 2, "max" => 100],
-                            "state" => ["min" => 2, "max" => 50],
-                            "zip" => ["min" => 2, "max" => 10],
-                            "country_code" => ["min" => 2, "max" => 2],
-                            "address_type_code" => ["min" => 1, "max" => 1]);
-    
+        "street2" => ["min" => 2, "max" => 500],
+        "city" => ["min" => 2, "max" => 100],
+        "state" => ["min" => 2, "max" => 50],
+        "zip" => ["min" => 2, "max" => 10],
+        "country_code" => ["min" => 2, "max" => 2],
+        "address_type_code" => ["min" => 1, "max" => 1]);
+
     if ($can_proceed && validate_vars_lengths($var_lengts_arr)) {
         $can_proceed = true;
     } else {
@@ -379,7 +384,7 @@ if (is_request_post() && isset($_POST["edit_address"]) && $_POST["edit_address"]
 
 
 
-    /* Here's I'll know if there's an error overall or not. */
+    /* Here, I'll know if there's an error overall or not. */
     if (MyValidationErrorLogger::is_empty()) {
         // Proceed to the next validation step.
         $can_proceed = true;
@@ -411,8 +416,8 @@ if (is_request_post() && isset($_POST["edit_address"]) && $_POST["edit_address"]
 
     MyValidationErrorLogger::reset();
 
-    
-    
+
+
     // Try to edit record on db.
     if ($can_proceed) {
         // Everything is ok.

@@ -705,8 +705,20 @@ if (!$session->is_logged_in()) {
 <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
 </script>
 
-<script src="<?php echo LOCAL . "/public/_scripts/profile_likes.js"; ?>"></script>
 
+
+<?php
+// TODO:SECTION: General js scripts that needs <php> tags.
+?>
+<script>
+    function get_csrf_token() {
+        return "<?php echo sessionize_csrf_token(); ?>";
+    }
+</script>
+
+
+<script src="<?php echo LOCAL . "/public/_scripts/general.js"; ?>">
+</script>
 
 <script>
     window.onload = function () {
@@ -1224,9 +1236,7 @@ if (!$session->is_logged_in()) {
         document.getElementById("middle_content").appendChild(template_form);
     }
 
-    function get_csrf_token() {
-        return "<?php echo sessionize_csrf_token(); ?>";
-    }
+
 
     function display_form_address(the_address_form) {
         // Get the table element "contact_info".
@@ -1972,6 +1982,11 @@ if (!$session->is_logged_in()) {
         xhr.send(post_key_value_pairs);
     }
 </script>
+
+<script src="<?php echo LOCAL . "/public/_scripts/profile_likes.js"; ?>"></script>
+
+
+
 
 
 

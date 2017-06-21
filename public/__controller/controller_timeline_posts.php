@@ -76,22 +76,23 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
     return $completely_presented_timeline_notifications_array;
 }
 
-function is_csrf_token_legit() {
-    if (is_csrf_token_valid()) {
-//        MyValidationErrorLogger::log("csrf_token::: valid.");
-
-        if (is_csrf_token_recent()) {
-//            MyValidationErrorLogger::log("csrf_token::: recent.");
-            return true;
-        } else {
-            MyValidationErrorLogger::log("csrf_token::: not recent.");
-            return false;
-        }
-    } else {
-        MyValidationErrorLogger::log("csrf_token::: invalid.");
-        return false;
-    }
-}
+// TODO:SECTION:Function is_csrf_token_legit(). Delete this later.
+//function is_csrf_token_legit() {
+//    if (is_csrf_token_valid()) {
+////        MyValidationErrorLogger::log("csrf_token::: valid.");
+//
+//        if (is_csrf_token_recent()) {
+////            MyValidationErrorLogger::log("csrf_token::: recent.");
+//            return true;
+//        } else {
+//            MyValidationErrorLogger::log("csrf_token::: not recent.");
+//            return false;
+//        }
+//    } else {
+//        MyValidationErrorLogger::log("csrf_token::: invalid.");
+//        return false;
+//    }
+//}
 
 function create_timeline_post_record() {
     //
@@ -153,32 +154,33 @@ function create_timeline_post_record_bruh() {
     }
 }
 
-// Use only allowable GET and POST variables. 
-// Maybe put an array like: $allowed_gets = array();
-// @return:
-//      - valid POST arrays, or
-//      - 0 if there's any tampered/invalid var.
-function are_post_vars_valid($allowed_assoc_indexes_for_post) {
-    $dirty_array = array();
-
-    foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
-
-        if (isset($_POST[$assoc_index])) {
-            $dirty_array[$assoc_index] = $_POST[$assoc_index];
-//            MyValidationErrorLogger::log("post_vars::: {$assoc_index} ok.");
-        } else {
-            MyValidationErrorLogger::log("post_vars::: tampered.");
-            return 0;
-        }
-    }
-
-    return $dirty_array;
-
-//// TODO: DEBUG
-//    foreach ($dirty_array as $value) {
-//        MyDebugMessenger::add_debug_message("VAR ARRAY dirty_array: {$value}.");
+// TODO:REMINDER: Delete this  later.
+//// Use only allowable GET and POST variables. 
+//// Maybe put an array like: $allowed_gets = array();
+//// @return:
+////      - valid POST arrays, or
+////      - 0 if there's any tampered/invalid var.
+//function are_post_vars_valid($allowed_assoc_indexes_for_post) {
+//    $dirty_array = array();
+//
+//    foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
+//
+//        if (isset($_POST[$assoc_index])) {
+//            $dirty_array[$assoc_index] = $_POST[$assoc_index];
+////            MyValidationErrorLogger::log("post_vars::: {$assoc_index} ok.");
+//        } else {
+//            MyValidationErrorLogger::log("post_vars::: tampered.");
+//            return 0;
+//        }
 //    }
-}
+//
+//    return $dirty_array;
+//
+////// TODO: DEBUG
+////    foreach ($dirty_array as $value) {
+////        MyDebugMessenger::add_debug_message("VAR ARRAY dirty_array: {$value}.");
+////    }
+//}
 
 // @param $var_lengts_arr: Post vars that need their length validated.
 function validate_new_timeline_post($var_lengts_arr) {
@@ -249,8 +251,9 @@ if (is_request_post() &&
 
 
     // White listing POST vars.
-    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
-    if ($can_proceed && $dirty_array != 0) {
+//    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
+//    if ($can_proceed && $dirty_array != 0) {
+    if ($can_proceed && are_post_vars_valid($allowed_assoc_indexes_for_post)) {
         $can_proceed = true;
     } else {
         $can_proceed = false;

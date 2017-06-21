@@ -195,8 +195,9 @@ if (is_request_post() && isset($_POST["create_reply_post"]) && $_POST["create_re
     
     
     // White listing POST vars.
-    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
-    if ($can_proceed && $dirty_array != 0) { $can_proceed = true; }
+//    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
+//    if ($can_proceed && $dirty_array != 0) { $can_proceed = true; }
+    if ($can_proceed && are_post_vars_valid($allowed_assoc_indexes_for_post)) { $can_proceed = true; }
     else { $can_proceed = false; echo "0"; }  
     
     

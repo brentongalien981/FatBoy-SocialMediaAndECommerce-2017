@@ -29,7 +29,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<!--Functions-->
+
 <?php
 
 function did_user_already_like_this($actual_user_id, $like_id) {
@@ -73,7 +73,7 @@ function create_mapping_record_bruh($actual_user_id, $like_id) {
 
 
 
-<!--Meat-->
+
 <?php 
 // For like deletion.
 if (isset($_POST["delete_like_map"])) {
