@@ -41,56 +41,58 @@
                 console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
 
 
-//            //
-//            var json = JSON.parse(xhr.responseText.trim());
-//
-//
-//            if (json.is_result_ok) {
+                //
+                var json = JSON.parse(xhr.responseText.trim());
+
+
+                if (json.is_result_ok) {
+                    console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
 //                hide_add_the_like_form();
 //                show_add_a_like_button();
 //                populate_likes_table();
-//            }
+                }
 
 
 
                 // AJAX JSON log.
                 console.log("*** Formatted JSON in method create_video(). ***");
-//            for (var key in json) {
-//                if (json.hasOwnProperty(key)) {
-//                    var val = json[key];
-//
-//                    // Display in the console.
-//                    console.log(key + " => " + val);
-//
+                for (var key in json) {
+                    if (json.hasOwnProperty(key)) {
+                        var val = json[key];
+
+                        // Display in the console.
+                        console.log(key + " => " + val);
+
 //                    // Display errors in the form.
 //                    var error_label = document.getElementById(key);
 //                    if (error_label != null) {
 //                        error_label.innerHTML = val;
 //                    }
-//
-//                }
-//            }
+
+                    }
+                }
             }
 
         }
 
-//
-//    // Create a dynamic hidden csrf_token input.
-//    var input_csrf_token = get_csrf_input();
-//
-//    // Dynamically append a hidden csrf input to the form "create_post_form".
-//    the_add_like_form.appendChild(input_csrf_token);
+
+        // Create a dynamic hidden csrf_token input.
+        var input_csrf_token = get_csrf_input();
+
+        // Dynamically append a hidden csrf input to the form "create_post_form".
+        document.getElementById("middle_content").appendChild(input_csrf_token);
 
 
         //
         var post_key_value_pairs = "create_video=yes";
-//    post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
-//    post_key_value_pairs += "&the_like_value=" + document.getElementById("the_like_input").value;
+        post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
+        post_key_value_pairs += "&video_title=" + document.getElementById("video_title").value;
+        post_key_value_pairs += "&embedded_video_code=" + document.getElementById("embedded_video_code").value;
 
         xhr.send(post_key_value_pairs);
 
 
-//    // Right away, remove the hidden csrf input from the form.
-//    the_add_like_form.removeChild(input_csrf_token);
+        // Right away, remove the hidden csrf input from the form.
+        document.getElementById("middle_content").removeChild(input_csrf_token);
     }
-</script
+        </script

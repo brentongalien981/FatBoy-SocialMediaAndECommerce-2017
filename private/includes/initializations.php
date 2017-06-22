@@ -50,6 +50,7 @@ require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_token.php
 
 //
 //require_once(PRIVATE_PATH . "/includes/js_functions.php");
+require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
 
 
 
