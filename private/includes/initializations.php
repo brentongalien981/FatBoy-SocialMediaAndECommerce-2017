@@ -16,6 +16,7 @@ defined('SITE_ROOT') ? null :
 
 define("PRIVATE_PATH", SITE_ROOT . "/private");
 define("PUBLIC_PATH", SITE_ROOT . "/public");
+defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy");
         
 //defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT . '/includes');
 
@@ -48,9 +49,6 @@ require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_token.php
 
 
 
-//
-//require_once(PRIVATE_PATH . "/includes/js_functions.php");
-require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
 
 
 
@@ -69,4 +67,16 @@ require_once(PUBLIC_PATH .'/__model/my_user.php');
 
 
 
+
+
+
+
+
+
+
+
+
+
+//require_once(PRIVATE_PATH . "/includes/js_functions.php");
+require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
 ?>

@@ -24,18 +24,14 @@ function is_csrf_token_legit() {
 //            MyValidationErrorLogger::log("csrf_token::: recent.");
             return true;
         } else {
-            MyValidationErrorLogger::log("csrf_token::: not recent.");
+//            MyValidationErrorLogger::log("csrf_token::: not recent.");
             return false;
         }
     } else {
-        MyValidationErrorLogger::log("csrf_token::: invalid.");
+//        MyValidationErrorLogger::log("csrf_token::: invalid.");
         return false;
     }
 }
-
-
-
-
 
 // Destroys a token by removing it from the session.
 function destroy_csrf_token() {

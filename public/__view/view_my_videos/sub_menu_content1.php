@@ -32,44 +32,44 @@ if (!$session->is_logged_in()) {
     <div class="section">
         <form id='add_video_form' action='<?php echo LOCAL . "/public/__controller/my_videos/create.php"; ?>' method='post'>
             <h4>Add a new video<h4>
-            <h6>Video Title</h6>
-            <input id="video_title" class='form_input' type='text' name='video_title'>
-            <h6>Embedded Code</h6>
-            <textarea id="embedded_video_code" class='form_input' name='embedded_video_code' rows='6' cols='100'></textarea><br>
-            <input id="create_video_button" type='button' class='form_button' name='add_video' value='add video'>
-        </form>
-    </div>
-<?php } ?>
+                    <h6 class="field_title">Video Title</h6><label class="error_msg" id="error_title"></label><br>
+                    <input id="video_title" class='form_input' type='text'>
+                    <h6 class="field_title">Embedded Code</h6><label class="error_msg" id="error_embed_code"></label><br>
+                    <textarea id="embed_code" class='form_input' rows='6' cols='100'></textarea><br>
+                    <input id="create_video_button" type='button' class='form_button' value='add video'>
+                    </form>
+                    </div>
+                <?php } ?>
 
 
 
 
 
 
-<?php
+                <?php
 // Display all user's videos.
-echo "<h4 id='my_videos_h4'>MyVideos</h4>";
+                echo "<h4 id='my_videos_h4'>MyVideos</h4>";
 
 
 //
-$completely_presented_user_videos_array = get_completely_presented_user_videos_array();
+                $completely_presented_user_videos_array = get_completely_presented_user_videos_array();
 
 //
-echo "<table id='my_videos_table'>";
+                echo "<table id='my_videos_table'>";
 //
-foreach ($completely_presented_user_videos_array as $completely_presented_user_video) {
-    echo $completely_presented_user_video;
-}
+                foreach ($completely_presented_user_videos_array as $completely_presented_user_video) {
+                    echo $completely_presented_user_video;
+                }
 //
-echo "</table>";
-?>
+                echo "</table>";
+                ?>
 
 
 
 
-<?php
+                <?php
 // TODO:SECTION: Pseudo-scripts.
-if ($session->is_viewing_own_account()) {
-    require_once(PUBLIC_PATH . "/_scripts/my_videos/ajax_create.php");
-}
-?>
+                if ($session->is_viewing_own_account()) {
+                    require_once(PUBLIC_PATH . "/_scripts/my_videos/ajax_create.php");
+                }
+                ?>

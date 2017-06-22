@@ -8,10 +8,6 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 }
 ?>
 
-
-
-<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
-
 <!doctype>
 <html>
     <head>
@@ -1145,6 +1141,12 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-right: auto;
                 padding-top: 200px;;
             }            
+            
+            label.error_msg {
+                font-size: 12px;
+                font-weight: 100;
+                color: red;
+            }               
         </style>
 
 

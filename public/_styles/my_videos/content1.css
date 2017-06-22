@@ -42,7 +42,8 @@ div.timeline_iframe_video_div iframe {
     cursor: pointer; cursor: hand;
 }
 
-#add_video_form h6 {
+#add_video_form h6.field_title {
+    display: inline;
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 13px;
@@ -87,6 +88,10 @@ textarea.form_input {
 
 #lupetness_a:hover {
     color: orange;
+}
+
+label.error_msg {
+    display: inline;
 }
 
 #my_videos_h4 {

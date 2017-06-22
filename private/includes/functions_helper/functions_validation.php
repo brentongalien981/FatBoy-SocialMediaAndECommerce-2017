@@ -54,7 +54,7 @@ function are_post_vars_valid($allowed_assoc_indexes_for_post) {
 
 
         if (!isset($_POST[$assoc_index])) {
-            MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
+//            MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
             return false;
         }
     }

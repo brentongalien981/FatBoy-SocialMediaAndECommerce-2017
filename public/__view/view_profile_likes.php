@@ -1,5 +1,7 @@
 <?php require_once(PUBLIC_PATH . "/__controller/controller_like.php"); ?>
 
+<link href="<?php echo LOCAL . "/public/_styles/profile/likes.css"; ?>" rel="stylesheet" type="text/css">
+
 <div class="section">
 
 
@@ -32,30 +34,3 @@
     <table id='like_table'>
     </table>
 </div>
-
-
-
-
-
-<style>
-    #add_like_form {
-        display: none;
-        width: 300px;
-        margin-top: 15px;
-        /*margin-bottom: 15px;*/
-        padding-bottom: 0;
-        border-radius: 5px;
-        background-color: rgb(240, 252, 255);
-        box-shadow: 5px 5px 5px rgb(150, 150, 150);
-    }
-
-    button.form_button {
-        margin: 0;
-    }
-    
-    #like_table {
-        margin: 0;
-        padding: 0;
-        margin-top: 15px;
-    }
-</style>

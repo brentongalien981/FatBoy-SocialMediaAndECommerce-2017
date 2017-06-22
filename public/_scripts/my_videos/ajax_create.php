@@ -63,11 +63,11 @@
                         // Display in the console.
                         console.log(key + " => " + val);
 
-//                    // Display errors in the form.
-//                    var error_label = document.getElementById(key);
-//                    if (error_label != null) {
-//                        error_label.innerHTML = val;
-//                    }
+                    // Display errors in the form.
+                    var error_label = document.getElementById(key);
+                    if (error_label != null) {
+                        error_label.innerHTML = val;
+                    }
 
                     }
                 }
@@ -86,8 +86,8 @@
         //
         var post_key_value_pairs = "create_video=yes";
         post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
-        post_key_value_pairs += "&video_title=" + document.getElementById("video_title").value;
-        post_key_value_pairs += "&embedded_video_code=" + document.getElementById("embedded_video_code").value;
+        post_key_value_pairs += "&title=" + document.getElementById("video_title").value;
+        post_key_value_pairs += "&embed_code=" + document.getElementById("embed_code").value;
 
         xhr.send(post_key_value_pairs);
 

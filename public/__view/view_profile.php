@@ -1,7 +1,3 @@
-<!--Imports-->
-<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-
-<!--File session.php is already included in header.php.-->
 <?php require_once("../_layouts/header.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_profile.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__controller/controller_profile_likes.php"); ?>
@@ -9,7 +5,7 @@
 
 
 
-<!--For app debug messenger initialization.-->
+
 <?php
 if (!MyDebugMessenger::is_initialized()) {
     MyDebugMessenger::initialize();
@@ -518,11 +514,7 @@ if (!$session->is_logged_in()) {
         text-align: right;
     }
 
-    label.error_msg {
-        font-size: 12px;
-        font-weight: 100;
-        color: red;
-    }    
+ 
 
 
 
