@@ -707,18 +707,7 @@ if (!$session->is_logged_in()) {
 
 
 
-<?php
-// TODO:SECTION: General js scripts that needs <php> tags.
-?>
-<script>
-    function get_csrf_token() {
-        return "<?php echo sessionize_csrf_token(); ?>";
-    }
-</script>
 
-
-<script src="<?php echo LOCAL . "/public/_scripts/general.js"; ?>">
-</script>
 
 <script>
     window.onload = function () {

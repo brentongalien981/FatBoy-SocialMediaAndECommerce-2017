@@ -7,7 +7,7 @@
     <table>
         <tbody>
             <tr>
-                <td><h4>Contact Info</h4></td>
+                <td><h4>Likes</h4></td>
 
                 <td><?php show_add_a_like_button(); ?></td>
             </tr>

@@ -10,14 +10,13 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
-<?php // defined('LOCAL') ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 <!doctype>
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                        ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                         ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -778,8 +777,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                         ?>" class="">-->
-                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                         ?>" class="icon">Timeline-->
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                          ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                          ?>" class="icon">Timeline-->
                                 <?php
 //                                    if ($session->is_logged_in()) {
 //                                        echo " of {$session->currently_viewed_user_name}";
@@ -922,9 +921,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
                     <td id="right" class="main">
                         <div id="ad_container">
-                            <iframe id="the_ad" class="ad" frameborder="0" allowfullscreen="false" mozallowfullscreen="false" scrolling="no" seamless="">
-
-                            </iframe>
+                            <iframe id="the_ad" class="ad" frameborder="0" allowfullscreen="false" mozallowfullscreen="false" scrolling="no" seamless=""></iframe>
                         </div>
                     </td>
                 </tr>
@@ -1127,7 +1124,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 color: rgb(240, 240, 240);
                 /*color: red;*/
             }
-            
+
             div#the_spinner_div {
                 width: 100%;
                 height: 150%;
@@ -1157,6 +1154,20 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
+
+
+        <?php
+// TODO:SECTION: General js scripts that needs <php> tags.
+        ?>
+        <script>
+            function get_csrf_token() {
+                return "<?php echo sessionize_csrf_token(); ?>";
+            }
+        </script>
+
+
+        <script src="<?php echo LOCAL . "/public/_scripts/general.js"; ?>">
+        </script>        
 
         <?php
 // TODO: SECTION: Script for popping-in and

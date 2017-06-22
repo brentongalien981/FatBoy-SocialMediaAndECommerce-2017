@@ -34,18 +34,6 @@ if (!MyDebugMessenger::is_initialized()) {
 
 <?php
 // Functions.
-function show_add_new_video_form() {
-    $form = "<h4>Add a new video<h4>";
-    $form .= "<form id='add_video_form' action='" . LOCAL . "/public/__controller/controller_my_videos.php' method='post'>";
-    $form .= "<h6>Video Title</h6>";
-    $form .= "<input class='form_input' type='text' name='video_title'/>";
-    $form .= "<h6>Embedded Code</h6>";
-    $form .= "<textarea class='form_input' name='embedded_video_code' rows='6' cols='100'></textarea><br>";
-    $form .= "<input type='submit' class='form_button' name='add_video' value='add video' />";
-    $form .= "</form><br><br>";
-
-    echo $form;
-}
 
 function validate_video_form() {
     //
@@ -154,22 +142,22 @@ function get_completely_presented_user_videos_array() {
 
 
 
-<!--Meat-->
+
 <?php
-if (isset($_POST["add_video"])) {
-    // TODO: LOG
-    MyDebugMessenger::add_debug_message("BUTTON add video clicked.");
-
-
-    // Validattion.
-    validate_video_form();
-
-
-    // If the code goes here, that means the validation passed.
-    add_new_video_record_to_db();
-
-
-    // 
-    redirect_to(LOCAL . "/public/__view/view_my_videos");
-}
+//if (isset($_POST["add_video"])) {
+//    // TODO: LOG
+//    MyDebugMessenger::add_debug_message("BUTTON add video clicked.");
+//
+//
+//    // Validattion.
+//    validate_video_form();
+//
+//
+//    // If the code goes here, that means the validation passed.
+//    add_new_video_record_to_db();
+//
+//
+//    // 
+//    redirect_to(LOCAL . "/public/__view/view_my_videos");
+//}
 ?>

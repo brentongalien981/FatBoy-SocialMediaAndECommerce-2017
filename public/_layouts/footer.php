@@ -1,4 +1,3 @@
-<!--</main>-->
 <footer>
     <nav>
         <a href="#" class="">About Us</a>

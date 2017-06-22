@@ -47,6 +47,13 @@ require_once(PRIVATE_PATH . "/includes/functions_helper/functions_csrf_token.php
 
 
 
+
+//
+//require_once(PRIVATE_PATH . "/includes/js_functions.php");
+
+
+
+
 require_once(PUBLIC_PATH .'/__model/my_debug_messenger.php');
 //MyDebugMessenger::initialize_debug_message();
 require_once(PUBLIC_PATH .'/__model/my_validation_error_logger.php');

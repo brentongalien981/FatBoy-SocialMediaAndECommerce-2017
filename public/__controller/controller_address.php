@@ -3,7 +3,7 @@
 <?php require_once("../__model/model_address.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__controller/controller_timeline_posts.php");       ?>
 
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 
