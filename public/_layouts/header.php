@@ -12,7 +12,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                         ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                          ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -564,10 +564,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         </style>
     </head>
     <body>
-        <!-- Website spinner -->
-        <div id="the_spinner_div">
-            <img id="the_spinner_mg" src="<?php echo LOCAL . "/public/_photos/loading1.gif"; ?>">
-        </div>
+        <?php // TODO:REMINDER: Display this later. ?>
+        <!--<div id="the_spinner_div">-->
+            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif"; ?>">-->
+        <!--</div>-->
 
 
 
@@ -773,8 +773,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                          ?>" class="">-->
-                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                          ?>" class="icon">Timeline-->
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                           ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                           ?>" class="icon">Timeline-->
                                 <?php
 //                                    if ($session->is_logged_in()) {
 //                                        echo " of {$session->currently_viewed_user_name}";
@@ -804,7 +804,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <a id="menu_profile" href="
                                 <?php
                                 if ($session->is_logged_in()) {
-                                    echo LOCAL . '/public/__view/view_profile.php';
+//                                    echo LOCAL . '/public/__view/view_profile.php';
+                                    echo LOCAL . '/public/__view/profile';
                                 } else {
                                     echo "#";
                                 }
@@ -1141,7 +1142,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin-right: auto;
                 padding-top: 200px;;
             }            
-            
+
             label.error_msg {
                 font-size: 12px;
                 font-weight: 100;
@@ -1157,6 +1158,9 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
+
+        <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
+        </script>        
 
         <?php
 // TODO:SECTION: General js scripts that needs <php> tags.

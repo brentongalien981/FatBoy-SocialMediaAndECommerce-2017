@@ -10,35 +10,20 @@
 </footer>
 
 
+<?php // TODO:REMINDER: Uncomment this laster.?>
 <script>
-//    window.onload = function () {
-//        var myTimeout;
-//        
-//        myTimeout = setTimeout(function () {
+//    $(document).ready(function () {
+//        setTimeout(function () {
 //            $("#the_spinner_div").fadeOut("slow", "linear", hideSpinner);
-//            
-//        }, 500);
-//        
 //
-//        
+//        }, 10);
+//
+//
+//
 //        function hideSpinner() {
 //            document.getElementById("the_spinner_div").style.display = "none";
-//            clearTimeout(myTimeout);
 //        }
-//    };
-
-    $(document).ready(function () {
-        setTimeout(function () {
-            $("#the_spinner_div").fadeOut("slow", "linear", hideSpinner);
-
-        }, 10);
-
-
-
-        function hideSpinner() {
-            document.getElementById("the_spinner_div").style.display = "none";
-        }
-    });
+//    });
 </script>
 </body>
 

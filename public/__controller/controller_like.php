@@ -1,10 +1,8 @@
 <?php // TODO:REMINDER:Refactor the validation of forms using class:Validaor. ?>
 
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once("../__model/session.php"); ?>
-<?php require_once("../__model/model_like.php"); ?>
-
-<?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_like.php"); ?>
 
 
 

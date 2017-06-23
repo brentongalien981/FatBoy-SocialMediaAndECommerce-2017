@@ -2,7 +2,17 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_my_videos.php"); ?>
 
-<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+
+
+
+
+<?php
+
+// TODO: SECTION: Protected page.
+if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
+    redirect_to(LOCAL . "/public/index.php");
+}
+?>
 
 
 

@@ -13,6 +13,7 @@ class Validator {
     private $required_post_vars_length_array = null;
     private $json_errors_array = null;
     private $can_proceed = false;
+    private $exempted_white_space_field_array = null;
 
     function __construct() {
         MyValidationErrorLogger::initialize();
@@ -22,6 +23,10 @@ class Validator {
         $this->allowed_post_vars_array = $allowed_post_vars_array;
 
         $this->init_json_errors_array();
+    }
+    
+    public function set_exempted_white_space_field_array($exempted_white_space_field_array) {
+        $this->exempted_white_space_field_array = $exempted_white_space_field_array;
     }
 
     public function set_required_post_vars_length_array($post_vars_lengt_array) {
@@ -98,6 +103,11 @@ class Validator {
 
         //
         foreach ($this->required_post_vars_length_array as $key => $value) {
+            // If the $key is in the exempted white space field, disregard and loop again.
+            if (in_array($key, $this->exempted_white_space_field_array)) {
+                continue;
+            }
+            
             // Validate presence.
             if (!has_presence($_POST[$key])) {
                 MyValidationErrorLogger::log("{$key}::: can not be blank");

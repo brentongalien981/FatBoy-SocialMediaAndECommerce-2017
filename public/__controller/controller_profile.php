@@ -39,245 +39,245 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 
 // TODO: SECTION: Functions.
-function display_form_work_experience() {
-    echo "<form id='form_add_work_experience' class='form_work_experience'>";
-    echo "<table>";
-
-    echo "<tr>";
-    echo "<td>";
-    echo "<h5>Additional Work Experience</h5>";
-//    echo "<input id='form_button_edit' type='button' class='form_button' name='' value='edit'>";
-    echo "</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-
-    echo "<td colspan='2'>";
-    echo "<input type='text' id='company_name' name='' placeholder='Company Name'>";
-
-    echo "<input type='text' id='place' name='' placeholder='City, State/Country' class='right_aligned'>";
-    echo "</td>";
-
-
+//function display_form_work_experience() {
+//    echo "<form id='form_add_work_experience' class='form_work_experience'>";
+//    echo "<table>";
+//
+//    echo "<tr>";
 //    echo "<td>";
-//    echo "<input type='text' name='' placeholder='City, State/Country'>";
+//    echo "<h5>Additional Work Experience</h5>";
+////    echo "<input id='form_button_edit' type='button' class='form_button' name='' value='edit'>";
 //    echo "</td>";
-
-    echo "</tr>";
-
-    echo "<tr>";
-
-    echo "<td colspan='2'>";
-    echo "<input type='text' id='position' name='' placeholder='Position'>";
-    echo "<input type='text' id='time_frame' name='' placeholder='from - to' class='right_aligned'>";
-    echo "</td>";
-
-
+//    echo "</tr>";
+//
+//    echo "<tr>";
+//
+//    echo "<td colspan='2'>";
+//    echo "<input type='text' id='company_name' name='' placeholder='Company Name'>";
+//
+//    echo "<input type='text' id='place' name='' placeholder='City, State/Country' class='right_aligned'>";
+//    echo "</td>";
+//
+//
+////    echo "<td>";
+////    echo "<input type='text' name='' placeholder='City, State/Country'>";
+////    echo "</td>";
+//
+//    echo "</tr>";
+//
+//    echo "<tr>";
+//
+//    echo "<td colspan='2'>";
+//    echo "<input type='text' id='position' name='' placeholder='Position'>";
+//    echo "<input type='text' id='time_frame' name='' placeholder='from - to' class='right_aligned'>";
+//    echo "</td>";
+//
+//
+////    echo "<td>";
+////    echo "<input type='text' name='' placeholder='from - to'>";
+////    echo "</td>";
+//
+//    echo "</tr>";
+//
+//    echo "<tr>";
+//    echo "<td colspan='2'>";
+//    echo "<textarea type='text' id='work_experience_description1' class='work_experience_description' name='' placeholder='Experience description 1'></textarea>";
+//    echo "</td>";
+//    echo "</tr>";
+//
+//
+//    echo "<tr>";
+//    echo "<td colspan='2'>";
+//    echo "<textarea type='text' id='work_experience_description2' class='work_experience_description' name='' placeholder='Experience description 2'></textarea>";
+//    echo "</td>";
+//    echo "</tr>";
+//
+//    echo "<tr>";
+//    echo "<td colspan='2'>";
+//    echo "<textarea type='text' id='work_experience_description3' class='work_experience_description' name='' placeholder='Experience description 3'></textarea>";
+//    echo "</td>";
+//    echo "</tr>";
+//
+//
+//    echo "<tr>";
 //    echo "<td>";
-//    echo "<input type='text' name='' placeholder='from - to'>";
+//    echo "<input id='button_ok_add_work_experience' type='button' class='form_button' name='' value='ok'>";
+//    echo "<input id='button_cancel_add_work_experience' type='button' class='form_button' name='' value='cancel'>";
 //    echo "</td>";
-
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td colspan='2'>";
-    echo "<textarea type='text' id='work_experience_description1' class='work_experience_description' name='' placeholder='Experience description 1'></textarea>";
-    echo "</td>";
-    echo "</tr>";
-
-
-    echo "<tr>";
-    echo "<td colspan='2'>";
-    echo "<textarea type='text' id='work_experience_description2' class='work_experience_description' name='' placeholder='Experience description 2'></textarea>";
-    echo "</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td colspan='2'>";
-    echo "<textarea type='text' id='work_experience_description3' class='work_experience_description' name='' placeholder='Experience description 3'></textarea>";
-    echo "</td>";
-    echo "</tr>";
-
-
-    echo "<tr>";
-    echo "<td>";
-    echo "<input id='button_ok_add_work_experience' type='button' class='form_button' name='' value='ok'>";
-    echo "<input id='button_cancel_add_work_experience' type='button' class='form_button' name='' value='cancel'>";
-    echo "</td>";
-    echo "</tr>";
-
-    echo "</table>";
-    echo "</form>";
-}
+//    echo "</tr>";
+//
+//    echo "</table>";
+//    echo "</form>";
+//}
 
 function show_work_experience() {
-    echo "<div class='section'>";
-
-
-
-
-    echo "<table>";
-    echo "<tbody>";
-    echo "<tr>";
-    echo "<td>";
-    echo "<h4 id='h4_work_experience'>Work Experience</h4>";
-    echo "</td>";
-
-    echo "<td>";
-    display_button_add_work_experience();
-    echo "</td>";
-    echo "</tr>";
-    echo "</tbody>";
-    echo "</table>";
-
-
-
-    echo "<hr>";
-
+//    echo "<div class='section'>";
+//
+//
+//
+//
+//    echo "<table>";
+//    echo "<tbody>";
+//    echo "<tr>";
+//    echo "<td>";
+//    echo "<h4 id='h4_work_experience'>Work Experience</h4>";
+//    echo "</td>";
+//
+//    echo "<td>";
 //    display_button_add_work_experience();
-
-    display_form_work_experience();
-
-
-    //
-    display_work_experience();
-
-    echo "</div>";
-}
-
-function display_work_experience() {
-    //
-    global $session;
-    $query = "SELECT * FROM WorkExperience ";
-    $query .= "WHERE user_id = {$session->currently_viewed_user_id} ";
-    $query .= "ORDER BY id DESC";
-
-    $record_results = WorkExperience::read_by_query($query);
-
-
-    // This is just a template work_experience_div, so that I can clone it
-    // when adding a new work_experience record as parent.childNodes[4]...
-    $test_row = array();
-    $test_row['id'] = "-69";
-    $test_row['company_name'] = "tae69";
-    $test_row['place'] = "tae69";
-    $test_row['position'] = "tae69";
-    $test_row['time_frame'] = "tae69";
-
-    display_a_work_experience($test_row);
-
-
-    // These are the real work_experiences.
-    global $database;
-    while ($row = $database->fetch_array($record_results)) {
-        display_a_work_experience($row);
-    }
-}
-
-// @param $row: A work experience record.
-function display_a_work_experience($row) {
-    echo "<div id='{$row['id']}' class='a_work_experience' ";
-
-    // I created this personal attributes for the div
-    // so I can access the work experience details directly.
-    echo "company_name='{$row['company_name']}' ";
-    echo "place='{$row['place']}' ";
-    echo "position='{$row['position']}' ";
-    echo "time_frame='{$row['time_frame']}'";
-
-    echo ">";
-
-
-    global $session;
-    if ($session->is_viewing_own_account()) {
-        echo "<div class='work_exp_action_div user_work_exp_action_div'>";
-        echo "<input id='form_button_delete{$row['id']}' type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";
-        echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
-        echo "</div>";
-    } else {
-        // This is just an invisible button so that the style is not messed up.
-        // This won't show because the id is not set which is used to loop and attach mouseover listeners...
-        echo "<div class='work_exp_action_div'>";
-        echo "<input type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";
-        echo "<input type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
-        echo "</div>";
-    }
-
-    echo "<table>";
-
-//        echo "<tr>";
-//        echo "<td colspan='2' id='td_edit'>";
+//    echo "</td>";
+//    echo "</tr>";
+//    echo "</tbody>";
+//    echo "</table>";
 //
 //
-//        echo "</td>";
-//        echo "</tr>";
-
-    echo "<tr>";
-    echo "<td>";
-    echo "<h5>{$row['company_name']}</h5>";
-    echo "</td>";
-
-    echo "<td class='td_right_aligned'>";
-    echo "<h5>{$row['place']}</h5>";
-    echo "</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td>";
-    echo "<h5>{$row['position']}</h5>";
-    echo "</td>";
-
-    echo "<td class='td_right_aligned'>";
-    echo "<h5>{$row['time_frame']}</h5>";
-    echo "</td>";
-    echo "</tr>";
-
-    echo "<tr>";
-    echo "<td colspan='2'>";
-    echo "<ul>";
-
-    display_work_experience_task($row['id']);
-
-
-    echo "</ul>";
-    echo "</td>";
-    echo "</tr>";
-
-    echo "</table>";
-
-    echo "</div>";
+//
+//    echo "<hr>";
+//
+////    display_button_add_work_experience();
+//
+//    display_form_work_experience();
+//
+//
+//    //
+//    display_work_experience();
+//
+//    echo "</div>";
 }
 
-function display_work_experience_task($work_experience_id) {
+//function display_work_experience() {
+////    //
+////    global $session;
+////    $query = "SELECT * FROM WorkExperience ";
+////    $query .= "WHERE user_id = {$session->currently_viewed_user_id} ";
+////    $query .= "ORDER BY id DESC";
+////
+////    $record_results = WorkExperience::read_by_query($query);
+////
+////
+////    // This is just a template work_experience_div, so that I can clone it
+////    // when adding a new work_experience record as parent.childNodes[4]...
+////    $test_row = array();
+////    $test_row['id'] = "-69";
+////    $test_row['company_name'] = "tae69";
+////    $test_row['place'] = "tae69";
+////    $test_row['position'] = "tae69";
+////    $test_row['time_frame'] = "tae69";
+////
+////    display_a_work_experience($test_row);
+////
+////
+////    // These are the real work_experiences.
+////    global $database;
+////    while ($row = $database->fetch_array($record_results)) {
+////        display_a_work_experience($row);
+////    }
+//}
 
-    //
-    global $session;
-    $query = "SELECT * FROM WorkTaskDescription ";
-    $query .= "WHERE work_experience_id = {$work_experience_id}";
+//// @param $row: A work experience record.
+//function display_a_work_experience($row) {
+////    echo "<div id='{$row['id']}' class='a_work_experience' ";
+////
+////    // I created this personal attributes for the div
+////    // so I can access the work experience details directly.
+////    echo "company_name='{$row['company_name']}' ";
+////    echo "place='{$row['place']}' ";
+////    echo "position='{$row['position']}' ";
+////    echo "time_frame='{$row['time_frame']}'";
+////
+////    echo ">";
+////
+////
+////    global $session;
+////    if ($session->is_viewing_own_account()) {
+////        echo "<div class='work_exp_action_div user_work_exp_action_div'>";
+////        echo "<input id='form_button_delete{$row['id']}' type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";
+////        echo "<input id='form_button_edit{$row['id']}' type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
+////        echo "</div>";
+////    } else {
+////        // This is just an invisible button so that the style is not messed up.
+////        // This won't show because the id is not set which is used to loop and attach mouseover listeners...
+////        echo "<div class='work_exp_action_div'>";
+////        echo "<input type='button' class='form_button form_button_actions form_button_delete' name='' value='delete'>";
+////        echo "<input type='button' class='form_button form_button_actions form_button_edit' name='' value='edit'>";
+////        echo "</div>";
+////    }
+////
+////    echo "<table>";
+////
+//////        echo "<tr>";
+//////        echo "<td colspan='2' id='td_edit'>";
+//////
+//////
+//////        echo "</td>";
+//////        echo "</tr>";
+////
+////    echo "<tr>";
+////    echo "<td>";
+////    echo "<h5>{$row['company_name']}</h5>";
+////    echo "</td>";
+////
+////    echo "<td class='td_right_aligned'>";
+////    echo "<h5>{$row['place']}</h5>";
+////    echo "</td>";
+////    echo "</tr>";
+////
+////    echo "<tr>";
+////    echo "<td>";
+////    echo "<h5>{$row['position']}</h5>";
+////    echo "</td>";
+////
+////    echo "<td class='td_right_aligned'>";
+////    echo "<h5>{$row['time_frame']}</h5>";
+////    echo "</td>";
+////    echo "</tr>";
+////
+////    echo "<tr>";
+////    echo "<td colspan='2'>";
+////    echo "<ul>";
+////
+////    display_work_experience_task($row['id']);
+////
+////
+////    echo "</ul>";
+////    echo "</td>";
+////    echo "</tr>";
+////
+////    echo "</table>";
+////
+////    echo "</div>";
+//}
 
-    $record_results = WorkExperience::read_by_query($query);
-
-    global $database;
-    while ($row = $database->fetch_array($record_results)) {
-        if (empty($row['description']) || $row['description'] == "") {
-            continue;
-        }
-
-        echo "<li>";
-        echo "{$row['description']}";
-        echo "</li>";
-    }
-}
+//function display_work_experience_task($work_experience_id) {
+////
+////    //
+////    global $session;
+////    $query = "SELECT * FROM WorkTaskDescription ";
+////    $query .= "WHERE work_experience_id = {$work_experience_id}";
+////
+////    $record_results = WorkExperience::read_by_query($query);
+////
+////    global $database;
+////    while ($row = $database->fetch_array($record_results)) {
+////        if (empty($row['description']) || $row['description'] == "") {
+////            continue;
+////        }
+////
+////        echo "<li>";
+////        echo "{$row['description']}";
+////        echo "</li>";
+////    }
+//}
 
 
 
 function display_button_add_work_experience() {
-    global $session;
-    if ($session->is_viewing_own_account()) {
-//        echo "<div id='container_button_add_work_experience'>";
-        echo "<button id='button_add_work_experience' class='form_button'>+ add an experience</button>";
-//        echo "</div>";
-    }
+//    global $session;
+//    if ($session->is_viewing_own_account()) {
+////        echo "<div id='container_button_add_work_experience'>";
+//        echo "<button id='button_add_work_experience' class='form_button'>+ add an experience</button>";
+////        echo "</div>";
+//    }
 }
 
 function show_user_profile_summary() {
@@ -515,65 +515,65 @@ function update_a_work_experience_description_record($id, $the_description) {
     return $is_update_ok;
 }
 
-function add_work_experience_description_record($work_experience_id, $work_details_array) {
-    // Max # of Work Task Descriptions per Work(id)...
-    $max = 3;
-
-
-    // This var will be used as an index for the work_description json.
-    // Like this: let's say this is the form submitted for update..
-    //      ...
-    //      work_description1: klsjfad lksadjf lksajdf
-    //      work_description2: 
-    //      work_description3: klsjfad lksadjf lksajdf
-    // Now, the code I have here for the db update will be fine.
-    // But the returned json will also display these in the form. And I don't 
-    // want that. What I want after the re-population of the work_experience_div is this...
-    //      ...
-    //      work_description1: klsjfad lksadjf lksajdf
-    //      work_description2: klsjfad lksadjf lksajdf   
-    // The work_description3 is moved up to the empty 2nd <li>...
-    // Thus I'll use this var $x.
-    $x = 0;
-    for ($i = 1; $i <= $max; $i++) {
-
-        //
-        $description_index = "work_experience_description{$i}";
-//        echo "DEBUG: \$description_index = {$description_index}\n";
-
-        $the_description = $_POST[$description_index];
-
-        // For JSON.
-        // The description for what I'm doing here is above...
-        $json_index = $i - $x;
-        $json_description_index = "work_experience_description{$json_index}";
-
-        if (empty($_POST[$description_index]) ||
-                is_null($_POST[$description_index]) ||
-                $_POST[$description_index] == "") {
-            ++$x;
-            continue;
-        }
-
-
+//function add_work_experience_description_record($work_experience_id, $work_details_array) {
+//    // Max # of Work Task Descriptions per Work(id)...
+//    $max = 3;
+//
+//
+//    // This @var $x will be used as an index for the work_description json.
+//    // Like this: let's say this is the form submitted for update..
+//    //      ...
+//    //      work_description1: klsjfad lksadjf lksajdf
+//    //      work_description2: 
+//    //      work_description3: klsjfad lksadjf lksajdf
+//    // Now, the code I have here for the db update will be fine.
+//    // But the returned json will also display these in the form. And I don't 
+//    // want that. What I want after the re-population of the work_experience_div is this...
+//    //      ...
+//    //      work_description1: klsjfad lksadjf lksajdf
+//    //      work_description2: klsjfad lksadjf lksajdf   
+//    // The work_description3 is moved up to the empty 2nd <li>...
+//    // Thus I'll use this var $x.
+//    $x = 0;
+//    for ($i = 1; $i <= $max; $i++) {
+//
 //        //
+//        $description_index = "work_experience_description{$i}";
+////        echo "DEBUG: \$description_index = {$description_index}\n";
+//
 //        $the_description = $_POST[$description_index];
-        // For JSON.
-        $work_details_array[$json_description_index] = $the_description;
-
-
-        if (!add_a_work_experience_description_record($work_experience_id, $the_description)) {
-//            echo "0";
-            return 0;
-        }
-    }
-
-
-//    // Everything is ok.
-//    echo "1";
-    // This is JSON.
-    return $work_details_array;
-}
+//
+//        // For JSON.
+//        // The description for what I'm doing here is above...
+//        $json_index = $i - $x;
+//        $json_description_index = "work_experience_description{$json_index}";
+//
+//        if (empty($_POST[$description_index]) ||
+//                is_null($_POST[$description_index]) ||
+//                $_POST[$description_index] == "") {
+//            ++$x;
+//            continue;
+//        }
+//
+//
+////        //
+////        $the_description = $_POST[$description_index];
+//        // For JSON.
+//        $work_details_array[$json_description_index] = $the_description;
+//
+//
+//        if (!add_a_work_experience_description_record($work_experience_id, $the_description)) {
+////            echo "0";
+//            return 0;
+//        }
+//    }
+//
+//
+////    // Everything is ok.
+////    echo "1";
+//    // This is JSON.
+//    return $work_details_array;
+//}
 
 function delete_a_work_experience_description_record($work_experience_id) {
     $query = "DELETE FROM WorkTaskDescription WHERE work_experience_id = {$work_experience_id}";
@@ -591,20 +591,20 @@ function delete_a_work_experience_record($work_experience_id) {
     return $is_deletion_ok;
 }
 
-function add_a_work_experience_description_record($work_experience_id, $the_description) {
-    //
-//    $the_description = $_POST[$description_index];
-//    echo "DEBUG: \$the_description = {$the_description}\n";
-
-    $query = "INSERT INTO WorkTaskDescription ";
-    $query .= "VALUES (NULL, {$work_experience_id}, '{$the_description}')";
-
-//    echo "DEBUG: \$query = {$query}\n";
-
-    $is_creation_ok = WorkExperience::create_by_query($query);
-
-    return $is_creation_ok;
-}
+//function add_a_work_experience_description_record($work_experience_id, $the_description) {
+//    //
+////    $the_description = $_POST[$description_index];
+////    echo "DEBUG: \$the_description = {$the_description}\n";
+//
+//    $query = "INSERT INTO WorkTaskDescription ";
+//    $query .= "VALUES (NULL, {$work_experience_id}, '{$the_description}')";
+//
+////    echo "DEBUG: \$query = {$query}\n";
+//
+//    $is_creation_ok = WorkExperience::create_by_query($query);
+//
+//    return $is_creation_ok;
+//}
 
 function update_work_experience_record($work_details_array) {
     //
@@ -635,69 +635,69 @@ function update_work_experience_record($work_details_array) {
     return $work_details_array;
 }
 
-function add_work_experience_record($work_details_array) {
-    global $session;
-    $new_work_experience_obj = new WorkExperience();
-    $new_work_experience_obj->id = null;
-    $new_work_experience_obj->user_id = $session->actual_user_id;
-    $new_work_experience_obj->company_name = $_POST['company_name'];
-    $new_work_experience_obj->position = $_POST['position'];
-    $new_work_experience_obj->place = $_POST['place'];
-    $new_work_experience_obj->time_frame = $_POST['time_frame'];
+//function add_work_experience_record($work_details_array) {
+//    global $session;
+//    $new_work_experience_obj = new WorkExperience();
+//    $new_work_experience_obj->id = null;
+//    $new_work_experience_obj->user_id = $session->actual_user_id;
+//    $new_work_experience_obj->company_name = $_POST['company_name'];
+//    $new_work_experience_obj->position = $_POST['position'];
+//    $new_work_experience_obj->place = $_POST['place'];
+//    $new_work_experience_obj->time_frame = $_POST['time_frame'];
+//
+//    $is_creation_ok = $new_work_experience_obj->create_with_bool();
+//
+//    if ($is_creation_ok) {
+//        //
+//        $work_details_array['id'] = $new_work_experience_obj->id;
+//        $work_details_array['company_name'] = $_POST['company_name'];
+//
+//        $work_details_array['position'] = $_POST['position'];
+//        $work_details_array['place'] = $_POST['place'];
+//        $work_details_array['time_frame'] = $_POST['time_frame'];
+//
+//        return add_work_experience_description_record($new_work_experience_obj->id, $work_details_array);
+//    } else {
+////        echo "0";
+//
+//        return 0;
+//    }
+//}
 
-    $is_creation_ok = $new_work_experience_obj->create_with_bool();
-
-    if ($is_creation_ok) {
-        //
-        $work_details_array['id'] = $new_work_experience_obj->id;
-        $work_details_array['company_name'] = $_POST['company_name'];
-
-        $work_details_array['position'] = $_POST['position'];
-        $work_details_array['place'] = $_POST['place'];
-        $work_details_array['time_frame'] = $_POST['time_frame'];
-
-        return add_work_experience_description_record($new_work_experience_obj->id, $work_details_array);
-    } else {
-//        echo "0";
-
-        return 0;
-    }
-}
-
-function are_required_fields_filled() {
-    //
-    MyValidationErrorLogger::initialize();
-
-
+//function are_required_fields_filled() {
 //    //
-//    $video_title = $_POST["video_title"];
-//    $embedded_video_code = $_POST["embedded_video_code"];
-    // validations
-    $required_fields = array("company_name", "place", "position", "time_frame", "work_experience_description1");
-    validate_presences($required_fields);
-
-    $fields_with_max_lengths = array("company_name" => 200, "place" => 100, "position" => 100, "time_frame" => 50, "work_experience_description1" => 500);
-    validate_max_lengths($fields_with_max_lengths);
-
-
-    //
-    if (MyValidationErrorLogger::is_empty()) {
-        // Proceed to the next validation step.
-        MyDebugMessenger::add_debug_message("SUCCESS work experience validation.");
-
-        return true;
-    } else {
-        MyDebugMessenger::add_debug_message("FAIL work experience validation.");
-
-        $validation_errors = MyValidationErrorLogger::get_log_array();
-
-        foreach ($validation_errors as $error) {
-            MyDebugMessenger::add_debug_message($error);
-        }
-
-        return false;
-    }
-}
+//    MyValidationErrorLogger::initialize();
+//
+//
+////    //
+////    $video_title = $_POST["video_title"];
+////    $embedded_video_code = $_POST["embedded_video_code"];
+//    // validations
+//    $required_fields = array("company_name", "place", "position", "time_frame", "work_experience_description1");
+//    validate_presences($required_fields);
+//
+//    $fields_with_max_lengths = array("company_name" => 200, "place" => 100, "position" => 100, "time_frame" => 50, "work_experience_description1" => 500);
+//    validate_max_lengths($fields_with_max_lengths);
+//
+//
+//    //
+//    if (MyValidationErrorLogger::is_empty()) {
+//        // Proceed to the next validation step.
+//        MyDebugMessenger::add_debug_message("SUCCESS work experience validation.");
+//
+//        return true;
+//    } else {
+//        MyDebugMessenger::add_debug_message("FAIL work experience validation.");
+//
+//        $validation_errors = MyValidationErrorLogger::get_log_array();
+//
+//        foreach ($validation_errors as $error) {
+//            MyDebugMessenger::add_debug_message($error);
+//        }
+//
+//        return false;
+//    }
+//}
 ?>
 
 

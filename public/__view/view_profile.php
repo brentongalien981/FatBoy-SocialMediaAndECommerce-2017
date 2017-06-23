@@ -156,508 +156,7 @@ if (!$session->is_logged_in()) {
 <?php
 // TODO: SECTION: Styles.
 ?>
-<!--<link href="../_styles/view_profile.css" rel="stylesheet" type="text/css" />-->
-<style>
-    /*    #main_div {
-            background-color: beige;
-            padding: 30px;
-            border-radius: 5px;
-            margin-top: 20px;
-            padding-bottom: 30px;
-        }*/
-
-    #middle_content {
-        background-color: rgb(250, 250, 250);
-        padding-bottom: 30px;
-        color: black;
-    }
-
-    #sub_menus_nav {
-        background-color: rgb(60, 60, 60);
-    }#sub_menus_nav a {
-        color: rgb(220, 220, 220);
-    }
-
-    #menu_profile {
-        /*background-color: rgb(60, 60, 60);*/
-        background-color: rgb(250, 250, 250);
-    }
-
-    .section {
-        background-color: rgb(245, 245, 245);
-        margin: 30px;
-        padding: 30px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 5px rgb(150, 150, 150);
-
-    }
-
-    .section table,
-    .section td {
-        border-collapse: collapse;
-        color: black;
-    }
-
-    table#contact_info {
-        /*background-color: pink;*/
-        margin-top: 20px;
-    }
-
-    table#contact_info td {
-        font-size: 14px;
-        font-weight: 100;
-        /*padding-right: 100px;*/
-    }
-
-    table#contact_info td.contact_details {
-        /*background-color: yellow;*/
-        width: 350px;
-        padding-left: 100px;
-    }
-
-
-
-
-    #div_about_me {
-        /*background-color: pink;*/
-        margin-top: 20px;
-        min-height: 256px;
-    }
-
-    #div_about_me img {
-        width: 256px;
-        height: 256px;
-        border-radius: 3px;
-        float: left;
-        margin: 0;
-        margin-right: 15px;
-        margin-bottom: 5px;
-        padding: 0;
-    }
-
-    #div_about_me p {
-        font-size: 13px;
-        font-weight: 100;
-        margin: 0;
-        padding: 0;
-    }
-
-    /*    #context_sensitive_nav {
-            width: 100%;
-            background-color: rgba(50, 50, 50, 1.0);
-            height: 20px;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            color: rgba(200, 200, 200, 1.0);
-            font-size: 11px;
-            font-weight: 100;
-            padding-top: 8px;
-        }
-
-        #context_sensitive_nav a {
-            background-color: gray;
-            margin-left: 30px;
-                    padding-top: 3px;
-                    padding-bottom: 3px;
-            color: rgba(200, 200, 200, 1.0);
-        }
-
-        #context_sensitive_nav a:hover {
-            color: orange;
-
-        }*/
-
-    hr {
-        height: 1px;
-        background-color: rgb(100, 100, 100);
-        margin-top: 10px;
-    }
-
-    form h4 {
-        display: block;
-    }
-
-    form {
-        /*width: 100%;*/
-        padding: 20px;
-        margin-top: -15px;
-    }
-
-
-    #h4MyAddress {
-        margin-bottom: 20px;
-    }
-
-    form h6 {
-        margin-top: 15px;
-        margin-bottom: 7px;
-        font-size: 14px;
-    }
-
-    .form_text_input {
-        width: 200px;
-        height: 25px;
-        border-radius: 3px;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    form label {
-        font-size: 70%;
-        font-weight: 100;
-    }
-
-    .radio_buttons {
-        margin-right: 10px;
-    }
-
-    .label {
-        font-size: 13px;
-        margin-right: 30px;
-    }
-
-    form select {
-        margin-bottom: 7px;
-    }
-
-    .buttonAddress {
-        margin-bottom: 30px;
-        margin-top: 20px;
-        color: black;
-        /*        background-color: rgb(200, 200, 200);*/
-        /*background-color: rgba(255, 157, 45, 0.20);*/
-        background-color: rgb(224, 255, 193);
-        box-shadow: 3px 3px 3px rgb(130, 130, 130);
-        /*border: 1px solid;*/
-        font-size: 10px;
-        font-weight: 100;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border-radius: 3px;
-        margin-right: 10px;
-    }
-
-    .buttonAddress:hover {
-        background-color: rgba(255, 157, 45, 0.50);
-        cursor: pointer; cursor: hand;
-    }
-
-
-
-
-
-    form table, form td, div.a_work_experience table, div.a_work_experience table td {
-        border-collapse: collapse;
-    }
-
-    div.a_work_experience table {
-        /*background-color: aqua;*/
-    }
-
-    div.a_work_experience table td {
-        padding-bottom: 10px;
-        /*background-color: green;*/
-    }
-
-    td#td_edit {
-        padding: 0;
-        /*padding-bottom: -10px;*/
-    }
-
-
-    form.form_work_experience,
-    div.a_work_experience {
-
-        margin: 0;
-        margin-top: 30px;
-        padding: 20px;
-        padding-top: 30px;
-        padding-bottom: 20px;
-        border-radius: 5px;
-        /*background-color: rgb(247, 247, 247);*/
-        background-color: rgb(240, 252, 255);
-        box-shadow: 5px 5px 5px rgb(150, 150, 150);
-        display: none;
-    }
-
-
-
-
-    form.form_edit_work_experience {
-        display: block;
-    }
-
-    div.a_work_experience {
-        box-shadow: none;
-        margin-top: 20px;
-        padding-top: 0;
-        background-color: rgb(248, 248, 248);
-        display: block;
-    }
-
-    form h6 {
-        font-size: 11px;
-        font-weight: 100;
-        margin-top: 20px;
-    }
-
-
-    form.form_work_experience h5,
-    div.a_work_experience h5 {
-        font-size: 13px;
-        font-weight: 200;
-        margin-bottom: 20px;
-        color: black;
-    }
-
-    div.a_work_experience h5 {
-        /*color: black;*/
-
-        /*margin-right: 50px;*/
-        /*background-color: bisque;*/
-        display: inline;
-    }
-
-    div.a_work_experience ul {
-        margin-left: 40px;
-        /*background-color: pink;*/
-        font-size: 12px;
-        font-weight: 100;
-    }
-
-    div.a_work_experience li {
-        width: 520px;
-        margin-top: 5px;
-        color: black;
-        /*background-color: yellow;*/
-    }
-
-
-
-    /*    input.form_button_edit,
-        input#form_button_edit {
-            margin: 0;
-            display: none;
-            margin-bottom: 20px;
-        }*/
-
-    input.form_button_edit {
-        position: relative;
-        margin: 0;
-        /*left: -55px;*/
-        /*left: 0px;*/
-        /*top: 0px;*/
-        /*        visibility: hidden;*/
-        background-color: yellow;
-    }
-
-    input.form_button_actions {
-        display: inline;
-        margin: 0;
-        padding: 5px;
-        margin-right: 8px;
-        font-size: 8px;
-        font-weight: 100;
-        visibility: hidden;
-
-    }
-
-    input.form_button_delete {
-        background-color: red;
-    }
-
-    div.work_exp_action_div {
-        display: block;
-        /*background-color: orange;*/
-        margin-top: 0;
-        margin-bottom: 25px;
-        margin-left: -20px;
-        /*border-radius:*/
-        padding: 0;
-        padding-top: 0;
-        max-height: fit-content;
-        /*height: 30px;*/
-        /*display: block;*/
-    }
-
-    div.user_work_exp_action_div {
-
-    }
-
-    form.form_work_experience table {
-        /*background-color: pink;*/
-    }
-
-    form.form_work_experience table td input {
-        /*display: inline;*/
-        /*background-color: aquamarine;*/
-        width: 200px;
-        height: 30px;
-        border-radius: 3px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 10px;
-        font-size: 12px;
-        font-weight: 200;
-        border: 1px solid rgb(235, 235, 235);
-
-    }
-
-    input.right_aligned {
-        margin-left: 160px;
-        text-align: right;
-    }
-
-    td.td_right_aligned {
-        text-align: right;
-    }
-
- 
-
-
-
-    form.form_work_experience table td {
-        word-wrap: break-word;
-
-    }
-
-    #h4_work_experience {
-        display: inline;
-    }
-
-    #container_button_add_work_experience {
-        /*display: inline;*/
-    }
-
-    button.form_button {
-        margin: 0;
-        margin-left: 10px;
-
-        /*margin-top: -20px;*/
-        /*border-bottom: 10px solid black;*/
-        display: block;
-    }
-
-    form.form_work_experience table td textarea.work_experience_description {
-        /*background-color: aquamarine;*/
-        border-radius: 3px;
-        margin-left: 20px;
-        margin-bottom: 10px;
-        padding: 10px;
-
-        width: 540px;
-        max-width: 540px;
-        height: 60px;
-        max-height: 60px;
-        word-wrap: break-word;
-        white-space: pre-line;
-
-        font-size: 11px;
-        font-weight: 100;
-        border: 1px solid rgb(235, 235, 235);
-    }
-
-    form.form_work_experience table td input.form_button {
-        /*background-color: aquamarine;*/
-        margin: 0;
-        margin-right: 10px;
-        /*max-width: fit-content;*/
-        /*widows:*/
-        /*height: fit-content;*/
-        width: 50px;
-        height: 25px;
-        font-size: 10px;
-        font-weight: 100;
-        padding: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-
-    }
-
-
-
-    /*    .form_button {
-            margin-bottom: 30px;
-            margin-top: 20px;
-            color: black;
-                    background-color: rgb(200, 200, 200);
-            background-color: rgba(255, 157, 45, 0.20);
-            box-shadow: 3px 3px 3px rgb(130, 130, 130);
-            border: 1px solid;
-            font-size: 10px;
-            font-weight: 100;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 3px;
-            margin-right: 10px;
-        }*/
-
-    /*    .form_button:hover {
-            background-color: rgba(255, 157, 45, 0.50);
-            cursor: pointer; cursor: hand;
-        }*/
-
-    .like_name {
-        font-size: 13px;
-        font-weight: 100;
-        color: black;
-        /*background-color: red;*/
-    }
-
-    #buttonDoneEditingAddress {
-        display: none;
-    }
-
-    #formAddress {
-        display: none;
-        /*visibility: visible;*/
-        /*display:*/
-    }
-
-    form.formAddress {
-        width: 560px;
-        border-radius: 5px;
-        box-shadow: 5px 5px 5px rgb(150, 150, 150);
-        background-color: rgb(240, 252, 255);
-    }
-
-    .form_delete_like {
-        display: inline;
-    }
-
-    #like_table {
-        margin-top: 20px;
-    }
-
-
-    #like_table, like_table td {
-        border: none;
-        border-collapse: collapse;
-    }
-
-    #like_table td {
-        /*vertical-align: bottom;*/
-        /*background-color: yellow;*/
-        padding: 5px;
-        padding-left: 0;
-        vertical-align: middle;
-    }
-
-    #like_table td input {
-        margin: 0;
-        /*padding: 0;*/
-    }
-
-    .form_delete_like {
-        /*background-color: yellow;*/
-        margin: 0;
-        padding: 0;
-    }
-</style>
+<link href="<?php echo LOCAL . "/public/_styles/profile/main.css"; ?>" rel="stylesheet" type="text/css">
 
 
 
@@ -694,8 +193,7 @@ if (!$session->is_logged_in()) {
 
 
 
-<script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
-</script>
+
 
 
 
@@ -708,20 +206,20 @@ if (!$session->is_logged_in()) {
 //        puta();
 
 
-        // Add work experience.
-        if (button_add_work_experience != null) {
-            button_add_work_experience.addEventListener("click", function () {
-                show_form_add_work_experience();
-                this.style.display = "none";
-            });
-        }
+//        // Add work experience.
+//        if (button_add_work_experience != null) {
+//            button_add_work_experience.addEventListener("click", function () {
+//                show_form_add_work_experience();
+//                this.style.display = "none";
+//            });
+//        }
 
 
-        // Cancel add work experience.
-        button_cancel_add_work_experience.addEventListener("click", function () {
-            form_add_work_experience.style.display = "none";
-            button_add_work_experience.style.display = "inline";
-        });
+//        // Cancel add work experience.
+//        button_cancel_add_work_experience.addEventListener("click", function () {
+//            form_add_work_experience.style.display = "none";
+//            button_add_work_experience.style.display = "inline";
+//        });
 
         // Ok add work experience.
         button_ok_add_work_experience.addEventListener("click", function () {
@@ -743,7 +241,7 @@ if (!$session->is_logged_in()) {
         add_event_listeners_to_edit_work_buttons();
 
 
-        //
+        //uki
         hide_test_work_exp_div();
 
 
@@ -763,6 +261,7 @@ if (!$session->is_logged_in()) {
     // This var will be used for adding and editing
     // the currently manipulated address.
     var currently_edited_address_id = -69;
+    var current_address_form = null;
 
     function populate_address() {
         console.log("Inside method populate_address().");
@@ -907,7 +406,7 @@ if (!$session->is_logged_in()) {
         }
     }
 
-    var current_address_form = null;
+    
 
     function show_edit_address_form() {
         console.log("Inside method: show_edit_address_form().");
@@ -1506,131 +1005,131 @@ if (!$session->is_logged_in()) {
 
     }
 
-    function reset_work_exp_div(the_work_exp_div, json) {
-        // Set the values of the tds-ish from JSON.
-        console.log("json.company_name: " + json.company_name);
-        console.log("json.place: " + json.place);
-        console.log("json.position: " + json.position);
-        console.log("json.time_frame: " + json.time_frame);
-
-        console.log("json.work_experience_description1: " + json.work_experience_description1);
-        console.log("json.work_experience_description2: " + json.work_experience_description2);
-        console.log("json.work_experience_description3: " + json.work_experience_description3);
-
-        // For the work main details.
-        var element_company_name = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
-        var element_place = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[1].childNodes[0];
-        var element_position = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
-        var element_time_frame = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[1].childNodes[0];
-
-        the_work_exp_div.setAttribute('company_name', json.company_name);
-        the_work_exp_div.setAttribute('place', json.place);
-        the_work_exp_div.setAttribute('position', json.position);
-        the_work_exp_div.setAttribute('time_frame', json.time_frame);
-
-        element_company_name.innerHTML = json.company_name;
-        element_place.innerHTML = json.place;
-        element_position.innerHTML = json.position;
-        element_time_frame.innerHTML = json.time_frame;
-
-
-
-        /* For the work descriptions. */
-        var element_work_experience_description_container = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0];
-
-        var num_of_actual_descriptions = 0;
-
-        var element_work_experience_description1 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[0];
-        // If it returned an empty string, then deleted the previous <li>
-        // if it existed before update. If it didn't exist before update, then
-        // just do nothing.
-        if (json.work_experience_description1 == "" || json.work_experience_description1 == null) {
-            if (element_work_experience_description1 != null) {
-                element_work_experience_description_container.removeChild(element_work_experience_description1);
-            }
-        } else if (json.work_experience_description1 != null) {
-            ++num_of_actual_descriptions;
-            // Check if a nth <li> existed before the edit.
-            // Otherwise, create a new one.
-            if (element_work_experience_description1 != null) {
-                element_work_experience_description1.innerHTML = json.work_experience_description1;
-            } else {
-                element_work_experience_description1 = document.createElement("li")
-                element_work_experience_description1.innerHTML = json.work_experience_description1;
-                element_work_experience_description_container.appendChild(element_work_experience_description1);
-            }
-        }
-
-
-
-        var element_work_experience_description2 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[1];
-
-        // If it returned an empty string, then deleted the previous <li>
-        // if it existed before update. If it didn't exist before update, then
-        // just do nothing.
-        if (json.work_experience_description2 == "" || json.work_experience_description2 == null) {
-            if (element_work_experience_description2 != null) {
-                element_work_experience_description_container.removeChild(element_work_experience_description2);
-            }
-        } else if (json.work_experience_description2 != null) {
-            ++num_of_actual_descriptions;
-            // Check if a nth <li> existed before the edit.
-            // Otherwise, create a new one.
-            if (element_work_experience_description2 != null) {
-                element_work_experience_description2.innerHTML = json.work_experience_description2;
-            } else {
-                element_work_experience_description2 = document.createElement("li")
-                element_work_experience_description2.innerHTML = json.work_experience_description2;
-                element_work_experience_description_container.appendChild(element_work_experience_description2);
-            }
-        }
-
-
-
-
-        var element_work_experience_description3 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[2];
-
-        // If it returned an empty string, then deleted the previous <li>
-        // if it existed before update. If it didn't exist before update, then
-        // just do nothing.
-        if (json.work_experience_description3 == "" || json.work_experience_description3 == null) {
-            if (element_work_experience_description3 != null) {
-                element_work_experience_description_container.removeChild(element_work_experience_description3);
-            }
-        } else if (json.work_experience_description3 != null) {
-            ++num_of_actual_descriptions;
-            // Check if a nth <li> existed before the edit.
-            // Otherwise, create a new one.
-            if (element_work_experience_description3 != null) {
-                element_work_experience_description3.innerHTML = json.work_experience_description3;
-            } else {
-                element_work_experience_description3 = document.createElement("li")
-                element_work_experience_description3.innerHTML = json.work_experience_description3;
-                element_work_experience_description_container.appendChild(element_work_experience_description3);
-            }
-        }
-
-
-        // Delete stupid trash <li>.
-        for (; ; ) {
-            var length = element_work_experience_description_container.childNodes.length;
-
-            if (num_of_actual_descriptions == length) {
-                break;
-            }
-
-            var trash_element = element_work_experience_description_container.childNodes[length - 1];
-
-            element_work_experience_description_container.removeChild(trash_element);
-        }
-
-
-
-
-
-        //
-        the_work_exp_div.style.display = "block";
-    }
+//    function reset_work_exp_div(the_work_exp_div, json) {
+//        // Set the values of the tds-ish from JSON.
+//        console.log("json.company_name: " + json.company_name);
+//        console.log("json.place: " + json.place);
+//        console.log("json.position: " + json.position);
+//        console.log("json.time_frame: " + json.time_frame);
+//
+//        console.log("json.work_experience_description1: " + json.work_experience_description1);
+//        console.log("json.work_experience_description2: " + json.work_experience_description2);
+//        console.log("json.work_experience_description3: " + json.work_experience_description3);
+//
+//        // For the work main details.
+//        var element_company_name = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
+//        var element_place = the_work_exp_div.childNodes[1].childNodes[0].childNodes[0].childNodes[1].childNodes[0];
+//        var element_position = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[0];
+//        var element_time_frame = the_work_exp_div.childNodes[1].childNodes[0].childNodes[1].childNodes[1].childNodes[0];
+//
+//        the_work_exp_div.setAttribute('company_name', json.company_name);
+//        the_work_exp_div.setAttribute('place', json.place);
+//        the_work_exp_div.setAttribute('position', json.position);
+//        the_work_exp_div.setAttribute('time_frame', json.time_frame);
+//
+//        element_company_name.innerHTML = json.company_name;
+//        element_place.innerHTML = json.place;
+//        element_position.innerHTML = json.position;
+//        element_time_frame.innerHTML = json.time_frame;
+//
+//
+//
+//        /* For the work descriptions. */
+//        var element_work_experience_description_container = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0];
+//
+//        var num_of_actual_descriptions = 0;
+//
+//        var element_work_experience_description1 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[0];
+//        // If it returned an empty string, then deleted the previous <li>
+//        // if it existed before update. If it didn't exist before update, then
+//        // just do nothing.
+//        if (json.work_experience_description1 == "" || json.work_experience_description1 == null) {
+//            if (element_work_experience_description1 != null) {
+//                element_work_experience_description_container.removeChild(element_work_experience_description1);
+//            }
+//        } else if (json.work_experience_description1 != null) {
+//            ++num_of_actual_descriptions;
+//            // Check if a nth <li> existed before the edit.
+//            // Otherwise, create a new one.
+//            if (element_work_experience_description1 != null) {
+//                element_work_experience_description1.innerHTML = json.work_experience_description1;
+//            } else {
+//                element_work_experience_description1 = document.createElement("li")
+//                element_work_experience_description1.innerHTML = json.work_experience_description1;
+//                element_work_experience_description_container.appendChild(element_work_experience_description1);
+//            }
+//        }
+//
+//
+//
+//        var element_work_experience_description2 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[1];
+//
+//        // If it returned an empty string, then deleted the previous <li>
+//        // if it existed before update. If it didn't exist before update, then
+//        // just do nothing.
+//        if (json.work_experience_description2 == "" || json.work_experience_description2 == null) {
+//            if (element_work_experience_description2 != null) {
+//                element_work_experience_description_container.removeChild(element_work_experience_description2);
+//            }
+//        } else if (json.work_experience_description2 != null) {
+//            ++num_of_actual_descriptions;
+//            // Check if a nth <li> existed before the edit.
+//            // Otherwise, create a new one.
+//            if (element_work_experience_description2 != null) {
+//                element_work_experience_description2.innerHTML = json.work_experience_description2;
+//            } else {
+//                element_work_experience_description2 = document.createElement("li")
+//                element_work_experience_description2.innerHTML = json.work_experience_description2;
+//                element_work_experience_description_container.appendChild(element_work_experience_description2);
+//            }
+//        }
+//
+//
+//
+//
+//        var element_work_experience_description3 = the_work_exp_div.childNodes[1].childNodes[0].childNodes[2].childNodes[0].childNodes[0].childNodes[2];
+//
+//        // If it returned an empty string, then deleted the previous <li>
+//        // if it existed before update. If it didn't exist before update, then
+//        // just do nothing.
+//        if (json.work_experience_description3 == "" || json.work_experience_description3 == null) {
+//            if (element_work_experience_description3 != null) {
+//                element_work_experience_description_container.removeChild(element_work_experience_description3);
+//            }
+//        } else if (json.work_experience_description3 != null) {
+//            ++num_of_actual_descriptions;
+//            // Check if a nth <li> existed before the edit.
+//            // Otherwise, create a new one.
+//            if (element_work_experience_description3 != null) {
+//                element_work_experience_description3.innerHTML = json.work_experience_description3;
+//            } else {
+//                element_work_experience_description3 = document.createElement("li")
+//                element_work_experience_description3.innerHTML = json.work_experience_description3;
+//                element_work_experience_description_container.appendChild(element_work_experience_description3);
+//            }
+//        }
+//
+//
+//        // Delete stupid trash <li>.
+//        for (; ; ) {
+//            var length = element_work_experience_description_container.childNodes.length;
+//
+//            if (num_of_actual_descriptions == length) {
+//                break;
+//            }
+//
+//            var trash_element = element_work_experience_description_container.childNodes[length - 1];
+//
+//            element_work_experience_description_container.removeChild(trash_element);
+//        }
+//
+//
+//
+//
+//
+//        //
+//        the_work_exp_div.style.display = "block";
+//    }
 
 
     function show_form_add_work_experience() {
@@ -1638,46 +1137,46 @@ if (!$session->is_logged_in()) {
         form_add_work_experience.style.display = "block";
     }
 
-    function add_work_exp_div(the_work_exp_main_div, json) {
-        // The initially hidden template div now becomes an active work_exp_div.
-        var new_work_exp_div = the_work_exp_main_div.childNodes[4];
-
-        // This cloned div off of the initially hidden template will
-        // become the next template for others.
-        var template_work_exp_div = new_work_exp_div.cloneNode(true);
-
-
-
-
-//            // This jquery doesn't work as I would like it to.
-//            $("#-1500").insertAfter("#-69");
-
-
-        /* Display new_work_exp_div in my way by manipulating the DOM. */
-        the_work_exp_main_div.insertBefore(template_work_exp_div, new_work_exp_div);
-
-
-
-        // Set the new_work_exp_div attributes.
-        new_work_exp_div.id = json.id;
-
-        // Set the id of the edit button of this div.
-        new_work_exp_div.childNodes[0].childNodes[0].id = "form_button_delete" + json.id;
-        new_work_exp_div.childNodes[0].childNodes[1].id = "form_button_edit" + json.id;
-
-        // Set all the contents of the fields.
-        reset_work_exp_div(new_work_exp_div, json);
-
-        // Set the event listener for this div's delete button.
-        add_listeners_to_delete_button_bruh(new_work_exp_div.childNodes[0].childNodes[0]);
-
-        // Set the event listener for this div's edit button.
-        add_listeners_to_edit_button_bruh(new_work_exp_div.childNodes[0].childNodes[1]);
-
-
-        // Set the event listener of the div.
-        add_event_listeners_to_work_exp_div_bruh(new_work_exp_div);
-    }
+//    function add_work_exp_div(the_work_exp_main_div, json) {
+//        // The initially hidden template div now becomes an active work_exp_div.
+//        var new_work_exp_div = the_work_exp_main_div.childNodes[4];
+//
+//        // This cloned div off of the initially hidden template will
+//        // become the next template for others.
+//        var template_work_exp_div = new_work_exp_div.cloneNode(true);
+//
+//
+//
+//
+////            // This jquery doesn't work as I would like it to.
+////            $("#-1500").insertAfter("#-69");
+//
+//
+//        /* Display new_work_exp_div in my way by manipulating the DOM. */
+//        the_work_exp_main_div.insertBefore(template_work_exp_div, new_work_exp_div);
+//
+//
+//
+//        // Set the new_work_exp_div attributes.
+//        new_work_exp_div.id = json.id;
+//
+//        // Set the id of the edit button of this div.
+//        new_work_exp_div.childNodes[0].childNodes[0].id = "form_button_delete" + json.id;
+//        new_work_exp_div.childNodes[0].childNodes[1].id = "form_button_edit" + json.id;
+//
+//        // Set all the contents of the fields.
+//        reset_work_exp_div(new_work_exp_div, json);
+//
+//        // Set the event listener for this div's delete button.
+//        add_listeners_to_delete_button_bruh(new_work_exp_div.childNodes[0].childNodes[0]);
+//
+//        // Set the event listener for this div's edit button.
+//        add_listeners_to_edit_button_bruh(new_work_exp_div.childNodes[0].childNodes[1]);
+//
+//
+//        // Set the event listener of the div.
+//        add_event_listeners_to_work_exp_div_bruh(new_work_exp_div);
+//    }
 
     function update_work_experience(the_work_exp_div, form_edit_work_experience, updated_work_details_array) {
         //

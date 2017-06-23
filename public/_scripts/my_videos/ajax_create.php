@@ -63,11 +63,11 @@
                         // Display in the console.
                         console.log(key + " => " + val);
 
-                    // Display errors in the form.
-                    var error_label = document.getElementById(key);
-                    if (error_label != null) {
-                        error_label.innerHTML = val;
-                    }
+                        // Display errors in the form.
+                        var error_label = document.getElementById(key);
+                        if (error_label != null) {
+                            error_label.innerHTML = val;
+                        }
 
                     }
                 }
