@@ -1,0 +1,91 @@
+div.a_work_experience {
+
+    margin: 0;
+    /*margin-top: 30px;*/
+    padding: 20px;
+    /*padding-top: 30px;*/
+    padding-bottom: 20px;
+    border-radius: 5px;
+    /*background-color: rgb(247, 247, 247);*/
+    /*background-color: rgb(240, 252, 255);*/
+    /*display: none;*/
+
+
+    box-shadow: none;
+    margin-top: 20px;
+    padding-top: 0;
+    background-color: rgb(248, 248, 248);
+    display: none;        
+}
+
+div.a_work_experience table, 
+div.a_work_experience table td {
+    border-collapse: collapse;
+}
+
+div.a_work_experience table td {
+    padding-bottom: 10px;
+    /*background-color: green;*/
+}
+
+div.a_work_experience h5 {
+    font-size: 13px;
+    font-weight: 200;
+    margin-bottom: 20px;
+    color: black;
+    display: inline;
+}
+
+div.a_work_experience ul {
+    margin-left: 40px;
+    /*background-color: pink;*/
+    font-size: 12px;
+    font-weight: 100;
+}
+
+div.a_work_experience li {
+    width: 520px;
+    margin-top: 5px;
+    color: black;
+    /*background-color: yellow;*/
+}
+
+
+div.work_exp_action_div {
+    display: block;
+    /*background-color: orange;*/
+    margin-top: 0;
+    margin-bottom: 25px;
+    margin-left: -20px;
+    /*border-radius:*/
+    padding: 0;
+    padding-top: 0;
+    max-height: fit-content;
+    /*height: 30px;*/
+    /*display: block;*/
+}
+
+#work_experience_delete_button {
+    background-color: red;
+}
+
+#work_experience_edit_button {
+    position: relative;
+    margin: 0;
+    background-color: yellow;
+}
+
+input.form_button_actions {
+    display: inline;
+    margin: 0;
+    padding: 5px;
+    margin-right: 8px;
+    font-size: 8px;
+    font-weight: 100;
+    visibility: hidden;
+
+}
+
+td.td_right_aligned {
+    text-align: right;
+}

@@ -5,7 +5,6 @@
 
 
 <?php
-
 // TODO: SECTION: Protected page.
 if (!$session->is_logged_in()) {
     redirect_to(LOCAL . "/public/index.php");
@@ -17,7 +16,7 @@ if (!$session->is_logged_in()) {
 
 
 
-<div class='section'>
+<div id="work" class='section'>
     <table>
         <tbody>
             <tr>
@@ -41,9 +40,16 @@ if (!$session->is_logged_in()) {
 
 
     <?php display_form_work_experience(); ?>
-    <?php display_work_experience(); ?>
+    <div id="work_experiences_container"></div>
+    <?php // display_work_experience();  ?>
 
 </div>
+
+<?php
+if ($session->is_viewing_own_account()) {
+    require_once(PUBLIC_PATH . "/__view/profile/work/a_work_experience_div_template.php");
+}
+?>
 
 
 

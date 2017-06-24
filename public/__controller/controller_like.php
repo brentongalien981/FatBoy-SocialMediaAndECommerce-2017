@@ -447,7 +447,8 @@ if (isset($_POST["populate_likes"]) && $_POST["populate_likes"] == "yes") {
 
     if ($session->is_viewing_own_account()) {
         $result_array["is_viewing_own_account"] = true;
-    } else {
+    } 
+    else {
         $result_array["is_viewing_own_account"] = false;
     }
 

@@ -120,8 +120,11 @@
                     else if (json.is_result_ok) {
                         // Else if it's successful..
                         console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
-//
-//                        //
+
+                        <?php 
+                        // TODO:REMINDER: Maybe replace this with a 
+                        //      JS AJAX code like display_all_work_experiences().
+                        ?>
 //                        var the_work_exp_main_div = form_add_work_experience.parentElement;
 //                        add_work_exp_div(the_work_exp_main_div, json);
 //

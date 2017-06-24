@@ -233,7 +233,7 @@ function populate_likes_table() {
 
             //
             var json = JSON.parse(xhr.responseText.trim());
-            var like_objects_array = json.like_objects_array
+            var like_objects_array = json.like_objects_array;
             var num_of_likes = like_objects_array.length;
 
 

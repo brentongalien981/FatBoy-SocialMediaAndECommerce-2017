@@ -189,18 +189,12 @@ form select {
 
 
 
-form table, form td, div.a_work_experience table, div.a_work_experience table td {
+form table, form td {
     border-collapse: collapse;
 }
 
-div.a_work_experience table {
-    /*background-color: aqua;*/
-}
 
-div.a_work_experience table td {
-    padding-bottom: 10px;
-    /*background-color: green;*/
-}
+
 
 td#td_edit {
     padding: 0;
@@ -208,8 +202,7 @@ td#td_edit {
 }
 
 
-form.form_work_experience,
-div.a_work_experience {
+form.form_work_experience {
 
     margin: 0;
     margin-top: 30px;
@@ -230,13 +223,6 @@ form.form_edit_work_experience {
     display: block;
 }
 
-div.a_work_experience {
-    box-shadow: none;
-    margin-top: 20px;
-    padding-top: 0;
-    background-color: rgb(248, 248, 248);
-    display: block;
-}
 
 form h6 {
     font-size: 11px;
@@ -245,87 +231,27 @@ form h6 {
 }
 
 
-form.form_work_experience h5,
-div.a_work_experience h5 {
+form.form_work_experience h5 {
     font-size: 13px;
     font-weight: 200;
     margin-bottom: 20px;
     color: black;
 }
 
-div.a_work_experience h5 {
-    /*color: black;*/
-
-    /*margin-right: 50px;*/
-    /*background-color: bisque;*/
-    display: inline;
-}
-
-div.a_work_experience ul {
-    margin-left: 40px;
-    /*background-color: pink;*/
-    font-size: 12px;
-    font-weight: 100;
-}
-
-div.a_work_experience li {
-    width: 520px;
-    margin-top: 5px;
-    color: black;
-    /*background-color: yellow;*/
-}
 
 
 
-/*    input.form_button_edit,
-    input#form_button_edit {
-        margin: 0;
-        display: none;
-        margin-bottom: 20px;
-    }*/
 
-input.form_button_edit {
-    position: relative;
-    margin: 0;
-    /*left: -55px;*/
-    /*left: 0px;*/
-    /*top: 0px;*/
-    /*        visibility: hidden;*/
-    background-color: yellow;
-}
 
-input.form_button_actions {
-    display: inline;
-    margin: 0;
-    padding: 5px;
-    margin-right: 8px;
-    font-size: 8px;
-    font-weight: 100;
-    visibility: hidden;
 
-}
 
-input.form_button_delete {
-    background-color: red;
-}
 
-div.work_exp_action_div {
-    display: block;
-    /*background-color: orange;*/
-    margin-top: 0;
-    margin-bottom: 25px;
-    margin-left: -20px;
-    /*border-radius:*/
-    padding: 0;
-    padding-top: 0;
-    max-height: fit-content;
-    /*height: 30px;*/
-    /*display: block;*/
-}
 
-div.user_work_exp_action_div {
 
-}
+
+
+
+
 
 form.form_work_experience table {
     /*background-color: pink;*/
@@ -351,9 +277,7 @@ input.right_aligned {
     text-align: right;
 }
 
-td.td_right_aligned {
-    text-align: right;
-}
+
 
 
 
@@ -418,29 +342,6 @@ form.form_work_experience table td input.form_button {
 }
 
 
-
-/*    .form_button {
-        margin-bottom: 30px;
-        margin-top: 20px;
-        color: black;
-                background-color: rgb(200, 200, 200);
-        background-color: rgba(255, 157, 45, 0.20);
-        box-shadow: 3px 3px 3px rgb(130, 130, 130);
-        border: 1px solid;
-        font-size: 10px;
-        font-weight: 100;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        border-radius: 3px;
-        margin-right: 10px;
-    }*/
-
-/*    .form_button:hover {
-        background-color: rgba(255, 157, 45, 0.50);
-        cursor: pointer; cursor: hand;
-    }*/
 
 .like_name {
     font-size: 13px;
