@@ -1,63 +1,6 @@
-<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_profile.php");   ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_address.php");   ?>
-<?php require_once(PUBLIC_PATH . "/__model/model_work_experience.php");   ?>
-
-
-
-
-
-
 <?php
-
-// TODO: SECTION: Protected page.
-if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
-    redirect_to(LOCAL . "/public/index.php");
-}
-?>
-
-
-
-
-
-<?php
-
-if (isset($_POST["xxx"])) {
-//    sleep(1);
-//
-//    if (!are_required_fields_filled()) {
-//        // 0 means it's not all filled.
-//        echo "0";
-//        return;
-//    }
-
-
-
-
-    // This array will contain all the details
-    // of the work experience including the descriptions.
-    $work_details_array = array();
-
-    // Because PHP is weird and doesn't accept a reference param, but just copies it, set the var again..
-    $work_details_array = add_work_experience_record($work_details_array);
-
-    if ($work_details_array != 0) {
-        echo json_encode($work_details_array);
-    } else {
-        echo "0";
-    }
-
-    //
-}
-?>
-
-
-
-
-
-<?php
-
+// TODO:REMINDER: Maybe put this in .../__controller/profile/work/index.php so that
+//                all CRUD.php have access to the CLASS: Validator.
 use App\Privado\HelperClasses\Validation\Validator;
 
 
@@ -67,7 +10,7 @@ use App\Privado\HelperClasses\Validation\Validator;
 
 // TODO:SECTION: AJAX Event-handler.
 if (is_request_post() && isset($_POST["add_work_experience"]) && $_POST["add_work_experience"] == "yes") {
-    sleep(2);
+//    sleep(1);
     //
     $allowed_assoc_indexes_for_post = array("company_name", "place", "position", "time_frame", "work_experience_description1", "work_experience_description2", "work_experience_description3");
 

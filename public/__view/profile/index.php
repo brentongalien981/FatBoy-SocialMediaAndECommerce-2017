@@ -6,6 +6,8 @@
 
 
 <?php
+// TODO:NOTE: This chunk of code should only be present
+//            on FILES: index.phps of every MENU such as this, "Profile".
 if (!MyDebugMessenger::is_initialized()) {
     MyDebugMessenger::initialize();
 }
@@ -27,11 +29,10 @@ if (!$session->is_logged_in()) {
 
 <link href="<?php echo LOCAL . "/public/_styles/profile/main.css"; ?>" rel="stylesheet" type="text/css">
 
+<?php // TODO:REMINDER: Put this to a separate file like ?>
+<?php // T              __view/profile/sub_menus.php. ?>
 <main id="middle_content">
 
-
-
-    <!--Sub-menus-->
     <nav id="sub_menus_nav">
         <a href="" id="sub_nav_chat_with">Sub-menu A</a>
     </nav>
@@ -40,11 +41,9 @@ if (!$session->is_logged_in()) {
 
 
 
-    <!--Main content.-->
+
     <?php
     show_user_profile_summary();
-
-//    show_work_experience();
     ?>
     <?php require_once(PUBLIC_PATH . "/__view/profile/work/index.php"); ?>
 

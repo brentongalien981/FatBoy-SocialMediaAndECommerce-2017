@@ -41,5 +41,5 @@
 <script>
     var new_work_experience_div_template = document.getElementById("a_work_experience_div_template");
 //    new_work_experience_div_template.childNodes[1].childNodes[0].childNodes[0].childNodes[0].childNodes[0].id = "title_company_name";
-    console.log("new_work_experience_div_template.childNodes[3].childNodes[1].childNodes[3].childNodes[0].innerHTML: " + new_work_experience_div_template.childNodes[3].childNodes[1].childNodes[1].childNodes[3].childNodes[1].id);
+    console.log("new_work_experience_div_template.childNodes[3].childNodes[1].childNodes[3].childNodes[0].innerHTML: " + new_work_experience_div_template.childNodes[1].childNodes[3].value);
 </script>

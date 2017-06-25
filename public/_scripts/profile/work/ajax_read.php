@@ -45,6 +45,9 @@ if (!$session->is_logged_in()) {
 //    function hide_test_work_exp_div() {
 //        document.getElementById("-69").style.display = "none";
 //    }
+//    function sample_function() {
+//        console.log("FUNCTION: sample_function() from FILE: ajax_read.php.");
+//    }
 
     function show_form_add_work_experience() {
 
@@ -56,7 +59,7 @@ if (!$session->is_logged_in()) {
 
         var xhr = new XMLHttpRequest();
 
-        var url = "<?php echo LOCAL . '/public/__controller/profile/work/read.php'; ?>";
+        var url = "<?php echo LOCAL . '/public/__controller/profile/work/index.php'; ?>";
         xhr.open('POST', url, true);
         // You need this for AJAX POST requests.
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -113,13 +116,18 @@ if (!$session->is_logged_in()) {
             }
         }
 
-        xhr.send(get_post_key_value_pairs());
+        xhr.send(get_post_key_value_pairs_for_read());
     }
 
     function show_work_experiences(json) {
         console.log("*** Inside METHOD:show_work_experiences(). ***");
         var work_experiences_array = json.work_experiences_array;
         var num_of_work_experiences = work_experiences_array.length;
+
+
+        // Before populating the work_experiences_container with the 
+        // work_experience_divs, clear first it's previous innerHTML.
+        document.getElementById("work_experiences_container").innerHTML = "";
 
 
         for (var i = 0; i < num_of_work_experiences; i++) {
@@ -132,6 +140,8 @@ if (!$session->is_logged_in()) {
             // the id of that template itself for the manipulation of the DOM.
             var current_work_experience_id = work_experiences_array[i]['id'];
             a_work_experience_div.id = "a_work_experience_div" + current_work_experience_id;
+            document.getElementById("work_experience_delete_button").id = document.getElementById("work_experience_delete_button").id + current_work_experience_id;
+            document.getElementById("work_experience_edit_button").id = document.getElementById("work_experience_edit_button").id + current_work_experience_id;
             document.getElementById("title_company_name").id = document.getElementById("title_company_name").id + current_work_experience_id;
             document.getElementById("title_place").id = document.getElementById("title_place").id + current_work_experience_id;
             document.getElementById("title_position").id = document.getElementById("title_position").id + current_work_experience_id;
@@ -152,6 +162,13 @@ if (!$session->is_logged_in()) {
             // Append that template to the work_experience_container.
             document.getElementById("work_experiences_container").appendChild(a_work_experience_div);
             a_work_experience_div.style.display = "block";
+            
+            
+            // Add event listener to the a_work_experience_div.
+            add_event_listener_to_work_exp_div(a_work_experience_div);
+            <?php // TODO:SECTION: DEBUG ?>
+            sample_function();
+            
 
 
             // Now that that template is appended, it is now an acutal
@@ -167,6 +184,8 @@ if (!$session->is_logged_in()) {
             // those to ids that are general, just like how I had the ids named
             // before referencing and populating that original "work_experience_div_template".
             new_work_experience_div_template.id = "a_work_experience_div_template";
+            new_work_experience_div_template.childNodes[1].childNodes[1].id = "work_experience_delete_button";
+            new_work_experience_div_template.childNodes[1].childNodes[3].id = "work_experience_edit_button";
             new_work_experience_div_template.childNodes[3].childNodes[1].childNodes[1].childNodes[1].childNodes[1].id = "title_company_name";
             new_work_experience_div_template.childNodes[3].childNodes[1].childNodes[1].childNodes[3].childNodes[1].id = "title_place";
             new_work_experience_div_template.childNodes[3].childNodes[1].childNodes[3].childNodes[1].childNodes[1].id = "title_position";
@@ -178,6 +197,42 @@ if (!$session->is_logged_in()) {
             // middle content element.
             document.getElementById("middle_content").appendChild(new_work_experience_div_template);
         }
+    }
+
+    function add_event_listener_to_work_exp_div(a_work_exp_div) {
+
+        // Event mouseover.
+        a_work_exp_div.addEventListener("mouseover", function (event) {
+            // Id of the edit button of that div.
+            // this.id.substring(20) for div "a_work_experience_div34" will be 34.
+            var edit_button_id = "work_experience_delete_button" + this.id.substring(21);
+            var delete_button_id = "work_experience_edit_button" + this.id.substring(21);
+            console.log("edit_button_id: " + edit_button_id);
+
+            if (document.getElementById(edit_button_id) == null ||
+                document.getElementById(edit_button_id) == null) {
+                return;
+            }
+
+            document.getElementById(edit_button_id).style.visibility = "visible";
+            document.getElementById(delete_button_id).style.visibility = "visible";
+        });
+
+        // Event mouseout.
+        a_work_exp_div.addEventListener("mouseout", function (event) {
+            // Id of the edit button of that div.
+            var edit_button_id = "work_experience_delete_button" + this.id.substring(21);
+            var delete_button_id = "work_experience_edit_button" + this.id.substring(21);
+//                    console.log("edit_button_id: " + edit_button_id);
+
+            if (document.getElementById(edit_button_id) == null ||
+                document.getElementById(edit_button_id) == null) {
+                return;
+            }
+
+            document.getElementById(edit_button_id).style.visibility = "hidden";
+            document.getElementById(delete_button_id).style.visibility = "hidden";
+        });
     }
 
     function populate_work_descriptions(current_work_experience_id, work_descriptions) {
@@ -195,7 +250,7 @@ if (!$session->is_logged_in()) {
         }
     }
 
-    function get_post_key_value_pairs() {
+    function get_post_key_value_pairs_for_read() {
         //
         var post_key_value_pairs = "read_work_experiences=yes";
 

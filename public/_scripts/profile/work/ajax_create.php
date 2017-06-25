@@ -46,7 +46,8 @@
         loading_img_element.innerHTML = "<div style='text-align: center;'><img src='<?php echo LOCAL . '/public/_photos/loading1.gif'; ?>' width='150' height='110' style='margin-top: 50px;'></div>";
 
         // Hide the form table.
-        a_form.childNodes[0].style.display = "none";
+//        console.log("a_form.childNodes[1].style.display: " + a_form.childNodes[1].style.display);
+        a_form.childNodes[1].style.display = "none";
 
         // Append the loading div element to the form.
         a_form.appendChild(loading_img_element);
@@ -60,13 +61,48 @@
 
     }
 
+    function get_post_key_value_pairs_for_create() {
+        console.log("Inside METHOD: get_post_key_value_pairs().");
+        // Create a dynamic hidden csrf_token input.
+        var input_csrf_token = get_csrf_input();
+
+        // Dynamically append a hidden csrf input to the form "create_post_form".
+        document.getElementById("middle_content").appendChild(input_csrf_token);
+
+        //
+        var company_name = document.getElementById("company_name").value;
+        var place = document.getElementById("place").value;
+        var position = document.getElementById("position").value;
+        var time_frame = document.getElementById("time_frame").value;
+        var work_experience_description1 = document.getElementById("work_experience_description1").value;
+        var work_experience_description2 = document.getElementById("work_experience_description2").value;
+        var work_experience_description3 = document.getElementById("work_experience_description3").value;
+
+        //
+        var post_key_value_pairs = "add_work_experience=yes";
+        post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
+        post_key_value_pairs += "&company_name=" + company_name;
+        post_key_value_pairs += "&place=" + place;
+        post_key_value_pairs += "&position=" + position;
+        post_key_value_pairs += "&time_frame=" + time_frame;
+        post_key_value_pairs += "&work_experience_description1=" + work_experience_description1;
+        post_key_value_pairs += "&work_experience_description2=" + work_experience_description2;
+        post_key_value_pairs += "&work_experience_description3=" + work_experience_description3;
+
+        // Right away, remove the hidden csrf input from the form.
+        document.getElementById("middle_content").removeChild(input_csrf_token);
+
+
+        return post_key_value_pairs;
+    }
+
     function add_work_experience() {
         console.log("*** Inside METHOD:add_work_experience(). ***");
         var loading_image = show_loading_image(form_add_work_experience);
 
         var xhr = new XMLHttpRequest();
 
-        var url = "<?php echo LOCAL . '/public/__controller/profile/work/create.php'; ?>";
+        var url = "<?php echo LOCAL . '/public/__controller/profile/work/index.php'; ?>";
         xhr.open('POST', url, true);
         // You need this for AJAX POST requests.
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -105,39 +141,42 @@
                         console.log("RESULT:json.is_result_ok: null/false");
 
                         // Re-show the form table.
-                        form_add_work_experience.childNodes[0].style.display = "block";
+                        form_add_work_experience.childNodes[1].style.display = "block";
 
                         // Change back the color of the form.
                         form_add_work_experience.style.backgroundColor = "rgb(240, 252, 255)";
 
 
                         // Show the error mesg.
-                        var form_header = form_add_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
+                        var form_header = form_add_work_experience.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[1];
                         form_header.style.color = "red";
                         form_header.style.fontWeight = "500";
                         form_header.innerHTML = "* Required Fields are missing *";
-                    }
-                    else if (json.is_result_ok) {
+                    } else if (json.is_result_ok) {
                         // Else if it's successful..
                         console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
+                        
+                        
+                        // Call from file "ajax_read.php".
+                        read_work_experiences();
 
-                        <?php 
-                        // TODO:REMINDER: Maybe replace this with a 
-                        //      JS AJAX code like display_all_work_experiences().
-                        ?>
+<?php
+// TODO:REMINDER: Maybe replace this with a 
+//      JS AJAX code like display_all_work_experiences().
+?>
 //                        var the_work_exp_main_div = form_add_work_experience.parentElement;
 //                        add_work_exp_div(the_work_exp_main_div, json);
 //
 //
                         // Re-show the form table of inputs.
-                        form_add_work_experience.childNodes[0].style.display = "block";
+                        form_add_work_experience.childNodes[1].style.display = "block";
 
                         // Change back the color of the form.
                         form_add_work_experience.style.backgroundColor = "rgb(240, 252, 255)";
 //
 //
                         // Re-set the header value of the add work experience form to default.
-                        var form_header = form_add_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0];
+                        var form_header = form_add_work_experience.childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[1];
                         form_header.style.color = "black";
                         form_header.style.fontWeight = "100";
                         form_header.innerHTML = "Additional Work Experience.";
@@ -174,7 +213,7 @@
             }
         }
 
-        xhr.send(get_post_key_value_pairs());
+        xhr.send(get_post_key_value_pairs_for_create());
     }
 
     function add_work_exp_div(the_work_exp_main_div, json) {
@@ -207,16 +246,16 @@
         // Set all the contents of the fields.
         reset_work_exp_div(new_work_exp_div, json);
 
-<?php // TODO:REMINDER:Uncomment these.        ?>
+<?php // TODO:REMINDER:Uncomment these.         ?>
 //        // Set the event listener for this div's delete button.
 //        add_listeners_to_delete_button_bruh(new_work_exp_div.childNodes[0].childNodes[0]);
 
-<?php // TODO:REMINDER:Uncomment these.        ?>
+<?php // TODO:REMINDER:Uncomment these.         ?>
 //        // Set the event listener for this div's edit button.
 //        add_listeners_to_edit_button_bruh(new_work_exp_div.childNodes[0].childNodes[1]);
 
 
-<?php // TODO:REMINDER:Uncomment these.        ?>
+<?php // TODO:REMINDER:Uncomment these.         ?>
 //        // Set the event listener of the div.
 //        add_event_listeners_to_work_exp_div_bruh(new_work_exp_div);
     }
@@ -345,39 +384,5 @@
 
         //
         the_work_exp_div.style.display = "block";
-    }
-
-    function get_post_key_value_pairs() {
-        // Create a dynamic hidden csrf_token input.
-        var input_csrf_token = get_csrf_input();
-
-        // Dynamically append a hidden csrf input to the form "create_post_form".
-        document.getElementById("middle_content").appendChild(input_csrf_token);
-
-        //
-        var company_name = document.getElementById("company_name").value;
-        var place = document.getElementById("place").value;
-        var position = document.getElementById("position").value;
-        var time_frame = document.getElementById("time_frame").value;
-        var work_experience_description1 = document.getElementById("work_experience_description1").value;
-        var work_experience_description2 = document.getElementById("work_experience_description2").value;
-        var work_experience_description3 = document.getElementById("work_experience_description3").value;
-
-        //
-        var post_key_value_pairs = "add_work_experience=yes";
-        post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
-        post_key_value_pairs += "&company_name=" + company_name;
-        post_key_value_pairs += "&place=" + place;
-        post_key_value_pairs += "&position=" + position;
-        post_key_value_pairs += "&time_frame=" + time_frame;
-        post_key_value_pairs += "&work_experience_description1=" + work_experience_description1;
-        post_key_value_pairs += "&work_experience_description2=" + work_experience_description2;
-        post_key_value_pairs += "&work_experience_description3=" + work_experience_description3;
-
-        // Right away, remove the hidden csrf input from the form.
-        document.getElementById("middle_content").removeChild(input_csrf_token);
-
-
-        return post_key_value_pairs;
     }
 </script>

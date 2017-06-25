@@ -65,11 +65,11 @@ div.work_exp_action_div {
     /*display: block;*/
 }
 
-#work_experience_delete_button {
+.work_experience_delete_button {
     background-color: red;
 }
 
-#work_experience_edit_button {
+.work_experience_edit_button {
     position: relative;
     margin: 0;
     background-color: yellow;
