@@ -1,10 +1,9 @@
-<form id='form_add_work_experience' class='form_work_experience'>
+<form id='form_work_experience_template' class='form_work_experience'>
     <table>
 
         <tr>
             <td>
-                <h5>Additional Work Experience</h5>
-            <!--//    <input id='form_button_edit' type='button' class='form_button' name='' value='edit'>-->
+                <h5 id="work_form_title">Additional Work Experience</h5>
             </td>
         </tr>
 

@@ -19,9 +19,7 @@
         </tbody>
     </table>
     <hr>
-
-
-    <?php require_once(PUBLIC_PATH . "/__view/profile/work/work_experience_form.php"); ?>
+    
 
     <?php // TODO:SECTION: Placeholder ?>
     <div id="work_experiences_container"></div>
@@ -31,5 +29,5 @@
 
 
 
-
+<?php require_once(PUBLIC_PATH . "/__view/profile/work/work_experience_form.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__view/profile/work/a_work_experience_div_template.php"); ?>

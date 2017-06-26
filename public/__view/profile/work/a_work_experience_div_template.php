@@ -2,8 +2,8 @@
 
 
     <div class='work_exp_action_div user_work_exp_action_div'>
-        <input id='work_experience_delete_button' type='button' class='form_button form_button_actions work_experience_delete_button' value='delete'>
-        <input id='work_experience_edit_button' type='button' class='form_button form_button_actions work_experience_edit_button' value='edit'>
+        <input id='work_experience_delete_button' type='button' class='form_button form_button_actions work_experience_delete_buttons' value='delete'>
+        <input id='work_experience_edit_button' type='button' class='form_button form_button_actions work_experience_edit_buttons' value='edit'>
     </div>
 
 

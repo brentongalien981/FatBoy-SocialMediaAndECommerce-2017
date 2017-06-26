@@ -1,35 +1,12 @@
 <script>
-    // Vars.
-    var button_add_work_experience = document.getElementById("button_add_work_experience");
-    var button_cancel_add_work_experience = document.getElementById("button_cancel_add_work_experience");
-    var button_ok_add_work_experience = document.getElementById("button_ok_add_work_experience");
-    var form_add_work_experience = document.getElementById("form_add_work_experience");
+    // Vars
+    var form_add_work_experience = null;
 
 
 
 
 
     // Tasks.
-
-
-
-
-
-    // Event listeners.
-    // Cancel add work experience.
-    button_cancel_add_work_experience.addEventListener("click", function () {
-        form_add_work_experience.style.display = "none";
-        button_add_work_experience.style.display = "inline";
-    });
-
-    // Ok add work experience.
-    button_ok_add_work_experience.addEventListener("click", function () {
-        //
-        add_work_experience();
-    });
-
-
-
 
 
 
@@ -98,7 +75,7 @@
 
     function add_work_experience() {
         console.log("*** Inside METHOD:add_work_experience(). ***");
-        var loading_image = show_loading_image(form_add_work_experience);
+//        var loading_image = show_loading_image(form_add_work_experience);
 
         var xhr = new XMLHttpRequest();
 
@@ -152,7 +129,8 @@
                         form_header.style.color = "red";
                         form_header.style.fontWeight = "500";
                         form_header.innerHTML = "* Required Fields are missing *";
-                    } else if (json.is_result_ok) {
+                    } 
+                    else if (json.is_result_ok) {
                         // Else if it's successful..
                         console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
                         
@@ -209,7 +187,7 @@
                 }
 
                 //
-                form_add_work_experience.removeChild(loading_image);
+//                form_add_work_experience.removeChild(loading_image);
             }
         }
 

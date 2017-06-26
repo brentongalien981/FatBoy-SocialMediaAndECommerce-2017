@@ -606,34 +606,34 @@ function delete_a_work_experience_record($work_experience_id) {
 //    return $is_creation_ok;
 //}
 
-function update_work_experience_record($work_details_array) {
-    //
-    $query = "UPDATE WorkExperience SET ";
-    $query .= "company_name = '{$_POST['company_name']}', ";
-    $query .= "position = '{$_POST['position']}', ";
-    $query .= "place = '{$_POST['place']}', ";
-    $query .= "time_frame = '{$_POST['time_frame']}' ";
-    $query .= "WHERE id = {$_POST['work_experience_id']}";
-
-    $is_update_ok = WorkExperience::update_by_query($query);
-
-    if ($is_update_ok) {
-//        echo "SUCCESS update.";
-    } else {
-//        echo "No changes made.\n";
-//        echo "QUERY: {$query}\n";
-    }
-
-
-    //
-    $work_details_array['company_name'] = $_POST['company_name'];
-
-    $work_details_array['position'] = $_POST['position'];
-    $work_details_array['place'] = $_POST['place'];
-    $work_details_array['time_frame'] = $_POST['time_frame'];
-
-    return $work_details_array;
-}
+//function update_work_experience_record($work_details_array) {
+//    //
+//    $query = "UPDATE WorkExperience SET ";
+//    $query .= "company_name = '{$_POST['company_name']}', ";
+//    $query .= "position = '{$_POST['position']}', ";
+//    $query .= "place = '{$_POST['place']}', ";
+//    $query .= "time_frame = '{$_POST['time_frame']}' ";
+//    $query .= "WHERE id = {$_POST['work_experience_id']}";
+//
+//    $is_update_ok = WorkExperience::update_by_query($query);
+//
+//    if ($is_update_ok) {
+////        echo "SUCCESS update.";
+//    } else {
+////        echo "No changes made.\n";
+////        echo "QUERY: {$query}\n";
+//    }
+//
+//
+//    //
+//    $work_details_array['company_name'] = $_POST['company_name'];
+//
+//    $work_details_array['position'] = $_POST['position'];
+//    $work_details_array['place'] = $_POST['place'];
+//    $work_details_array['time_frame'] = $_POST['time_frame'];
+//
+//    return $work_details_array;
+//}
 
 //function add_work_experience_record($work_details_array) {
 //    global $session;
@@ -707,34 +707,34 @@ function update_work_experience_record($work_details_array) {
 <?php
 
 // TODO: SECTION: Meat.
-if (isset($_POST["add_work_experience"])) {
-    sleep(1);
-    if (!are_required_fields_filled()) {
-        // 0 means it's not all filled.
-        echo "0";
-        return;
-    }
+//if (isset($_POST["add_work_experience"])) {
+//    sleep(1);
+//    if (!are_required_fields_filled()) {
+//        // 0 means it's not all filled.
+//        echo "0";
+//        return;
+//    }
+//
+//
+//
+//
+//    // This array will contain all the details
+//    // of the work experience including the descriptions.
+//    $work_details_array = array();
+//
+//    // Because PHP is weird and doesn't accept a reference param, but just copies it, set the var again..
+//    $work_details_array = add_work_experience_record($work_details_array);
+//
+//    if ($work_details_array != 0) {
+//        echo json_encode($work_details_array);
+//    } else {
+//        echo "0";
+//    }
+//
+//    //
+//}
 
-
-
-
-    // This array will contain all the details
-    // of the work experience including the descriptions.
-    $work_details_array = array();
-
-    // Because PHP is weird and doesn't accept a reference param, but just copies it, set the var again..
-    $work_details_array = add_work_experience_record($work_details_array);
-
-    if ($work_details_array != 0) {
-        echo json_encode($work_details_array);
-    } else {
-        echo "0";
-    }
-
-    //
-}
-
-if (isset($_POST["update_work_experience"])) {
+if (isset($_POST["FUCK_update_work_experience"])) {
     sleep(1);
 
     if (!are_required_fields_filled()) {

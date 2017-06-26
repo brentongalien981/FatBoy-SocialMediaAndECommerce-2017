@@ -1,10 +1,5 @@
 <?php
-// TODO:REMINDER: Maybe put this in .../__controller/profile/work/index.php so that
-//                all CRUD.php have access to the CLASS: Validator.
 use App\Privado\HelperClasses\Validation\Validator;
-
-
-
 
 
 
@@ -43,7 +38,7 @@ if (is_request_post() && isset($_POST["add_work_experience"]) && $_POST["add_wor
 <?php
 
 function get_validator_obj(&$allowed_assoc_indexes_for_post) {
-    //
+    // TODO:REMINDER: Set the mins to 1.
     $required_post_vars_length_array = array("company_name" => ["min" => 2, "max" => 200],
                                             "place" => ["min" => 2, "max" => 100], 
                                             "position" => ["min" => 2, "max" => 100], 
