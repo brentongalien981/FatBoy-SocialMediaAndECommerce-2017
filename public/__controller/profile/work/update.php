@@ -2,17 +2,6 @@
 
 // TODO:SECTION: AJAX Event-handler.
 if (is_request_post() && isset($_POST["update_work_experience"]) && $_POST["update_work_experience"] == "yes") {
-
-//    $shit = array("is_result_ok" => false);
-//    $shit["work_experience_description1"] = $_POST["work_experience_description1"];
-//    $shit["work_experience_description2"] = $_POST["work_experience_description2"];
-//    $shit["work_experience_description3"] = $_POST["work_experience_description3"];
-//    //
-//    echo json_encode($shit);
-//    return;
-
-
-//    echo json_encode(array("is_result_ok" => false));
     //
     $allowed_assoc_indexes_for_post = array("company_name", "place", "position", "time_frame", "work_experience_description1", "work_experience_description2", "work_experience_description3");
 
@@ -29,7 +18,16 @@ if (is_request_post() && isset($_POST["update_work_experience"]) && $_POST["upda
     if ($is_validation_ok) {
         //
         if (update_work_experience_record()) {
-            update_work_experience_description_record();
+            $json_errors_array["update_record"] = "ok";
+        } else {
+            $json_errors_array["update_record"] = "no change or error";
+        }
+
+
+        if (update_work_experience_description_record($json_errors_array)) {
+            $json_errors_array["update_descriptions"] = "ok";
+        } else {
+            $json_errors_array["update_descriptions"] = "no change or error";
         }
 
         // Everything is ok.
@@ -64,7 +62,7 @@ function update_work_experience_record() {
     return $is_update_ok;
 }
 
-function update_work_experience_description_record() {
+function update_work_experience_description_record(&$json_errors_array) {
     // Max # of Work Task Descriptions per Work(id)...
     $max = 3;
 
@@ -134,16 +132,16 @@ function update_work_experience_description_record() {
 
             // If update is ok..
             if (update_a_work_experience_description_record($work_experience_description_ids_array[$properly_adjusted_index - 1], $the_description)) {
-//                echo "SUCCESS update_a_work_experience_description_record for: {$the_description}";
+                $json_errors_array["update_a_description"] = "ok";
             } else {
-//                echo "No change on update_a_work_experience_description_record for: {$the_description}";
+                $json_errors_array["update_a_description"] = "no change or error";
             }
         } else {
             // Meaning, there's a new task description added.
             if (add_a_work_experience_description_record($_POST['work_experience_id'], $the_description)) {
-//                echo "SUCCESS UPDATE Adding a_work_experience_description_record: {$the_description}";
+                $json_errors_array["add_a_description"] = "ok";
             } else {
-//                echo "FAIL UPDATE Adding a_work_experience_description_record: {$the_description}";
+                $json_errors_array["add_a_description"] = "shit";
                 // There's an error adding so..
                 return false;
             }
