@@ -3,10 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/profile/work/delete.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/view_profile.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/profile_address.js</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/profile/work/ajax_update.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/profile/work/ajax_delete.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/controller_profile.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/profile/work/ajax_read.php</file>
         </group>
     </open-files>
 </project-private>

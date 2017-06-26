@@ -383,137 +383,137 @@ function get_profile_pic_src($user_id = -69) {
     }
 }
 
-function update_work_experience_description_record($work_details_array) {
-    // Max # of Work Task Descriptions per Work(id)...
-    $max = 3;
+//function update_work_experience_description_record($work_details_array) {
+//    // Max # of Work Task Descriptions per Work(id)...
+//    $max = 3;
+//
+//    // Query to get all the ids of the existing descriptions
+//    // for that one particular work_experience_id.
+//    $query = "SELECT * FROM WorkTaskDescription ";
+//    $query .= "WHERE work_experience_id = {$_POST['work_experience_id']} ";
+//    $query .= "ORDER BY id ASC";
+//
+////    echo "QUERY: {$query}";
+//
+//    $record_results = WorkExperience::read_by_query($query);
+//
+//    // This array contains the ids of the work descriptions
+//    // before the edit/update.
+//    $work_experience_descriptions_array = array();
+//
+//    $j = 0;
+//    global $database;
+//    while ($row = $database->fetch_array($record_results)) {
+//        $work_experience_descriptions_array[$j] = $row['id'];
+//        ++$j;
+//    }
+//
+//
+//
+//    // This var will be used as an index for the work_description json.
+//    // Like this: let's say this is the form submitted for update..
+//    //      ...
+//    //      work_description1: klsjfad lksadjf lksajdf
+//    //      work_description2: 
+//    //      work_description3: klsjfad lksadjf lksajdf
+//    // Now, the code I have here for the db update will be fine.
+//    // But the returned json will also display these in the form. And I don't 
+//    // want that. What I want after the re-population of the work_experience_div is this...
+//    //      ...
+//    //      work_description1: klsjfad lksadjf lksajdf
+//    //      work_description2: klsjfad lksadjf lksajdf   
+//    // The work_description3 is moved up to the empty 2nd <li>...
+//    // Thus I'll use this var $x.
+//    $i = 1;
+//    $x = 0;
+//
+//
+//    for (; $i <= $max; $i++) {
+//
+//        //
+//        $description_index = "work_experience_description{$i}";
+////        echo "DEBUG: \$description_index = {$description_index}\n";
+//        //
+//        $the_description = $_POST[$description_index];
+//
+//        // For JSON.
+//        // The description for what I'm doing here is above...
+//        $json_index = $i - $x;
+//        $json_description_index = "work_experience_description{$json_index}";
+//
+//        if (is_null($_POST[$description_index]) ||
+//                empty($_POST[$description_index]) ||
+//                $_POST[$description_index] == "") {
+//
+//            ++$x;
+//            continue;
+//        }
+//
+//
+//        // For JSON.
+//        $work_details_array[$json_description_index] = $the_description;
+//
+//
+//        // If there's still a previously existing work experience description,
+//        // use the id of that for the update query.
+////        if (isset($work_experience_descriptions_array[$i - 1])) {
+//        if (isset($work_experience_descriptions_array[$json_index - 1])) {
+//
+//            // If update is ok..
+//            if (update_a_work_experience_description_record($work_experience_descriptions_array[$json_index - 1], $the_description)) {
+////                echo "SUCCESS update_a_work_experience_description_record for: {$the_description}";
+//            } else {
+////                echo "No change on update_a_work_experience_description_record for: {$the_description}";
+//            }
+//        } else {
+//            // Meaning, there's a new task description added.
+//            if (add_a_work_experience_description_record($_POST['work_experience_id'], $the_description)) {
+////                echo "SUCCESS UPDATE Adding a_work_experience_description_record: {$the_description}";
+//            } else {
+////                echo "FAIL UPDATE Adding a_work_experience_description_record: {$the_description}";
+//            }
+//        }
+//    }
+//
+//
+//    /* Delete the excess records in the db table WorkTaskDescription. */
+//    // This is the indexes of the ids of the records to be deleted.
+//    $z = ($i - 1) - $x;
+//    // This is the # of records to be deleted.
+//    $y = $x;
+//    for (; $y > 0; $z++, $y--) {
+//        // If there's no more previously existing records
+//        // before the update, then break off the loop.
+//        if (!isset($work_experience_descriptions_array[$z])) {
+//            break;
+//        }
+//
+//        //
+//        $query = "DELETE FROM WorkTaskDescription ";
+//        $query .= "WHERE id = {$work_experience_descriptions_array[$z]}";
+//
+//        //
+////        echo "QUERY: {$query}\n";
+//        //
+//        $is_deletion_ok = WorkExperience::delete_by_query($query);
+//    }
+//
+//
+//    // Everything is ok.
+//    // This is JSON.
+//    return $work_details_array;
+////    echo "1";
+//}
 
-    // Query to get all the ids of the existing descriptions
-    // for that one particular work_experience_id.
-    $query = "SELECT * FROM WorkTaskDescription ";
-    $query .= "WHERE work_experience_id = {$_POST['work_experience_id']} ";
-    $query .= "ORDER BY id ASC";
-
-//    echo "QUERY: {$query}";
-
-    $record_results = WorkExperience::read_by_query($query);
-
-    // This array contains the ids of the work descriptions
-    // before the edit/update.
-    $work_experience_descriptions_array = array();
-
-    $j = 0;
-    global $database;
-    while ($row = $database->fetch_array($record_results)) {
-        $work_experience_descriptions_array[$j] = $row['id'];
-        ++$j;
-    }
-
-
-
-    // This var will be used as an index for the work_description json.
-    // Like this: let's say this is the form submitted for update..
-    //      ...
-    //      work_description1: klsjfad lksadjf lksajdf
-    //      work_description2: 
-    //      work_description3: klsjfad lksadjf lksajdf
-    // Now, the code I have here for the db update will be fine.
-    // But the returned json will also display these in the form. And I don't 
-    // want that. What I want after the re-population of the work_experience_div is this...
-    //      ...
-    //      work_description1: klsjfad lksadjf lksajdf
-    //      work_description2: klsjfad lksadjf lksajdf   
-    // The work_description3 is moved up to the empty 2nd <li>...
-    // Thus I'll use this var $x.
-    $i = 1;
-    $x = 0;
-
-
-    for (; $i <= $max; $i++) {
-
-        //
-        $description_index = "work_experience_description{$i}";
-//        echo "DEBUG: \$description_index = {$description_index}\n";
-        //
-        $the_description = $_POST[$description_index];
-
-        // For JSON.
-        // The description for what I'm doing here is above...
-        $json_index = $i - $x;
-        $json_description_index = "work_experience_description{$json_index}";
-
-        if (is_null($_POST[$description_index]) ||
-                empty($_POST[$description_index]) ||
-                $_POST[$description_index] == "") {
-
-            ++$x;
-            continue;
-        }
-
-
-        // For JSON.
-        $work_details_array[$json_description_index] = $the_description;
-
-
-        // If there's still a previously existing work experience description,
-        // use the id of that for the update query.
-//        if (isset($work_experience_descriptions_array[$i - 1])) {
-        if (isset($work_experience_descriptions_array[$json_index - 1])) {
-
-            // If update is ok..
-            if (update_a_work_experience_description_record($work_experience_descriptions_array[$json_index - 1], $the_description)) {
-//                echo "SUCCESS update_a_work_experience_description_record for: {$the_description}";
-            } else {
-//                echo "No change on update_a_work_experience_description_record for: {$the_description}";
-            }
-        } else {
-            // Meaning, there's a new task description added.
-            if (add_a_work_experience_description_record($_POST['work_experience_id'], $the_description)) {
-//                echo "SUCCESS UPDATE Adding a_work_experience_description_record: {$the_description}";
-            } else {
-//                echo "FAIL UPDATE Adding a_work_experience_description_record: {$the_description}";
-            }
-        }
-    }
-
-
-    /* Delete the excess records in the db table WorkTaskDescription. */
-    // This is the indexes of the ids of the records to be deleted.
-    $z = ($i - 1) - $x;
-    // This is the # of records to be deleted.
-    $y = $x;
-    for (; $y > 0; $z++, $y--) {
-        // If there's no more previously existing records
-        // before the update, then break off the loop.
-        if (!isset($work_experience_descriptions_array[$z])) {
-            break;
-        }
-
-        //
-        $query = "DELETE FROM WorkTaskDescription ";
-        $query .= "WHERE id = {$work_experience_descriptions_array[$z]}";
-
-        //
-//        echo "QUERY: {$query}\n";
-        //
-        $is_deletion_ok = WorkExperience::delete_by_query($query);
-    }
-
-
-    // Everything is ok.
-    // This is JSON.
-    return $work_details_array;
-//    echo "1";
-}
-
-function update_a_work_experience_description_record($id, $the_description) {
-    $query = "UPDATE WorkTaskDescription SET ";
-    $query .= "description = '{$the_description}' ";
-    $query .= "WHERE id = {$id}";
-
-    $is_update_ok = WorkExperience::update_by_query($query);
-
-    return $is_update_ok;
-}
+//function update_a_work_experience_description_record($id, $the_description) {
+//    $query = "UPDATE WorkTaskDescription SET ";
+//    $query .= "description = '{$the_description}' ";
+//    $query .= "WHERE id = {$id}";
+//
+//    $is_update_ok = WorkExperience::update_by_query($query);
+//
+//    return $is_update_ok;
+//}
 
 //function add_work_experience_description_record($work_experience_id, $work_details_array) {
 //    // Max # of Work Task Descriptions per Work(id)...
@@ -575,21 +575,21 @@ function update_a_work_experience_description_record($id, $the_description) {
 //    return $work_details_array;
 //}
 
-function delete_a_work_experience_description_record($work_experience_id) {
-    $query = "DELETE FROM WorkTaskDescription WHERE work_experience_id = {$work_experience_id}";
+//function delete_a_work_experience_description_record($work_experience_id) {
+//    $query = "DELETE FROM WorkTaskDescription WHERE work_experience_id = {$work_experience_id}";
+//
+//    $is_deletion_ok = WorkExperience::delete_by_query($query);
+//
+//    return $is_deletion_ok;
+//}
 
-    $is_deletion_ok = WorkExperience::delete_by_query($query);
-
-    return $is_deletion_ok;
-}
-
-function delete_a_work_experience_record($work_experience_id) {
-    $query = "DELETE FROM WorkExperience WHERE id = {$work_experience_id}";
-
-    $is_deletion_ok = WorkExperience::delete_by_query($query);
-
-    return $is_deletion_ok;
-}
+//function delete_a_work_experience_record($work_experience_id) {
+//    $query = "DELETE FROM WorkExperience WHERE id = {$work_experience_id}";
+//
+//    $is_deletion_ok = WorkExperience::delete_by_query($query);
+//
+//    return $is_deletion_ok;
+//}
 
 //function add_a_work_experience_description_record($work_experience_id, $the_description) {
 //    //
@@ -734,32 +734,32 @@ function delete_a_work_experience_record($work_experience_id) {
 //    //
 //}
 
-if (isset($_POST["FUCK_update_work_experience"])) {
-    sleep(1);
-
-    if (!are_required_fields_filled()) {
-        // 0 means it's not all filled.
-        echo "0";
-        return;
-    }
-
-//    echo "REQUIRED FIELDS ARE OK";
-    // This array will contain all the details
-    // of the work experience including the descriptions.
-    $work_details_array = array();
-
-    // Because PHP is weird and doesn't accept a reference param, but just copies it, set the var again..
-    $work_details_array = update_work_experience_record($work_details_array);
-
-    $work_details_array = update_work_experience_description_record($work_details_array);
-
-    //
-    echo json_encode($work_details_array);
-//    echo 'SHITE';
-//    echo "POST[work_experience_id]: {$_POST['work_experience_id']}\n";
-//    echo "POST[company_name]: {$_POST['company_name']}\n";
-//    echo "POST[work_experience_description1]: {$_POST['work_experience_description1']}\n";
-}
+//if (isset($_POST["FUCK_update_work_experience"])) {
+//    sleep(1);
+//
+//    if (!are_required_fields_filled()) {
+//        // 0 means it's not all filled.
+//        echo "0";
+//        return;
+//    }
+//
+////    echo "REQUIRED FIELDS ARE OK";
+//    // This array will contain all the details
+//    // of the work experience including the descriptions.
+//    $work_details_array = array();
+//
+//    // Because PHP is weird and doesn't accept a reference param, but just copies it, set the var again..
+//    $work_details_array = update_work_experience_record($work_details_array);
+//
+//    $work_details_array = update_work_experience_description_record($work_details_array);
+//
+//    //
+//    echo json_encode($work_details_array);
+////    echo 'SHITE';
+////    echo "POST[work_experience_id]: {$_POST['work_experience_id']}\n";
+////    echo "POST[company_name]: {$_POST['company_name']}\n";
+////    echo "POST[work_experience_description1]: {$_POST['work_experience_description1']}\n";
+//}
 
 if (isset($_POST["delete_work_experience"])) {
     $all_deletion_ok = false;

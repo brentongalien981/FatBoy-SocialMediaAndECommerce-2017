@@ -43,14 +43,17 @@
         document.getElementById("work").insertBefore(current_form_add_work_experience, work_experiences_container);
         current_form_add_work_experience.id = "form_add_work_experience";
         current_form_add_work_experience.style.display = "block";
+
+        set_ids_of_a_work_experience_form_elements();
         
+
         // Set the global form_add_work_experience.
         form_add_work_experience = current_form_add_work_experience;
 
 
         /* Event listeners for the buttons of this form. */
-        var button_cancel_add_work_experience = document.getElementById("button_cancel_add_work_experience");
-        var button_ok_add_work_experience = document.getElementById("button_ok_add_work_experience");
+        var button_cancel_add_work_experience = document.getElementById("button_cancel_add_work_experience0");
+        var button_ok_add_work_experience = document.getElementById("button_ok_add_work_experience0");
 
         // Cancel add work experience.
         button_cancel_add_work_experience.addEventListener("click", function () {
@@ -167,11 +170,16 @@
             recreate_the_work_experience_div_template(a_work_experience_div);
 
 
+            /* Add event listeners. */
             // Add event listener to the a_work_experience_div.
             add_event_listener_to_work_exp_div(a_work_experience_div);
             //
             current_edit_work_button = document.getElementById("work_experience_edit_button" + current_work_experience_id);
             add_event_listener_to_current_edit_work_button(current_edit_work_button);
+            //
+            current_delete_work_button = document.getElementById("work_experience_delete_button" + current_work_experience_id);
+            add_event_listener_to_current_delete_work_button(current_delete_work_button);
+
         }
     }
 

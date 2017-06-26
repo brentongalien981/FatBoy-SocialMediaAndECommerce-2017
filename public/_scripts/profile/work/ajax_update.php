@@ -131,7 +131,7 @@
 //            console.log("VAR:old_place: " + old_place);
 //            console.log("VAR:old_position: " + old_position);
 //            console.log("VAR:old_time_frame: " + old_time_frame);
-//                return;//uki                      
+//                return;//uki
             });
 
         });
@@ -176,35 +176,6 @@
                     }
 
 
-                    /* Old way of doing things. */
-//                    if (xhr.responseText.trim() != "0") {
-//                        console.log("xhr.responseText.trim(): " + xhr.responseText.trim());
-//
-//                        // If update is successful...
-//                        var json = JSON.parse(xhr.responseText.trim());
-//
-//                        reset_work_exp_div(the_work_exp_div, json);
-////                            the_work_exp_div.style.display = "block";
-//
-//                        // Remove the form_edit_work...
-//                        the_work_exp_div.parentElement.removeChild(form_edit_work_experience);
-//                    } 
-//                    else {
-//                        // Re-show the form table.
-//                        form_edit_work_experience.childNodes[0].style.display = "block";
-//
-//                        // Change back the color of the form.
-//                        form_edit_work_experience.style.backgroundColor = "rgb(240, 252, 255)";
-//
-//
-//                        // Show the error mesg.
-//                        var form_header = form_edit_work_experience.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0]
-//                        form_header.style.color = "red";
-//                        form_header.style.fontWeight = "500";
-//                        form_header.innerHTML = "Required Fields are missing.";
-//
-//                    }                    
-
 
                     // New way of doing things.
                     // If the response is not successful..
@@ -241,7 +212,6 @@
 
 
         // For POST vars.
-
         xhr.send(get_post_key_value_pairs_for_update(updated_work_details_array));
     }
 
@@ -294,8 +264,18 @@
         document.getElementById("work_experience_description1").id = document.getElementById("work_experience_description1").id + current_work_experience_id;
         document.getElementById("work_experience_description2").id = document.getElementById("work_experience_description2").id + current_work_experience_id;
         document.getElementById("work_experience_description3").id = document.getElementById("work_experience_description3").id + current_work_experience_id;
-        document.getElementById("button_ok_add_work_experience").id = "button_ok_edit_work_experience" + current_work_experience_id;
-        document.getElementById("button_cancel_add_work_experience").id = "button_cancel_edit_work_experience" + current_work_experience_id;
+
+        // If this method is called by the page "ajax_read.php",
+        // then the buttons are "add_work_experience"...
+        if (current_work_experience_id == 0) {
+            document.getElementById("button_ok_add_work_experience").id = "button_ok_add_work_experience" + current_work_experience_id;
+            document.getElementById("button_cancel_add_work_experience").id = "button_cancel_add_work_experience" + current_work_experience_id;
+        } else {
+            document.getElementById("button_ok_add_work_experience").id = "button_ok_edit_work_experience" + current_work_experience_id;
+            document.getElementById("button_cancel_add_work_experience").id = "button_cancel_edit_work_experience" + current_work_experience_id;
+
+    }
+
 
     }
 
