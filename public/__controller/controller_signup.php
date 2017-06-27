@@ -107,6 +107,7 @@ function generate_hashed_token() {
 
 <?php
 
+/*
 // NOTE: Only user POST requests when making changes.
 //       Don't ever use GET changing things. Only use it to read things from the server.
 // 1) Avoid CSRF by using csrf tokens as hidden field in your forms.
@@ -140,6 +141,8 @@ function generate_hashed_token() {
 // 8) Check if that username exists in the db.
 // 9) Hash the password.
 // 10) Store it in db.
+ * 
+ */
 ?>
 
 

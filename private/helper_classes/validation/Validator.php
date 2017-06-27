@@ -1,4 +1,41 @@
 <?php
+// STEPS on validating things.
+/*
+// NOTE: Only user POST requests when making changes.
+//       Don't ever use GET changing things. Only use it to read things from the server.
+// 1) Avoid CSRF by using csrf tokens as hidden field in your forms.
+// 
+// 
+// 2) Use only allowable GET and POST variables. 
+//    Maybe put an array like: $allowed_gets = array();
+//    
+//    
+// 3) Validate inputs.
+//      - presence
+//      - type (string, number, etc.)
+//      - format
+//      - within set of values/length (ex. between 2 and 8 etc)
+//      - uniqueness (TODO:REMINDER: Get back on this later. Maybe modify the db for many-to-many...
+//                                   For ex, the address used by User "OneTimeUserForOneTimeAddress"
+//                                   that is used whenever checking out for the PayPal address...)
+// 
+// 
+// 4) Strip tags.
+// TODO: Sanitize against html, js, url, mysql, php, cmd.
+//    
+//    
+//    
+// 5) Avoid XSS by escaping inputs using functions h() j() u() and maybe s() for sql for output.
+//    
+//    
+// 6) Make 2 versions of variables: "dirty" and "sanitized".
+//    Strip html and script tags. Escape single quotes. Strip php tags.
+// 7) Sessions on Cookies.
+// 8) Check if that username exists in the db.
+// 9) Hash the password.
+// 10) Store it in db.
+ * 
+ */
 
 namespace App\Privado\HelperClasses\Validation;
 
@@ -24,7 +61,7 @@ class Validator {
 
         $this->init_json_errors_array();
     }
-    
+
     public function set_exempted_white_space_field_array($exempted_white_space_field_array) {
         $this->exempted_white_space_field_array = $exempted_white_space_field_array;
     }
@@ -104,10 +141,11 @@ class Validator {
         //
         foreach ($this->required_post_vars_length_array as $key => $value) {
             // If the $key is in the exempted white space field, disregard and loop again.
-            if (in_array($key, $this->exempted_white_space_field_array)) {
+            if (isset($this->exempted_white_space_field_array) &&
+                    in_array($key, $this->exempted_white_space_field_array)) {
                 continue;
             }
-            
+
             // Validate presence.
             if (!has_presence($_POST[$key])) {
                 MyValidationErrorLogger::log("{$key}::: can not be blank");
@@ -180,4 +218,5 @@ class Validator {
     }
 
 }
+
 ?>

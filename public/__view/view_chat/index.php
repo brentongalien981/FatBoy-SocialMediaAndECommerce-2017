@@ -43,35 +43,10 @@ if (!$session->is_logged_in()) {
     <!--Sub-menus-->
     <nav id="sub_menus_nav">
         <a href="index.php?content_page=1" id="sub_nav_chat_with">Chat with</a>
-        <a href="index.php?content_page=2" id="sub_nav_chat_window">Chat Window</a>
+        <!--<a href="index.php?content_page=2" id="sub_nav_chat_window">Chat Window</a>-->
     </nav>
 
-
-
-
-
-
-
-
-
-
-
-
-    <style>   
-
-        #middle_content {
-            background-color: rgb(250, 250, 250);
-            padding-bottom: 30px;
-            color: black;
-            /*width: 600px;*/
-        }
-
-        #sub_menus_nav {
-            background-color: rgb(60, 60, 60);
-        }#sub_menus_nav a {
-            color: rgb(220, 220, 220);
-        }
-    </style>
+    <div id="main_content">
 
 
 
@@ -84,23 +59,50 @@ if (!$session->is_logged_in()) {
 
 
 
+        <style>   
+
+            #middle_content {
+                background-color: rgb(250, 250, 250);
+                padding-bottom: 30px;
+                color: black;
+                /*width: 600px;*/
+            }
+
+            #sub_menus_nav {
+                background-color: rgb(60, 60, 60);
+            }#sub_menus_nav a {
+                color: rgb(220, 220, 220);
+            }
+        </style>
 
 
-    <!--Meat-->
-    <?php
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--Meat-->
+        <?php
 // Decide which main content to display based on the GET param.
-    if (isset($_GET["content_page"])) {
-        $content_page = $_GET["content_page"];
+        if (isset($_GET["content_page"])) {
+            $content_page = $_GET["content_page"];
 
-        if (($content_page > 0) && ($content_page < 4)) {
-            require_once("sub_menu_content{$content_page}.php");
+            if (($content_page > 0) && ($content_page < 4)) {
+                require_once("sub_menu_content{$content_page}.php");
+            } else {
+                require_once("sub_menu_content1.php");
+            }
         } else {
             require_once("sub_menu_content1.php");
         }
-    } else {
-        require_once("sub_menu_content1.php");
-    }
-    ?>
+        ?>
 
 
 
@@ -109,12 +111,13 @@ if (!$session->is_logged_in()) {
 
 
 
-    <!--Debug/Log-->
-    <?php
+        <!--Debug/Log-->
+        <?php
 // TODO: LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
-    ?>
+        MyDebugMessenger::show_debug_message();
+        MyDebugMessenger::clear_debug_message();
+        ?>
+    </div>
 </main>
 
 

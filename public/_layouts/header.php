@@ -12,7 +12,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                          ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                           ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -91,7 +91,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             footer {
                 /*                width: 100%;*/
                 width: 100%;
-                min-width: 1350px;
+                min-width: 1390px;
                 height: 60px;
                 margin: 0;
                 padding: 0;
@@ -101,7 +101,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             table#header {
                 width: 100%;
-                min-width: 1350px;
+                min-width: 1390px;
             }
 
             #divStatus {
@@ -305,8 +305,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 margin: 0;
                 padding: 0;
                 /*width: 97%;*/
-                width: 300px;
-                height: 190px;
+                width: 350px;
+                height: 215px;
                 /*background-color: rgba(178, 215, 247, 0.80);*/
                 background-color: rgba(50, 50, 50, 0.0);
                 /*margin-top: 20px;*/
@@ -382,17 +382,18 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             #right {
                 /*background-color: darkgoldenrod;*/
                 /*width: 20%;*/
-                width: 330px;
-                min-width: 330px;
+                width: 380px;
+                min-width: 380px;
                 padding-left: 20px;
                 border-radius: 5px;
             }
 
             #middle_content {
                 /*height: 900px;*/
-                max-height: 900px;
-                overflow-y: auto;
+
             }
+
+
 
 
 
@@ -511,8 +512,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #main {
                 margin-top: 25px;
-                width: 1350px;
-                min-width: 1350px;
+                width: 1390px;
+                min-width: 1390px;
                 margin-left: auto;
                 margin-right: auto;
                 /*padding-top: 10px;*/
@@ -566,7 +567,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     <body>
         <?php // TODO:REMINDER: Display this later. ?>
         <!--<div id="the_spinner_div">-->
-            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif"; ?>">-->
+            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif";  ?>">-->
         <!--</div>-->
 
 
@@ -711,7 +712,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-
+               <!--uki-->
         <div id="main">
             <table id="the_table">
                 <tr>
@@ -773,8 +774,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                           ?>" class="">-->
-                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                           ?>" class="icon">Timeline-->
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                            ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                            ?>" class="icon">Timeline-->
                                 <?php
 //                                    if ($session->is_logged_in()) {
 //                                        echo " of {$session->currently_viewed_user_name}";
@@ -828,10 +829,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <a href="
+                                <a id="menu_my_videos" href="
                                 <?php
                                 if ($session->is_logged_in()) {
-                                    echo LOCAL . '/public/__view/view_my_videos';
+                                    echo LOCAL . '/public/__view/my_videos';
                                 } else {
                                     echo "#";
                                 }
@@ -842,7 +843,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // Chat
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_chat'>";
+                                    echo "<a id='menu_chat' href='" . LOCAL . "/public/__view/view_chat'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
                                     echo "Chat</a>";
                                 }
@@ -856,7 +857,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 // MyAds.
 // TODO: REMINDER: Remove this once you publish it.
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_my_ads'>";
+                                    echo "<a id='menu_my_ads' href='" . LOCAL . "/public/__view/view_my_ads'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_ad.png' class='icon'>";
                                     echo "MyAds</a>";
                                 }
@@ -866,7 +867,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <a href="
+                                <a id="menu_my_store" href="
                                 <?php
                                 if ($session->is_logged_in()) {
                                     echo LOCAL . '/public/__view/view_my_store';
@@ -890,7 +891,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // MySales
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_my_sales'>";
+                                    echo "<a id='menu_my_sales' href='" . LOCAL . "/public/__view/view_my_sales'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_sales.png' class='icon'>";
                                     echo "MySales</a>";
                                 }
@@ -900,7 +901,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // MyRefund
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_refund'>";
+                                    echo "<a id='menu_my_refund' href='" . LOCAL . "/public/__view/view_refund'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_refund.png' class='icon'>";
                                     echo "MyRefund</a>";
                                 }
@@ -988,7 +989,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             #divBanner table {
                 border-collapse: collapse;
                 /*width: 100%;*/
-                min-width: 1350px;
+                min-width: 1390px;
                 height: 100%;
             }
 
@@ -1100,7 +1101,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
             #ad_container {
                 background-color: rgba(50, 50, 50, 0.6);
-                width: 320px;
+                width: 370px;
                 border-radius: 5px;
                 margin-right: 10px;
                 /*padding-top: 10px;*/
@@ -1147,7 +1148,15 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 font-size: 12px;
                 font-weight: 100;
                 color: red;
-            }               
+            }       
+            
+            div#main_content {
+                margin: 0;
+                padding: 0;
+                max-height: 900px;
+                overflow-y: auto;
+                /*background-color: pink;*/
+            }
         </style>
 
 

@@ -101,7 +101,7 @@ $can_now_pay = false;
 if (isset($_GET["payment_validation_success"])) {
     if ($_GET["payment_validation_success"] == 1) {
         $can_now_pay = true;
-        
+
         //
         global $session;
         $session->paypal_transaction_id = $_SESSION["paypal_transaction_id"] = $_GET["token"];
@@ -118,8 +118,6 @@ if (isset($_GET["payment_validation_success"])) {
 if ($can_now_pay) {
     // TODO: DEBUG
 //    die("THIS IS JUST FOR DEBUG: can_now_pay is true.");
-
-
     // Get the payment Object by passing paymentId
     // payment id was previously stored in session in
     // CreatePaymentUsingPayPal.php
@@ -135,17 +133,25 @@ if ($can_now_pay) {
 
 
 
+    //
+    $paypal_invoice_id = null;
+
+
+
     try {
         // Execute the payment
         // (See bootstrap.php for more on `ApiContext`)
         $result = $payment->execute($execution, $api);
 
-        
-        
+
+
         // TODO: REMINDER: This method "getTransactions()" will return an array in AJAX form
         // that contains the transaction invoice number. You will need that as a PK for creating 
         // a record in table Transaction (or maybe Invoice).
-//        $paypal_transactions = $result->getTransactions();
+        $paypal_transactions = $result->getTransactions();
+
+        $decoded_paypal_transactions = json_decode($paypal_transactions[0]);
+        $paypal_invoice_id = $decoded_paypal_transactions->{'invoice_number'};
 
 
 
@@ -167,17 +173,19 @@ if ($can_now_pay) {
 
         redirect_to(LOCAL . "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_result=0");
     }
-    
-    
+
+
 //    // Move this part to the controller.
 //    // Successful payment result.
 //    // Create an Invoice/Transaction record to db.
 //    require_once(PUBLIC_PATH . "/__controller/controller_my_shopping_history.php");
 //    
 //    generate_invoice();
+
     
-    
-    redirect_to(LOCAL . "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_result=1");
+    $the_url = "/public/__view/view_transaction/index.php?transaction_content_page=3&payment_result=1&paypal_invoice_id={$paypal_invoice_id}";
+
+    redirect_to(LOCAL . $the_url);
 }
 
 

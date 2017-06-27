@@ -1,26 +1,24 @@
-<?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__model/model_my_videos.php"); ?>
-
-
-
-
-
-<?php
-
-// TODO: SECTION: Protected page.
-if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
-    redirect_to(LOCAL . "/public/index.php");
-}
-?>
-
-
-
-
-
 <?php
 
 use App\Privado\HelperClasses\Validation\Validator;
+
+
+
+
+
+
+// Protected page.
+//global $session;
+if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
+    redirect_to(LOCAL . "/public/index.php");
+}
+
+
+
+
+
+
+// TODO:REMINDER: Validate the format of the embed code on the next iteration.
 
 // TODO:SECTION: AJAX Event-handler.
 if (is_request_post() && isset($_POST["create_video"]) && $_POST["create_video"] == "yes") {

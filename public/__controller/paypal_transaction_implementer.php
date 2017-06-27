@@ -38,7 +38,7 @@ echo "can_now_pay.php bruh...";
 // You can optionally update transaction
 // information by passing in one or more transactions.
 // API used: POST '/v1/payments/payment/<payment-id>/execute'.
-require __DIR__ . '/seller_paypal_authentication.php';
+require __DIR__ . '/paypal_seller_authentication.php';
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Payment;

@@ -46,35 +46,28 @@ if (!$session->is_logged_in()) {
 
     <!--Sub-menus-->
     <nav id="sub_menus_nav">
-        <a href="#">Add Video</a>
+        <a id="add_video_link">Add Video</a>
     </nav>
 
 
-
-
-
-
-
-
-
-
-    <?php
+    <div id="main_content">
+        <?php
 // Decide which main content to display based on the GET param.
-    // This menus number of sub-contents.
-    $num_of_sub_contents = 1;
-    if (isset($_GET["content_page"])) {
-        $content_page = $_GET["content_page"];
+        // This menus number of sub-contents.
+        $num_of_sub_contents = 1;
+        if (isset($_GET["content_page"])) {
+            $content_page = $_GET["content_page"];
 
-        if (($content_page > 0) && ($content_page < $num_of_sub_contents)) {
-            require_once("sub_menu_content{$content_page}.php");
+            if (($content_page > 0) && ($content_page < $num_of_sub_contents)) {
+                require_once("sub_menu_content{$content_page}.php");
+            } else {
+                require_once("sub_menu_content1.php");
+            }
         } else {
+            // Default sub-content.
             require_once("sub_menu_content1.php");
         }
-    } else {
-        // Default sub-content.
-        require_once("sub_menu_content1.php");
-    }
-    ?>
+        ?>
 
 
 
@@ -83,11 +76,12 @@ if (!$session->is_logged_in()) {
 
 
 
-    <?php
+        <?php
 // TODO:SECTION:LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
-    ?>
+        MyDebugMessenger::show_debug_message();
+        MyDebugMessenger::clear_debug_message();
+        ?>
+    </div>    
 </main>
 
 

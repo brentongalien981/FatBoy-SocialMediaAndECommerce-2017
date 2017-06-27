@@ -41,38 +41,39 @@ if (!$session->is_logged_in()) {
 
 
 
-    <!--Meat-->
-    <?php
+    <div id="main_content">
+        <!--Meat-->
+        <?php
 //
-    if ($session->is_viewing_own_account()) {
-        //
-        echo "<div class='section'>";
-        show_friend_request_for_me();
-        echo "</div>";
+        if ($session->is_viewing_own_account()) {
+            //
+            echo "<div class='section'>";
+            show_friend_request_for_me();
+            echo "</div>";
 
 
 
-        // Yes! She accepted my request.
-        echo "<div class='section'>";
-        show_friend_acceptance();
-        echo "</div>";
+            // Yes! She accepted my request.
+            echo "<div class='section'>";
+            show_friend_acceptance();
+            echo "</div>";
 
 
 
-        // Suggested friends.
-        // TODO: REMINDER: Don't forget to do something about
-        // one time users to not show up as suggested friends.
-        echo "<div class='section'>";
-        show_non_friends();
-        echo "</div>";
-    }
+            // Suggested friends.
+            // TODO: REMINDER: Don't forget to do something about
+            // one time users to not show up as suggested friends.
+            echo "<div class='section'>";
+            show_non_friends();
+            echo "</div>";
+        }
 
 
 // 
-    echo "<div class='section'>";
-    show_user_friends();
-    echo "</div>";
-    ?>
+        echo "<div class='section'>";
+        show_user_friends();
+        echo "</div>";
+        ?>
 
 
 
@@ -82,12 +83,19 @@ if (!$session->is_logged_in()) {
 
 
 
-    <!--Debug/Log-->
-    <?php
+        <!--Debug/Log-->
+        <?php
 // TODO: LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
-    ?>
+        MyDebugMessenger::show_debug_message();
+        MyDebugMessenger::clear_debug_message();
+        ?>        
+    </div>
+
+
+
+
+
+
 </main>
 
 
@@ -101,7 +109,7 @@ if (!$session->is_logged_in()) {
 
     #middle_content {
         background-color: rgb(250, 250, 250);
-        padding-bottom: 30px;
+        /*padding-bottom: 30px;*/
         color: black;
     }
 
@@ -145,7 +153,7 @@ if (!$session->is_logged_in()) {
         padding-bottom: 50px;
         /*background-color: pink;*/
     }
-    
+
 
     .form_button {
         margin: 0;  
@@ -188,7 +196,7 @@ if (!$session->is_logged_in()) {
     #table_user_friends td {
         /*background-color: pink;*/
     }
-    
+
     #table_suggested_friends form {
         /*padding: 0;*/
         /*margin: 0;*/
@@ -197,7 +205,7 @@ if (!$session->is_logged_in()) {
         display: inline;
     }
 
- 
+
     #table_user_friends form {
         display: inline;
         /*background-color: aqua;*/

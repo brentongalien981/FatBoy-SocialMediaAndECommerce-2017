@@ -39,7 +39,7 @@
     }
 
     function get_post_key_value_pairs_for_create() {
-        console.log("Inside METHOD: get_post_key_value_pairs().");
+        console.log("Inside METHOD: get_post_key_value_pairs_for_create().");
         // Create a dynamic hidden csrf_token input.
         var input_csrf_token = get_csrf_input();
 
@@ -47,13 +47,13 @@
         document.getElementById("middle_content").appendChild(input_csrf_token);
 
         //
-        var company_name = document.getElementById("company_name").value;
-        var place = document.getElementById("place").value;
-        var position = document.getElementById("position").value;
-        var time_frame = document.getElementById("time_frame").value;
-        var work_experience_description1 = document.getElementById("work_experience_description1").value;
-        var work_experience_description2 = document.getElementById("work_experience_description2").value;
-        var work_experience_description3 = document.getElementById("work_experience_description3").value;
+        var company_name = document.getElementById("company_name0").value;
+        var place = document.getElementById("place0").value;
+        var position = document.getElementById("position0").value;
+        var time_frame = document.getElementById("time_frame0").value;
+        var work_experience_description1 = document.getElementById("work_experience_description10").value;
+        var work_experience_description2 = document.getElementById("work_experience_description20").value;
+        var work_experience_description3 = document.getElementById("work_experience_description30").value;
 
         //
         var post_key_value_pairs = "add_work_experience=yes";

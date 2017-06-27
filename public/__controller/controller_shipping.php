@@ -7,6 +7,11 @@
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
+<?php
+use App\Publico\Model\MyValidationErrorLogger;
+?>
+
+
 
 
 

@@ -35,33 +35,35 @@ if (!$session->is_logged_in()) {
 
     <!--Sub-menus-->
     <nav id="sub_menus_nav">
-        <a href="index.php?store_content_page=1">MyStore</a>
+        <!--<a href="index.php?store_content_page=1">MyStore</a>-->
+        <?php if ($session->is_viewing_own_account()) { ?>
         <a href="index.php?store_content_page=2">Add Item</a>
         <a href="index.php?store_content_page=3">Edit Item</a>
-        <a href="#">Customer's Refund Requests</a>
+        <!--<a href="#">Customer's Refund Requests</a>-->
+        <?php } ?>
     </nav>
 
 
+    <div id="main_content">
 
 
 
 
-
-    <!--Meat-->
-    <?php
+        <!--Meat-->
+        <?php
 // Decide which main content to display based on the GET param.
-    if (isset($_GET["store_content_page"])) {
-        $store_content_page = $_GET["store_content_page"];
+        if (isset($_GET["store_content_page"])) {
+            $store_content_page = $_GET["store_content_page"];
 
-        if (($store_content_page > 0) && ($store_content_page < 4)) {
-            require_once("sub_menu_content{$store_content_page}.php");
+            if (($store_content_page > 0) && ($store_content_page < 4)) {
+                require_once("sub_menu_content{$store_content_page}.php");
+            } else {
+                require_once("sub_menu_content1.php");
+            }
         } else {
             require_once("sub_menu_content1.php");
         }
-    } else {
-        require_once("sub_menu_content1.php");
-    }
-    ?>
+        ?>
 
 
 
@@ -70,12 +72,13 @@ if (!$session->is_logged_in()) {
 
 
 
-    <!--Debug/Log-->
-<?php
+        <!--Debug/Log-->
+        <?php
 // TODO: LOG
-MyDebugMessenger::show_debug_message();
-MyDebugMessenger::clear_debug_message();
-?>
+        MyDebugMessenger::show_debug_message();
+        MyDebugMessenger::clear_debug_message();
+        ?>
+    </div>
 </main>
 
 
@@ -85,12 +88,24 @@ MyDebugMessenger::clear_debug_message();
 
 
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css'; ?>" rel="stylesheet" type="text/css" />-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/view_my_store.css';   ?>" rel="stylesheet" type="text/css" />-->
 <style>   
     #middle_content {
-        background-color: rgb(255, 255, 255);
-        /*background-color: beige;*/
-        padding-bottom: 30px;
+        background-color: rgb(250, 250, 250);
+        color: black;
+        /*background-color: yellow;*/
+        padding-bottom: 0px;
+    }
+
+    #sub_menus_nav {
+        background-color: rgb(60, 60, 60);
+    }#sub_menus_nav a {
+        color: rgb(220, 220, 220);
+    }
+
+    #menu_my_store {
+        /*background-color: rgb(60, 60, 60);*/
+        background-color: rgb(250, 250, 250);
     }
 </style>
 

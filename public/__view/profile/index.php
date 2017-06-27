@@ -39,31 +39,27 @@ if (!$session->is_logged_in()) {
 
 
 
-
-
-
-    <?php
-    show_user_profile_summary();
-    ?>
-    <?php require_once(PUBLIC_PATH . "/__view/profile/work/index.php"); ?>
-
-
-
-
-
-
-
-
-    <?php require_once(PUBLIC_PATH . "/__view/view_profile_likes.php"); ?>
-
-
-
-
-    <?php
+    <div id="main_content">
+        <?php
+        show_user_profile_summary();
+        ?>
+        
+        
+        
+        <?php require_once(PUBLIC_PATH . "/__view/profile/work/index.php"); ?>
+        <?php // TODO:REMINDER: Uncomment this. ?>
+        <?php require_once(PUBLIC_PATH . "/__view/view_profile_likes.php"); ?>
+        <?php
+        
+        
+        
+        
+        
 // TODO: SECTION: LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
-    ?>
+        MyDebugMessenger::show_debug_message();
+        MyDebugMessenger::clear_debug_message();
+        ?>
+    </div>
 </main>
 
 

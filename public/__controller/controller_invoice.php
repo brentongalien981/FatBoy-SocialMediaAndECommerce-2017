@@ -43,9 +43,9 @@ if (!$session->is_logged_in() ||
 <?php
 
 // TODO: SECTION: Functions.
-function generate_invoice() {
+function generate_invoice($paypal_invoice_id) {
     //
-    create_invoice_record();
+    create_invoice_record($paypal_invoice_id);
 
     // Create InvoiceItem record.
     create_invoice_item_record();
@@ -72,8 +72,8 @@ function generate_invoice() {
     }
 }
 
-function on_successful_payment_result() {
-    generate_invoice();
+function on_successful_payment_result($paypal_invoice_id) {
+    generate_invoice($paypal_invoice_id);
 
     // Update the quantities of the store items sold.
     update_stock_quantity();
@@ -330,13 +330,13 @@ function create_invoice_item_status_record($invoice_item_id, $invoice_item_statu
     }
 }
 
-function create_invoice_record() {
+function create_invoice_record($paypal_invoice_id) {
     // Create Invoice record.
     global $session;
     $new_invoice = new Invoice();
-    // TODO: Change this later to a value from the PayPal Invoice number.
-    $an_id = md5(uniqid(rand(), true));
-    $new_invoice->id = md5(uniqid(rand(), true));
+    // TODO:DONE: Change this later to a value from the PayPal Invoice number.
+//    $an_id = md5(uniqid(rand(), true));
+    $new_invoice->id = $paypal_invoice_id;
     $new_invoice->seller_user_id = $session->seller_user_id;
 
     // Set the invoice ship-from address.

@@ -45,7 +45,7 @@
         // AJAX
         var xhr = new XMLHttpRequest();
 
-        var url = "<?php echo LOCAL . '/public/__view/view_my_videos/php_for_ajax_responses/user_hosted_ad_displayer.php'; ?>";
+        var url = "<?php echo LOCAL . '/public/__view/my_videos/php_for_ajax_responses/user_hosted_ad_displayer.php'; ?>";
         xhr.open('POST', url, true);
         // You need this for AJAX POST requests.
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

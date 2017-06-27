@@ -68,8 +68,11 @@ if (isset($_GET["payment_result"])) {
         // Successful payment result.
         // Create an Invoice/Transaction record to db.
         require_once(PUBLIC_PATH . "/__controller/controller_invoice.php");
+        
+        MyDebugMessenger::add_debug_message("********************************");
+        MyDebugMessenger::add_debug_message("PayPal Invoice Id: {$_GET['paypal_invoice_id']}");
 
-        on_successful_payment_result();
+        on_successful_payment_result($_GET['paypal_invoice_id']);
     }
 }
 ?>

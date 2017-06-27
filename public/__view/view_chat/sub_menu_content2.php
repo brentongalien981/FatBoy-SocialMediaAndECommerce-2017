@@ -26,41 +26,42 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
 <!--Meat-->
-<div id="chat_pod" class="section">
-    <div id="chat_wall">
-        <?php
-        show_completely_presented_chat_msgs();
-        ?>
-    </div>
-
-    <textarea id="the_textarea"></textarea>
-
-    <div id="reference"></div>
-    <div id="container_of_pictographs">
-        <div id="inner_container_of_pictographs">
-
+<div id="main_content">
+    <div id="chat_pod" class="section">
+        <div id="chat_wall">
             <?php
-            for ($i = 128512, $j = 0; $i <= 128582; $i++, $j++) {
-                if ($j == 8) {
-                    echo "<br>";
-                    $j = 0;
-                }
-                echo "<input id='{$i}' type='button' class='input_pictographs' value='&#{$i};' onclick='append_emoji({$i})'>";
-                //onclick='append_emoji({$i})'
-            }
+            show_completely_presented_chat_msgs();
             ?>
         </div>
-    </div>
 
-    <div id="panel_chat_buttons">
-        <nav id="nav_chat_buttons">
-            <input type="image" id="input_send" src="<?php echo LOCAL . "/public/_photos/icon_send.png"; ?>" class="chat_buttons">
-            <input type="image" src="<?php echo LOCAL . "/public/_photos/icon_smiley.png"; ?>" class="chat_buttons">
-            <input type="hidden" id="input_cursor_position">
-        </nav>
+        <textarea id="the_textarea"></textarea>
+
+        <div id="reference"></div>
+        <div id="container_of_pictographs">
+            <div id="inner_container_of_pictographs">
+
+                <?php
+                for ($i = 128512, $j = 0; $i <= 128582; $i++, $j++) {
+                    if ($j == 8) {
+                        echo "<br>";
+                        $j = 0;
+                    }
+                    echo "<input id='{$i}' type='button' class='input_pictographs' value='&#{$i};' onclick='append_emoji({$i})'>";
+                    //onclick='append_emoji({$i})'
+                }
+                ?>
+            </div>
+        </div>
+
+        <div id="panel_chat_buttons">
+            <nav id="nav_chat_buttons">
+                <input type="image" id="input_send" src="<?php echo LOCAL . "/public/_photos/icon_send.png"; ?>" class="chat_buttons">
+                <input type="image" src="<?php echo LOCAL . "/public/_photos/icon_smiley.png"; ?>" class="chat_buttons">
+                <input type="hidden" id="input_cursor_position">
+            </nav>
+        </div>
     </div>
 </div>
-
 
 
 
@@ -76,7 +77,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <!--Styles-->
 <!--<link href="../_styles/view_my_videos.css" rel="stylesheet" type="text/css" />-->
 <style>
-    
+
     a#sub_nav_chat_window {
         color: rgb(194, 255, 119);
         /*color: black;*/
@@ -97,7 +98,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
     #chat_pod {
         /*box-shadow: 5px -5px 5px rgb(150, 150, 150);*/
-        
+
     }
 
     #chat_wall {
@@ -117,7 +118,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
     div.chat_post {
         /*background-color: rgb(242, 252, 255);*/
-/*        background-color: rgb(230, 252, 255);*/
+        /*        background-color: rgb(230, 252, 255);*/
         border-radius: 15px;
         width: fit-content;
         max-width: 360px;
@@ -137,7 +138,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
     }
 
     div.user_chat_post {
-/*        background-color: rgb(224, 255, 193);*/
+        /*        background-color: rgb(224, 255, 193);*/
         float: right;
         /*word-wrap: break-word;*/
 
@@ -155,8 +156,8 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
         float: left;
         /*background-color: yellow;*/
         border-radius: 12px;
-/*        padding: 0;
-        padding-right: 6px;*/
+        /*        padding: 0;
+                padding-right: 6px;*/
         margin: 0;
         margin-right: 6px;
         box-shadow: 3px 3px 3px rgb(150, 150, 150);
@@ -164,8 +165,8 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
     div.chat_post img.user_chatter_img {
         float: right;
-/*        padding: 0;
-        padding-left: 6px;*/
+        /*        padding: 0;
+                padding-left: 6px;*/
         margin: 0;
         margin-left: 6px;
     }
@@ -325,8 +326,8 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
 
-<script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
-</script>
+<!--<script src="<?php // echo LOCAL . "/private/external_lib/jquery-3.2.1.js";  ?>">-->
+<!--</script>-->
 
 
 <script>
