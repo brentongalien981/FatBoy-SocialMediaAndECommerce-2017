@@ -7,6 +7,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/model_invoice.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_invoice_item.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_invoice_item_status_record.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/model_my_store_items.php"); ?>
 
 <?php require_once(PUBLIC_PATH . "/__controller/controller_shipping.php"); ?>
 
@@ -76,23 +77,65 @@ function on_successful_payment_result($paypal_invoice_id) {
     generate_invoice($paypal_invoice_id);
 
     // Update the quantities of the store items sold.
-    update_stock_quantity();
-
-
-    // Set cart to complete.
-    finalize_cart();
+    if (update_stock_quantity()) {
+        // Set cart to complete.
+        finalize_cart();
+    }
 }
 
 function finalize_cart() {
-    // TODO: function finalize_cart().
+// Update and set the used cart to complete
+    global $session;
+    $query_for_cart_completion = "UPDATE StoreCart SET is_complete = 1 ";
+    $query_for_cart_completion .= "WHERE cart_id = {$session->cart_id}";
 
-    MyDebugMessenger::add_debug_message("Inside the method finalize_cart().");
+    $result_for_cart_completion = MyStoreItems::update_by_query($query_for_cart_completion);
+    
+    
+    MyDebugMessenger::add_debug_message("Inside METHOD: finalize_cart().");
+    MyDebugMessenger::add_debug_message("VAR:\$query: {$query_for_cart_completion}");
+    return;    
 }
 
 function update_stock_quantity() {
-    // TODO: function update_stock_quantity().
+    global $session;
+    global $database;
+    $selected_cart_id = $session->cart_id;
 
-    MyDebugMessenger::add_debug_message("Inside the method update_stock_quantity().");
+    $query = "SELECT CartItems.cart_id, item_id, name, price, CartItems.quantity AS 'quantity', MyStoreItems.quantity AS 'in_stock' ";
+    $query .= "FROM CartItems ";
+    $query .= "INNER JOIN MyStoreItems ON CartItems.item_id = MyStoreItems.id ";
+    $query .= "WHERE cart_id = {$selected_cart_id} ";
+    $query .= "AND CartItems.quantity > 0";
+
+    $results = MyStoreItems::read_by_query($query);
+
+//    MyDebugMessenger::add_debug_message("In METHOD: update_stock_quantity(), ");
+//    MyDebugMessenger::add_debug_message("VAR:\$query: {$query}");
+//    return true;
+    // Loop throught all the items.
+    while ($row = $database->fetch_array($results)) {
+        $current_item_id = $row["item_id"];
+
+        $updated_quantity = $row["in_stock"] - $row["quantity"];
+
+        // Update query
+        $query_for_item_quantity_update = "UPDATE MyStoreItems SET quantity = {$updated_quantity} ";
+        $query_for_item_quantity_update .= "WHERE id = $current_item_id";
+
+        $is_update_ok = MyStoreItems::update_by_query($query_for_item_quantity_update);
+
+        // TODO: LOG: If query is successful..
+        MyDebugMessenger::add_debug_message("In METHOD: update_stock_quantity(), ");
+        MyDebugMessenger::add_debug_message("VAR:\$is_update_ok: {$is_update_ok} for ");
+        MyDebugMessenger::add_debug_message("VAR:\$current_item_id: {$current_item_id}.");
+
+        if (!$is_update_ok) {
+            return $is_update_ok;
+        }
+    }
+
+    return true;
 }
 
 function show_shopping_history_table_header() {
@@ -166,9 +209,9 @@ function show_sales_history() {
     //
     echo "<div id='container_sales_history'>";
     show_sales_history_table_header();
-    
+
     //
-    show_sales_history_items();    
+    show_sales_history_items();
 
     //
     close_sales_history_table_element();
@@ -225,7 +268,7 @@ function get_all_user_sales_invoices() {
 function show_sales_history_items() {
     //
     $record_results = get_all_user_sales_invoices();
-    
+
     //
     global $database;
 
@@ -257,7 +300,7 @@ function show_sales_history_items() {
         echo "</td>";
 
         echo "</tr>";
-    }    
+    }
 }
 
 function show_shopping_history_items() {
@@ -438,7 +481,7 @@ function create_invoice_item_record() {
 // TODO: SECTION: Meat.
 if (isset($_POST["do_refund"])) {
     require_once(PUBLIC_PATH . "/__controller/controller_my_refund.php");
-    
+
     prepare_refund_item($_POST["invoice_item_id"]);
 }
 ?>

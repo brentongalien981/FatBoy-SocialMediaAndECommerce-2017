@@ -32,6 +32,8 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <?php
+use App\Publico\Model\MyValidationErrorLogger;
+
 
 // Functions.
 function validate_update_store_item_form() {
