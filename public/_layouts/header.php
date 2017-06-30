@@ -675,12 +675,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
                     <td class="header" id="search">
-                        <div>
-                            <input id="search_input" placeholder="Search...">
-                            <a id="search_a" href="">
-                                <img id="search_img" src="<?php echo LOCAL . '/public/_photos/icon_search.png'; ?>" class="header_icon">
-                            </a>
-                        </div>
+                        <?php require_once(PUBLIC_PATH . "/__view/search/create.php");?>
                     </td>
 
                     <td class="header" id="site_logo">
@@ -756,7 +751,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                         break;
                                     }
 
-                                    echo "<a href='";
+                                    echo "<a id='menu_wall' href='";
                                     if ($session->is_logged_in()) {
                                         echo LOCAL . "/public/index.php' class=''>";
                                     } else {
@@ -880,7 +875,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // MyCart
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a href='" . LOCAL . "/public/__view/view_store_cart'>";
+                                    echo "<a id='menu_my_cart' href='" . LOCAL . "/public/__view/view_store_cart'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_cart.png' class='icon'>";
                                     echo "MyCart</a>";
                                 }
@@ -1021,6 +1016,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #search_input {
+                font-size: 10px;
+                font-weight: 100;
                 margin: 0;
                 padding: 0;
                 margin-top: 18px;
@@ -1042,6 +1039,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #search_img {
+                /*uki*/
                 /*background-color: orange;*/
                 background-color: rgb(150, 150, 150);
                 border-top-left-radius: 0px;
@@ -1153,6 +1151,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             div#main_content {
                 margin: 0;
                 padding: 0;
+                min-height: 50px;
                 max-height: 900px;
                 overflow-y: auto;
                 /*background-color: pink;*/
@@ -1288,6 +1287,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 //                this.style.display = "block";
             };
         </script>
+        
+        
+        <?php // TODO:SECTION: AJAX script for search. ?>
+        <?php require_once(PUBLIC_PATH . "/_scripts/search/ajax_create.php"); ?>
 
 
 

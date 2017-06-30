@@ -34,7 +34,7 @@ if (!$session->is_logged_in()) {
 <main id="middle_content">
 
     <nav id="sub_menus_nav">
-        <a href="" id="sub_nav_chat_with">Sub-menu A</a>
+        <!--<a href="" id="sub_nav_chat_with">Sub-menu A</a>-->
     </nav>
 
 

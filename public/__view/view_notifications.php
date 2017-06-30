@@ -46,7 +46,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
     <!--Sub-menus-->
     <nav id="sub_menus_nav">
-        <a id="tae" href="#">Sub-menu1</a>
+        <!--<a id="tae" href="#">Sub-menu1</a>-->
     </nav>
 
 

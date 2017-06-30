@@ -8,6 +8,7 @@ class MyStoreItems {
 
     protected static $table_name = "MyStoreItems";
     protected static $db_fields = array("id", "user_id", "name", "price", "description", "photo_address", "quantity", "mass", "length", "width", "height");
+    public static $searchable_fields = array("name", "description");
     public $id;
     public $user_id;
     public $name;

@@ -79,4 +79,5 @@ require_once(PUBLIC_PATH .'/__model/my_user.php');
 
 //require_once(PRIVATE_PATH . "/includes/js_functions.php");
 require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
+require_once(PRIVATE_PATH . "/helper_classes/Search.php");
 ?>

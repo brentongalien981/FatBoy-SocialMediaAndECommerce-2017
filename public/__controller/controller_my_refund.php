@@ -159,7 +159,7 @@ function show_my_refund_items() {
     $query .= ")";
     $query .= ") iisr ON ii.id = iisr.invoice_item_id ";
     $query .= "INNER JOIN InvoiceItemStatus iis ON iisr.invoice_item_status_id = iis.id ";
-    $query .= "WHERE u.user_id = 10";
+    $query .= "WHERE u.user_id = {$session->actual_user_id}";
 
 
     //

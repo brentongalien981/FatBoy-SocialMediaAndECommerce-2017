@@ -68,7 +68,7 @@ show_my_refund_items();
 
     #middle_content {
         background-color: rgba(230, 230, 230, 0.8);
-        padding-bottom: 30px;
+        /*padding-bottom: 30px;*/
 
     }
 

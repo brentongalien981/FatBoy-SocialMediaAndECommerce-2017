@@ -35,6 +35,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <?php
+use App\Publico\Model\MyValidationErrorLogger;
 
 function did_user_already_like_this($actual_user_id, $like_id) {
     // 

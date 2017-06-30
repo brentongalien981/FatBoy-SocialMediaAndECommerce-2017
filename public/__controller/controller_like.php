@@ -34,7 +34,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <?php
-
+use App\Publico\Model\MyValidationErrorLogger;
 // TODO:SECTION: Functions.
 function validate_inputs() {
     // Validation time.

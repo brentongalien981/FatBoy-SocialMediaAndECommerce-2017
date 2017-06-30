@@ -1,39 +1,40 @@
 <?php
+
 // STEPS on validating things.
 /*
-// NOTE: Only user POST requests when making changes.
-//       Don't ever use GET changing things. Only use it to read things from the server.
-// 1) Avoid CSRF by using csrf tokens as hidden field in your forms.
-// 
-// 
-// 2) Use only allowable GET and POST variables. 
-//    Maybe put an array like: $allowed_gets = array();
-//    
-//    
-// 3) Validate inputs.
-//      - presence
-//      - type (string, number, etc.)
-//      - format
-//      - within set of values/length (ex. between 2 and 8 etc)
-//      - uniqueness (TODO:REMINDER: Get back on this later. Maybe modify the db for many-to-many...
-//                                   For ex, the address used by User "OneTimeUserForOneTimeAddress"
-//                                   that is used whenever checking out for the PayPal address...)
-// 
-// 
-// 4) Strip tags.
-// TODO: Sanitize against html, js, url, mysql, php, cmd.
-//    
-//    
-//    
-// 5) Avoid XSS by escaping inputs using functions h() j() u() and maybe s() for sql for output.
-//    
-//    
-// 6) Make 2 versions of variables: "dirty" and "sanitized".
-//    Strip html and script tags. Escape single quotes. Strip php tags.
-// 7) Sessions on Cookies.
-// 8) Check if that username exists in the db.
-// 9) Hash the password.
-// 10) Store it in db.
+  // NOTE: Only user POST requests when making changes.
+  //       Don't ever use GET changing things. Only use it to read things from the server.
+  // 1) Avoid CSRF by using csrf tokens as hidden field in your forms.
+  //
+  //
+  // 2) Use only allowable GET and POST variables.
+  //    Maybe put an array like: $allowed_gets = array();
+  //
+  //
+  // 3) Validate inputs.
+  //      - presence
+  //      - type (string, number, etc.)
+  //      - format
+  //      - within set of values/length (ex. between 2 and 8 etc)
+  //      - uniqueness (TODO:REMINDER: Get back on this later. Maybe modify the db for many-to-many...
+  //                                   For ex, the address used by User "OneTimeUserForOneTimeAddress"
+  //                                   that is used whenever checking out for the PayPal address...)
+  //
+  //
+  // 4) Strip tags.
+  // TODO: Sanitize against html, js, url, mysql, php, cmd.
+  //
+  //
+  //
+  // 5) Avoid XSS by escaping inputs using functions h() j() u() and maybe s() for sql for output.
+  //
+  //
+  // 6) Make 2 versions of variables: "dirty" and "sanitized".
+  //    Strip html and script tags. Escape single quotes. Strip php tags.
+  // 7) Sessions on Cookies.
+  // 8) Check if that username exists in the db.
+  // 9) Hash the password.
+  // 10) Store it in db.
  * 
  */
 
@@ -51,6 +52,7 @@ class Validator {
     private $json_errors_array = null;
     private $can_proceed = false;
     private $exempted_white_space_field_array = null;
+    private $request_type = "post";
 
     function __construct() {
         MyValidationErrorLogger::initialize();
@@ -118,25 +120,30 @@ class Validator {
 
     private function validate_length() {
         // 
-        $return_value = true;
+        $validation_value = true;
 
         //
         foreach ($this->required_post_vars_length_array as $key => $value) {
-            if (!has_length($_POST[$key], $value)) {
+            if ($this->request_type == "get" && has_length($_GET[$key], $value)) {
+                continue;
+            }
+            else if (has_length($_POST[$key], $value)) {
+                continue;
+            } else {
                 MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
 
-                $return_value = false;
+                $validation_value = false;
             }
         }
 
-        return $return_value;
+        $this->can_proceed = $validation_value;
     }
 
     // Validate the the POST vars contains something
     // that isn't just a white space.
     private function validate_white_space() {
         // 
-        $return_value = true;
+        $validation_value = true;
 
         //
         foreach ($this->required_post_vars_length_array as $key => $value) {
@@ -145,24 +152,46 @@ class Validator {
                     in_array($key, $this->exempted_white_space_field_array)) {
                 continue;
             }
+            
+            
+//            // Before proceeding to the next section down here,
+//            // uki
+//            $global_var_being_validated = null;
+//            if (isset($_POST[$key])) {
+//                $global_var_being_validated = $_POST[$key];
+//            }
+//            else if (isset($_GET[$key])) {
+//                $global_var_being_validated = $_GET[$key];
+//            }
+//            else {
+//                $validation_value = false;
+//                break;
+//            }
+            
+            
 
             // Validate presence.
-            if (!has_presence($_POST[$key])) {
+            if ($this->request_type == "get" && has_presence($_GET[$key])) {
+                continue;
+            }
+            else if (has_presence($_POST[$key])) {
+                continue;
+            } else {
                 MyValidationErrorLogger::log("{$key}::: can not be blank");
 
-                $return_value = false;
+                $validation_value = false;
             }
         }
 
-        return $return_value;
+        $this->can_proceed = $validation_value;
     }
 
     private function check_required_post_vars_existence() {
         // White listing POST vars.
         if (are_post_vars_valid($this->allowed_post_vars_array)) {
-            $can_proceed = true;
+            $this->can_proceed = true;
         } else {
-            $can_proceed = false;
+            $this->can_proceed = false;
             MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
         }
     }
@@ -202,7 +231,19 @@ class Validator {
         }
     }
 
+    public function set_request_type($type) {
+        $this->request_type = $type;
+    }
+
     private function validate_csrf_token() {
+        // If the request type is GET, no need for csrf validation
+        // so just return and proceed to the other validations.
+        if ($this->request_type == "get") {
+            $this->can_proceed = true;
+            return;
+        }
+
+
         // Check csrf_token.
         if (is_csrf_token_legit()) {
             $this->can_proceed = true;

@@ -8,6 +8,7 @@ class User {
 
     protected static $table_name = "Users";
     protected static $db_fields = array("user_id", "user_name", "email", "hashed_password", "user_type_id", "signup_token");
+    public static $searchable_fields = array("user_name", "email");
     public $user_id;
     public $user_name;
     public $email;

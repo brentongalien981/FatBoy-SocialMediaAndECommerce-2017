@@ -73,6 +73,11 @@ if (!$session->is_logged_in()) {
             }#sub_menus_nav a {
                 color: rgb(220, 220, 220);
             }
+            
+            #menu_chat {
+                /*background-color: rgb(60, 60, 60);*/
+                background-color: rgb(250, 250, 250);
+            }            
         </style>
 
 

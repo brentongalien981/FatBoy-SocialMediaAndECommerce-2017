@@ -53,10 +53,11 @@ function are_post_vars_valid($allowed_assoc_indexes_for_post) {
     foreach ($allowed_assoc_indexes_for_post as $assoc_index) {
 
 
-        if (!isset($_POST[$assoc_index])) {
+        if (isset($_POST[$assoc_index]) || isset($_GET[$assoc_index])) {
 //            MyValidationErrorLogger::log("are_vars_clean::: no. Incomplete and tampered");
-            return false;
+            continue;
         }
+        else { return false; }
     }
 
     return true;

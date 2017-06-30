@@ -1,8 +1,8 @@
-<?php // require_once("../private/includes/initializations.php");                                 ?>
-<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                                 ?>
-<?php // include(PUBLIC_PATH . "/_layouts/header.php");                                 ?>
+<?php // require_once("../private/includes/initializations.php");                                   ?>
+<?php // require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php");                                   ?>
+<?php // include(PUBLIC_PATH . "/_layouts/header.php");                                   ?>
 <?php require_once("_layouts/header.php"); ?>
-<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy");         ?>
+<?php // defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy");           ?>
 
 <?php
 // TODO: REMINDERS: 
@@ -24,75 +24,57 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <main id="middle_content">
-
-    <!--    Sub-menus
-        <nav id="sub_menus_nav">
-            I'm currently adding this for my store page.
-            <a id="tae" href="#">Sub-menu1</a>
-            <a href="#">Sub-menu2</a>
-        </nav>-->
-
-
-
-
-
-
-
-
-
-
-
-
-    <?php
-    if ($session->is_logged_in()) {
-        echo "<form id='create_post_form'>";
+    <div id="main_content">
+        <?php
+        if ($session->is_logged_in()) {
+            echo "<form id='create_post_form'>";
 //        echo get_csrf_token_tag();
-        echo "<textarea id='message_post_textarea' rows='6' cols='100' placeholder='What u be thinking...'></textarea><br>";
+            echo "<textarea id='message_post_textarea' rows='6' cols='100' placeholder='What u be thinking...'></textarea><br>";
 
-        echo "<input id='create_post_button' type='button' class='form_buttons' value='Yow!'>";
-        echo "</form>";
-
-
-        // This is just a refernce node for appending new post element...
-
-        echo "<div id='div_tae'>";
-        echo "</div>";
-    }
-    ?>
+            echo "<input id='create_post_button' type='button' class='form_buttons' value='Yow!'>";
+            echo "</form>";
 
 
+            // This is just a refernce node for appending new post element...
+
+            echo "<div id='div_tae'>";
+            echo "</div>";
+        }
+        ?>
 
 
 
 
 
-    <!--Meat-->
-    <?php
+
+
+        <!--Meat-->
+        <?php
 // TODO: Show timeline notifications.
 // TODO: A lot yet to be done. Timeline post form, timeline notification, etc.
 
 
 
-    if ($session->is_logged_in()) {
+        if ($session->is_logged_in()) {
 //
 //        echo "<h3>Timeline";
 //        echo " {$session->currently_viewed_user_name}";
 //        echo "</h3><br>";
-        // This file takes care of the query for getting all the timeline posts.
-        require_once("__controller/controller_timeline_posts.php");
+            // This file takes care of the query for getting all the timeline posts.
+            require_once("__controller/controller_timeline_posts.php");
 
-        //
-        $completely_presented_timeline_notifications_array = get_completely_presented_timeline_notifications_array($session->currently_viewed_user_id);
+            //
+            $completely_presented_timeline_notifications_array = get_completely_presented_timeline_notifications_array($session->currently_viewed_user_id);
 
-        // Display the timeline posts of the current user being viewed.
-        foreach ($completely_presented_timeline_notifications_array as $post) {
-            echo $post;
+            // Display the timeline posts of the current user being viewed.
+            foreach ($completely_presented_timeline_notifications_array as $post) {
+                echo $post;
+            }
+
+
+            // TODO: DEBUG
+            MyDebugMessenger::add_debug_message("So far so good.");
         }
-
-
-        // TODO: DEBUG
-        MyDebugMessenger::add_debug_message("So far so good.");
-    }
 
 
 ////
@@ -101,7 +83,7 @@ if (!MyDebugMessenger::is_initialized()) {
 //
 //    redirect_to(LOCAL . "/public/index.php");
 //}
-    ?>
+        ?>
 
 
 
@@ -110,11 +92,12 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-    <?php
+        <?php
 // TODO: LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
-    ?>
+        MyDebugMessenger::show_debug_message();
+        MyDebugMessenger::clear_debug_message();
+        ?>
+    </div>
 </main>
 
 
@@ -134,14 +117,19 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <!--Styles-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                               ?>" rel="stylesheet" type="text/css">-->
-<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                               ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/header.css';                                 ?>" rel="stylesheet" type="text/css">-->
+<!--<link href="<?php // echo LOCAL . '/public/_styles/index.css';                                 ?>" rel="stylesheet" type="text/css">-->
 <style>
 
 
     textarea {
         border-radius: 4px;
     }
+
+    #menu_wall {
+        /*background-color: rgb(60, 60, 60);*/
+        background-color: rgb(250, 250, 250);
+    }    
 
     .message_post {
         /*background-color: rgba(153, 255, 153, 0.1);*/
@@ -625,7 +613,7 @@ if (!MyDebugMessenger::is_initialized()) {
 //        create_post_form.removeChild(input_csrf_token);
         reference_div.removeChild(input_csrf_token);
     }
-    
+
     // I did this function cause with this line
     //      input_csrf_token.setAttribute("value", <php echo sessionize_csrf_token(); >);
     // for methods create_post() and create_reply_post(),
