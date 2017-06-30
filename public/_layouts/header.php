@@ -1016,7 +1016,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #search_input {
-                font-size: 10px;
+                font-size: 12px;
                 font-weight: 100;
                 margin: 0;
                 padding: 0;

@@ -10,7 +10,6 @@ use MyStoreItems;
 
 class Search {
 
-    // TODO:REMINDER: Change this to null.
     private $num_of_suggestions = 0;
     private $table_names = array("Users", "MyStoreItems");
     private $class_names = array("User", "MyStoreItems");
@@ -37,6 +36,8 @@ class Search {
 
                 $query .= " " . $current_searchable_table_field . " LIKE '%{$search_value}%'";
             }
+            
+            $query .= " LIMIT 3";
 
             // Instantiate the object
             $class_objs_array = $this->class_names[$index]::read_by_query_and_instantiate($query);
@@ -57,10 +58,6 @@ class Search {
         return $this->suggested_objs_array;
     }
 
-    // TODO:REMINDER: Delete this.
-    public function xxx($allowed_post_vars_array) {
-        
-    }
 
     public function set_num_of_suggestions($num_of_suggestions) {
         $this->num_of_suggestions = $num_of_suggestions;

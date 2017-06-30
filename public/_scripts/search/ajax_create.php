@@ -31,12 +31,33 @@
         // <li><a href="search.php?q=alpha">Alpha</a></li>
         var output = '';
 
-        for (i = 0; i < json.num_of_suggestions; i++) {
-            output += '<li>';
-            output += "<a href='#'>";
-            output += "TAE SEARCH result.";
-            output += '</a>';
-            output += '</li>';
+        var num_of_categories = json.suggested_objs_array.length;
+
+//        for (var i = 0; i < num_of_categories; i++) {
+        for (var category in json.suggested_objs_array) {
+
+            var num_of_category_suggestions = json.suggested_objs_array[category].length;
+            console.log("DEBUG:num_of_category_suggestions in " + category + ": " + num_of_category_suggestions);
+
+            for (j = 0; j < num_of_category_suggestions; j++) {
+                output += "<a href='";
+
+                switch (category) {
+                    case "Users_objs_array":
+                        output += "<?php echo LOCAL . "/public/__controller/controller_friends.php?view_friend_account=yes"; ?>";
+                        output += "<?php echo "&friend_id="; ?>" + json.suggested_objs_array[category][j]["user_id"];
+                        output += "<?php echo "&friend_name="; ?>" + json.suggested_objs_array[category][j]["user_name"];
+                        output += "'>";
+                        output += "USER: " + json.suggested_objs_array[category][j]["user_name"];
+                        break;
+                    case "MyStoreItems_objs_array":
+                        output += "#'>";
+                        output += "PRODUCT: " + json.suggested_objs_array[category][j]["name"];
+                        break;
+                }
+
+                output += '</a>';
+            }
         }
 
         return output;
@@ -51,7 +72,7 @@
     function getSuggestions() {
         var search_value = search_input.value;
 
-        if (search_value.length < 2) {
+        if (search_value.length < 1) {
             search_suggestions.style.display = 'none';
             return;
         }
@@ -65,59 +86,59 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var result = xhr.responseText.trim();
-                                    // Log before JSON parsing.
-                    console.log("*** AJAX in METHOD: getSuggestions(). ***");
-                    console.log("*** Log before JSON parsing ***");
-                    console.log("result: " + result);
-                
-                
+                // Log before JSON parsing.
+                console.log("*** AJAX in METHOD: getSuggestions(). ***");
+                console.log("*** Log before JSON parsing ***");
+                console.log("result: " + result);
 
-                                    //
-                    var json = null;
 
-                    try
-                    {
-                        json = JSON.parse(result);
-                    } catch (e)
-                    {
-                        console.log('ERROR:invalid json');
-                        json = null;
-                    }
-                    
-                
-                    // If the response is not successful..
-                    if (json == null || !json.is_result_ok) {
-                        console.log("RESULT:json.is_result_ok: null/false");
-                        search_suggestions.style.display = "none";
-                    } else if (json.is_result_ok) {
-                        // Else if it's successful..
-                        console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
-                        search_suggestions.style.display = "block";
-                        showSuggestions(json);
-                    }             
-                    
-                    
-                    
-                    // AJAX JSON log.
-                    console.log("*** Formatted JSON in METHOD: getSuggestions(). ***");
-                    for (var key in json) {
-                        if (json.hasOwnProperty(key)) {
-                            var val = json[key];
 
-                            // Display in the console.
-                            console.log(key + " => " + val);
+                //
+                var json = null;
+
+                try
+                {
+                    json = JSON.parse(result);
+                } catch (e)
+                {
+                    console.log('ERROR:invalid json');
+                    json = null;
+                }
+
+
+                // If the response is not successful..
+                if (json == null || !json.is_result_ok) {
+                    console.log("RESULT:json.is_result_ok: null/false");
+                    search_suggestions.style.display = "none";
+                } else if (json.is_result_ok) {
+                    // Else if it's successful..
+                    console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
+                    search_suggestions.style.display = "block";
+                    showSuggestions(json);
+                }
+
+
+
+                // AJAX JSON log.
+                console.log("*** Formatted JSON in METHOD: getSuggestions(). ***");
+                for (var key in json) {
+                    if (json.hasOwnProperty(key)) {
+                        var val = json[key];
+
+                        // Display in the console.
+                        console.log(key + " => " + val);
 
 //                            // Display errors in the form.
 //                            var error_label = document.getElementById(key);
 //                            if (error_label != null) {
 //                                error_label.innerHTML = val;
 //                            }
-                        }
-                    }                    
-                
-                
-                
-                
+                    }
+                }
+
+
+
+
             }
         };
         xhr.send();

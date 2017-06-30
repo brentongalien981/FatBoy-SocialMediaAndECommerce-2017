@@ -2,7 +2,7 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/my_user.php"); ?>
 <?php require_once("../__model/model_frienship.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_profile.php");    ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_profile.php");     ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_profile.php"); ?>
 
 
@@ -208,29 +208,26 @@ function show_user_friends() {
     echo "<table id='table_user_friends'>";
     while ($row = $database->fetch_array($friends_of_user_records_result_set)) {
         echo "<tr>";
-        
+
         echo "<td>";
         $profile_pic_src = LOCAL . get_profile_pic_src($row['user_id']);
         echo "<img src='{$profile_pic_src}'>";
-        echo "</td>";        
-        
-//        echo "<td>" . "{$row['user_name']}" . "</td>";
+        echo "</td>";
 
+//        echo "<td>" . "{$row['user_name']}" . "</td>";
         // Here is the form for authenticating the friendship.
         // In other words, this gives the user the ability to click and view
         // a friends account if they're actually friends.
         echo "<td>";
-        
+
         echo "<h4>{$row['user_name']}</h4>";
-        
+
         echo "<form action='../__controller/controller_friends.php' method='post'>";
         echo "<input type='hidden' name='friend_id' value='{$row['user_id']}'>";
         echo "<input type='hidden' name='friend_name' value='{$row['user_name']}'>";
         echo "<input type='submit' class='form_button' name='view_friend_account' value='view'>";
         echo "</form>";
 //        echo "</td>";
-
-
         // If the actual user is viewing her own account, 
         // then show her the button to unfriend her friend.
         if ($session->is_viewing_own_account()) {
@@ -266,13 +263,11 @@ function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
         global $session;
         $session->set_currently_viewed_user($friend_id, $friend_name);
         MyDebugMessenger::add_debug_message("Friendship is authenticated bruh..");
+        redirect_to(LOCAL . "/public/__view/profile");
     } else {
         MyDebugMessenger::add_debug_message("Friendship is NOT authenticated bruh..");
+        redirect_to(LOCAL . "/public/__view/profile/unauthorized.php");
     }
-
-
-    //
-    redirect_to("../index.php");
 }
 
 function create_new_friendship($friend_id) {
@@ -318,6 +313,29 @@ function create_new_friendship($friend_id) {
 
     redirect_to("../__view/view_friends.php");
 }
+
+function view_friend_account() {
+//
+    global $session;
+    $actual_user_id = $session->actual_user_id;
+    $friend_id = $_GET["friend_id"];
+    $friend_name = $_GET["friend_name"];
+
+    //
+    if ($actual_user_id === $friend_id) {
+        // echo "YOU ARE JUST TRYING TO VIEW YOUR OWN ACCOUNT";
+        MyDebugMessenger::add_debug_message("YOU ARE JUST TRYING TO VIEW YOUR OWN ACCOUNT");
+        // So just redirect to homepage.
+        //
+        $session->reset_currently_viewed_user();
+
+        redirect_to(LOCAL . "/public/index.php");
+    } else {
+        // echo "Your'e actually trying to view a friend account huh.";
+        // 
+        authenticate_friendship($actual_user_id, $friend_id, $friend_name);
+    }
+}
 ?>
 
 
@@ -345,6 +363,10 @@ if (isset($_POST["view_friend_account"])) {
         // 
         authenticate_friendship($actual_user_id, $friend_id, $friend_name);
     }
+}
+
+if (isset($_GET["view_friend_account"])) {
+    view_friend_account();
 }
 
 
