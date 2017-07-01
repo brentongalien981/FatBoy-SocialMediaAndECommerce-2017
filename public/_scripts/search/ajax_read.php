@@ -1,49 +1,50 @@
 <script>
-    // Vars.
-    var search_button = document.getElementById("search_button");
-    var search_input = document.getElementById("search_input");
-    var search_suggestions = document.getElementById("search_suggestions");
-
-
-
     console.log("****************************");
-    console.log("FILE: .../search/ajax_create.php.");
+    console.log("FILE: .../search/ajax_read.php.");
 
 
 
-    // Event listeners.
-    // use "input" (every key), not "change" (must lose focus)
-    search_input.addEventListener("input", function () {
-        console.log("EVENT:INPUT by search_input");
-        getSuggestions();
-    });
-
-    search_button.addEventListener("click", function () {
-        console.log("EVENT:CLICK by search_button");
-        
-        // Redirect.
-        window.location.assign("<?php echo LOCAL . "/public/__controller/search/index.php?show_all_search_suggestions=yes"; ?>");
-    });
+    /*
+     * Vars
+     */
+    var search_result_container_template = document.getElementById("search_result_container_template");
 
 
 
+    /*
+     * Tasks
+     */
+    fetch_all_search_suggestions();
 
-    // Functions.
 
-    function suggestionsToList(json, is_for_page_suggestions = false) {
-        // <li><a href="search.php?q=alpha">Alpha</a></li>
-        var output = '';
 
-//        var num_of_categories = json.suggested_objs_array.length;
+    /*
+     * Functions
+     */
+    function show_all_suggestions(json) {
 
-//        for (var i = 0; i < num_of_categories; i++) {
         for (var category in json.suggested_objs_array) {
+            console.log("*************************");
+            console.log("Inside METHOD: show_all_suggestions()");
+            console.log("VAR:category: " + category);
+
+
+
+
+            var search_container = search_result_container_template.cloneNode(true);
+            search_container.innerHTML = "<h4>Search Results for " + category + "</h4>";
+            search_container.innerHTML += "<hr>";
+            search_container.style.display = "block";
+
+
+
 
             var num_of_category_suggestions = json.suggested_objs_array[category].length;
-            console.log("DEBUG:num_of_category_suggestions in " + category + ": " + num_of_category_suggestions);
 
-            for (j = 0; j < num_of_category_suggestions; j++) {
-                output += "<a href='";
+            var output = "";
+            for (var j = 0; j < num_of_category_suggestions; j++) {
+                
+                output += "<a class='paged_search_suggestions' href='";
 
                 switch (category) {
                     case "Users_objs_array":
@@ -65,28 +66,20 @@
                 }
 
                 output += '</a>';
+                
+                
             }
+            search_container.innerHTML += output;
+            
+            
+            
+            // Append
+            document.getElementById("main_content").appendChild(search_container);            
         }
-
-        return output;
     }
 
-    function showSuggestions(json) {
-        var li_list = suggestionsToList(json);
-        search_suggestions.innerHTML = li_list;
-//        suggestions.style.display = 'block';
-    }
-
-    function getSuggestions() {
-        var search_value = search_input.value;
-
-        if (search_value.length < 1) {
-            search_suggestions.style.display = 'none';
-            return;
-        }
-
-        var url = "<?php echo LOCAL . "/public/__controller/search/index.php?search=yes&search_value="; ?>";
-        url += search_value;
+    function fetch_all_search_suggestions() {
+        var url = "<?php echo LOCAL . "/public/__controller/search/index.php?fetch_all_search_suggestions=yes"; ?>";
 
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url, true);
@@ -95,7 +88,7 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var result = xhr.responseText.trim();
                 // Log before JSON parsing.
-                console.log("*** AJAX in METHOD: getSuggestions(). ***");
+                console.log("*** AJAX in METHOD: fetch_all_search_suggestions(). ***");
                 console.log("*** Log before JSON parsing ***");
                 console.log("result: " + result);
 
@@ -117,18 +110,16 @@
                 // If the response is not successful..
                 if (json == null || !json.is_result_ok) {
                     console.log("RESULT:json.is_result_ok: null/false");
-                    search_suggestions.style.display = "none";
                 } else if (json.is_result_ok) {
                     // Else if it's successful..
+                    show_all_suggestions(json);
                     console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
-                    search_suggestions.style.display = "block";
-                    showSuggestions(json);
                 }
 
 
 
                 // AJAX JSON log.
-                console.log("*** Formatted JSON in METHOD: getSuggestions(). ***");
+                console.log("*** Formatted JSON in METHOD: fetch_all_search_suggestions(). ***");
                 for (var key in json) {
                     if (json.hasOwnProperty(key)) {
                         var val = json[key];
@@ -151,5 +142,12 @@
         };
         xhr.send();
     }
-
 </script>
+
+
+<!--
+    <div class="section">
+        <h4>Search Results for</h4>
+        <hr>
+        <p>QUERY:<br></p>
+    </div>-->

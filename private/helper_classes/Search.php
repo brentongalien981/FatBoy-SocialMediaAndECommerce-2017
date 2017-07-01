@@ -11,27 +11,39 @@ require_once(PUBLIC_PATH . "/__model/model_my_store_items.php");
 class Search {
 
     private $num_of_suggestions = 0;
-    private $table_names = array("Users", "MyStoreItems");
-    private $class_names = array("User", "MyStoreItems");
+    private static $table_names = array("Users", "MyStoreItems");
+    private static $class_names = array("User", "MyStoreItems");
     private $suggested_objs_array = array();
     public $the_query = array();
 
-    function __construct($search_value) {
-        $this->set_suggested_objs_array($search_value);
+    function __construct() {
+//        $this->set_suggested_objs_array($search_value);
+        // Reset the session search query every instantiation.
+        $_SESSION['search_query'] = null;
     }
 
-    private function set_suggested_objs_array($search_value) {
+    public static function get_searchable_table_names() {
+        return self::$table_names;
+    }
+    
+    public static function get_searchable_class_names() {
+        return self::$class_names;
+    }    
+
+    public function set_suggested_objs_array($search_value) {
         $query = null;
 
-        foreach ($this->table_names as $index => $table) {
+        foreach (self::$table_names as $index_of_current_table => $table) {
             // Query
             $query = "SELECT * FROM {$table}";
 
             if ($table == "MyStoreItems") {
                 $query .= " INNER JOIN Users ON MyStoreItems.user_id = Users.user_id";
             }
+            
+            $current_class = self::$class_names[$index_of_current_table];
 
-            foreach ($this->class_names[$index]::$searchable_fields as $current_searchable_table_field_key => $current_searchable_table_field) {
+            foreach ($current_class::$searchable_fields as $current_searchable_table_field_key => $current_searchable_table_field) {
                 if ($current_searchable_table_field_key == 0) {
                     $query .= " WHERE";
                 } else {
@@ -40,58 +52,79 @@ class Search {
 
                 $query .= " " . $current_searchable_table_field . " LIKE '%{$search_value}%'";
             }
+            
+//            $query .= " GROUP BY user_id"
 
-            $query .= " LIMIT 3";
-
-
-
-            $class_objs_array = null;
-
-            if ($table == "MyStoreItems") {
-                // Instantiate the object
-                $result_set = $this->class_names[$index]::read_by_query($query);
+//            $query .= " LIMIT 3";
 
 
-                global $database;
+            
+            
 
-
-                $num_of_results = $database->get_num_rows_of_result_set($result_set);
-                if ($num_of_results > 0) {
-                    $class_objs_array = array();
-
-                    //
-                    $this->num_of_suggestions += $num_of_results;
-                }
-
-                while ($row = $database->fetch_array($result_set)) {
-                    $MyStoreItems_pseudo_obj = array("id" => $row['id'],
-                        "name" => $row['name'],
-                        "description" => $row['description'],
-                        "user_id" => $row['user_id'],
-                        "user_name" => $row['user_name'],);
-
-                    array_push($class_objs_array, $MyStoreItems_pseudo_obj);
-                }
-            } else {
-                // Instantiate the object
-                $class_objs_array = $this->class_names[$index]::read_by_query_and_instantiate($query);
-
-                //
-                $this->num_of_suggestions += count($class_objs_array);
-            }
-
-
+            $class_objs_array = self::get_an_array_of_objs($table, $index_of_current_table, $query, $this->num_of_suggestions);
 
 
             // TODO:LOG
-            $this->the_query[$index] = $query;
+            $this->the_query[$index_of_current_table] = $query;
+            $this->set_session_search_query($table, $query);
 
             // Put object in the array
             // Set the array.
+            // Basically, VAR: suggested_objs_array has arrays ( Users objects array, Product objects array, ...).
+            //      Now, Users objects array, is an array of User objects.. And so too for Products, ...
             if ($class_objs_array != null) {
                 $this->suggested_objs_array[$table . "_objs_array"] = $class_objs_array;
             }
         }
+    }
+
+    public static function get_an_array_of_objs($table, $index_of_current_table, $query, &$num_of_suggestions) {
+        $class_objs_array = null;
+        $class_of_current_table = self::$class_names[$index_of_current_table];
+
+        if ($table == "MyStoreItems") {
+            $result_set = $class_of_current_table::read_by_query($query);
+
+
+            global $database;
+
+
+            $num_of_results = $database->get_num_rows_of_result_set($result_set);
+            if ($num_of_results > 0) {
+                $class_objs_array = array();
+
+                //
+                $num_of_suggestions += $num_of_results;
+            }
+
+            while ($row = $database->fetch_array($result_set)) {
+                $MyStoreItems_pseudo_obj = array("id" => $row['id'],
+                    "name" => $row['name'],
+                    "description" => $row['description'],
+                    "user_id" => $row['user_id'],
+                    "user_name" => $row['user_name'],);
+
+                array_push($class_objs_array, $MyStoreItems_pseudo_obj);
+            }
+        } else {
+            // Instantiate the object
+            $class_objs_array = $class_of_current_table::read_by_query_and_instantiate($query);
+
+            //
+            $num_of_suggestions += count($class_objs_array);
+        }
+
+
+        //
+        return $class_objs_array;
+    }
+
+    private function set_session_search_query($table, $query) {
+        $_SESSION['search_query'][$table] = $query;
+    }
+
+    public static function get_session_search_query() {
+        return $_SESSION['search_query'];
     }
 
     public function get_suggested_objs_array() {

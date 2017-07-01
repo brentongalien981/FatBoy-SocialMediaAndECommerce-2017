@@ -1,8 +1,12 @@
+<?php use App\Privado\HelperClasses\Validation\Validator; ?>
+<?php use App\Privado\HelperClasses\Search; ?>
+
+
+
+
+
+
 <?php
-
-use App\Privado\HelperClasses\Validation\Validator;
-use App\Privado\HelperClasses\Search;
-
 // TODO:SECTION: AJAX Event-handler.
 if (isset($_GET["search"]) && $_GET["search"] == "yes") {
     //
@@ -21,7 +25,8 @@ if (isset($_GET["search"]) && $_GET["search"] == "yes") {
 
     // Try to add record to db.
     if ($is_validation_ok) {
-        $search_obj = new Search($_GET["search_value"]);
+        $search_obj = new Search();
+        $search_obj->set_suggested_objs_array($_GET["search_value"]);
         
         // TODO:LOG
         $json_errors_array['num_of_suggestions'] = $search_obj->get_num_of_suggestions();
@@ -31,6 +36,12 @@ if (isset($_GET["search"]) && $_GET["search"] == "yes") {
             // Everything is ok.
             $json_errors_array['is_result_ok'] = true;
             $json_errors_array['suggested_objs_array'] = $search_obj->get_suggested_objs_array();
+            
+            // TODO:LOG all the search queries for all categories.
+            foreach (Search::get_session_search_query() as $key => $value) {
+                $json_errors_array['search_query_' . $key] = $value;
+            }
+            
         }
     }
 
