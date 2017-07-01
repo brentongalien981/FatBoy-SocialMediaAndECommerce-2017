@@ -52,10 +52,7 @@ class Search {
 
                 $query .= " " . $current_searchable_table_field . " LIKE '%{$search_value}%'";
             }
-            
-//            $query .= " GROUP BY user_id"
-
-//            $query .= " LIMIT 3";
+            $query .= " LIMIT 4";
 
 
             

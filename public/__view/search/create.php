@@ -15,6 +15,7 @@
 
 <style>
     #search_suggestions {
+        box-shadow: 3px 3px 15px rgb(100, 100, 100);
         position: absolute;
         width: 465px;
         /*height: 100px;*/

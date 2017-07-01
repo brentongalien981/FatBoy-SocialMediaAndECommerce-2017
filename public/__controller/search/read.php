@@ -21,9 +21,9 @@ if (isset($_GET["fetch_all_search_suggestions"]) && $_GET["fetch_all_search_sugg
         $category_num_of_suggestions = 0;
         $query = Search::get_session_search_query()[$table];
         
-//        // Remove the part " LIMIT n" from the query.
-//        $index_of_waste_query = strpos($query, " LIMIT");
-//        $query = substr($query, 0, $index_of_waste_query);
+        // Remove the part " LIMIT n" from the query.
+        $index_of_waste_query = strpos($query, " LIMIT");
+        $query = substr($query, 0, $index_of_waste_query);
         
         
         $suggested_objs_array[$table . "_objs_array"] = Search::get_an_array_of_objs($table, $current_class_index, $query, $category_num_of_suggestions);

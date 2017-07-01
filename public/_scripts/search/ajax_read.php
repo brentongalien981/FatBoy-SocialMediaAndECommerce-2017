@@ -30,20 +30,20 @@
 
 
 
-
-            var search_container = search_result_container_template.cloneNode(true);
-            search_container.innerHTML = "<h4>Search Results for " + category + "</h4>";
-            search_container.innerHTML += "<hr>";
-            search_container.style.display = "block";
-
-
-
-
             var num_of_category_suggestions = json.suggested_objs_array[category].length;
+
+            var search_container = null;
+
+            if (num_of_category_suggestions > 0) {
+                search_container = search_result_container_template.cloneNode(true);
+                search_container.innerHTML = "<h4>Search Results for " + category + "</h4>";
+                search_container.innerHTML += "<hr>";
+                search_container.style.display = "block";
+            }
 
             var output = "";
             for (var j = 0; j < num_of_category_suggestions; j++) {
-                
+
                 output += "<a class='paged_search_suggestions' href='";
 
                 switch (category) {
@@ -66,15 +66,16 @@
                 }
 
                 output += '</a>';
-                
-                
+
+
             }
-            search_container.innerHTML += output;
-            
-            
-            
-            // Append
-            document.getElementById("main_content").appendChild(search_container);            
+
+            if (search_container != null) {
+                search_container.innerHTML += output;
+                // Append
+                document.getElementById("main_content").appendChild(search_container);
+            }
+
         }
     }
 

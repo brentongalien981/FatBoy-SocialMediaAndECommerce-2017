@@ -3,6 +3,8 @@
     var search_button = document.getElementById("search_button");
     var search_input = document.getElementById("search_input");
     var search_suggestions = document.getElementById("search_suggestions");
+    var search_suggestions_hider_handler;
+
 
 
 
@@ -18,19 +20,54 @@
         getSuggestions();
     });
 
+
+
     search_button.addEventListener("click", function () {
         console.log("EVENT:CLICK by search_button");
-        
+
         // Redirect.
         window.location.assign("<?php echo LOCAL . "/public/__controller/search/index.php?show_all_search_suggestions=yes"; ?>");
+    });
+
+    search_input.addEventListener("focusout", function () {
+        // Delay the hiding of the search_suggestions.
+        // I do this because without this delay, when I click the suggested links (<a>s),
+        // JS fires the this EVENT: onfocusout right away. In effect, the attribute "href"
+        // of that clicked suggested link doesn't get executed. So, sort of like a bug.
+        // That's why I created this setTimeout delay. To reinforce this, I added an event listener
+        // to the suggested links. For every EVENT: click for those links,
+        // it will clear the timeout handler (cancel the setTimout function), so it will
+        // still fire its attribute "href".
+        search_suggestions_hider_handler = setTimeout(hide_search_suggestions, 100);
+    });
+
+    search_input.addEventListener("focus", function () {
+        getSuggestions();
     });
 
 
 
 
-    // Functions.
 
-    function suggestionsToList(json, is_for_page_suggestions = false) {
+
+    // Functions.
+    
+    function hide_search_suggestions() {
+        search_suggestions.style.display = "none";
+    }
+
+    function set_event_listeners_to_suggested_links() {
+        var suggested_links = document.getElementsByClassName("suggested_links");
+
+        for (var i = 0; i < suggested_links.length; i++) {
+            suggested_links[i].addEventListener("click", function () {
+                // Cancel the hiding of the search_suggestions
+                clearTimeout(search_suggestions_hider_handler);
+            });
+        }
+    }
+
+    function suggestionsToList(json) {
         // <li><a href="search.php?q=alpha">Alpha</a></li>
         var output = '';
 
@@ -43,7 +80,7 @@
             console.log("DEBUG:num_of_category_suggestions in " + category + ": " + num_of_category_suggestions);
 
             for (j = 0; j < num_of_category_suggestions; j++) {
-                output += "<a href='";
+                output += "<a class='suggested_links' href='";
 
                 switch (category) {
                     case "Users_objs_array":
@@ -123,6 +160,7 @@
                     console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
                     search_suggestions.style.display = "block";
                     showSuggestions(json);
+                    set_event_listeners_to_suggested_links();
                 }
 
 
