@@ -2,7 +2,7 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/my_user.php"); ?>
 <?php require_once("../__model/model_frienship.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__model/model_profile.php");     ?>
+<?php // require_once(PUBLIC_PATH . "/__model/model_profile.php");          ?>
 <?php require_once(PUBLIC_PATH . "/__controller/controller_profile.php"); ?>
 
 
@@ -245,6 +245,15 @@ function show_user_friends() {
     echo "</table>";
 }
 
+function redirect_to_specific_product_viewing() {
+    $url = "/public/__controller/controller_my_store.php?view_product=yes&product_id={$_GET['product_id']}";
+    redirect_to(LOCAL . $url);
+//    else {
+//        // If it's just a regular search of trying to view another user's account.
+//        redirect_to(LOCAL . "/public/__view/profile");
+//    }
+}
+
 function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
     //
     $query = "SELECT * FROM Friendship ";
@@ -263,10 +272,44 @@ function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
         global $session;
         $session->set_currently_viewed_user($friend_id, $friend_name);
         MyDebugMessenger::add_debug_message("Friendship is authenticated bruh..");
-        redirect_to(LOCAL . "/public/__view/profile");
+
+
+        // If it's actually a product that the user is trying
+        // to search and click...
+        if (isset($_GET['view_product'])) {
+            redirect_to_specific_product_viewing();
+        } else {
+            redirect_to(LOCAL . "/public/__view/profile");
+        }
     } else {
-        MyDebugMessenger::add_debug_message("Friendship is NOT authenticated bruh..");
-        redirect_to(LOCAL . "/public/__view/profile/unauthorized.php");
+        // Check if the user is public.
+        $query = "SELECT * FROM Users WHERE user_id = {$friend_id}";
+
+        $result_set = User::read_by_query($query);
+
+        while ($row = $database->fetch_array($result_set)) {
+            // If the account is public...
+            if ($row['private'] == 0) {
+                //
+                global $session;
+                $session->set_currently_viewed_user($friend_id, $friend_name);
+                MyDebugMessenger::add_debug_message("The accout is public and can be viewed alright.");
+
+
+                // If it's actually a product that the user is trying
+                // to search and click...
+                if (isset($_GET['view_product'])) {
+                    redirect_to_specific_product_viewing();
+                } else {
+                    redirect_to(LOCAL . "/public/__view/profile");
+                }
+            } else {
+                MyDebugMessenger::add_debug_message("Friendship is not authenticated or the account is private.. Sorry bruh..");
+                redirect_to(LOCAL . "/public/__view/profile/unauthorized.php");
+            }
+
+            return;
+        }
     }
 }
 
@@ -329,7 +372,7 @@ function view_friend_account() {
         //
         $session->reset_currently_viewed_user();
 
-        redirect_to(LOCAL . "/public/index.php");
+        redirect_to(LOCAL . "/public/__view/profile");
     } else {
         // echo "Your'e actually trying to view a friend account huh.";
         // 

@@ -51,7 +51,12 @@
                         output += "USER: " + json.suggested_objs_array[category][j]["user_name"];
                         break;
                     case "MyStoreItems_objs_array":
-                        output += "#'>";
+                        output += "<?php echo LOCAL . "/public/__controller/controller_friends.php?view_friend_account=yes"; ?>";
+                        output += "<?php echo "&friend_id="; ?>" + json.suggested_objs_array[category][j]["user_id"];
+                        output += "<?php echo "&friend_name="; ?>" + json.suggested_objs_array[category][j]["user_name"];
+                        output += "&view_product=yes";
+                        output += "<?php echo "&product_id="; ?>" + json.suggested_objs_array[category][j]["id"];
+                        output += "'>";
                         output += "PRODUCT: " + json.suggested_objs_array[category][j]["name"];
                         break;
                 }

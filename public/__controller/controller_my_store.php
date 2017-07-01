@@ -343,7 +343,7 @@ function show_user_store_items() {
     while ($row = $database->fetch_array($store_items_record_result_set)) {
         echo "<tr>";
         echo "<td>";
-        echo "<div class='section_item'>";
+        echo "<div id='product{$row['id']}' class='section_item'>";
         // Name
         echo "<h4>{$row['name']}: {$row['quantity']} item";
 
@@ -517,5 +517,12 @@ if (isset($_POST["add_item_to_cart"])) {
     require_once(PUBLIC_PATH . "/__controller/controller_store_cart.php");
     
     add_item_to_cart($_POST["item_id"]);
+}
+
+if (isset($_GET['view_product'])) {
+//    redirect_to(LOCAL . "/public/__controller/controller_my_store.php?view_product=yes&product_id{$_GET['product_id']}");
+    $url = "/public/__view/view_my_store/#product" . $_GET["product_id"];
+    redirect_to(LOCAL . $url);
+    
 }
 ?>
