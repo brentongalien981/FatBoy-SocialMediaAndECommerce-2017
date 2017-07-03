@@ -782,7 +782,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // Notifications.
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_notifications' href='" . LOCAL . "/public/__view/view_notifications.php'>";
+                                    echo "<a id='menu_notifications' href='" . LOCAL . "/public/__view/notifications'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
                                     echo "Notifications";
 

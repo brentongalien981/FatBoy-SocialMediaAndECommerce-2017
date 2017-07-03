@@ -152,44 +152,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php
-// TODO: SECTION: Scripts.
-?>
-<!--<script src="../_scripts/view_profile.js"></script>-->
-<script>
-    // Edit the page title.
-    document.getElementById("title").innerHTML = "Notifications / FatBoy";
-</script>
 
-
-
-
-
-
-
-
-
-
-
-<?php
-// TODO: SECTION: This appends the content of the main content to the main placeholder.
-?>
-<script>
-    document.getElementById("middle").appendChild(document.getElementById("middle_content"));
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-<?php
-// TODO: SECTION: Footer.
-?>
+<script>document.getElementById("title").innerHTML = "Notifications / FatBoy";</script>
+<script>document.getElementById("middle").appendChild(document.getElementById("middle_content"));</script>
 <?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

@@ -1,0 +1,1 @@
+<div id="categorical_notification_container_template" class="section"></div>
