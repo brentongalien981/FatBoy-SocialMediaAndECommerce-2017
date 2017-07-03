@@ -4,7 +4,7 @@
 <?php
 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     // Start the notification notifier fetcher...
-    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php");
+//    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php");
 }
 ?>
 
@@ -786,12 +786,13 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
                                     echo "Notifications";
 
-                                    if ($session->num_of_notifications > 0) {
-                                        echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
+//                                    if ($session->num_of_notifications > 0) {
+//                                        echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
+//                                        echo "<span id='span_num_of_notifications' style='display: inline;'>5</span>";
 //                    echo "<span id='span_num_of_notifications'>5</span>";
-                                    } else {
+//                                    } else {
                                         echo "<span id='span_num_of_notifications' style='display: none;'></span>";
-                                    }
+//                                    }
 
                                     echo "</a>";
                                 }
@@ -1291,6 +1292,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         
         <?php // TODO:SECTION: AJAX script for search. ?>
         <?php require_once(PUBLIC_PATH . "/_scripts/search/ajax_create.php"); ?>
+        <?php require_once(PUBLIC_PATH . "/_scripts/notifications/count_displayer.php"); ?>
 
 
 
