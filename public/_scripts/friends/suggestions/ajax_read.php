@@ -41,7 +41,9 @@
                     console.log("RESULT:json.is_result_ok: null/false");
                 } else if (json.is_result_ok) {
                     // Else if it's successful..
-//                    show_categorized_notifications(json);
+                    populate_suggested_friends(json.all_suggested_friends);
+                    //
+                    add_event_listeners_to_follow_buttons();
                     console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
                 }
 
@@ -70,5 +72,42 @@
             }
         };
         xhr.send();
+    }
+
+    /**
+     * 
+     * @param {array} all_suggested_friends
+     * @returns {undefined}
+     */
+    function populate_suggested_friends(all_suggested_friends) {
+        //
+        var container = document.getElementById("friend_suggestions_tbody");
+
+        for (var j = 0; j < all_suggested_friends.length; j++) {
+            //
+            var friend_id = all_suggested_friends[j]["user_id"];
+            var friend_name = all_suggested_friends[j]["user_name"];
+            var pic_src = all_suggested_friends[j]["user_pic_src"];
+            var tr = document.createElement("tr");
+            var content = "";
+            
+            
+            content += "<td>";
+            content += "<img src='<?php echo LOCAL; ?>" + pic_src + "'>";
+            content += "</td>";
+
+            content += "<td><h5>";
+            content += friend_name;
+            content += "</h5>";
+            content += "<input id='follow_button" + friend_id + "' type='button' class='form_button follow_buttons' friend_id='" + friend_id + "' friend_name='" + friend_name + "' value='+ follow'>";
+            content += "</td>";
+            
+
+
+            tr.innerHTML = content;
+            //
+            container.appendChild(tr);
+
+        }
     }
 </script>

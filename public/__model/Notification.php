@@ -7,12 +7,11 @@ require_once("my_database.php");
 class Notification {
 
     protected static $table_name = "Notifications";
-    protected static $db_fields = array("id", "notified_user_id", "notifier_user_id", "notification_msg_id", "initiation_date", "is_deleted");
+    protected static $db_fields = array("id", "notified_user_id", "notifier_user_id", "notification_msg_id", "is_deleted");
     public $id;
     public $notified_user_id;
     public $notifier_user_id;
     public $notification_msg_id;
-    public $initiation_date;
     public $is_deleted;
 
     public static function read_by_id($id = 0) {
@@ -87,6 +86,9 @@ class Notification {
         $query .= ") VALUES ('";
         $query .= join("', '", array_values($attributes));
         $query .= "')";
+        
+        MyDebugMessenger::add_debug_message("QUERY1: {$query}");
+//        $json_errors_array['query1'] = $query;
 
         $query_result = $database->get_result_from_query($query);
 

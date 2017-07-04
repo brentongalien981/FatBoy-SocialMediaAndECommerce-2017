@@ -124,7 +124,7 @@
      * @returns {String}
      */
     function get_notification_msg_for_friendship(notification_obj) {
-        var msg = "{User:" + notification_obj["notified_user_id"] + "} wants to follow you.";
+        var msg = "{User:" + notification_obj["notifier_user_id"] + "} wants to follow you.";
         return msg;
     }
     

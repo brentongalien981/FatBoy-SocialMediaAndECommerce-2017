@@ -9,10 +9,11 @@ class NotificationFriendship extends Notification {
 
     protected static $table_name = "NotificationsFriendship";
     protected static $db_fields = array("notification_id");
+    private static $uninherited_db_fields = array("notification_id");
     public $notification_id;
 
     public function __construct() {
-        self::$db_fields = array_merge(parent::$db_fields, self::$db_fields);
+        self::$db_fields = array_merge(parent::$db_fields, self::$uninherited_db_fields);
     }
 
     public static function read_by_id($id = 0) {
@@ -54,7 +55,7 @@ class NotificationFriendship extends Notification {
         $query .= " ON " . self::$table_name . ".notification_id = " . parent::$table_name . ".id";
         $query .= " WHERE is_deleted = 0";
         $query .= " AND notified_user_id = {$notified_user_id}";
-        
+
         return $query;
     }
 
@@ -73,9 +74,56 @@ class NotificationFriendship extends Notification {
         return array_key_exists($attribute, $this->get_attributes());
     }
 
+    private function create_parent_obj() {
+        $parent_notification = new Notification();
+        $parent_notification->id = $this->id;
+        $parent_notification->notified_user_id = $this->notified_user_id;
+        $parent_notification->notifier_user_id = $this->notifier_user_id;
+        $parent_notification->notification_msg_id = $this->notification_msg_id; // 2 is {NotifierUserName} wants to follow you.
+        $parent_notification->is_deleted = $this->is_deleted;
+        $is_creation_ok = $parent_notification->create_with_bool();
+
+
+        $this->id = $parent_notification->id;
+        $this->notification_id = $this->id;
+
+        return $is_creation_ok;
+    }
+
     // Returns bool.
     public function create_with_bool() {
-//        parent::create_with_bool();
+        /**/
+        if (!$this->create_parent_obj()) {
+            return false;
+        }
+
+
+
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - INSERT INTO table (key, key) VALUES ('value', 'value')
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+
+        $attributes = $this->get_sanitized_uninherited_attributes();
+
+        $query = "INSERT INTO " . self::$table_name . " (";
+        $query .= join(", ", array_keys($attributes));
+        $query .= ") VALUES ('";
+        $query .= join("', '", array_values($attributes));
+        $query .= "')";
+
+        MyDebugMessenger::add_debug_message("QUERY2: {$query}");
+//        $json_errors_array['query1'] = $query;
+
+        $query_result = $database->get_result_from_query($query);
+
+        if ($query_result) {
+//            $this->id = $database->get_last_inserted_id();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function delete($id = 0) {
@@ -103,10 +151,32 @@ class NotificationFriendship extends Notification {
         return $sanitized_attributes;
     }
 
+    private function get_sanitized_uninherited_attributes() {
+        global $database;
+        $sanitized_attributes = array();
+        // sanitize the values before submitting
+        // Note: does not alter the actual value of each attribute
+        foreach ($this->get_uninherited_attributes() as $key => $value) {
+            $sanitized_attributes[$key] = $database->escape_value($value);
+        }
+        return $sanitized_attributes;
+    }
+
     protected function get_attributes() {
         // return an array of attribute names and their values
         $attributes = array();
         foreach (self::$db_fields as $field) {
+            if (property_exists($this, $field)) {
+                $attributes[$field] = $this->$field;
+            }
+        }
+        return $attributes;
+    }
+
+    private function get_uninherited_attributes() {
+        // return an array of attribute names and their values
+        $attributes = array();
+        foreach (self::$uninherited_db_fields as $field) {
             if (property_exists($this, $field)) {
                 $attributes[$field] = $this->$field;
             }

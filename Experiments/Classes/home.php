@@ -9,11 +9,6 @@ require_once 'SubclassA.php';
 $classesArray = array("SubclassA");
 foreach ($classesArray as $class) {
     $classX = new $class;
-//    $classX->showStaticSecret();
-//    $classX->showFieldA();
-    echo "VAR:\$classX::\$theArray:";
-    echo "<pre>";
-    var_dump($classX::$theArray);
-    echo "</pre>";
+    $classX->echoFirstVar();
 }
 ?>

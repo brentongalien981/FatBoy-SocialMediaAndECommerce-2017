@@ -187,9 +187,6 @@ if (!$session->is_logged_in()) {
         /*background-color: yellow;*/
     }
 
-    #table_suggested_friends h4 {
-        /*margin-top: 50px;*/
-    }
 
 
 

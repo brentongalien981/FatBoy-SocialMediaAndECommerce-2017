@@ -1,6 +1,6 @@
 <?php
 
-// If it's going to need the database, then it's 
+// If it's going to need the database, then it's
 // probably smart to require it before we start.
 require_once("my_database.php");
 
@@ -20,6 +20,36 @@ class Friendship {
 //        }
     }
 
+    /**
+     * 
+     * @param int $actual_user_id
+     * @return string
+     */
+    public static function get_query_for_suggested_friends($actual_user_id) {
+        $query = "SELECT user_id, user_name ";
+        $query .= "FROM Users ";
+        $query .= "WHERE user_id NOT IN ";
+        $query .= "(";
+        $query .= "SELECT friend_id ";
+        $query .= "FROM Friendship ";
+        $query .= "WHERE user_id = {$actual_user_id}";
+        $query .= ") ";
+        $query .= "AND user_id != {$actual_user_id} ";
+
+        // Also, don't suggest users that are currently in pending friendship status with you.
+        $query .= "AND user_id NOT IN (";
+        $query .= "SELECT notified_user_id ";
+        $query .= "FROM FriendshipNotifications ";
+        $query .= "WHERE notifier_user_id = {$actual_user_id}) ";
+
+        $query .= "AND user_id NOT IN (";
+        $query .= "SELECT notifier_user_id ";
+        $query .= "FROM FriendshipNotifications ";
+        $query .= "WHERE notified_user_id = {$actual_user_id})";
+        
+        return $query;
+    }
+
     public static function read_by_query_and_instantiate($query = "") {
         global $database;
 
@@ -34,11 +64,11 @@ class Friendship {
 
         // TODO: DEBUG
         MyDebugMessenger::add_debug_message("METHOD: read_by_query_and_instantiate() called...");
-        
+
         // This could be one or many instantiated objects.
         return $objects_array;
     }
-    
+
     public static function read_by_query($query = "") {
         global $database;
 
@@ -47,13 +77,12 @@ class Friendship {
 
         //
         return $result_set;
-    }    
-
+    }
 
     public static function read_all() {
         $query = "SELECT * FROM " . self::$table_name;
 //        $query .= "ORDER BY name ASC";
-        
+
 
         $objects_array = self::read_by_query_and_instantiate($query);
 
@@ -90,30 +119,30 @@ class Friendship {
             return false;
         }
     }
-    
+
     public static function delete($id = 0) {
         global $database;
-        
+
         $query = "DELETE FROM " . self::$table_name . " ";
         $query .= "WHERE id = " . $database->escape_value($id) . " ";
         $query .= "LIMIT 1";
-        
+
         // TODO: DEBUG
         MyDebugMessenger::add_debug_message("QUERY: {$query}.");
-        
+
         $database->get_result_from_query($query);
         return ($database->get_num_of_affected_rows() == 1) ? true : false;
-    }  
-    
+    }
+
     public static function delete_by_query($query) {
         global $database;
-        
+
         // TODO: DEBUG
         MyDebugMessenger::add_debug_message("QUERY DELETE: {$query}.");
-        
+
         $database->get_result_from_query($query);
         return ($database->get_num_of_affected_rows() == 1) ? true : false;
-    }      
+    }
 
     protected function get_sanitized_attributes() {
         global $database;
@@ -136,19 +165,19 @@ class Friendship {
         }
         return $attributes;
     }
-    
+
     public function to_string() {
         $object_in_string = "";
-        
+
         foreach (self::$db_fields as $field) {
             if (property_exists($this, $field)) {
                 echo "{$field}: $this->$field<br>";
                 $object_in_string .= "{$field}: $this->$field<br>";
             }
         }
-        
+
         return $object_in_string;
-    }    
+    }
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.
