@@ -15,8 +15,6 @@
 
 
     // Functions
-
-
     /**
      * Append the template to the end of the middle content,
      * so that whenever you clone this template, then append the newly

@@ -12,7 +12,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                           ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                             ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -389,8 +389,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #middle_content {
-                /*height: 900px;*/
-
+                background-color: rgb(250, 250, 250);
+                color: black;
+                /*background-color: yellow;*/
+                padding-bottom: 0px;
             }
 
 
@@ -434,7 +436,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 border-top-left-radius: 5px;
                 border-top-right-radius: 5px;
                 /*background-color: rgba(252, 224, 121, 0.50);*/
-                background-color: #EEE4B9;
+                background-color: rgb(60, 60, 60);
                 color: black;
             }
 
@@ -489,7 +491,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 padding-top: 5px;
                 padding-bottom: 5px;
                 border-radius: 3px;
-                color: black;
+                color: rgb(220, 220, 220);
             }
 
             #sub_menus_nav a:hover {
@@ -567,7 +569,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     <body>
         <?php // TODO:REMINDER: Display this later. ?>
         <!--<div id="the_spinner_div">-->
-            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif";  ?>">-->
+            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif";    ?>">-->
         <!--</div>-->
 
 
@@ -675,7 +677,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
                     <td class="header" id="search">
-                        <?php require_once(PUBLIC_PATH . "/__view/search/create.php");?>
+                        <?php require_once(PUBLIC_PATH . "/__view/search/create.php"); ?>
                     </td>
 
                     <td class="header" id="site_logo">
@@ -707,7 +709,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-               <!--uki-->
+        <!--uki-->
         <div id="main">
             <table id="the_table">
                 <tr>
@@ -751,7 +753,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                         break;
                                     }
 
-                                    echo "<a id='menu_wall' href='";
+                                    echo "<a id='menu_wall' class='menus' href='";
                                     if ($session->is_logged_in()) {
                                         echo LOCAL . "/public/index.php' class=''>";
                                     } else {
@@ -769,8 +771,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                            ?>" class="">-->
-                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                            ?>" class="icon">Timeline-->
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                              ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                              ?>" class="icon">Timeline-->
                                 <?php
 //                                    if ($session->is_logged_in()) {
 //                                        echo " of {$session->currently_viewed_user_name}";
@@ -782,7 +784,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // Notifications.
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_notifications' href='" . LOCAL . "/public/__view/notifications'>";
+                                    echo "<a id='menu_notifications' class='menus' href='" . LOCAL . "/public/__view/notifications'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
                                     echo "Notifications";
 
@@ -791,14 +793,14 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 //                                        echo "<span id='span_num_of_notifications' style='display: inline;'>5</span>";
 //                    echo "<span id='span_num_of_notifications'>5</span>";
 //                                    } else {
-                                        echo "<span id='span_num_of_notifications' style='display: none;'></span>";
+                                    echo "<span id='span_num_of_notifications' style='display: none;'></span>";
 //                                    }
 
                                     echo "</a>";
                                 }
                                 ?>
 
-                                <a id="menu_profile" href="
+                                <a id="menu_profile" class='menus' href="
                                 <?php
                                 if ($session->is_logged_in()) {
 //                                    echo LOCAL . '/public/__view/view_profile.php';
@@ -812,10 +814,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <a id="menu_friends" href="
+                                <a id="menu_friends" class='menus' href="
                                 <?php
                                 if ($session->is_logged_in()) {
-                                    echo LOCAL . '/public/__view/view_friends.php';
+                                    echo LOCAL . '/public/__view/friends';
                                 } else {
                                     echo "#";
                                 }
@@ -825,7 +827,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <a id="menu_my_videos" href="
+                                <a id="menu_my_videos" class='menus' href="
                                 <?php
                                 if ($session->is_logged_in()) {
                                     echo LOCAL . '/public/__view/my_videos';
@@ -839,7 +841,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // Chat
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_chat' href='" . LOCAL . "/public/__view/view_chat'>";
+                                    echo "<a id='menu_chat' class='menus' href='" . LOCAL . "/public/__view/view_chat'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
                                     echo "Chat</a>";
                                 }
@@ -853,7 +855,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 // MyAds.
 // TODO: REMINDER: Remove this once you publish it.
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_my_ads' href='" . LOCAL . "/public/__view/view_my_ads'>";
+                                    echo "<a id='menu_my_ads' class='menus' href='" . LOCAL . "/public/__view/view_my_ads'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_ad.png' class='icon'>";
                                     echo "MyAds</a>";
                                 }
@@ -863,7 +865,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <a id="menu_my_store" href="
+                                <a id="menu_my_store" class='menus' href="
                                 <?php
                                 if ($session->is_logged_in()) {
                                     echo LOCAL . '/public/__view/view_my_store';
@@ -876,7 +878,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // MyCart
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_my_cart' href='" . LOCAL . "/public/__view/view_store_cart'>";
+                                    echo "<a id='menu_my_cart' class='menus' href='" . LOCAL . "/public/__view/view_store_cart'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_cart.png' class='icon'>";
                                     echo "MyCart</a>";
                                 }
@@ -887,7 +889,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // MySales
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_my_sales' href='" . LOCAL . "/public/__view/view_my_sales'>";
+                                    echo "<a id='menu_my_sales' class='menus' href='" . LOCAL . "/public/__view/view_my_sales'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_sales.png' class='icon'>";
                                     echo "MySales</a>";
                                 }
@@ -897,7 +899,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                                 <?php
 // MyRefund
                                 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-                                    echo "<a id='menu_my_refund' href='" . LOCAL . "/public/__view/view_refund'>";
+                                    echo "<a id='menu_my_refund' class='menus' href='" . LOCAL . "/public/__view/view_refund'>";
                                     echo "<img src='" . LOCAL . "/public/_photos/icon_refund.png' class='icon'>";
                                     echo "MyRefund</a>";
                                 }
@@ -938,6 +940,16 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
         <style>
+            .section {
+                background-color: rgb(245, 245, 245);
+                margin: 30px;
+                padding: 30px;
+                border-radius: 5px;
+                box-shadow: 5px 5px 5px rgb(150, 150, 150);
+
+            }          
+
+
             td.main {
                 /*background-color: white;*/
             }
@@ -1087,16 +1099,6 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 color: black;
             }
 
-            /*            #sub_menus_nav {
-                            border-radius: 5px;
-                            background-color: rgba(252, 224, 121, 0.80);
-                            color: black;
-                        }
-
-                        #sub_menus_nav a {
-                            color: black;
-                        }
-            */
 
             #ad_container {
                 background-color: rgba(50, 50, 50, 0.6);
@@ -1148,7 +1150,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 font-weight: 100;
                 color: red;
             }       
-            
+
             div#main_content {
                 margin: 0;
                 padding: 0;
@@ -1288,8 +1290,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 //                this.style.display = "block";
             };
         </script>
-        
-        
+
+
         <?php // TODO:SECTION: AJAX script for search. ?>
         <?php require_once(PUBLIC_PATH . "/_scripts/search/ajax_create.php"); ?>
         <?php require_once(PUBLIC_PATH . "/_scripts/notifications/count_displayer.php"); ?>

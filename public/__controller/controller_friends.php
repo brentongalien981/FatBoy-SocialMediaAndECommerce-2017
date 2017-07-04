@@ -36,6 +36,7 @@ if (!MyDebugMessenger::is_initialized()) {
 <?php
 
 // Functions.
+//uki
 function show_non_friends() {
     //
     global $database;
@@ -104,6 +105,7 @@ function show_non_friends() {
     }
     echo "</table>";
 }
+
 
 function show_friend_request_for_me() {
     //
