@@ -41,21 +41,17 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
     <div id="main_content">
-<?php // require_once(PUBLIC_PATH . "/__view/notifications/create.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__view/notifications/read.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__view/notifications/update.php");   ?>
-<?php // require_once(PUBLIC_PATH . "/__view/notifications/delete.php");   ?>       
+        <?php // require_once(PUBLIC_PATH . "/__view/notifications/create.php"); ?>
+        <?php require_once(PUBLIC_PATH . "/__view/notifications/read.php"); ?>
+        <?php // require_once(PUBLIC_PATH . "/__view/notifications/update.php");   ?>
+        <?php // require_once(PUBLIC_PATH . "/__view/notifications/delete.php");   ?>       
+    </div>   
 
-
-
-
-
-        <?php
+    <?php
 // TODO:SECTION:LOG
-        MyDebugMessenger::show_debug_message();
-        MyDebugMessenger::clear_debug_message();
-        ?>
-    </div>    
+    MyDebugMessenger::show_debug_message();
+    MyDebugMessenger::clear_debug_message();
+    ?>    
 </main>
 
 
