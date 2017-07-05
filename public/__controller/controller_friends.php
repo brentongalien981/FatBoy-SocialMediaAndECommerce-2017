@@ -315,7 +315,6 @@ function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
 }
 
 function create_new_friendship($friend_id) {
-    // uki
     global $session;
 
     MyDebugMessenger::add_debug_message("A new friendship is about to be born.");

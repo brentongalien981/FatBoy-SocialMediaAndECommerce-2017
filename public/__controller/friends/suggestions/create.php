@@ -70,6 +70,9 @@ function create_follow_record() {
 
     $is_creation_ok = $new_friendship->create_with_bool();
     
+//    uki
+//    CentralController::delete_follow_request_notification();
+    
     return $is_creation_ok;
 }
 

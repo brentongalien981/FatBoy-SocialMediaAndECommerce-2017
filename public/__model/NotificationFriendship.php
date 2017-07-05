@@ -88,7 +88,9 @@ class NotificationFriendship extends Notification {
         global $database;
         while ($row = $database->fetch_array($result_set)) {
             //
-            $a_notification = array("notifier_user_id" => $row['notifier_user_id'],
+            $a_notification = array(
+                "notification_id" => $row['notification_id'],
+                "notifier_user_id" => $row['notifier_user_id'],
                 "user_name" => $row['user_name']);
             
             
@@ -161,15 +163,39 @@ class NotificationFriendship extends Notification {
         global $database;
 
         $query = "DELETE FROM " . self::$table_name . " ";
-        $query .= "WHERE id = " . $database->escape_value($id) . " ";
+        $query .= "WHERE notification_id = " . $database->escape_value($id) . " ";
         $query .= "LIMIT 1";
 
         // TODO: DEBUG
         MyDebugMessenger::add_debug_message("QUERY: {$query}.");
 
         $database->get_result_from_query($query);
-        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+//        $is_deletion_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+        $is_deletion_ok = false;
+        if ($database->get_num_of_affected_rows() != 0) {
+            $is_deletion_ok = true;
+        }
+        
+        MyDebugMessenger::add_debug_message("VAR:\$is_deletion_ok: {$is_deletion_ok}.");
+        
+        if ($is_deletion_ok) {
+            $is_deletion_ok = parent::delete($id);
+        }
+        
+        return $is_deletion_ok;
     }
+    
+    /**
+     * 
+     * @param string $query
+     * @return bool
+     */
+    public static function delete_by_query($query) {
+        return parent::delete_by_query($query);
+    }
+
+    
+    
 
     protected function get_sanitized_attributes() {
         global $database;

@@ -133,10 +133,11 @@
      * @returns {String}
      */
     function get_notification_msg_for_friendship(notification_obj) {
+        var notification_id = notification_obj["notification_id"];
         var user_name = notification_obj["user_name"];
         var notifier_user_id = notification_obj["notifier_user_id"];
         
-        var msg = "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "'>accept</a>";
+        var msg = "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "' notification_id='" + notification_id + "'>accept</a>";
         return msg;
     }
     

@@ -1,5 +1,6 @@
 <script>
     // Vars
+    var is_create_follow_record_done = false;
 
 
     // Tasks
@@ -67,7 +68,7 @@
 
 
 
-
+                is_create_follow_record_done = true;
             }
         };
         xhr.send(get_post_key_value_pairs_for_create_follow_record(friend_id));
@@ -96,6 +97,7 @@
     }
 
 
+<?php // TODO:REMINDER: Move this to .../_scripts/notifications/ajax_create.php.  ?>
     function create_friendship_notification(friend_id) {
         var url = "<?php echo LOCAL . "/public/__controller/friends/suggestions/index.php"; ?>";
 

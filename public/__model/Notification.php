@@ -111,8 +111,32 @@ class Notification {
         MyDebugMessenger::add_debug_message("QUERY: {$query}.");
 
         $database->get_result_from_query($query);
-        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+//        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+        
+        if ($database->get_num_of_affected_rows() != 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
+    
+    
+    /**
+     * 
+     * @global type $database
+     * @param type $query
+     * @return bool
+     */
+    protected static function delete_by_query($query) {
+        global $database;
+        
+        // TODO: DEBUG
+        MyDebugMessenger::add_debug_message("QUERY: {$query}.");
+
+        $database->get_result_from_query($query);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+    }    
 
     protected function get_sanitized_attributes() {
         global $database;

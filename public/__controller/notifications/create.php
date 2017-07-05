@@ -9,7 +9,7 @@ use App\Privado\HelperClasses\Validation\Validator;
 if (is_request_post() && isset($_POST["create_follow_acceptance_notification"]) && $_POST["create_follow_acceptance_notification"] == "yes") {
 
     //
-    echo json_encode(array("is_result_ok" => false, "create_follow_acceptance_notification" => $_POST["create_follow_acceptance_notification"]));
+    echo json_encode(array("is_result_ok" => true, "create_follow_acceptance_notification" => $_POST["create_follow_acceptance_notification"]));
     return;
 }
 ?>

@@ -1,6 +1,6 @@
 <script>
     // Vars
-    var is_create_follow_acceptance_notification_record_done = false;
+    var is_delete_follow_notification_record_done = false;
 
 
 
@@ -14,33 +14,11 @@
     // Functions
 
 
-    function add_event_listeners_to_accept_follow_request_links() {
-        var accept_follow_request_links = document.getElementsByClassName("accept_follow_request_links");
-
-        var length = accept_follow_request_links.length;
-
-        for (var i = 0; i < length; i++) {
-            add_event_listener_to_a_follow_request_link(accept_follow_request_links[i])
-        }
-    }
-
-
-    function add_event_listener_to_a_follow_request_link(link) {
-        link.addEventListener("click", function () {
-            console.log("EVENT:CLICK: from METHOD: add_event_listeners_to_a_follow_request_link().");
-
-            var friend_id = link.getAttribute("friend_id");
-            var notification_id = link.getAttribute("notification_id");
-
-            accept_follow_request(friend_id, notification_id);
-        });
-
-    }
-
-
-
-
-    function create_follow_acceptance_notification_record() {
+    function delete_follow_notification_record(notification_id) {
+        console.log("*************************");
+        console.log("Inside METHOD: delete_follow_notification_record().");
+        console.log("VAR:notification_id: " + notification_id);
+        
         var url = "<?php echo LOCAL . "/public/__controller/notifications/index.php"; ?>";
 
         var xhr = new XMLHttpRequest();
@@ -51,7 +29,7 @@
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = xhr.responseText.trim();
                 // Log before JSON parsing.
-                console.log("*** AJAX in METHOD: create_follow_acceptance_notification_record(). ***");
+                console.log("*** AJAX in METHOD: delete_follow_notification_record(). ***");
                 console.log("*** Log before JSON parsing ***");
                 console.log("response: " + response);
 
@@ -81,7 +59,7 @@
 
 
                 // AJAX JSON log.
-                console.log("*** Formatted JSON in METHOD: create_follow_acceptance_notification_record(). ***");
+                console.log("*** Formatted JSON in METHOD: delete_follow_notification_record(). ***");
                 for (var key in json) {
                     if (json.hasOwnProperty(key)) {
                         var val = json[key];
@@ -99,42 +77,18 @@
 
 
 
-                is_create_follow_acceptance_notification_record_done = true;
+                is_delete_follow_notification_record_done = true;
             }
         };
 
 
         //
-        xhr.send(get_post_key_value_pairs_for_create_follow_acceptance_notification());
-    }
-
-    async function accept_follow_request(friend_id, notification_id) {
-        // Sort of like a create_friendsip_recrod().
-        bridge_create_follow_record(friend_id);
-        while (!is_create_follow_record_done) {
-            await sleep();
-        }
-
-        // uki
-        // Delete the follow notification record.
-        delete_follow_notification_record(notification_id);
-        console.log("**************************");
-        console.log("VAR:is_delete_follow_notification_record_done: " + is_delete_follow_notification_record_done);
-        while (!is_delete_follow_notification_record_done) {
-            await sleep();
-        }
-        console.log("**************************");
-        console.log("VAR:is_delete_follow_notification_record_done: " + is_delete_follow_notification_record_done);
-
-        //
-        create_follow_acceptance_notification_record();
+        xhr.send(get_post_key_value_pairs_for_delete_follow_notification_record(notification_id));
     }
 
 
-
-
-    function get_post_key_value_pairs_for_create_follow_acceptance_notification() {
-        console.log("Inside METHOD: get_post_key_value_pairs_for_create_follow_acceptance_notification().");
+    function get_post_key_value_pairs_for_delete_follow_notification_record(notification_id) {
+        console.log("Inside METHOD: get_post_key_value_pairs_for_delete_follow_notification_record().");
         // Create a dynamic hidden csrf_token input.
         var input_csrf_token = get_csrf_input();
 
@@ -143,9 +97,9 @@
 
 
         //
-        var post_key_value_pairs = "create_follow_acceptance_notification=yes";
+        var post_key_value_pairs = "delete_follow_notification_record=yes";
         post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
-//        post_key_value_pairs += "&friend_id=" + friend_id;
+        post_key_value_pairs += "&notification_id=" + notification_id;
 
 
         // Right away, remove the hidden csrf input from the form.
