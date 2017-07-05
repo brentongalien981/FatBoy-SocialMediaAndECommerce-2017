@@ -63,6 +63,10 @@
                     // Else if it's successful..
                     show_categorized_notifications(json);
                     console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
+                    
+                    // Add event listeners.
+                    add_event_listeners();
+                    
                 }
 
 
@@ -118,13 +122,21 @@
         return current_notification_container;
     }
     
+    function add_event_listeners() {
+        add_event_listeners_to_accept_follow_request_links();
+        
+    }
+    
     
     /**
      * 
      * @returns {String}
      */
     function get_notification_msg_for_friendship(notification_obj) {
-        var msg = "{User:" + notification_obj["notifier_user_id"] + "} wants to follow you.";
+        var user_name = notification_obj["user_name"];
+        var notifier_user_id = notification_obj["notifier_user_id"];
+        
+        var msg = "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "'>accept</a>";
         return msg;
     }
     
@@ -146,7 +158,7 @@
         var output = "";
         for (var j = 0; j < current_category_notifications_num; j++) {
 
-            output += "<p>";
+            output += "<p class='notifications'>";
             
             
             //
@@ -199,8 +211,6 @@
             if (current_notification_container != null) {
                 populate_notification_container(current_notification_container, json.categorized_notifications, categorized_notification, current_category_notifications_num);
             }
-//            continue;
-            //uki
         }
     }
 </script>

@@ -45,7 +45,5 @@
 
     hr {
         margin-bottom: 35px;
-    }
-    
-    
+    }    
 </style>

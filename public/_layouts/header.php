@@ -12,7 +12,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
-        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                             ?>" rel="stylesheet" type="text/css" />-->
+        <!--<link href="<?php // echo LOCAL . '/public/_styles/header.css'                                                              ?>" rel="stylesheet" type="text/css" />-->
         <style>
             * {
                 margin: 0;
@@ -562,6 +562,13 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
                 background-color: white;
             }
 
+            hr {
+                height: 1px;
+                background-color: rgb(100, 100, 100);
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }            
+
 
 
         </style>
@@ -569,7 +576,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     <body>
         <?php // TODO:REMINDER: Display this later. ?>
         <!--<div id="the_spinner_div">-->
-            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif";    ?>">-->
+            <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif";     ?>">-->
         <!--</div>-->
 
 
@@ -771,8 +778,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                              ?>" class="">-->
-                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                              ?>" class="icon">Timeline-->
+                                <!--<a href="<?php // echo LOCAL . '/public/index.php';                               ?>" class="">-->
+                                    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                               ?>" class="icon">Timeline-->
                                 <?php
 //                                    if ($session->is_logged_in()) {
 //                                        echo " of {$session->currently_viewed_user_name}";

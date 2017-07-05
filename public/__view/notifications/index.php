@@ -60,8 +60,10 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 <script>document.getElementById("title").innerHTML = "MyVideos / FatBoy";</script>
 <script>document.getElementById("middle").appendChild(document.getElementById("middle_content"));</script>
+
+<?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_bridge_controller.php"); ?>
 <?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_read.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_create.php"); ?>
+<?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_create.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_update.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_delete.php");   ?> 
 <?php // require_once(PUBLIC_PATH . "/_scripts/ad_displayer.php"); ?>

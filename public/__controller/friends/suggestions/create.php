@@ -18,6 +18,23 @@ if (is_request_post() && isset($_POST["create_friendship_notification"]) && $_PO
     echo json_encode($json_errors_array);
     return;
 }
+
+if (is_request_post() && isset($_POST["create_follow_record"]) && $_POST["create_follow_record"] == "yes") {
+
+    /* Validate */
+    $json_errors_array = validate_me();
+
+    // If there's a problem with the validation or
+    // the creation, then return false.
+    if (!(($json_errors_array['is_result_ok']) &&
+            (create_follow_record()))) {
+        $json_errors_array['is_result_ok'] = false;
+    }
+
+    //
+    echo json_encode($json_errors_array);
+    return;
+}
 ?>
 
 
@@ -39,6 +56,20 @@ function create_friendship_notification() {
 
     $is_creation_ok = $notification->create_with_bool();
 
+    return $is_creation_ok;
+}
+
+function create_follow_record() {
+    global $session;
+
+    MyDebugMessenger::add_debug_message("A new friendship is about to be born.");
+
+    $new_friendship = new Friendship();
+    $new_friendship->user_id = $session->actual_user_id;
+    $new_friendship->friend_id = $_POST['friend_id'];
+
+    $is_creation_ok = $new_friendship->create_with_bool();
+    
     return $is_creation_ok;
 }
 

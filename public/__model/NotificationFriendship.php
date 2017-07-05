@@ -1,6 +1,6 @@
 <?php
 
-// If it's going to need the database, then it's 
+// If it's going to need the database, then it's
 // probably smart to require it before we start.
 require_once("my_database.php");
 require_once("Notification.php");
@@ -25,7 +25,17 @@ class NotificationFriendship extends Notification {
 //        }
     }
 
-    public static function read_by_query_and_instantiate($query = "") {
+    public static function read_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        return $result_set;
+    }
+
+    public static function read_and_instantiate($query = "") {
         global $database;
 
         $result_set = $database->get_result_from_query($query);
@@ -45,16 +55,21 @@ class NotificationFriendship extends Notification {
     }
 
     /**
-     * 
+     *
      * @param int $notified_user_id
      * @return string $query
      */
     public static function get_query_for_read_all($notified_user_id) {
+        // TODO:REMINDER: Only select the necessary columns.
         $query = "SELECT * FROM " . self::$table_name;
         $query .= " INNER JOIN " . parent::$table_name;
         $query .= " ON " . self::$table_name . ".notification_id = " . parent::$table_name . ".id";
+        $query .= " INNER JOIN Users";
+        $query .= " ON " . parent::$table_name . ".notifier_user_id = Users.user_id";
         $query .= " WHERE is_deleted = 0";
         $query .= " AND notified_user_id = {$notified_user_id}";
+
+//        MyDebugMessenger::add_debug_message("QUERY: {$query}");
 
         return $query;
     }
@@ -63,9 +78,25 @@ class NotificationFriendship extends Notification {
         $query = self::get_query_for_read_all($notified_user_id);
 
 
-        $objects_array = self::read_by_query_and_instantiate($query);
+//        $objects_array = self::read_by_query_and_instantiate($query);
+        $result_set = self::read_by_query($query);
 
-        return $objects_array;
+        // Array of friendship notifications, that for every array contains
+        // infos like "notification_id", "notifier_user_id", "notifier_name"...
+        $array_of_notifications = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_notification = array("notifier_user_id" => $row['notifier_user_id'],
+                "user_name" => $row['user_name']);
+            
+            
+            //
+            array_push($array_of_notifications, $a_notification);
+        }
+
+        return $array_of_notifications;
     }
 
     private function has_attribute($attribute) {
