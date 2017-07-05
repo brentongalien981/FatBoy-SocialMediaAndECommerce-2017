@@ -91,6 +91,7 @@ class NotificationFriendship extends Notification {
             $a_notification = array(
                 "notification_id" => $row['notification_id'],
                 "notifier_user_id" => $row['notifier_user_id'],
+                "notification_msg_id" => $row['notification_msg_id'],
                 "user_name" => $row['user_name']);
             
             

@@ -5,7 +5,7 @@ use App\Privado\HelperClasses\Validation\Validator;
 // TODO:REMINDER: Validate the format of the embed code on the next iteration.
 // TODO:SECTION: AJAX Event-handler.
 if (is_request_post() && isset($_POST["delete_follow_notification_record"]) && $_POST["delete_follow_notification_record"] == "yes") {
-    //
+    // Necessary arrays for validation.
     $allowed_assoc_indexes_for_post = array("notification_id");
     $required_post_vars_length_array = array("notification_id" => ["min" => 1, "max" => 14]);
 

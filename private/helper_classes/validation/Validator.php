@@ -202,7 +202,7 @@ class Validator {
             // Proceed to the next validation step.
             $this->can_proceed = true;
 
-//            $this->json_errors_array['is_result_ok'] = true;
+            $this->json_errors_array['is_result_ok'] = true;
         } else {
             $this->can_proceed = false;
         }

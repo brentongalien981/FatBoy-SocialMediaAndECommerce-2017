@@ -40,7 +40,7 @@
 
 
 
-    function create_follow_acceptance_notification_record() {
+    function create_follow_acceptance_notification_record(friend_id) {
         var url = "<?php echo LOCAL . "/public/__controller/notifications/index.php"; ?>";
 
         var xhr = new XMLHttpRequest();
@@ -105,7 +105,7 @@
 
 
         //
-        xhr.send(get_post_key_value_pairs_for_create_follow_acceptance_notification());
+        xhr.send(get_post_key_value_pairs_for_create_follow_acceptance_notification(friend_id));
     }
 
     async function accept_follow_request(friend_id, notification_id) {
@@ -127,13 +127,13 @@
         console.log("VAR:is_delete_follow_notification_record_done: " + is_delete_follow_notification_record_done);
 
         //
-        create_follow_acceptance_notification_record();
+        create_follow_acceptance_notification_record(friend_id);
     }
 
 
 
 
-    function get_post_key_value_pairs_for_create_follow_acceptance_notification() {
+    function get_post_key_value_pairs_for_create_follow_acceptance_notification(friend_id) {
         console.log("Inside METHOD: get_post_key_value_pairs_for_create_follow_acceptance_notification().");
         // Create a dynamic hidden csrf_token input.
         var input_csrf_token = get_csrf_input();
@@ -145,7 +145,7 @@
         //
         var post_key_value_pairs = "create_follow_acceptance_notification=yes";
         post_key_value_pairs += "&csrf_token=" + document.getElementById("input_csrf_token").value;
-//        post_key_value_pairs += "&friend_id=" + friend_id;
+        post_key_value_pairs += "&friend_id=" + friend_id;
 
 
         // Right away, remove the hidden csrf input from the form.

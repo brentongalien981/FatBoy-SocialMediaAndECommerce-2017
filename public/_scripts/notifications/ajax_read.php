@@ -63,10 +63,10 @@
                     // Else if it's successful..
                     show_categorized_notifications(json);
                     console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
-                    
+
                     // Add event listeners.
                     add_event_listeners();
-                    
+
                 }
 
 
@@ -121,13 +121,13 @@
 
         return current_notification_container;
     }
-    
+
     function add_event_listeners() {
         add_event_listeners_to_accept_follow_request_links();
-        
+
     }
-    
-    
+
+
     /**
      * 
      * @returns {String}
@@ -136,11 +136,24 @@
         var notification_id = notification_obj["notification_id"];
         var user_name = notification_obj["user_name"];
         var notifier_user_id = notification_obj["notifier_user_id"];
-        
-        var msg = "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "' notification_id='" + notification_id + "'>accept</a>";
+        var notification_msg_id = notification_obj["notification_msg_id"];
+        var msg = "";
+
+
+        // A follow request.
+        if (notification_msg_id == 2) {
+            msg += "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "' notification_id='" + notification_id + "'>accept</a>";
+        }
+        // A follow acceptance
+        else if (notification_msg_id == 3) {
+            msg += "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> accepted your follow request. <a class='friend_notification_links'>ok</a>";
+        }
+
+
+        //
         return msg;
     }
-    
+
 
     function get_notification_msg_for_my_shopping(notification_obj) {
         var msg = "{Seller:" + notification_obj["notifier_user_id"] + "}’s Store updated the item {ProductName} you bought to status {StatusName}.";
@@ -160,8 +173,8 @@
         for (var j = 0; j < current_category_notifications_num; j++) {
 
             output += "<p class='notifications'>";
-            
-            
+
+
             //
             var notification_obj = categorized_notifications[categorized_notification][j];
 
@@ -185,7 +198,7 @@
         document.getElementById("main_content").appendChild(current_notification_container);
     }
 
-    
+
     /**
      * @param {obj} json
      * @returns {undefined}     */
