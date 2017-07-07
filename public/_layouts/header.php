@@ -3,7 +3,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/model_profile.php"); ?>
 <?php
 if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-    // Start the notification notifier fetcher...
+    // TODO:REMINDER: Delete this after you've completely refactored the notification subsystem.
 //    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php");
 }
 ?>
@@ -716,7 +716,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
 
-        <!--uki-->
+
         <div id="main">
             <table id="the_table">
                 <tr>
@@ -1059,7 +1059,6 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
 
             #search_img {
-                /*uki*/
                 /*background-color: orange;*/
                 background-color: rgb(150, 150, 150);
                 border-top-left-radius: 0px;
@@ -1187,11 +1186,15 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             function get_csrf_token() {
                 return "<?php echo sessionize_csrf_token(); ?>";
             }
+
+            function get_local_url() {
+                return "http://localhost/myPersonalProjects/FatBoy";
+            }
         </script>
 
 
         <script src="<?php echo LOCAL . "/public/_scripts/general.js"; ?>">
-        </script>        
+        </script>
 
         <?php
 // TODO: SECTION: Script for popping-in and
@@ -1202,6 +1205,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         </script>
 
         <script>
+
             window.onfocus = function () {
                 //                window.alert("main content loaded");
                 console.log("this tab is now focused and active: " + document.getElementById("title").innerHTML);

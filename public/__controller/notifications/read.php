@@ -1,5 +1,6 @@
 <?php
 
+
 if (isset($_GET["get_all_notifications"]) &&
         ($_GET["get_all_notifications"] == "yes")) {
     

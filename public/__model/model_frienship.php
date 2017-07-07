@@ -69,6 +69,30 @@ class Friendship {
         return $objects_array;
     }
 
+
+    public static function get_all_friends() {
+        global $database;
+        global $session;
+
+        $query = "SELECT * FROM `Users` WHERE user_id IN ( SELECT friend_id FROM Friendship WHERE user_id = {$session->currently_viewed_user_id})";
+
+        //
+        $result_set = self::read_by_query($query);
+
+        //
+        $friends = array();
+
+        while ($row = $database->fetch_array($result_set)) {
+            array_push($friends, array(
+                "friend_id" => $row['user_id'],
+                "user_name" => $row['user_name']
+            ));
+        }
+
+        //
+        return $friends;
+    }
+
     public static function read_by_query($query = "") {
         global $database;
 

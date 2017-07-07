@@ -4,7 +4,7 @@
     var count = 0;
     
     <?php // TODO:REMINDER: Set this to higher value. ?>
-    var update_interval = 500;
+    var update_interval = 2000;
 
 
     interval_handle = setInterval(display_notification_count, update_interval);
