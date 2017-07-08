@@ -2,14 +2,14 @@
 
 
 // Tasks
-show_all_followers();
+show_all_muses();
 
 
 // Functions
-function show_all_followers() {
-    console.log("In METHOD: show_all_followers().");
+function show_all_muses() {
+    console.log("In METHOD: show_all_muses().");
 
-    var url = get_local_url() + "/public/__controller/friends/Followers.php?get_all_followers=yes";
+    var url = get_local_url() + "/public/__controller/friends/Muses.php?get_all_muses=yes";
 
 
     var xhr = new XMLHttpRequest();
@@ -19,7 +19,7 @@ function show_all_followers() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = xhr.responseText.trim();
             // Log before JSON parsing.
-            console.log("*** AJAX in METHOD: show_all_followers(). ***");
+            console.log("*** AJAX in METHOD: show_all_muses(). ***");
             console.log("*** Log before JSON parsing ***");
             console.log("response: " + response);
 
@@ -36,13 +36,13 @@ function show_all_followers() {
 
 
             // If the response is not successful..
-            console.log("AJAX In METHOD: show_all_followers().");
+            console.log("AJAX In METHOD: show_all_muses().");
 
             if (json == null || !json.is_result_ok) {
                 console.log("RESULT:json.is_result_ok: null/false");
             } else if (json.is_result_ok) {
                 // Else if it's successful..
-                populate_followers(json.followers);
+                populate_muses(json.muses);
 
 
                 //
@@ -52,7 +52,7 @@ function show_all_followers() {
 
 
             // AJAX JSON log.
-            console.log("*** Formatted JSON in METHOD: show_all_followers(). ***");
+            console.log("*** Formatted JSON in METHOD: show_all_muses(). ***");
             for (var key in json) {
                 if (json.hasOwnProperty(key)) {
                     var val = json[key];
@@ -75,15 +75,15 @@ function show_all_followers() {
 }
 
 
-function populate_followers(followers) {
+function populate_muses(muses) {
     //
-    var container = document.getElementById("followers_tbody");
+    var container = document.getElementById("muses_tbody");
 
-    for (var j = 0; j < followers.length; j++) {
+    for (var j = 0; j < muses.length; j++) {
         //
-        var follower_id = followers[j]["friend_id"];
-        var follower_name = followers[j]["user_name"];
-        var pic_src = followers[j]["user_pic_src"];
+        var muse_id = muses[j]["user_id"];
+        var muse_name = muses[j]["user_name"];
+        var pic_src = muses[j]["user_pic_src"];
         var tr = document.createElement("tr");
 
         var content = "";
@@ -93,17 +93,17 @@ function populate_followers(followers) {
 
         content += "<td>";
         content += "<h5>";
-        content += follower_name;
+        content += muse_name;
         content += "</h5>";
 
-        // TODO:REMINDER: Implement the follow button here too.
+        // TODO:REMINDER: Implement the unfollow button here too.
         content += "<input";
         content += " id=''";
         content += " type='button'";
         content += " class='form_button'";
-        content += " follower_id='" + follower_id + "'";
-        content += " follower_name='" + follower_name + "'";
-        content += " value='follow'";
+        content += " muse_id='" + muse_id + "'";
+        content += " muse_name='" + muse_name + "'";
+        content += " value='unfollow'";
         content += ">";
         content += "</td>";
 

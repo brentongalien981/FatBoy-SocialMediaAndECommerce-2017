@@ -231,6 +231,13 @@ class Validator {
         }
     }
 
+
+    /**
+     * @Purpose is to avoid the csrf validation if the request
+     * type is "get".
+     * @Note that by default, this object's request type is set to "post".
+     * @param string $type: "get" / "post"
+     */
     public function set_request_type($type) {
         $this->request_type = $type;
     }

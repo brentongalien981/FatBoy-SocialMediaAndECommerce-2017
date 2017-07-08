@@ -4,14 +4,16 @@
 // probably smart to require it before we start.
 require_once("my_database.php");
 
-class Friendship {
+class Friendship
+{
 
     protected static $table_name = "Friendship";
     protected static $db_fields = array("user_id", "friend_id");
     public $user_id;
     public $friend_id;
 
-    public static function read_by_id($id = 0) {
+    public static function read_by_id($id = 0)
+    {
 //        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
 //        $stmt = $mysqli->prepare($sql);
 //
@@ -20,12 +22,60 @@ class Friendship {
 //        }
     }
 
+
     /**
-     * 
+     *
+     * @global type $session
+     * @global type $database
+     * @param int $user_id
+     * @return string
+     */
+    public static function get_profile_pic_src($user_id)
+    {
+        global $session;
+
+        $query = "SELECT * FROM Profile ";
+        $query .= "WHERE user_id = {$user_id}";
+
+        $record_result = Friendship::read_by_query($query);
+
+        global $database;
+
+        // Default pic_url.
+        $default_url = "/public/_photos/icon_profile.png";
+
+
+        $num_of_results = $database->get_num_rows_of_result_set($record_result);
+        if ($num_of_results == 0) {
+            return $default_url;
+        }
+
+
+        while ($row = $database->fetch_array($record_result)) {
+            // If there's no valid pic src, then the default pic src,
+            // otherwise return the valid pic src.
+            if (
+                (!isset($row["pic_url"])) ||
+                (empty($row["pic_url"])) ||
+                (is_null($row["pic_url"])) ||
+                (($row["pic_url"] === 0))
+            ) {
+                $pic_url = $default_url;
+            } else {
+                $pic_url = $row["pic_url"];
+            }
+            //
+            return $pic_url;
+        }
+    }
+
+    /**
+     *
      * @param int $actual_user_id
      * @return string
      */
-    public static function get_query_for_suggested_friends($actual_user_id) {
+    public static function get_query_for_suggested_friends($actual_user_id)
+    {
         $query = "SELECT user_id, user_name ";
         $query .= "FROM Users ";
         $query .= "WHERE user_id NOT IN ";
@@ -46,11 +96,12 @@ class Friendship {
         $query .= "SELECT notifier_user_id ";
         $query .= "FROM FriendshipNotifications ";
         $query .= "WHERE notified_user_id = {$actual_user_id})";
-        
+
         return $query;
     }
 
-    public static function read_by_query_and_instantiate($query = "") {
+    public static function read_by_query_and_instantiate($query = "")
+    {
         global $database;
 
         $result_set = $database->get_result_from_query($query);
@@ -70,7 +121,8 @@ class Friendship {
     }
 
 
-    public static function get_all_friends() {
+    public static function get_all_friends()
+    {
         global $database;
         global $session;
 
@@ -85,7 +137,9 @@ class Friendship {
         while ($row = $database->fetch_array($result_set)) {
             array_push($friends, array(
                 "friend_id" => $row['user_id'],
-                "user_name" => $row['user_name']
+                "user_name" => $row['user_name'],
+                "user_pic_src" => self::get_profile_pic_src($row['user_id'])
+                //uki
             ));
         }
 
@@ -93,7 +147,38 @@ class Friendship {
         return $friends;
     }
 
-    public static function read_by_query($query = "") {
+
+    public static function get_all_muses()
+    {
+        global $database;
+        global $session;
+
+        $query = "SELECT * FROM `Users` WHERE user_id IN ( SELECT user_id FROM Friendship WHERE friend_id = {$session->currently_viewed_user_id})";
+
+        // TODO:DEBUG
+        MyDebugMessenger::add_debug_message("QUERY: {$query}");
+
+        //
+        $result_set = self::read_by_query($query);
+
+        //
+        $muses = array();
+
+        while ($row = $database->fetch_array($result_set)) {
+            array_push($muses, array(
+                "user_id" => $row['user_id'],
+                "user_name" => $row['user_name'],
+                "user_pic_src" => self::get_profile_pic_src($row['user_id'])
+                //uki
+            ));
+        }
+
+        //
+        return $muses;
+    }
+
+    public static function read_by_query($query = "")
+    {
         global $database;
 
         $result_set = $database->get_result_from_query($query);
@@ -103,7 +188,8 @@ class Friendship {
         return $result_set;
     }
 
-    public static function read_all() {
+    public static function read_all()
+    {
         $query = "SELECT * FROM " . self::$table_name;
 //        $query .= "ORDER BY name ASC";
 
@@ -113,14 +199,16 @@ class Friendship {
         return $objects_array;
     }
 
-    private function has_attribute($attribute) {
+    private function has_attribute($attribute)
+    {
         // We don't care about the value, we just want to know if the key exists
         // Will return true or false
         return array_key_exists($attribute, $this->get_attributes());
     }
 
     // Returns bool.
-    public function create_with_bool() {
+    public function create_with_bool()
+    {
         global $database;
         // Don't forget your SQL syntax and good habits:
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
@@ -144,7 +232,8 @@ class Friendship {
         }
     }
 
-    public static function delete($id = 0) {
+    public static function delete($id = 0)
+    {
         global $database;
 
         $query = "DELETE FROM " . self::$table_name . " ";
@@ -158,7 +247,8 @@ class Friendship {
         return ($database->get_num_of_affected_rows() == 1) ? true : false;
     }
 
-    public static function delete_by_query($query) {
+    public static function delete_by_query($query)
+    {
         global $database;
 
         // TODO: DEBUG
@@ -168,7 +258,8 @@ class Friendship {
         return ($database->get_num_of_affected_rows() == 1) ? true : false;
     }
 
-    protected function get_sanitized_attributes() {
+    protected function get_sanitized_attributes()
+    {
         global $database;
         $sanitized_attributes = array();
         // sanitize the values before submitting
@@ -179,7 +270,8 @@ class Friendship {
         return $sanitized_attributes;
     }
 
-    protected function get_attributes() {
+    protected function get_attributes()
+    {
         // return an array of attribute names and their values
         $attributes = array();
         foreach (self::$db_fields as $field) {
@@ -190,7 +282,8 @@ class Friendship {
         return $attributes;
     }
 
-    public function to_string() {
+    public function to_string()
+    {
         $object_in_string = "";
 
         foreach (self::$db_fields as $field) {
@@ -205,7 +298,8 @@ class Friendship {
 
     // This is called if you're reading the user db
     // and instantiating user objects, then displaying them.
-    private static function instantiate($record) {
+    private static function instantiate($record)
+    {
         $object = new self;
 
         foreach ($record as $attribute => $value) {

@@ -16,7 +16,7 @@ use App\Privado\HelperClasses\Validation\Validator;
 
 class MainController
 {
-    protected $validator;
+    public $validator;
 
     public function __construct()
     {

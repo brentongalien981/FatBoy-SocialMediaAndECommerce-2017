@@ -45,8 +45,10 @@ if (!$session->is_logged_in()) {
 
 
     <div id="main_content">
-        <?php require_once(PUBLIC_PATH . "/__view/friends/suggestions/index.php"); ?>
+        <?php  require_once(PUBLIC_PATH . "/__view/friends/muses/index.php"); ?>
         <?php  require_once(PUBLIC_PATH . "/__view/friends/followers/index.php"); ?>
+        <?php require_once(PUBLIC_PATH . "/__view/friends/suggestions/index.php"); ?>
+
     </div>    
 
 <?php // TODO:SECTION: Log.   ?>
