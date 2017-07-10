@@ -75,6 +75,29 @@ class NotificationFriendship extends Notification {
         return $query;
     }
 
+
+    public static function get_query_for_read_by_section($section) {
+        // TODO:REMINDER: Only select the necessary columns.
+
+        global $session;
+        $notified_user_id = $session->actual_user_id;
+        $item_per_section = 10;
+        $num_items_to_skip = ($section - 1) * $item_per_section;
+
+        $query = "SELECT * FROM " . self::$table_name;
+        $query .= " INNER JOIN " . parent::$table_name;
+        $query .= " ON " . self::$table_name . ".notification_id = " . parent::$table_name . ".id";
+        $query .= " INNER JOIN Users";
+        $query .= " ON " . parent::$table_name . ".notifier_user_id = Users.user_id";
+        $query .= " WHERE is_deleted = 0";
+        $query .= " AND notified_user_id = {$notified_user_id}";
+        $query .= " LIMIT {$item_per_section} OFFSET {$num_items_to_skip}";
+
+//        MyDebugMessenger::add_debug_message("QUERY: {$query}");
+
+        return $query;
+    }
+
     public static function read_all($notified_user_id) {
         $query = self::get_query_for_read_all($notified_user_id);
 
@@ -96,6 +119,35 @@ class NotificationFriendship extends Notification {
                 "user_name" => $row['user_name']);
             
             
+            //
+            array_push($array_of_notifications, $a_notification);
+        }
+
+        return $array_of_notifications;
+    }
+
+
+    public static function read_by_section($section) {
+        $query = self::get_query_for_read_by_section($section);
+
+
+//        $objects_array = self::read_by_query_and_instantiate($query);
+        $result_set = self::read_by_query($query);
+
+        // Array of friendship notifications, that for every array contains
+        // infos like "notification_id", "notifier_user_id", "notifier_name"...
+        $array_of_notifications = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_notification = array(
+                "notification_id" => $row['notification_id'],
+                "notifier_user_id" => $row['notifier_user_id'],
+                "notification_msg_id" => $row['notification_msg_id'],
+                "user_name" => $row['user_name']);
+
+
             //
             array_push($array_of_notifications, $a_notification);
         }
@@ -164,6 +216,7 @@ class NotificationFriendship extends Notification {
     public static function delete($id = 0) {
         global $database;
 
+        // Delete the foreign record.
         $query = "DELETE FROM " . self::$table_name . " ";
         $query .= "WHERE notification_id = " . $database->escape_value($id) . " ";
         $query .= "LIMIT 1";
@@ -179,7 +232,9 @@ class NotificationFriendship extends Notification {
         }
         
         MyDebugMessenger::add_debug_message("VAR:\$is_deletion_ok: {$is_deletion_ok}.");
-        
+
+
+        // Delete the primary notification record.
         if ($is_deletion_ok) {
             $is_deletion_ok = parent::delete($id);
         }

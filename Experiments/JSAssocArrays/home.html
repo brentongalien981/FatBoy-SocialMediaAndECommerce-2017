@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = {name : "bren", car : "mercedes c-class coupe"};
+
+    function func() {
+        this.my_array = {name : "bren", car : "mercedes c-class coupe"};
+        this.function_name = "func";
+    }
+
+    for (var key in arr) {
+        console.log("arr[key]::: " + key + " ::: " + arr[key]);
+    }
+
+
+    var a_func = new func();
+    console.log("a_func.my_array: " + a_func.my_array);
+    var key_value_pairs = a_func.my_array;
+    for (var key in a_func.my_array) {
+        console.log("a_func.my_array[key]::: " + key + " ::: " + a_func.my_array[key]);
+    }
+    console.log("a_func.function_name: " + a_func.function_name);
+</script>
+</body>
+</html>

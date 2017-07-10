@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    callFunctionName();
+
+    function callFunctionName() {
+        var myName = arguments.callee.toString();
+        myName = myName.substr('function '.length);
+        myName = myName.substr(0, myName.indexOf('('));
+        window.alert("function name: " + myName);
+    }
+
+</script>
+</body>
+</html>

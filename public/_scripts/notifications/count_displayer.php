@@ -18,7 +18,7 @@
     function display_notification_count() {
         var xhr = new XMLHttpRequest();
 
-        var url = "<?php echo LOCAL . "/public/__controller/notifications/index.php"; ?>";
+        var url = "<?php echo LOCAL . "/public/__controller/notifications/NotificationFriendshipHandler.php"; ?>";
         var request_key_value_pairs = "?get_all_notifications_count=yes";
         url += request_key_value_pairs;
         
@@ -32,10 +32,10 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = xhr.responseText.trim();
-//                // Log before JSON parsing.
-//                console.log("*** AJAX in METHOD: display_notification_count(). ***");
-//                console.log("*** Log before JSON parsing ***");
-//                console.log("response: " + response);
+                // Log before JSON parsing.
+                console.log("*** AJAX in METHOD: display_notification_count(). ***");
+                console.log("*** Log before JSON parsing ***");
+                console.log("response: " + response);
 
 
 

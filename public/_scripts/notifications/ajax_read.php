@@ -125,6 +125,8 @@
     function add_event_listeners() {
         add_event_listeners_to_accept_follow_request_links();
 
+        add_event_listeners_to_delete_follow_acceptance_links();
+
     }
 
 
@@ -142,7 +144,12 @@
 
         // A follow request.
         if (notification_msg_id == 2) {
-            msg += "<a href='#' class='delete_friend_notification_links'>x</a> <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "' notification_id='" + notification_id + "'>accept</a>";
+            // Delete link.
+            msg += "<a notification_id='" + notification_id + "'";
+            msg += " href='#' class='delete_friend_notification_links'>x</a>";
+
+            // Accept link.
+            msg += " <a class='friend_notification_links'>" + user_name + "</a> wants to follow you. <a class='friend_notification_links accept_follow_request_links' friend_id='" + notifier_user_id + "' notification_id='" + notification_id + "'>accept</a>";
         }
         // A follow acceptance
         else if (notification_msg_id == 3) {

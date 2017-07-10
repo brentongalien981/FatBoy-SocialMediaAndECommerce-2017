@@ -11,7 +11,7 @@ namespace App\Publico\Controller\Friends;
 
 require_once("../MainController.php");
 require_once(PUBLIC_PATH . "/__model/model_frienship.php");
-require_once(PUBLIC_PATH . "/__model/NotificationFriendship.php");
+require_once(PUBLIC_PATH . "/__model/NotificationFriendshipController.php");
 
 use App\Publico\Controller\MainController;
 use Friendship;

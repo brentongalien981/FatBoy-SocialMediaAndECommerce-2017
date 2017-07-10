@@ -42,7 +42,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
     <div id="main_content">
         <?php // require_once(PUBLIC_PATH . "/__view/notifications/create.php"); ?>
-        <?php require_once(PUBLIC_PATH . "/__view/notifications/read.php"); ?>
+        <?php // require_once(PUBLIC_PATH . "/__view/notifications/read.php"); ?>
         <?php // require_once(PUBLIC_PATH . "/__view/notifications/update.php");   ?>
         <?php // require_once(PUBLIC_PATH . "/__view/notifications/delete.php");   ?>       
     </div>   
@@ -54,17 +54,41 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
     ?>    
 </main>
 
+<?php  require_once(PUBLIC_PATH . "/__view/notifications/templates/categorized_notifications_container.php");   ?>
+<?php  require_once(PUBLIC_PATH . "/__view/notifications/templates/flash_notification.php");   ?>
 
 
 
 
-<script>document.getElementById("title").innerHTML = "MyVideos / FatBoy";</script>
+
+
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/instance_vars.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/general_functions.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/create_functions.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/read_functions.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/update_functions.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/delete_functions.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/tasks.js"; ?><!--"></script>-->
+
+
+
+
+
+<?php include(PUBLIC_PATH . "/__view/notifications/friendship/index.php"); ?>
+
+
+
+
+
+
+<script>document.getElementById("title").innerHTML = "Notifications / FatBoy";</script>
 <script>document.getElementById("middle").appendChild(document.getElementById("middle_content"));</script>
 
-<?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_bridge_controller.php"); ?>
-<?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_read.php"); ?>
-<?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_create.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_update.php"); ?>
-<?php require_once(PUBLIC_PATH . "/_scripts/notifications/ajax_delete.php");   ?> 
+
+
+
+
+
 <?php // require_once(PUBLIC_PATH . "/_scripts/ad_displayer.php"); ?>
 <?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

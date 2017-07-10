@@ -78,6 +78,9 @@ class Friendship
     {
         $query = "SELECT user_id, user_name ";
         $query .= "FROM Users ";
+
+        // Don't show users that are already my followers
+        // cause they already appear on my Followers section.
         $query .= "WHERE user_id NOT IN ";
         $query .= "(";
         $query .= "SELECT friend_id ";
@@ -86,16 +89,25 @@ class Friendship
         $query .= ") ";
         $query .= "AND user_id != {$actual_user_id} ";
 
+        // Don't show users that are already my muses
+        // cause they already appear on my Muses section.
+        $query .= "AND user_id NOT IN (";
+        $query .= "SELECT user_id ";
+        $query .= "FROM Friendship ";
+        $query .= "WHERE friend_id = {$actual_user_id}) ";
+
         // Also, don't suggest users that are currently in pending friendship status with you.
         $query .= "AND user_id NOT IN (";
         $query .= "SELECT notified_user_id ";
-        $query .= "FROM FriendshipNotifications ";
-        $query .= "WHERE notifier_user_id = {$actual_user_id}) ";
+        $query .= "FROM Notifications ";
+        $query .= "WHERE notifier_user_id = {$actual_user_id} ";
+        $query .= "AND notification_msg_id IN (2, 3)) ";
 
         $query .= "AND user_id NOT IN (";
         $query .= "SELECT notifier_user_id ";
-        $query .= "FROM FriendshipNotifications ";
-        $query .= "WHERE notified_user_id = {$actual_user_id})";
+        $query .= "FROM Notifications ";
+        $query .= "WHERE notified_user_id = {$actual_user_id} ";
+        $query .= "AND notification_msg_id IN (2, 3))";
 
         return $query;
     }

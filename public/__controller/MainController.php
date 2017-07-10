@@ -23,3 +23,4 @@ class MainController
         $this->validator = new Validator();
     }
 }
+?>

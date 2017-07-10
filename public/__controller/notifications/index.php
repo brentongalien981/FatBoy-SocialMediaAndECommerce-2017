@@ -1,7 +1,7 @@
 <?php require_once("../__main.php"); ?>
 
 <?php require_once(PUBLIC_PATH . "/__model/NotificationMyShopping.php"); ?>
-<?php require_once(PUBLIC_PATH . "/__model/NotificationFriendship.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__model/NotificationFriendshipController.php"); ?>
 
 
 <?php require_once(PUBLIC_PATH . "/__controller/notifications/NotificationFetcher.php"); ?>

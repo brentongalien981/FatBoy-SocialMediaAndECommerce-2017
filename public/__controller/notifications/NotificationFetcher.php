@@ -1,4 +1,5 @@
 <?php
+namespace App\Publico\Controller\Notifications;
 
 class NotificationFetcher {
 
