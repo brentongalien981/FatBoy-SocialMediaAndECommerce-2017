@@ -2,6 +2,9 @@
 
 use App\Privado\HelperClasses\Validation\Validator;
 
+// Note: This is mistakenly put here. It should be in
+// __controller/notifications/friendship.
+// @deprecated
 if (is_request_post() && isset($_POST["create_friendship_notification"]) && $_POST["create_friendship_notification"] == "yes") {
 
     /* Validate */

@@ -32,10 +32,10 @@
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var response = xhr.responseText.trim();
-                // Log before JSON parsing.
-                console.log("*** AJAX in METHOD: display_notification_count(). ***");
-                console.log("*** Log before JSON parsing ***");
-                console.log("response: " + response);
+//                // Log before JSON parsing.
+//                console.log("*** AJAX in METHOD: display_notification_count(). ***");
+//                console.log("*** Log before JSON parsing ***");
+//                console.log("response: " + response);
 
 
 

@@ -74,6 +74,7 @@
         xhr.send(get_post_key_value_pairs_for_create_follow_record(friend_id));
     }
 
+    // @deprecated
     function add_event_listeners_to_follow_buttons() {
         //
         console.log("*******************");
@@ -87,6 +88,7 @@
         }
     }
 
+    // @deprecated
     function add_event_listener_to_follow_button(follow_button) {
         follow_button.addEventListener("click", function () {
             console.log("follow_button.id: " + follow_button.id + " is clicked.");

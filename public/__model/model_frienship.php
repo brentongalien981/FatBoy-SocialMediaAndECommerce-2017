@@ -150,6 +150,8 @@ class Friendship
             array_push($friends, array(
                 "friend_id" => $row['user_id'],
                 "user_name" => $row['user_name'],
+                // TODO:REMINDER: Make this as part of the query.. Like INNER JOIN
+                // pic_src.
                 "user_pic_src" => self::get_profile_pic_src($row['user_id'])
                 //uki
             ));

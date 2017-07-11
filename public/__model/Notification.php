@@ -73,8 +73,16 @@ class Notification {
     }
 
     // Returns bool.
-    public function create_with_bool() {
+    public function create_with_bool() {//uki
         global $database;
+
+        //
+        if (!$database->start_transaction()) { return false; }
+
+
+
+
+
         // Don't forget your SQL syntax and good habits:
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
         // - single-quotes around all values
@@ -87,18 +95,28 @@ class Notification {
         $query .= ") VALUES ('";
         $query .= join("', '", array_values($attributes));
         $query .= "')";
-        
-        MyDebugMessenger::add_debug_message("QUERY1: {$query}");
-//        $json_errors_array['query1'] = $query;
 
+
+        // TODO:DEBUG
+        MyDebugMessenger::add_debug_message("QUERY1: {$query}");
+
+
+        // Execute the query.
         $query_result = $database->get_result_from_query($query);
 
         if ($query_result) {
             $this->id = $database->get_last_inserted_id();
+
+            if (!$database->commit()) { return false; }
             return true;
         } else {
+            //
+            if (!$database->rollback()) { return false; }
             return false;
         }
+
+
+
     }
 
     public static function delete($id = 0) {

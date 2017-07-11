@@ -5,17 +5,11 @@ function my_ajax(x_notification_obj) {
     var url = get_local_url() + "/public/__controller/notifications/" + caller_class_name + "Handler.php";
 
 
-
     var request_type = String(x_notification_obj.request_type);
 
 
-
-
-
-
     var key_value_pairs_arr = x_notification_obj.key_value_pairs;
-    var key_value_pairs_str = get_key_value_pairs(key_value_pairs_arr);
-
+    var key_value_pairs_str = get_key_value_pairs(key_value_pairs_arr, request_type);
 
 
     var xhr = new XMLHttpRequest();
@@ -23,29 +17,21 @@ function my_ajax(x_notification_obj) {
 
     // Further set the url for "GET" request.
     if (request_type === "GET") {
-        url += "?" + crud_type + "=yes&";
+        // url += "?" + crud_type + "=yes&";
 
         url += key_value_pairs_str;
-
     }
 
 
     xhr.open(request_type, url, true);
 
 
-
-
-
-
-
     // TODO:DEBUG
     console.log("REQUEST TYPE: " + request_type);
+    console.log("crud_type: " + crud_type);
     console.log("url: " + url);
     console.log("key_value_pairs_str: " + key_value_pairs_str);
-
-
-
-
+    console.log("caller_class_name: " + caller_class_name);
 
 
     xhr.onreadystatechange = function () {
@@ -60,21 +46,15 @@ function my_ajax(x_notification_obj) {
             console.log("response: " + response);
 
 
-
-
-
             //
             var json = null;
 
             try {
-                 json = JSON.parse(response);
+                json = JSON.parse(response);
             } catch (e) {
                 console.log('ERROR:invalid json');
                 json = null;
             }
-
-
-
 
 
             // If the response is not successful..
@@ -84,11 +64,34 @@ function my_ajax(x_notification_obj) {
                 // Else if it's successful..
                 console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
 
+
+                //
+                switch (crud_type) {
+                    case "read":
+                        // Container_id = notification_info.class_name + “container”
+                        var container_id = caller_class_name + "Container";
+                        // Container = clone_categorized_noti_templ(container_id)
+                        var container = clone_categorized_notification_template(container_id);
+
+                        //
+                        // TODO:DEBUG
+                        var current_class = x_notification_obj.class_name;
+                        populate_container(container, json.notifications, current_class);
+                        break;
+                    case "create":
+                        break;
+                    case "delete":
+                        // TODO:DEBUG
+                        console.log();
+                        break;
+                }
+
+
             }
 
 
-
-
+            // Show a flash notification of the overall result.
+            show_flash_notification(x_notification_obj, json, -69);
 
 
             // AJAX JSON log.
@@ -115,9 +118,6 @@ function my_ajax(x_notification_obj) {
     };
 
 
-
-
-
     if (request_type === "GET") {
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.send();
@@ -130,9 +130,29 @@ function my_ajax(x_notification_obj) {
 }
 
 
-function get_key_value_pairs (key_value_pairs) {
+function get_key_value_pairs(key_value_pairs, request_type) {
     var arranged_key_value_pairs = "";
 
+    //
+    if (request_type == "GET") {
+        arranged_key_value_pairs += "?";
+    }
+    else if (request_type == "POST") {
+        // Create a dynamic hidden csrf_token input.
+        var input_csrf_token = get_csrf_input();
+
+        // Dynamically append a hidden csrf input to the form "create_post_form".
+        document.getElementById("middle_content").appendChild(input_csrf_token);
+
+        //
+        arranged_key_value_pairs += "csrf_token=" + document.getElementById("input_csrf_token").value + "&";
+
+        // Right away, remove the hidden csrf input from the form.
+        document.getElementById("middle_content").removeChild(input_csrf_token);
+    }
+
+
+    //
     for (var key in key_value_pairs) {
         arranged_key_value_pairs += key + "=" + key_value_pairs[key] + "&";
     }
@@ -141,26 +161,105 @@ function get_key_value_pairs (key_value_pairs) {
 }
 
 
+/**
+ *
+ * @param new_container_id
+ * @return {Node}
+ */
 function clone_categorized_notification_template(new_container_id) {
+    //
+    var container = categorized_notification_container_template.cloneNode(true);
+
+    // Append
+    main_content.appendChild(container);
+
+    // Change the id.
+    container.id = new_container_id;
+
+    //
+    return container;
 
 }
 
 
-function populate_container(container_id, notifications) {
+function populate_container(container, notifications, class_name) {
+    console.log("PUTA: notifications.length: " + notifications.length);
+
+    for (var i = 0; i < notifications.length; i++) {
+        var notification = notifications[i];
+        console.log("PUTA: notification[notification_msg_id]: " + notification['notification_msg_id']);
+        var prepared_notification = get_prepared_notification(notification);
+
+        append_a_notification(container, prepared_notification);
+
+        //
+        add_listener_to_delete_notification_link(notification, class_name);
+    }
+
+    //
+    if (notifications.length > 0) {
+        show_x_container(container);
+    }
 
 }
 
 
-function append_a_notification(container_id, notification) {
+function get_prepared_notification(notification) {
+    var notification_msg_id = notification['notification_msg_id'];
+    // var prepared_notification = "<p class='notifications'>";
+    var prepared_notification = document.createElement("p");
+    prepared_notification.classList.add("notifications");
 
+    var content = "";
+
+    console.log("DEBUG:VAR:notification_msg_id: " + notification_msg_id);
+
+
+    //
+    content += get_delete_notification_link(notification);
+
+
+
+    //
+    switch (notification_msg_id) {
+        case "2": // Follow acceptance...
+            content += get_notification_for_follow_request(notification);
+            break;
+        case "3": // Follow request...
+            content += get_notification_for_follow_acceptance(notification);
+            break;
+    }
+
+    // prepared_notification += '</p>';
+    prepared_notification.innerHTML = content;
+
+
+    return prepared_notification;
+}
+
+
+function append_a_notification(container, prepared_notification) {
+    container.appendChild(prepared_notification);
+    // container.innerHTML += prepared_notification;
+    // console.log("INNERHTML: " + prepared_notification);
 }
 
 
 function show_x_container(container) {
-
+    container.style.display = "block";
 }
 
 
-function show_flash_notification(notification_msg_id) {
-
+function show_flash_notification(x_notification_obj, json, notification_msg_id) {
+    // TODO:REMINDER: Make the notification more presentable in producation.
+    if (json == null || !json.is_result_ok) {
+        // FAIL on [crud]ing [x]Notification.
+        // window.alert("FAIL on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
+        console.log("FAIL on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
+    }
+    else {
+        // SUCCESS on [crud]ing [x]Notification.
+        // window.alert("SUCCESS on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
+        console.log("SUCCESS on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
+    }
 }

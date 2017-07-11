@@ -42,8 +42,9 @@
                 } else if (json.is_result_ok) {
                     // Else if it's successful..
                     populate_suggested_friends(json.all_suggested_friends);
-                    //
-                    add_event_listeners_to_follow_buttons();
+
+//                    // Add event listeners.
+//                    add_event_listeners_to_follow_buttons();
                     console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
                 }
 
@@ -107,6 +108,13 @@
             tr.innerHTML = content;
             //
             container.appendChild(tr);
+
+            // Add event listener for the current follow button.
+            // Listener for creating a follow request (friendship request)
+            // notification record.
+            var current_follow_button = document.getElementById("follow_button" + friend_id);
+            add_listener_to_follow_button(current_follow_button);
+
 
         }
     }

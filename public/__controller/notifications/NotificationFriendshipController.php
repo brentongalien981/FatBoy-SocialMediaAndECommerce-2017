@@ -25,13 +25,29 @@ class NotificationFriendshipController extends MainController
     }
 
 
-    /**
-     * @return array
-     */
     public function read($section)
     {
         return NotificationFriendship::read_by_section($section);
     }
 
+
+    public function create($data) {
+        //
+        global $session;
+
+        $notification = new NotificationFriendship();
+        $notification->id = null;
+        $notification->notified_user_id = $data["friend_id"];
+        $notification->notifier_user_id = $session->actual_user_id;
+        $notification->notification_msg_id = $data["notification_msg_id"];
+        $notification->is_deleted = false;
+
+
+        $is_creation_ok = $notification->create_with_bool();
+
+        return $is_creation_ok;
+    }
+
 }
+
 ?>

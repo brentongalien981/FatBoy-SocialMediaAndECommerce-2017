@@ -46,9 +46,7 @@ if (!$session->is_logged_in()) {
 
 
 <?php // TODO:SECTION: Script for creating a friendship notification.  ?>
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?>"></script>
-    <script src="<?php echo LOCAL . "/public/_scripts/notifications/general_functions.js"; ?>"></script>
 
 
 <?php // TODO:SECTION: Scripts.  ?>

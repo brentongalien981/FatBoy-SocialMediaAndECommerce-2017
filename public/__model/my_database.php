@@ -14,6 +14,94 @@ class MySQLDatabase {
         $this->open_connection();
     }
 
+
+    /**
+     * @return bool|mysqli_result
+     */
+    public function start_transaction() {
+//        $query = "SET autocommit=0;";
+        $query = "START TRANSACTION";
+
+        $is_result_ok = true;
+
+
+        try {
+            MyDebugMessenger::add_debug_message("In FILE: my_database.php");
+            MyDebugMessenger::add_debug_message("In METHOD: start_transaction()");
+            MyDebugMessenger::add_debug_message("VAR:\$query: {$query}");
+            $query_result = $this->get_result_from_query($query);
+            MyDebugMessenger::add_debug_message("VAR:\$$query_result: {$query_result}");
+        }
+        catch (Exception $e) {
+            $is_result_ok = false;
+
+            MyDebugMessenger::add_debug_message("ERROR on FILE: my_database.php");
+            MyDebugMessenger::add_debug_message("ERROR on METHOD: start_transaction()");
+            MyDebugMessenger::add_debug_message("EXCEPTION: " + $e->getMessage());
+        }
+        finally {
+            //
+            MyDebugMessenger::add_debug_message("In CLAUSE: finally");
+        }
+
+
+        MyDebugMessenger::add_debug_message("VAR:\$is_result_ok: {$is_result_ok}");
+        return $is_result_ok;
+    }
+
+
+    public function commit() {
+        $query = "COMMIT";
+
+        $is_result_ok = true;
+
+        try {
+            $this->get_result_from_query($query);
+        }
+        catch (Exception $e) {
+            $is_result_ok = false;
+
+            MyDebugMessenger::add_debug_message("ERROR on FILE: my_database.php");
+            MyDebugMessenger::add_debug_message("ERROR on METHOD: commit()");
+            MyDebugMessenger::add_debug_message("EXCEPTION: " + $e->getMessage());
+        }
+        finally {
+            // TODO:DEBUG
+            MyDebugMessenger::add_debug_message("In FILE: my_database.php");
+            MyDebugMessenger::add_debug_message("In METHOD: commit()");
+            //
+            return $is_result_ok;
+        }
+    }
+
+
+
+    public function rollback() {
+        $query = "ROLLBACK";
+
+        $is_result_ok = true;
+
+        try {
+            $this->get_result_from_query($query);
+        }
+        catch (Exception $e) {
+            $is_result_ok = false;
+
+            MyDebugMessenger::add_debug_message("ERROR on FILE: my_database.php");
+            MyDebugMessenger::add_debug_message("ERROR on METHOD: rollback()");
+            MyDebugMessenger::add_debug_message("EXCEPTION: " + $e->getMessage());
+        }
+
+
+
+        //
+        return $is_result_ok;
+    }
+
+
+
+
+
     public function open_connection() {
         $this->connection = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
         if (mysqli_connect_errno()) {
