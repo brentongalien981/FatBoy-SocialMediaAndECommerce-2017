@@ -15,14 +15,14 @@ use App\Publico\Controller\Notifications\NotificationFetcher;
 <?php
 // AJAX Handler.
 if (is_request_post() && isset($_POST["delete"]) && $_POST["delete"] == "yes") {
-    echo json_encode(array("is_result_ok" => false));
-    return;
+//    // TODO:DEBUG
+//    echo json_encode(array("is_result_ok" => false));
+//    return;
 
     /* Validate */
-    $allowed_assoc_indexes = array("friend_id", "notification_msg_id");
+    $allowed_assoc_indexes = array("notification_id");
     $required_vars_length_array = array(
-        "friend_id" => ["min" => 1, "max" => 11],
-        "notification_msg_id" => ["min" => 1, "max" => 2]
+        "notification_id" => ["min" => 1, "max" => 13]
     );
 
     $n_friendship_controller = new NotificationFriendshipController();
@@ -52,10 +52,10 @@ if (is_request_post() && isset($_POST["delete"]) && $_POST["delete"] == "yes") {
 
 
         // Let the controller handle it.
-        $is_creation_ok = $n_friendship_controller->create($sanitized_vars);
+        $is_deletion_ok = $n_friendship_controller->delete($sanitized_vars);
 
         //
-        if (!$is_creation_ok) {
+        if (!$is_deletion_ok) {
             $json_errors_array['is_result_ok'] = false;
         }
     }

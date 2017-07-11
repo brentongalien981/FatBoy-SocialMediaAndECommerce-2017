@@ -1,3 +1,41 @@
+function dom_remove_notification(caller_class_name, notification_id) {
+    console.log("In METHOD: dom_remove_notification().");
+    console.log("In METHOD:VAR:caller_class_name: " + caller_class_name);
+    console.log("In METHOD:VAR:notification_id: " + notification_id);
+
+    // x_notification_container id.
+    var id = caller_class_name + "Container";
+
+    // x_notification_container.
+    var container = document.getElementById(id);
+
+    // notification <p>
+    var notification = document.getElementById("notification" + notification_id);
+
+
+    animate_node_removal(container, notification);
+
+}
+
+
+function animate_node_removal(container, node) {
+    global_notification_counter = 10;
+    global_notification_timer_handler = setInterval(function () {
+
+
+        node.style.opacity = "" + (global_notification_counter * .1) + "";
+        console.log("DEBUG:global_notification_counter * .1: " + (global_notification_counter * .1))
+
+        --global_notification_counter;
+
+        if (global_notification_counter <= 0) {
+            container.removeChild(node);
+            clearInterval(global_notification_timer_handler);
+        }
+    }, 35);
+}
+
+
 function get_delete_notification_link(notification) {
     var n = notification;
     var msg = "";

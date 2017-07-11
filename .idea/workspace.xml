@@ -2,36 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/delete.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/create.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/followers/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/followers/read.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/muses/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/muses/read.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/suggestions/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/older_file_versions/view/friends/suggestions/read.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/friends/Muses.php" afterPath="$PROJECT_DIR$/public/__controller/friends/Muses.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/friends/suggestions/create.php" afterPath="$PROJECT_DIR$/public/__controller/friends/suggestions/create.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipHandler.php" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipHandler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/Notification.php" afterPath="$PROJECT_DIR$/public/__model/Notification.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/NotificationFriendship.php" afterPath="$PROJECT_DIR$/public/__model/NotificationFriendship.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/model_frienship.php" afterPath="$PROJECT_DIR$/public/__model/model_frienship.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/my_database.php" afterPath="$PROJECT_DIR$/public/__model/my_database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/friends/index.php" afterPath="$PROJECT_DIR$/public/__view/friends/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/friends/suggestions/index.php" afterPath="$PROJECT_DIR$/public/__view/friends/suggestions/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/notifications/friendship/index.php" afterPath="$PROJECT_DIR$/public/__view/notifications/friendship/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/notifications/index.php" afterPath="$PROJECT_DIR$/public/__view/notifications/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/friends/suggestions/ajax_create.php" afterPath="$PROJECT_DIR$/public/_scripts/friends/suggestions/ajax_create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/friends/suggestions/ajax_read.php" afterPath="$PROJECT_DIR$/public/_scripts/friends/suggestions/ajax_read.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/Notification.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/Notification.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/count_displayer.php" afterPath="$PROJECT_DIR$/public/_scripts/notifications/count_displayer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/delete.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/delete.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -54,34 +32,21 @@
     <favorites_list name="FatBoy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.64816755">
+    <splitter split-orientation="vertical" split-proportion="0.35706806">
       <split-first>
         <splitter split-orientation="horizontal" split-proportion="0.45971915">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="create.js" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/create.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="135">
-                      <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-                      <folding>
-                        <element signature="n#!!doc" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="134">
-                      <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+                    <state relative-caret-position="-41">
+                      <caret line="211" column="80" lean-forward="false" selection-start-line="211" selection-start-column="80" selection-end-line="211" selection-end-column="80" />
                       <folding>
                         <element signature="n#!!block;n#get_key_value_pairs#0" expanded="false" />
-                        <element signature="e#4477#5020#0" expanded="false" />
+                        <element signature="e#4557#5100#0" expanded="false" />
                         <element signature="n#!!block;n#clone_categorized_notification_template#0" expanded="false" />
                         <element signature="n#!!block;n#populate_container#0" expanded="false" />
-                        <element signature="n#!!block;n#get_prepared_notification#0" expanded="false" />
                         <element signature="n#!!block;n#append_a_notification#0" expanded="false" />
                         <element signature="n#!!block;n#show_x_container#0" expanded="false" />
                         <element signature="n#!!block;n#show_flash_notification#0" expanded="false" />
@@ -90,11 +55,21 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="delete.js" pinned="false" current-in-tab="false">
+              <file leaf-file-name="delete.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/delete.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="285">
-                      <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+                    <state relative-caret-position="111">
+                      <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="instance_vars.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="30">
+                      <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="45" />
                       <folding />
                     </state>
                   </provider>
@@ -107,10 +82,12 @@
               <file leaf-file-name="NotificationFriendshipController.php" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="419">
-                      <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+                    <state relative-caret-position="356">
+                      <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
                       <folding>
                         <element signature="e#245#287#0#PHP" expanded="true" />
+                        <element signature="e#465#573#0#PHP" expanded="false" />
+                        <element signature="e#580#1086#0#PHP" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -119,13 +96,13 @@
               <file leaf-file-name="NotificationFriendshipHandler.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipHandler.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="170">
-                      <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
+                    <state relative-caret-position="286">
+                      <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
                       <folding>
                         <element signature="e#151#225#0#PHP" expanded="true" />
-                        <element signature="e#1914#3437#0#PHP" expanded="false" />
-                        <element signature="e#3440#4474#0#PHP" expanded="false" />
-                        <element signature="e#4477#4912#0#PHP" expanded="false" />
+                        <element signature="e#1868#3391#0#PHP" expanded="false" />
+                        <element signature="e#3394#4428#0#PHP" expanded="false" />
+                        <element signature="e#4431#4866#0#PHP" expanded="false" />
                       </folding>
                     </state>
                   </provider>
@@ -136,13 +113,13 @@
         </splitter>
       </split-first>
       <split-second>
-        <splitter split-orientation="horizontal" split-proportion="0.5">
+        <splitter split-orientation="horizontal" split-proportion="0.5181079">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/public/__view/friends/index.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="104">
+                    <state relative-caret-position="280">
                       <caret line="50" column="85" lean-forward="false" selection-start-line="50" selection-start-column="85" selection-end-line="50" selection-end-column="85" />
                       <folding />
                     </state>
@@ -152,8 +129,8 @@
               <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/public/__view/notifications/index.php">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="77">
-                      <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+                    <state relative-caret-position="222">
+                      <caret line="71" column="39" lean-forward="false" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
                       <folding />
                     </state>
                   </provider>
@@ -162,24 +139,62 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="NotificationFriendship.php" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="176">
-                      <caret line="215" column="0" lean-forward="true" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
-                      <folding>
-                        <element signature="n#read_all#0;n#NotificationFriendship#0;n#!!top" expanded="false" />
-                        <marker date="1499790995000" expanded="true" signature="1916:1930" ph="SELECT * FRO... ${self::$table_name}" />
-                        <marker date="1499790995000" expanded="true" signature="2767:2781" ph="SELECT * FRO... ${self::$table_name}" />
-                        <marker date="1499790995000" expanded="true" signature="6799:6838" ph="INSERT INTO ${self::$table_name}... " />
-                        <marker date="1499790995000" expanded="true" signature="7803:7815" ph="DELETE FROM " />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
+            <splitter split-orientation="vertical" split-proportion="0.5">
+              <split-first>
+                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+                  <file leaf-file-name="NotificationFriendship.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="730">
+                          <caret line="277" column="25" lean-forward="false" selection-start-line="277" selection-start-column="25" selection-end-line="277" selection-end-column="25" />
+                          <folding>
+                            <element signature="n#read_all#0;n#NotificationFriendship#0;n#!!top" expanded="false" />
+                            <marker date="1499803200000" expanded="true" signature="1916:1930" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1499803200000" expanded="true" signature="2767:2781" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1499803200000" expanded="true" signature="6799:6838" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1499803200000" expanded="true" signature="7843:7855" ph="DELETE FROM " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="Notification.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="213">
+                          <caret line="135" column="26" lean-forward="true" selection-start-line="135" selection-start-column="26" selection-end-line="135" selection-end-column="26" />
+                          <folding>
+                            <marker date="1499803090000" expanded="true" signature="1046:1060" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1499803090000" expanded="true" signature="2639:2678" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1499803090000" expanded="true" signature="3436:3448" ph="DELETE FROM " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                </leaf>
+              </split-first>
+              <split-second>
+                <leaf>
+                  <file leaf-file-name="NotificationFriendship.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="24">
+                          <caret line="184" column="20" lean-forward="false" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="20" />
+                          <folding>
+                            <element signature="n#read_all#0;n#NotificationFriendship#0;n#!!top" expanded="false" />
+                            <marker date="1499803200000" expanded="true" signature="1916:1930" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1499803200000" expanded="true" signature="2767:2781" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1499803200000" expanded="true" signature="6799:6838" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1499803200000" expanded="true" signature="7843:7855" ph="DELETE FROM " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                </leaf>
+              </split-second>
+            </splitter>
           </split-second>
         </splitter>
       </split-second>
@@ -195,8 +210,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>all_suggested_friends</find>
-      <find>followers</find>
       <find>friend_name</find>
       <find>show_all_followers</find>
       <find>Follower</find>
@@ -225,6 +238,8 @@
       <find>uki</find>
       <find>_functions</find>
       <find>get_delete_notification_link</find>
+      <find>&lt;p&gt;</find>
+      <find>jquery</find>
     </findStrings>
     <replaceStrings>
       <replace>show_all_followers</replace>
@@ -248,7 +263,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/__controller/profile/ProfileHelper.php" />
         <option value="$PROJECT_DIR$/public/_scripts/friends/followers/random.js" />
         <option value="$PROJECT_DIR$/public/__view/friends/followers/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/friends/followers/ajax_read.js" />
@@ -277,7 +291,6 @@
         <option value="$PROJECT_DIR$/public/__controller/MainController.php" />
         <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendship.php" />
         <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFetcher.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/count_displayer.php" />
         <option value="$PROJECT_DIR$/public/__view/friends/suggestions/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/friends/suggestions/ajax_create.php" />
@@ -286,9 +299,6 @@
         <option value="$PROJECT_DIR$/public/__controller/friends/suggestions/create.php" />
         <option value="$PROJECT_DIR$/public/__controller/friends/Muses.php" />
         <option value="$PROJECT_DIR$/public/__model/my_database.php" />
-        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" />
-        <option value="$PROJECT_DIR$/public/__model/Notification.php" />
-        <option value="$PROJECT_DIR$/public/__model/NotificationFriendship.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/create.js" />
         <option value="$PROJECT_DIR$/public/__model/model_frienship.php" />
         <option value="$PROJECT_DIR$/public/__view/notifications/friendship/index.php" />
@@ -296,8 +306,13 @@
         <option value="$PROJECT_DIR$/public/__view/notifications/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/Notification.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" />
         <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipHandler.php" />
+        <option value="$PROJECT_DIR$/public/__model/Notification.php" />
+        <option value="$PROJECT_DIR$/public/__model/NotificationFriendship.php" />
+        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/delete.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/delete.js" />
       </list>
     </option>
@@ -418,6 +433,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="friendship" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FatBoy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="FatBoy" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_layouts" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -586,12 +619,12 @@
       <updated>1499423517661</updated>
       <workItem from="1499423518843" duration="26515000" />
       <workItem from="1499679669615" duration="6211000" />
-      <workItem from="1499704949661" duration="43098000" />
+      <workItem from="1499704949661" duration="48573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75824000" />
+    <option name="totallyTimeSpent" value="81299000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -638,30 +671,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Experiments/JSAssocArrays/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="17" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/Notification.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks69.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions69.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -784,14 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="56" lean-forward="true" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/ajax_read.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -905,42 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="106" column="28" lean-forward="true" selection-start-line="106" selection-start-column="28" selection-end-line="106" selection-end-column="28" />
-          <folding>
-            <marker date="1499790865000" expanded="true" signature="1046:1060" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1499790865000" expanded="true" signature="2639:2678" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1499790865000" expanded="true" signature="3436:3448" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="48" column="5" lean-forward="true" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-          <folding>
-            <element signature="e#245#287#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="215" column="0" lean-forward="true" selection-start-line="215" selection-start-column="0" selection-end-line="215" selection-end-column="0" />
-          <folding>
-            <element signature="n#read_all#0;n#NotificationFriendship#0;n#!!top" expanded="false" />
-            <marker date="1499790995000" expanded="true" signature="1916:1930" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1499790995000" expanded="true" signature="2767:2781" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1499790995000" expanded="true" signature="6799:6838" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1499790995000" expanded="true" signature="7803:7815" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/__controller/friends/suggestions/create.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="705">
@@ -1019,24 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/friends/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="50" column="85" lean-forward="false" selection-start-line="50" selection-start-column="85" selection-end-line="50" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -1048,26 +995,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/notifications/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/Notification.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/delete.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -1080,16 +1011,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="135" column="26" lean-forward="true" selection-start-line="135" selection-start-column="26" selection-end-line="135" selection-end-column="26" />
+          <folding>
+            <marker date="1499803090000" expanded="true" signature="1046:1060" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1499803090000" expanded="true" signature="2639:2678" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1499803090000" expanded="true" signature="3436:3448" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="730">
+          <caret line="277" column="25" lean-forward="false" selection-start-line="277" selection-start-column="25" selection-end-line="277" selection-end-column="25" />
+          <folding>
+            <element signature="n#read_all#0;n#NotificationFriendship#0;n#!!top" expanded="false" />
+            <marker date="1499803200000" expanded="true" signature="1916:1930" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1499803200000" expanded="true" signature="2767:2781" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1499803200000" expanded="true" signature="6799:6838" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1499803200000" expanded="true" signature="7843:7855" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#245#287#0#PHP" expanded="true" />
+            <element signature="e#465#573#0#PHP" expanded="false" />
+            <element signature="e#580#1086#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="54" column="58" lean-forward="false" selection-start-line="54" selection-start-column="58" selection-end-line="54" selection-end-column="58" />
+          <folding>
+            <element signature="e#151#225#0#PHP" expanded="true" />
+            <element signature="e#1868#3391#0#PHP" expanded="false" />
+            <element signature="e#3394#4428#0#PHP" expanded="false" />
+            <element signature="e#4431#4866#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/friends/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="50" column="85" lean-forward="false" selection-start-line="50" selection-start-column="85" selection-end-line="50" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="34" lean-forward="true" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_layouts/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="1178" column="69" lean-forward="false" selection-start-line="1178" selection-start-column="63" selection-end-line="1178" selection-end-column="69" />
+          <folding>
+            <marker date="1499447858000" expanded="true" signature="18269:18290" ph="SELECT * FRO... Profile" />
+            <marker date="1499447858000" expanded="true" signature="22519:22540" ph="SELECT * FRO... Profile" />
+            <marker date="1499447858000" expanded="true" signature="25890:25904" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_layouts/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="24" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state relative-caret-position="-41">
+          <caret line="211" column="80" lean-forward="false" selection-start-line="211" selection-start-column="80" selection-end-line="211" selection-end-column="80" />
           <folding>
             <element signature="n#!!block;n#get_key_value_pairs#0" expanded="false" />
-            <element signature="e#4477#5020#0" expanded="false" />
+            <element signature="e#4557#5100#0" expanded="false" />
             <element signature="n#!!block;n#clone_categorized_notification_template#0" expanded="false" />
             <element signature="n#!!block;n#populate_container#0" expanded="false" />
-            <element signature="n#!!block;n#get_prepared_notification#0" expanded="false" />
             <element signature="n#!!block;n#append_a_notification#0" expanded="false" />
             <element signature="n#!!block;n#show_x_container#0" expanded="false" />
             <element signature="n#!!block;n#show_flash_notification#0" expanded="false" />
@@ -1097,16 +1124,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipHandler.php">
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/instance_vars.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" column="40" lean-forward="true" selection-start-line="22" selection-start-column="40" selection-end-line="22" selection-end-column="40" />
-          <folding>
-            <element signature="e#151#225#0#PHP" expanded="true" />
-            <element signature="e#1914#3437#0#PHP" expanded="false" />
-            <element signature="e#3440#4474#0#PHP" expanded="false" />
-            <element signature="e#4477#4912#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="71" column="39" lean-forward="false" selection-start-line="71" selection-start-column="39" selection-end-line="71" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="111">
+          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

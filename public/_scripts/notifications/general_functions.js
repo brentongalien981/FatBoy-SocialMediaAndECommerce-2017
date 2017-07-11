@@ -74,14 +74,14 @@ function my_ajax(x_notification_obj) {
                         var container = clone_categorized_notification_template(container_id);
 
                         //
-                        // TODO:DEBUG
-                        var current_class = x_notification_obj.class_name;
-                        populate_container(container, json.notifications, current_class);
+                        populate_container(container, json.notifications, caller_class_name);
                         break;
                     case "create":
                         break;
                     case "delete":
-                        // TODO:DEBUG
+                        // TODO:REMINDER
+                        var notification_id = x_notification_obj.key_value_pairs['notification_id'];
+                        dom_remove_notification(caller_class_name, notification_id);
                         console.log();
                         break;
                 }
@@ -209,6 +209,7 @@ function get_prepared_notification(notification) {
     // var prepared_notification = "<p class='notifications'>";
     var prepared_notification = document.createElement("p");
     prepared_notification.classList.add("notifications");
+    prepared_notification.id = "notification" + notification['notification_id'];
 
     var content = "";
 

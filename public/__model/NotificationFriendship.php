@@ -233,30 +233,51 @@ class NotificationFriendship extends Notification {
     public static function delete($id = 0) {
         global $database;
 
+        // 1) Delete the foreign table.
         // Delete the foreign record.
         $query = "DELETE FROM " . self::$table_name . " ";
         $query .= "WHERE notification_id = " . $database->escape_value($id) . " ";
         $query .= "LIMIT 1";
 
+
         // TODO: DEBUG
         MyDebugMessenger::add_debug_message("QUERY: {$query}.");
 
+
+        // Execute the query.
+        if (!$database->start_transaction()) { return false; }
+
         $database->get_result_from_query($query);
-//        $is_deletion_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
-        $is_deletion_ok = false;
-        if ($database->get_num_of_affected_rows() != 0) {
-            $is_deletion_ok = true;
-        }
-        
+        $is_deletion_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+//        $is_deletion_ok = false;
+//        if ($database->get_num_of_affected_rows() != 0) {
+//            $is_deletion_ok = true;
+//        }
+
+
+        // TODO:DEBUG
         MyDebugMessenger::add_debug_message("VAR:\$is_deletion_ok: {$is_deletion_ok}.");
 
 
+
+        // 2) Delete the primary table.
         // Delete the primary notification record.
         if ($is_deletion_ok) {
             $is_deletion_ok = parent::delete($id);
         }
-        
-        return $is_deletion_ok;
+
+
+
+        // 3) Return result.
+        if ($is_deletion_ok) {
+            if (!$database->commit()) { return false; }
+            return true;
+        }
+        else {
+            if (!$database->rollback()) { return false; }
+            return false;
+        }
+
     }
     
     /**

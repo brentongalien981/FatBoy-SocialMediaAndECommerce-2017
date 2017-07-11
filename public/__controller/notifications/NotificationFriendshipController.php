@@ -48,6 +48,12 @@ class NotificationFriendshipController extends MainController
         return $is_creation_ok;
     }
 
+
+    public function delete($data) {
+
+        return NotificationFriendship::delete($data['notification_id']);
+    }
+
 }
 
 ?>
