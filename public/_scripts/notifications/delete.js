@@ -24,7 +24,7 @@ function animate_node_removal(container, node, caller_class_name) {
 
 
         node.style.opacity = "" + (global_notification_counter * .1) + "";
-        console.log("DEBUG:global_notification_counter * .1: " + (global_notification_counter * .1))
+        // console.log("DEBUG:global_notification_counter * .1: " + (global_notification_counter * .1))
 
         --global_notification_counter;
 
