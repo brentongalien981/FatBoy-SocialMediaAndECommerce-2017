@@ -15,6 +15,10 @@ function Notification (class_name, crud_type, request_type, key_value_pairs) {
         my_ajax(this);
     };
 
+    this.update = function () {
+        my_ajax(this);
+    };
+
     this.delete = function () {
         my_ajax(this);
     };

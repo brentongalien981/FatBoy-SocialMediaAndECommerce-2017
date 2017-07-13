@@ -74,9 +74,24 @@ function my_ajax(x_notification_obj) {
                         var container = clone_categorized_notification_template(container_id);
 
                         //
-                        populate_container(container, json.notifications, caller_class_name);
+                        console.log("*********** ++++++ *********");
+                        console.log("calling METHOD: populate_container()");
+                        populate_container(container, json.notifications, caller_class_name, crud_type);
+
+                        //
+                        console.log("*********** ++++++ *********");
+                        console.log("UKINNAYO MET!");
+
                         break;
                     case "create":
+                        break;
+                    case "update":
+                        //
+                        var container_id = caller_class_name + "Container";
+                        var container = document.getElementById(container_id);
+
+                        //
+                        populate_container(container, json.notifications, caller_class_name, crud_type);
                         break;
                     case "delete":
                         // TODO:REMINDER
@@ -128,6 +143,13 @@ function my_ajax(x_notification_obj) {
         xhr.send(key_value_pairs_str);
     }
 }
+
+
+
+function my_sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 
 function get_key_value_pairs(key_value_pairs, request_type) {
@@ -182,7 +204,7 @@ function clone_categorized_notification_template(new_container_id) {
 }
 
 
-function populate_container(container, notifications, class_name) {
+function populate_container(container, notifications, class_name, crud_type) {
     console.log("PUTA: notifications.length: " + notifications.length);
 
     for (var i = 0; i < notifications.length; i++) {
@@ -197,8 +219,22 @@ function populate_container(container, notifications, class_name) {
     }
 
     //
-    if (notifications.length > 0) {
+    if (crud_type === "read" &&
+        notifications.length > 0)
+    {
+        // TODO:DEBUG
+        console.log("*********** ++++++ *********");
+        console.log("In METHOD: populate_container()");
+        console.log("crud_type === read");
+        console.log("notifications.length > 0");
+
+        //
         show_x_container(container);
+
+        // Start the updates.
+        console.log("VAR-BEFORE:can_friendship_notifications_update: " + can_friendship_notifications_update);
+        can_friendship_notifications_update = true;
+        console.log("VAR-AFTER:can_friendship_notifications_update: " + can_friendship_notifications_update);
     }
 
 }

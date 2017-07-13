@@ -66,7 +66,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/general_functions.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/create.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/read.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/update.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/update.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/delete.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/tasks.js"; ?><!--"></script>-->

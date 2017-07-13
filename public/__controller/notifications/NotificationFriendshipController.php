@@ -30,6 +30,16 @@ class NotificationFriendshipController extends MainController
         return NotificationFriendship::read_by_section($section);
     }
 
+    public function update_fetch($data)
+    {
+        // For updates, limit the read by just 1.
+        $limit = 1;
+
+        // TODO:REMINDER: Make the $section a variable in the scripts of _script/notifications
+        // and the rest of the Notification sub-menus.
+        return NotificationFriendship::read_by_section($data['section'], $limit);
+    }
+
 
     public function create($data) {
         //

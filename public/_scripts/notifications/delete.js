@@ -13,12 +13,12 @@ function dom_remove_notification(caller_class_name, notification_id) {
     var notification = document.getElementById("notification" + notification_id);
 
 
-    animate_node_removal(container, notification);
+    animate_node_removal(container, notification, caller_class_name);
 
 }
 
 
-function animate_node_removal(container, node) {
+function animate_node_removal(container, node, caller_class_name) {
     global_notification_counter = 10;
     global_notification_timer_handler = setInterval(function () {
 
@@ -29,7 +29,11 @@ function animate_node_removal(container, node) {
         --global_notification_counter;
 
         if (global_notification_counter <= 0) {
+            //
             container.removeChild(node);
+
+
+            //
             clearInterval(global_notification_timer_handler);
         }
     }, 35);

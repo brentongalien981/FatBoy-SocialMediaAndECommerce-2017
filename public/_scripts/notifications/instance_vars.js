@@ -2,3 +2,4 @@ var categorized_notification_container_template = document.getElementById("categ
 var main_content = document.getElementById("main_content");
 var global_notification_counter = 0;
 var global_notification_timer_handler = null;
+var num_notifications_per_section = 2; // TODO:REMINDER: Change this to 10 later.

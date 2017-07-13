@@ -76,13 +76,13 @@ class NotificationFriendship extends Notification {
     }
 
 
-    public static function get_query_for_read_by_section($section) {
+    public static function get_query_for_read_by_section($section, $limit) {
         // TODO:REMINDER: Only select the necessary columns.
 
         global $session;
         $notified_user_id = $session->actual_user_id;
-        $item_per_section = 10;
-        $num_items_to_skip = ($section - 1) * $item_per_section;
+        $item_per_section = 2;
+
 
         $query = "SELECT * FROM " . self::$table_name;
         $query .= " INNER JOIN " . parent::$table_name;
@@ -91,9 +91,20 @@ class NotificationFriendship extends Notification {
         $query .= " ON " . parent::$table_name . ".notifier_user_id = Users.user_id";
         $query .= " WHERE is_deleted = 0";
         $query .= " AND notified_user_id = {$notified_user_id}";
-        $query .= " LIMIT {$item_per_section} OFFSET {$num_items_to_skip}";
+        $query .= " ORDER BY id ASC";
 
-//        MyDebugMessenger::add_debug_message("QUERY: {$query}");
+        // For update_fetch: fetch only 1 notification.
+        if ($limit == 1) {
+            $num_items_to_skip = ($section * $item_per_section) - 1;
+            $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
+        }
+        // For actual read: read 10 notifications.
+        else {
+            $num_items_to_skip = ($section - 1) * $item_per_section;
+            $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
+        }
+
+        MyDebugMessenger::add_debug_message("QUERY: {$query}");
 
         return $query;
     }
@@ -127,8 +138,8 @@ class NotificationFriendship extends Notification {
     }
 
 
-    public static function read_by_section($section) {
-        $query = self::get_query_for_read_by_section($section);
+    public static function read_by_section($section, $limit = 2) {
+        $query = self::get_query_for_read_by_section($section, $limit);
 
 
 //        $objects_array = self::read_by_query_and_instantiate($query);
