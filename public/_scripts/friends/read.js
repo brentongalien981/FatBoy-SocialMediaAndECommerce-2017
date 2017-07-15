@@ -60,7 +60,7 @@ function create_friend_relationship_container(class_name) {
 }
 
 
-function populate_container(container, suggested_friends, caller_class_name, crud_type) {
+function populate_friend_relationship_container(container, suggested_friends, caller_class_name, crud_type) {
     // console.log("PUTA: suggested_friends.length: " + suggested_friends.length);
 
     for (var i = 0; i < suggested_friends.length; i++) {
@@ -101,15 +101,12 @@ function populate_container(container, suggested_friends, caller_class_name, cru
 
 
 
-        // // Add event listener for the current follow button.
-        // // Listener for creating a follow request (friendship request)
-        // // notification record.
-        // var current_follow_button = document.getElementById("follow_button" + friend_id);
-        // add_listener_to_follow_button(current_follow_button);
+        // Add event listener for the current follow button.
+        var current_follow_button = document.getElementById("follow_button" + sf['user_id']);
+        add_listener_to_follow_button(current_follow_button);
 
 
-        // // TODO:REMINDER: Unfollow button listener.
-        // add_listener_to_delete_notification_link(sf, class_name);
+
     }
 
     //

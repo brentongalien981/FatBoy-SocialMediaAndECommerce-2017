@@ -1,8 +1,10 @@
+// @deprecated
+// TODO:REMINDER: Refactor this and move it to FILE main_script.js.
 function my_ajax(x_notification_obj) {
     var caller_class_name = x_notification_obj.class_name;
     var crud_type = x_notification_obj.crud_type;
 
-    var url = get_local_url() + "/public/__controller/notifications/" + caller_class_name + "Handler.php";
+    var url = get_local_url() + "/public/__controller/notifications/" + caller_class_name + "AjaxHandler.php";
 
 
     var request_type = String(x_notification_obj.request_type);
@@ -65,7 +67,7 @@ function my_ajax(x_notification_obj) {
                 console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
 
 
-                //
+                // TODO:REMINDER: Refactor this and use the after_effects_methods() instead.
                 switch (crud_type) {
                     case "read":
                         // Container_id = notification_info.class_name + “container”
@@ -106,7 +108,7 @@ function my_ajax(x_notification_obj) {
 
 
             // Show a flash notification of the overall result.
-            show_flash_notification(x_notification_obj, json, -69);
+            show_flash_notification(x_notification_obj, json);
 
 
             // AJAX JSON log.
@@ -284,19 +286,4 @@ function append_a_notification(container, prepared_notification) {
 
 function show_x_container(container) {
     container.style.display = "block";
-}
-
-
-function show_flash_notification(x_notification_obj, json, notification_msg_id) {
-    // TODO:REMINDER: Make the notification more presentable in producation.
-    if (json == null || !json.is_result_ok) {
-        // FAIL on [crud]ing [x]Notification.
-        // window.alert("FAIL on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
-        console.log("FAIL on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
-    }
-    else {
-        // SUCCESS on [crud]ing [x]Notification.
-        // window.alert("SUCCESS on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
-        console.log("SUCCESS on " + x_notification_obj.crud_type + "ing " + x_notification_obj.class_name);
-    }
 }

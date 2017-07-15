@@ -18,7 +18,7 @@
     function display_notification_count() {
         var xhr = new XMLHttpRequest();
 
-        var url = "<?php echo LOCAL . "/public/__controller/notifications/NotificationFriendshipHandler.php"; ?>";
+        var url = "<?php echo LOCAL . "/public/__controller/notifications/NotificationFriendshipAjaxHandler.php"; ?>";
         var request_key_value_pairs = "?get_all_notifications_count=yes";
         url += request_key_value_pairs;
         

@@ -66,6 +66,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
 <?php // TODO:SECTION: Scripts. ?>
+<script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/friends/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/friends/general_functions.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/friends/create.js"; ?><!--"></script>-->
@@ -85,6 +86,21 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <?php if ($session->is_viewing_own_account()) { ?>
     <?php require_once(PUBLIC_PATH . "/__view/friends/suggestions/index.php"); ?>
 <?php } ?>
+
+
+
+
+
+
+<?php // TODO:SECTION: Supporting scripts for notifications. ?>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/instance_vars.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/general_functions.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/create.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/read.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/update.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/tasks.js"; ?><!--"></script>-->
 
 
 

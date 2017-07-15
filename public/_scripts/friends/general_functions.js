@@ -1,3 +1,46 @@
+function do_friendship_suggestions_after_effects(class_name, crud_type, json) {
+
+    switch (crud_type) {
+        case "read":
+            //
+            var container_tbody = create_friend_relationship_container(class_name);
+
+            //
+            populate_friend_relationship_container(container_tbody, json.suggested_friends, class_name, crud_type);
+            break;
+        case "create":
+            break;
+        case "update":
+            break;
+        case "delete":
+            break;
+    }
+}
+
+
+
+function decide_ajax_after_effects_class_handlers(x_friendship_obj, json) {
+    var class_name = x_friendship_obj.class_name;
+    var crud_type = x_friendship_obj.crud_type;
+
+    //
+    switch (class_name) {
+        case "FriendshipSuggestion":
+            do_friendship_suggestions_after_effects(class_name, crud_type, json);
+            break;
+        case "xXx":
+            break;
+        case "yYy":
+            break;
+        case "zZz":
+            break;
+    }
+}
+
+
+
+// @deprecated
+// TODO:REMINDER: Refactor this and move it to FILE main_script.js.
 function my_ajax(x_friendship_obj) {
     var caller_class_name = x_friendship_obj.class_name;
     var crud_type = x_friendship_obj.crud_type;
@@ -6,7 +49,10 @@ function my_ajax(x_friendship_obj) {
     var key_value_pairs_str = get_key_value_pairs(key_value_pairs_arr, request_type);
 
 
-    var url = get_local_url() + "/public/__controller/friends/" + caller_class_name + "AjaxHandler.php";
+
+
+
+    var url = get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + caller_class_name + "AjaxHandler.php";
     var xhr = new XMLHttpRequest();
 
 
@@ -71,31 +117,16 @@ function my_ajax(x_friendship_obj) {
 
 
                 // "After-Effects" tasks if the AJAX is ok.
-                switch (crud_type) {
-                    case "read":
-                        //
-                        var container_tbody = create_friend_relationship_container(caller_class_name);
+                decide_ajax_after_effects_class_handlers(x_friendship_obj, json);
 
-                        //
-                        populate_container(container_tbody, json.suggested_friends, caller_class_name, crud_type);
-                        break;
-                    case "create":
-                        break;
-                    case "update":
-                        break;
-                    case "delete":
-                        break;
-                }
+
             }
 
 
 
-
-
-
-            // TODO:REMINDER
             // Show a flash notification of the overall result.
-            // show_flash_notification(x_friendship_obj, json, -69);
+            show_flash_notification(x_friendship_obj, json);
+
 
 
 
