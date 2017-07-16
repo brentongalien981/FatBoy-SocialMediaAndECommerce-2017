@@ -81,7 +81,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 <?php // TODO:SECTION: Sub-menus ?>
 <?php // TODO:REMINDER: Late-bind these sub-menus later (* down there to the next chunk). ?>
-<?php //require_once(PUBLIC_PATH . "/__view/friends/muses/index.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__view/friends/muses/index.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__view/friends/acolytes/index.php"); ?>
 <?php if ($session->is_viewing_own_account()) { ?>
     <?php require_once(PUBLIC_PATH . "/__view/friends/suggestions/index.php"); ?>

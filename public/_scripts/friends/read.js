@@ -78,18 +78,33 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
 
         // User name.
         content += "<td>";
+
         content += "<h5>";
         content += sf['user_name'];
         content += "</h5>";
 
         // Follow button.
-        content += "<input id='follow_button" + sf['user_id'] + "'";
-        content += " type='button'";
-        content += " class='form_button follow_buttons'";
-        content += " friend_id='" + sf['user_id'] + "'";
-        content += " friend_name='" + sf['user_name'] + "'";
-        content += " value='+ follow'";
-        content += ">";
+        if (caller_class_name == "FriendshipSuggestion" ||
+            caller_class_name == "FriendshipAcolyte")
+        {
+            content += "<input id='follow_button" + sf['user_id'] + "'";
+            content += " type='button'";
+            content += " class='form_button follow_buttons'";
+            content += " friend_id='" + sf['user_id'] + "'";
+            content += " friend_name='" + sf['user_name'] + "'";
+            content += " value='+ follow'";
+            content += ">";
+        }
+        else {
+            content += "<input id='unfollow_button" + sf['user_id'] + "'";
+            content += " type='button'";
+            content += " class='form_button unfollow_buttons'";
+            content += " friend_id='" + sf['user_id'] + "'";
+            content += " friend_name='" + sf['user_name'] + "'";
+            content += " value='- unfollow'";
+            content += ">";
+        }
+
 
         content += "</td>";
 
@@ -101,9 +116,20 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
 
 
 
+
+        /* Event listeners. */
         // Add event listener for the current follow button.
-        var current_follow_button = document.getElementById("follow_button" + sf['user_id']);
-        add_listener_to_follow_button(current_follow_button);
+        if (caller_class_name == "FriendshipSuggestion" ||
+            caller_class_name == "FriendshipAcolyte")
+        {
+            var current_follow_button = document.getElementById("follow_button" + sf['user_id']);
+            add_listener_to_follow_button(current_follow_button);
+        }
+        else {
+            var current_unfollow_button = document.getElementById("unfollow_button" + sf['user_id']);
+            add_listener_to_unfollow_button(current_unfollow_button);
+        }
+
 
 
 

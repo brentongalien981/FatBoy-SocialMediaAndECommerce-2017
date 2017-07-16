@@ -25,6 +25,9 @@ function get_subfolder(class_name) {
         case "FriendshipAcolyte":
             subfolder = "friends";
             break;
+        case "FriendshipMuse":
+            subfolder = "friends";
+            break;
         case "Friendship":
             subfolder = "friends";
             break;
@@ -63,6 +66,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "FriendshipAcolyte":
             do_friendship_acolytes_after_effects(class_name, crud_type, json);
+            break;
+        case "FriendshipMuse":
+            do_friendship_muses_after_effects(class_name, crud_type, json);
             break;
         case "Friendship":
             do_friendships_after_effects(class_name, crud_type, json, x_obj);
