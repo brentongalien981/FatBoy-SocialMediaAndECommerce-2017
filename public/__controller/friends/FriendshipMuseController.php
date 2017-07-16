@@ -29,4 +29,11 @@ class FriendshipMuseController extends MainController
         return $x_friends;
     }
 
+
+
+    public function delete($data) {
+
+        return FriendshipMuse::delete($data['muse_user_id']);
+    }
+
 }

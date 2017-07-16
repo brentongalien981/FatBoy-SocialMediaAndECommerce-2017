@@ -39,6 +39,7 @@ class FriendshipAcolyte extends Friendship
             $user_info["user_id"] = $user_id;
             $user_info["user_name"] = $user_name;
             $user_info["user_pic_src"] = $user_pic_src;
+            $user_info["is_already_my_muse"] = self::is_user_already_my_muse($user_id);
 
             //
             array_push($all_suggested_friends, $user_info);
@@ -47,6 +48,23 @@ class FriendshipAcolyte extends Friendship
 
         //
         return $all_suggested_friends;
+    }
+
+
+
+    private static function is_user_already_my_muse($friend_id) {
+        global $session;
+        $query = "SELECT user_id FROM Friendship";
+        $query .= " WHERE user_id = {$friend_id}";
+        $query .= " AND friend_id = {$session->currently_viewed_user_id} LIMIT 1";
+
+        global $database;
+        $result_set = parent::read_by_query($query);
+
+        if ($database->get_num_rows_of_result_set($result_set) > 0) { return true; }
+
+        return false;
+
     }
 
 

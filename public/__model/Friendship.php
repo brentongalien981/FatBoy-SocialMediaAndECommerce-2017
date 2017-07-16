@@ -235,27 +235,37 @@ class Friendship
         }
     }
 
-    public static function delete($id = 0)
-    {
-        global $database;
+    /**
+     * @deprecated
+     * @param int $id
+     * @return bool
+     */
+//    public static function delete($id = 0)
+//    {
+//        global $database;
+//
+//        $query = "DELETE FROM " . self::$table_name . " ";
+//        $query .= "WHERE id = " . $database->escape_value($id) . " ";
+//        $query .= "LIMIT 1";
+//
+//        // TODO: DEBUG
+//        MyDebugMessenger::add_debug_message("QUERY: {$query}.");
+//
+//        $database->get_result_from_query($query);
+//        return ($database->get_num_of_affected_rows() == 1) ? true : false;
+//    }
 
-        $query = "DELETE FROM " . self::$table_name . " ";
-        $query .= "WHERE id = " . $database->escape_value($id) . " ";
-        $query .= "LIMIT 1";
 
-        // TODO: DEBUG
-        MyDebugMessenger::add_debug_message("QUERY: {$query}.");
-
-        $database->get_result_from_query($query);
-        return ($database->get_num_of_affected_rows() == 1) ? true : false;
-    }
-
+    /**
+     * @param $query
+     * @return bool
+     */
     public static function delete_by_query($query)
     {
         global $database;
 
         // TODO: DEBUG
-        MyDebugMessenger::add_debug_message("QUERY DELETE: {$query}.");
+        \MyDebugMessenger::add_debug_message("QUERY DELETE: {$query}.");
 
         $database->get_result_from_query($query);
         return ($database->get_num_of_affected_rows() == 1) ? true : false;

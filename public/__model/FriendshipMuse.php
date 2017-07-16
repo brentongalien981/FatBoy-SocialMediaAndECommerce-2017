@@ -50,6 +50,18 @@ class FriendshipMuse extends Friendship
     }
 
 
+    public static function delete($muse_user_id) {
+        global $session;
+        $query = "DELETE FROM " . parent::$table_name;
+        $query .= " WHERE user_id = {$muse_user_id}";
+        $query .= " AND friend_id = {$session->actual_user_id}";
+
+        $is_deletion_ok = parent::delete_by_query($query);
+
+        return $is_deletion_ok;
+    }
+
+
     public static function get_query_for_muse_friends()
     {
         //

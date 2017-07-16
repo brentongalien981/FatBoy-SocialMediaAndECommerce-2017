@@ -7,3 +7,12 @@
         </tbody>
     </table>
 </div>
+
+
+
+<style>
+    #FriendshipMuseContainer input.form_button {
+        background-color: rgb(249, 59, 59);
+        color: white;
+    }
+</style>

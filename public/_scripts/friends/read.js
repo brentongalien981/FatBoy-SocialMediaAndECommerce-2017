@@ -87,15 +87,30 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
         if (caller_class_name == "FriendshipSuggestion" ||
             caller_class_name == "FriendshipAcolyte")
         {
-            content += "<input id='follow_button" + sf['user_id'] + "'";
-            content += " type='button'";
-            content += " class='form_button follow_buttons'";
-            content += " friend_id='" + sf['user_id'] + "'";
-            content += " friend_name='" + sf['user_name'] + "'";
-            content += " value='+ follow'";
-            content += ">";
+            if (sf['is_already_my_muse']) {
+                content += "<input id=''";
+                content += " type='button'";
+                content += " class='form_button follow_buttons'";
+                content += " friend_id=''";
+                content += " friend_name=''";
+                content += " value=''";
+                content += " style='visibility: hidden;'";
+                content += ">";
+            }
+            else {
+                // Follow button.
+                content += "<input id='follow_button" + sf['user_id'] + "'";
+                content += " type='button'";
+                content += " class='form_button follow_buttons'";
+                content += " friend_id='" + sf['user_id'] + "'";
+                content += " friend_name='" + sf['user_name'] + "'";
+                content += " value='+ follow'";
+                content += ">";
+            }
+
         }
         else {
+            // Unfollow button.
             content += "<input id='unfollow_button" + sf['user_id'] + "'";
             content += " type='button'";
             content += " class='form_button unfollow_buttons'";
@@ -103,6 +118,10 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
             content += " friend_name='" + sf['user_name'] + "'";
             content += " value='- unfollow'";
             content += ">";
+
+
+            // Necessary info for deleting a muse.
+            tr.id = "tr_muse" + sf['user_id'];
         }
 
 
@@ -122,8 +141,10 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
         if (caller_class_name == "FriendshipSuggestion" ||
             caller_class_name == "FriendshipAcolyte")
         {
-            var current_follow_button = document.getElementById("follow_button" + sf['user_id']);
-            add_listener_to_follow_button(current_follow_button);
+            if (!sf['is_already_my_muse']) {
+                var current_follow_button = document.getElementById("follow_button" + sf['user_id']);
+                add_listener_to_follow_button(current_follow_button);
+            }
         }
         else {
             var current_unfollow_button = document.getElementById("unfollow_button" + sf['user_id']);
