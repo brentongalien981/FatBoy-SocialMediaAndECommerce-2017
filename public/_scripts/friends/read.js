@@ -130,6 +130,3 @@ function populate_friend_relationship_container(container, suggested_friends, ca
 }
 
 
-function show_x_container(container) {
-    container.style.display = "block";
-}

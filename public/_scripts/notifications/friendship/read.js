@@ -34,7 +34,10 @@ function get_notification_for_follow_request(notification) {
     msg += " <a class='friend_notification_links'>";
     msg += n['user_name'];
     msg += "</a> wants to follow you ";
-    msg += "<a class='friend_notification_links accept_follow_request_links'";
+
+    msg += "<a";
+    msg += " id='accept_follow_request_link" + n['notification_id'] + "'";
+    msg += " class='friend_notification_links accept_follow_request_links'";
     msg += " friend_id='" + n['notifier_user_id'] + "'";
     msg += " notification_id='" + n['notification_id'] + "'";
     msg += ">accept</a>";
