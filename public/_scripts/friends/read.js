@@ -1,7 +1,7 @@
 function create_friend_relationship_container(class_name) {
     // Container
     var friend_relationship_container = document.createElement("div");
-    friend_relationship_container.id = class_name + "sContainer";
+    friend_relationship_container.id = class_name + "Container";
     friend_relationship_container.classList.add("section");
     friend_relationship_container.classList.add("friend_relationship_container_template");
 
@@ -60,11 +60,11 @@ function create_friend_relationship_container(class_name) {
 }
 
 
-function populate_friend_relationship_container(container, suggested_friends, caller_class_name, crud_type) {
-    // console.log("PUTA: suggested_friends.length: " + suggested_friends.length);
+function populate_friend_relationship_container(container, x_friends, caller_class_name, crud_type) {
+    // console.log("PUTA: x_friends.length: " + x_friends.length);
 
-    for (var i = 0; i < suggested_friends.length; i++) {
-        var sf = suggested_friends[i];
+    for (var i = 0; i < x_friends.length; i++) {
+        var sf = x_friends[i];
         // console.log("PUTA: sf[notification_msg_id]: " + sf['notification_msg_id']);
         // var prepared_notification = get_prepared_notification(sf);
         var tr = document.createElement("tr");
@@ -111,11 +111,11 @@ function populate_friend_relationship_container(container, suggested_friends, ca
 
     //
     if (crud_type === "read" &&
-        suggested_friends.length > 0)
+        x_friends.length > 0)
     {
 
         // The actual container, not just the tbody.
-        var actual_container = document.getElementById(caller_class_name + "sContainer");
+        var actual_container = document.getElementById(caller_class_name + "Container");
 
 
         //

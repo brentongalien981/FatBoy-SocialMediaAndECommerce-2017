@@ -19,8 +19,25 @@ function update_fetch_a_friendship_notification() {
     // console.log("INTERVAL UPDATE");
     // console.log("In METHOD: update_fetch_a_friendship_notification()");
 
+    //
+    var id = "NotificationFriendshipContainer"; // x_notification_container_id
+    var container = document.getElementById(id); // x_notification_container
+
     // TODO:REMINDER: Change this to a variable.
     var section = 1;
+
+    /* */
+    // Make sure that there is space to fill in
+    // in that friendship_notification_container.
+    // * Every section should have 10 notifications.
+
+    //
+    var actual_num_notifications = container.childNodes.length; // The number of noti. in that specific x container.
+    var supposed_num_notifications = section * num_notifications_per_section;
+
+
+    //
+    if (container.childNodes.length <= 0) { section = 0; }
 
     var crud_type = "update";
     var request_type = "GET";
@@ -30,16 +47,7 @@ function update_fetch_a_friendship_notification() {
     };
 
 
-    /* */
-    // Make sure that there is space to fill in
-    // in that friendship_notification_container.
-    // * Every section should have 10 notifications.
 
-    //
-    var id = "NotificationFriendshipContainer"; // x_notification_container_id
-    var container = document.getElementById(id); // x_notification_container
-    var actual_num_notifications = container.childNodes.length; // The number of noti. in that specific x container.
-    var supposed_num_notifications = section * num_notifications_per_section;
 
 
 

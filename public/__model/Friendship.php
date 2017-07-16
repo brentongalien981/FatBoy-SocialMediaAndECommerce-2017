@@ -28,7 +28,7 @@ class Friendship
 
 
     /**
-     *
+     * @deprecated
      * @global type $session
      * @global type $database
      * @param int $user_id
@@ -75,6 +75,30 @@ class Friendship
 
 
 
+    public static function get_sanitized_profile_pic_src($pic_url)
+    {
+        // Default pic_url.
+        $default_url = "/public/_photos/icon_profile.png";
+
+
+        // If there's no valid pic src, then the default pic src,
+        // otherwise return the valid pic src.
+        if (
+            (!isset($pic_url)) ||
+            (empty($pic_url)) ||
+            (is_null($pic_url)) ||
+            (($pic_url === 0)))
+        {
+            $pic_url = $default_url;
+        }
+
+        //
+        return $pic_url;
+
+    }
+
+
+
     public static function read_by_query_and_instantiate($query = "")
     {
         global $database;
@@ -116,7 +140,7 @@ class Friendship
                 // TODO:REMINDER: Make this as part of the query.. Like INNER JOIN
                 // pic_src.
                 "user_pic_src" => self::get_profile_pic_src($row['user_id'])
-                //uki
+
             ));
         }
 
@@ -146,7 +170,7 @@ class Friendship
                 "user_id" => $row['user_id'],
                 "user_name" => $row['user_name'],
                 "user_pic_src" => self::get_profile_pic_src($row['user_id'])
-                //uki
+
             ));
         }
 
@@ -186,6 +210,7 @@ class Friendship
     // Returns bool.
     public function create_with_bool()
     {
+        //uki
         global $database;
         // Don't forget your SQL syntax and good habits:
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
@@ -199,6 +224,7 @@ class Friendship
         $query .= ") VALUES ('";
         $query .= join("', '", array_values($attributes));
         $query .= "')";
+
 
         $query_result = $database->get_result_from_query($query);
 

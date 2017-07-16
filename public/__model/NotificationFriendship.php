@@ -95,8 +95,14 @@ class NotificationFriendship extends Notification {
 
         // For update_fetch: fetch only 1 notification.
         if ($limit == 1) {
-            $num_items_to_skip = ($section * $item_per_section) - 1;
-            $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
+            if ($section == 0) {
+                $query .= " LIMIT {$limit} OFFSET 0";
+            }
+            else {
+                $num_items_to_skip = ($section * $item_per_section) - 1;
+                $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
+            }
+
         }
         // For actual read: read 10 notifications.
         else {

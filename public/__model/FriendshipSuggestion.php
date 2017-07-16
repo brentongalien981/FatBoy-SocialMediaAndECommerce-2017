@@ -101,25 +101,5 @@ class FriendshipSuggestion extends Friendship
     }
 
 
-    public static function get_sanitized_profile_pic_src($pic_url)
-    {
-        // Default pic_url.
-        $default_url = "/public/_photos/icon_profile.png";
 
-
-        // If there's no valid pic src, then the default pic src,
-        // otherwise return the valid pic src.
-        if (
-            (!isset($pic_url)) ||
-            (empty($pic_url)) ||
-            (is_null($pic_url)) ||
-            (($pic_url === 0)))
-        {
-            $pic_url = $default_url;
-        }
-
-        //
-        return $pic_url;
-
-    }
 }

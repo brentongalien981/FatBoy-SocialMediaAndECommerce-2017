@@ -23,8 +23,17 @@ function do_notification_friendships_after_effects(class_name, crud_type, json, 
             var container_id = class_name + "Container";
             var container = document.getElementById(container_id);
 
+            // if (container == null) {
+            //     // That means the first initial read hasn't fetched any record,
+            //     // so just call this method again, but change the crud_type to
+            //     // read instead of update.
             //
+            //     // do_notification_friendships_after_effects(class_name, "read", json, x_obj)
+            //     container = clone_categorized_notification_template(container_id);
+            // }
+
             populate_x_notification_container(container, json.notifications, class_name, crud_type);
+
             break;
         case "delete":
             // TODO:REMINDER

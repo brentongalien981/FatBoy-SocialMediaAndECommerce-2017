@@ -22,10 +22,14 @@ function get_subfolder(class_name) {
         case "FriendshipSuggestion":
             subfolder = "friends";
             break;
+        case "FriendshipAcolyte":
+            subfolder = "friends";
+            break;
+        case "Friendship":
+            subfolder = "friends";
+            break;
         case "NotificationFriendship":
             subfolder = "notifications";
-            break;
-        case "yYy":
             break;
         case "zZz":
             break;
@@ -42,6 +46,11 @@ function show_x_container(container) {
 }
 
 
+function hide_x_container(container) {
+    container.style.display = "none";
+}
+
+
 
 function decide_ajax_after_effects_class_handlers(x_obj, json) {
     var class_name = x_obj.class_name;
@@ -52,10 +61,14 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "FriendshipSuggestion":
             do_friendship_suggestions_after_effects(class_name, crud_type, json);
             break;
+        case "FriendshipAcolyte":
+            do_friendship_acolytes_after_effects(class_name, crud_type, json);
+            break;
+        case "Friendship":
+            do_friendships_after_effects(class_name, crud_type, json, x_obj);
+            break;
         case "NotificationFriendship":
             do_notification_friendships_after_effects(class_name, crud_type, json, x_obj);
-            break;
-        case "yYy":
             break;
         case "zZz":
             break;
@@ -106,7 +119,7 @@ function my_ajax(x_obj) {
 
 
 
-
+    //
     var url = get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + caller_class_name + "AjaxHandler.php";
     var xhr = new XMLHttpRequest();
 

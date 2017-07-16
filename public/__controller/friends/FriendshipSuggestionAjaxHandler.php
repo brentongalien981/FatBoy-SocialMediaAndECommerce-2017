@@ -44,7 +44,7 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 
 
         // Let the controller handle it.
-        $json_errors_array['suggested_friends'] = $f_suggestion_controller->read($sanitized_vars);
+        $json_errors_array['x_friends'] = $f_suggestion_controller->read($sanitized_vars);
 
 
         // If everything is ok.

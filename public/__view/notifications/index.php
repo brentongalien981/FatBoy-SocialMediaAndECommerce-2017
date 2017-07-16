@@ -90,6 +90,14 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
 
+<?php // TODO:SECTION: Supporting scripts when the link "accept" is clicked. ?>
+<script src="<?php echo LOCAL . "/public/_scripts/friends/Friendship.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/friends/general_functions.js"; ?>"></script>
+
+
+
+
+
 
 <?php // require_once(PUBLIC_PATH . "/_scripts/ad_displayer.php"); ?>
 <?php include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

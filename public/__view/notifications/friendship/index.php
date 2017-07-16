@@ -21,4 +21,6 @@
 
 
 <?php // TODO:SECTION: Supporting scripts when the link "accept" is clicked. ?>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/friends/suggestions/FriendshipSuggestion.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/friends/suggestions/general_functions.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/friends/suggestions/create.js"; ?>"></script>

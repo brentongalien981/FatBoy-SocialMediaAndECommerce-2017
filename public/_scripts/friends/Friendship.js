@@ -1,4 +1,4 @@
-function Friendship (class_name, crud_type, request_type, key_value_pairs) {
+function Friendship (class_name = "Friendship", crud_type, request_type, key_value_pairs) {
     this.class_name = class_name;
     this.crud_type = crud_type;
     this.request_type = request_type;

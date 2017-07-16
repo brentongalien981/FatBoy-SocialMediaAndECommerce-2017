@@ -37,16 +37,18 @@ function populate_x_notification_container(container, notifications, class_name,
 
         append_a_notification(container, prepared_notification);
 
-        //
+        //uki
         add_listener_to_delete_notification_link(notification, class_name);
 
-        // TODO
-        add_listener_to_accept_follow_request_link(notification);
+        // If the notification is a follow request,
+        // add listener to the "accept" link.
+        if (notification['notification_msg_id'] == 2) {
+            add_listener_to_accept_follow_request_link(notification);
+        }
     }
 
     //
-    if (crud_type === "read" &&
-        notifications.length > 0)
+    if (crud_type === "read")
     {
         // TODO:DEBUG
         console.log("*********** ++++++ *********");
@@ -54,14 +56,26 @@ function populate_x_notification_container(container, notifications, class_name,
         console.log("crud_type === read");
         console.log("notifications.length > 0");
 
-        //
-        show_x_container(container);
 
         // Start the updates.
         console.log("VAR-BEFORE:can_friendship_notifications_update: " + can_friendship_notifications_update);
         can_friendship_notifications_update = true;
         console.log("VAR-AFTER:can_friendship_notifications_update: " + can_friendship_notifications_update);
     }
+
+
+    //
+    show_x_container(container);
+
+
+    //
+    if (container.childNodes.length <= 0) { hide_x_container(container); }
+
+    console.log("*************************")
+    console.log("DEBUG:VAR:container.childNodes.length: " + container.childNodes.length);
+    console.log("DEBUG:VAR:container.id: " + container.id);
+    console.log("DEBUG:VAR:crud_type: " + crud_type);
+    console.log("*************************")
 
 }
 
