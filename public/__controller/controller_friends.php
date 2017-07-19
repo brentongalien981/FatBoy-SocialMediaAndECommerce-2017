@@ -256,9 +256,13 @@ function redirect_to_specific_product_viewing() {
 }
 
 function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
-    //
+    // The query here figures out if the friend that is clicked is a muse
+    // of the actual user.
+    $muse_user_id = $friend_id;
+    $acolyte_user_id = $actual_user_id;
+
     $query = "SELECT * FROM Friendship ";
-    $query .= "WHERE (user_id = {$actual_user_id} AND friend_id = {$friend_id}) LIMIT 1";
+    $query .= "WHERE (user_id = {$muse_user_id} AND friend_id = {$acolyte_user_id}) LIMIT 1";
 
 
     //
@@ -268,6 +272,7 @@ function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
     //
     $num_of_results = $database->get_num_rows_of_result_set($record_of_result_set);
 
+    // If there's a friendship record..
     if ($num_of_results > 0) {
         //
         global $session;
@@ -366,14 +371,23 @@ function view_friend_account() {
     $friend_name = $_GET["friend_name"];
 
     //
-    if ($actual_user_id === $friend_id) {
+    if ($actual_user_id == $friend_id) {
         // echo "YOU ARE JUST TRYING TO VIEW YOUR OWN ACCOUNT";
         MyDebugMessenger::add_debug_message("YOU ARE JUST TRYING TO VIEW YOUR OWN ACCOUNT");
         // So just redirect to homepage.
         //
         $session->reset_currently_viewed_user();
 
-        redirect_to(LOCAL . "/public/__view/profile");
+        // If it's actually a product that the user is trying
+        // to search and click...
+        if (isset($_GET['view_product'])) {
+            redirect_to_specific_product_viewing();
+        }
+        //uki
+
+        redirect_to(LOCAL . "/public/__view/profile/index.php");
+//        redirect_to(LOCAL . "/public/index.php");
+//        redirect_to("http://www.nba.com/");
     } else {
         // echo "Your'e actually trying to view a friend account huh.";
         // 

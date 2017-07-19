@@ -81,7 +81,7 @@ if (isset($_POST['selected_status_id']) &&
 //    $invoice_id = $_POST['invoice_id'];
     //
     if (does_status_for_invoice_item_exist($update_status_id, $invoice_item_id)) {
-        // Then no need to to anyting.
+        // Then no need to do anyting.
     } else {
 //        echo "OK: Status can be updated.";
         // Then create a new status record.
@@ -89,6 +89,7 @@ if (isset($_POST['selected_status_id']) &&
         $is_creation_ok = create_invoice_item_status_record($invoice_item_id, $update_status_id);
 
 
+        //uki
         if ($is_creation_ok) {
             // Create a record in table SalesNotification.
             // But first, figure out the values for the the attributes

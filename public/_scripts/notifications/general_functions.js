@@ -33,12 +33,16 @@ function populate_x_notification_container(container, notifications, class_name,
     for (var i = 0; i < notifications.length; i++) {
         var notification = notifications[i];
         console.log("PUTA: notification[notification_msg_id]: " + notification['notification_msg_id']);
-        var prepared_notification = get_prepared_notification(notification);
+        var prepared_notification = get_prepared_notification(class_name, notification);
 
         append_a_notification(container, prepared_notification);
 
-        //uki
+        // uki
         add_listener_to_delete_notification_link(notification, class_name);
+
+
+
+
 
         // If the notification is a follow request,
         // add listener to the "accept" link.
@@ -48,23 +52,12 @@ function populate_x_notification_container(container, notifications, class_name,
     }
 
     //
-    if (crud_type === "read")
-    {
-        // TODO:DEBUG
-        console.log("*********** ++++++ *********");
-        console.log("In METHOD: populate_container()");
-        console.log("crud_type === read");
-        console.log("notifications.length > 0");
-
-
-        // Start the updates.
-        console.log("VAR-BEFORE:can_friendship_notifications_update: " + can_friendship_notifications_update);
-        can_friendship_notifications_update = true;
-        console.log("VAR-AFTER:can_friendship_notifications_update: " + can_friendship_notifications_update);
+    if (crud_type === "read") {
+        prepare_update(class_name);
     }
 
 
-    //
+    //uki3
     show_x_container(container);
 
 
@@ -80,7 +73,22 @@ function populate_x_notification_container(container, notifications, class_name,
 }
 
 
-function get_prepared_notification(notification) {
+
+function prepare_update(class_name) {
+    switch (class_name) {
+        case "NotificationFriendship":
+            can_friendship_notifications_update = true;
+            break;
+        case "NotificationMyShopping":
+            can_my_shopping_notifications_update = true;
+            break;
+        case "zZz":
+            break;
+    }
+}
+
+
+function get_prepared_notification(class_name, notification) {
     var notification_msg_id = notification['notification_msg_id'];
     // var prepared_notification = "<p class='notifications'>";
     var prepared_notification = document.createElement("p");
@@ -92,13 +100,16 @@ function get_prepared_notification(notification) {
     console.log("DEBUG:VAR:notification_msg_id: " + notification_msg_id);
 
 
-    //
-    content += get_delete_notification_link(notification);
+    //uki2
+    content += get_delete_notification_link(class_name, notification);
 
 
 
     //
     switch (notification_msg_id) {
+        case "1": // Invoice item (bought product) status update.
+            content += get_notification_for_invoice_item_status_update(notification);
+            break;
         case "2": // Follow acceptance...
             content += get_notification_for_follow_request(notification);
             break;

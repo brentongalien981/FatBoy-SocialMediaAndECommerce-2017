@@ -73,14 +73,26 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
 
         // User pic.
         content += "<td>";
+        content += "<a href='";
+        content += get_local_url() + "/public/__controller/controller_friends.php?view_friend_account=yes";
+        content += "&friend_id=" + sf['user_id'];
+        content += "&friend_name=" + sf['user_name'];
+        content += "'>";
         content += "<img src='" + get_local_url() + sf['user_pic_src'] + "'>";
+        content += "</a>";
         content += "</td>";
 
         // User name.
         content += "<td>";
 
         content += "<h5>";
+        content += "<a href='";
+        content += get_local_url() + "/public/__controller/controller_friends.php?view_friend_account=yes";
+        content += "&friend_id=" + sf['user_id'];
+        content += "&friend_name=" + sf['user_name'];
+        content += "'>";
         content += sf['user_name'];
+        content += "</a>";
         content += "</h5>";
 
         // Follow button.

@@ -2,7 +2,7 @@
 
 
 <?php // require_once(PUBLIC_PATH . "/__view/notifications/friendship/create.php"); ?>
-<?php // require_once(PUBLIC_PATH . "/__view/notifications/friendship/read.php"); ?>
+<?php  require_once(PUBLIC_PATH . "/__view/notifications/friendship/read.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__view/notifications/friendship/update.php");   ?>
 <?php // require_once(PUBLIC_PATH . "/__view/notifications/friendship/delete.php");   ?>
 

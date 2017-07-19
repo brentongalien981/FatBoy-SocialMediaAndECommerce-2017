@@ -30,6 +30,7 @@
     .friend_relationship_container_template h5 {
         font-size: 12px;
         font-weight: 100;
+        margin-bottom: 5px;
     }
 
     .friend_relationship_title {
@@ -44,5 +45,14 @@
 
     .friend_relationship_container_template hr {
         margin-bottom: 35px;
+    }
+
+    .friend_relationship_container_template a {
+        color: black;
+
+    }
+
+    .friend_relationship_container_template a:hover {
+        text-decoration: underline;
     }
 </style>

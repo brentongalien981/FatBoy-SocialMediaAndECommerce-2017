@@ -35,6 +35,27 @@ class Notification {
     }
 
 
+    protected function create_parent_obj() {
+        $parent_notification = new Notification();
+        $parent_notification->id = $this->id;
+        $parent_notification->notified_user_id = $this->notified_user_id;
+        $parent_notification->notifier_user_id = $this->notifier_user_id;
+        $parent_notification->notification_msg_id = $this->notification_msg_id; // 2 is {NotifierUserName} wants to follow you.
+        $parent_notification->is_deleted = $this->is_deleted;
+
+
+        $is_creation_ok = $parent_notification->create_with_bool();
+
+        if ($is_creation_ok) {
+            $this->id = $parent_notification->id;
+            $this->notification_id = $this->id;
+        }
+
+
+        return $is_creation_ok;
+    }
+
+
     
     public static function read_all($notified_user_id) {
         $query = "SELECT * FROM " . self::$table_name;

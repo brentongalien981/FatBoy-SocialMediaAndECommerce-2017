@@ -40,13 +40,20 @@ function animate_node_removal(container, node, caller_class_name) {
 }
 
 
-function get_delete_notification_link(notification) {
+function get_delete_notification_link(class_name, notification) {
     var n = notification;
     var msg = "";
     msg += "<a";
     msg += " id='delete_notification_link" + n['notification_id'] + "'";
     msg += " href='#'";
-    msg += " class='delete_friend_notification_links'";
+
+    if (class_name == "NotificationFrienship") {
+        msg += " class='delete_friend_notification_links'";
+    }
+    else if (class_name == "NotificationMyShopping") {
+        msg += " class='delete_my_shopping_notification_links'";
+    }
+
     msg += ">";
 
     msg += "x";

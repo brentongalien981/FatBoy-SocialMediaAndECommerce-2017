@@ -60,6 +60,7 @@ function get_notification_for_follow_acceptance(notification) {
     msg += " class='friend_notification_links'";
     msg += ">";
 
+    msg += " ";
     msg += n['user_name'];
     msg += "</a>";
 

@@ -34,6 +34,9 @@ function get_subfolder(class_name) {
         case "NotificationFriendship":
             subfolder = "notifications";
             break;
+        case "NotificationMyShopping":
+            subfolder = "notifications";
+            break;
         case "zZz":
             break;
     }
@@ -75,6 +78,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "NotificationFriendship":
             do_notification_friendships_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "NotificationMyShopping":
+            do_notification_my_shoppings_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;
@@ -125,7 +131,7 @@ function my_ajax(x_obj) {
 
 
 
-    //uki
+    //u
     var url = get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + caller_class_name + "AjaxHandler.php";
     var xhr = new XMLHttpRequest();
 

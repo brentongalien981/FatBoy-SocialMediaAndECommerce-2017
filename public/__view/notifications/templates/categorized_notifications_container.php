@@ -9,6 +9,19 @@
         display: none;
     }
 
+    .notification_x_container_template {
+        display: none;
+    }
+
+    .notification_x_title {
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    .notification_x_container_template hr {
+        margin-bottom: 35px;
+    }
+
     a.friend_notification_links:hover {
         text-decoration: underline;
         cursor: pointer;

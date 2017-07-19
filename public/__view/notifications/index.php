@@ -76,6 +76,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 <?php // TODO:SECTION: Sub-menus ?>
 <?php include(PUBLIC_PATH . "/__view/notifications/friendship/index.php"); ?>
+<?php include(PUBLIC_PATH . "/__view/notifications/my_shopping/index.php"); ?>
 
 
 
