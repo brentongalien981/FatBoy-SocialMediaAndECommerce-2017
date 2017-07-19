@@ -25,7 +25,9 @@ function get_notification_for_invoice_item_status_update(notification) {
     msg += "</a>";
 
     msg += " updated the item ";
-    msg += "<a href='#'>";
+    msg += "<a href='#'";
+    msg += " invoice_item_id='" + n['invoice_item_id'] + "'";
+    msg += ">";
     msg += n['item_name'];
     msg += "</a>";
     msg += " you bought to status ";

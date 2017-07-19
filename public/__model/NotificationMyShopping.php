@@ -125,8 +125,24 @@ class NotificationMyShopping extends Notification
 
 
 
+    public static function update_to_deleted($notification_id) {
+        $query = "UPDATE " . parent::$table_name;
+        $query .= " SET is_deleted = 1";
+        $query .= " WHERE id = {$notification_id}";
 
-    public static function read_by_section($section, $limit = 5) {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        return ($database->get_num_of_affected_rows() > 0) ? true : false;
+    }
+
+
+
+
+    public static function read_by_section($section, $limit = 2) {
         $query = self::get_query_for_read_by_section($section, $limit);
 
 
@@ -145,6 +161,7 @@ class NotificationMyShopping extends Notification
                 "notifier_user_id" => $row['notifier_user_id'],
                 "notification_msg_id" => $row['notification_msg_id'],
                 "seller_name" => $row['seller_name'],
+                "invoice_item_id" => $row['invoice_item_id'],
                 "item_name" => $row['item_name'],
                 "status_name" => $row['status_name'],
                 "status_date" => $row['status_date']);
@@ -164,7 +181,7 @@ class NotificationMyShopping extends Notification
 
         global $session;
         $notified_user_id = $session->actual_user_id;
-        $item_per_section = 5;
+        $item_per_section = 2;
 
         $query = "SELECT n.*";
 //        $query .= " ,nms.invoice_item_id, nms.invoice_item_status_record_id";

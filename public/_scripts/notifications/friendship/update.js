@@ -32,12 +32,15 @@ function update_fetch_a_friendship_notification() {
     // * Every section should have 10 notifications.
 
     //
-    var actual_num_notifications = container.childNodes.length; // The number of noti. in that specific x container.
+    // NOTE: The -5 here is the bullshit of html.
+    //       Even though by default, my x_notification_containers
+    //       only has <h4> and <hr>, the code "el.childNodes.length" gives 5.
+    var actual_num_notifications = container.childNodes.length - 5; // The number of noti. in that specific x container.
     var supposed_num_notifications = section * num_notifications_per_section;
 
 
     //
-    if (container.childNodes.length <= 0) { section = 0; }
+    if (container.childNodes.length <= 5) { section = 0; }
 
     var crud_type = "update";
     var request_type = "GET";

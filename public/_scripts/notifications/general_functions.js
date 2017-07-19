@@ -28,13 +28,14 @@ function clone_categorized_notification_template(new_container_id) {
 
 
 function populate_x_notification_container(container, notifications, class_name, crud_type) {
-    console.log("PUTA: notifications.length: " + notifications.length);
+    // console.log("PUTA: notifications.length: " + notifications.length);
 
     for (var i = 0; i < notifications.length; i++) {
         var notification = notifications[i];
-        console.log("PUTA: notification[notification_msg_id]: " + notification['notification_msg_id']);
+        // console.log("PUTA: notification[notification_msg_id]: " + notification['notification_msg_id']);
         var prepared_notification = get_prepared_notification(class_name, notification);
 
+        //
         append_a_notification(container, prepared_notification);
 
         // uki
@@ -53,22 +54,26 @@ function populate_x_notification_container(container, notifications, class_name,
 
     //
     if (crud_type === "read") {
+        // Prepare the AJAX for update.
         prepare_update(class_name);
     }
 
 
-    //uki3
+    //
     show_x_container(container);
 
 
-    //
-    if (container.childNodes.length <= 0) { hide_x_container(container); }
+    // If the x_container doesn't have any notifications to display..
+    // NOTE: I don't know why it's 5 when it only has <h4> and <hr> as
+    //       default children.
+    // window.alert("container.childNodes.length: " + container.childNodes.length);
+    if (container.childNodes.length <= 5) { hide_x_container(container); }
 
-    console.log("*************************")
-    console.log("DEBUG:VAR:container.childNodes.length: " + container.childNodes.length);
-    console.log("DEBUG:VAR:container.id: " + container.id);
-    console.log("DEBUG:VAR:crud_type: " + crud_type);
-    console.log("*************************")
+    // console.log("*************************")
+    // console.log("DEBUG:VAR:container.childNodes.length: " + container.childNodes.length);
+    // console.log("DEBUG:VAR:container.id: " + container.id);
+    // console.log("DEBUG:VAR:crud_type: " + crud_type);
+    // console.log("*************************")
 
 }
 
@@ -108,12 +113,25 @@ function get_prepared_notification(class_name, notification) {
     //
     switch (notification_msg_id) {
         case "1": // Invoice item (bought product) status update.
+            prepared_notification.classList.add("my_shopping_notifications");
+
             content += get_notification_for_invoice_item_status_update(notification);
+
+            // Also, if it's a my_shopping notification, add an attribute invoice_item_id
+            // to the notification's <p> element, so that I can delete a notification
+            // that is currently displayed that has older status date and replace it
+            // with a new notification that has newer status date. And it should be
+            // a replacement for the notification that has the same invoice_item_id.
+            prepared_notification.setAttribute("invoice_item_id", notification['invoice_item_id']);
+
+            prepared_notification.setAttribute("status_name", notification['status_name']);
             break;
         case "2": // Follow acceptance...
+            prepared_notification.classList.add("friendship_notifications");
             content += get_notification_for_follow_request(notification);
             break;
         case "3": // Follow request...
+            prepared_notification.classList.add("friendship_notifications");
             content += get_notification_for_follow_acceptance(notification);
             break;
     }

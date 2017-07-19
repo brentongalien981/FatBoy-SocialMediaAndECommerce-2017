@@ -79,9 +79,27 @@ class NotificationMyShoppingController extends MainController
     }
 
 
+    public function update_fetch($data)
+    {
+        // For updates, limit the read by just 1.
+        $limit = 1;
+
+        // TODO:REMINDER: Make the $section a variable in the scripts of _script/notifications
+        // and the rest of the Notification sub-menus.
+        return NotificationMyShopping::read_by_section($data['section'], $limit);
+    }
+
 
     public function read($data)
     {
         return NotificationMyShopping::read_by_section($data['section']);
+    }
+
+
+    public function delete($data) {
+        // I'm not actually deleting the notification record here.
+        // I'm just setting the field/attrib "is_deleted" to 1.
+        // I'm doing this so we I have a record in case of seller/buyer arguments.
+        return NotificationMyShopping::update_to_deleted($data['notification_id']);
     }
 }
