@@ -9,11 +9,8 @@
     </div>
 
 
-
-
     <?php
     // For the timeline icon.
-    //
     if ($session->is_logged_in()) {
         global $session;
         $query = "SELECT * FROM Profile ";
@@ -35,7 +32,7 @@
             break;
         }
 
-        echo "<a id='menu_wall' class='menus' href='";
+        echo "<a id='menu_wall' class='menus' menu_name='wall' href='";
         if ($session->is_logged_in()) {
             echo LOCAL . "/public/index.php' class=''>";
         } else {
@@ -53,15 +50,6 @@
 
 
 
-    <!--<a href="<?php // echo LOCAL . '/public/index.php';                               ?>" class="">-->
-    <!--<img src="<?php // echo LOCAL . '{$timeline_pic_url}';                               ?>" class="icon">Timeline-->
-    <?php
-    //                                    if ($session->is_logged_in()) {
-    //                                        echo " of {$session->currently_viewed_user_name}";
-    //                                    }
-    ?>
-    <!--</a>-->
-
 
     <?php
     // Notifications.
@@ -69,23 +57,16 @@
         echo "<a id='menu_notifications' class='menus' href='" . LOCAL . "/public/__view/notifications'>";
         echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
         echo "Notifications";
-
-//                                    if ($session->num_of_notifications > 0) {
-//                                        echo "<span id='span_num_of_notifications' style='display: inline;'>{$session->num_of_notifications}</span>";
-//                                        echo "<span id='span_num_of_notifications' style='display: inline;'>5</span>";
-//                    echo "<span id='span_num_of_notifications'>5</span>";
-//                                    } else {
         echo "<span id='span_num_of_notifications' style='display: none;'></span>";
-//                                    }
-
         echo "</a>";
     }
     ?>
 
+
+    <!--    Profile-->
     <a id="menu_profile" class='menus' href="
                                 <?php
     if ($session->is_logged_in()) {
-//                                    echo LOCAL . '/public/__view/view_profile.php';
         echo LOCAL . '/public/__view/profile';
     } else {
         echo "#";
@@ -95,7 +76,7 @@
     </a>
 
 
-
+    <!--    Friends-->
     <a id="menu_friends" class='menus' href="
                                 <?php
     if ($session->is_logged_in()) {
@@ -108,7 +89,7 @@
     </a>
 
 
-
+    <!--    Videos-->
     <a id="menu_my_videos" class='menus' href="
                                 <?php
     if ($session->is_logged_in()) {
@@ -120,8 +101,8 @@
         <img src="<?php echo LOCAL . '/public/_photos/icon_video.png'; ?>" class="icon">MyVideos</a>
 
 
+    <!--    Chat-->
     <?php
-    // Chat
     if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         echo "<a id='menu_chat' class='menus' href='" . LOCAL . "/public/__view/view_chat'>";
         echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
@@ -130,11 +111,8 @@
     ?>
 
 
-
-
-
+    <!--    Ads-->
     <?php
-    // MyAds.
     // TODO: REMINDER: Remove this once you publish it.
     if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         echo "<a id='menu_my_ads' class='menus' href='" . LOCAL . "/public/__view/view_my_ads'>";
@@ -144,10 +122,8 @@
     ?>
 
 
-
-
-
-    <a id="menu_my_store" class='menus' href="
+    <!--    Store-->
+    <a id="menu_my_store" class='menus menus_with_sub_menus' menu_name='store' href="
                                 <?php
     if ($session->is_logged_in()) {
         echo LOCAL . '/public/__view/view_my_store';
@@ -157,8 +133,14 @@
     ?>">
         <img src="<?php echo LOCAL . '/public/_photos/icon_store.png'; ?>" class="icon">MyStore</a>
 
+
+    <?php require_once(PUBLIC_PATH . "/_layouts/sub_menus/store.php"); ?>
+
+
+
+
+    <!--    Cart-->
     <?php
-    // MyCart
     if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         echo "<a id='menu_my_cart' class='menus' href='" . LOCAL . "/public/__view/view_store_cart'>";
         echo "<img src='" . LOCAL . "/public/_photos/icon_cart.png' class='icon'>";
@@ -167,9 +149,8 @@
     ?>
 
 
-
+    <!--    Sales-->
     <?php
-    // MySales
     if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         echo "<a id='menu_my_sales' class='menus' href='" . LOCAL . "/public/__view/view_my_sales'>";
         echo "<img src='" . LOCAL . "/public/_photos/icon_sales.png' class='icon'>";
@@ -178,8 +159,8 @@
     ?>
 
 
+    <!--    Refund-->
     <?php
-    // MyRefund
     if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         echo "<a id='menu_my_refund' class='menus' href='" . LOCAL . "/public/__view/view_refund'>";
         echo "<img src='" . LOCAL . "/public/_photos/icon_refund.png' class='icon'>";
@@ -190,4 +171,34 @@
 
 
 
+<!--    Admin Tools-->
+    <?php if ($session->is_logged_in() && $session->is_viewing_own_account() && $session->is_admin()) { ?>
+        <a id="menu_admin_tools" class="menus menus_with_sub_menus" menu_name="admin_tools" href="http://www.nba.com">Admin Tools</a>
+        <?php require_once(PUBLIC_PATH . "/_layouts/sub_menus/admin_tools.php"); ?>
+    <?php } ?>
+
 </nav>
+
+
+
+
+
+<!--Script-->
+<?php if ($session->is_logged_in() && $session->is_viewing_own_account() && $session->is_admin()) { ?>
+    <script src="<?php echo LOCAL . "/public/_scripts/layouts/sub_menus/displayer.js"; ?>"></script>
+<?php } ?>
+
+
+
+
+
+<!--Styles-->
+<style>
+    div.sub_menus {
+        display: none;
+        /*margin: 0;*/
+        /*padding: 0;*/
+        /*background-color: pink;*/
+        margin-left: 25px;
+    }
+</style>

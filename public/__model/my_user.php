@@ -69,6 +69,7 @@ class User {
 //        return !empty($result_user_record) ? array_shift($result_user_record) : false;
 //    }
 
+    //
     public static function authenticate_with_user_object_return($user_name = "") {
         global $database;
 

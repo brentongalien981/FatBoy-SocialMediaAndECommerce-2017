@@ -205,6 +205,8 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
         <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
         </script>
 
+        <script src="<?php echo LOCAL . "/public/_scripts/main_script_part2.js"; ?>"></script>
+
         <script>
 
             window.onfocus = function () {
@@ -242,66 +244,9 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
             }
         </script>
 
-        <script>
-            // Vars.
-            var timeout_handler;
-            //            clearTimeout(myVar);
+        <script src="<?php echo LOCAL . "/public/_scripts/user_home_menus_displayer.js"; ?>"></script>
 
 
-            function close_pop_up_in_sec() {
-                document.getElementById("pop_up_for_link_home").style.display = "none";
-                //                window.alert("onmouseout");
-            }
-
-            document.getElementById("link_home").onmouseover = function () {
-                //                window.alert("howver");
-                clearTimeout(timeout_handler);
-                document.getElementById("pop_up_for_link_home").style.display = "block";
-
-            };
-
-            document.getElementById("link_home").onmouseout = function () {
-                timeout_handler = setTimeout(close_pop_up_in_sec, 500);
-
-            };
-
-            document.getElementById("pop_up_for_link_home").onmouseover = function () {
-                //                window.alert("howver");
-                clearTimeout(timeout_handler);
-                document.getElementById("pop_up_for_link_home").style.display = "block";
-
-            };
-
-
-            document.getElementById("pop_up_for_link_home").onmouseout = function () {
-                //                window.alert("howver");
-                //                document.getElementById("pop_up_for_link_home").style.display = "block";
-                timeout_handler = setTimeout(close_pop_up_in_sec, 500);
-
-
-            };
-
-            for (var i = 0; i < 2; i++) {
-                if (document.getElementsByClassName("pop_up_links")[i] != null) {
-                    document.getElementsByClassName("pop_up_links")[i].onmouseover = function () {
-                        clearTimeout(timeout_handler);
-                        document.getElementById("pop_up_for_link_home").style.display = "block";
-                    };
-
-                }
-
-
-            }
-
-
-
-            document.getElementById("pop_up_for_link_home").onmouseover = function () {
-                //                window.alert("howver");
-                clearTimeout(timeout_handler);
-                document.getElementById("pop_up_for_link_home").style.display = "block";
-                //                this.style.display = "block";
-            };
-        </script>
 
 
         <?php // TODO:SECTION: AJAX script for search. ?>

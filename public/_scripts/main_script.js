@@ -14,6 +14,12 @@ function show_flash_notification(x_obj, json) {
 
 
 
+
+
+
+
+
+
 function get_subfolder(class_name) {
     //
     var subfolder = "";
