@@ -1,0 +1,110 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ops
+ * Date: 2017-07-20
+ * Time: 16:52
+ */
+
+namespace App\Publico\Model;
+
+
+
+class User
+{
+    protected static $table_name = "Users";
+    protected static $db_fields = array("user_id", "user_name", "email", "hashed_password", "user_type_id", "signup_token");
+    public static $searchable_fields = array("user_name", "email");
+    public $user_id;
+    public $user_name;
+    public $email;
+    public $hashed_password;
+    public $user_type_id;
+    public $signup_token;
+
+
+
+
+
+    public static function read_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+        //
+        return $result_set;
+    }
+
+
+
+
+
+    public static function read_by_section($section, $limit = 5) {
+        $query = self::get_query_for_read_by_section($section, $limit);
+
+
+        //
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_users = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_user = array(
+                "user_id" => $row['user_id'],
+                "user_name" => $row['user_name'],
+                "email" => $row['email'],
+                "user_type_id" => $row['user_type_id']);
+
+
+            //
+            array_push($array_of_users, $a_user);
+        }
+
+        return $array_of_users;
+    }
+
+
+
+
+
+    public static function get_query_for_read_by_section($section, $limit) {
+        // TODO:REMINDER: Only select the necessary columns.
+
+        global $session;
+        $notified_user_id = $session->actual_user_id;
+        $item_per_section = 5;
+
+        $query = "SELECT u.*";
+        $query .= " ,p.*";
+        $query .= " FROM Users u";
+        $query .= " INNER JOIN Profile p ON u.user_id = p.user_id";
+
+
+//        $query .= " ORDER BY iisr.status_start_date ASC";
+
+        // For update_fetch: fetch only 1 notification.
+        if ($limit == 1) {
+            if ($section == 0) {
+                $query .= " LIMIT {$limit} OFFSET 0";
+            }
+            else {
+                $num_items_to_skip = ($section * $item_per_section) - 1;
+                $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
+            }
+
+        }
+        // For actual read: read 5 notifications.
+        else {
+            $num_items_to_skip = ($section - 1) * $item_per_section;
+            $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
+        }
+
+        \MyDebugMessenger::add_debug_message("QUERY: {$query}");
+
+        return $query;
+    }
+
+}

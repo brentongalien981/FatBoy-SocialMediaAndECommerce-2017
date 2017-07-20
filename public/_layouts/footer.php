@@ -27,6 +27,12 @@
 </script>
 
 
+
+
+
+<script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/final_page_layout.js"; ?>"></script>
+
+
 </body>
 
 <!--<link href="../_styles/header.css" media="all" rel="stylesheet" type="text/css" />-->

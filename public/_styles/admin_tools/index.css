@@ -1,0 +1,27 @@
+#middle_content {
+    /*background-color: rgba(230, 230, 230, 0.8);*/
+    /*padding-bottom: 30px;*/
+    min-width: 1110px;
+    width: 1110px;
+
+}
+
+
+/*#left {*/
+    /*max-width: 250px;*/
+/*}*/
+
+
+#right {
+    display: none;
+}
+
+
+/*#container_for_nav_side {*/
+    /*max-width: 240px;*/
+/*}*/
+
+
+/*#navSide {*/
+    /*width: 240px;*/
+/*}*/

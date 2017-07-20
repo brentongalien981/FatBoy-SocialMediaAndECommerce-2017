@@ -142,6 +142,12 @@ class NotificationMyShopping extends Notification
 
 
 
+
+
+
+
+
+
     public static function read_by_section($section, $limit = 2) {
         $query = self::get_query_for_read_by_section($section, $limit);
 

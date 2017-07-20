@@ -234,6 +234,7 @@ main {
     margin-left: 10px;
     background-color: white;
     border-radius: 5px;
+    max-width: 240px;
 }
 
 #navSide {
@@ -247,7 +248,10 @@ main {
                     float: left;*/
     margin: 0;
     padding: 0;
-    width: 100%;
+    /*width: 100%;*/
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
     /*height: 350px;*/
     /*background-color: rgb(244, 244, 244);*/
     background-color: rgba(221, 244, 159, 0.80);
@@ -353,6 +357,7 @@ td.main {
     /*background-color: red;*/
     width: 250px;
     min-width: 250px;
+    max-width: 250px;
     padding-right: 20px;
 }
 

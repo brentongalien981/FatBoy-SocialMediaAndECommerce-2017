@@ -43,6 +43,9 @@ function get_subfolder(class_name) {
         case "NotificationMyShopping":
             subfolder = "notifications";
             break;
+        case "User":
+            subfolder = "admin_tools/user_management";
+            break;
         case "zZz":
             break;
     }
@@ -87,6 +90,10 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "NotificationMyShopping":
             do_notification_my_shoppings_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "User":
+            do_users_after_effects(class_name, crud_type, json, x_obj);
+            // window.alert("TODO:METHOD:do_notification_users_after_effects()");
             break;
         case "zZz":
             break;
@@ -137,7 +144,7 @@ function my_ajax(x_obj) {
 
 
 
-    //u
+    //
     var url = get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + caller_class_name + "AjaxHandler.php";
     var xhr = new XMLHttpRequest();
 

@@ -173,7 +173,7 @@
 
 <!--    Admin Tools-->
     <?php if ($session->is_logged_in() && $session->is_viewing_own_account() && $session->is_admin()) { ?>
-        <a id="menu_admin_tools" class="menus menus_with_sub_menus" menu_name="admin_tools" href="http://www.nba.com">Admin Tools</a>
+        <a id="menu_admin_tools" class="menus menus_with_sub_menus" menu_name="admin_tools" href="<?php echo LOCAL . "/public/__view/admin_tools/index.php"; ?>">Admin Tools</a>
         <?php require_once(PUBLIC_PATH . "/_layouts/sub_menus/admin_tools.php"); ?>
     <?php } ?>
 
