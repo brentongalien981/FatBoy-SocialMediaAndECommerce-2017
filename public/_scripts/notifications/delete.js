@@ -47,14 +47,16 @@ function get_delete_notification_link(class_name, notification) {
     msg += " id='delete_notification_link" + n['notification_id'] + "'";
     msg += " href='#'";
 
+    msg += " class=' delete_notification_links";
+
     if (class_name == "NotificationFrienship") {
-        msg += " class='delete_friend_notification_links'";
+        msg += " delete_friend_notification_links";
     }
     else if (class_name == "NotificationMyShopping") {
-        msg += " class='delete_my_shopping_notification_links'";
+        msg += " delete_my_shopping_notification_links";
     }
 
-    msg += ">";
+    msg += "'>";
 
     msg += "x";
     msg += "</a>";

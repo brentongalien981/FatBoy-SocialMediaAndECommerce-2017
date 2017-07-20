@@ -161,6 +161,7 @@ class NotificationMyShopping extends Notification
                 "notifier_user_id" => $row['notifier_user_id'],
                 "notification_msg_id" => $row['notification_msg_id'],
                 "seller_name" => $row['seller_name'],
+                "invoice_id" => $row['invoice_id'],
                 "invoice_item_id" => $row['invoice_item_id'],
                 "item_name" => $row['item_name'],
                 "status_name" => $row['status_name'],

@@ -20,16 +20,20 @@ function get_notification_for_invoice_item_status_update(notification) {
     var msg = "";
 
     // Bren's Store updated the item PS4 you bought to status "being shipped" on July 17, 2009. view
-    msg += " <a class=''>";
+    msg += " <a";
+    // msg += " target='_blank'";
+    msg += " href='" + get_local_url() + "/public/__controller/controller_friends.php?view_friend_account=yes";
+    msg += " &friend_id=" + n['notifier_user_id'];
+    msg += " &friend_name=" + n['seller_name'];
+    msg += " &view_store=yes";
+    msg += ""
+    msg += "'";
+    msg += " class=''>";
     msg += n['seller_name'] + "'s Store";
     msg += "</a>";
 
     msg += " updated the item ";
-    msg += "<a href='#'";
-    msg += " invoice_item_id='" + n['invoice_item_id'] + "'";
-    msg += ">";
     msg += n['item_name'];
-    msg += "</a>";
     msg += " you bought to status ";
     msg += "'";
     msg += n['status_name'];
@@ -39,6 +43,11 @@ function get_notification_for_invoice_item_status_update(notification) {
     msg += ")";
 
     msg += " <a";
+    // msg += " target='_blank'";
+    msg += " href='" + get_local_url() + "/public/__view/view_store_cart/index.php?store_content_page=2&view_updated_item_status=yes";
+    msg += "&invoice_item_id=" + n['invoice_item_id'];
+    msg += "&invoice_id=" + n['invoice_id'];
+    msg += "'";
     msg += ">view</a>";
 
     //

@@ -1,3 +1,11 @@
+<?php
+// TODO: SECTION: Protected page.
+if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
+    return;
+}
+?>
+
+
 <script>
 // Global variables
     var interval_handle;

@@ -105,7 +105,7 @@ function get_prepared_notification(class_name, notification) {
     console.log("DEBUG:VAR:notification_msg_id: " + notification_msg_id);
 
 
-    //uki2
+    //
     content += get_delete_notification_link(class_name, notification);
 
 

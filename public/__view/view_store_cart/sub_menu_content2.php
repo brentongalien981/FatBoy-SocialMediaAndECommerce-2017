@@ -312,7 +312,7 @@ show_shopping_history();
 <?php
 // TODO: SECTION: This section is coming from the page "Notifications" where
 // the user clicked the view link.
-if (!isset($_GET["shopping_history_item_status_update"])) {
+if (!isset($_GET["view_updated_item_status"])) {
     return;
 }
 ?>
@@ -322,7 +322,7 @@ if (!isset($_GET["shopping_history_item_status_update"])) {
 // TODO: SECTION: Script for color highlighting the invoice row that the notification points to.
 ?>
 <script>
-    window.alert("an update! Plus the invoice id: <?php echo $_GET['invoice_item_id']; ?>");
+//    window.alert("an update! Plus the invoice id: <?php //echo $_GET['invoice_item_id']; ?>//");
 
     // Highlight the row with the invoice id.
     document.getElementById("tr_<?php echo $_GET['invoice_id']; ?>").style.backgroundColor = "rgba(145, 239, 45, 0.50)";

@@ -1,0 +1,218 @@
+.section {
+    background-color: rgb(245, 245, 245);
+    margin: 30px;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(150, 150, 150);
+
+}
+
+
+td.main {
+    /*background-color: white;*/
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    /*padding-top: 20px;*/
+    margin-right: 10px;
+    /*background-color: yellow;*/
+    margin-bottom: -5px;
+    border-radius: 3px;
+}
+
+#divStatus a {
+    /*background-color: red;*/
+    margin-left: 20px;
+
+    /*padding: 5px;*/
+}
+
+img.header_icon {
+    width: 30px;
+    height: 30px;
+    background-color: rgb(90, 90, 90);
+    margin-top: 17px;
+    padding: 2px;
+    padding-top: 1px;
+    border-radius: 5px;
+
+    /*padding-top: 20px;*/
+    /*margin-right: 10px;*/
+    /*background-color: yellow;*/
+    /*margin-bottom: -5px;*/
+}
+
+img.header_icon:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+
+
+
+
+#divBanner table {
+    border-collapse: collapse;
+    /*width: 100%;*/
+    min-width: 1390px;
+    height: 100%;
+}
+
+td.header {
+    /*            width: 200px;*/
+    /*height: 50px;*/
+    /*background-color: red;*/
+}
+
+#status {
+    /*background-color: blue;*/
+    width: 20%;
+}
+
+#search {
+    /*background-color: yellow;*/
+    width: 60%;
+}
+
+#search div {
+    width: 500px;
+    height: 100%;
+    /*background-color: pink;*/
+    margin: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    /*vertical-align: middle;*/
+}
+
+#search_input {
+    font-size: 12px;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+    margin-top: 18px;
+    width: 430px;
+    height: 36px;
+    /*background-color: gray;*/
+    vertical-align: top;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding-left: 10px;
+    margin-right: -5px;
+}
+
+#search_a {
+    /*background-color: green;*/
+    margin-bottom: 0;
+    padding-bottom: 0;
+
+}
+
+#search_img {
+    /*background-color: orange;*/
+    background-color: rgb(150, 150, 150);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin-left: 0;
+    margin-top: 18px;
+    height: 30px;
+    padding: 3px;
+    /*padding-top: 1px;*/
+}
+
+#search_img:hover {
+    background-color: rgb(200, 200, 200);
+}
+
+
+
+#site_logo {
+    /*background-color: green;*/
+    width: 20%;
+    color: white;
+    /*                padding-left: 2%;*/
+}
+
+#site_logo h4 {
+    margin-top: 10px;
+    text-align: right;
+    /*background-color: pink;*/
+    /*margin-left: 30px;*/
+    margin-right: 20px;
+    /*color: red;*/
+    font-size: 14px;
+    font-weight: 100;
+    color: rgb(240, 240, 240);
+}
+
+
+
+
+
+main {
+    border-radius: 5px;
+    /*background-color: rgb(220, 220, 220);*/
+    color: black;
+}
+
+
+#ad_container {
+    background-color: rgba(50, 50, 50, 0.6);
+    width: 370px;
+    border-radius: 5px;
+    margin-right: 10px;
+    /*padding-top: 10px;*/
+    /*padding-bottom: 10px;*/
+    /*height: 250px;*/
+    visibility: visible;
+}
+
+footer nav a {
+    color: rgb(240, 240, 240);
+}
+
+footer nav a:visited {
+    color: rgb(240, 240, 240);
+}
+
+footer h6 {
+    color: rgb(240, 240, 240);
+    /*color: red;*/
+}
+
+div#the_spinner_div {
+    width: 100%;
+    height: 150%;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(26, 26, 26);
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+#the_spinner_mg {
+    display: block;
+    width: 200px;
+    height: 150px;
+    background-color: rgb(26, 26, 26);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 200px;;
+}
+
+label.error_msg {
+    font-size: 12px;
+    font-weight: 100;
+    color: red;
+}
+
+div#main_content {
+    margin: 0;
+    padding: 0;
+    min-height: 50px;
+    max-height: 900px;
+    overflow-y: auto;
+    /*background-color: pink;*/
+}

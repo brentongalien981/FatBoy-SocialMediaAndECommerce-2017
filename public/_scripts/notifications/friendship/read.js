@@ -31,7 +31,13 @@ function get_notification_for_follow_request(notification) {
     // msg += "</a>";
 
     // Accept link.
-    msg += " <a class='friend_notification_links'>";
+    msg += " <a";
+    msg += " target='_blank'";
+    msg += " href='" + get_local_url() + "/public/__controller/controller_friends.php?view_friend_account=yes";
+    msg += " &friend_id=" + n['notifier_user_id'];
+    msg += " &friend_name=" + n['user_name'];
+    msg += "'";
+    msg += " class='friend_notification_links'>";
     msg += n['user_name'];
     msg += "</a> wants to follow you ";
 
@@ -53,25 +59,17 @@ function get_notification_for_follow_acceptance(notification) {
 
 
     // A follow acceptance
-
-
-
-    msg += "<a";
-    msg += " class='friend_notification_links'";
-    msg += ">";
-
-    msg += " ";
+    msg += " <a";
+    msg += " target='_blank'";
+    msg += " href='" + get_local_url() + "/public/__controller/controller_friends.php?view_friend_account=yes";
+    msg += " &friend_id=" + n['notifier_user_id'];
+    msg += " &friend_name=" + n['user_name'];
+    msg += "'";
+    msg += " class='friend_notification_links'>";
     msg += n['user_name'];
     msg += "</a>";
 
     msg += " accepted your follow request ";
-
-    msg += "<a";
-    msg += " class='friend_notification_links'";
-    msg += ">";
-
-    msg += "ok";
-    msg += "</a>";
 
     //
     return msg;

@@ -255,6 +255,20 @@ function redirect_to_specific_product_viewing() {
 //    }
 }
 
+
+
+function redirect_to_seller_store() {
+    $url = "/public/__view/view_my_store/index.php";
+    redirect_to(LOCAL . $url);
+//    else {
+//        // If it's just a regular search of trying to view another user's account.
+//        redirect_to(LOCAL . "/public/__view/profile");
+//    }
+}
+
+
+
+
 function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
     // The query here figures out if the friend that is clicked is a muse
     // of the actual user.
@@ -284,7 +298,11 @@ function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
         // to search and click...
         if (isset($_GET['view_product'])) {
             redirect_to_specific_product_viewing();
-        } else {
+        }
+        else if (isset($_GET['view_store'])) {
+            redirect_to_seller_store();
+        }
+        else {
             redirect_to(LOCAL . "/public/__view/profile");
         }
     } else {
@@ -306,7 +324,11 @@ function authenticate_friendship($actual_user_id, $friend_id, $friend_name) {
                 // to search and click...
                 if (isset($_GET['view_product'])) {
                     redirect_to_specific_product_viewing();
-                } else {
+                }
+                else if (isset($_GET['view_store'])) {
+                    redirect_to_seller_store();
+                }
+                else {
                     redirect_to(LOCAL . "/public/__view/profile");
                 }
             } else {
@@ -388,7 +410,8 @@ function view_friend_account() {
         redirect_to(LOCAL . "/public/__view/profile/index.php");
 //        redirect_to(LOCAL . "/public/index.php");
 //        redirect_to("http://www.nba.com/");
-    } else {
+    }
+    else {
         // echo "Your'e actually trying to view a friend account huh.";
         // 
         authenticate_friendship($actual_user_id, $friend_id, $friend_name);

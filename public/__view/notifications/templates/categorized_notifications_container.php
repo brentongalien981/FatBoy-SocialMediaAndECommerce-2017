@@ -22,7 +22,11 @@
         margin-bottom: 35px;
     }
 
-    a.friend_notification_links:hover {
+    .notification_x_container_template a {
+        color: dodgerblue;
+    }
+
+    .notification_x_container_template a:hover {
         text-decoration: underline;
         cursor: pointer;
     }
@@ -33,7 +37,7 @@
         /*background-color: blue;*/
     }
 
-    a.delete_friend_notification_links {
+    a.delete_notification_links {
         /*margin-left: 10px;*/
         padding: 1px;
         /*padding-left: 5px;*/
@@ -46,7 +50,7 @@
         font-size: 14px;
     }
 
-    a.delete_friend_notification_links:hover {
+    a.delete_notification_links:hover {
         /*background-color: red;*/
         /*color: white;*/
         text-decoration: underline;
