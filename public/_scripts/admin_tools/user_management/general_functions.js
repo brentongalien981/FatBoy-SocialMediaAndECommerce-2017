@@ -44,6 +44,12 @@ function get_user_tds(user) {
     var u = user;
     var content = "";
 
+
+    //
+    content += "<td class='user_info'>";
+    content += user_counter;
+    content += "</td>";
+
     //
     content += "<td class='user_info'>";
     content += u['user_id'];
@@ -82,7 +88,6 @@ function append_a_row(container, prepared_user_row) {
 
 
 function populate_users_container(container, users, class_name, crud_type) {
-    
     for (var i = 0; i < users.length; i++) {
         var u = users[i];
         
@@ -91,36 +96,16 @@ function populate_users_container(container, users, class_name, crud_type) {
         //
         append_a_row(container, prepared_user_row);
 
+        //
+        ++user_counter;
+
         // //
         // add_listener_to_delete_notification_link(u, class_name);
     }
 
-
     // FLAG
     // Set up for the next "load more".
     is_ajax_reading = false;
-
-
-    if (users.length > 0 && users.length <= users_per_section) {
-        ++last_value_of_section;
-    }
-
-
-    if (users.length == users_per_section) {
-        ++users_container_section;
-    }
-
-    console.log("**************************************");
-    console.log("**************************************");
-    console.log("VAR:last_value_of_section: " + last_value_of_section);
-
-    console.log("**************************************");
-    console.log("**************************************");
-    console.log("VAR:users_container_section: " + users_container_section);
-
-    // if (users_container_section != 1) {
-    //
-    // }
 }
 
 
@@ -132,6 +117,14 @@ function prepare_users_container(class_name) {
     var id = class_name + "sTable";
     var container = document.getElementById(id);
     main_content.appendChild(container);
+}
+
+
+
+
+
+function get_num_of_users_shown() {
+    return UsersContainer.childNodes.length - 3;
 }
 
 

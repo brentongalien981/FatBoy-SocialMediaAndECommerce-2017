@@ -39,11 +39,11 @@ class User
 
 
 
-    public static function read_by_section($section, $limit = 5) {
-        $query = self::get_query_for_read_by_section($section, $limit);
+    public static function read_with_offset($offset) {
+        $query = self::get_query_for_read_with_offset($offset);
 
 
-        //
+        //uki
         $result_set = self::read_by_query($query);
 
         //
@@ -70,12 +70,12 @@ class User
 
 
 
-    public static function get_query_for_read_by_section($section, $limit) {
+    public static function get_query_for_read_with_offset($offset) {
         // TODO:REMINDER: Only select the necessary columns.
 
         global $session;
         $notified_user_id = $session->actual_user_id;
-        $item_per_section = 5;
+        $limit = 5;
 
         $query = "SELECT u.*";
 //        $query .= " ,p.*";
@@ -83,24 +83,9 @@ class User
 //        $query .= " INNER JOIN Profile p ON u.user_id = p.user_id";
 
 
-//        $query .= " ORDER BY iisr.status_start_date ASC";
+        $query .= " ORDER BY user_id ASC";
 
-        // For update_fetch: fetch only 1 notification.
-        if ($limit == 1) {
-            if ($section == 0) {
-                $query .= " LIMIT {$limit} OFFSET 0";
-            }
-            else {
-                $num_items_to_skip = ($section * $item_per_section) - 1;
-                $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
-            }
-
-        }
-        // For actual read: read 5 notifications.
-        else {
-            $num_items_to_skip = ($section - 1) * $item_per_section;
-            $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
-        }
+        $query .= " LIMIT {$limit} OFFSET {$offset}";
 
         \MyDebugMessenger::add_debug_message("QUERY: {$query}");
 

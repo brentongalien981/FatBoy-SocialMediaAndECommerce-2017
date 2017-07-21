@@ -5,6 +5,7 @@
         <table id="UsersTable" class="">
             <tbody id="UsersContainer">
             <tr>
+                <th>#</th>
                 <th>UserId</th>
                 <th>UserName</th>
                 <th>Email</th>

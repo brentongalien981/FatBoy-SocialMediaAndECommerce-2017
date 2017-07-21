@@ -14,7 +14,8 @@ use App\Publico\Controller\AdminTools\UserManagement\UserController;
 if (isset($_GET['read']) && $_GET['read'] == "yes") {
 //    echo json_encode(array("is_result_ok" => false));
 //    return;
-    sleep(2);
+    // TODO:REMINDER: Remove this later.
+    sleep(1);
 
 
 
@@ -23,8 +24,8 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 
 
     // Validate
-    $allowed_assoc_indexes = array("section");
-    $required_vars_length_array = array("section" => ["min" => 1, "max" => 3]);
+    $allowed_assoc_indexes = array("offset");
+    $required_vars_length_array = array("offset" => ["min" => 1, "max" => 11]);
     // Do this for GET requests.
     $user_controller->validator->set_request_type("get");
     $user_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
@@ -34,7 +35,7 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 
 
     // FLAG
-    $json_errors_array['has_loaded_for_section'] = $_GET['section'];
+    $json_errors_array['num_of_offset'] = $_GET['offset'];
 
 
     if ($is_validation_ok) {

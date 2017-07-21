@@ -8,7 +8,7 @@ function read_user_objs() {
     var key_value_pairs = {
         // TODO:REMINDER: Change this to a variable.
         read: "yes",
-        section: users_container_section,
+        offset: get_num_of_users_shown(),
         tae: "shit"
     };
 

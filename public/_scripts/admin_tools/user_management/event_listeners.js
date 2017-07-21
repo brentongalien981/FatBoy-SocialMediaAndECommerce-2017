@@ -1,7 +1,6 @@
 
 users_table_container.addEventListener("scroll", function () {
-    if ((!is_ajax_reading) &&
-        (users_container_section > last_value_of_section)) {
+    if (!is_ajax_reading) {
 
         prepare_load_more_agent();
     }
