@@ -1,6 +1,8 @@
 
 users_table_container.addEventListener("scroll", function () {
-    if (!is_ajax_reading) {
+    if ((!is_ajax_reading) &&
+        (users_container_section > last_value_of_section)) {
+
         prepare_load_more_agent();
     }
 
@@ -29,8 +31,9 @@ function prepare_load_more_agent() {
 
     //
     if (reference_for_loading_more_rel_pos <= 90) {
-        users_container_section += 1;
+        // users_container_section += 1;
         is_ajax_reading = true;
+
         load_more_users();
     }
 }

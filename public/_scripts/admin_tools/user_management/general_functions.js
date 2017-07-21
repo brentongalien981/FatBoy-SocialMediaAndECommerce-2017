@@ -97,7 +97,30 @@ function populate_users_container(container, users, class_name, crud_type) {
 
 
     // FLAG
+    // Set up for the next "load more".
     is_ajax_reading = false;
+
+
+    if (users.length > 0 && users.length <= users_per_section) {
+        ++last_value_of_section;
+    }
+
+
+    if (users.length == users_per_section) {
+        ++users_container_section;
+    }
+
+    console.log("**************************************");
+    console.log("**************************************");
+    console.log("VAR:last_value_of_section: " + last_value_of_section);
+
+    console.log("**************************************");
+    console.log("**************************************");
+    console.log("VAR:users_container_section: " + users_container_section);
+
+    // if (users_container_section != 1) {
+    //
+    // }
 }
 
 

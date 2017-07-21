@@ -1,5 +1,8 @@
 function read_user_objs() {
 // Set up the necessary infos for this x_notification
+
+    // var section = users_container_section + 1;
+
     var crud_type = "read";
     var request_type = "GET";
     var key_value_pairs = {

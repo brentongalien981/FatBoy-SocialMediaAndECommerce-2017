@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/instance_vars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/admin_tools/user_management/UserAjaxHandler.php" afterPath="$PROJECT_DIR$/public/__controller/admin_tools/user_management/UserAjaxHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/User.php" afterPath="$PROJECT_DIR$/public/__model/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/admin_tools/user_management/index.php" afterPath="$PROJECT_DIR$/public/__view/admin_tools/user_management/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/admin_tools/user_management/read.php" afterPath="$PROJECT_DIR$/public/__view/admin_tools/user_management/read.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/general_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/instance_vars.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +48,8 @@
                   <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="60">
-                          <caret line="4" column="51" lean-forward="false" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+                        <state relative-caret-position="298">
+                          <caret line="114" column="71" lean-forward="false" selection-start-line="114" selection-start-column="71" selection-end-line="114" selection-end-column="71" />
                           <folding>
                             <element signature="n#!!block;n#get_prepared_user_row#0" expanded="false" />
                             <element signature="n#!!block;n#get_user_tds#0" expanded="false" />
@@ -66,8 +61,8 @@
                   <file leaf-file-name="event_listeners.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="450">
-                          <caret line="30" column="51" lean-forward="false" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+                        <state relative-caret-position="39">
+                          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                           <folding />
                         </state>
                       </provider>
@@ -76,8 +71,8 @@
                   <file leaf-file-name="instance_vars.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/instance_vars.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="60">
-                          <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+                        <state relative-caret-position="45">
+                          <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="27" />
                           <folding />
                         </state>
                       </provider>
@@ -86,8 +81,8 @@
                   <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="195">
-                          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+                        <state relative-caret-position="124">
+                          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
                           <folding />
                         </state>
                       </provider>
@@ -227,8 +222,8 @@
                   <file leaf-file-name="read.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__view/admin_tools/user_management/read.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="468">
-                          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
+                        <state relative-caret-position="48">
+                          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
                           <folding />
                         </state>
                       </provider>
@@ -448,11 +443,11 @@
         <option value="$PROJECT_DIR$/public/_scripts/notifications/my_shopping/general_functions.js" />
         <option value="$PROJECT_DIR$/public/__view/admin_tools/user_management/read.php" />
         <option value="$PROJECT_DIR$/public/__view/admin_tools/user_management/index.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js" />
         <option value="$PROJECT_DIR$/public/__model/User.php" />
         <option value="$PROJECT_DIR$/public/__controller/admin_tools/user_management/UserAjaxHandler.php" />
         <option value="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js" />
         <option value="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/general_functions.js" />
       </list>
     </option>
@@ -701,12 +696,12 @@
       <workItem from="1499704949661" duration="50079000" />
       <workItem from="1499864981866" duration="37151000" />
       <workItem from="1500155584592" duration="105241000" />
-      <workItem from="1500574596181" duration="20790000" />
+      <workItem from="1500574596181" duration="22697000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="245987000" />
+    <option name="totallyTimeSpent" value="247894000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1147,34 +1142,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/User.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/admin_tools/user_management/read.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1189,26 +1160,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js">
+    <entry file="file://$PROJECT_DIR$/public/__view/admin_tools/user_management/read.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="51" lean-forward="false" selection-start-line="30" selection-start-column="51" selection-end-line="30" selection-end-column="51" />
+        <state relative-caret-position="48">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/instance_vars.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="28" lean-forward="false" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
+        <state relative-caret-position="45">
+          <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="94" column="23" lean-forward="true" selection-start-line="94" selection-start-column="23" selection-end-line="94" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/event_listeners.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="10" column="40" lean-forward="false" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/admin_tools/user_management/general_functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="51" lean-forward="false" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        <state relative-caret-position="298">
+          <caret line="114" column="71" lean-forward="false" selection-start-line="114" selection-start-column="71" selection-end-line="114" selection-end-column="71" />
           <folding>
             <element signature="n#!!block;n#get_prepared_user_row#0" expanded="false" />
             <element signature="n#!!block;n#get_user_tds#0" expanded="false" />
