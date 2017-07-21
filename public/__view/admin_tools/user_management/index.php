@@ -66,13 +66,14 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account() || !$sessio
 
 <!--Scripts-->
 <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/instance_vars.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/general_functions.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/create.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/read.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/update.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/delete.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/User.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/event_listeners.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/tasks.js"; ?>"></script>
 
 

@@ -14,6 +14,7 @@ use App\Publico\Controller\AdminTools\UserManagement\UserController;
 if (isset($_GET['read']) && $_GET['read'] == "yes") {
 //    echo json_encode(array("is_result_ok" => false));
 //    return;
+    sleep(2);
 
 
 
@@ -30,6 +31,10 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
     $user_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
     $is_validation_ok = $user_controller->validator->validate();
     $json_errors_array = $user_controller->validator->get_json_errors_array();
+
+
+    // FLAG
+    $json_errors_array['has_loaded_for_section'] = $_GET['section'];
 
 
     if ($is_validation_ok) {

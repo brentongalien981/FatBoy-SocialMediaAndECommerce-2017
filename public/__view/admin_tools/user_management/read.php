@@ -1,17 +1,19 @@
 <div id="users_div" class="section">
     <h4>Users</h4>
     <hr>
-    <br>
-    <table id="UsersTable" class="">
-        <tbody id="UsersContainer">
-        <tr>
-            <th>UserId</th>
-            <th>UserName</th>
-            <th>Email</th>
-            <th>UserType</th>
-        </tr>
-        </tbody>
-    </table>
+    <div id="users_table_container">
+        <table id="UsersTable" class="">
+            <tbody id="UsersContainer">
+            <tr>
+                <th>UserId</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>UserType</th>
+            </tr>
+            </tbody>
+        </table>
+        <div id="reference_for_loading_more"></div>
+    </div>
 </div>
 
 
@@ -31,7 +33,19 @@
     }
 
     #users_div {
-        overflow-y: auto;
+        /*overflow-y: auto;*/
         height: 150px;
+    }
+
+    #users_table_container {
+        padding-top: 20px;
+        overflow-y: auto;
+        height: 80px;
+    }
+
+    #reference_for_loading_more {
+        width: 200px;
+        height: 1px;
+        background-color: red;
     }
 </style>

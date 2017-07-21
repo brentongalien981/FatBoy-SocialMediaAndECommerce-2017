@@ -2,7 +2,7 @@ function do_users_after_effects(class_name, crud_type, json, x_obj) {
     switch (crud_type) {
         case "read":
             //
-            // prepare_users_container(class_name)
+            // prepare_users_container(class_name);
             var container = get_users_container(class_name);
 
             //
@@ -94,7 +94,14 @@ function populate_users_container(container, users, class_name, crud_type) {
         // //
         // add_listener_to_delete_notification_link(u, class_name);
     }
+
+
+    // FLAG
+    is_ajax_reading = false;
 }
+
+
+
 
 
 

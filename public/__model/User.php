@@ -78,9 +78,9 @@ class User
         $item_per_section = 5;
 
         $query = "SELECT u.*";
-        $query .= " ,p.*";
+//        $query .= " ,p.*";
         $query .= " FROM Users u";
-        $query .= " INNER JOIN Profile p ON u.user_id = p.user_id";
+//        $query .= " INNER JOIN Profile p ON u.user_id = p.user_id";
 
 
 //        $query .= " ORDER BY iisr.status_start_date ASC";

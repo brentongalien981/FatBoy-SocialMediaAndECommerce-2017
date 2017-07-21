@@ -5,11 +5,19 @@ function read_user_objs() {
     var key_value_pairs = {
         // TODO:REMINDER: Change this to a variable.
         read: "yes",
-        section: 1,
+        section: users_container_section,
         tae: "shit"
     };
 
 
     var user_obj_request = new User(crud_type, request_type, key_value_pairs);
     user_obj_request.read();
+}
+
+
+
+
+
+function load_more_users() {
+    read_user_objs();
 }
