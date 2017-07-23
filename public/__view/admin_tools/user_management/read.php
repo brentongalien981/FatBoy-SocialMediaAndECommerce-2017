@@ -19,8 +19,17 @@
 
 
 <div class="section">
-    <h4>UserInfo</h4>
-    <hr>
+    <table>
+        <thead>
+            <th><h4 id="user_info_title">UserInfo</h4></th>
+            <th><input id="add_user_button" type="button" value="+ add user" class="form_button"></th>
+        </thead>
+    </table>
+    <hr class="user_info_hr">
+
+    <?php  require_once(PUBLIC_PATH . "/__view/admin_tools/user_management/templates/users_info_forms.php");   ?>
+
+    <input id="create_user_button" type="button" value="create" class="form_button">
 </div>
 
 
@@ -48,5 +57,24 @@
         width: 200px;
         height: 1px;
         background-color: red;
+    }
+
+
+    input.form_button {
+        margin: 0;
+        /*display: block;*/
+    }
+
+    #user_info_title {
+        /*display: inline;*/
+        /*width: 50px;*/
+        margin-bottom: -6px;
+        margin-right: 5px;
+        /*background-color: yellow;*/
+        color: black;
+    }
+
+    hr.user_info_hr {
+        margin-bottom: 15px;
     }
 </style>

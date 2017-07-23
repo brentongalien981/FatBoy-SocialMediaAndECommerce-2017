@@ -56,6 +56,7 @@ class User
                 "user_id" => $row['user_id'],
                 "user_name" => $row['user_name'],
                 "email" => $row['email'],
+                "private" => $row['private'],
                 "user_type_id" => $row['user_type_id']);
 
 

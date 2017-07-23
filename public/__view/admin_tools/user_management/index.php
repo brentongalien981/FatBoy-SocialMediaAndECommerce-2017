@@ -68,7 +68,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account() || !$sessio
 <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/general_functions.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/create.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/create.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/admin_tools/user_management/read.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/update.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/admin_tools/user_management/delete.js"; ?><!--"></script>-->

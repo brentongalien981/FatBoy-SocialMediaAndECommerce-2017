@@ -11,6 +11,35 @@ users_table_container.addEventListener("scroll", function () {
 
 
 
+add_user_button.addEventListener("click", function () {
+    set_user_info_inputs(RESET_INPUTS);
+
+    //
+    this.style.visibility = "hidden";
+});
+
+
+
+
+
+create_user_button.addEventListener("click", function () {
+    var user_info = {
+        user_name: user_name.value,
+        password: password.value,
+        email: email.value
+    };
+
+
+    // var user_name = user_name.value;
+    // var password = password.value;
+
+    create_user(user_info);
+});
+
+
+
+
+
 var users_table_container_height = users_table_container.offsetHeight;
 var users_table_container_bounds = users_table_container.getBoundingClientRect();
 

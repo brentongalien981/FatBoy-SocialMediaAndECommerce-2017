@@ -9,6 +9,7 @@ function do_users_after_effects(class_name, crud_type, json, x_obj) {
             populate_users_container(container, json.users, class_name, crud_type);
             break;
         case "create":
+            console.log("TODO:DEBUG: User created after effects");
             break;
         case "update":
             break;

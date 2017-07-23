@@ -42,37 +42,70 @@ namespace App\Privado\HelperClasses\Validation;
 
 require_once('/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_validation_error_logger.php');
 require_once('/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/functions_helper/functions_csrf_token.php');
+require_once(PRIVATE_PATH . "/includes/swiftmailer/config.php");
 
 use App\Publico\Model\MyValidationErrorLogger;
+use Swift_Validate;
 
-class Validator {
+
+class Validator
+{
 
     private $allowed_post_vars_array = null;
     private $required_post_vars_length_array = null;
+    private $vars_to_be_regex_checked = null;
+    private $formats = null;
+    private $vars_to_be_unique_checked = null;
     private $json_errors_array = null;
     private $can_proceed = false;
     private $exempted_white_space_field_array = null;
     private $request_type = "post";
+    public $validate_email = false;
 
-    function __construct() {
+    function __construct()
+    {
         MyValidationErrorLogger::initialize();
     }
 
-    public function set_allowed_post_vars($allowed_post_vars_array) {
+    public function set_allowed_post_vars($allowed_post_vars_array)
+    {
         $this->allowed_post_vars_array = $allowed_post_vars_array;
 
         $this->init_json_errors_array();
     }
 
-    public function set_exempted_white_space_field_array($exempted_white_space_field_array) {
+
+
+    public function set_unique_vars($vars_to_be_unique_checked)
+    {
+        $this->vars_to_be_unique_checked = $vars_to_be_unique_checked;
+    }
+
+
+
+
+    public function set_exempted_white_space_field_array($exempted_white_space_field_array)
+    {
         $this->exempted_white_space_field_array = $exempted_white_space_field_array;
     }
 
-    public function set_required_post_vars_length_array($post_vars_lengt_array) {
+    public function set_required_post_vars_length_array($post_vars_lengt_array)
+    {
         $this->required_post_vars_length_array = $post_vars_lengt_array;
     }
 
-    private function init_json_errors_array() {
+
+    /**
+     * @param $vars array
+     */
+    public function set_vars_to_be_regex_checked($vars)
+    {
+        $this->vars_to_be_regex_checked = $vars;
+    }
+
+
+    private function init_json_errors_array()
+    {
         // Set the default error indexes.
         $this->json_errors_array = array("is_result_ok" => false, "error_csrf_token" => "", "error_are_vars_clean" => "");
 
@@ -82,43 +115,156 @@ class Validator {
         }
     }
 
-    public function get_json_errors_array() {
+    public function get_json_errors_array()
+    {
         return $this->json_errors_array;
     }
 
-    public function validate() {
+    public function validate()
+    {
         $this->validate_csrf_token();
+        \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_csrf: {$this->can_proceed}");
 
 
         if ($this->can_proceed) {
             $this->check_required_post_vars_existence();
+            \MyDebugMessenger::add_debug_message("\$this->can_proceed after check_required_existence: {$this->can_proceed}");
         }
 
 
         if ($this->can_proceed) {
             $this->validate_white_space();
+            \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_whitespace: {$this->can_proceed}");
         }
 
 
         if ($this->can_proceed) {
             $this->validate_length();
+            \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
         }
 
 
-        if ($this->can_proceed) {
-            $this->set_json_errors_array();
+        if ($this->formats != null) {
+            //
+            $this->validate_formats();
         }
 
-        if ($this->can_proceed) {
-            $this->finalize_validation();
+
+        if ($this->validate_email) {
+            //
+            $this->validate_email_format();
         }
+
+
+
+        if ($this->vars_to_be_unique_checked != null) {
+            //
+            $this->validate_uniqueness();
+        }
+
+
+
+        $this->set_json_errors_array();
+        \MyDebugMessenger::add_debug_message("\$this->can_proceed after set_json_errors_array: {$this->can_proceed}");
+
+
+        $this->finalize_validation();
+        \MyDebugMessenger::add_debug_message("\$this->can_proceed after finalize_validation: {$this->can_proceed}");
 
 
         //
         return $this->can_proceed;
     }
 
-    private function validate_length() {
+
+    private function validate_email_format()
+    {
+        if (!Swift_Validate::email($_POST["email"])) {
+            MyValidationErrorLogger::log("email::: is not valid.");
+            $this->can_proceed = false;
+        }
+    }
+
+
+    public function set_formats($formats)
+    {
+        //
+        $this->formats = $formats;
+    }
+
+
+    private function validate_regex($index, $regex)
+    {
+        if ($index == "user_name") {
+            if (has_format_matching($_POST[$index], $regex)) {
+                MyValidationErrorLogger::log("{$index}::: contains invalid chars.");
+                $this->can_proceed = false;
+            }
+        } else if ($index == "password") {
+            if (!has_format_matching($_POST[$index], $regex)) {
+                MyValidationErrorLogger::log("{$index}::: should have at least 1 special character.");
+                $this->can_proceed = false;
+            }
+        }
+    }
+
+
+    private function validate_formats()
+    {
+        //
+        foreach ($this->formats as $index => $format) {
+            // Validate regex.
+            $this->validate_regex($index, $format['regex']);
+
+            //
+            $this->validate_min_numeric_chars($index, $format['numeric']);
+
+            //
+            $this->validate_min_alpha_chars($index, $format['alpha']);
+
+        }
+    }
+
+    //
+    private function validate_uniqueness()
+    {
+        //
+        foreach ($this->vars_to_be_unique_checked as $field => $details) {
+            //
+            $d = $details;
+            if (!is_unique($_POST[$field], $d['table'], $d['column'])) {
+                MyValidationErrorLogger::log("{$field}::: is already taken.");
+                $this->can_proceed = false;
+            }
+
+        }
+    }
+
+
+    private function validate_min_alpha_chars($index, $min)
+    {
+        // For at least 1 numeric chars.
+        if (!has_alphabet_chars($_POST[$index], $min)) {
+            MyValidationErrorLogger::log("{$index}::: should have at least {$min} alphabet characters.");
+
+            $this->can_proceed = false;
+        }
+    }
+
+
+    private function validate_min_numeric_chars($index, $min)
+    {
+        // For at least 1 numeric chars.
+        if (!has_numeric_chars($_POST[$index], $min)) {
+            MyValidationErrorLogger::log("{$index}::: should have at least {$min} numeric characters.");
+
+            $this->can_proceed = false;
+        }
+    }
+
+
+    private function validate_length()
+    {
         // 
         $validation_value = true;
 
@@ -126,8 +272,7 @@ class Validator {
         foreach ($this->required_post_vars_length_array as $key => $value) {
             if ($this->request_type == "get" && has_length($_GET[$key], $value)) {
                 continue;
-            }
-            else if (has_length($_POST[$key], $value)) {
+            } else if (has_length($_POST[$key], $value)) {
                 continue;
             } else {
                 MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
@@ -141,7 +286,8 @@ class Validator {
 
     // Validate the the POST vars contains something
     // that isn't just a white space.
-    private function validate_white_space() {
+    private function validate_white_space()
+    {
         // 
         $validation_value = true;
 
@@ -149,11 +295,12 @@ class Validator {
         foreach ($this->required_post_vars_length_array as $key => $value) {
             // If the $key is in the exempted white space field, disregard and loop again.
             if (isset($this->exempted_white_space_field_array) &&
-                    in_array($key, $this->exempted_white_space_field_array)) {
+                in_array($key, $this->exempted_white_space_field_array)
+            ) {
                 continue;
             }
-            
-            
+
+
 //            // Before proceeding to the next section down here,
 //            // uki
 //            $global_var_being_validated = null;
@@ -167,14 +314,12 @@ class Validator {
 //                $validation_value = false;
 //                break;
 //            }
-            
-            
+
 
             // Validate presence.
             if ($this->request_type == "get" && has_presence($_GET[$key])) {
                 continue;
-            }
-            else if (has_presence($_POST[$key])) {
+            } else if (has_presence($_POST[$key])) {
                 continue;
             } else {
                 MyValidationErrorLogger::log("{$key}::: can not be blank");
@@ -186,7 +331,8 @@ class Validator {
         $this->can_proceed = $validation_value;
     }
 
-    private function check_required_post_vars_existence() {
+    private function check_required_post_vars_existence()
+    {
         // White listing POST vars.
         if (are_post_vars_valid($this->allowed_post_vars_array)) {
             $this->can_proceed = true;
@@ -196,7 +342,8 @@ class Validator {
         }
     }
 
-    private function finalize_validation() {
+    private function finalize_validation()
+    {
         /* Here's I'll know if there's an error overall or not. */
         if (MyValidationErrorLogger::is_empty()) {
             // Proceed to the next validation step.
@@ -208,7 +355,8 @@ class Validator {
         }
     }
 
-    private function set_json_errors_array() {
+    private function set_json_errors_array()
+    {
         /* Log the errors. */
         // Put to the JSON array the first error for each error type.
         // Here, basically, one $log_error_msg is like:
@@ -236,13 +384,15 @@ class Validator {
      * @Purpose is to avoid the csrf validation if the request
      * type is "get".
      * @Note that by default, this object's request type is set to "post".
-     * @param string $type: "get" / "post"
+     * @param string $type : "get" / "post"
      */
-    public function set_request_type($type) {
+    public function set_request_type($type)
+    {
         $this->request_type = $type;
     }
 
-    private function validate_csrf_token() {
+    private function validate_csrf_token()
+    {
         // If the request type is GET, no need for csrf validation
         // so just return and proceed to the other validations.
         if ($this->request_type == "get") {
