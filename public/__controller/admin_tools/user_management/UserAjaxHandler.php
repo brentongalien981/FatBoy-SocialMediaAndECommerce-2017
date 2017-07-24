@@ -78,13 +78,17 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 //        "putang" => "ina mo",
 //        "user_name" => $_POST['user_name'],
 //        "password" => $_POST['password'],
-//        "email" => $_POST['email']
+//        "email" => $_POST['email'],
+//        "user_type" => $_POST['user_type'],
+//        "privacy" => $_POST['privacy'],
+//        "account_status" => $_POST['account_status']
+//
 //        ));
 //    return;
 
 
     /* Validate */
-    $allowed_assoc_indexes = array("user_name", "password", "email");
+    $allowed_assoc_indexes = array("user_name", "password", "email", "user_type", "privacy", "account_status");
     $required_vars_length_array = array(
         "user_name" => ["min" => 2, "max" => 11],
         "password" => ["min" => 2, "max" => 8],
@@ -127,15 +131,25 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
     );
 
 
+    //uki
+    $user_detail_types = array(
+        "user_type" => [1, 2, 3, 4, 5],
+        "privacy" => [0, 1],
+        "account_status" => [1, 2, 3, 4]
+    );
+
+
 
     //
     $user_controller = new UserController();
 
     $user_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
     $user_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+    $user_controller->validator->set_user_detail_types($user_detail_types);
     $user_controller->validator->set_formats($vars_to_be_format_checked);
     $user_controller->validator->validate_email = true;
     $user_controller->validator->set_unique_vars($vars_to_be_unique_checked);
+
     $is_validation_ok = $user_controller->validator->validate();
     $json_errors_array = $user_controller->validator->get_json_errors_array();
 
@@ -164,7 +178,8 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
     }
 
 
-    //
+    // This is to let the user see the errors on their forms.
+    $json_errors_array['form_errors_showable'] = true;
     echo json_encode($json_errors_array);
 }
 ?>

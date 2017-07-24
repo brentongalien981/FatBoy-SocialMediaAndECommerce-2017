@@ -24,9 +24,12 @@ add_user_button.addEventListener("click", function () {
 
 create_user_button.addEventListener("click", function () {
     var user_info = {
-        user_name: user_name.value,
-        password: password.value,
-        email: email.value
+        user_name : user_name.value,
+        password : password.value,
+        email : email.value,
+        user_type : user_type.value,
+        privacy : privacy.value,
+        account_status : account_status.value
     };
 
 

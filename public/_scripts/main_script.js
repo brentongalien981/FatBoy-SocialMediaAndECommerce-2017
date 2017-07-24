@@ -238,11 +238,24 @@ function my_ajax(x_obj) {
                     // Display in the console.
                     console.log(key + " => " + val);
 
-//                            // Display errors in the form.
-//                            var error_label = document.getElementById(key);
-//                            if (error_label != null) {
-//                                error_label.innerHTML = val;
-//                            }
+
+                    // continue;
+                    // Display errors in the form.
+                    if (json.form_errors_showable) {
+                        var error_label = document.getElementById(key);
+                        if (error_label != null) {
+                            // Reset the error labels.
+                            error_label.innerHTML = "error";
+                            error_label.style.visibility = "hidden";
+
+
+                            if (val != "") {
+                                error_label.innerHTML = val;
+                                error_label.style.visibility = "visible";
+                            }
+
+                        }
+                    }
                 }
             }
 

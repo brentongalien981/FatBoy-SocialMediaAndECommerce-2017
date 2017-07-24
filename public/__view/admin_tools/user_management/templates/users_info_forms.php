@@ -7,58 +7,127 @@
                     <table>
                         <tbody>
                         <tr>
-                            <td><h6>UserId</h6></td>
-                            <td><input id="user_id" type="text"></td>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_user_id'>puta</label>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><h6>UserName</h6></td>
-                            <td><input id="user_name" type="text"></td>
+                            <td class="create_user_info"><h6>UserId</h6></td>
+                            <td class="create_user_info"><input id="user_id" type="text"></td>
                         </tr>
 
 
+
+
+
                         <tr>
-                            <td><h6>Password</h6></td>
-                            <td><input id="password" type="password"></td>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_user_name'>error</label>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><h6>Email</h6></td>
-                            <td><input id="email" type="email"></td>
+                            <td class="create_user_info"><h6>UserName</h6></td>
+                            <td class="create_user_info"><input id="user_name" type="text"></td>
+                        </tr>
+
+
+
+
+
+                        <tr>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_password'>error</label>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><h6>UserType</h6></td>
-                            <td>
+                            <td class="create_user_info"><h6>Password</h6></td>
+                            <td class="create_user_info"><input id="password" type="password"></td>
+                        </tr>
+
+
+
+
+
+
+                        <tr>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_email'>error</label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="create_user_info"><h6>Email</h6></td>
+                            <td class="create_user_info"><input id="email" type="email"></td>
+                        </tr>
+
+
+
+
+
+
+                        <tr>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_user_type'>error</label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="create_user_info"><h6>UserType</h6></td>
+                            <td class="create_user_info">
                                 <select id="user_type">
-                                    <option>User</option>
-                                    <option>Admin</option>
-                                    <option>Owner</option>
-                                    <option>Accountant</option>
-                                    <option>Legal</option>
-                                </select>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>Private</h6></td>
-                            <td>
-                                <select id="private">
-                                    <option>Private</option>
-                                    <option>Public</option>
+                                    <option value="1">User</option>
+                                    <option value="2">Admin</option>
+                                    <option value="3">Owner</option>
+                                    <option value="4">Accountant</option>
+                                    <option value="5">Legal</option>
                                 </select>
                             </td>
                         </tr>
 
 
+
+
+
+
                         <tr>
-                            <td><h6>AccountStatus</h6></td>
-                            <td>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_privacy'>error</label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="create_user_info"><h6>Private</h6></td>
+                            <td class="create_user_info">
+                                <select id="privacy">
+                                    <option value="1">Private</option>
+                                    <option value="0">Public</option>
+                                </select>
+                            </td>
+                        </tr>
+
+
+
+
+
+
+
+                        <tr>
+                            <td colspan="2">
+                                <label class='error_msg' visibility='hidden' id='error_account_status'>error</label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="create_user_info"><h6>AccountStatus</h6></td>
+                            <td class="create_user_info">
                                 <select id="account_status">
-                                    <option>Active</option>
-                                    <option>Blocked</option>
-                                    <option>Under Investigation</option>
-                                    <option>Tracked</option>
+                                    <option value="1">Active</option>
+                                    <option value="2">Blocked</option>
+                                    <option value="3">Under Investigation</option>
+                                    <option value="4">Tracked</option>
                                 </select>
                             </td>
                         </tr>
@@ -68,6 +137,12 @@
             </td>
 
 
+
+
+
+
+
+<!--            Address-->
             <td>
                 <form class="user_info_forms">
                     <h5>Contact</h5>
@@ -136,7 +211,7 @@
     form.user_info_forms {
         color: black;
         width: 480px;
-        height: 270px;
+        /*height: 270px;*/
         background-color: #2aa198;
         /*float: left;*/
     }
@@ -144,4 +219,9 @@
     form.user_info_forms h6 {
         color: black;
     }
+
+    td.create_user_info {
+        padding-bottom: 10px;
+    }
+
 </style>

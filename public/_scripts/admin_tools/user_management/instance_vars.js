@@ -14,3 +14,6 @@ const RESET_INPUTS = 1;
 var user_name = document.getElementById("user_name");
 var password = document.getElementById("password");
 var email = document.getElementById("email");
+var user_type = document.getElementById("user_type");
+var privacy = document.getElementById("privacy");
+var account_status = document.getElementById("account_status");

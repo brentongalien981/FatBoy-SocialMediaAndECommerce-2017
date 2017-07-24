@@ -206,6 +206,11 @@ label.error_msg {
     font-size: 12px;
     font-weight: 100;
     color: red;
+    /*color: yellow;*/
+    /*padding-top: 30px;*/
+    /*padding-left: 30px;*/
+    /*margin-left: 30px;*/
+    visibility: hidden;
 }
 
 div#main_content {

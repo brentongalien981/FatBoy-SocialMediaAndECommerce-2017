@@ -56,6 +56,7 @@ class Validator
     private $vars_to_be_regex_checked = null;
     private $formats = null;
     private $vars_to_be_unique_checked = null;
+    private $user_detail_types = null;
     private $json_errors_array = null;
     private $can_proceed = false;
     private $exempted_white_space_field_array = null;
@@ -138,9 +139,19 @@ class Validator
         }
 
 
-        if ($this->can_proceed) {
-            $this->validate_length();
-            \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
+
+
+//        if ($this->can_proceed) {
+//            $this->validate_length();
+//            \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
+//        }
+        $this->validate_length();
+        \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
+
+
+
+        if ($this->user_detail_types != null) {
+            $this->validate_user_detail_types();
         }
 
 
@@ -174,6 +185,28 @@ class Validator
 
         //
         return $this->can_proceed;
+    }
+
+
+
+    //
+    public function set_user_detail_types($user_detail_types)
+    {
+        $this->user_detail_types = $user_detail_types;
+    }
+
+
+
+    private function validate_user_detail_types() {
+        //
+        foreach ($this->user_detail_types as $key => $accepted_values) {
+
+            if (!in_array($_POST[$key], $accepted_values)) {
+                MyValidationErrorLogger::log("{$key}::: is not valid.");
+                $this->can_proceed = false;
+            }
+
+        }
     }
 
 
