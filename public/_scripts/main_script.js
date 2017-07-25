@@ -249,6 +249,7 @@ function my_ajax(x_obj) {
                             error_label.style.visibility = "hidden";
 
 
+                            // Display error labels.
                             if (val != "") {
                                 error_label.innerHTML = val;
                                 error_label.style.visibility = "visible";

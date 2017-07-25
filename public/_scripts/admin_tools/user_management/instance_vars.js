@@ -11,6 +11,7 @@ var add_user_button = document.getElementById("add_user_button");
 var create_user_button = document.getElementById("create_user_button");
 const RESET_INPUTS = 1;
 
+var user_id = document.getElementById("user_id");
 var user_name = document.getElementById("user_name");
 var password = document.getElementById("password");
 var email = document.getElementById("email");

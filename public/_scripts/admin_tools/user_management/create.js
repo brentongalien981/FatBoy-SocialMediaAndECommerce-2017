@@ -1,6 +1,13 @@
 function set_user_info_inputs(flag) {
     if (flag == RESET_INPUTS) {
         console.log("TODO:REMINDER: In METHOD: Reset User Info input fields are cleared.");
+
+        // Disable the email input.
+        email.setAttribute("disabled", "disabled");
+        email.style.backgroundColor = "rgb(200, 200, 200)";
+
+        user_id.setAttribute("disabled", "disabled");
+        user_id.style.backgroundColor = "rgb(200, 200, 200)";
     }
 }
 

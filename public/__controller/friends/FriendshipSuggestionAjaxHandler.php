@@ -48,9 +48,9 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 
 
         // If everything is ok.
-        if (isset($json_errors_array['suggested_friends']) &&
-            $json_errors_array['suggested_friends'] != null &&
-            count($json_errors_array['suggested_friends']) > 0)
+        if (isset($json_errors_array['x_friends']) &&
+            $json_errors_array['x_friends'] != null &&
+            count($json_errors_array['x_friends']) > 0)
         {
 
             $json_errors_array['is_result_ok'] = true;

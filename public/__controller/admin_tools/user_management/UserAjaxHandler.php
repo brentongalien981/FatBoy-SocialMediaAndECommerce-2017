@@ -88,11 +88,12 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 
 
     /* Validate */
-    $allowed_assoc_indexes = array("user_name", "password", "email", "user_type", "privacy", "account_status");
+//    $allowed_assoc_indexes = array("user_name", "password", "email", "user_type", "privacy", "account_status");
+    $allowed_assoc_indexes = array("user_name", "password", "user_type", "privacy", "account_status");
     $required_vars_length_array = array(
-        "user_name" => ["min" => 2, "max" => 11],
-        "password" => ["min" => 2, "max" => 8],
-        "email" => ["min" => 5, "max" => 200]
+        "user_name" => ["min" => 2, "max" => 30],
+        "password" => ["min" => 2, "max" => 50]
+//        "email" => ["min" => 5, "max" => 200]
     );
 
 
@@ -123,15 +124,15 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
         "user_name" => [
             'table' => 'Users',
             'column' => 'user_name'
-        ],
-        "email" => [
-            'table' => 'Users',
-            'column' => 'email'
         ]
+//        "email" => [
+//            'table' => 'Users',
+//            'column' => 'email'
+//        ]
     );
 
 
-    //uki
+    //
     $user_detail_types = array(
         "user_type" => [1, 2, 3, 4, 5],
         "privacy" => [0, 1],
@@ -147,7 +148,7 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
     $user_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
     $user_controller->validator->set_user_detail_types($user_detail_types);
     $user_controller->validator->set_formats($vars_to_be_format_checked);
-    $user_controller->validator->validate_email = true;
+//    $user_controller->validator->validate_email = true;
     $user_controller->validator->set_unique_vars($vars_to_be_unique_checked);
 
     $is_validation_ok = $user_controller->validator->validate();

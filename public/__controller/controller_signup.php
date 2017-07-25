@@ -418,7 +418,7 @@ if ($can_proceed) {
 
     if ($user_creation_result) {
 //        MyDebugMessenger::clear_debug_message();
-        // TODO: REMINDER: Send the email with the signup token.
+        // Send the email with the signup token.
         $to = [$new_user->email => $new_user->user_name];
 
         if (send_sign_up_email($to, $signup_token)) {

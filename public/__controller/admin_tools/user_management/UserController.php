@@ -31,24 +31,38 @@ class UserController extends MainController
     }
 
 
-    public function create($data) {
+    public function create($data)
+    {
         //
-        global $session;
+        $d = $data;
 
-        // TODO:DEBUG
-        return true;
+        //
+        $new_user = new User();
 
-//        $user = new User();
-//        $user->id = null;
-//        $user->notified_user_id = $data["friend_id"];
-//        $user->notifier_user_id = $session->actual_user_id;
-//        $user->notification_msg_id = $data["notification_msg_id"];
-//        $user->is_deleted = false;
-//
-//
-//        $is_creation_ok = $user->create_with_bool();
-//
-//        return $is_creation_ok;
+        $new_user->user_name = $d['user_name'];
+//        $new_user->email = $sanitized_array["email"];
+
+        $hashed_password = password_hash($d['password'], PASSWORD_BCRYPT);
+        $new_user->hashed_password = $hashed_password;
+
+        $new_user->user_type_id = $d['user_type'];
+
+        $new_user->private = $d['privacy'];
+
+//        if ($d['account_status'] == "0") {
+//            // Public
+//            $new_user->account_status_id = false;
+//        } else if ($d['account_status'] == "1") {
+//            // Public
+//            $new_user->account_status_id = true;
+//        }
+
+
+        $new_user->account_status_id = (int) $d['account_status'];
+
+
+        //
+        return $new_user->create();
     }
 
 }
