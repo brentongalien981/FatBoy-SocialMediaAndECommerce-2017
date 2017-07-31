@@ -65,4 +65,43 @@ class UserController extends MainController
         return $new_user->create();
     }
 
+
+
+
+
+    public function update($data)
+    {
+        //
+        $d = $data;
+
+        //
+        $current_user = new User();
+
+        $current_user->user_id = $d['user_id'];
+        $current_user->user_name = $d['user_name'];
+        $current_user->email = $d['email'];
+
+//        $hashed_password = password_hash($d['password'], PASSWORD_BCRYPT);
+//        $current_user->hashed_password = $hashed_password;
+
+        $current_user->user_type_id = $d['user_type'];
+
+        $current_user->private = $d['privacy'];
+
+//        if ($d['account_status'] == "0") {
+//            // Public
+//            $current_user->account_status_id = false;
+//        } else if ($d['account_status'] == "1") {
+//            // Public
+//            $current_user->account_status_id = true;
+//        }
+
+
+        $current_user->account_status_id = (int) $d['account_status'];
+
+
+        //
+        return $current_user->update();
+    }
+
 }

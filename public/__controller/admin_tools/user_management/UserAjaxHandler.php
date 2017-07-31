@@ -15,7 +15,7 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 //    echo json_encode(array("is_result_ok" => false));
 //    return;
     // TODO:REMINDER: Remove this later.
-    sleep(1);
+//    sleep(1);
 
 
 
@@ -207,9 +207,16 @@ if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
 
     /* Validate */
 //    $allowed_assoc_indexes = array("user_name", "password", "email", "user_type", "privacy", "account_status");
-    $allowed_assoc_indexes = array("user_name", "user_type", "email", "privacy", "account_status");
+    $allowed_assoc_indexes = array("user_id", "user_name", "user_type", "email", "privacy", "account_status");
+
+    if (strlen($_POST['email']) == 0) {
+        $exempted_white_space_field_array = array("email");
+    }
+
+
     $required_vars_length_array = array(
-        "user_name" => ["min" => 2, "max" => 30],
+        "user_id" => ["min" => 1, "max" => 11],
+        "user_name" => ["min" => 6, "max" => 30],
 //        "password" => ["min" => 2, "max" => 50],
         "email" => ["min" => 5, "max" => 200]
     );
@@ -242,12 +249,14 @@ if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
     $vars_to_be_unique_checked = array(
         "user_name" => [
             'table' => 'Users',
-            'column' => 'user_name'
+            'column' => 'user_name',
+            'option' => 1 // Will the user_name be unique after the update?
+        ],
+        "email" => [
+            'table' => 'Users',
+            'column' => 'email',
+            'option' => 1 // Will the email be unique after the update?
         ]
-//        "email" => [
-//            'table' => 'Users',
-//            'column' => 'email'
-//        ]
     );
 
 
@@ -265,6 +274,11 @@ if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
 
     $user_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
     $user_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+
+    if (isset($exempted_white_space_field_array)) {
+        $user_controller->validator->set_exempted_white_space_field_array($exempted_white_space_field_array);
+    }
+
     $user_controller->validator->set_user_detail_types($user_detail_types);
     $user_controller->validator->set_formats($vars_to_be_format_checked);
     $user_controller->validator->validate_email = true;
@@ -288,10 +302,10 @@ if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
 
         //ish
         // Let the controller handle it.
-        $is_creation_ok = $user_controller->create($sanitized_vars);
+        $is_update_ok = $user_controller->update($sanitized_vars);
 
         //
-        if ($is_creation_ok) {
+        if ($is_update_ok) {
             // Everything is ok.
             $json_errors_array['is_result_ok'] = true;
         }

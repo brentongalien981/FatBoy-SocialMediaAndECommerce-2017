@@ -16,8 +16,16 @@ function do_users_after_effects(class_name, crud_type, json, x_obj) {
             cancel_creation_button.style.display = "none";
             edit_user_button.style.display = "block";
             add_user_button.style.visibility = "visible";
+
+            //
+            set_user_info_inputs(DEFAULT);
+
+            //
+            load_more_users();
             break;
         case "update":
+            //
+            update_user_info_display(x_obj.key_value_pairs['user_id']);
             break;
         case "delete":
             break;

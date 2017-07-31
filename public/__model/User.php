@@ -65,7 +65,7 @@ class User
         // - single-quotes around all values
         // - escape all values to prevent SQL injection
 
-        //uki
+        //
         $attributes = $this->get_sanitized_attributes();
 
         $query = "INSERT INTO " . self::$table_name . " (";
@@ -104,6 +104,61 @@ class User
             //
             return false;
         }
+    }
+
+
+
+
+
+    public function update() {
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - UPDATE table SET key='value', key='value' WHERE condition
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+        $attributes = $this->get_sanitized_attributes();
+        $attribute_pairs = array();
+
+        foreach ($attributes as $key => $value) {
+            // Don't include the password for the update.
+            if ($key == "hashed_password") {
+                continue;
+            }
+
+            $attribute_pairs[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE " . self::$table_name . " SET ";
+        $query .= join(", ", $attribute_pairs);
+        $query .= " WHERE user_id =" . $database->escape_value($this->user_id);//uki
+
+
+
+        // Start transaction.
+        if (!$database->start_transaction()) { return false; }
+
+        $database->get_result_from_query($query);
+
+        //
+        $is_update_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+
+        //
+        if ($is_update_ok) {
+            //
+            if (!$database->commit()) { return false; }
+
+            //
+            return true;
+        }
+        else {
+            //
+            $database->rollback();
+
+            //
+            return false;
+        }
+
     }
 
 

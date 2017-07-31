@@ -76,13 +76,10 @@ class Validator
     }
 
 
-
     public function set_unique_vars($vars_to_be_unique_checked)
     {
         $this->vars_to_be_unique_checked = $vars_to_be_unique_checked;
     }
-
-
 
 
     public function set_exempted_white_space_field_array($exempted_white_space_field_array)
@@ -139,15 +136,12 @@ class Validator
         }
 
 
-
-
 //        if ($this->can_proceed) {
 //            $this->validate_length();
 //            \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
 //        }
         $this->validate_length();
         \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
-
 
 
         if ($this->user_detail_types != null) {
@@ -167,12 +161,10 @@ class Validator
         }
 
 
-
         if ($this->vars_to_be_unique_checked != null) {
             //
             $this->validate_uniqueness();
         }
-
 
 
         $this->set_json_errors_array();
@@ -188,7 +180,6 @@ class Validator
     }
 
 
-
     //
     public function set_user_detail_types($user_detail_types)
     {
@@ -196,8 +187,8 @@ class Validator
     }
 
 
-
-    private function validate_user_detail_types() {
+    private function validate_user_detail_types()
+    {
         //
         foreach ($this->user_detail_types as $key => $accepted_values) {
 
@@ -212,6 +203,16 @@ class Validator
 
     private function validate_email_format()
     {
+        // If the $key is in the exempted white space field, disregard and just return.
+        if (isset($this->exempted_white_space_field_array) &&
+            in_array("email", $this->exempted_white_space_field_array)
+        ) {
+            return;
+        }
+
+
+
+        //
         if (!Swift_Validate::email($_POST["email"])) {
             MyValidationErrorLogger::log("email::: is not valid.");
             $this->can_proceed = false;
@@ -263,8 +264,33 @@ class Validator
     {
         //
         foreach ($this->vars_to_be_unique_checked as $field => $details) {
+            // If the $key is in the exempted white space field, disregard and just return.
+            if (isset($this->exempted_white_space_field_array) &&
+                in_array($field , $this->exempted_white_space_field_array)
+            ) {
+                continue;
+            }
+
+
+
+
             //
             $d = $details;
+
+            // A unique version of checking the email for CRUD update..
+            // Explanation is in the documentation of FUNCTION: will_it_be_unique().
+            if (isset($d['option']) && $d['option'] == 1) {
+                $will_it_be_unique = will_it_be_unique($_POST[$field], $d['table'], $d['column'], $_POST['user_id']);
+
+                if (!$will_it_be_unique) {
+                    MyValidationErrorLogger::log("{$field}::: is already taken.");
+                    $this->can_proceed = false;
+                }
+                continue;
+            }
+
+
+            // Normal checking of the uniquenes..
             if (!is_unique($_POST[$field], $d['table'], $d['column'])) {
                 MyValidationErrorLogger::log("{$field}::: is already taken.");
                 $this->can_proceed = false;
@@ -303,6 +329,15 @@ class Validator
 
         //
         foreach ($this->required_post_vars_length_array as $key => $value) {
+            // If the $key is in the exempted white space field, disregard and loop again.
+            if (isset($this->exempted_white_space_field_array) &&
+                in_array($key, $this->exempted_white_space_field_array)
+            ) {
+                continue;
+            }
+
+
+            //
             if ($this->request_type == "get" && has_length($_GET[$key], $value)) {
                 continue;
             } else if (has_length($_POST[$key], $value)) {

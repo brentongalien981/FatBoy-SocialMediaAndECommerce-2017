@@ -196,4 +196,50 @@ function is_unique($value, $table, $column) {
     }
 }
 
+
+
+
+
+/* Option #1 checks if the email will be unique after
+ * all of the update process. For ex.
+ * if I update my email to "email1" from "email",
+ * I should be able to access the db and count all users
+ * that have the email "email1". If that count is 0, that means
+ * the new email will be unique. If that count is 1, check further
+ * because the user might not have updated her email at all. So check:
+ * is $new_email == $user's_current_email. If it's true, the email will still
+ * be unique after the update. If it's not true, then that new email is already
+ * taken.
+ */
+function will_it_be_unique($value, $table, $column, $user_id) {
+    global $database;
+    $escaped_value = $database->escape_value($value);
+    $query = "SELECT COUNT(*) as count FROM {$table} WHERE {$column} = '{$escaped_value}'";
+
+    $result_set = $database->get_result_from_query($query);
+
+    //
+    while ($row = $database->fetch_array($result_set)) {
+        if ($row['count'] == 0) {
+            return true;
+        }
+        else if ($row['count'] == 1) {
+            $query = "SELECT {$column} FROM {$table} WHERE user_id = {$user_id}";
+
+            $another_result_set = $database->get_result_from_query($query);
+
+            while ($another_row = $database->fetch_array($another_result_set)) {
+                // If old_email == new_email, it still will be unique.
+                if ($another_row[$column] == $value) {
+                    return true;
+                }
+                else { return false; }
+            }
+        }
+        else {
+            return false;
+        }
+    }
+}
+
 ?>
