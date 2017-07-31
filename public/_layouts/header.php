@@ -12,6 +12,13 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <html>
     <head>
         <title id="title">&copy; FatBoy</title>
+
+
+        <!-- Bootstrap -->
+
+
+
+
         <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/_layouts/header.css"; ?>">
     </head>
     <body>

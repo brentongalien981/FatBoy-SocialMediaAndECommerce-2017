@@ -10,6 +10,9 @@
                 <th>UserName</th>
                 <th>Email</th>
                 <th>UserType</th>
+                <th>Privacy</th>
+                <th>AccountStatus</th>
+                <th>Action</th>
             </tr>
             </tbody>
         </table>
@@ -21,25 +24,30 @@
 <div class="section">
     <table>
         <thead>
-            <th><h4 id="user_info_title">UserInfo</h4></th>
-            <th><input id="add_user_button" type="button" value="+ add user" class="form_button"></th>
+        <th><h4 id="user_info_title">UserInfo</h4></th>
+        <th><input id="add_user_button" type="button" value="+ add user" class="form_button"></th>
         </thead>
     </table>
     <hr class="user_info_hr">
 
-    <?php  require_once(PUBLIC_PATH . "/__view/admin_tools/user_management/templates/users_info_forms.php");   ?>
+    <!--    User's Basic info form-->
+    <?php require_once(PUBLIC_PATH . "/__view/admin_tools/user_management/templates/users_info_forms.php"); ?>
 
+
+    <input id="edit_user_button" type="button" value="edit" class="form_button">
     <input id="create_user_button" type="button" value="create" class="form_button">
+    <input id="cancel_creation_button" type="button" value="cancel" class="form_button">
+
 </div>
-
-
-
-
 
 
 <style>
     #UsersTable {
         color: black;
+    }
+
+    #UsersTable .form_button {
+        margin: 0;
     }
 
     #users_div {
@@ -59,7 +67,6 @@
         background-color: red;
     }
 
-
     input.form_button {
         margin: 0;
         /*display: block;*/
@@ -76,5 +83,9 @@
 
     hr.user_info_hr {
         margin-bottom: 15px;
+    }
+
+    #create_user_button, #cancel_creation_button {
+        display: none;
     }
 </style>

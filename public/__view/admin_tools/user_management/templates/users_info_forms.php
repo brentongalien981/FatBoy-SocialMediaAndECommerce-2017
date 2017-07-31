@@ -143,49 +143,49 @@
 
 
 <!--            Address-->
-            <td>
-                <form class="user_info_forms">
-                    <h5>Contact</h5>
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td><h6>Street1</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>Street2</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>City</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>State</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>ZIP</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>Country</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-
-                        <tr>
-                            <td><h6>Phone</h6></td>
-                            <td><input type="text"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </form>
-            </td>
+<!--            <td>-->
+<!--                <form class="user_info_forms">-->
+<!--                    <h5>Contact</h5>-->
+<!--                    <table>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <td><h6>Street1</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!---->
+<!--                        <tr>-->
+<!--                            <td><h6>Street2</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!---->
+<!--                        <tr>-->
+<!--                            <td><h6>City</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!---->
+<!--                        <tr>-->
+<!--                            <td><h6>State</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!---->
+<!--                        <tr>-->
+<!--                            <td><h6>ZIP</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!---->
+<!--                        <tr>-->
+<!--                            <td><h6>Country</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!---->
+<!--                        <tr>-->
+<!--                            <td><h6>Phone</h6></td>-->
+<!--                            <td><input type="text"></td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                </form>-->
+<!--            </td>-->
         </tr>
     </tbody>
 </table>

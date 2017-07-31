@@ -1,3 +1,9 @@
+const DEFAULT = -69;
+const CREATE_USER = 1;
+const EDIT_USER = 2;
+
+
+
 var users_table_container = document.getElementById("users_table_container");
 var reference_for_loading_more = document.getElementById("reference_for_loading_more");
 var users_table_container = document.getElementById("users_table_container");
@@ -7,9 +13,12 @@ var last_value_of_section = 0;
 var is_ajax_reading = false;
 var users_per_section = 5;
 var user_counter = 1;
+
 var add_user_button = document.getElementById("add_user_button");
 var create_user_button = document.getElementById("create_user_button");
-const RESET_INPUTS = 1;
+var edit_user_button = document.getElementById("edit_user_button");
+var cancel_creation_button = document.getElementById("cancel_creation_button");
+
 
 var user_id = document.getElementById("user_id");
 var user_name = document.getElementById("user_name");

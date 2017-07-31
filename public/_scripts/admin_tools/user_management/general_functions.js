@@ -10,6 +10,12 @@ function do_users_after_effects(class_name, crud_type, json, x_obj) {
             break;
         case "create":
             console.log("TODO:DEBUG: User created after effects");
+
+            // Reset the User Info section's buttons.
+            create_user_button.style.display = "none";
+            cancel_creation_button.style.display = "none";
+            edit_user_button.style.display = "block";
+            add_user_button.style.visibility = "visible";
             break;
         case "update":
             break;
@@ -71,6 +77,22 @@ function get_user_tds(user) {
     content += u['user_type_id'];
     content += "</td>";
 
+    //
+    content += "<td class='user_info'>";
+    content += u['private'];
+    content += "</td>";
+
+    //
+    content += "<td class='user_info'>";
+    content += u['account_status_id'];
+    content += "</td>";
+
+
+    //
+    content += "<td class='user_info'>";
+    content += "<button class='form_button' id='edit_user_button" + u['user_id'] + "'>edit</button>";
+    content += "</td>";
+
 
     //
     return content;
@@ -100,7 +122,8 @@ function populate_users_container(container, users, class_name, crud_type) {
         //
         ++user_counter;
 
-        // //
+        //edit_user_button
+        add_listener_to_edit_user_buttonx(u['user_id']);
         // add_listener_to_delete_notification_link(u, class_name);
     }
 

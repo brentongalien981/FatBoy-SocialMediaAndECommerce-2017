@@ -40,6 +40,24 @@ class User
 
 
 
+
+    public static function create_user_profile($user_id) {
+//        global $session;
+        global $database;
+        $query = "INSERT INTO Profile(user_id) VALUES({$user_id})";
+
+        $is_creation_ok = $database->get_result_from_query($query);
+
+        if ($is_creation_ok) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+
     public function create() {
         global $database;
         // Don't forget your SQL syntax and good habits:
@@ -67,6 +85,12 @@ class User
         if ($query_result) {
             //
             $this->user_id = $database->get_last_inserted_id();
+
+            //
+            $is_user_profile_creation_ok = self::create_user_profile($this->user_id);
+
+            //
+            if (!$is_user_profile_creation_ok) { return false; }
 
             //
             if (!$database->commit()) { return false; }
@@ -132,7 +156,9 @@ class User
                 "user_name" => $row['user_name'],
                 "email" => $row['email'],
                 "private" => $row['private'],
+                "account_status_id" => $row['account_status_id'],
                 "user_type_id" => $row['user_type_id']);
+
 
 
             //
