@@ -12,3 +12,15 @@ function clear_user_info_inputs() {
     privacy.value = 1;
     account_status.value = 1;
 }
+
+
+
+
+
+function hide_error_msgs() {
+    var error_labels = document.getElementsByClassName("error_msg");
+
+    for (i = 0; i < error_labels.length; i++) {
+        error_labels[i].style.visibility = "hidden";
+    }
+}

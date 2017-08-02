@@ -8,13 +8,13 @@
                         <tbody>
                         <tr>
                             <td colspan="2">
-                                <label class='error_msg' visibility='hidden' id='error_user_id'>puta</label>
+                                <label class='error_msg' visibility='hidden' id=''></label>
                             </td>
                         </tr>
 
                         <tr>
                             <td class="create_user_info"><h6>UserId</h6></td>
-                            <td class="create_user_info"><input id="user_id" type="text"></td>
+                            <td class="create_user_info"><input id="user_id" type="text" disabled></td>
                         </tr>
 
 
@@ -206,6 +206,10 @@
     #user_info_main_table table {
         margin: 0;
         padding: 0;
+    }
+
+    #user_id {
+        background-color: rgb(200, 200, 200);
     }
 
     form.user_info_forms {

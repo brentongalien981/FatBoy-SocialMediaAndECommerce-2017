@@ -12,6 +12,9 @@ users_table_container.addEventListener("scroll", function () {
 
 
 add_user_button.addEventListener("click", function () {
+    //
+    hide_error_msgs();
+
     // Clear the contents of the form fields.
     set_user_info_inputs(CREATE_USER);
 
@@ -48,6 +51,10 @@ cancel_creation_button.addEventListener("click", function () {
 
     //
     cancel_creation_button.style.display = "none";
+
+
+    //
+    hide_error_msgs();
 });
 
 
@@ -133,14 +140,26 @@ function prepare_load_more_users() {
 
 
 function add_listener_to_edit_user_buttonx(user_id) {
+
     // Id of the edit-user-button.
     var id = "edit_user_button" + user_id;
 
     // The actual edit_user_button.
-    var edit_user_button = document.getElementById(id);
+    var edit_user_button_tr = document.getElementById(id);
 
-    edit_user_button.addEventListener("click", function () {
-        // window.alert("TODO: Add event listener to this edit_user_button." + user_id);
+    edit_user_button_tr.addEventListener("click", function () {
+        // window.alert("TODO: Add event listener to this edit_user_button_tr." + user_id);
+
+        //
+        add_user_button.style.visibility = "visible";
+        create_user_button.style.display = "none";
+        cancel_creation_button.style.display = "none";
+        edit_user_button.style.display = "block";
+
+
+        //
+        hide_error_msgs();
+
 
         // user_info of the selected user row.
         var user_info = get_user_info(user_id);
