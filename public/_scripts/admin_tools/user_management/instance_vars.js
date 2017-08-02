@@ -27,3 +27,14 @@ var email = document.getElementById("email");
 var user_type = document.getElementById("user_type");
 var privacy = document.getElementById("privacy");
 var account_status = document.getElementById("account_status");
+
+var filter_search_checkbox = document.getElementById("filter_search_checkbox");
+var searched_user_infos = {
+    user_id: "",
+    user_name: "",
+    email: "",
+    user_type: "",
+    privacy: "",
+    account_status: "",
+    is_search_filtered: true
+};

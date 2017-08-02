@@ -27,7 +27,8 @@ class UserController extends MainController
     public function read($data)
     {
 //        return array("shit" => "butom");
-        return User::read_with_offset($data['offset']);
+//        return User::read_with_offset($data['offset']);
+        return User::read($data);
     }
 
 

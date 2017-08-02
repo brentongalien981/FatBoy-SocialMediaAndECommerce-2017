@@ -1,4 +1,11 @@
-<div id="users_div" class="section">
+<!-- Search Form -->
+<?php require_once(PUBLIC_PATH . "/__view/admin_tools/user_management/search_form.php"); ?>
+
+
+
+
+
+<div id="users_div" class="section user_management_sections">
     <h4>Users</h4>
     <hr>
     <div id="users_table_container">
@@ -21,7 +28,7 @@
 </div>
 
 
-<div class="section">
+<div class="section user_management_sections">
     <table>
         <thead>
         <th><h4 id="user_info_title">UserInfo</h4></th>
@@ -81,7 +88,11 @@
         color: black;
     }
 
-    hr.user_info_hr {
+    /*hr.user_info_hr {*/
+        /*margin-bottom: 15px;*/
+    /*}*/
+
+    .user_management_sections hr {
         margin-bottom: 15px;
     }
 

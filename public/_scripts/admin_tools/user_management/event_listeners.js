@@ -1,4 +1,3 @@
-
 users_table_container.addEventListener("scroll", function () {
     if (!is_ajax_reading) {
 
@@ -9,6 +8,79 @@ users_table_container.addEventListener("scroll", function () {
 
 
 
+
+
+
+$('#simple_search_button').click(function () {
+    console.log("EVENT:CLICK: simple_search_button");
+
+    console.log("SIMPLE SEARCH TEXT: " + $('#simple_search_text_input').val());
+
+    //
+    searched_user_infos.user_id = $('#simple_search_text_input').val();
+    searched_user_infos.user_name = $('#simple_search_text_input').val();
+    searched_user_infos.email = $('#simple_search_text_input').val();
+    searched_user_infos.user_type = "";
+    searched_user_infos.privacy = "";
+    searched_user_infos.account_status = "";
+    searched_user_infos.is_search_filtered = false;
+
+
+    //
+    var offset = 0;
+    var is_initial_search = true;
+    read_user_objs(offset, is_initial_search);
+});
+
+
+
+
+
+$('#filter_search_button').click(function () {
+    console.log("EVENT:CLICK: filter_search_button");
+
+    // console.log("SIMPLE SEARCH TEXT: " + $('#simple_search_text_input').val());
+
+    //
+    searched_user_infos.user_id = $('#filtered_search_user_id_input').val();
+    searched_user_infos.user_name = $('#filtered_search_user_name_input').val();
+    searched_user_infos.email = $('#filtered_search_email_input').val();
+    searched_user_infos.user_type = $('#filtered_search_user_type_input').val();
+    searched_user_infos.privacy = $('#filtered_search_privacy_input').val();
+    searched_user_infos.account_status = $('#filtered_search_account_status_input').val();
+    searched_user_infos.is_search_filtered = true;
+
+
+    //
+    var offset = 0;
+    var is_initial_search = true;
+    read_user_objs(offset, is_initial_search);
+});
+
+
+
+
+
+
+filter_search_checkbox.addEventListener("click", function () {
+    console.log("this.checked: " + this.checked);
+
+    //
+    var filtered_search_form = document.getElementById("filtered_search_form");
+    var simple_search_form = document.getElementById("simple_search_form");
+
+    //
+    if (this.checked) {
+        filtered_search_form.style.display = "block";
+        simple_search_form.style.display = "none";
+
+    }
+    else {
+        filtered_search_form.style.display = "none";
+        simple_search_form.style.display = "block";
+
+    }
+});
 
 
 add_user_button.addEventListener("click", function () {
@@ -30,10 +102,6 @@ add_user_button.addEventListener("click", function () {
     //
     cancel_creation_button.style.display = "block";
 });
-
-
-
-
 
 
 cancel_creation_button.addEventListener("click", function () {
@@ -58,17 +126,14 @@ cancel_creation_button.addEventListener("click", function () {
 });
 
 
-
-
-
 create_user_button.addEventListener("click", function () {
     var user_info = {
-        user_name : user_name.value,
-        password : password.value,
-        email : email.value,
-        user_type : user_type.value,
-        privacy : privacy.value,
-        account_status : account_status.value
+        user_name: user_name.value,
+        password: password.value,
+        email: email.value,
+        user_type: user_type.value,
+        privacy: privacy.value,
+        account_status: account_status.value
     };
 
 
@@ -79,20 +144,17 @@ create_user_button.addEventListener("click", function () {
 });
 
 
-
-
-
 //edit_user_button
 edit_user_button.addEventListener("click", function () {
 
     var user_info = {
         user_id: user_id.value,
-        user_name : user_name.value,
+        user_name: user_name.value,
         // password : password.value,
-        email : email.value,
-        user_type : user_type.value,
-        privacy : privacy.value,
-        account_status : account_status.value
+        email: email.value,
+        user_type: user_type.value,
+        privacy: privacy.value,
+        account_status: account_status.value
     };
 
 
@@ -101,11 +163,6 @@ edit_user_button.addEventListener("click", function () {
 
     edit_user(user_info);
 });
-
-
-
-
-
 
 
 /* Functions */
@@ -134,9 +191,6 @@ function prepare_load_more_users() {
         load_more_users();
     }
 }
-
-
-
 
 
 function add_listener_to_edit_user_buttonx(user_id) {
@@ -174,7 +228,6 @@ function add_listener_to_edit_user_buttonx(user_id) {
             }
         }
         console.log("***********************************");
-
 
 
         //

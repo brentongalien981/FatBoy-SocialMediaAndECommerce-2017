@@ -9,7 +9,6 @@
 namespace App\Publico\Model;
 
 
-
 class User
 {
     protected static $table_name = "Users";
@@ -25,10 +24,8 @@ class User
     public $account_status_id;
 
 
-
-
-
-    public static function read_by_query($query = "") {
+    public static function read_by_query($query = "")
+    {
         global $database;
 
         $result_set = $database->get_result_from_query($query);
@@ -38,10 +35,8 @@ class User
     }
 
 
-
-
-
-    public static function create_user_profile($user_id) {
+    public static function create_user_profile($user_id)
+    {
 //        global $session;
         global $database;
         $query = "INSERT INTO Profile(user_id) VALUES({$user_id})";
@@ -56,9 +51,8 @@ class User
     }
 
 
-
-
-    public function create() {
+    public function create()
+    {
         global $database;
         // Don't forget your SQL syntax and good habits:
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
@@ -75,9 +69,10 @@ class User
         $query .= "')";
 
 
-
         // Start transaction.
-        if (!$database->start_transaction()) { return false; }
+        if (!$database->start_transaction()) {
+            return false;
+        }
 
 
         $query_result = $database->get_result_from_query($query);
@@ -90,16 +85,22 @@ class User
             $is_user_profile_creation_ok = self::create_user_profile($this->user_id);
 
             //
-            if (!$is_user_profile_creation_ok) { return false; }
+            if (!$is_user_profile_creation_ok) {
+                return false;
+            }
 
             //
-            if (!$database->commit()) { return false; }
+            if (!$database->commit()) {
+                return false;
+            }
 
             //
             return true;
         } else {
             //
-            if (!$database->rollback()) { return false; }
+            if (!$database->rollback()) {
+                return false;
+            }
 
             //
             return false;
@@ -107,10 +108,8 @@ class User
     }
 
 
-
-
-
-    public function update() {
+    public function update()
+    {
         global $database;
         // Don't forget your SQL syntax and good habits:
         // - UPDATE table SET key='value', key='value' WHERE condition
@@ -133,9 +132,10 @@ class User
         $query .= " WHERE user_id =" . $database->escape_value($this->user_id);//uki
 
 
-
         // Start transaction.
-        if (!$database->start_transaction()) { return false; }
+        if (!$database->start_transaction()) {
+            return false;
+        }
 
         $database->get_result_from_query($query);
 
@@ -146,12 +146,13 @@ class User
         //
         if ($is_update_ok) {
             //
-            if (!$database->commit()) { return false; }
+            if (!$database->commit()) {
+                return false;
+            }
 
             //
             return true;
-        }
-        else {
+        } else {
             //
             $database->rollback();
 
@@ -162,9 +163,8 @@ class User
     }
 
 
-
-
-    protected function get_sanitized_attributes() {
+    protected function get_sanitized_attributes()
+    {
         global $database;
         $sanitized_attributes = array();
         // sanitize the values before submitting
@@ -176,9 +176,8 @@ class User
     }
 
 
-
-
-    protected function get_attributes() {
+    protected function get_attributes()
+    {
         // return an array of attribute names and their values
         $attributes = array();
         foreach (self::$db_fields as $field) {
@@ -190,10 +189,41 @@ class User
     }
 
 
+    public static function read($data)
+    {
+        $query = self::get_query_for_read($data);
 
 
+        //
+        $result_set = self::read_by_query($query);
 
-    public static function read_with_offset($offset) {
+        //
+        $array_of_users = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_user = array(
+                "user_id" => $row['user_id'],
+                "user_name" => $row['user_name'],
+                "email" => $row['email'],
+                "private" => $row['private'],
+                "account_status_id" => $row['account_status_id'],
+                "user_type_id" => $row['user_type_id']
+            );
+
+
+            //
+            array_push($array_of_users, $a_user);
+        }
+
+        return $array_of_users;
+    }
+
+
+    // @deprecated kinna
+    public static function read_with_offset($offset)
+    {
         $query = self::get_query_for_read_with_offset($offset);
 
 
@@ -215,7 +245,6 @@ class User
                 "user_type_id" => $row['user_type_id']);
 
 
-
             //
             array_push($array_of_users, $a_user);
         }
@@ -227,7 +256,47 @@ class User
 
 
 
-    public static function get_query_for_read_with_offset($offset) {
+    public static function get_query_for_read($data)
+    {
+        // TODO:REMINDER: Only select the necessary columns.
+
+        global $session;
+//        $notified_user_id = $session->actual_user_id;
+        $limit = 5;
+
+        $query = "SELECT u.*";
+//        $query .= " ,p.*";
+        $query .= " FROM Users u";
+        $query .= " WHERE user_id LIKE '%{$data['user_id']}%'";
+        
+        
+        if ($data['is_search_filtered']) {
+            $query .= " AND user_name LIKE '%{$data['user_name']}%'";
+            $query .= " AND email LIKE '%{$data['email']}%'";
+            $query .= " AND private LIKE '%{$data['privacy']}%'";
+            $query .= " AND account_status_id LIKE '%{$data['account_status']}%'";
+            $query .= " AND user_type_id LIKE '%{$data['user_type']}%'";
+        }
+        else {
+            $query .= " OR user_name LIKE '%{$data['user_name']}%'";
+            $query .= " OR email LIKE '%{$data['email']}%'";
+            $query .= " OR private LIKE '%{$data['privacy']}%'";
+            $query .= " OR account_status_id LIKE '%{$data['account_status']}%'";
+            $query .= " OR user_type_id LIKE '%{$data['user_type']}%'";
+        }
+
+        $query .= " ORDER BY user_id ASC";
+
+        $query .= " LIMIT {$limit} OFFSET {$data['offset']}";
+
+        \MyDebugMessenger::add_debug_message("QUERY: {$query}");
+
+        return $query;
+    }
+
+
+    public static function get_query_for_read_with_offset($offset)
+    {
         // TODO:REMINDER: Only select the necessary columns.
 
         global $session;

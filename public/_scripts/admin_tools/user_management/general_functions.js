@@ -6,7 +6,7 @@ function do_users_after_effects(class_name, crud_type, json, x_obj) {
             var container = get_users_container(class_name);
 
             //
-            populate_users_container(container, json.users, class_name, crud_type);
+            populate_users_container(container, json.users, class_name, crud_type, x_obj);
             break;
         case "create":
             console.log("TODO:DEBUG: User created after effects");
@@ -118,7 +118,16 @@ function append_a_row(container, prepared_user_row) {
 
 
 
-function populate_users_container(container, users, class_name, crud_type) {
+function populate_users_container(container, users, class_name, crud_type, x_obj) {
+    //
+    if (x_obj.key_value_pairs['is_initial_search'] != null &&
+        x_obj.key_value_pairs['is_initial_search'] == true) {
+        clear_container(container);
+    }
+
+
+
+    //
     for (var i = 0; i < users.length; i++) {
         var u = users[i];
         

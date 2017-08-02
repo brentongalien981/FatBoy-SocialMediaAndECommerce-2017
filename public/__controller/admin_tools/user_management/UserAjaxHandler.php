@@ -12,8 +12,17 @@ use App\Publico\Controller\AdminTools\UserManagement\UserController;
 
 <?php
 if (isset($_GET['read']) && $_GET['read'] == "yes") {
-//    echo json_encode(array("is_result_ok" => false));
+//    $return_array = array();
+//    $return_array["is_result_ok"] = false;
+//
+//    foreach ($_GET as $key => $value) {
+//        $return_array[$key] = $value;
+//    }
+//
+//    echo json_encode($return_array);
 //    return;
+
+
     // TODO:REMINDER: Remove this later.
 //    sleep(1);
 
@@ -24,12 +33,46 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 
 
     // Validate
-    $allowed_assoc_indexes = array("offset");
-    $required_vars_length_array = array("offset" => ["min" => 1, "max" => 11]);
+    $allowed_assoc_indexes = array(
+        "offset",
+        "user_id",
+        "user_name",
+        "email",
+        "user_type",
+        "privacy",
+        "account_status",
+        "is_search_filtered"
+    );
+
+    $required_vars_length_array = array(
+        "offset" => ["min" => 1, "max" => 11],
+        "user_id" => ["min" => 0, "max" => 11],
+        "user_name" => ["min" => 0, "max" => 50],
+        "email" => ["min" => 0, "max" => 200],
+        "user_type" => ["min" => 1, "max" => 2],
+        "privacy" => ["min" => 1, "max" => 2],
+        "account_status" => ["min" => 1, "max" => 2],
+        "is_search_filtered" => ["min" => 4, "max" => 5]
+    );
+
+    $exempted_white_space_field_array = array(
+        "user_id",
+        "user_name",
+        "email",
+        "user_type",
+        "privacy",
+        "account_status"
+    );
+
     // Do this for GET requests.
     $user_controller->validator->set_request_type("get");
+
+
+    //
     $user_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
     $user_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+    $user_controller->validator->set_exempted_white_space_field_array($exempted_white_space_field_array);
+
     $is_validation_ok = $user_controller->validator->validate();
     $json_errors_array = $user_controller->validator->get_json_errors_array();
 
@@ -53,15 +96,16 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
         $json_errors_array['users'] = $user_controller->read($sanitized_vars);
 
 
-        // If everything is ok.
-        if (isset($json_errors_array['users']) &&
-            $json_errors_array['users'] != null &&
-            count($json_errors_array['users']) > 0)
-        {
-
-            $json_errors_array['is_result_ok'] = true;
-
-        }
+//        // If everything is ok.
+//        if (isset($json_errors_array['users']) &&
+//            $json_errors_array['users'] != null &&
+//            count($json_errors_array['users']) > 0)
+//        {
+//
+//            $json_errors_array['is_result_ok'] = true;
+//
+//        }
+        $json_errors_array['is_result_ok'] = true;
     }
 
 
