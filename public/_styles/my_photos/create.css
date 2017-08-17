@@ -1,0 +1,11 @@
+.add-photo-form-section table {
+    color: black;
+    margin-top: 20px;
+}
+
+.my-form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 5px;
+}

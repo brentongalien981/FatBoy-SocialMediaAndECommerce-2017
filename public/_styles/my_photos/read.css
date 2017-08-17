@@ -1,0 +1,19 @@
+#flickr-container {
+    background-color: yellow;
+    padding: 40px;
+}
+
+.flickr-photo-cover {
+    background-color: rgba(244, 146, 66, 0.5);
+    width: 240px;
+    height: 180px;
+    position: absolute;
+    /*top: 0px;*/
+    /*left: 0px;*/
+}
+
+.link-photos {
+    width: 194px;
+    height: 194px;
+    /*zoom: 129%;*/
+}

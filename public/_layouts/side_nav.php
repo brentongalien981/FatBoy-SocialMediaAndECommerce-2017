@@ -89,6 +89,23 @@
     </a>
 
 
+
+
+
+    <!--    Photos-->
+    <a id="menu_my_photos" class='menus' href="
+                                <?php
+    if ($session->is_logged_in()) {
+        echo LOCAL . '/public/__view/my_photos';
+    } else {
+        echo "#";
+    }
+    ?>" class="">
+        <i class="fa fa-instagram icon" style="font-size:24px; color: purple;"></i>MyPhotos</a>
+
+
+
+
     <!--    Videos-->
     <a id="menu_my_videos" class='menus' href="
                                 <?php
@@ -137,8 +154,6 @@
     <?php require_once(PUBLIC_PATH . "/_layouts/sub_menus/store.php"); ?>
 
 
-
-
     <!--    Cart-->
     <?php
     if ($session->is_logged_in() && $session->is_viewing_own_account()) {
@@ -169,27 +184,20 @@
     ?>
 
 
-
-
-<!--    Admin Tools-->
+    <!--    Admin Tools-->
     <?php if ($session->is_logged_in() && $session->is_viewing_own_account() && $session->is_admin()) { ?>
-        <a id="menu_admin_tools" class="menus menus_with_sub_menus" menu_name="admin_tools" href="<?php echo LOCAL . "/public/__view/admin_tools/index.php"; ?>">Admin Tools</a>
+        <a id="menu_admin_tools" class="menus menus_with_sub_menus" menu_name="admin_tools"
+           href="<?php echo LOCAL . "/public/__view/admin_tools/index.php"; ?>"><i class="fa fa-sliders icon" style="font-size:24px;"></i>Admin Tools</a>
         <?php require_once(PUBLIC_PATH . "/_layouts/sub_menus/admin_tools.php"); ?>
     <?php } ?>
 
 </nav>
 
 
-
-
-
 <!--Script-->
 <?php if ($session->is_logged_in() && $session->is_viewing_own_account() && $session->is_admin()) { ?>
     <script src="<?php echo LOCAL . "/public/_scripts/layouts/sub_menus/displayer.js"; ?>"></script>
 <?php } ?>
-
-
-
 
 
 <!--Styles-->

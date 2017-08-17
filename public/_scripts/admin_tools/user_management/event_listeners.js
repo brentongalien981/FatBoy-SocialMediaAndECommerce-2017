@@ -23,7 +23,7 @@ $('#simple_search_button').click(function () {
     searched_user_infos.user_type = "";
     searched_user_infos.privacy = "";
     searched_user_infos.account_status = "";
-    searched_user_infos.is_search_filtered = false;
+    searched_user_infos.is_search_filtered = 0;
 
 
     //
@@ -48,7 +48,7 @@ $('#filter_search_button').click(function () {
     searched_user_infos.user_type = $('#filtered_search_user_type_input').val();
     searched_user_infos.privacy = $('#filtered_search_privacy_input').val();
     searched_user_infos.account_status = $('#filtered_search_account_status_input').val();
-    searched_user_infos.is_search_filtered = true;
+    searched_user_infos.is_search_filtered = 1;
 
 
     //

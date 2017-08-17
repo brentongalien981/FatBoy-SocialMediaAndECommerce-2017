@@ -18,7 +18,7 @@
 
 
 <!--    For filtered search-->
-    <form id="filtered_search_form" class="">
+    <form id="filtered_search_form" class="user_management_form">
         <table>
             <tbody>
 
@@ -112,7 +112,7 @@
 
 
     <!--    For simple search-->
-    <form id="simple_search_form">
+    <form id="simple_search_form" class="user_management_form">
         <table>
 
             <tbody>
@@ -131,24 +131,18 @@
 
 
 <style>
-    #search_users_section * {
-        color: black;
-    }
 
     #filter_search_hr {
         margin-bottom: 40px;
     }
 
-    /*#user_management_search_form {*/
-    .user_management_sections form {
-        /*color: black;*/
-        /*width: 480px;*/
-        /*height: 270px;*/
-        background-color: #2aa198;
-        /*float: left;*/
-    }
+
     
     #filtered_search_form {
         display: none;
+    }
+
+    #search_users_section table {
+        color: black;
     }
 </style>

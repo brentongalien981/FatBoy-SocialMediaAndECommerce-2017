@@ -52,7 +52,7 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
         "user_type" => ["min" => 1, "max" => 2],
         "privacy" => ["min" => 1, "max" => 2],
         "account_status" => ["min" => 1, "max" => 2],
-        "is_search_filtered" => ["min" => 4, "max" => 5]
+        "is_search_filtered" => ["min" => 1, "max" => 2]
     );
 
     $exempted_white_space_field_array = array(

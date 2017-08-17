@@ -36,5 +36,5 @@ var searched_user_infos = {
     user_type: "",
     privacy: "",
     account_status: "",
-    is_search_filtered: true
+    is_search_filtered: 1
 };

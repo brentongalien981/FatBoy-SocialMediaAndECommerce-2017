@@ -221,3 +221,11 @@ div#main_content {
     overflow-y: auto;
     /*background-color: pink;*/
 }
+
+
+#sub_menus_nav a:hover {
+    color: greenyellow;
+    /*color: red;*/
+    cursor: pointer;
+    cursor: hand;
+}

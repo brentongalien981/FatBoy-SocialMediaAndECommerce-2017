@@ -28,6 +28,10 @@
 </div>
 
 
+
+
+
+
 <div class="section user_management_sections">
     <table>
         <thead>
@@ -48,14 +52,16 @@
 </div>
 
 
+
+
+
+
 <style>
     #UsersTable {
         color: black;
     }
 
-    #UsersTable .form_button {
-        margin: 0;
-    }
+
 
     #users_div {
         /*overflow-y: auto;*/
@@ -74,10 +80,6 @@
         background-color: red;
     }
 
-    input.form_button {
-        margin: 0;
-        /*display: block;*/
-    }
 
     #user_info_title {
         /*display: inline;*/

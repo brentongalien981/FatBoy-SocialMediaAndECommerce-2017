@@ -191,6 +191,7 @@ class User
 
     public static function read($data)
     {
+        //uki now
         $query = self::get_query_for_read($data);
 
 
@@ -270,7 +271,7 @@ class User
         $query .= " WHERE user_id LIKE '%{$data['user_id']}%'";
         
         
-        if ($data['is_search_filtered']) {
+        if ($data['is_search_filtered'] == 1) {
             $query .= " AND user_name LIKE '%{$data['user_name']}%'";
             $query .= " AND email LIKE '%{$data['email']}%'";
             $query .= " AND private LIKE '%{$data['privacy']}%'";
