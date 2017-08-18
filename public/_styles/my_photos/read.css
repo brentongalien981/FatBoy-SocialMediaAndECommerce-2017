@@ -1,4 +1,9 @@
-#flickr-container {
+#photos_container {
+    max-height: 690px;
+    overflow-y: auto;
+}
+
+flickr-container {
     background-color: yellow;
     padding: 40px;
 }
@@ -13,7 +18,38 @@
 }
 
 .link-photos {
-    width: 194px;
-    height: 194px;
+    width: 197px;
+    height: 197px;
     /*zoom: 129%;*/
+}
+
+#reference_for_loading_more {
+    width: 200px;
+    height: 1px;
+    background-color: red;
+}
+
+.individual_photo_container {
+    display: inline;
+    background-color: yellow;
+    /*padding: 20px;*/
+    margin-right: 1px;
+    /*padding-bottom: 1px;*/
+    border-bottom: 10px solid white;
+}
+
+.horizontal_divider {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+}
+
+#load_more_button {
+    margin: 0;
+    margin: auto;
+    margin-bottom: 10px;
+    display: block;
+    padding: 10px 20px;
+    font-size: 12px;
+
 }

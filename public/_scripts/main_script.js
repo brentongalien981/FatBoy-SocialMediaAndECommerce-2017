@@ -1,5 +1,5 @@
 function show_flash_notification(x_obj, json) {
-    // TODO:REMINDER: Make the notification more presentable in producation.
+    // TODO:REMINDER: Make the notification more presentable in production.
     if (json == null || !json.is_result_ok) {
         // FAIL on [crud]ing [x]Notification.
         // window.alert("FAIL on " + x_obj.crud_type + "ing " + x_obj.class_name);
@@ -45,6 +45,9 @@ function get_subfolder(class_name) {
             break;
         case "User":
             subfolder = "admin_tools/user_management";
+            break;
+        case "Photo":
+            subfolder = "my_photos";
             break;
         case "zZz":
             break;
@@ -94,6 +97,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "User":
             do_users_after_effects(class_name, crud_type, json, x_obj);
             // window.alert("TODO:METHOD:do_notification_users_after_effects()");
+            break;
+        case "Photo":
+            do_photos_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;
@@ -170,6 +176,7 @@ function my_ajax(x_obj) {
     console.log("url: " + url);
     console.log("key_value_pairs_str: " + key_value_pairs_str);
     console.log("caller_class_name: " + caller_class_name);
+
 
 
 

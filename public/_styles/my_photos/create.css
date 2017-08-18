@@ -3,6 +3,10 @@
     margin-top: 20px;
 }
 
+#add_photo_form {
+    display: none;
+}
+
 .my-form-input {
     width: 100%;
     padding: 10px;

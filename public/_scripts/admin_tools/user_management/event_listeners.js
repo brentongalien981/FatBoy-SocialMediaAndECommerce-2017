@@ -179,7 +179,7 @@ function prepare_load_more_users() {
     var reference_for_loading_more_rel_pos = reference_for_loading_more_bounds.top - users_table_container_bounds.top - users_table_container.scrollTop;
 
 
-    // //
+    // // TODO:LOG
     // console.log("REL POS: " + reference_for_loading_more_rel_pos);
 
 
