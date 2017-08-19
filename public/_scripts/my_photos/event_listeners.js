@@ -48,6 +48,34 @@ photos_container.addEventListener("scroll", function () {
 
 
 
+$('#solo_view_container').click(function () {
+    $(this).css("display", "none");
+});
+
+
+
+
+
+$('#previous-solo-button').click(function (event) {
+    // $('#solo_view_container').css("display", "block");
+    event.stopPropagation();
+    window.alert("z-index: " + $(this).css("zIndex"));
+});
+
+
+
+
+
+$('#next-solo-button').click(function (event) {
+    // $('#solo_view_container').css("display", "block");
+    event.stopPropagation();
+    window.alert("z-index: " + $(this).css("zIndex"));
+});
+
+
+
+
+
 /* Functions */
 // var photos_container_height = photos_container.offsetHeight;
 // var photos_container_bounds = photos_container.getBoundingClientRect();
@@ -78,4 +106,20 @@ function prepare_load_more_photos() {
 
         read_photos();
     }
+}
+
+
+
+
+
+function add_click_listener(individual_container) {
+    $(individual_container).click(function () {
+        // window.alert("a photo is clicked");
+
+
+        // $(window).width();
+        $('#solo_view_container').css("width", $(window).width() + "px");
+        $('#solo_view_container').css("height", $(window).height() + "px");
+        $('#solo_view_container').css("display", "block");
+    });
 }

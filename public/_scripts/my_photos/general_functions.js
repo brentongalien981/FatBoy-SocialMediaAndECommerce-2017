@@ -66,6 +66,9 @@ function populate_photos_container(photos, class_name, crud_type, x_obj) {
 
         // Update the reference_for_loading_more element.
         photos_container.appendChild(reference_for_loading_more);
+
+        // Add event listeners.
+        add_click_listener(individual_container);
     }
 
     // FLAG
