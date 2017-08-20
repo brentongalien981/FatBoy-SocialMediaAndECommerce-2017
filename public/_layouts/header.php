@@ -23,7 +23,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
     <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/_layouts/header.css"; ?>">
 </head>
-<body>
+<body id="the_body">
 <?php // TODO:REMINDER: Display this later. ?>
 <!--<div id="the_spinner_div">-->
 <!--<img id="the_spinner_mg" src="<?php // echo LOCAL . "/public/_photos/loading1.gif";     ?>">-->

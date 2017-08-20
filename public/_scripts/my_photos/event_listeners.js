@@ -4,16 +4,10 @@ $('#add_photo_link').click(function () {
 });
 
 
-
-
-
 $('#cancel_photo_creation_button').click(function () {
     $('#add_photo_form').css("display", "none");
     $('#add_photo_link').css("display", "inline");
 });
-
-
-
 
 
 $('#create_photo_button').click(function () {
@@ -24,18 +18,12 @@ $('#create_photo_button').click(function () {
 });
 
 
-
-
-
 $('#load_more_button').click(function () {
     read_photos();
 
     $(this).css("display", "none");
     is_initial_read_done = true;
 });
-
-
-
 
 
 photos_container.addEventListener("scroll", function () {
@@ -46,15 +34,9 @@ photos_container.addEventListener("scroll", function () {
 });
 
 
-
-
-
 $('#solo_view_container').click(function () {
     $(this).css("display", "none");
 });
-
-
-
 
 
 $('#previous-solo-button').click(function (event) {
@@ -64,9 +46,6 @@ $('#previous-solo-button').click(function (event) {
 });
 
 
-
-
-
 $('#next-solo-button').click(function (event) {
     // $('#solo_view_container').css("display", "block");
     event.stopPropagation();
@@ -74,7 +53,14 @@ $('#next-solo-button').click(function (event) {
 });
 
 
+$(window).resize(function () {
 
+    // if the solo_view_container is visible..
+    if ($('#solo_view_container').css("display") == "block") {
+        set_solo_view_container();
+    }
+
+});
 
 
 /* Functions */
@@ -110,17 +96,38 @@ function prepare_load_more_photos() {
 }
 
 
-
-
-
-function add_click_listener(individual_container) {
-    $(individual_container).click(function () {
+function add_click_listener(img) {
+    $(img).click(function () {
         // window.alert("a photo is clicked");
 
 
-        // $(window).width();
-        $('#solo_view_container').css("width", $(window).width() + "px");
-        $('#solo_view_container').css("height", $(window).height() + "px");
-        $('#solo_view_container').css("display", "block");
+        // Create the <img>
+        var solo_img = document.createElement("img");
+        solo_img.setAttribute("referencing-photo-id", this.id);
+        solo_img.setAttribute("referencing-stack-index", this.getAttribute("stack-index"));
+        solo_img.setAttribute("src", this.src);
+
+        var raw_width = this.getAttribute("raw-width");
+        var raw_height = this.getAttribute("raw-height");
+        var w = raw_width;
+        var h = raw_height;
+
+        if (raw_width > 1100) {
+            var r = raw_width / raw_height;
+            var w = 1100;
+            var h = w / r;
+        }
+
+        solo_img.setAttribute("width", w);
+        solo_img.setAttribute("height", h);
+
+
+        //
+        clear_solo_img_container();
+        solo_img_container.appendChild(solo_img);
+
+        // window.alert("the_body.scrollWidth: " +the_body.scrollWidth);
+
+        set_solo_view_container();
     });
 }

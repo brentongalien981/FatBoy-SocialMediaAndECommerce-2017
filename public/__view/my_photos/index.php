@@ -68,7 +68,7 @@ if (!$session->is_logged_in()) {
 <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/general_functions.js"; ?>"></script>
-<!--    <script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?><!--"></script>-->
+    <script src="<?php echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/create.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/read.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/update.js"; ?>"></script>

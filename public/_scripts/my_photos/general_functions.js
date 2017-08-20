@@ -166,7 +166,11 @@ function display_row_of_photos(photo_embed_codes) {
 
         // Create the <img>
         var an_img = document.createElement("img");
+        an_img.setAttribute("id", p.id);
+        an_img.setAttribute("stack-index", p.stack_index);
         an_img.setAttribute("src", p.src);
+        an_img.setAttribute("raw-width", p.raw_width);
+        an_img.setAttribute("raw-height", p.raw_height);
         an_img.setAttribute("width", w);
         an_img.setAttribute("height", h);
 
@@ -183,7 +187,7 @@ function display_row_of_photos(photo_embed_codes) {
         photos_container.appendChild(individual_container);
 
         // Add event listeners.
-        add_click_listener(individual_container);
+        add_click_listener(an_img);
     }
 
 }
@@ -197,6 +201,7 @@ function display_row_of_photos(photo_embed_codes) {
 
 function get_the_photo(embed_code, max_ref_height) {
 
+    var id = embed_code['id'];
     var href = embed_code['href'];
     var src = embed_code['src'];
     var raw_width = embed_code['width'];
@@ -208,6 +213,8 @@ function get_the_photo(embed_code, max_ref_height) {
 
 
     var a_photo_to_be_displayed = {
+        "id": id,
+        "stack_index": stack_index,
         "href": href,
         "src": src,
         "raw_width": raw_width,
@@ -215,6 +222,8 @@ function get_the_photo(embed_code, max_ref_height) {
         "reference_width": reference_width,
         "reference_height": max_ref_height
     };
+
+    ++stack_index;
 
     //
     return a_photo_to_be_displayed;

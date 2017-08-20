@@ -12,10 +12,10 @@
 
 
                 <td>
-                    <div>
-                        <a data-flickr-embed="true"  href="https://www.flickr.com/photos/151625521@N05/36248325400/in/dateposted-public/" title="jet5">
-                            <img src="https://farm5.staticflickr.com/4352/36248325400_0f035711ef_o.jpg" width="870" height="588" alt="jet5">
-                        </a>
+                    <div id="solo_img_container">
+<!--                        <a data-flickr-embed="true"  href="https://www.flickr.com/photos/151625521@N05/36248325400/in/dateposted-public/" title="jet5">-->
+<!--                            <img src="https://farm5.staticflickr.com/4352/36248325400_0f035711ef_o.jpg" width="870" height="588" alt="jet5">-->
+<!--                        </a>-->
                         <!--            <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
                     </div>
                 </td>
