@@ -9,19 +9,9 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
             populate_photos_container(json.photos, class_name, crud_type, x_obj);
             break;
         case "create":
-            window.alert("TODO: In METHOD: do_photos_after_effects().");
-
-            // // Reset the User Info section's buttons.
-            // create_user_button.style.display = "none";
-            // cancel_creation_button.style.display = "none";
-            // edit_user_button.style.display = "block";
-            // add_user_button.style.visibility = "visible";
             //
-            // //
-            // set_user_info_inputs(DEFAULT);
-            //
-            // //
-            // load_more_users();
+            clear_photos_container();
+            read_photos();
             break;
         case "update":
             //
@@ -33,43 +23,73 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
 }
 
 
+/**
+ * @credt stackoverflow.com
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ * Using Math.round() will give you a non-uniform distribution!
+ */
+function get_random_int(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
+
+/**
+ * Of those photos to be displayed in a row, find which has the largest height.
+ * Set that as the maximum reference height.
+ */
+function get_max_ref_height(photo_embed_codes, num_of_photos) {
+    var max_height = -1;
+    var temp_counter_index = counter_index + num_of_photos;
+
+    for (i = 0; i < num_of_photos; i++) {
+
+        if (photo_embed_codes[temp_counter_index] == null) {
+            break;
+        }
+
+        var embed_code = photo_embed_codes[temp_counter_index];
+        ++temp_counter_index;
+
+        var h = embed_code['height'];
+
+        if (h >= max_height) {
+            max_height = h;
+        }
+    }
+
+    return max_height;
+}
 
 
 function populate_photos_container(photos, class_name, crud_type, x_obj) {
 
     //
-    for (var i = 0; i < photos.length; i++) {
+    for (; counter_index < photos.length; ) {
         var p = photos[i];
 
 
-        // Create a horizontal margin every 5 photos.
-        if ((get_num_of_photos_shown() > 1) &&
-            ((get_num_of_photos_shown() % 5) == 0)) {
-            var horizontal_divider = document.createElement("div");
-            horizontal_divider.classList.add("horizontal_divider");
-            photos_container.appendChild(horizontal_divider);
-
-            ++num_of_horizontal_dividers;
-        }
+        //
+        display_row_of_photos(photos);
 
 
 
-        // Create an individual photo container.
-        var individual_container = document.createElement("div");
-        individual_container.classList.add("individual_photo_container");
-        individual_container.innerHTML = p['embed_code'];
+        // Create a horizontal margin every img row container.
+        // uki
+        var horizontal_divider = document.createElement("div");
+        horizontal_divider.classList.add("horizontal_divider");
+        photos_container.appendChild(horizontal_divider);
+
+        ++num_of_horizontal_dividers;
 
 
-        // Append the photo to the main container.
-        photos_container.appendChild(individual_container);
+
 
         // Update the reference_for_loading_more element.
         photos_container.appendChild(reference_for_loading_more);
-
-        // Add event listeners.
-        add_click_listener(individual_container);
     }
+
+    // Reset the counter_index.
+    counter_index = 0;
 
     // FLAG
     // Set up for the next "load more".
@@ -77,8 +97,143 @@ function populate_photos_container(photos, class_name, crud_type, x_obj) {
 }
 
 
+function display_row_of_photos(photo_embed_codes) {
+    //num_of_photos_in_row
+    var num_of_photos_in_row = get_random_int(2, 4);
+
+    //
+    var max_ref_height = get_max_ref_height(photo_embed_codes, num_of_photos_in_row);
+
+    // array of photos in one row.
+    var photos_to_be_displayed = [];
 
 
+    // Set the attributes of all the photos to be displayed
+    // in the row container
+    for (i = 0; i < num_of_photos_in_row; i++) {
+        // If there's no more available photo_embed_code remaining
+        // in the array, then break off the loop.
+        if (photo_embed_codes[counter_index] == null) {
+            break;
+        }
+
+
+        //uki
+        var a_photo_to_be_displayed = get_the_photo(photo_embed_codes[counter_index], max_ref_height);
+
+
+        //
+        photos_to_be_displayed[i] = a_photo_to_be_displayed;
+
+
+        //
+        ++counter_index;
+    }
+
+
+    // Calculate the total reference width of all the photos.
+    var total_reference_width = 0;
+    for (i = 0; i < photos_to_be_displayed.length; i++) {
+        total_reference_width += photos_to_be_displayed[i].reference_width;
+    }
+
+
+    /*  Display the row images. */
+
+    // Now, all photos in that row container have their raw dimensions.
+    // So calculate the width percentage that each of them consume.
+    for (i = 0; i < photos_to_be_displayed.length; i++) {
+
+        // current photo
+        var p = photos_to_be_displayed[i];
+
+        // current_photo_width_percentage
+        var wp = p.reference_width / total_reference_width;
+
+
+        // Now calculate their dimensions when displayed by multiplying each
+        // width percentage to the width of the row container.
+
+        // width
+        var w = (CONTAINER_WIDTH * wp) - 1;
+
+        // aspect ratio
+        var r = p.raw_width / p.raw_height;
+
+        // height
+        var h = w / r;
+
+
+        // Create the <img>
+        var an_img = document.createElement("img");
+        an_img.setAttribute("src", p.src);
+        an_img.setAttribute("width", w);
+        an_img.setAttribute("height", h);
+
+
+
+        // Create an individual photo container.
+        var individual_container = document.createElement("div");
+        individual_container.classList.add("individual_photo_container");
+        individual_container.appendChild(an_img);
+
+
+
+        // Append the photo to the main container.
+        photos_container.appendChild(individual_container);
+
+        // Add event listeners.
+        add_click_listener(individual_container);
+    }
+
+}
+
+
+
+
+
+
+
+
+function get_the_photo(embed_code, max_ref_height) {
+
+    var href = embed_code['href'];
+    var src = embed_code['src'];
+    var raw_width = embed_code['width'];
+    var raw_height = embed_code['height'];
+
+    // Given the aspect ratio of each photo, calculate their widths at
+    // that maximum reference height.
+    var reference_width = get_reference_width(max_ref_height, raw_width, raw_height);
+
+
+    var a_photo_to_be_displayed = {
+        "href": href,
+        "src": src,
+        "raw_width": raw_width,
+        "raw_height": raw_height,
+        "reference_width": reference_width,
+        "reference_height": max_ref_height
+    };
+
+    //
+    return a_photo_to_be_displayed;
+}
+
+
+/**
+ * // Given the aspect ratio of each photo, calculate their widths at
+ * // that maximum reference height.
+ */
+function get_reference_width(max_ref_height, raw_width, raw_height) {
+    // Aspect ratio
+    var r = raw_width / raw_height;
+
+    var reference_width = r * max_ref_height;
+
+    return reference_width;
+
+}
 
 
 function get_num_of_photos_shown() {

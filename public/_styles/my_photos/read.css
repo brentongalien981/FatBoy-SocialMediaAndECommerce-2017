@@ -4,7 +4,7 @@
 }
 
 flickr-container {
-    background-color: yellow;
+    /*background-color: yellow;*/
     padding: 40px;
 }
 
@@ -31,11 +31,11 @@ flickr-container {
 
 .individual_photo_container {
     display: inline;
-    background-color: yellow;
+    /*background-color: yellow;*/
     /*padding: 20px;*/
     margin-right: 1px;
     /*padding-bottom: 1px;*/
-    border-bottom: 10px solid white;
+    /*border-bottom: 10px solid white;*/
 }
 
 .horizontal_divider {

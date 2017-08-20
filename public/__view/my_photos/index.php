@@ -71,8 +71,8 @@ if (!$session->is_logged_in()) {
 <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/create.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/read.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/update.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/my_photos/update.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/my_photos/delete.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/Photo.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/my_photos/event_listeners.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/tasks.js"; ?>"></script>

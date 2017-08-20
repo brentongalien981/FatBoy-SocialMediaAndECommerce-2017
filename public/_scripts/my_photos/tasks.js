@@ -1,1 +1,1 @@
-// read_photos();
+read_photos();

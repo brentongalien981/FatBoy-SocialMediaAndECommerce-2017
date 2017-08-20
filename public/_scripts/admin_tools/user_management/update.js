@@ -2,7 +2,7 @@ function update_user() {
     window.alert("TODO: METHOD: update_user()");
     return;
 
-    var crud_type = "create";
+    var crud_type = "update";
     var request_type = "POST";
     var key_value_pairs = {
         create: "yes",

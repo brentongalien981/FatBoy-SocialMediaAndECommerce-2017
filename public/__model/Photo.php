@@ -67,7 +67,7 @@ class Photo
         $limit = 20;
 
         $query = "SELECT * FROM " . self::$table_name;
-        $query .= " WHERE user_id = {$session->actual_user_id}";
+        $query .= " WHERE user_id = {$session->currently_viewed_user_id}";
         $query .= " ORDER BY id DESC";
 
         $query .= " LIMIT {$limit} OFFSET {$d['offset']}";
@@ -116,7 +116,10 @@ class Photo
                 "id" => $row['id'],
                 "user_id" => $row['user_id'],
                 "photo_title" => $row['title'],
-                "embed_code" => $row['embed_code'],
+                "href" => $row['href'],
+                "src" => $row['src'],
+                "width" => $row['width'],
+                "height" => $row['height'],
                 "created_at" => $row['created_at'],
                 "updated_at" => $row['updated_at']
             );

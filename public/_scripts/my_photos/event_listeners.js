@@ -31,6 +31,7 @@ $('#load_more_button').click(function () {
     read_photos();
 
     $(this).css("display", "none");
+    is_initial_read_done = true;
 });
 
 
@@ -95,10 +96,10 @@ function prepare_load_more_photos() {
 
 
     //
-    if (get_num_of_photos_shown() > 20 &&
-        reference_for_loading_more_rel_pos <= 800) {
+    if (is_initial_read_done &&
+        reference_for_loading_more_rel_pos <= 1400) {
         console.log("**********************************");
-        console.log("NUM_OF_PHOTOS > 20 && REFERENCE is <= 800");
+        console.log("NUM_OF_PHOTOS > initial_num_of_photos_shown && REFERENCE is <= 1400");
         console.log("**********************************");
         // return;
         // users_container_section += 1;
