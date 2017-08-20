@@ -12,12 +12,15 @@ namespace App\Publico\Model;
 class Photo
 {
     protected static $table_name = "Photos";
-    protected static $db_fields = array("id", "user_id", "title", "embed_code");
+    protected static $db_fields = array("id", "user_id", "title", "href", "src", "width", "height");
     public static $searchable_fields = array("title");
     public $id;
     public $user_id;
     public $title;
-    public $embed_code;
+    public $href;
+    public $src;
+    public $width;
+    public $height;
 
 
 

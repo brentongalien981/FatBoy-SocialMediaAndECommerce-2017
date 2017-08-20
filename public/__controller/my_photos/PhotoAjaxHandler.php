@@ -88,7 +88,7 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
     $allowed_assoc_indexes = array("photo_title", "embed_code");
     $required_vars_length_array = array(
         "photo_title" => ["min" => 5, "max" => 255],
-        "embed_code" => ["min" => 5, "max" => 2048]
+        "embed_code" => ["min" => 5, "max" => 4096]
     );
 
 
