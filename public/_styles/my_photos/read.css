@@ -11,7 +11,7 @@ flickr-container {
 .flickr-photo-cover {
     background-color: rgba(244, 146, 66, 0.5);
     width: 240px;
-    height: 180px;
+    height: 1220px;
     position: absolute;
     /*top: 0px;*/
     /*left: 0px;*/
@@ -56,7 +56,7 @@ flickr-container {
 
 #solo_view_container {
     position: absolute;
-    background-color: rgba(100, 100, 100, 0.8);
+    background-color: rgba(20, 20, 20, 0.9);
     top: 0px;
     left: 0px;
     /*width: 1000px;*/
@@ -66,26 +66,40 @@ flickr-container {
 
 #solo_view_container table {
     margin: auto;
-    margin-top: 140px;
-    margin-bottom: 40px;
+    margin-top: 100px;
+    margin-bottom: 20px;
  }
 
+#solo_view_container table td {
+    vertical-align: top;
+}
+
+#solo_img_container {
+    width: 1100px;
+    /*margin: auto;*/
+    text-align: center;
+}
+
+.individual_photo_container img:hover {
+    cursor: pointer;
+}
+
 .solo_buttons {
-    background-color: rgb(80, 80, 80);
-    padding: 50px 20px;
-    border-radius: 5px;
+    background-color: rgba(60, 60, 60, 0.7);
+    padding: 50px 40px;
+    border-radius: 3px;
     z-index: 5;
 }
 
 #previous-solo-button {
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
 #next-solo-button {
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 .solo_buttons:hover {
-    background-color: rgb(100, 100, 100);
+    background-color: rgba(70, 70, 70, 1.0);
     cursor: pointer;
 }

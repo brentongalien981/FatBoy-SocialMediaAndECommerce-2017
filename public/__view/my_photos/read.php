@@ -1,12 +1,12 @@
 <div id="solo_view_container">
-    <table>
+    <table id="solo_table">
         <tbody>
             <tr>
 
 
                 <td>
                     <div id="previous-solo-button" class="solo_buttons">
-                        <i class="fa fa-chevron-left" style="font-size:48px"></i>
+                        <i class="fa fa-angle-left" style="font-size:48px"></i>
                     </div>
                 </td>
 
@@ -23,7 +23,7 @@
 
                 <td>
                     <div id="next-solo-button" class="solo_buttons">
-                        <i class="fa fa-chevron-right" style="font-size:48px"></i>
+                        <i class="fa fa-angle-right" style="font-size:48px"></i>
                     </div>
                 </td>
 

@@ -8,6 +8,25 @@ function set_solo_view_container() {
     $('#solo_view_container').css("height", the_body.scrollHeight + "px");
 
     $('#solo_view_container').css("display", "block");
+
+    // set_solo_view_buttons();
+}
+
+
+
+
+
+function set_solo_view_buttons() {
+    var buttons = document.getElementsByClassName("solo_buttons");
+    var solo_table = document.getElementById("solo_table");
+
+    // padding
+    var p = solo_table.scrollHeight / 2;
+
+    for (i = 0; i < buttons.length; i++) {
+        $(buttons[i]).css("padding-top", p + "px");
+        $(buttons[i]).css("padding-bottom", p + "px");
+    }
 }
 
 
@@ -52,15 +71,33 @@ function show_solo_img(referenced_img) {
     solo_img.setAttribute("referencing-stack-index", referenced_img.getAttribute("stack-index"));
     solo_img.setAttribute("src", referenced_img.src);
 
-    var raw_width = referenced_img.getAttribute("raw-width");
-    var raw_height = referenced_img.getAttribute("raw-height");
+    var raw_width = parseInt(referenced_img.getAttribute("raw-width"));
+    var raw_height = parseInt(referenced_img.getAttribute("raw-height"));
     var w = raw_width;
     var h = raw_height;
 
-    if (raw_width > 1100) {
+    // If both dimension are too big
+    if (raw_width >= 1100 && raw_height >= 900) {
+        if (raw_width > raw_height) {
+            var r = raw_width / raw_height;
+            var w = 1100;
+            var h = w / r;
+        }
+        else {
+            var r = raw_width / raw_height;
+            var h = 900;
+            var w = h * r;
+        }
+    }
+    else if (raw_width > 1100) {
         var r = raw_width / raw_height;
         var w = 1100;
         var h = w / r;
+    }
+    else if (raw_height > 900) {
+        var r = raw_width / raw_height;
+        var h = 900;
+        var w = h * r;
     }
 
     solo_img.setAttribute("width", w);
