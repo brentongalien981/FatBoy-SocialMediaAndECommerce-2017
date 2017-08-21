@@ -40,16 +40,36 @@ $('#solo_view_container').click(function () {
 
 
 $('#previous-solo-button').click(function (event) {
-    // $('#solo_view_container').css("display", "block");
+
     event.stopPropagation();
-    window.alert("z-index: " + $(this).css("zIndex"));
+
+    //
+    var old_solo_img = solo_img_container.childNodes[0];
+    var old_stack_index = old_solo_img.getAttribute("referencing-stack-index");
+
+    // New referenced img.
+    var referenced_img = get_referenced_img(old_stack_index, "previous")[0];
+
+
+    //
+    show_solo_img(referenced_img);
+
 });
 
 
 $('#next-solo-button').click(function (event) {
-    // $('#solo_view_container').css("display", "block");
     event.stopPropagation();
-    window.alert("z-index: " + $(this).css("zIndex"));
+
+    //
+    var old_solo_img = solo_img_container.childNodes[0];
+    var old_stack_index = old_solo_img.getAttribute("referencing-stack-index");
+
+    // New referenced img.
+    var referenced_img = get_referenced_img(old_stack_index, "next")[0];
+
+
+    //
+    show_solo_img(referenced_img);
 });
 
 
@@ -98,36 +118,6 @@ function prepare_load_more_photos() {
 
 function add_click_listener(img) {
     $(img).click(function () {
-        // window.alert("a photo is clicked");
-
-
-        // Create the <img>
-        var solo_img = document.createElement("img");
-        solo_img.setAttribute("referencing-photo-id", this.id);
-        solo_img.setAttribute("referencing-stack-index", this.getAttribute("stack-index"));
-        solo_img.setAttribute("src", this.src);
-
-        var raw_width = this.getAttribute("raw-width");
-        var raw_height = this.getAttribute("raw-height");
-        var w = raw_width;
-        var h = raw_height;
-
-        if (raw_width > 1100) {
-            var r = raw_width / raw_height;
-            var w = 1100;
-            var h = w / r;
-        }
-
-        solo_img.setAttribute("width", w);
-        solo_img.setAttribute("height", h);
-
-
-        //
-        clear_solo_img_container();
-        solo_img_container.appendChild(solo_img);
-
-        // window.alert("the_body.scrollWidth: " +the_body.scrollWidth);
-
-        set_solo_view_container();
+        show_solo_img(this);
     });
 }

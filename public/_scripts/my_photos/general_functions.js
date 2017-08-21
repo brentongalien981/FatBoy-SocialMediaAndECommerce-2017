@@ -201,7 +201,7 @@ function display_row_of_photos(photo_embed_codes) {
 
 function get_the_photo(embed_code, max_ref_height) {
 
-    var id = embed_code['id'];
+    var id = "photo" + embed_code['id'];
     var href = embed_code['href'];
     var src = embed_code['src'];
     var raw_width = embed_code['width'];
