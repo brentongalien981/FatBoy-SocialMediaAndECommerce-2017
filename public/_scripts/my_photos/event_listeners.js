@@ -35,6 +35,7 @@ photos_container.addEventListener("scroll", function () {
 
 
 $('#solo_view_container').click(function () {
+
     $(this).css("display", "none");
 });
 
@@ -44,7 +45,7 @@ $('#previous-solo-button').click(function (event) {
     event.stopPropagation();
 
     //
-    var old_solo_img = solo_img_container.childNodes[0];
+    var old_solo_img = solo_img_container.childNodes[0].childNodes[0];
     var old_stack_index = old_solo_img.getAttribute("referencing-stack-index");
 
     // New referenced img.
@@ -54,6 +55,7 @@ $('#previous-solo-button').click(function (event) {
     //
     show_solo_img(referenced_img);
 
+    // add_listener_to_solo_link_holder();
 });
 
 
@@ -61,7 +63,7 @@ $('#next-solo-button').click(function (event) {
     event.stopPropagation();
 
     //
-    var old_solo_img = solo_img_container.childNodes[0];
+    var old_solo_img = solo_img_container.childNodes[0].childNodes[0];
     var old_stack_index = old_solo_img.getAttribute("referencing-stack-index");
 
     // New referenced img.
@@ -70,6 +72,8 @@ $('#next-solo-button').click(function (event) {
 
     //
     show_solo_img(referenced_img);
+
+    // add_listener_to_solo_link_holder();
 });
 
 
@@ -80,6 +84,15 @@ $(window).resize(function () {
         set_solo_view_container();
     }
 
+});
+
+
+$(document).mousemove(function (e) {
+
+    if (e.pageY >= top && e.pageY <= bottom && e.pageX >= left && e.pageX <= right)
+        $pos.addClass("hover");
+    else
+        $pos.removeClass("hover");
 });
 
 
@@ -119,5 +132,56 @@ function prepare_load_more_photos() {
 function add_click_listener(img) {
     $(img).click(function () {
         show_solo_img(this);
+        // add_listener_to_solo_link_holder();
+    });
+}
+
+
+// @deprecated
+function add_mouse_listeners(an_img) {
+
+}
+
+
+function add_mouseleave_listener(an_img) {
+    // $(an_img).mouseleave(function (event) {
+    //     // event.stopPropagation();
+    //
+    //     var the_caption = an_img.parentElement.childNodes[0];
+    //     remove_caption(the_caption);
+    // });
+
+    $(an_img).mouseout(function (event) {
+        // event.stopPropagation();
+        // event.stopImmediatePropagation();
+
+        var the_caption = an_img.parentElement.childNodes[0];
+
+
+        // remove_caption(the_caption);
+        is_mouse_on_photo = false;
+        hovered_caption = the_caption;
+    });
+}
+
+
+
+
+function add_mouseenter_listener(an_img) {
+
+    $(an_img).mouseenter(function (event) {
+        // event.stopPropagation();
+        // event.stopImmediatePropagation();
+        is_mouse_on_photo = true;
+        hovered_img = this;
+        // show_caption(this);
+    });
+
+    $(an_img).mouseover(function (event) {
+        // event.stopPropagation();
+        // event.stopImmediatePropagation();
+        is_mouse_on_photo = true;
+        hovered_img = this;
+        // show_caption(this);
     });
 }

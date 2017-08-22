@@ -47,9 +47,9 @@ if (!$session->is_logged_in()) {
     </div>
 
     <?php
-    // TODO:SECTION:LOG
-    MyDebugMessenger::show_debug_message();
-    MyDebugMessenger::clear_debug_message();
+//     TODO:SECTION:LOG
+//    MyDebugMessenger::show_debug_message();
+//    MyDebugMessenger::clear_debug_message();
     ?>
 </main>
 

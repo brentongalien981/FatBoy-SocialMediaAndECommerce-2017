@@ -64,13 +64,12 @@ function get_max_ref_height(photo_embed_codes, num_of_photos) {
 function populate_photos_container(photos, class_name, crud_type, x_obj) {
 
     //
-    for (; counter_index < photos.length; ) {
+    for (; counter_index < photos.length;) {
         var p = photos[i];
 
 
         //
         display_row_of_photos(photos);
-
 
 
         // Create a horizontal margin every img row container.
@@ -80,8 +79,6 @@ function populate_photos_container(photos, class_name, crud_type, x_obj) {
         photos_container.appendChild(horizontal_divider);
 
         ++num_of_horizontal_dividers;
-
-
 
 
         // Update the reference_for_loading_more element.
@@ -167,6 +164,7 @@ function display_row_of_photos(photo_embed_codes) {
         // Create the <img>
         var an_img = document.createElement("img");
         an_img.setAttribute("id", p.id);
+        an_img.setAttribute("alt", p.title);
         an_img.setAttribute("stack-index", p.stack_index);
         an_img.setAttribute("src", p.src);
         an_img.setAttribute("raw-width", p.raw_width);
@@ -174,13 +172,18 @@ function display_row_of_photos(photo_embed_codes) {
         an_img.setAttribute("width", w);
         an_img.setAttribute("height", h);
 
+        // an_img.setAttribute("for-data-flickr-embed", "true");
+        an_img.setAttribute("for-href", p.href);
 
 
         // Create an individual photo container.
         var individual_container = document.createElement("div");
+        individual_container.setAttribute("title", p.title);
         individual_container.classList.add("individual_photo_container");
-        individual_container.appendChild(an_img);
 
+        // var caption = get_caption(w, h);
+        // individual_container.appendChild(caption);
+        individual_container.appendChild(an_img);
 
 
         // Append the photo to the main container.
@@ -188,20 +191,216 @@ function display_row_of_photos(photo_embed_codes) {
 
         // Add event listeners.
         add_click_listener(an_img);
+        // add_mouse_listeners(an_img);
+        add_mouseenter_listener(an_img);
+        add_mouseleave_listener(an_img);
     }
 
 }
 
 
+// With no timeout handler.
+function show_caption_old(the_img) {
+    console.log("****************************************");
+    console.log("PUTANG EVENT: mouseenter");
+    console.log("****************************************");
+
+    // If there's already a caption..
+    var caption = the_img.parentElement.childNodes[0];
+    if (caption.classList.contains("captions")) {
+        return;
+    }
+
+    //
+    var w = the_img.getAttribute("width");
+    var h = the_img.getAttribute("height");
+
+
+    var caption = get_caption(w, h, the_img);
+    the_img.parentElement.insertBefore(caption, the_img);
+
+
+    //
+    //
+    $(caption).mouseenter(function (event) {
+        // event.stopPropagation();
+        // event.stopImmediatePropagation();
+        // var the_img = this.parentElement.childNodes[1];
+
+        // show_caption(the_img);
+        is_mouse_on_photo = true;
+        hovered_img = the_img;
+    });
+
+    $(caption).mouseover(function (event) {
+        // event.stopImmediatePropagation();
+        // show_caption(the_img);
+        is_mouse_on_photo = true;
+        hovered_img = the_img;
+    });
 
 
 
+    // $(caption).mouseleave(function (event) {
+    //     // event.stopPropagation();
+    //
+    //     // var the_img = this.parentElement.childNodes[1];
+    //
+    //     remove_caption(this);
+    // });
 
+    $(caption).mouseout(function (event) {
+        // remove_caption(this);
+        is_mouse_on_photo = false;
+        hovered_caption = this;
+    });
+}
+
+function show_caption(the_img) {
+    if (the_img == null) {
+        return;
+    }
+
+    // Only discontinue the removal of an img's caption
+    // if you're hovering the same img.
+    if (just_previously_hovered_img_id == the_img.id) {
+        clearTimeout(individual_img_mouseout_handler);
+    }
+
+
+    //
+    individual_img_mouseover_handler = setTimeout(function () {
+
+        // If there's already a caption..
+        var old_caption = the_img.parentElement.childNodes[0];
+        if (old_caption.classList.contains("captions")) {
+            return;
+        }
+
+
+        //
+        just_previously_hovered_img_id = the_img.id;
+
+        //
+        var w = the_img.getAttribute("width");
+        var h = the_img.getAttribute("height");
+
+        // var top = $(the_img).css("top");
+
+
+        var caption = get_caption(w, h, the_img);
+        the_img.parentElement.insertBefore(caption, the_img);
+    }, 50);
+}
+
+
+function retain_caption(caption) {
+
+    var the_img = caption.parentElement.childNodes[1];
+
+    if (the_img == null) {
+        return;
+    }
+
+    // Only discontinue the removal of an img's caption
+    // if you're hovering the same img.
+    if (just_previously_hovered_img_id == the_img.id) {
+        clearTimeout(individual_img_mouseout_handler);
+    }
+
+
+    //
+    individual_img_mouseover_handler = setTimeout(function () {
+
+        // If there's already a caption..
+        var old_caption = the_img.parentElement.childNodes[0];
+        if (old_caption.classList.contains("captions")) {
+            return;
+        }
+
+
+        //
+        just_previously_hovered_img_id = the_img.id;
+
+        //
+        var w = the_img.getAttribute("width");
+        var h = the_img.getAttribute("height");
+
+        // var top = $(the_img).css("top");
+
+
+        var caption = get_caption(w, h, the_img);
+        the_img.parentElement.insertBefore(caption, the_img);
+    }, 10);
+}
+
+function remove_caption(the_caption) {
+    console.log("****************************************");
+    console.log("PUTANG EVENT: mouseleave");
+    console.log("****************************************");
+
+    // if (individual_img_mouseout_handler != null) { return; }
+    if (the_caption == null) {
+        return;
+    }
+
+    //
+    if (!the_caption.classList.contains("captions")) {
+        return;
+    }
+
+
+    // return;
+
+    //
+    individual_img_mouseout_handler = setTimeout(function () {
+
+        //
+        // var caption = the_caption.parentElement.childNodes[0];
+
+        // if the caption is non-existent, just return.
+        // if (caption == null) { return; }
+        // if (!caption.classList.contains("captions")) { return; }
+
+        //
+        clearTimeout(individual_img_mouseover_handler);
+
+        var parent = the_caption.parentElement;
+        if (parent == null) { return; }
+
+        parent.removeChild(the_caption);
+    }, 300);
+}
+
+function remove_caption_old(the_img) {
+    // if (individual_img_mouseout_handler != null) { return; }
+
+    //
+    individual_img_mouseout_handler = setTimeout(function () {
+
+        //
+        var caption = the_img.parentElement.childNodes[0];
+
+        // if the caption is non-existent, just return.
+        if (!caption.classList.contains("captions")) {
+            return;
+        }
+
+        //
+        // clearTimeout(individual_img_mouseover_handler);
+
+        console.log("MOUSEOUT");
+
+        the_img.parentElement.removeChild(caption);
+        console.log("CAPTION REMOVED");
+    }, 200);
+}
 
 
 function get_the_photo(embed_code, max_ref_height) {
 
     var id = "photo" + embed_code['id'];
+    var title = embed_code['photo_title'];
     var href = embed_code['href'];
     var src = embed_code['src'];
     var raw_width = embed_code['width'];
@@ -214,6 +413,7 @@ function get_the_photo(embed_code, max_ref_height) {
 
     var a_photo_to_be_displayed = {
         "id": id,
+        "title": title,
         "stack_index": stack_index,
         "href": href,
         "src": src,

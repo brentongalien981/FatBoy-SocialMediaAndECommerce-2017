@@ -9,7 +9,20 @@ function set_solo_view_container() {
 
     $('#solo_view_container').css("display", "block");
 
+    add_listener_to_solo_link_holder();
+
     // set_solo_view_buttons();
+}
+
+
+
+
+
+function add_listener_to_solo_link_holder() {
+    $('#link_holder').click(function (event) {
+        event.stopPropagation();
+    });
+
 }
 
 
@@ -106,9 +119,38 @@ function show_solo_img(referenced_img) {
 
     //
     clear_solo_img_container();
-    solo_img_container.appendChild(solo_img);
+
+    // link holder for the img
+    var link_holder = document.createElement("a");
+    link_holder.classList.add("solo_link_holder");
+    link_holder.id = "link_holder";
+    link_holder.setAttribute("href", referenced_img.getAttribute("for-href"));
+    link_holder.setAttribute("data-flickr-embed", "true");
+    link_holder.setAttribute("target", "_blank");
+
+    link_holder.appendChild(solo_img);
+
+    solo_img_container.appendChild(link_holder);
+
+    // solo_img_container.innerHTML += "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\"></script>";
 
     // window.alert("the_body.scrollWidth: " +the_body.scrollWidth);
 
     set_solo_view_container();
 }
+
+
+
+function get_absolute_pos(element) {
+    var top = 0, left = 0;
+    do {
+        top += element.offsetTop  || 0;
+        left += element.offsetLeft || 0;
+        element = element.offsetParent;
+    } while(element);
+
+    return {
+        top: top,
+        left: left
+    };
+};

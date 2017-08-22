@@ -9,3 +9,7 @@
 #right {
     display: none;
 }
+
+#main_content {
+    background-color: black;
+}

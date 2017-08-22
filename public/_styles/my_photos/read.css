@@ -1,6 +1,42 @@
 #photos_container {
-    max-height: 690px;
+    max-height: 750px;
     overflow-y: auto;
+    background-color: black;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+#add_photo_form {
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    border: 1px solid rgb(100, 100, 100);
+    margin-top: 30px;
+}
+
+#add_photo_form .form_button {
+    box-shadow: none;
+    color: white;
+}
+
+#add_photo_form .form_button:hover {
+    /*box-shadow: none;*/
+    background-color: rgb(100, 100, 100);
+    color: white;
+}
+
+#add_photo_form h5 {
+    color: white;
+}
+
+#add_photo_form input {
+    background-color: rgb(50, 50, 50);
+    color: rgb(200, 200, 200);
+}
+
+#add_photo_form textarea {
+    background-color: rgb(50, 50, 50);
+    color: rgb(200, 200, 200);
 }
 
 flickr-container {
@@ -41,7 +77,7 @@ flickr-container {
 .horizontal_divider {
     width: 100%;
     height: 1px;
-    background-color: white;
+    background-color: black;
 }
 
 #load_more_button {
@@ -102,4 +138,23 @@ flickr-container {
 .solo_buttons:hover {
     background-color: rgba(70, 70, 70, 1.0);
     cursor: pointer;
+}
+
+.captions {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    position: absolute;
+    display: inline;
+    background-color: rgba(244, 66, 98, 0.8);
+    z-index: 5;
+}
+
+.sample_inner_caption {
+    height: 50%;
+    background-color: yellowgreen;
+    /*opacity: 0.1;*/
+}
+
+.captions:hover {
+    display: none;
 }
