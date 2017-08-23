@@ -80,6 +80,12 @@ function get_caption(w, h, the_img) {
     $(caption).css("top", caption_top);
 
 
+    // TODO:DEBUG
+    return caption;
+
+
+
+
     console.log("*****************************");
 
     console.log("img's top: " + img_pos.top);
@@ -137,22 +143,52 @@ function get_caption(w, h, the_img) {
     return caption;
 }
 
+function get_caption2(w, h, the_img) {
+    var caption = document.createElement("div");
+    caption.classList.add("captions");
+    $(caption).css("width", w + "px");
+    $(caption).css("height", h + "px");
+    // caption.innerHTML = "ptuaosdlfj;lasjfd:";
+    
+    caption.appendChild(get_caption_content(h));
 
+    $(caption).css("margin-top", "-" + h + "px");
+
+    return caption;
+}
+
+function get_caption_content2(w, h) {
+    var content = document.createElement("div");
+    // content.classList.add("contents");
+    $(content).css("width", w + "px");
+    $(content).css("height", h + "px");
+    $(content).css("display","block");
+    $(content).css("background-color","pink");
+    return content;
+}
 
 function get_caption_content(h) {
-    var content = null;
+    content = document.createElement("div");
+    // content.classList.add("sample_inner_caption");
+    content.innerHTML = "<i class=\"fa fa-gears my-photo-icons\" style=\"font-size:24px\">";
 
-    if (h >= 36) {
-        content = document.createElement("div");
-        content.classList.add("sample_inner_caption");
-        content.innerHTML = "<i class=\"fa fa-gears my-photo-icons\" style=\"font-size:24px\"></i>";
-    }
-    else {
-        content = document.createElement("div");
-        content.classList.add("sample_inner_caption");
-    }
+    $(content).click(function () {
+        window.alert("edit clicked");
+    });
+    // content.innerHTML = "shit";
 
-    $(content).height(h);
+    // if (h >= 36) {
+    //     content = document.createElement("div");
+    //     content.classList.add("sample_inner_caption");
+    //     // content.innerHTML = "<a href='#'></a><i class=\"fa fa-gears my-photo-icons\" style=\"font-size:24px\"></i></a>";
+    //     content.innerHTML = "shit";
+    // }
+    // else {
+    //     content = document.createElement("div");
+    //     content.classList.add("sample_inner_caption");
+    // }
+    //
+    // $(content).height(h);
 
     return content;
 }

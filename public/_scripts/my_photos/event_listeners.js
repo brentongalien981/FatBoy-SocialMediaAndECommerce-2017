@@ -124,10 +124,8 @@ function prepare_load_more_photos() {
 // }
 
 
-// @deprecated
-function add_mouse_listeners(an_img) {
 
-}
+
 
 
 function add_mouseleave_listener(an_img) {
@@ -148,6 +146,7 @@ function add_mouseleave_listener(an_img) {
 
 
         remove_caption(the_caption);
+        remove_icons(the_caption);
         // is_mouse_on_photo = false;
         // hovered_caption = the_caption;
     });

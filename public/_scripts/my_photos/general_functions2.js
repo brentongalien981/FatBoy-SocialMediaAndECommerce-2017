@@ -192,3 +192,11 @@ function reset_captions() {
     // caption_removal_counter = 0;
     console.log("****************************************");
 }
+
+function remove_icons(the_caption) {
+    var icon = the_caption.parentElement.childNodes[2];
+
+    if (icon == null) { return; }
+
+    $(icon).remove();
+}
