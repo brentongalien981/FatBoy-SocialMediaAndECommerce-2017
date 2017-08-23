@@ -154,6 +154,11 @@ function get_caption2(w, h, the_img) {
 
     $(caption).css("margin-top", "-" + h + "px");
 
+
+    //
+    // $(caption).cl
+    //uki
+
     return caption;
 }
 
@@ -169,10 +174,12 @@ function get_caption_content2(w, h) {
 
 function get_caption_content(h) {
     content = document.createElement("div");
-    // content.classList.add("sample_inner_caption");
-    content.innerHTML = "<i class=\"fa fa-gears my-photo-icons\" style=\"font-size:24px\">";
+    content.classList.add("caption_action_bar");
+    content.innerHTML = "<i class=\"fa fa-sliders my-photo-icons my-photo-icons-edit\" style=\"font-size:20px\">";
 
-    $(content).click(function () {
+    content.innerHTML += "<i class=\"fa fa-trash my-photo-icons my-photo-icons-delete\" style=\"font-size:20px\"></i>";
+
+        $(content).click(function () {
         window.alert("edit clicked");
     });
     // content.innerHTML = "shit";

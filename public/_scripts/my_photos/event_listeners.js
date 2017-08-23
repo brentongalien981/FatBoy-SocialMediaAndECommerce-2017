@@ -123,6 +123,19 @@ function prepare_load_more_photos() {
 //     });
 // }
 
+function add_click_listener_to_caption(caption) {
+
+    $(caption).click(function () {
+
+        var the_img = caption.parentElement.childNodes[0];
+
+        if (the_img != null &&
+            $(the_img).is("img")) {
+            show_solo_img(the_img);
+        }
+    });
+}
+
 
 
 

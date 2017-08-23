@@ -80,6 +80,7 @@ function show_solo_img(referenced_img) {
 
     // Create the new solo img.
     var solo_img = document.createElement("img");
+    // solo_img.classList.add("solo_imgs");
     solo_img.setAttribute("referencing-photo-id", referenced_img.id);
     solo_img.setAttribute("referencing-stack-index", referenced_img.getAttribute("stack-index"));
     solo_img.setAttribute("src", referenced_img.src);
@@ -137,6 +138,11 @@ function show_solo_img(referenced_img) {
     // window.alert("the_body.scrollWidth: " +the_body.scrollWidth);
 
     set_solo_view_container();
+
+
+//     $(solo_img).mouseover(function (event) {
+//         event.stopPropagation();
+//     });
 }
 
 

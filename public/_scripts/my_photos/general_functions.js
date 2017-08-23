@@ -191,14 +191,30 @@ function display_row_of_photos(photo_embed_codes) {
         individual_container.appendChild(caption);
 
 
+
+
         // Append the photo to the main container.
         photos_container.appendChild(individual_container);
 
         // Add event listeners.
-        // add_click_listener(an_img);
+        add_click_listener_to_caption(caption);
         // add_mouse_listeners(an_img);
         // add_mouseenter_listener(an_img);
         // add_mouseleave_listener(an_img);
+
+        // $(caption).click(function () {
+        //     var the_img = caption.parentElement.childNodes[0];
+        //
+        //     if (the_img != null &&
+        //         $(the_img).is("img") &&
+        //         the_img.id == an_img.id) {
+        //         show_solo_img(the_img);
+        //     }
+        //
+        //     // show_solo_img(an_img);
+        //
+        //
+        // });
     }
 
 }

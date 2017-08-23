@@ -92,6 +92,7 @@ flickr-container {
 
 #solo_view_container {
     position: absolute;
+    z-index: 20;
     background-color: rgba(20, 20, 20, 0.9);
     top: 0px;
     left: 0px;
@@ -114,6 +115,10 @@ flickr-container {
     width: 1100px;
     /*margin: auto;*/
     text-align: center;
+}
+
+.solo_imgs {
+    /*pointer-events: none;*/
 }
 
 .individual_photo_container img {
@@ -161,10 +166,16 @@ flickr-container {
 }
 
 .captions:hover {
-    /*cursor: pointer;*/
+    cursor: pointer;
     /*cursor: hand;*/
     /*display: inline;*/
     opacity: 1;
+}
+
+.caption_action_bar {
+    background-color: rgba(255, 196, 119, 0.2);
+    /*display: block;*/
+    /*width: 24px;*/
 }
 
 .sample_inner_caption {
@@ -181,11 +192,24 @@ flickr-container {
 }
 
 .my-photo-icons {
-    margin: 10px;
+    margin: 3px;
+    margin-right: 0px;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 3px;
     /*pointer-events: unset;*/
 }
 
 .my-photo-icons:hover {
-    color: rgb(169, 252, 113);
     cursor: pointer;
+    /*background-color: rgb(80, 80, 80);*/
+}
+
+.my-photo-icons-edit:hover {
+    color: rgb(169, 252, 113);
+
+}
+
+.my-photo-icons-delete:hover {
+    color: red;
 }
