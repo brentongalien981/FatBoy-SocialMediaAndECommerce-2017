@@ -116,8 +116,13 @@ flickr-container {
     text-align: center;
 }
 
+.individual_photo_container img {
+    display: inline;
+}
+
 .individual_photo_container img:hover {
     cursor: pointer;
+    /*pointer-events: none;*/
 }
 
 .solo_buttons {
@@ -145,14 +150,31 @@ flickr-container {
     /*height: 100%;*/
     position: absolute;
     display: inline;
-    background-color: rgba(244, 66, 98, 0.8);
-    z-index: 5;
+
+    pointer-events: none;
+    /*z-index: 5;*/
+    /*background-color: yellow;*/
+}
+
+.captions:hover {
+    cursor: pointer;
+    /*cursor: hand;*/
 }
 
 .sample_inner_caption {
-    height: 50%;
-    background-color: yellowgreen;
+    /*height: 50%;*/
+    background-color: rgba(255, 196, 119, 0.3);
+    /*padding: 3px 0px;*/
+    /*padding-bottom: 0;*/
+    display: block;
+    position: static;
+    /*height: 24px;*/
+    /*max-height: 36px;*/
     /*opacity: 0.1;*/
+}
+
+.my-photo-icons {
+    margin: 10px;
 }
 
 .captions:hover {

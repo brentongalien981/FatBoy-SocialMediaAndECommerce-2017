@@ -39,6 +39,7 @@ function read_photos() {
 
 
 function get_caption(w, h, the_img) {
+    var raw_img_h = h;
     var img_pos = get_absolute_pos(the_img);
     // var caption_top = parseInt(img_pos.top) - parseInt(photos_container.scrollTop);// - parseInt($('#the_body').scrollTop());
     var img_abs_top = parseInt(img_pos.top) - parseInt(photos_container.scrollTop);// - parseInt($('#the_body').scrollTop());
@@ -60,6 +61,15 @@ function get_caption(w, h, the_img) {
     //     h = temp_h;
     // }
 
+    var raw_caption_height = h + chunk;
+
+    // This is if the photo caption is being clipped by the bottom
+    // part of the photos_container..
+    var photos_container_height = parseInt($('#photos_container').height()) + 60;
+    if (photos_container_height < raw_caption_height) {
+        h = h - (raw_caption_height - photos_container_height);
+    }
+
     // var caption_top = img_abs_top + (top_offset - img_abs_top);
     var caption_top = img_abs_top + (top_offset - img_abs_top) + chunk;
 
@@ -69,7 +79,7 @@ function get_caption(w, h, the_img) {
     $(caption).css("height", h + "px");
     $(caption).css("top", caption_top);
 
-    caption.innerHTML = "<div class='sample_inner_caption'><i class=\"fa fa-gears\" style=\"font-size:36px\"></i></div>";
+
     console.log("*****************************");
 
     console.log("img's top: " + img_pos.top);
@@ -80,20 +90,70 @@ function get_caption(w, h, the_img) {
 
 
     // //
+    // $(caption).mouseenter(function (event) {
+        // console.log("this: " + this.parentElement);
+        // event.stopPropagation();
+        // event.stopImmediatePropagation();
+        // retain_caption(this);
+    // });
+
     // $(caption).mouseover(function (event) {
     //     // console.log("this: " + this.parentElement);
     //     event.stopPropagation();
     //     // retain_caption(this);
     // });
 
-    // $(caption).mouseleave(function (event) {
-    //     event.stopPropagation();
     //
-    //     // var the_img = this.parentElement.childNodes[1];
-    //
-    //     remove_caption(this);
-    // });
+    var caption_content_clip_height = parseInt(raw_img_h) - parseInt(h);
+    caption_content_clip_height = 0 - caption_content_clip_height;
+
+    var caption_content = get_caption_content(h);
+
+    // $(caption_content).css("margin-top", caption_content_clip_height + "px");
+    caption.appendChild(caption_content);
+
+
+    // for caption_content animation
+    // class="animated infinite bounce"
+    if (caption_content != null &&
+        parseInt(h) < 36) {
+
+        // var icons = caption_content.childNodes[0];
+        // if (icons != null) {
+        //
+        // }
+
+        caption_content.classList.add("animated");
+        caption_content.classList.add("fadeOut");
+
+
+        setTimeout(function () {
+            $(caption_content).css("display", "none");
+        }, 1000);
+    }
+
+
 
     return caption;
+}
+
+
+
+function get_caption_content(h) {
+    var content = null;
+
+    if (h >= 36) {
+        content = document.createElement("div");
+        content.classList.add("sample_inner_caption");
+        content.innerHTML = "<i class=\"fa fa-gears my-photo-icons\" style=\"font-size:24px\"></i>";
+    }
+    else {
+        content = document.createElement("div");
+        content.classList.add("sample_inner_caption");
+    }
+
+    $(content).height(h);
+
+    return content;
 }
 

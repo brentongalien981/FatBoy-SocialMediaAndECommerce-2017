@@ -164,7 +164,7 @@ function display_row_of_photos(photo_embed_codes) {
         // Create the <img>
         var an_img = document.createElement("img");
         an_img.setAttribute("id", p.id);
-        an_img.setAttribute("alt", p.title);
+        // an_img.setAttribute("alt", p.title);
         an_img.setAttribute("stack-index", p.stack_index);
         an_img.setAttribute("src", p.src);
         an_img.setAttribute("raw-width", p.raw_width);
@@ -178,7 +178,7 @@ function display_row_of_photos(photo_embed_codes) {
 
         // Create an individual photo container.
         var individual_container = document.createElement("div");
-        individual_container.setAttribute("title", p.title);
+        // individual_container.setAttribute("title", p.title);
         individual_container.classList.add("individual_photo_container");
 
         // var caption = get_caption(w, h);
@@ -190,7 +190,7 @@ function display_row_of_photos(photo_embed_codes) {
         photos_container.appendChild(individual_container);
 
         // Add event listeners.
-        add_click_listener(an_img);
+        // add_click_listener(an_img);
         // add_mouse_listeners(an_img);
         add_mouseenter_listener(an_img);
         add_mouseleave_listener(an_img);
@@ -228,15 +228,15 @@ function show_caption_old(the_img) {
         // var the_img = this.parentElement.childNodes[1];
 
         // show_caption(the_img);
-        is_mouse_on_photo = true;
-        hovered_img = the_img;
+        // is_mouse_on_photo = true;
+        // hovered_img = the_img;
     });
 
     $(caption).mouseover(function (event) {
         // event.stopImmediatePropagation();
         // show_caption(the_img);
-        is_mouse_on_photo = true;
-        hovered_img = the_img;
+        // is_mouse_on_photo = true;
+        // hovered_img = the_img;
     });
 
 
@@ -256,7 +256,7 @@ function show_caption_old(the_img) {
     });
 }
 
-function show_caption(the_img) {
+function show_caption_old2(the_img) {
     if (the_img == null) {
         return;
     }
@@ -291,6 +291,23 @@ function show_caption(the_img) {
         var caption = get_caption(w, h, the_img);
         the_img.parentElement.insertBefore(caption, the_img);
     }, 50);
+}
+
+function show_caption(the_img) {
+    // if (the_img == null) { return; }
+    //
+    // If there's already a caption..
+    var old_caption = the_img.parentElement.childNodes[0];
+    if (old_caption.classList.contains("captions")) {
+        return;
+    }
+
+    var w = the_img.getAttribute("width");
+    var h = the_img.getAttribute("height");
+
+    var caption = get_caption(w, h, the_img);
+    $(caption).insertBefore($(the_img));
+
 }
 
 
@@ -334,26 +351,32 @@ function retain_caption(caption) {
     }, 10);
 }
 
-function remove_caption(the_caption) {
-    console.log("****************************************");
-    console.log("PUTANG EVENT: mouseleave");
-    console.log("****************************************");
+function remove_caption(the_caption, delay_time) {
+    // console.log("****************************************");
+    // console.log("PUTANG EVENT: mouseleave");
+    // console.log("****************************************");
 
     // if (individual_img_mouseout_handler != null) { return; }
     if (the_caption == null) {
         return;
     }
 
-    //
+    // If it's not a caption, return.
     if (!the_caption.classList.contains("captions")) {
         return;
+    }
+
+    if (delay_time == null) {
+        delay_time = 200;
     }
 
 
     // return;
 
     //
-    individual_img_mouseout_handler = setTimeout(function () {
+    setTimeout(function () {
+
+        $(the_caption).remove();
 
         //
         // var caption = the_caption.parentElement.childNodes[0];
@@ -362,14 +385,14 @@ function remove_caption(the_caption) {
         // if (caption == null) { return; }
         // if (!caption.classList.contains("captions")) { return; }
 
+        // //
+        // clearTimeout(individual_img_mouseover_handler);
+
+        // var parent = the_caption.parentElement;
+        // if (parent == null) { return; }
         //
-        clearTimeout(individual_img_mouseover_handler);
-
-        var parent = the_caption.parentElement;
-        if (parent == null) { return; }
-
-        parent.removeChild(the_caption);
-    }, 300);
+        // parent.removeChild(the_caption);
+    }, delay_time);
 }
 
 function remove_caption_old(the_img) {

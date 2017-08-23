@@ -30,6 +30,8 @@ photos_container.addEventListener("scroll", function () {
     if (!is_ajax_reading) {
 
         prepare_load_more_photos();
+
+        reset_captions();
     }
 });
 
@@ -77,23 +79,8 @@ $('#next-solo-button').click(function (event) {
 });
 
 
-$(window).resize(function () {
-
-    // if the solo_view_container is visible..
-    if ($('#solo_view_container').css("display") == "block") {
-        set_solo_view_container();
-    }
-
-});
 
 
-$(document).mousemove(function (e) {
-
-    if (e.pageY >= top && e.pageY <= bottom && e.pageX >= left && e.pageX <= right)
-        $pos.addClass("hover");
-    else
-        $pos.removeClass("hover");
-});
 
 
 /* Functions */
@@ -129,12 +116,12 @@ function prepare_load_more_photos() {
 }
 
 
-function add_click_listener(img) {
-    $(img).click(function () {
-        show_solo_img(this);
-        // add_listener_to_solo_link_holder();
-    });
-}
+// function add_click_listener(img) {
+//     $(img).click(function () {
+//         show_solo_img(this);
+//         // add_listener_to_solo_link_holder();
+//     });
+// }
 
 
 // @deprecated
@@ -151,16 +138,18 @@ function add_mouseleave_listener(an_img) {
     //     remove_caption(the_caption);
     // });
 
-    $(an_img).mouseout(function (event) {
+    $(an_img).mouseleave(function (event) {
         // event.stopPropagation();
         // event.stopImmediatePropagation();
+        console.log("EVENT: img's mouseleave");
+        // return;
 
         var the_caption = an_img.parentElement.childNodes[0];
 
 
-        // remove_caption(the_caption);
-        is_mouse_on_photo = false;
-        hovered_caption = the_caption;
+        remove_caption(the_caption);
+        // is_mouse_on_photo = false;
+        // hovered_caption = the_caption;
     });
 }
 
@@ -170,18 +159,41 @@ function add_mouseleave_listener(an_img) {
 function add_mouseenter_listener(an_img) {
 
     $(an_img).mouseenter(function (event) {
+
         // event.stopPropagation();
         // event.stopImmediatePropagation();
-        is_mouse_on_photo = true;
-        hovered_img = this;
+        // is_mouse_on_photo = true;
+
         // show_caption(this);
+        // return;
+        show_caption(this);
+
+
+        //
+        //
+        //
+        // if (just_previously_hovered_img_id == null ||
+        //     just_previously_hovered_img_id != this.id) {
+        //     show_caption(this);
+        //     console.log("EVENT: mouseenter " + mouseenter_counter);
+        //     ++mouseenter_counter;
+        //
+        //     hovered_img = this;
+        //
+        //     just_previously_hovered_img_id = this.id;
+        // }
+
+        //
+        // if (hovered_img.id == this.id) { return; }
+
+
     });
 
-    $(an_img).mouseover(function (event) {
-        // event.stopPropagation();
-        // event.stopImmediatePropagation();
-        is_mouse_on_photo = true;
-        hovered_img = this;
-        // show_caption(this);
-    });
+    // $(an_img).mouseover(function (event) {
+    //     // event.stopPropagation();
+    //     // event.stopImmediatePropagation();
+    //     is_mouse_on_photo = true;
+    //     hovered_img = this;
+    //     // show_caption(this);
+    // });
 }

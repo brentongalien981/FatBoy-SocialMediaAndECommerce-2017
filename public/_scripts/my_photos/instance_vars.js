@@ -18,3 +18,6 @@ var just_previously_hovered_img_id = "";
 var is_mouse_on_photo = false;
 var hovered_img = null;
 var hovered_caption = null;
+var mouseenter_counter = 0;
+var mouseleave_counter = 0
+var caption_removal_counter = 0;

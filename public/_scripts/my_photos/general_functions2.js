@@ -154,3 +154,41 @@ function get_absolute_pos(element) {
         left: left
     };
 };
+
+function reset_captions() {
+    // console.log("$('.individual_photo_container'): " + $('.individual_photo_container'));
+    var captions = $('.captions');
+    // console.error(captions);
+    // console.log("captions.className: " + captions[0].className);
+
+    var length = captions.length;
+
+    console.log("****************************************");
+    for (i = 0; i < length; i++) {
+
+        //
+        var the_img = captions[i].parentElement.childNodes[1];
+
+        // If the img is invalid, continue to the next img.
+        if (!(the_img != null &&
+            $(the_img).is("img"))) {
+            continue;
+        }
+
+        //
+        $(captions[0]).remove();
+
+        //
+
+        show_caption(the_img);
+
+        //
+
+        console.log("caption removed: " + caption_removal_counter);
+        ++caption_removal_counter;
+
+    }
+
+    // caption_removal_counter = 0;
+    console.log("****************************************");
+}

@@ -173,6 +173,7 @@ echo "'>";
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/_layouts/header2.css"; ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/animate.css"; ?>">
 
 
 <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
