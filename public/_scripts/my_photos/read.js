@@ -149,7 +149,8 @@ function get_caption2(w, h, the_img) {
     $(caption).css("width", w + "px");
     $(caption).css("height", h + "px");
     // caption.innerHTML = "ptuaosdlfj;lasjfd:";
-    
+
+    // Add the content of the caption.
     caption.appendChild(get_caption_content(h));
 
     $(caption).css("margin-top", "-" + h + "px");
@@ -175,27 +176,31 @@ function get_caption_content2(w, h) {
 function get_caption_content(h) {
     content = document.createElement("div");
     content.classList.add("caption_action_bar");
-    content.innerHTML = "<i class=\"fa fa-sliders my-photo-icons my-photo-icons-edit\" style=\"font-size:20px\">";
 
-    content.innerHTML += "<i class=\"fa fa-trash my-photo-icons my-photo-icons-delete\" style=\"font-size:20px\"></i>";
-
-        $(content).click(function () {
-        window.alert("edit clicked");
-    });
-    // content.innerHTML = "shit";
-
-    // if (h >= 36) {
-    //     content = document.createElement("div");
-    //     content.classList.add("sample_inner_caption");
-    //     // content.innerHTML = "<a href='#'></a><i class=\"fa fa-gears my-photo-icons\" style=\"font-size:24px\"></i></a>";
-    //     content.innerHTML = "shit";
-    // }
-    // else {
-    //     content = document.createElement("div");
-    //     content.classList.add("sample_inner_caption");
-    // }
+    // content.innerHTML = "<i class=\"fa fa-sliders my-photo-icons my-photo-icons-edit\" style=\"font-size:20px\">";
     //
-    // $(content).height(h);
+    // content.innerHTML += "<i class=\"fa fa-trash my-photo-icons my-photo-icons-delete\" style=\"font-size:20px\"></i>";
+
+
+
+    // Create the CRUD action icons.
+    var edit_icon = document.createElement("i");
+    edit_icon.className = "fa fa-sliders my-photo-icons my-photo-icons-edit";
+
+    var delete_icon = document.createElement("i");
+    delete_icon.className = "fa fa-trash my-photo-icons my-photo-icons-delete";
+
+    // Add event listeners to the icons.
+    add_click_listener_to_edit_icon(edit_icon);
+    add_click_listener_to_delete_icon(delete_icon);
+
+    // Append the icons.
+    content.appendChild(edit_icon);
+    content.appendChild(delete_icon);
+
+
+
+
 
     return content;
 }

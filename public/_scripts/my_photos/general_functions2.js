@@ -133,7 +133,19 @@ function show_solo_img(referenced_img) {
 
     solo_img_container.appendChild(link_holder);
 
-    // solo_img_container.innerHTML += "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\"></script>";
+    // // The flickr script.
+    // var old_flickr_script = $('#flickr_script');
+    // if (old_flickr_script != null) {
+    //     $(old_flickr_script).remove();
+    // }
+
+    // var flick_script = document.createElement("div");
+    // flick_script.id = "flickr_script";
+    // flick_script.innerHTML = "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\"></script>";
+    //
+    // solo_img_container.appendChild(flick_script);
+
+    // solo_img_container.innerHTML += "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\" id='flickr_script'></script>";
 
     // window.alert("the_body.scrollWidth: " +the_body.scrollWidth);
 

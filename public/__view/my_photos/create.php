@@ -1,5 +1,5 @@
 <?php if ($session->is_viewing_own_account()) { ?>
-    <form id='add_photo_form' class="section add-photo-form-section" method=''>
+    <form id='add_photo_form' class="my-photo-form my-photo-form-section add-photo-form-section section animated" method=''>
         <h3>New Photo Details</h3>
 
 

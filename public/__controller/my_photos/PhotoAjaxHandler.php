@@ -69,9 +69,6 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 }
 
 
-
-
-
 if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 
 //    // TODO:DEBUG
@@ -168,6 +165,108 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 
     // This is to let the user see the errors on their forms.
     $json_errors_array['form_errors_showable'] = true;
+    echo json_encode($json_errors_array);
+}
+
+if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
+
+    /* Validate */
+    $allowed_assoc_indexes = array("edit_photo_id", "edit_photo_title", "edit_embed_code");
+    $required_vars_length_array = array(
+        "edit_photo_id" => ["min" => 1, "max" => 12],
+        "edit_photo_title" => ["min" => 1, "max" => 255],
+        "edit_embed_code" => ["min" => 5, "max" => 4096]
+    );
+
+
+
+    //
+    $photo_controller = new PhotoController();
+
+    $photo_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
+    $photo_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+
+
+    $is_validation_ok = $photo_controller->validator->validate();
+    $json_errors_array = $photo_controller->validator->get_json_errors_array();
+
+
+    //
+    if ($is_validation_ok) {
+
+        // Prepare the necessary data to pass to the controller.
+        // Sanitized vars for passing to the controller.
+        $sanitized_vars = array();
+        foreach ($allowed_assoc_indexes as $index) {
+            \MyDebugMessenger::add_debug_message("POST VAR: {$_POST[$index]}");
+            $sanitized_vars[$index] = $_POST[$index];
+        }
+
+
+        //ish
+        // Let the controller handle it.
+        $is_update_ok = $photo_controller->update($sanitized_vars);
+
+        //
+        if ($is_update_ok) {
+            // Everything is ok.
+            $json_errors_array['is_result_ok'] = true;
+        }
+    }
+
+
+    // This is to let the user see the errors on their forms.
+    $json_errors_array['form_errors_showable'] = true;
+    echo json_encode($json_errors_array);
+}
+
+if (is_request_post() && isset($_POST["delete"]) && $_POST["delete"] == "yes") {
+
+    /* Validate */
+    $allowed_assoc_indexes = array("photo_id");
+    $required_vars_length_array = array(
+        "photo_id" => ["min" => 1, "max" => 12]
+    );
+
+
+
+    //
+    $photo_controller = new PhotoController();
+
+    $photo_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
+    $photo_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+
+
+    $is_validation_ok = $photo_controller->validator->validate();
+    $json_errors_array = $photo_controller->validator->get_json_errors_array();
+
+
+    //
+    if ($is_validation_ok) {
+
+        // Prepare the necessary data to pass to the controller.
+        // Sanitized vars for passing to the controller.
+        $sanitized_vars = array();
+        foreach ($allowed_assoc_indexes as $index) {
+            \MyDebugMessenger::add_debug_message("POST VAR: {$_POST[$index]}");
+            $sanitized_vars[$index] = $_POST[$index];
+        }
+
+
+        //ish
+        // Let the controller handle it.
+        $is_deletion_ok = $photo_controller->delete($sanitized_vars);
+
+        //
+        if ($is_deletion_ok) {
+            // Everything is ok.
+            $json_errors_array['is_result_ok'] = true;
+        }
+    }
+
+
+    // This is to let the user see the errors on their forms.
+//    $json_errors_array['form_errors_showable'] = true;
     echo json_encode($json_errors_array);
 }
 ?>

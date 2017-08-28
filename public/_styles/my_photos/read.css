@@ -6,38 +6,17 @@
     margin-top: 0;
 }
 
-#add_photo_form {
-    background-color: black;
-    color: white;
-    box-shadow: none;
-    border: 1px solid rgb(100, 100, 100);
-    margin-top: 30px;
-}
 
-#add_photo_form .form_button {
-    box-shadow: none;
-    color: white;
-}
 
-#add_photo_form .form_button:hover {
-    /*box-shadow: none;*/
-    background-color: rgb(100, 100, 100);
-    color: white;
-}
 
-#add_photo_form h5 {
-    color: white;
-}
 
-#add_photo_form input {
-    background-color: rgb(50, 50, 50);
-    color: rgb(200, 200, 200);
-}
 
-#add_photo_form textarea {
-    background-color: rgb(50, 50, 50);
-    color: rgb(200, 200, 200);
-}
+
+
+
+
+
+
 
 flickr-container {
     /*background-color: yellow;*/

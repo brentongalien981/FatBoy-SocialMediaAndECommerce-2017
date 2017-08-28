@@ -12,12 +12,18 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
             //
             clear_photos_container();
             read_photos();
+            clear_add_photo_form();
             break;
         case "update":
-            //
-            // update_user_info_display(x_obj.key_value_pairs['user_id']);
+            clear_edit_photo_form();
+            b_animate_hide_edit_photo_form();
+
+
             break;
         case "delete":
+            clear_photos_container();
+            read_photos();
+
             break;
     }
 }
@@ -164,7 +170,7 @@ function display_row_of_photos(photo_embed_codes) {
         // Create the <img>
         var an_img = document.createElement("img");
         an_img.setAttribute("id", p.id);
-        // an_img.setAttribute("alt", p.title);
+        an_img.setAttribute("alt", p.title);
         an_img.setAttribute("stack-index", p.stack_index);
         an_img.setAttribute("src", p.src);
         an_img.setAttribute("raw-width", p.raw_width);

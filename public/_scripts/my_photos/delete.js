@@ -16,7 +16,9 @@ function clear_photos_container() {
             // child.classList.contains("individual_photo_container")) {
             photos_container.removeChild(child);
         }
-        else { ++j; }
+        else {
+            ++j;
+        }
     }
 
     //
@@ -33,13 +35,25 @@ function clear_photos_container() {
 }
 
 
-
-
-
 function clear_solo_img_container() {
     var length = solo_img_container.childNodes.length;
 
     for (i = 0; i < length; i++) {
         solo_img_container.removeChild(solo_img_container.childNodes[0]);
     }
+}
+
+function delete_photo(photo_id) {
+    var crud_type = "delete";
+    var request_type = "POST";
+
+    var key_value_pairs = {
+        delete: "yes",
+        photo_id: photo_id
+    };
+
+
+
+    var delete_photo_request = new Photo(crud_type, request_type, key_value_pairs);
+    delete_photo_request.delete();
 }
