@@ -11,13 +11,40 @@ namespace App\Publico\Controller\MyPhotos;
 
 class PhotoHelper
 {
-    public static function get_shit() {
-        return "shit";
+    public static function has_prefix($prefix, $raw)
+    {
+        $prefix_length = strlen($prefix);
+        $raw_prefix = substr($raw, 0, $prefix_length);
+
+        if ($raw_prefix &&
+            $prefix == $raw_prefix) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+//    is_uniformly_numeric
+    public static function is_uniformly_numeric($dimension)
+    {
+        $dimension_length = strlen($dimension);
+
+        for ($i = 0; $i < $dimension_length; $i++) {
+            $char = substr($dimension, $i, 1);
+            if (!is_numeric($char)) {
+                return false;
+            }
+        }
+
+        return true;
+
     }
 
     /**
+     * @param $s raw string
      * @param $attribute
-     * @return string
+     * @return string / bool if false
      */
     public static function get_attribute_value($s, $attribute)
     {

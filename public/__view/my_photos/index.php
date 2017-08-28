@@ -14,7 +14,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php // Make sure the actual user is logged-in.  ?>
+<?php // Authorization.  ?>
 <?php
 if (!$session->is_logged_in()) {
     redirect_to(LOCAL . "/public/index.php");

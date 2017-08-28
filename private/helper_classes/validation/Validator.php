@@ -2,7 +2,7 @@
 
 // STEPS on validating things.
 /*
-  // NOTE: Only user POST requests when making changes.
+  // NOTE: Only use POST requests when making changes.
   //       Don't ever use GET changing things. Only use it to read things from the server.
 
 
@@ -48,6 +48,7 @@ namespace App\Privado\HelperClasses\Validation;
 
 require_once('/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_validation_error_logger.php');
 require_once('/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/functions_helper/functions_csrf_token.php');
+require_once('/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/functions_helper/functions_validation2.php');
 require_once(PRIVATE_PATH . "/includes/swiftmailer/config.php");
 
 use App\Publico\Model\MyValidationErrorLogger;
@@ -60,14 +61,16 @@ class Validator
     private $allowed_post_vars_array = null;
     private $required_post_vars_length_array = null;
     private $vars_to_be_regex_checked = null;
-    private $formats = null;
-    private $vars_to_be_unique_checked = null;
-    private $user_detail_types = null;
+    protected $formats = null;
+    protected $vars_to_be_unique_checked = null;
+    protected $user_detail_types = null;
     private $json_errors_array = null;
-    private $can_proceed = false;
+    protected $can_proceed = false;
     private $exempted_white_space_field_array = null;
     private $request_type = "post";
+//    public $vars_to_be_number_uniformly_checked = null;
     public $validate_email = false;
+
 
     function __construct()
     {
@@ -92,6 +95,12 @@ class Validator
     {
         $this->exempted_white_space_field_array = $exempted_white_space_field_array;
     }
+
+    public function set_are_chars_numeric()
+    {
+
+    }
+
 
     public function set_required_post_vars_length_array($post_vars_lengt_array)
     {
@@ -193,7 +202,7 @@ class Validator
     }
 
 
-    private function validate_user_detail_types()
+    protected function validate_user_detail_types()
     {
         //
         foreach ($this->user_detail_types as $key => $accepted_values) {
@@ -207,7 +216,7 @@ class Validator
     }
 
 
-    private function validate_email_format()
+    protected function validate_email_format()
     {
         // If the $key is in the exempted white space field, disregard and just return.
         if (isset($this->exempted_white_space_field_array) &&
@@ -215,7 +224,6 @@ class Validator
         ) {
             return;
         }
-
 
 
         //
@@ -249,7 +257,7 @@ class Validator
     }
 
 
-    private function validate_formats()
+    protected function validate_formats()
     {
         //
         foreach ($this->formats as $index => $format) {
@@ -266,18 +274,16 @@ class Validator
     }
 
     //
-    private function validate_uniqueness()
+    protected function validate_uniqueness()
     {
         //
         foreach ($this->vars_to_be_unique_checked as $field => $details) {
             // If the $key is in the exempted white space field, disregard and just return.
             if (isset($this->exempted_white_space_field_array) &&
-                in_array($field , $this->exempted_white_space_field_array)
+                in_array($field, $this->exempted_white_space_field_array)
             ) {
                 continue;
             }
-
-
 
 
             //
@@ -328,7 +334,7 @@ class Validator
     }
 
 
-    private function validate_length()
+    protected function validate_length()
     {
         // 
         $validation_value = true;
@@ -360,7 +366,7 @@ class Validator
 
     // Validate the the POST vars contains something
     // that isn't just a white space.
-    private function validate_white_space()
+    protected function validate_white_space()
     {
         // 
         $validation_value = true;
@@ -405,7 +411,7 @@ class Validator
         $this->can_proceed = $validation_value;
     }
 
-    private function check_required_post_vars_existence()
+    protected function check_required_post_vars_existence()
     {
         // White listing POST vars.
         if (are_post_vars_valid($this->allowed_post_vars_array)) {
@@ -416,7 +422,7 @@ class Validator
         }
     }
 
-    private function finalize_validation()
+    protected function finalize_validation()
     {
         /* Here's I'll know if there's an error overall or not. */
         if (MyValidationErrorLogger::is_empty()) {
@@ -429,7 +435,7 @@ class Validator
         }
     }
 
-    private function set_json_errors_array()
+    protected function set_json_errors_array()
     {
         /* Log the errors. */
         // Put to the JSON array the first error for each error type.
@@ -465,7 +471,7 @@ class Validator
         $this->request_type = $type;
     }
 
-    private function validate_csrf_token()
+    protected function validate_csrf_token()
     {
         // If the request type is GET, no need for csrf validation
         // so just return and proceed to the other validations.

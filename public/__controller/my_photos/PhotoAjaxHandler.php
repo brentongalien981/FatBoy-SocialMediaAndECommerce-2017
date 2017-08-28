@@ -136,11 +136,17 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 //    $photo_controller->validator->set_unique_vars($vars_to_be_unique_checked);
 
     $is_validation_ok = $photo_controller->validator->validate();
+
+    // Prepare for extra validation.
+    if ($is_validation_ok) {
+        $is_extra_validation_ok = $photo_controller->validator->extra_validate();
+    }
+
     $json_errors_array = $photo_controller->validator->get_json_errors_array();
 
 
     //
-    if ($is_validation_ok) {
+    if ($is_extra_validation_ok) {
 
         // Prepare the necessary data to pass to the controller.
         // Sanitized vars for passing to the controller.
@@ -159,6 +165,7 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
         if ($is_creation_ok) {
             // Everything is ok.
             $json_errors_array['is_result_ok'] = true;
+            $json_errors_array['PHOTO_VALIDATOR'] = $photo_controller->validator->photo_validator_shit;
         }
     }
 
