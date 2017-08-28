@@ -87,3 +87,10 @@ function b_animate_hide_edit_photo_form() {
         hide_element($('#edit_photo_form'));
     }, 500);
 }
+
+function dom_update_element(x_obj) {
+    var id = "photo" + x_obj.key_value_pairs['edit_photo_id'];
+    //
+    var new_title = x_obj.key_value_pairs['edit_photo_title'];
+    $('#' + id).attr("alt", new_title);
+}
