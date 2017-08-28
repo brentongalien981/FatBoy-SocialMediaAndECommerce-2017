@@ -70,4 +70,48 @@ class PhotoController extends MainController
         //
         return $new_photo->create();
     }
+
+    public function update($data)
+    {
+        //
+        $d = $data;
+        global $session;
+
+        //
+        $new_photo = new Photo();
+        $new_photo->id = $d['edit_photo_id'];
+        $new_photo->user_id = $session->actual_user_id;
+        $new_photo->title = $d['edit_photo_title'];
+
+
+//        $new_photo->embed_code = $d['embed_code'];
+        $new_photo->href = PhotoHelper::get_attribute_value($d['edit_embed_code'], "href");
+        $new_photo->src = PhotoHelper::get_attribute_value($d['edit_embed_code'], "src");
+        $new_photo->width = PhotoHelper::get_attribute_value($d['edit_embed_code'], "width");
+        $new_photo->height = PhotoHelper::get_attribute_value($d['edit_embed_code'], "height");
+
+
+        // Check if there was an invalid attribute value in the embed_code.
+        if (!$new_photo->href) { return false; }
+        if (!$new_photo->src) { return false; }
+        if (!$new_photo->width) { return false; }
+        if (!$new_photo->height) { return false; }
+
+
+
+        //uki
+//        $new_photo->embed_code = PhotoHelper::get_shit();
+//        echo PhotoHelper::get_shit();
+
+
+        //
+        return $new_photo->update();
+    }
+
+    public function delete($data)
+    {
+
+        //
+        return Photo::delete($data);
+    }
 }

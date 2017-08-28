@@ -12,3 +12,8 @@ function create_photo() {
     var photo = new Photo(crud_type, request_type, key_value_pairs);
     photo.create();
 }
+
+function clear_add_photo_form() {
+    $('#photo_title').val("");
+    $('#embed_code').val("");
+}

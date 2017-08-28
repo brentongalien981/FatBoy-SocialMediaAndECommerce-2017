@@ -7,3 +7,5 @@ function get_csrf_input() {
     return input_csrf_token;
 }
 
+
+

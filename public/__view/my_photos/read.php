@@ -48,6 +48,9 @@
 
 
 <!--// For flickr photos in solo view.-->
-<!--<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
+<!--<div id="flickr_script">-->
+<!--    <script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>-->
+<!--</div>-->
+
 
 <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/my_photos/read.css"; ?>">

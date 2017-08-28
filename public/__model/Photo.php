@@ -91,6 +91,56 @@ class Photo
         //
         return $result_set;
     }
+
+
+    public function update()
+    {
+        global $database;
+        //uki2
+        $attributes = $this->get_sanitized_attributes();
+        $attribute_pairs = array();
+
+        foreach ($attributes as $key => $value) {
+            $attribute_pairs[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE " . self::$table_name . " SET ";
+        $query .= join(", ", $attribute_pairs);
+
+        // Plus, add an update to the column "updated_at".
+        $query .= ", updated_at = NOW()";
+        $query .= " WHERE id =" . $database->escape_value($this->id);
+
+
+        // Start transaction.
+        if (!$database->start_transaction()) {
+            return false;
+        }
+
+        $database->get_result_from_query($query);
+
+        //
+        $is_update_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+
+        //
+        if ($is_update_ok) {
+            //
+            if (!$database->commit()) {
+                return false;
+            }
+
+            //
+            return true;
+        } else {
+            //
+            $database->rollback();
+
+            //
+            return false;
+        }
+
+    }
     
     
     
@@ -130,6 +180,44 @@ class Photo
         }
 
         return $array_of_photos;
+    }
+
+    public static function delete($data)
+    {
+        $d = $data;
+        //uki now
+        $query = "DELETE FROM " . self::$table_name . " WHERE id = {$d['photo_id']}";
+
+
+        //
+        // Start transaction.
+        global $database;
+        if (!$database->start_transaction()) {
+            return false;
+        }
+
+        $database->get_result_from_query($query);
+
+        //
+        $is_deletion_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+
+        //
+        if ($is_deletion_ok) {
+            //
+            if (!$database->commit()) {
+                return false;
+            }
+
+            //
+            return true;
+        } else {
+            //
+            $database->rollback();
+
+            //
+            return false;
+        }
     }
 
 

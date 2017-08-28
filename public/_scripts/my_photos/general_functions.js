@@ -12,12 +12,19 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
             //
             clear_photos_container();
             read_photos();
+            clear_add_photo_form();
             break;
         case "update":
-            //
-            // update_user_info_display(x_obj.key_value_pairs['user_id']);
+            dom_update_element(x_obj);
+            clear_edit_photo_form();
+            b_animate_hide_edit_photo_form();
+
+
             break;
         case "delete":
+            clear_photos_container();
+            read_photos();
+
             break;
     }
 }
@@ -164,7 +171,7 @@ function display_row_of_photos(photo_embed_codes) {
         // Create the <img>
         var an_img = document.createElement("img");
         an_img.setAttribute("id", p.id);
-        // an_img.setAttribute("alt", p.title);
+        an_img.setAttribute("alt", p.title);
         an_img.setAttribute("stack-index", p.stack_index);
         an_img.setAttribute("src", p.src);
         an_img.setAttribute("raw-width", p.raw_width);
@@ -186,14 +193,35 @@ function display_row_of_photos(photo_embed_codes) {
         individual_container.appendChild(an_img);
 
 
+        // Append the caption.
+        var caption = get_caption2(w, h, an_img);
+        individual_container.appendChild(caption);
+
+
+
+
         // Append the photo to the main container.
         photos_container.appendChild(individual_container);
 
         // Add event listeners.
-        // add_click_listener(an_img);
+        add_click_listener_to_caption(caption);
         // add_mouse_listeners(an_img);
-        add_mouseenter_listener(an_img);
-        add_mouseleave_listener(an_img);
+        // add_mouseenter_listener(an_img);
+        // add_mouseleave_listener(an_img);
+
+        // $(caption).click(function () {
+        //     var the_img = caption.parentElement.childNodes[0];
+        //
+        //     if (the_img != null &&
+        //         $(the_img).is("img") &&
+        //         the_img.id == an_img.id) {
+        //         show_solo_img(the_img);
+        //     }
+        //
+        //     // show_solo_img(an_img);
+        //
+        //
+        // });
     }
 
 }
@@ -307,6 +335,25 @@ function show_caption(the_img) {
 
     var caption = get_caption(w, h, the_img);
     $(caption).insertBefore($(the_img));
+
+    // TODO:DEBUG
+    var edit_link = document.createElement("a");
+    edit_link.setAttribute("href", "#");
+    edit_link.innerHTML = "go to nba";
+    $(edit_link).css("position", "absolute");
+    $(edit_link).css("margin-left", "-" + $(the_img).width() + "px");
+
+    $(edit_link).insertAfter($(the_img));
+
+    $(edit_link).mouseover(function (event) {
+        event.stopPropagation();
+        console.log("propagation stopped");
+    });
+
+    $(edit_link).mouseenter(function (event) {
+        event.stopPropagation();
+        console.log("propagation stopped");
+    });
 
 }
 

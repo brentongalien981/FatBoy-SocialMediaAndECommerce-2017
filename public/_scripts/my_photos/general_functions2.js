@@ -80,6 +80,7 @@ function show_solo_img(referenced_img) {
 
     // Create the new solo img.
     var solo_img = document.createElement("img");
+    // solo_img.classList.add("solo_imgs");
     solo_img.setAttribute("referencing-photo-id", referenced_img.id);
     solo_img.setAttribute("referencing-stack-index", referenced_img.getAttribute("stack-index"));
     solo_img.setAttribute("src", referenced_img.src);
@@ -132,11 +133,28 @@ function show_solo_img(referenced_img) {
 
     solo_img_container.appendChild(link_holder);
 
-    // solo_img_container.innerHTML += "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\"></script>";
+    // // The flickr script.
+    // var old_flickr_script = $('#flickr_script');
+    // if (old_flickr_script != null) {
+    //     $(old_flickr_script).remove();
+    // }
+
+    // var flick_script = document.createElement("div");
+    // flick_script.id = "flickr_script";
+    // flick_script.innerHTML = "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\"></script>";
+    //
+    // solo_img_container.appendChild(flick_script);
+
+    // solo_img_container.innerHTML += "<script async src=\"//embedr.flickr.com/assets/client-code.js\" charset=\"utf-8\" id='flickr_script'></script>";
 
     // window.alert("the_body.scrollWidth: " +the_body.scrollWidth);
 
     set_solo_view_container();
+
+
+//     $(solo_img).mouseover(function (event) {
+//         event.stopPropagation();
+//     });
 }
 
 
@@ -191,4 +209,12 @@ function reset_captions() {
 
     // caption_removal_counter = 0;
     console.log("****************************************");
+}
+
+function remove_icons(the_caption) {
+    var icon = the_caption.parentElement.childNodes[2];
+
+    if (icon == null) { return; }
+
+    $(icon).remove();
 }

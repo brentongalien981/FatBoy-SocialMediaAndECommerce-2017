@@ -1,0 +1,23 @@
+#edit_photo_form {
+    background-color: black;
+    box-shadow: none;
+}
+
+.my-photo-cover-icons {
+    font-size: 24px;
+    margin: 0;
+    /*margin-top: 30px;*/
+    padding: 0;
+    border: 0;
+
+}
+
+#photo_cover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: block;
+    position: relative;
+    background-color: yellowgreen;
+    /*vertical-align: middle;*/
+}

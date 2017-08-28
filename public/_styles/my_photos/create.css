@@ -1,9 +1,18 @@
-.add-photo-form-section table {
+
+.my-photo-form {
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    border: 1px solid rgb(100, 100, 100);
+    margin-top: 30px;
+}
+
+.my-photo-form-section table {
     color: black;
     margin-top: 20px;
 }
 
-#add_photo_form {
+.my-photo-form-section {
     display: none;
 }
 
@@ -12,4 +21,35 @@
     padding: 10px;
     font-size: 13px;
     border-radius: 5px;
+}
+
+.my-photo-form .form_button {
+    box-shadow: none;
+    color: white;
+}
+
+.my-photo-form .form_button:hover {
+    /*box-shadow: none;*/
+    background-color: rgb(100, 100, 100);
+    color: white;
+}
+
+.my-photo-form h5 {
+    color: white;
+}
+
+.my-photo-form input {
+    background-color: rgb(50, 50, 50);
+    color: rgb(200, 200, 200);
+}
+
+.my-photo-form textarea {
+    background-color: rgb(50, 50, 50);
+    color: rgb(200, 200, 200);
+    resize: none;
+}
+
+#add_photo_form {
+    background-color: black;
+    box-shadow: none;
 }

@@ -1,13 +1,37 @@
-$('#add_photo_link').click(function () {
-    $('#add_photo_form').css("display", "block");
-    $(this).css("display", "none");
+$('#add_photo_link').click(function (event) {
+    event.stopPropagation();
+
+    hide_element($('#edit_photo_form'));
+    hide_element($('#add_photo_link'));
+    show_element($('#add_photo_form'), "block");
+
+    b_remove_animation($('#add_photo_form').get(0), "fadeOutUp");
+    b_add_animation($('#add_photo_form').get(0), "fadeInDown");
+
+
+    //
+    // $('#add_photo_form').css("display", "block");
+    // $(this).css("display", "none");
+    //
+    // b_remove_animation($('#add_photo_form').get(0), "fadeOutUp");
+    // b_add_animation($('#add_photo_form').get(0), "fadeInDown");
 });
 
 
 $('#cancel_photo_creation_button').click(function () {
-    $('#add_photo_form').css("display", "none");
-    $('#add_photo_link').css("display", "inline");
+
+    show_element($('#add_photo_link'), "inline");
+
+
+    b_remove_animation($('#add_photo_form').get(0), "fadeInDown");
+    b_add_animation($('#add_photo_form').get(0), "fadeOutUp");
+
+    setTimeout(function () {
+        hide_element($('#add_photo_form'));
+    }, 500);
 });
+
+
 
 
 $('#create_photo_button').click(function () {
@@ -40,6 +64,17 @@ $('#solo_view_container').click(function () {
 
     $(this).css("display", "none");
 });
+
+
+$(window).resize(function () {
+
+    // if the solo_view_container is visible..
+    if ($('#solo_view_container').css("display") == "block") {
+        set_solo_view_container();
+    }
+
+});
+
 
 
 $('#previous-solo-button').click(function (event) {
@@ -123,11 +158,22 @@ function prepare_load_more_photos() {
 //     });
 // }
 
+function add_click_listener_to_caption(caption) {
 
-// @deprecated
-function add_mouse_listeners(an_img) {
+    $(caption).click(function () {
 
+        var the_img = caption.parentElement.childNodes[0];
+
+        if (the_img != null &&
+            $(the_img).is("img")) {
+            show_solo_img(the_img);
+        }
+    });
 }
+
+
+
+
 
 
 function add_mouseleave_listener(an_img) {
@@ -148,6 +194,7 @@ function add_mouseleave_listener(an_img) {
 
 
         remove_caption(the_caption);
+        remove_icons(the_caption);
         // is_mouse_on_photo = false;
         // hovered_caption = the_caption;
     });

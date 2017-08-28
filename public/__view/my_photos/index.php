@@ -41,8 +41,8 @@ if (!$session->is_logged_in()) {
 
     <div id="main_content">
         <?php  require_once(PUBLIC_PATH . "/__view/my_photos/create.php"); ?>
+        <?php  require_once(PUBLIC_PATH . "/__view/my_photos/update.php"); ?>
         <?php  require_once(PUBLIC_PATH . "/__view/my_photos/read.php"); ?>
-        <?php // require_once(PUBLIC_PATH . "/__view/admin_tools/user_management/update.php");   ?>
         <?php // require_once(PUBLIC_PATH . "/__view/admin_tools/user_management/delete.php");   ?>
     </div>
 
@@ -69,12 +69,14 @@ if (!$session->is_logged_in()) {
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/general_functions.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/my_photos/general_functions3.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/create.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/read.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/update.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/delete.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/Photo.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/my_photos/event_listeners.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/my_photos/event_listeners2.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/my_photos/tasks.js"; ?>"></script>
 
 

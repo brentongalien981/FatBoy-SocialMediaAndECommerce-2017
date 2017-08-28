@@ -4,6 +4,12 @@
 /*
   // NOTE: Only user POST requests when making changes.
   //       Don't ever use GET changing things. Only use it to read things from the server.
+
+
+
+    I) Make sure the user is logged-in and an actual/viewed/of-type user.
+
+
   // 1) Avoid CSRF by using csrf tokens as hidden field in your forms.
   //
   //

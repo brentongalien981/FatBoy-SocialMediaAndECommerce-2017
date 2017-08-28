@@ -5,7 +5,7 @@ function update_user() {
     var crud_type = "update";
     var request_type = "POST";
     var key_value_pairs = {
-        create: "yes",
+        update: "yes",
         tae: "shit"
     };
 
@@ -18,7 +18,7 @@ function update_user() {
 
 
     var user_obj_request = new User(crud_type, request_type, key_value_pairs);
-    user_obj_request.create();
+    user_obj_request.update();
 }
 
 
