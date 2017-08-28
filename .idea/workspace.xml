@@ -1,31 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/my_photos/update.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/event_listeners2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/general_functions3.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/my_photos/update.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/private/helper_classes/validation/Validator.php" afterPath="$PROJECT_DIR$/private/helper_classes/validation/Validator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/my_photos/PhotoAjaxHandler.php" afterPath="$PROJECT_DIR$/public/__controller/my_photos/PhotoAjaxHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/my_photos/PhotoController.php" afterPath="$PROJECT_DIR$/public/__controller/my_photos/PhotoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/Photo.php" afterPath="$PROJECT_DIR$/public/__model/Photo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/my_photos/create.php" afterPath="$PROJECT_DIR$/public/__view/my_photos/create.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/my_photos/index.php" afterPath="$PROJECT_DIR$/public/__view/my_photos/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/my_photos/read.php" afterPath="$PROJECT_DIR$/public/__view/my_photos/read.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/update.js" afterPath="$PROJECT_DIR$/public/_scripts/admin_tools/user_management/update.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/general.js" afterPath="$PROJECT_DIR$/public/_scripts/general.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/create.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/create.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/delete.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/delete.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/event_listeners.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/general_functions2.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/general_functions2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/read.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/read.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/my_photos/update.js" afterPath="$PROJECT_DIR$/public/_scripts/my_photos/update.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_styles/my_photos/create.css" afterPath="$PROJECT_DIR$/public/_styles/my_photos/create.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_styles/my_photos/read.css" afterPath="$PROJECT_DIR$/public/_styles/my_photos/read.css" />
-    </list>
+    <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,8 +105,8 @@
                   <file leaf-file-name="update.js" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/my_photos/update.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="143">
-                          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                        <state relative-caret-position="173">
+                          <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
                           <folding>
                             <element signature="n#!!block;n#cover_photo#0" expanded="false" />
                           </folding>
@@ -233,8 +209,8 @@
                   <file leaf-file-name="PhotoController.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__controller/my_photos/PhotoController.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="85">
-                          <caret line="111" column="5" lean-forward="false" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
+                        <state relative-caret-position="115">
+                          <caret line="113" column="10" lean-forward="true" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
                           <folding>
                             <element signature="e#6#86#0#PHP" expanded="true" />
                             <element signature="e#294#336#0#PHP" expanded="true" />
@@ -392,8 +368,8 @@
                   <file leaf-file-name="read.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__view/my_photos/read.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-167">
-                          <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
+                        <state relative-caret-position="13">
+                          <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
                           <folding />
                         </state>
                       </provider>
@@ -857,12 +833,12 @@
       <workItem from="1501650651668" duration="20516000" />
       <workItem from="1502920477299" duration="122711000" />
       <workItem from="1503445252315" duration="63535000" />
-      <workItem from="1503870231807" duration="6555000" />
+      <workItem from="1503870231807" duration="6849000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="534274000" />
+    <option name="totallyTimeSpent" value="534568000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1123,19 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/my_photos/PhotoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="111" column="5" lean-forward="false" selection-start-line="111" selection-start-column="5" selection-end-line="111" selection-end-column="5" />
-          <folding>
-            <element signature="e#6#86#0#PHP" expanded="true" />
-            <element signature="e#294#336#0#PHP" expanded="true" />
-            <element signature="e#729#1835#0#PHP" expanded="false" />
-            <element signature="e#1841#3008#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/__controller/admin_tools/user_management/UserAjaxHandler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1213,14 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/my_photos/read.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="38" column="6" lean-forward="false" selection-start-line="38" selection-start-column="6" selection-end-line="38" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1401,10 +1356,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/my_photos/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="50" column="31" lean-forward="true" selection-start-line="50" selection-start-column="31" selection-end-line="50" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/my_photos/PhotoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="113" column="10" lean-forward="true" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
+          <folding>
+            <element signature="e#6#86#0#PHP" expanded="true" />
+            <element signature="e#294#336#0#PHP" expanded="true" />
+            <element signature="e#729#1835#0#PHP" expanded="false" />
+            <element signature="e#1841#3008#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/my_photos/update.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="173">
+          <caret line="12" column="52" lean-forward="true" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
           <folding>
             <element signature="n#!!block;n#cover_photo#0" expanded="false" />
           </folding>
