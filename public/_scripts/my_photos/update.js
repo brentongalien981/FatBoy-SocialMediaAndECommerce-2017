@@ -89,6 +89,7 @@ function b_animate_hide_edit_photo_form() {
 }
 
 function dom_update_element(x_obj) {
+    // Fucking hell.
     var id = "photo" + x_obj.key_value_pairs['edit_photo_id'];
     //
     var new_title = x_obj.key_value_pairs['edit_photo_title'];
