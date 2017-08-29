@@ -19,6 +19,7 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
             dom_update_element(x_obj);
             clear_edit_photo_form();
             b_animate_hide_edit_photo_form();
+            clear_error_labels();
 
 
             break;

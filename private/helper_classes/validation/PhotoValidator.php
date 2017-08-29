@@ -210,7 +210,7 @@ class PhotoValidator extends Validator
             }
 
 
-            // Special scenario for the PhotoValidator's embed_code.
+            // Special scenario for the PhotoValidator's embed_code CRUD create.
             if ($attr == "href" ||
                 $attr == "src" ||
                 $attr == "width" ||
@@ -218,6 +218,17 @@ class PhotoValidator extends Validator
 
                 if (!isset($this->json_errors_array['error_embed_code'])) {
                     $this->json_errors_array['error_embed_code'] = "* " . substr($log_error_msg, $pos + 4);
+                }
+            }
+
+            // Special scenario for the PhotoValidator's embed_code CRUD update.
+            if ($attr == "edit_href" ||
+                $attr == "edit_src" ||
+                $attr == "edit_width" ||
+                $attr == "edit_height") {
+
+                if (!isset($this->json_errors_array['error_edit_embed_code'])) {
+                    $this->json_errors_array['error_edit_embed_code'] = "* " . substr($log_error_msg, $pos + 4);
                 }
             }
 

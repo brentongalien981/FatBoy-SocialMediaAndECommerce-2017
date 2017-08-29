@@ -178,12 +178,18 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
 
     /* Validate */
-    $allowed_assoc_indexes = array("edit_photo_id", "edit_photo_title", "edit_embed_code");
+    $allowed_assoc_indexes = array("edit_photo_id", "edit_photo_title", "edit_href", "edit_src", "edit_width", "edit_height");
     $required_vars_length_array = array(
         "edit_photo_id" => ["min" => 1, "max" => 12],
-        "edit_photo_title" => ["min" => 1, "max" => 255],
-        "edit_embed_code" => ["min" => 5, "max" => 4096]
+        "edit_photo_title" => ["min" => 5, "max" => 256],
+        "edit_href" => ["min" => 32, "max" => 1024],
+        "edit_src" => ["min" => 32, "max" => 1024],
+        "edit_width" => ["min" => 2, "max" => 4],
+        "edit_height" => ["min" => 2, "max" => 4]
     );
+
+    $vars_to_be_number_uniformly_checked = array("edit_width", "edit_height");
+    $vars_to_be_prefix_checked = array("edit_href", "edit_src");
 
 
     //
@@ -191,7 +197,8 @@ if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
 
     $photo_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
     $photo_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
-
+    $photo_controller->validator->set_vars_to_be_number_uniformly_checked($vars_to_be_number_uniformly_checked);
+    $photo_controller->validator->set_vars_to_be_prefix_checked($vars_to_be_prefix_checked);
 
     $is_validation_ok = $photo_controller->validator->validate();
     $json_errors_array = $photo_controller->validator->get_json_errors_array();
