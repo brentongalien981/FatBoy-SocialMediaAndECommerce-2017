@@ -49,6 +49,11 @@ class PhotoController extends MainController
 
         $new_photo->title = $d['photo_title'];
 
+        $new_photo->href = $d['href'];
+        $new_photo->src = $d['src'];
+        $new_photo->width = $d['width'];
+        $new_photo->height = $d['height'];
+
 
 //        $new_photo->embed_code = $d['embed_code'];
 //        $new_photo->href = PhotoHelper::get_attribute_value($d['embed_code'], "href");
@@ -57,11 +62,11 @@ class PhotoController extends MainController
 //        $new_photo->height = PhotoHelper::get_attribute_value($d['embed_code'], "height");
 
 
-        // Check if there was an invalid attribute value in the embed_code.
-        if (!$new_photo->href) { return false; }
-        if (!$new_photo->src) { return false; }
-        if (!$new_photo->width) { return false; }
-        if (!$new_photo->height) { return false; }
+//        // Check if there was an invalid attribute value in the embed_code.
+//        if (!$new_photo->href) { return false; }
+//        if (!$new_photo->src) { return false; }
+//        if (!$new_photo->width) { return false; }
+//        if (!$new_photo->height) { return false; }
 
 
         /*
@@ -70,11 +75,11 @@ class PhotoController extends MainController
          * width="1920" height="1080" alt="jet1"></a>
          */
 
-        // Extra validations.
-        if (!PhotoHelper::has_prefix("https://farm5.staticflickr.com/", $new_photo->src)) { return false; }
-        if (!PhotoHelper::has_prefix("https://www.flickr.com/photos/", $new_photo->href)) { return false; }
-        if (!PhotoHelper::is_uniformly_numeric($new_photo->width)) { return false; }
-        if (!PhotoHelper::is_uniformly_numeric($new_photo->height)) { return false; }
+//        // Extra validations.
+//        if (!PhotoHelper::has_prefix("https://farm5.staticflickr.com/", $new_photo->src)) { return false; }
+//        if (!PhotoHelper::has_prefix("https://www.flickr.com/photos/", $new_photo->href)) { return false; }
+//        if (!PhotoHelper::is_uniformly_numeric($new_photo->width)) { return false; }
+//        if (!PhotoHelper::is_uniformly_numeric($new_photo->height)) { return false; }
 
         //uki
 //        $new_photo->embed_code = PhotoHelper::get_shit();

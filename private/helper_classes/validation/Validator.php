@@ -27,17 +27,17 @@
   //                                   that is used whenever checking out for the PayPal address...)
   //
   //
-  // 4) Strip tags.
+  // 4) * TO-LEARN: Strip tags.
   // TODO: Sanitize against html, js, url, mysql, php, cmd.
   //
   //
   //
-  // 5) Avoid XSS by escaping inputs using functions h() j() u() and maybe s() for sql for output.
+  // 5) * TO-LEARN: Avoid XSS by escaping inputs using functions h() j() u() and maybe s() for sql for output.
   //
   //
   // 6) Make 2 versions of variables: "dirty" and "sanitized".
   //    Strip html and script tags. Escape single quotes. Strip php tags.
-  // 7) Sessions on Cookies.
+  // 7) * TO-LEARN: Sessions on Cookies.
   // 8) Check if that username exists in the db.
   // 9) Hash the password.
   // 10) Store it in db.
@@ -64,11 +64,10 @@ class Validator
     protected $formats = null;
     protected $vars_to_be_unique_checked = null;
     protected $user_detail_types = null;
-    private $json_errors_array = null;
+    protected $json_errors_array = null;
     protected $can_proceed = false;
     private $exempted_white_space_field_array = null;
     private $request_type = "post";
-//    public $vars_to_be_number_uniformly_checked = null;
     public $validate_email = false;
 
 
@@ -208,7 +207,7 @@ class Validator
         foreach ($this->user_detail_types as $key => $accepted_values) {
 
             if (!in_array($_POST[$key], $accepted_values)) {
-                MyValidationErrorLogger::log("{$key}::: is not valid.");
+                MyValidationErrorLogger::log("{$key}::: {$key} is not valid.");
                 $this->can_proceed = false;
             }
 
@@ -228,7 +227,7 @@ class Validator
 
         //
         if (!Swift_Validate::email($_POST["email"])) {
-            MyValidationErrorLogger::log("email::: is not valid.");
+            MyValidationErrorLogger::log("email::: email is not valid.");
             $this->can_proceed = false;
         }
     }
@@ -245,12 +244,12 @@ class Validator
     {
         if ($index == "user_name") {
             if (has_format_matching($_POST[$index], $regex)) {
-                MyValidationErrorLogger::log("{$index}::: contains invalid chars.");
+                MyValidationErrorLogger::log("{$index}::: {$index} contains invalid chars.");
                 $this->can_proceed = false;
             }
         } else if ($index == "password") {
             if (!has_format_matching($_POST[$index], $regex)) {
-                MyValidationErrorLogger::log("{$index}::: should have at least 1 special character.");
+                MyValidationErrorLogger::log("{$index}::: {$index} should have at least 1 special character.");
                 $this->can_proceed = false;
             }
         }
@@ -295,7 +294,7 @@ class Validator
                 $will_it_be_unique = will_it_be_unique($_POST[$field], $d['table'], $d['column'], $_POST['user_id']);
 
                 if (!$will_it_be_unique) {
-                    MyValidationErrorLogger::log("{$field}::: is already taken.");
+                    MyValidationErrorLogger::log("{$field}::: {$field} is already taken.");
                     $this->can_proceed = false;
                 }
                 continue;
@@ -304,7 +303,7 @@ class Validator
 
             // Normal checking of the uniquenes..
             if (!is_unique($_POST[$field], $d['table'], $d['column'])) {
-                MyValidationErrorLogger::log("{$field}::: is already taken.");
+                MyValidationErrorLogger::log("{$field}::: {$field} is already taken.");
                 $this->can_proceed = false;
             }
 
@@ -316,7 +315,7 @@ class Validator
     {
         // For at least 1 numeric chars.
         if (!has_alphabet_chars($_POST[$index], $min)) {
-            MyValidationErrorLogger::log("{$index}::: should have at least {$min} alphabet characters.");
+            MyValidationErrorLogger::log("{$index}::: {$index} should have at least {$min} alphabet characters.");
 
             $this->can_proceed = false;
         }
@@ -327,7 +326,7 @@ class Validator
     {
         // For at least 1 numeric chars.
         if (!has_numeric_chars($_POST[$index], $min)) {
-            MyValidationErrorLogger::log("{$index}::: should have at least {$min} numeric characters.");
+            MyValidationErrorLogger::log("{$index}::: {$index} should have at least {$min} numeric characters.");
 
             $this->can_proceed = false;
         }
@@ -355,7 +354,7 @@ class Validator
             } else if (has_length($_POST[$key], $value)) {
                 continue;
             } else {
-                MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
+                MyValidationErrorLogger::log("{$key}::: {$key} should be between {$value['min']} to {$value['max']} characters.");
 
                 $validation_value = false;
             }
@@ -402,7 +401,7 @@ class Validator
             } else if (has_presence($_POST[$key])) {
                 continue;
             } else {
-                MyValidationErrorLogger::log("{$key}::: can not be blank");
+                MyValidationErrorLogger::log("{$key}::: {$key} can not be blank");
 
                 $validation_value = false;
             }

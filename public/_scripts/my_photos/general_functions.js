@@ -13,6 +13,7 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
             clear_photos_container();
             read_photos();
             clear_add_photo_form();
+            clear_error_labels();
             break;
         case "update":
             dom_update_element(x_obj);

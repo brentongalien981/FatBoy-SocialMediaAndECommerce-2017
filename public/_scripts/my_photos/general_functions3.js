@@ -26,4 +26,9 @@ function b_remove_animation(el, a) {
     el.classList.remove(a);
 }
 
+function clear_error_labels() {
+    $('.error_msg').html("error");
+    $('.error_msg').css("visibility", "hidden");
+}
+
 

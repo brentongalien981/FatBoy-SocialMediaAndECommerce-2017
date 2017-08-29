@@ -4,10 +4,8 @@ namespace App\Publico\Controller\MyPhotos;
 require_once("PhotoController.php");
 
 use App\Publico\Controller\MyPhotos\PhotoController;
+
 ?>
-
-
-
 
 
 <?php
@@ -54,7 +52,6 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
         }
 
 
-
         // Let the controller handle it.
         $json_errors_array['photos'] = $photo_controller->read($sanitized_vars);
 
@@ -74,19 +71,29 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 //    // TODO:DEBUG
 //    echo json_encode(array(
 //        "is_result_ok" => true,
-//        "putang" => "ina mo",
 //        "photo_title" => $_POST['photo_title'],
-//        "embed_code" => $_POST['embed_code']
+//        "href" => $_POST['href'],
+//        "src" => $_POST['src'],
+//        "width" => $_POST['width'],
+//        "height" => $_POST['height']
 //        ));
 //    return;
 
 
     /* Validate */
-    $allowed_assoc_indexes = array("photo_title", "embed_code");
+    $allowed_assoc_indexes = array("photo_title", "href", "src", "width", "height");
     $required_vars_length_array = array(
-        "photo_title" => ["min" => 5, "max" => 255],
-        "embed_code" => ["min" => 5, "max" => 4096]
+        "photo_title" => ["min" => 5, "max" => 256],
+        "href" => ["min" => 32, "max" => 1024],
+        "src" => ["min" => 32, "max" => 1024],
+        "width" => ["min" => 2, "max" => 4],
+        "height" => ["min" => 2, "max" => 4]
+
     );
+
+    $vars_to_be_number_uniformly_checked = array("width", "height");
+
+    $vars_to_be_prefix_checked = array("href", "src");
 
 
     // Format is
@@ -111,7 +118,6 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 //    );
 
 
-
 //    $vars_to_be_unique_checked = array(
 //        "user_name" => [
 //            'table' => 'Users',
@@ -124,29 +130,25 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 //    );
 
 
-
     //
     $photo_controller = new PhotoController();
 
     $photo_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
     $photo_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
-    
+
 //    $photo_controller->validator->set_formats($vars_to_be_format_checked);
 //    $photo_controller->validator->validate_email = true;
 //    $photo_controller->validator->set_unique_vars($vars_to_be_unique_checked);
+    $photo_controller->validator->set_vars_to_be_number_uniformly_checked($vars_to_be_number_uniformly_checked);
+    $photo_controller->validator->set_vars_to_be_prefix_checked($vars_to_be_prefix_checked);
 
     $is_validation_ok = $photo_controller->validator->validate();
-
-    // Prepare for extra validation.
-    if ($is_validation_ok) {
-        $is_extra_validation_ok = $photo_controller->validator->extra_validate();
-    }
 
     $json_errors_array = $photo_controller->validator->get_json_errors_array();
 
 
     //
-    if ($is_extra_validation_ok) {
+    if ($is_validation_ok) {
 
         // Prepare the necessary data to pass to the controller.
         // Sanitized vars for passing to the controller.
@@ -157,7 +159,6 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
         }
 
 
-
         // Let the controller handle it.
         $is_creation_ok = $photo_controller->create($sanitized_vars);
 
@@ -165,7 +166,6 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
         if ($is_creation_ok) {
             // Everything is ok.
             $json_errors_array['is_result_ok'] = true;
-            $json_errors_array['PHOTO_VALIDATOR'] = $photo_controller->validator->photo_validator_shit;
         }
     }
 
@@ -184,7 +184,6 @@ if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
         "edit_photo_title" => ["min" => 1, "max" => 255],
         "edit_embed_code" => ["min" => 5, "max" => 4096]
     );
-
 
 
     //
@@ -234,7 +233,6 @@ if (is_request_post() && isset($_POST["delete"]) && $_POST["delete"] == "yes") {
     $required_vars_length_array = array(
         "photo_id" => ["min" => 1, "max" => 12]
     );
-
 
 
     //
