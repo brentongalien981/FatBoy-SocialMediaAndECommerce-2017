@@ -77,7 +77,13 @@ class StoreCart {
 
         $cart_objs = self::read_by_query_and_instantiate($query);
 
-        $new_cart_obj = $cart_objs[0];
+        if (isset($cart_objs[0])) {
+            $new_cart_obj = $cart_objs[0];
+        }
+        else {
+            $new_cart_obj = null;
+        }
+
         
         return $new_cart_obj;
     }

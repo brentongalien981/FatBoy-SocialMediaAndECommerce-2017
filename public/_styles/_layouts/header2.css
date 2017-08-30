@@ -48,6 +48,26 @@ img.header_icon:hover {
     background-color: rgb(200, 200, 200);
 }
 
+#link_home i {
+    margin-top: 12px;
+}
+
+#link_home i:hover {
+    color: orange;
+}
+
+i.b-i-icon {
+    color: black;
+    font-size: 22px;
+}
+
+i.b-i-header_icon {
+    color: white;
+    font-size: 28px;
+}
+
+
+
 
 
 

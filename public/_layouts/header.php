@@ -20,6 +20,9 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     <!--        Font Awesome Icons-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <!--    Google Material Icons-->
+    <!--    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+
 
     <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/_layouts/header.css"; ?>">
 </head>
@@ -30,6 +33,7 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 <!--</div>-->
 
 
+<!-- TODO:REMINDER: Put this chunk in a separate file. -->
 <input id="input_currently_viewed_user_id" type="hidden"
 <?php
 global $session;
@@ -57,90 +61,9 @@ echo "'>";
 ?>
 
 
-<div id="divBanner">
 
 
-    <table id="header">
-        <tr>
-            <td class="header" id="status">
-                <div id="divStatus">
-                    <?php
-                    $profile_pic_url = "/public/_photos/icon_home.png";
-
-                    if ($session->is_logged_in()) {
-//                                echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
-//                                echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
-                        echo "<a id='link_home' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>";
-
-                        //
-                        global $session;
-                        $query = "SELECT * FROM Profile ";
-                        $query .= "WHERE user_id = {$session->actual_user_id}";
-
-                        $record_result = Profile::read_by_query($query);
-
-
-                        global $database;
-                        while ($row = $database->fetch_array($record_result)) {
-                            $profile_pic_url = $row["pic_url"];
-
-                            if ($profile_pic_url == null || $profile_pic_url == "") {
-                                $profile_pic_url = "/public/_photos/icon_home.png";
-                            }
-
-                            break;
-                        }
-
-//                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
-                        echo "<img src='" . LOCAL . "{$profile_pic_url}' class='header_icon'>";
-//                                echo "Hello {$session->actual_user_name}!";
-                        echo "</a>";
-                    } else {
-                        $profile_pic_url = "/public/_photos/icon_home.png";
-
-//                                echo "<a class='user_name'>zZzzZz</a>";
-//                                echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
-                        echo "<a id='link_home' href='#'>";
-                        echo "<img src='" . LOCAL . "{$profile_pic_url}' class='header_icon'>";
-                        echo "</a>";
-                    }
-                    ?>
-                </div>
-            </td>
-
-
-            <?php
-            // Pop-up when home icon is hovered.
-            if ($session->is_logged_in()) {
-                echo "<div id='pop_up_for_link_home'>";
-//                        echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php>Log-in</a><br>";
-//                        echo "<a href='' class='pop_up_links'>Sign-up</a><br>";
-
-                echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
-                echo "</div>";
-            } else {
-                echo "<div id='pop_up_for_link_home'>";
-                echo "<a id='first_pop_up_link' class='pop_up_links' href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a><br>";
-                echo "<a href='" . LOCAL . "/public/__view/view_signup.php' class='pop_up_links'>Sign-up</a><br>";
-                echo "</div>";
-            }
-            ?>
-
-
-            <td class="header" id="search">
-                <?php require_once(PUBLIC_PATH . "/__view/search/create.php"); ?>
-            </td>
-
-            <td class="header" id="site_logo">
-                <h4 id="logo_fatboy">FatBoy &reg;</h4>
-                <!--                        <div id="divWebsite">
-                                            <h4 id="h4Website">FatBoy &reg;</h4>
-                                        </div>-->
-            </td>
-        </tr>
-    </table>
-
-</div>
+<?php require_once(PUBLIC_PATH . "/_layouts/banner.php"); ?>
 
 
 <div id="main">

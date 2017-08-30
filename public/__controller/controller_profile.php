@@ -287,8 +287,11 @@ function show_user_profile_summary() {
 
     echo "<div id='div_about_me'>";
 
-    $profile_pic_src = get_profile_pic_src();
-    echo "<img src='" . LOCAL . "{$profile_pic_src}'>";
+    //ukina
+//    $profile_pic_src = get_profile_pic_src();
+    //
+    global $session;
+    show_profile_pic($session->currently_viewed_user_id, "profile_pic");
 
     $profile_description = get_profile_description();
     echo "<p>";
@@ -297,6 +300,18 @@ function show_user_profile_summary() {
 
     echo "</div>";
     echo "</div>";
+}
+
+function show_profile_pic($user_id = 0, $icon_class)
+{
+
+    $src = b_get_profile_pic_src($user_id);
+
+    if (isset($src)) {
+        echo "<img src='{$src}'>";
+    } else {
+        echo "<i id='i-profile_pic' class=\"fa fa-user-circle-o b-i-{$icon_class}\"></i>";
+    }
 }
 
 function show_contact_info() {

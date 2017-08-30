@@ -115,7 +115,21 @@ class User {
         } else {
             return false;
         }
-    }    
+    }
+
+    public static function update_by_query($query = "") {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+
+        //
+        if ($database->get_num_of_affected_rows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // Returns bool.
     public function create_with_bool() {

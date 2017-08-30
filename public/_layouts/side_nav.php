@@ -9,44 +9,20 @@
     </div>
 
 
-    <?php
-    // For the timeline icon.
-    if ($session->is_logged_in()) {
-        global $session;
-        $query = "SELECT * FROM Profile ";
-//                                $query .= "WHERE user_id = {$session->currently_viewed_user_id}";
-        $query .= "WHERE user_id = {$session->currently_viewed_user_id}";
+    <!--    For the timeline icon.-->
+    <?php if ($session->is_logged_in()) { ?>
 
-        $record_result = Profile::read_by_query($query);
+        <a id="menu_wall" class='menus' href="<?= LOCAL . "/public/index.php" ?>">
+            <?php show_user_home_icon($session->currently_viewed_user_id, "icon", "wall", $session->currently_viewed_user_name) ?>
+        </a>
 
-        $timeline_pic_url = "/public/_photos/icon_wall_pin.png";
+    <?php } else { ?>
 
-        global $database;
-        while ($row = $database->fetch_array($record_result)) {
-            $timeline_pic_url = $row["pic_url"];
+        <a id="menu_wall" class='menus' href="#">
+            <?php show_user_home_icon(-69, "icon", "wall", "Guest") ?>
+        </a>
 
-            // If there's no valid image.
-            if ($timeline_pic_url == null || $timeline_pic_url == "") {
-                $timeline_pic_url = "/public/_photos/icon_wall_pin.png";
-            }
-            break;
-        }
-
-        echo "<a id='menu_wall' class='menus' menu_name='wall' href='";
-        if ($session->is_logged_in()) {
-            echo LOCAL . "/public/index.php' class=''>";
-        } else {
-            echo "#' class=''>";
-        }
-        echo "<img src='" . LOCAL . "{$timeline_pic_url}' class='icon'>";
-
-
-        echo "{$session->currently_viewed_user_name}";
-
-
-        echo "</a>";
-    }
-    ?>
+    <?php } ?>
 
 
 
@@ -65,14 +41,21 @@
 
     <!--    Profile-->
     <a id="menu_profile" class='menus' href="
-                                <?php
-    if ($session->is_logged_in()) {
-        echo LOCAL . '/public/__view/profile';
-    } else {
-        echo "#";
-    }
-    ?>" class="">
-        <img src="<?php echo LOCAL . '/public/_photos/icon_profile.png'; ?>" class="icon">Profile
+
+        <?php if ($session->is_logged_in()) { ?>
+
+            <?= LOCAL . "/public/__view/profile" ?>
+
+        <?php } else { ?>
+
+            <?= "#" ?>
+
+        <?php } ?>
+
+    ">
+
+        <?php show_user_home_icon(-69, "icon", "profile", "Profile") ?>
+
     </a>
 
 
@@ -89,9 +72,6 @@
     </a>
 
 
-
-
-
     <!--    Photos-->
     <a id="menu_my_photos" class='menus' href="
                                 <?php
@@ -102,8 +82,6 @@
     }
     ?>" class="">
         <i class="fa fa-instagram icon" style="font-size:24px; color: purple;"></i>MyPhotos</a>
-
-
 
 
     <!--    Videos-->
@@ -187,7 +165,9 @@
     <!--    Admin Tools-->
     <?php if ($session->is_logged_in() && $session->is_viewing_own_account() && $session->is_admin()) { ?>
         <a id="menu_admin_tools" class="menus menus_with_sub_menus" menu_name="admin_tools"
-           href="<?php echo LOCAL . "/public/__view/admin_tools/index.php"; ?>"><i class="fa fa-sliders icon" style="font-size:24px;"></i>Admin Tools</a>
+           href="<?php echo LOCAL . "/public/__view/admin_tools/index.php"; ?>"><i class="fa fa-sliders icon"
+                                                                                   style="font-size:24px;"></i>Admin
+            Tools</a>
         <?php require_once(PUBLIC_PATH . "/_layouts/sub_menus/admin_tools.php"); ?>
     <?php } ?>
 

@@ -76,6 +76,7 @@ if ($session->is_logged_in()) {
         </select><br><br>-->
 
         <input id="button_sign_up" type="button" name="sign_up" value="sign-up" class="form_button">
+<!--        <input id="shit" type="button" name="shit" value="shit" class="form_button">-->
     </form>
 
 
@@ -191,11 +192,21 @@ if ($session->is_logged_in()) {
 
 
 <script>
+
     window.onload = function () {
         document.getElementById("button_sign_up").addEventListener("click", function (event) {
+            $('#button_sign_up').attr("disabled", "true");
             sign_up();
+
+
+//            $('#button_sign_up').css("background-color", "white");
         });
     };
+//
+//    $('#shit').click(function () {
+////        $('#button_sign_up').attr("disabled", "true");window.alert('hie');return;
+//        $('#button_sign_up').removeAttr( "disabled" );
+//    });
 
     function sign_up() {
         var xhr = new XMLHttpRequest();
@@ -230,6 +241,10 @@ if ($session->is_logged_in()) {
                 }
 
             }
+
+            //
+//            $('#button_sign_up').css("background-color", "initial");
+            $('#button_sign_up').removeAttr( "disabled" );
 
 
         }

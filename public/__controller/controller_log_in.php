@@ -44,6 +44,19 @@ if (isset($_POST["log_in"])) {
     
     
     if ($logging_user) {
+
+        // If the user account hasn't been verified yet.
+        if ((isset($logging_user->signup_token)) &&
+            (!is_null($logging_user->signup_token)) &&
+            ($logging_user->signup_token != "")) {
+
+            //kobakoba1
+            MyDebugMessenger::add_debug_message("Account has not been verified yet. Verify it by checking your email.");
+            redirect_to("../__view/view_log_in.php");
+        }
+
+
+
         //
         $do_passwords_match = password_verify($password, $logging_user->hashed_password);
         

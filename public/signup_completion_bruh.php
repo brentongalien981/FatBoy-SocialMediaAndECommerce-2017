@@ -1,6 +1,7 @@
 <?php // require_once("../../private/includes/initializations.php");           ?>
 <?php // include(PUBLIC_PATH . "/_layouts/header.php");           ?>
 <?php include("_layouts/header.php"); ?>
+<?php //require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/my_user.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__controller/controller_signup_completion.php");    ?>
 
@@ -49,6 +50,12 @@ function show_welcome_msg() {
     echo "<p>You've successfully created your account.</p>";
 //    echo "<p>This account verification came from your email {$row['email']}</p>";    
 }
+
+function show_failure_msg() {
+    echo "<h4>Sorry, but your account can't be verified.</h4>";
+}
+
+
 ?>
 
 
@@ -79,10 +86,12 @@ function show_welcome_msg() {
     <div class="section">
         <?php
         if (isset($_GET['account_validated']) && $_GET['account_validated'] == "yes") {
+
             show_welcome_msg();
+
         }
         else {
-            echo "<h4>Sorry, but your account can't be verified.</h4>";
+            show_failure_msg();
         }
         ?>
     </div>

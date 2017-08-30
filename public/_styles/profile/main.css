@@ -57,7 +57,8 @@ table#contact_info td.contact_details {
     min-height: 256px;
 }
 
-#div_about_me img {
+#div_about_me img,
+#div_about_me i {
     width: 256px;
     height: 256px;
     border-radius: 3px;
@@ -66,6 +67,18 @@ table#contact_info td.contact_details {
     margin-right: 15px;
     margin-bottom: 5px;
     padding: 0;
+    display: inline;
+}
+
+i.b-i-profile_pic {
+    color: black;
+    font-size: 256px;
+    border: 1px solid black;
+}
+
+#i-profile_pic {
+    /*color: pink;*/
+    /*margin: 5px 15px;*/
 }
 
 #div_about_me p {

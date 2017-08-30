@@ -58,20 +58,29 @@ function log_in_user($signup_token) {
     while ($row = $database->fetch_array($record_result)) {
         global $session;
         $logging_user = User::authenticate_with_user_object_return($row['user_name']);
-        $session->login($logging_user);
-        break;
+
+        if ($logging_user) {
+            $session->login($logging_user);
+            return true;
+        }
+
+
     }
+
+    return false;
 }
+
+
 
 function is_signup_token_valid($token) {
     $query = "SELECT * FROM Users ";
-    $query .= "WHERE signup_token = '{$token}' LIMIT 1";
+    $query .= "WHERE signup_token = '{$token}'";
 
     $record_result = User::read_by_query($query);
 
     global $database;
 
-    if ($database->get_num_rows_of_result_set($record_result) > 0) {
+    if ($database->get_num_rows_of_result_set($record_result) == 1) {
         return true;
     } else {
         return false;
@@ -90,6 +99,16 @@ function create_user_profile() {
 
     return false;
 }
+
+function delete_signup_token($token) {
+
+    $query = "UPDATE Users SET signup_token = NULL";
+    $query .= " WHERE signup_token = '{$token}' LIMIT 1";
+
+    $is_update_ok = User::update_by_query($query);
+
+    return $is_update_ok;
+}
 ?>
 
 
@@ -100,11 +119,16 @@ function create_user_profile() {
 <?php
 
 $account_validated = "no";
-if (isset($_GET['token']) && is_signup_token_valid($_GET['token'])) {
-    log_in_user($_GET['token']);
+$token = "";
+if (isset($_GET['token']) && is_signup_token_valid($_GET['token']) &&
+    log_in_user($_GET['token'])) {
 
-    if (create_user_profile()) {
+
+    if (create_user_profile() &&
+        delete_signup_token($_GET['token'])) {
+
         $account_validated = "yes";
+
     }
 }
 

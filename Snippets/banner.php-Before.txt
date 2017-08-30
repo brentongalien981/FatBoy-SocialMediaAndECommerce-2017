@@ -1,0 +1,60 @@
+<?php
+
+$profile_pic_url = "/public/_photos/icon_home.png";
+
+if ($session->is_logged_in()) {
+//                                echo "<a class='user_name' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>Hello {$session->actual_user_name}!</a>";
+//                                echo "<a href='" . LOCAL . "/public/__controller/log_out.php'>Log-out</a>";
+        echo "<a id='link_home' href='" . LOCAL . "/public/reset_to_actual_user.php?is_viewing_actual_user_again=1'>";
+
+        //
+        global $session;
+        $query = "SELECT * FROM Profile ";
+        $query .= "WHERE user_id = {$session->actual_user_id}";
+
+        $record_result = Profile::read_by_query($query);
+
+
+        global $database;
+        while ($row = $database->fetch_array($record_result)) {
+            $profile_pic_url = $row["pic_url"];
+
+            if ($profile_pic_url == null || $profile_pic_url == "") {
+                $profile_pic_url = "/public/_photos/icon_home.png";
+            }
+
+            break;
+        }
+
+//                                echo "<img src='" . LOCAL . "/public/_photos/icon_home.png' class='header_icon'>";
+        echo "<img src='" . LOCAL . "{$profile_pic_url}' class='header_icon'>";
+//                                echo "Hello {$session->actual_user_name}!";
+        echo "</a>";
+    }
+
+
+        else {
+            $profile_pic_url = "/public/_photos/icon_home.png";
+
+    //                                echo "<a class='user_name'>zZzzZz</a>";
+    //                                echo "<a href='" . LOCAL . "/public/__view/view_log_in.php'>Log-in</a>";
+            echo "<a id='link_home' href='#'>";
+            echo "<img src='" . LOCAL . "{$profile_pic_url}' class='header_icon'>";
+            echo "</a>";
+        }
+
+
+?>
+
+
+
+
+
+    <?php } else { ?>
+
+        <a id="menu_profile" class='menus' href="#">
+            <?php show_user_home_icon(-69, "icon", "profile") ?>
+            <?= "Profile" ?>
+        </a>
+
+    <?php } ?>
