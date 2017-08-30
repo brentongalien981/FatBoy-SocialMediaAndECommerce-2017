@@ -219,12 +219,14 @@ if ($session->is_logged_in()) {
 //                     // Redirect.
                     window.alert("We sent you an email to " + json.email + " for your sign-up completion.");
                     window.location.assign("<?php echo LOCAL . "/public/__view/view_log_in.php"; ?>");
-
+                    $('.error_msg').css("visibility", "hidden");
                 } else {
                     // Display the error msgs.
                     document.getElementById("error_msg_email").innerHTML = json.error_email;
                     document.getElementById("error_msg_username").innerHTML = json.error_user_name;
                     document.getElementById("error_msg_password").innerHTML = json.error_password;
+
+                    $('.error_msg').css("visibility", "visible");
                 }
 
             }

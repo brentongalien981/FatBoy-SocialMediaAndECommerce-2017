@@ -2,7 +2,7 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/my_user.php"); ?>
 
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php //define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 

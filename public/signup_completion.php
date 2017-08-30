@@ -4,7 +4,7 @@
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/my_user.php"); ?>
 <?php // require_once(PUBLIC_PATH . "/__controller/controller_signup_completion.php");     ?>
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php //define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
 
 

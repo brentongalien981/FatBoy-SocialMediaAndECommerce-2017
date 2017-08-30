@@ -75,7 +75,9 @@ class StoreCart {
 
         $query = "SELECT * FROM StoreCart WHERE buyer_user_id = {$buyer_user_id} AND is_complete = {$code_incomplete_cart} LIMIT 1";
 
-        $new_cart_obj = self::read_by_query_and_instantiate($query)[0];
+        $cart_objs = self::read_by_query_and_instantiate($query);
+
+        $new_cart_obj = $cart_objs[0];
         
         return $new_cart_obj;
     }

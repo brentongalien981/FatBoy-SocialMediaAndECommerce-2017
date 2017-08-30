@@ -1,6 +1,8 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PRIVATE_PATH . "/includes/swiftmailer/config.php"); ?>
-<?php define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php //define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
+<?php //require_once(PUBLIC_PATH .'/__model/my_validation_error_logger.php'); ?>
+<?php use App\Publico\Model\MyValidationErrorLogger; ?>
 
 <?php
 

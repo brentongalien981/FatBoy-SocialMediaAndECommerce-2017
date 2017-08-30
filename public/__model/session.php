@@ -259,7 +259,10 @@ class Session {
 // This could be an initialized cart object without values in it.
             $initial_cart_obj = StoreCart::get_initialized_cart($this->actual_user_id);
 //             $this->cart_id = $_SESSION["cart_id"]
-            $this->set_cart($initial_cart_obj);
+            if ($initial_cart_obj != null) {
+                $this->set_cart($initial_cart_obj);
+            }
+
 
             //
             $this->initialize_ship_to_address_vars();
@@ -462,28 +465,43 @@ class Session {
 
             $this->logged_in = true;
 
-            $this->cart_id = $_SESSION["cart_id"];
-            $this->seller_user_id = $_SESSION["seller_user_id"];
-            $this->buyer_user_id = $_SESSION["buyer_user_id"];
+            if (isset($_SESSION["cart_id"])) {
+                $this->cart_id = $_SESSION["cart_id"];
+            }
+
+            if (isset($_SESSION["seller_user_id"])) {
+                $this->seller_user_id = $_SESSION["seller_user_id"];
+            }
+
+            if (isset($_SESSION["buyer_user_id"])) {
+                $this->buyer_user_id = $_SESSION["buyer_user_id"];
+            }
+
+
 //
 //            $this->cart = $_SESSION["cart"];
 //            $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
 //
             // For shipping vars.
-            $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
-            $this->ship_to_address_user_id = $_SESSION["ship_to_address_user_id"];
-            $this->ship_to_address_address_type_code = $_SESSION["ship_to_address_address_type_code"];
-            $this->ship_to_address_street1 = $_SESSION["ship_to_address_street1"];
-            $this->ship_to_address_street2 = $_SESSION["ship_to_address_street2"];
-            $this->ship_to_address_city = $_SESSION["ship_to_address_city"];
-            $this->ship_to_address_state = $_SESSION["ship_to_address_state"];
-            $this->ship_to_address_zip = $_SESSION["ship_to_address_zip"];
-            $this->ship_to_address_country_code = $_SESSION["ship_to_address_country_code"];
-            $this->ship_to_address_phone = $_SESSION["ship_to_address_phone"];
+            if (isset($_SESSION["ship_to_address_id"])) {
+                $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
+                $this->ship_to_address_user_id = $_SESSION["ship_to_address_user_id"];
+                $this->ship_to_address_address_type_code = $_SESSION["ship_to_address_address_type_code"];
+                $this->ship_to_address_street1 = $_SESSION["ship_to_address_street1"];
+                $this->ship_to_address_street2 = $_SESSION["ship_to_address_street2"];
+                $this->ship_to_address_city = $_SESSION["ship_to_address_city"];
+                $this->ship_to_address_state = $_SESSION["ship_to_address_state"];
+                $this->ship_to_address_zip = $_SESSION["ship_to_address_zip"];
+                $this->ship_to_address_country_code = $_SESSION["ship_to_address_country_code"];
+                $this->ship_to_address_phone = $_SESSION["ship_to_address_phone"];
+
+                //
+                $this->can_now_checkout = $_SESSION["can_now_checkout"];
+            }
 
 
-            //
-            $this->can_now_checkout = $_SESSION["can_now_checkout"];
+
+
 
 
             // For transcation vars.
