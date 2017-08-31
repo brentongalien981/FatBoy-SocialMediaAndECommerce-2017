@@ -6,7 +6,7 @@
 <?php require_once(PUBLIC_PATH . "/__controller/controller_timeline_posts.php"); ?>
 <?php defined("LOCAL") ? null : define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
 
-
+<?php use App\Publico\Model\MyValidationErrorLogger; ?>
 
 
 

@@ -1,5 +1,6 @@
 <?php
 //require_once("");
+use App\Publico\Model\MyValidationErrorLogger;
 ?>
 
 <?php

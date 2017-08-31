@@ -8,9 +8,10 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 }
 ?>
 
-<!doctype>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title id="title">&copy; FatBoy</title>
 
 

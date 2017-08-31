@@ -194,6 +194,10 @@ if ($session->is_logged_in()) {
 <script>
 
     window.onload = function () {
+        //uki
+        clear_signup_form_inputs();
+
+
         document.getElementById("button_sign_up").addEventListener("click", function (event) {
             $('#button_sign_up').attr("disabled", "true");
             sign_up();
@@ -207,6 +211,12 @@ if ($session->is_logged_in()) {
 ////        $('#button_sign_up').attr("disabled", "true");window.alert('hie');return;
 //        $('#button_sign_up').removeAttr( "disabled" );
 //    });
+
+    function clear_signup_form_inputs() {
+         $("#user_name").attr("value", '');
+         $("#password").attr("value", '');
+        $("#email").attr("value", '');
+    }
 
     function sign_up() {
         var xhr = new XMLHttpRequest();
