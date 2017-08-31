@@ -6,7 +6,7 @@ function do_photos_after_effects(class_name, crud_type, json, x_obj) {
             // var container = get_users_container(class_name);
             //
             // //
-            populate_photos_container(json.photos, class_name, crud_type, x_obj);
+            populate_photos_container(json.photos, class_name, crud_type, x_obj, json);
             break;
         case "create":
             //
@@ -70,7 +70,7 @@ function get_max_ref_height(photo_embed_codes, num_of_photos) {
 }
 
 
-function populate_photos_container(photos, class_name, crud_type, x_obj) {
+function populate_photos_container(photos, class_name, crud_type, x_obj, json) {
 
     //
     for (; counter_index < photos.length;) {
@@ -78,7 +78,7 @@ function populate_photos_container(photos, class_name, crud_type, x_obj) {
 
 
         //
-        display_row_of_photos(photos);
+        display_row_of_photos(photos, json);
 
 
         // Create a horizontal margin every img row container.
@@ -103,7 +103,7 @@ function populate_photos_container(photos, class_name, crud_type, x_obj) {
 }
 
 
-function display_row_of_photos(photo_embed_codes) {
+function display_row_of_photos(photo_embed_codes, json) {
     //num_of_photos_in_row
     var num_of_photos_in_row = get_random_int(2, 4);
 
@@ -196,7 +196,7 @@ function display_row_of_photos(photo_embed_codes) {
 
 
         // Append the caption.
-        var caption = get_caption2(w, h, an_img);
+        var caption = get_caption2(w, h, an_img, json);
         individual_container.appendChild(caption);
 
 
@@ -207,23 +207,6 @@ function display_row_of_photos(photo_embed_codes) {
 
         // Add event listeners.
         add_click_listener_to_caption(caption);
-        // add_mouse_listeners(an_img);
-        // add_mouseenter_listener(an_img);
-        // add_mouseleave_listener(an_img);
-
-        // $(caption).click(function () {
-        //     var the_img = caption.parentElement.childNodes[0];
-        //
-        //     if (the_img != null &&
-        //         $(the_img).is("img") &&
-        //         the_img.id == an_img.id) {
-        //         show_solo_img(the_img);
-        //     }
-        //
-        //     // show_solo_img(an_img);
-        //
-        //
-        // });
     }
 
 }

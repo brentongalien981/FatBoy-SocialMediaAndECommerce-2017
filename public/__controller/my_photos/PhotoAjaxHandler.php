@@ -51,6 +51,9 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
             $sanitized_vars[$index] = $_GET[$index];
         }
 
+        //
+        global $session;
+        $json_errors_array['is_viewing_own_account'] = $session->is_viewing_own_account();
 
         // Let the controller handle it.
         $json_errors_array['photos'] = $photo_controller->read($sanitized_vars);

@@ -143,7 +143,7 @@ function get_caption(w, h, the_img) {
     return caption;
 }
 
-function get_caption2(w, h, the_img) {
+function get_caption2(w, h, the_img, json) {
     var caption = document.createElement("div");
     caption.classList.add("captions");
     $(caption).css("width", w + "px");
@@ -151,7 +151,7 @@ function get_caption2(w, h, the_img) {
     // caption.innerHTML = "ptuaosdlfj;lasjfd:";
 
     // Add the content of the caption.
-    caption.appendChild(get_caption_content(h));
+    caption.appendChild(get_caption_content(h, json));
 
     $(caption).css("margin-top", "-" + h + "px");
 
@@ -173,7 +173,7 @@ function get_caption_content2(w, h) {
     return content;
 }
 
-function get_caption_content(h) {
+function get_caption_content(h, json) {
     content = document.createElement("div");
     content.classList.add("caption_action_bar");
 
@@ -182,24 +182,23 @@ function get_caption_content(h) {
     // content.innerHTML += "<i class=\"fa fa-trash my-photo-icons my-photo-icons-delete\" style=\"font-size:20px\"></i>";
 
 
+    // TODO:NOW
+    if (json.is_viewing_own_account) {
+        // Create the CRUD action icons.
+        var edit_icon = document.createElement("i");
+        edit_icon.className = "fa fa-sliders my-photo-icons my-photo-icons-edit";
 
-    // Create the CRUD action icons.
-    var edit_icon = document.createElement("i");
-    edit_icon.className = "fa fa-sliders my-photo-icons my-photo-icons-edit";
+        var delete_icon = document.createElement("i");
+        delete_icon.className = "fa fa-trash my-photo-icons my-photo-icons-delete";
 
-    var delete_icon = document.createElement("i");
-    delete_icon.className = "fa fa-trash my-photo-icons my-photo-icons-delete";
+        // Add event listeners to the icons.
+        add_click_listener_to_edit_icon(edit_icon);
+        add_click_listener_to_delete_icon(delete_icon);
 
-    // Add event listeners to the icons.
-    add_click_listener_to_edit_icon(edit_icon);
-    add_click_listener_to_delete_icon(delete_icon);
-
-    // Append the icons.
-    content.appendChild(edit_icon);
-    content.appendChild(delete_icon);
-
-
-
+        // Append the icons.
+        content.appendChild(edit_icon);
+        content.appendChild(delete_icon);
+    }
 
 
     return content;
