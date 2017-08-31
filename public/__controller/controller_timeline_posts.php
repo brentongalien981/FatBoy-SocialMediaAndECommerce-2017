@@ -7,11 +7,6 @@
 <?php use App\Publico\Model\MyValidationErrorLogger; ?>
 
 
-
-
-
-
-
 <?php
 
 if (!$session->is_logged_in()) {
@@ -20,12 +15,34 @@ if (!$session->is_logged_in()) {
 ?>
 
 
-
-
-
 <?php
 //uki
-function get_completely_presented_timeline_notifications_array($currently_viewed_user_id) {
+function get_response_bar() {
+    $response_bar = "";
+    $response_bar .= "<div class='b-post-response-bar'>";
+
+    $response_bar .= "<div class='response-icon-container'>";
+    $response_bar .= "<img title='Your Reaction' class='response-bar-icons' src='" . LOCAL . "/public/_photos/heart.png" . "'>";
+    $response_bar .= "<h6 class='response-icon-label'>Your Reaction</h6>";
+    $response_bar .= "</div>";
+
+    $response_bar .= "<div class='response-icon-container'>";
+    $response_bar .= "<img title='Number of Reactions' class='response-bar-icons' src='" . LOCAL . "/public/_photos/sum.png" . "'>";
+    $response_bar .= "<h6 class='response-icon-label'>7.6M</h6>";
+    $response_bar .= "</div class='response-icon-container'>";
+
+    $response_bar .= "<div class='response-icon-container'>";
+    $response_bar .= "<img title='Average Reaction' class='response-bar-icons' src='" . LOCAL . "/public/_photos/average.png" . "'>";
+    $response_bar .= "<h6 class='response-icon-label'>+5.3 Lupet</h6>";
+    $response_bar .= "</div>";
+
+    $response_bar .= "</div>";
+    
+    return $response_bar;
+}
+
+function get_completely_presented_timeline_notifications_array($currently_viewed_user_id)
+{
 //    global $connection;
 
     $query = "SELECT * ";
@@ -41,16 +58,42 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
     $completely_presented_timeline_notifications_array = array();
 
 
-
     global $database;
 
     while ($row = $database->fetch_array($timeline_notifications_records_result_set)) {
         // TODO: Complete the HTML parts.
         $completely_presented_timeline_notification = "<div class='post_background'>";
         $completely_presented_timeline_notification .= "<div id='{$row['id']}' class='message_post'>";
-        $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
-        $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
+
+
+//        Post details
+        $completely_presented_timeline_notification .= "<div class='b-post-details-bar'>";
+
+        $completely_presented_timeline_notification .= "<div>";
+//        $completely_presented_timeline_notification .= "<img class='b-profile-pic' src='https://farm5.staticflickr.com/4365/36521302700_aeb8485cf2_q.jpg'>";
+        $completely_presented_timeline_notification .= b_get_profile_pic_el_string($row['user_id'], "post", "b-profile-pic");
+        $completely_presented_timeline_notification .= "</div>";
+
+        $completely_presented_timeline_notification .= "<div class='meta-details'>";
+        $completely_presented_timeline_notification .= "<h4 class='meta-name'>{$row['user_name']}</h4>";
+        $completely_presented_timeline_notification .= "<h5 class='meta-date'>{$row['date_posted']}</h5>";
+        $completely_presented_timeline_notification .= "</div>";
+
+        $completely_presented_timeline_notification .= "<div class='settings-icon-container'>";
+        $completely_presented_timeline_notification .= "<i class='fa fa-sliders settings-icon'></i>";
+        $completely_presented_timeline_notification .= "</div>";
+
+        $completely_presented_timeline_notification .= "</div>";
+
+
+        $completely_presented_timeline_notification .= "<div class='b-post-main-content'>";
         $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
+        $completely_presented_timeline_notification .= "</div>";
+
+        //
+        $completely_presented_timeline_notification .= get_response_bar();
+
+
 
         // This div is just to have a reference for appending the reply form.
         $completely_presented_timeline_notification .= "<div class='empty_div_shit'></div>";
@@ -66,13 +109,13 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
 
 //        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
         $completely_presented_timeline_notification .= "</div>";
-        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
+//        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
+//        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' class='link_reply form_buttons'>reply</button>";
         $completely_presented_timeline_notification .= "</div>";
 
         // Put that one specific post to the array of user's posts.
         array_push($completely_presented_timeline_notifications_array, $completely_presented_timeline_notification);
     }
-
 
 
     return $completely_presented_timeline_notifications_array;
@@ -96,10 +139,10 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
 //    }
 //}
 
-function create_timeline_post_record() {
+function create_timeline_post_record()
+{
     //
     $is_creation_ok = create_timeline_post_record_bruh();
-
 
 
     if ($is_creation_ok) {
@@ -107,7 +150,8 @@ function create_timeline_post_record() {
     }
 }
 
-function return_completely_presented_post() {
+function return_completely_presented_post()
+{
     global $session;
     $query = "SELECT * ";
     $query .= "FROM TimelinePosts ";
@@ -138,7 +182,8 @@ function return_completely_presented_post() {
     echo $completely_presented_timeline_notification;
 }
 
-function create_timeline_post_record_bruh() {
+function create_timeline_post_record_bruh()
+{
     global $session;
     $new_timeline_post_obj = new TimelinePost();
 
@@ -185,52 +230,45 @@ function create_timeline_post_record_bruh() {
 //}
 
 // @param $var_lengts_arr: Post vars that need their length validated.
-function validate_new_timeline_post($var_lengts_arr) {
-    
+function validate_new_timeline_post($var_lengts_arr)
+{
+
 //    //  
 //    $var_lengts_arr = array("message_post" => ["min" => 1, "max" => 1000]);
-    
-    
+
 
     //
     foreach ($var_lengts_arr as $key => $value) {
         // Validate presence.
         if (!has_presence($_POST[$key])) {
             MyValidationErrorLogger::log("{$key}::: can not be blank");
-            
+
             return false;
         }
-        
+
         // Validate the length.   
         if (!has_length($_POST[$key], $value)) {
             MyValidationErrorLogger::log("{$key}::: should be between {$value['min']} to {$value['max']} characters.");
-            
+
             // 1 mistake alone, return false right away.
             return false;
         }
     }
-    
+
     // If all tests passed.
     return true;
 
 }
+
 ?>
-
-
-
-
-
-
-
-
 
 
 <?php
 
 // TODO: SECTION: Meat.
 if (is_request_post() &&
-        isset($_POST["create_post"]) &&
-        $_POST["create_post"] == "yes") {
+    isset($_POST["create_post"]) &&
+    $_POST["create_post"] == "yes") {
 
     // Fuckin need this everytime you validate.
     MyValidationErrorLogger::initialize();
@@ -248,8 +286,6 @@ if (is_request_post() &&
         $can_proceed = false;
         echo "0";
     }
-    
-    
 
 
     // White listing POST vars.
@@ -261,15 +297,16 @@ if (is_request_post() &&
         $can_proceed = false;
         echo "0";
     }
-    
-
 
 
     // Validate inputs.
     $var_lengts_arr = array("message_post" => ["min" => 1, "max" => 1000]);
-    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) { $can_proceed = true; } 
-    else { $can_proceed = false; echo "0"; }
-
+    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) {
+        $can_proceed = true;
+    } else {
+        $can_proceed = false;
+        echo "0";
+    }
 
 
     // Copy the error messages to the app status messenger.
@@ -281,18 +318,16 @@ if (is_request_post() &&
     MyValidationErrorLogger::reset();
 
 
-
     //
     if ($can_proceed) {
         create_timeline_post_record();
     }
-    
-    
-    
+
+
 //   // TODO: DEBUG
 //    echo "POST CSRF: {$_POST['csrf_token']}\n";
 //    echo "SESSION CSRF: {$_SESSION['csrf_token']}\n";
 //    return;     
-    
+
 }
 ?>

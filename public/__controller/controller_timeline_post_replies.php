@@ -50,11 +50,34 @@ function get_completely_presented_timeline_post_replies_array($row_id) {
     global $database;
 
     while ($row = $database->fetch_array($timeline_post_replies_records_result_set)) {
+
+        /*
+         *
+
+
+         *
+         */
+
+
         // TODO: Complete the HTML parts.
 //        $completely_presented_timeline_reply = "<br>";
         $completely_presented_timeline_reply = "<div id='{$row['id']}' class='replies'>";
-        $completely_presented_timeline_reply .= "<h4>" . "{$row['user_name']}" . "</h4>";
-        $completely_presented_timeline_reply .= "<h5>" . "{$row['date_posted']}" . "</h5>";
+
+
+        $completely_presented_timeline_reply .= "<div class='b-post-details-bar'>";
+
+        $completely_presented_timeline_reply .= "<div>";
+        $completely_presented_timeline_reply .= b_get_profile_pic_el_string($row['user_id'], "post", "b-profile-pic");
+        $completely_presented_timeline_reply .= "</div>";
+
+        $completely_presented_timeline_reply .= "<div class='meta-details'>";
+        $completely_presented_timeline_reply .= "<h4 class='meta-name'>{$row['user_name']}</h4>";
+        $completely_presented_timeline_reply .= "<h5 class='meta-date'>{$row['date_posted']}</h5>";
+        $completely_presented_timeline_reply .= "</div>";
+
+        $completely_presented_timeline_reply .= "</div>";
+
+        
         $completely_presented_timeline_reply .= "<p>" . "{$row['message']}" . "</p>";
         $completely_presented_timeline_reply .= "</div>";
 

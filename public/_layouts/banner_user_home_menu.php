@@ -79,6 +79,29 @@ function show_user_home_icon($user_id = 0, $icon_class, $menu, $label = "")
     }
 }
 
+/**
+ * Usage: Get profile pic's dom element in string form. <img> or <i>
+ */
+function b_get_profile_pic_el_string($user_id = 0, $menu, $icon_class) {
+    $src = b_get_profile_pic_src($user_id);
+
+    if (isset($src)) {
+        return "<img src=\"{$src}\" class=\"{$icon_class}\">";
+    } else {
+        return get_default_icon($icon_class, $menu);
+    }
+}
+
+function get_default_icon($icon_class, $menu)
+{
+    switch ($menu) {
+        case "post":
+            return "<i class=\"fa fa-user-circle-o {$icon_class} b-i-{$icon_class}\"></i>";
+            break;
+    }
+
+}
+
 function show_default_user_home_icon($icon_class, $menu, $label = "")
 {
     switch ($menu) {

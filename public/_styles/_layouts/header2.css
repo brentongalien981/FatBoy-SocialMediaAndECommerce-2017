@@ -239,7 +239,7 @@ div#main_content {
     min-height: 50px;
     max-height: 900px;
     overflow-y: auto;
-    /*background-color: pink;*/
+    background-color: rgb(240, 240, 240);
 }
 
 

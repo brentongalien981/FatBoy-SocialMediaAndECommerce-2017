@@ -29,9 +29,28 @@
             content
         </div>
 
+
+
+
         <div class="b-post-response-bar">
-            response
+            <div class="response-icon-container">
+                <img title="Your Reaction" class="response-bar-icons" src="../../_photos/heart.png">
+                <h6 class="response-icon-label">Your Reaction</h6>
+            </div>
+
+            <div class="response-icon-container">
+                <img title="Number of Reactions" class="response-bar-icons" src="../../_photos/sum.png">
+                <h6 class="response-icon-label">7.6M</h6>
+            </div class="response-icon-container">
+
+            <div class="response-icon-container">
+                <img title="Average Reaction" class="response-bar-icons" src="../../_photos/average.png">
+                <h6 class="response-icon-label">+5.3 Lupet</h6>
+            </div>
         </div>
+
+
+
 
         <div class="b-post-comments">
             comments
@@ -49,6 +68,8 @@
         padding: 0;
         margin: 0;
         border: none;
+        font-family: sans-serif;
+        font-weight: 100;
     }
 
     #wall {
@@ -109,11 +130,62 @@
         background-color: yellow;
     }
 
+
+
+
+
+
     .b-post-response-bar {
         width: 100%;
-        height: 50px;
-        background-color: blue;
+        /*height: 50px;*/
+        background-color: lavender;
     }
+
+    /*.b-post-response-bar div {*/
+        /*display: inline-block;*/
+    /*}*/
+
+    .b-post-response-bar .response-icon-container {
+        display: inline-block;
+        vertical-align: top;
+        /*background-color: orange;*/
+        padding: 5px 20px;
+        padding-top: 8px;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
+
+    .b-post-response-bar .response-icon-container * {
+        display: inline-block;
+        /*vertical-align: middle;*/
+    }
+
+    .b-post-response-bar .response-icon-container:hover {
+        border: 1px solid orange;
+        box-shadow: 0 0 10px orange;
+        cursor: pointer;
+    }
+
+    .response-bar-icons {
+        width: 20px;
+        height: 20px;
+        /*background-color: blue;*/
+    }
+
+
+    .response-icon-label {
+        vertical-align: top;
+        margin-top: 3px;
+    }
+
+
+
+
+
+
+
+
+
 
     .b-post-comments {
         width: 100%;
