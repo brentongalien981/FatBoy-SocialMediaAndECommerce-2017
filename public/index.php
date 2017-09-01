@@ -21,14 +21,21 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <main id="middle_content">
+
+    <nav id="sub_menus_nav">
+        <a id="create_post_link">+ Create Post</a>
+    </nav>
+
+
     <div id="main_content">
         <?php
         if ($session->is_logged_in()) {
-            echo "<form id='create_post_form'>";
+            echo "<form id='create_post_form' class='animated'>";
 //        echo get_csrf_token_tag();
-            echo "<textarea id='message_post_textarea' rows='6' cols='100' placeholder='What u be thinking...'></textarea><br>";
+            echo "<textarea id='message_post_textarea' rows='6' cols='100' placeholder='say em to us...'></textarea><br>";
 
-            echo "<input id='create_post_button' type='button' class='form_buttons' value='Yow!'>";
+            echo "<input id='create_post_button' type='button' class='form_buttons' value='post!'>";
+            echo "<input id='cancel_create_post_button' type='button' class='form_buttons' value='cancel'>";
             echo "</form>";
 
 
@@ -118,6 +125,7 @@ if (!MyDebugMessenger::is_initialized()) {
 <!--Scripts-->
 <script src="<?php echo LOCAL . "/public/_scripts/index.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/wall_tasks.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/wall_event_listeners.js"; ?>"></script>
 
 
 <!--Footer-->

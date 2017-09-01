@@ -90,24 +90,22 @@ function create_reply_post(parentPostId) {
 //                    $completely_presented_reply_post .= "<div id='{$row['id']}' class='replies'>";
                 var new_reply_post_div = document.createElement("div");
                 new_reply_post_div.className = "replies";
+                new_reply_post_div.id = "commentX-TODO";
                 new_reply_post_div.innerHTML = response;
-//                    window.alert("ajas: " + xhr.responseText.trim());
 
-                // Remove the reply form.
+                // Append the new reply post before the reply form.
+                var post = document.getElementById(parentPostId);
+                var len = post.childNodes.length;
+                var the_reply_form = post.childNodes[len - 1];
+                post.insertBefore(new_reply_post_div, the_reply_form);
 
-                document.getElementById(parentPostId).removeChild(the_reply_form);
+                //
+                var the_textarea = the_reply_form.childNodes[0];
+                the_textarea.value = "";
+                // console.log("************************************");
+                // console.log(the_reply_form.innerHTML);
+                // console.log("************************************");
 
-
-                // Append the new reply post.
-                document.getElementById(parentPostId).appendChild(new_reply_post_div);
-
-
-                // Change the color back of the reply button.
-//                    document.getElementById("replyButton" + the_parent_post_id).style.backgroundColor = "rgba(255, 157, 45, 0.20)";
-
-
-                // // Re-enable the reply button.
-                // document.getElementById("replyButton" + parentPostId).removeAttribute("disabled");
             } else {
                 console.log("BAD post response: " + response);
             }
@@ -187,7 +185,7 @@ function create_post() {
                 var div_tae = document.getElementById("div_tae");
                 var main_content = document.getElementById("main_content");
                 main_content.insertBefore(new_div_background, div_tae);
-                //uki
+
 
                 // Remove div_tae.
                 main_content.removeChild(div_tae);
@@ -203,6 +201,16 @@ function create_post() {
 
                 // Clear the textarea.
                 document.getElementById("message_post_textarea").value = "";
+
+
+                //
+                var new_post = new_div_background.childNodes[0];
+                var new_post_id = new_post.id;
+                append_a_comment_form(new_post_id);
+
+
+                //
+                hide_create_post_form();
             } else {
                 console.log("BAD post response: " + response);
             }
@@ -257,5 +265,7 @@ window.onload = function () {
     var create_post_button = document.getElementById("create_post_button");
     if (create_post_button != null) {
         create_post_button.onclick = create_post;
+
+
     }
 };

@@ -1,5 +1,10 @@
 // Show all posts reply/comment forms.
 set_comment_forms();
+set_main_content();
+
+function set_main_content() {
+    $('#main_content').css("background-color", "rgb(240, 240, 240)");
+}
 
 function set_comment_forms() {
     var post = $('.message_post');

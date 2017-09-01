@@ -66,6 +66,8 @@ require_once(PUBLIC_PATH .'/__model/my_database.php');
 require_once(PUBLIC_PATH .'/__model/my_user.php');
 //require_once(LIB_PATH.DS.'photograph.php');
 
+require_once(PUBLIC_PATH .'/helper_functions/icon_manager.php');
+
 
 
 

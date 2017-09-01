@@ -9,12 +9,6 @@
 <?php use App\Publico\Model\MyValidationErrorLogger; ?>
 
 
-
-
-
-
-
-
 <?php
 
 global $session;
@@ -25,13 +19,10 @@ if (!$session->is_logged_in()) {
 ?>
 
 
-
-
-
-
 <?php
 
-function get_completely_presented_timeline_post_replies_array($row_id) {
+function get_completely_presented_timeline_post_replies_array($row_id)
+{
     $query = "SELECT * ";
     $query .= "FROM TimelinePostReplies INNER JOIN Users ON TimelinePostReplies.poster_user_id = Users.user_id ";
     $query .= "WHERE parent_post_id = {$row_id} ";
@@ -51,17 +42,9 @@ function get_completely_presented_timeline_post_replies_array($row_id) {
 
     while ($row = $database->fetch_array($timeline_post_replies_records_result_set)) {
 
-        /*
-         *
-
-
-         *
-         */
-
-
         // TODO: Complete the HTML parts.
 //        $completely_presented_timeline_reply = "<br>";
-        $completely_presented_timeline_reply = "<div id='{$row['id']}' class='replies'>";
+        $completely_presented_timeline_reply = "<div id='comment{$row['id']}' class='replies'>";
 
 
         $completely_presented_timeline_reply .= "<div class='b-post-details-bar'>";
@@ -77,8 +60,13 @@ function get_completely_presented_timeline_post_replies_array($row_id) {
 
         $completely_presented_timeline_reply .= "</div>";
 
-        
-        $completely_presented_timeline_reply .= "<p>" . "{$row['message']}" . "</p>";
+
+//        $completely_presented_timeline_reply .= "<p>" . "{$row['message']}" . "</p>";
+
+        $completely_presented_timeline_reply .= "<div class='b-post-main-content'>";
+        $completely_presented_timeline_reply .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
+        $completely_presented_timeline_reply .= "</div>";
+
         $completely_presented_timeline_reply .= "</div>";
 
         // Put that one specific post to the array of user's posts.
@@ -86,11 +74,11 @@ function get_completely_presented_timeline_post_replies_array($row_id) {
     }
 
 
-
     return $completely_presented_timeline_post_replies_array;
 }
 
-function return_completely_presented_reply_post($new_reply_post_id) {
+function return_completely_presented_reply_post($new_reply_post_id)
+{
     global $session;
     $query = "SELECT * ";
     $query .= "FROM TimelinePostReplies ";
@@ -102,22 +90,43 @@ function return_completely_presented_reply_post($new_reply_post_id) {
 
 
     global $database;
-    $completely_presented_reply_post = "";
+    $completely_presented_timeline_reply = "";
 
     while ($row = $database->fetch_array($record_result)) {
 
-//        $completely_presented_reply_post .= "<div id='{$row['id']}' class='replies'>";
-        $completely_presented_reply_post .= "<h4>" . "{$row['user_name']}" . "</h4>";
-        $completely_presented_reply_post .= "<h5>" . "{$row['date_posted']}" . "</h5>";
-        $completely_presented_reply_post .= "<p>" . "{$row['message']}" . "</p><br>";
-//        $completely_presented_reply_post .= "</div>";
+        $completely_presented_timeline_reply .= "<div class='b-post-details-bar'>";
+
+        $completely_presented_timeline_reply .= "<div>";
+        $completely_presented_timeline_reply .= b_get_profile_pic_el_string($row['user_id'], "post", "b-profile-pic");
+        $completely_presented_timeline_reply .= "</div>";
+
+        $completely_presented_timeline_reply .= "<div class='meta-details'>";
+        $completely_presented_timeline_reply .= "<h4 class='meta-name'>{$row['user_name']}</h4>";
+        $completely_presented_timeline_reply .= "<h5 class='meta-date'>{$row['date_posted']}</h5>";
+        $completely_presented_timeline_reply .= "</div>";
+
+        $completely_presented_timeline_reply .= "</div>";
+
+
+        $completely_presented_timeline_reply .= "<div class='b-post-main-content'>";
+        $completely_presented_timeline_reply .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
+        $completely_presented_timeline_reply .= "</div>";
+
+
+//        $completely_presented_reply_post .= "<h4>" . "{$row['user_name']}" . "</h4>";
+//        $completely_presented_reply_post .= "<h5>" . "{$row['date_posted']}" . "</h5>";
+//        $completely_presented_reply_post .= "<p>" . "{$row['message']}" . "</p><br>";
+        //uki3
     }
 
-    echo $completely_presented_reply_post;
+    echo $completely_presented_timeline_reply;
 }
 
+
+
 // Not used.
-function validate_reply_post() {
+function validate_reply_post()
+{
 
     // Fuckin need this everytime you validate.
     MyValidationErrorLogger::initialize();
@@ -133,8 +142,7 @@ function validate_reply_post() {
     validate_max_lengths($fields_with_max_lengths);
 
 
-
-    // 
+    //
     if (MyValidationErrorLogger::is_empty()) {
         // Proceed to the next validation step.
         MyDebugMessenger::add_debug_message("SUCCESS create reply post validation.");
@@ -156,23 +164,26 @@ function validate_reply_post() {
     }
 }
 
-function create_reply_post_record() {
-    //
+function create_reply_post_record()
+{
+    //uki2
     $new_reply_post_id = false;
     $new_reply_post_id = create_reply_post_record_bruh();
-    
+
     //
     if ($new_reply_post_id) {
         return_completely_presented_reply_post($new_reply_post_id);
     }
 }
 
-function create_reply_post_record_bruh() {
+function create_reply_post_record_bruh()
+{
     global $session;
     $new_reply_post_obj = new TimelinePostReply();
 
-//    $new_reply_post_obj->id = null;
-    $new_reply_post_obj->parent_post_id = $_POST["parent_post_id"];
+    // Remove the "post" from post47, post78...
+    $parent_post_id = substr($_POST["parent_post_id"], 4);
+    $new_reply_post_obj->parent_post_id = $parent_post_id;
     $new_reply_post_obj->owner_user_id = $session->currently_viewed_user_id;
     $new_reply_post_obj->poster_user_id = $session->actual_user_id;
     $new_reply_post_obj->message = $_POST["reply_message"];
@@ -185,16 +196,8 @@ function create_reply_post_record_bruh() {
         return false;
     }
 }
+
 ?>
-
-
-
-
-
-
-
-
-
 
 
 <?php
@@ -202,47 +205,53 @@ function create_reply_post_record_bruh() {
 // TODO: SECTION: Meat.
 if (is_request_post() && isset($_POST["create_reply_post"]) && $_POST["create_reply_post"] == "yes") {
     // Fuckin need this everytime you validate.
-    MyValidationErrorLogger::initialize();   
-    
+    MyValidationErrorLogger::initialize();
+
     // Validation vars.
     $can_proceed = false;
     $allowed_assoc_indexes_for_post = array('reply_message');
     $dirty_array = [];
     $sanitized_array = [];
-    
-    
+
+
     // Check csrf_token.
-    if (is_csrf_token_legit()) { $can_proceed = true; } 
-    else { $can_proceed = false; echo "0"; }
-    
-    
-    
+    if (is_csrf_token_legit()) {
+        $can_proceed = true;
+    } else {
+        $can_proceed = false;
+        echo "0";
+    }
+
+
     // White listing POST vars.
 //    $dirty_array = are_post_vars_valid($allowed_assoc_indexes_for_post);
 //    if ($can_proceed && $dirty_array != 0) { $can_proceed = true; }
-    if ($can_proceed && are_post_vars_valid($allowed_assoc_indexes_for_post)) { $can_proceed = true; }
-    else { $can_proceed = false; echo "0"; }  
-    
-    
-    
-    
-    
+    if ($can_proceed && are_post_vars_valid($allowed_assoc_indexes_for_post)) {
+        $can_proceed = true;
+    } else {
+        $can_proceed = false;
+        echo "0";
+    }
+
+
     // Validate inputs.
-    $var_lengts_arr = array("reply_message" => ["min" => 2, "max" => 100]);
-    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) { $can_proceed = true; } 
-    else { $can_proceed = false; echo "0"; }    
-    
-    
-    
+    $var_lengts_arr = array("reply_message" => ["min" => 2, "max" => 1000]);
+    if ($can_proceed && validate_new_timeline_post($var_lengts_arr)) {
+        $can_proceed = true;
+    } else {
+        $can_proceed = false;
+        echo "0";
+    }
+
+
     // Copy the error messages to the app status messenger.
     foreach (MyValidationErrorLogger::get_log_array() as $log_error_msg) {
         echo "\n" . $log_error_msg;
     }
 
 
-    MyValidationErrorLogger::reset();    
-    
-    
+    MyValidationErrorLogger::reset();
+
 
     if ($can_proceed) {
         create_reply_post_record();

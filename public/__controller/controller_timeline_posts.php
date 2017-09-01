@@ -17,7 +17,8 @@ if (!$session->is_logged_in()) {
 
 <?php
 //uki
-function get_response_bar() {
+function get_response_bar()
+{
     $response_bar = "";
     $response_bar .= "<div class='b-post-response-bar'>";
 
@@ -37,7 +38,7 @@ function get_response_bar() {
     $response_bar .= "</div>";
 
     $response_bar .= "</div>";
-    
+
     return $response_bar;
 }
 
@@ -63,7 +64,7 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
     while ($row = $database->fetch_array($timeline_notifications_records_result_set)) {
         // TODO: Complete the HTML parts.
         $completely_presented_timeline_notification = "<div class='post_background'>";
-        $completely_presented_timeline_notification .= "<div id='{$row['id']}' class='message_post'>";
+        $completely_presented_timeline_notification .= "<div id='post{$row['id']}' class='message_post'>";
 
 
 //        Post details
@@ -92,7 +93,6 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
 
         //
         $completely_presented_timeline_notification .= get_response_bar();
-
 
 
         // This div is just to have a reference for appending the reply form.
@@ -167,16 +167,45 @@ function return_completely_presented_post()
     global $database;
     $completely_presented_timeline_notification = "";
 
+//    uki4
+
     while ($row = $database->fetch_array($record_result)) {
-        // TODO: Complete the HTML parts.
-//        $completely_presented_timeline_notification .= "<div class='post_background'>";
-        $completely_presented_timeline_notification .= "<div id='{$row['id']}' class='message_post'>";
-        $completely_presented_timeline_notification .= "<h4>" . "{$row['user_name']}" . "</h4>";
-        $completely_presented_timeline_notification .= "<h5>" . "{$row['date_posted']}" . "</h5>";
-        $completely_presented_timeline_notification .= "<p>" . "{$row['message']}" . "</p><br>";
+
+        $completely_presented_timeline_notification .= "<div id='post{$row['id']}' class='message_post'>";
+
+
+//        Post details
+        $completely_presented_timeline_notification .= "<div class='b-post-details-bar'>";
+
+        $completely_presented_timeline_notification .= "<div>";
+//        $completely_presented_timeline_notification .= "<img class='b-profile-pic' src='https://farm5.staticflickr.com/4365/36521302700_aeb8485cf2_q.jpg'>";
+        $completely_presented_timeline_notification .= b_get_profile_pic_el_string($row['user_id'], "post", "b-profile-pic");
         $completely_presented_timeline_notification .= "</div>";
-        $completely_presented_timeline_notification .= "<button id='replyButton{$row['id']}' onclick='createForm({$row['id']})' class='link_reply form_buttons'>reply</button>";
-//        $completely_presented_timeline_notification .= "</div>";    
+
+        $completely_presented_timeline_notification .= "<div class='meta-details'>";
+        $completely_presented_timeline_notification .= "<h4 class='meta-name'>{$row['user_name']}</h4>";
+        $completely_presented_timeline_notification .= "<h5 class='meta-date'>{$row['date_posted']}</h5>";
+        $completely_presented_timeline_notification .= "</div>";
+
+        $completely_presented_timeline_notification .= "<div class='settings-icon-container'>";
+        $completely_presented_timeline_notification .= "<i class='fa fa-sliders settings-icon'></i>";
+        $completely_presented_timeline_notification .= "</div>";
+
+        $completely_presented_timeline_notification .= "</div>";
+
+
+        $completely_presented_timeline_notification .= "<div class='b-post-main-content'>";
+        $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
+        $completely_presented_timeline_notification .= "</div>";
+
+        //
+        $completely_presented_timeline_notification .= get_response_bar();
+
+
+        // This div is just to have a reference for appending the reply form.
+        $completely_presented_timeline_notification .= "<div class='empty_div_shit'></div>";
+
+
     }
 
     echo $completely_presented_timeline_notification;
