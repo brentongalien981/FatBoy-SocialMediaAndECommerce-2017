@@ -13,13 +13,11 @@ function show_flash_notification(x_obj, json) {
 }
 
 
-
-
-
-
-
-
-
+/**
+ * Get the subfolder of the appropriate xAjaxHandler.php.
+ * @param class_name
+ * @return {string}
+ */
 function get_subfolder(class_name) {
     //
     var subfolder = "";
@@ -48,6 +46,12 @@ function get_subfolder(class_name) {
             break;
         case "Photo":
             subfolder = "my_photos";
+            break;
+        case "RateableItem":
+            subfolder = "rateable_items";
+            break;
+        case "RateableItemUser":
+            subfolder = "rateable_items_users";
             break;
         case "zZz":
             break;
@@ -100,6 +104,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "Photo":
             do_photos_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "RateableItem":
+            do_rateable_item_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;

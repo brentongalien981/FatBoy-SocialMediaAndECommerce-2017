@@ -17,15 +17,35 @@ if (!$session->is_logged_in()) {
 
 <?php
 //uki
+function DEBUG_get_select() {
+    $return_value = "";
+    $return_value .= "<select>";
+
+    for ($i=0; $i<50; $i++) {
+        $return_value .= "<option>{$i}";
+        $return_value .= "</option>";
+    }
+
+
+    $return_value .= "</select>";
+
+    return $return_value;
+}
 function get_response_bar()
 {
     $response_bar = "";
     $response_bar .= "<div class='b-post-response-bar'>";
 
-    $response_bar .= "<div class='response-icon-container'>";
-    $response_bar .= "<img title='Your Reaction' class='response-bar-icons' src='" . LOCAL . "/public/_photos/heart.png" . "'>";
-    $response_bar .= "<h6 class='response-icon-label'>Your Reaction</h6>";
+
+
+    $response_bar .= "<div id='' class='response-icon-container rate-pseudo-button rate-bar-hover-trigger'>";
+    $response_bar .= "<img title='Your Reaction' class='response-bar-icons rate-bar-hover-trigger' src='" . LOCAL . "/public/_photos/heart.png" . "'>";
+    $response_bar .= "<h6 class='response-icon-label rate-bar-hover-trigger'>Your Reaction</h6>";
     $response_bar .= "</div>";
+
+//    $response_bar .= "<div class='response-icon-container'>";
+//    $response_bar .= DEBUG_get_select();
+//    $response_bar .= "</div>";
 
     $response_bar .= "<div class='response-icon-container'>";
     $response_bar .= "<img title='Number of Reactions' class='response-bar-icons' src='" . LOCAL . "/public/_photos/sum.png" . "'>";

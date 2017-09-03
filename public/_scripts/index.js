@@ -211,6 +211,10 @@ function create_post() {
 
                 //
                 hide_create_post_form();
+
+                // Remove the "post" from post72..
+                var item_x_id = new_post_id.substring(4);
+                create_rateable_item(item_x_id);
             } else {
                 console.log("BAD post response: " + response);
             }

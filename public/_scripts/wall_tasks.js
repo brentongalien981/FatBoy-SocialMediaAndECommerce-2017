@@ -2,6 +2,8 @@
 set_comment_forms();
 set_main_content();
 
+
+
 function set_main_content() {
     $('#main_content').css("background-color", "rgb(240, 240, 240)");
 }
@@ -54,3 +56,4 @@ function append_a_comment_form(parentPostId) {
     var post = document.getElementById(parentPostId);
     post.appendChild(replyForm);
 }
+

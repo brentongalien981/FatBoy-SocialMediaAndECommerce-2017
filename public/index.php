@@ -96,6 +96,10 @@ if (!MyDebugMessenger::is_initialized()) {
         MyDebugMessenger::clear_debug_message();
         ?>
     </div>
+
+    <!--Templates-->
+    <?php  require_once(PUBLIC_PATH . "/__view/rateable_items/templates/rate_bar.php");   ?>
+
 </main>
 
 
@@ -103,30 +107,46 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 <!--Scripts-->
-<?php
-// TODO: SECTION: This appends the content of the main content to the main placeholder.
-?>
-<script>
-    document.getElementById("middle").appendChild(document.getElementById("middle_content"));
-</script>
-
-<!--<script src="_scripts/index.js"></script>-->
-<script>
-    // Edit the page title.
-    document.getElementById("title").innerHTML = "Wall / FatBoy";
-</script>
-
-
-<?php
-// TODO: SECTION: Script for showing the reply form.
-?>
-
-
-<!--Scripts-->
+<script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/index.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/wall_tasks.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/wall_event_listeners.js"; ?>"></script>
 
+
+<!--Late-bind scripts-->
+<script>document.getElementById("middle").appendChild(document.getElementById("middle_content"));</script>
+<script>document.getElementById("title").innerHTML = "Wall / FatBoy";</script>
+
+
+<!--Extentional Scripts-->
+<!--RateableItems-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items/instance_vars.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items/general_functions.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions3.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items/create.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items/read.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/update.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items/RateableItem.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/event_listeners.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/event_listeners2.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items/tasks.js"; ?>"></script>
+
+
+<!--RateableItemsUsers-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/instance_vars.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/general_functions.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions3.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/create.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/read.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/update.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/RateableItemUser.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/event_listeners.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/event_listeners2.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/tasks.js"; ?><!--"></script>-->
 
 <!--Footer-->
 <?php // include_layout_template('footer.php');          ?>

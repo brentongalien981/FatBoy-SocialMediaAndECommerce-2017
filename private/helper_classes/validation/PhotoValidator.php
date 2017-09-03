@@ -18,7 +18,6 @@ class PhotoValidator extends Validator
     private $src = null;
     private $width = null;
     private $height = null;
-    private $vars_to_be_number_uniformly_checked = null;
     private $accepted_url_prefixes = array(
         "https://farm5.staticflickr.com/",
         "https://www.flickr.com/photos/"
@@ -30,10 +29,7 @@ class PhotoValidator extends Validator
         parent::__construct();
     }
 
-    public function set_vars_to_be_number_uniformly_checked($vars_to_be_number_uniformly_checked)
-    {
-        $this->vars_to_be_number_uniformly_checked = $vars_to_be_number_uniformly_checked;
-    }
+
 
 
     /**
@@ -61,7 +57,7 @@ class PhotoValidator extends Validator
 //        if ($this->can_proceed) {
 //            $this->validate_length();
 //            \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
-//        }
+//        }uki3
         $this->validate_length();
         \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
 
@@ -89,9 +85,9 @@ class PhotoValidator extends Validator
         }
 
         if ($this->vars_to_be_number_uniformly_checked != null) {
-            //
-            $this->validate_number_uniformity();
-        }
+        //
+        $this->validate_number_uniformity();
+    }
 
         if ($this->vars_to_be_prefix_checked != null) {
             //
@@ -111,32 +107,9 @@ class PhotoValidator extends Validator
         return $this->can_proceed;
     }
 
-    private function validate_number_uniformity()
-    {
 
-        foreach ($this->vars_to_be_number_uniformly_checked as $v) {
-            if (!self::is_uniformly_numeric($_POST[$v])) {
-                MyValidationErrorLogger::log("{$v}::: {$v} is not valid.");
-                return false;
-            }
 
-        }
-    }
 
-    public static function is_uniformly_numeric($dimension)
-    {
-        $dimension_length = strlen($dimension);
-
-        for ($i = 0; $i < $dimension_length; $i++) {
-            $char = substr($dimension, $i, 1);
-            if (!is_numeric($char)) {
-                return false;
-            }
-        }
-
-        return true;
-
-    }
 
     public static function has_prefix($prefix, $raw)
     {

@@ -69,11 +69,17 @@ class Validator
     private $exempted_white_space_field_array = null;
     private $request_type = "post";
     public $validate_email = false;
+    protected $vars_to_be_number_uniformly_checked = null;
 
 
     function __construct()
     {
         MyValidationErrorLogger::initialize();
+    }
+
+    public function set_vars_to_be_number_uniformly_checked($vars_to_be_number_uniformly_checked)
+    {
+        $this->vars_to_be_number_uniformly_checked = $vars_to_be_number_uniformly_checked;
     }
 
     public function set_allowed_post_vars($allowed_post_vars_array)
@@ -82,6 +88,45 @@ class Validator
 
         $this->init_json_errors_array();
     }
+
+    public static function is_uniformly_numeric($dimension)
+    {
+        $dimension_length = strlen($dimension);
+
+        for ($i = 0; $i < $dimension_length; $i++) {
+            $char = substr($dimension, $i, 1);
+            if (!is_numeric($char)) {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    protected function validate_number_uniformity()
+    {
+
+        if ($this->request_type == "post") {
+            foreach ($this->vars_to_be_number_uniformly_checked as $v) {
+                if (!self::is_uniformly_numeric($_POST[$v])) {
+                    MyValidationErrorLogger::log("{$v}::: {$v} is not valid.");
+                    return false;
+                }
+            }
+        }
+
+        if ($this->request_type == "get") {
+            foreach ($this->vars_to_be_number_uniformly_checked as $v) {
+                if (!self::is_uniformly_numeric($_GET[$v])) {
+                    MyValidationErrorLogger::log("{$v}::: {$v} is not valid.");
+                    return false;
+                }
+            }
+        }
+    }
+
+
 
 
     public function set_unique_vars($vars_to_be_unique_checked)
