@@ -10,7 +10,14 @@ function attach_rateable_item_ids(rateable_items) {
         // Attach the id.
         $('#' + post_id).find('.b-post-response-bar').attr("rateable-item-id", rateable_item_id);
 
+        add_rate_pseudo_button_hover_listener(post_id);
+
     }
+
+    // // If len is 1, this means that it was a newly created post. So attach an event listener.
+    // if (are_rateable_item_ids_set && len == 1) {
+    //     add_rate_pseudo_button_hover_listener(post_id);
+    // }
 
     are_rateable_item_ids_set = true;
 }
