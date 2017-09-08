@@ -380,6 +380,8 @@ class Validator
 
     protected function validate_length()
     {
+        if (!isset($this->required_post_vars_length_array)) { return; }
+
         // 
         $validation_value = true;
 

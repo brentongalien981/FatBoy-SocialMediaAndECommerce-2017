@@ -14,3 +14,7 @@ async function my_main_sleep_callable(ms) {
     console.log("******************");
     console.log("I'M WAKING");
 }
+
+function my_sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}

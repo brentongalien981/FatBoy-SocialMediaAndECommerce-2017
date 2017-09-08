@@ -98,7 +98,7 @@ if (!MyDebugMessenger::is_initialized()) {
     </div>
 
     <!--Templates-->
-    <?php  require_once(PUBLIC_PATH . "/__view/rateable_items/templates/rate_bar.php");   ?>
+    <?php require_once(PUBLIC_PATH . "/__view/rateable_items/templates/rate_bar.php"); ?>
 
 </main>
 
@@ -108,6 +108,7 @@ if (!MyDebugMessenger::is_initialized()) {
 
 <!--Scripts-->
 <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/main_script2.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/index.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/wall_tasks.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/wall_event_listeners.js"; ?>"></script>
@@ -136,17 +137,54 @@ if (!MyDebugMessenger::is_initialized()) {
 
 <!--RateableItemsUsers-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/instance_vars.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/general_functions.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/general_functions.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions2.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/general_functions3.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/create.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/read.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/read.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/update.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/delete.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/RateableItemUser.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/event_listeners.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/my_photos/event_listeners2.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/rateable_items/tasks.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/rateable_items_users/tasks.js"; ?>"></script>
+
+
+
+
+
+
+<?php // TODO:SECTION: Extentional scripts for notifications. ?>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/instance_vars.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/general_functions.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/create.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/read.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/update.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/tasks.js"; ?><!--"></script>-->
+
+
+
+
+
+
+
+<?php // TODO:SECTION: Extentional scripts for TimelinePostRate reaction notifications. ?>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/instance_vars.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post/general_functions.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post/create.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/read.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/update.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post/NotificationPost.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/event_listeners.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/tasks.js"; ?><!--"></script>-->
+
+
+
+
+
 
 <!--Footer-->
 <?php // include_layout_template('footer.php');          ?>

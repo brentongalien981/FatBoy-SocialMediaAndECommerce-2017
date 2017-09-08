@@ -24,9 +24,9 @@ $('#create_post_link').click(function (event) {
     // b_add_animation($('#add_photo_form').get(0), "fadeInDown");
 });
 
-
-$('.rate-bar-hover-trigger').mouseover(function (event) {
+$("#the-rate-bar").find('.rate-bar-hover-trigger').mouseover(function (event) {
     event.stopPropagation();
+
     clearTimeout(the_rate_bar_mouseout_handler);
     $('#the-rate-bar').css("display", "none");
 
@@ -41,16 +41,54 @@ $('.rate-bar-hover-trigger').mouseover(function (event) {
         // $('#the-rate-bar').insertAfter($('#rate-button'));
         $('#the-rate-bar').insertAfter($(this));
     }
+    // else if (this.id == "the-rate-bar") { ; }
     else {
         var the_rate_pseudo_button = $(this).closest(".rate-pseudo-button");
         $('#the-rate-bar').insertAfter($(the_rate_pseudo_button));
     }
 
-    $('#the-rate-bar').css("display", "inline-block");
+    // $('#the-rate-bar').css("display", "inline-block");
+    $('#the-rate-bar').css("display", "block");
 
 });
 
-$('.rate-bar-hover-trigger').mouseout(function (event) {
+$("#the-rate-bar").find('.rate-bar-hover-trigger').mouseout(function (event) {
+    event.stopPropagation();
+
+    // if (this.id == "the-rate-bar") { return; }
+
+    the_rate_bar_mouseout_handler = setTimeout(function () {
+        $('#the-rate-bar').css("display", "none");
+    }, 1000);
+
+
+});
+
+
+// Set "the-rate-bar" events.
+$("#the-rate-bar").mouseover(function (event) {
+    event.stopPropagation();
+    clearTimeout(the_rate_bar_mouseout_handler);
+    $('#the-rate-bar').css("display", "none");
+
+
+
+
+    if (this.classList.contains("rate-pseudo-button")) {
+        // $('#the-rate-bar').insertAfter($('#rate-button'));
+        $('#the-rate-bar').insertAfter($(this));
+    }
+    else {
+        var the_rate_pseudo_button = $(this).closest(".rate-pseudo-button");
+
+    }
+
+    // $('#the-rate-bar').css("display", "inline-block");
+    $('#the-rate-bar').css("display", "block");
+
+});
+
+$("#the-rate-bar").mouseout(function (event) {
     event.stopPropagation();
     the_rate_bar_mouseout_handler = setTimeout(function () {
         $('#the-rate-bar').css("display", "none");
@@ -59,7 +97,8 @@ $('.rate-bar-hover-trigger').mouseout(function (event) {
 
 });
 
-$('#main_content').scroll(function (event) {
+
+$('#main_content').scroll(function (sevent) {
     // return;
     event.stopPropagation();
     the_rate_bar_mouseout_handler = setTimeout(function () {
@@ -80,3 +119,46 @@ $('.rate-option').click(function () {
 
     update_rateable_item(rateable_item_id, rate_value);
 });
+
+function add_rate_pseudo_button_hover_listener(post_id) {
+    // Append event listener.
+    $('#' + post_id).find('.rate-bar-hover-trigger').mouseover(function (event) {
+        event.stopPropagation();
+
+        if (this.id == "the-rate-bar") { return; }
+
+        clearTimeout(the_rate_bar_mouseout_handler);
+        $('#the-rate-bar').css("display", "none");
+
+
+
+
+        // If the hovered element is a rate-pseudo-button itself,
+        // then just append the-rate-bar directly.
+        // Else, if it's not, traverse up back the DOM until I find
+        // the proper rate-pseudo-button. Then append the-rate-bar.
+        if (this.classList.contains("rate-pseudo-button")) {
+            // $('#the-rate-bar').insertAfter($('#rate-button'));
+            $('#the-rate-bar').insertAfter($(this));
+        }
+        else {
+            var the_rate_pseudo_button = $(this).closest(".rate-pseudo-button");
+            $('#the-rate-bar').insertAfter($(the_rate_pseudo_button));
+        }
+
+        // $('#the-rate-bar').css("display", "inline-block");
+        $('#the-rate-bar').css("display", "block");
+    });
+
+    $('#' + post_id).find('.rate-bar-hover-trigger').mouseout(function (event) {
+        event.stopPropagation();
+
+        if (this.id == "the-rate-bar") { return; }
+
+        the_rate_bar_mouseout_handler = setTimeout(function () {
+            $('#the-rate-bar').css("display", "none");
+        }, 1000);
+
+
+    });
+}

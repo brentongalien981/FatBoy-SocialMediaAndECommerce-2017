@@ -156,6 +156,7 @@ function populate_friend_relationship_container(container, x_friends, caller_cla
             if (!sf['is_already_my_muse']) {
                 var current_follow_button = document.getElementById("follow_button" + sf['user_id']);
                 add_listener_to_follow_button(current_follow_button);
+                //ish
             }
         }
         else {

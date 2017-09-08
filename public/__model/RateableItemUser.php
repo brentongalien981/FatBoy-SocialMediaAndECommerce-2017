@@ -156,4 +156,113 @@ class RateableItemUser
         if ($num_of_records > 0) { return true; }
         return false;
     }
+
+
+    public static function get_query_for_read_x_data($data)
+    {
+
+        global $session;
+        $d = $data;
+        $q = "";
+
+        switch ($d["to_read"]) {
+            case "rate_tags":
+                //
+                $q .= "SELECT * FROM " . self::$table_name;
+                $q .= " WHERE responder_user_id = {$session->actual_user_id}";
+                $q .= " AND rateable_item_id IN (";
+//        $q .= join(", ", array_keys($d['item_x_id']));
+                $q .= "{$d['rateable_item_ids']}";
+                $q .= ")";
+                break;
+            case "rate_sigma":
+
+                $q .= "SELECT rateable_item_id, COUNT(*) AS 'count'";
+                $q .= " FROM " . self::$table_name;
+                $q .= " WHERE rateable_item_id IN (";
+                $q .= "{$d['rateable_item_ids']}";
+                $q .= ")";
+                $q .= " GROUP BY rateable_item_id";
+                break;
+            case "rate_value_sigma":
+
+                $q .= "SELECT rateable_item_id, COUNT(*) AS 'count', SUM(rate_value) AS 'rate_value_sum'";
+                $q .= " FROM " . self::$table_name;
+                $q .= " WHERE rateable_item_id IN (";
+                $q .= "{$d['rateable_item_ids']}";
+                $q .= ")";
+                $q .= " GROUP BY rateable_item_id";
+
+                break;
+        }
+        
+
+        return $q;
+    }
+
+    public static function read_by_query($query = "")
+    {
+        global $database;
+
+        $result_set = $database->get_result_from_query($query);
+
+        //
+        return $result_set;
+    }
+
+    public static function read($data)
+    {
+        //uki
+        $query = self::get_query_for_read_x_data($data);
+
+
+        //
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_things = array();
+
+        global $database;
+        $d = $data;
+
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_thing = null;
+
+            switch ($d["to_read"]) {
+                case "rate_tags":
+
+                    $a_thing = array(
+                        "rateable_item_id" => $row['rateable_item_id'],
+                        "responder_user_id" => $row['responder_user_id'],
+                        "rate_value" => $row['rate_value']
+                    );
+
+                    break;
+                case "rate_sigma":
+
+                    $a_thing = array(
+                        "rateable_item_id" => $row['rateable_item_id'],
+                        "count" => $row['count']
+                    );
+
+                    break;
+                case "rate_value_sigma":
+
+                    $a_thing = array(
+                        "rateable_item_id" => $row['rateable_item_id'],
+                        "count" => $row['count'],
+                        "rate_value_sum" => $row['rate_value_sum']
+                    );
+
+                    break;
+            }
+
+
+            //
+            array_push($array_of_things, $a_thing);
+        }
+
+        return $array_of_things;
+    }
 }

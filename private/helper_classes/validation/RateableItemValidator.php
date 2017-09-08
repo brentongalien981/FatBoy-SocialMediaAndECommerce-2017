@@ -62,6 +62,32 @@ class RateableItemValidator extends Validator
         $this->validate_length();
         \MyDebugMessenger::add_debug_message("\$this->can_proceed after validate_length: {$this->can_proceed}");
 
+
+
+        if ($this->user_detail_types != null) {
+            $this->validate_user_detail_types();
+        }
+
+
+        if ($this->formats != null) {
+            //
+            $this->validate_formats();
+        }
+
+
+        if ($this->validate_email) {
+            //
+            $this->validate_email_format();
+        }
+
+
+        if ($this->vars_to_be_unique_checked != null) {
+            //
+            $this->validate_uniqueness();
+        }
+
+
+
         if ($this->vars_to_be_number_uniformly_checked != null) {
             //
             $this->validate_number_uniformity();

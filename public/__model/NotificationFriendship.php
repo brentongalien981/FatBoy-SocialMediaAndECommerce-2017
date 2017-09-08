@@ -184,6 +184,7 @@ class NotificationFriendship extends Notification {
     // Returns bool.
     public function create_with_bool() {
 
+        // Create the parent record first, the Notification.
         if (!$this->create_parent_obj()) {
             return false;
         }

@@ -10,18 +10,20 @@ namespace App\Publico\Controller\RateableItemsUsers;
 
 require_once("../MainController.php");
 require_once(PUBLIC_PATH . "/__model/RateableItemUser.php");
-require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
+//require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
+require_once(PRIVATE_PATH . "/helper_classes/validation/RateableItemValidator.php");
 
 use App\Publico\Controller\MainController;
 use App\Publico\Model\RateableItemUser;
-use App\Privado\HelperClasses\Validation\Validator;
-
+//use App\Privado\HelperClasses\Validation\Validator;
+use App\Privado\HelperClasses\Validation\RateableItemValidator;
 
 class RateableItemUserController extends MainController
 {
     public function __construct()
     {
         parent::__construct();
+        $this->validator = new RateableItemValidator();
     }
 
     public function update($data)
@@ -50,4 +52,10 @@ class RateableItemUserController extends MainController
         //
 
     }
+
+    public function read($data) {
+        return RateableItemUser::read($data);
+    }
+
+
 }

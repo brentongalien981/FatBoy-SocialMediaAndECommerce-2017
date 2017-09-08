@@ -187,6 +187,10 @@ function create_post() {
                 main_content.insertBefore(new_div_background, div_tae);
 
 
+
+
+
+
                 // Remove div_tae.
                 main_content.removeChild(div_tae);
 
@@ -215,6 +219,14 @@ function create_post() {
                 // Remove the "post" from post72..
                 var item_x_id = new_post_id.substring(4);
                 create_rateable_item(item_x_id);
+
+
+                //
+                // are_rateable_item_ids_set = true;
+                var post_ids = [item_x_id];
+                read_rateable_item_ids(post_ids);
+
+
             } else {
                 console.log("BAD post response: " + response);
             }

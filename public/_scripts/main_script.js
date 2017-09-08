@@ -41,6 +41,9 @@ function get_subfolder(class_name) {
         case "NotificationMyShopping":
             subfolder = "notifications";
             break;
+        case "NotificationPost":
+            subfolder = "notifications";
+            break;
         case "User":
             subfolder = "admin_tools/user_management";
             break;
@@ -98,6 +101,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "NotificationMyShopping":
             do_notification_my_shoppings_after_effects(class_name, crud_type, json, x_obj);
             break;
+        case "NotificationPost":
+            do_notification_posts_after_effects(class_name, crud_type, json, x_obj);
+            break;
         case "User":
             do_users_after_effects(class_name, crud_type, json, x_obj);
             // window.alert("TODO:METHOD:do_notification_users_after_effects()");
@@ -107,6 +113,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "RateableItem":
             do_rateable_item_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "RateableItemUser":
+            do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj);;
             break;
         case "zZz":
             break;

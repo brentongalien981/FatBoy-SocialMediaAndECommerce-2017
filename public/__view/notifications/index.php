@@ -62,6 +62,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
 <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/main_script2.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/general_functions.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/create.js"; ?><!--"></script>-->

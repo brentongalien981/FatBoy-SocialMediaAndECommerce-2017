@@ -15,3 +15,4 @@ function update_rateable_item(rateable_item_id, rate_value) {
     var obj = new RateableItemUser(crud_type, request_type, key_value_pairs);
     obj.update();
 }
+

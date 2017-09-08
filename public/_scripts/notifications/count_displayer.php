@@ -26,6 +26,8 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
     function display_notification_count() {
         var xhr = new XMLHttpRequest();
 
+        // TODO: Change the file that handles the counting of notifications to a
+        // more general one and not this "NotificationFriendshipAjaxHandler.php".
         var url = "<?php echo LOCAL . "/public/__controller/notifications/NotificationFriendshipAjaxHandler.php"; ?>";
         var request_key_value_pairs = "?get_all_notifications_count=yes";
         url += request_key_value_pairs;

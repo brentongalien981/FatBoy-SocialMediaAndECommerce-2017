@@ -92,14 +92,16 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
         "max" => 12
     );
 
+    $ri_controller->validator->items_to_be_length_validated = explode(",",$_GET["post_ids"]);
+    $ri_controller->validator->values_to_be_number_uniformly_checked = explode(",",$_GET["post_ids"]);
+
 
     // Validate
     $ri_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
     $ri_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
     $ri_controller->validator->set_vars_to_be_number_uniformly_checked($vars_to_be_number_uniformly_checked);
 
-    $ri_controller->validator->items_to_be_length_validated = explode(",",$_GET["post_ids"]);
-    $ri_controller->validator->values_to_be_number_uniformly_checked = explode(",",$_GET["post_ids"]);
+
 
 
     $is_validation_ok = $ri_controller->validator->extra_validate();

@@ -40,21 +40,21 @@ function get_response_bar()
 
     $response_bar .= "<div id='' class='response-icon-container rate-pseudo-button rate-bar-hover-trigger'>";
     $response_bar .= "<img title='Your Reaction' class='response-bar-icons rate-bar-hover-trigger' src='" . LOCAL . "/public/_photos/heart.png" . "'>";
-    $response_bar .= "<h6 class='response-icon-label rate-bar-hover-trigger'>Your Reaction</h6>";
+    $response_bar .= "<h6 class='response-icon-label rate-bar-hover-trigger'>How do you rate this?</h6>";
     $response_bar .= "</div>";
 
 //    $response_bar .= "<div class='response-icon-container'>";
 //    $response_bar .= DEBUG_get_select();
 //    $response_bar .= "</div>";
 
-    $response_bar .= "<div class='response-icon-container'>";
+    $response_bar .= "<div class='response-icon-container rate-sigma-pseudo-button'>";
     $response_bar .= "<img title='Number of Reactions' class='response-bar-icons' src='" . LOCAL . "/public/_photos/sum.png" . "'>";
-    $response_bar .= "<h6 class='response-icon-label'>7.6M</h6>";
+    $response_bar .= "<h6 class='response-icon-label'>No rate tag</h6>";
     $response_bar .= "</div class='response-icon-container'>";
 
-    $response_bar .= "<div class='response-icon-container'>";
+    $response_bar .= "<div class='response-icon-container rate-average-pseudo-button'>";
     $response_bar .= "<img title='Average Reaction' class='response-bar-icons' src='" . LOCAL . "/public/_photos/average.png" . "'>";
-    $response_bar .= "<h6 class='response-icon-label'>+5.3 Lupet</h6>";
+    $response_bar .= "<h6 class='response-icon-label'>Average rating</h6>";
     $response_bar .= "</div>";
 
     $response_bar .= "</div>";
@@ -107,7 +107,7 @@ function get_completely_presented_timeline_notifications_array($currently_viewed
         $completely_presented_timeline_notification .= "</div>";
 
 
-        $completely_presented_timeline_notification .= "<div class='b-post-main-content'>";
+        $completely_presented_timeline_notification .= "<div class='b-post-main-content b-post-parent-content'>";
         $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
         $completely_presented_timeline_notification .= "</div>";
 
@@ -214,7 +214,7 @@ function return_completely_presented_post()
         $completely_presented_timeline_notification .= "</div>";
 
 
-        $completely_presented_timeline_notification .= "<div class='b-post-main-content'>";
+        $completely_presented_timeline_notification .= "<div class='b-post-main-content b-post-parent-content'>";
         $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
         $completely_presented_timeline_notification .= "</div>";
 
