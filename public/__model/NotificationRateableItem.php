@@ -10,7 +10,11 @@
 
 require_once("Notification.php");
 
+//require_once(PRIVATE_PATH . "/includes/Carbon.php");
+//use App\Privado\Includes\Carbon;
 
+use Carbon\Carbon;
+//use App\Privado\Includes\Carbon;
 
 
 class NotificationRateableItem extends Notification
@@ -255,7 +259,10 @@ class NotificationRateableItem extends Notification
                 "post_id" => $row['post_id'],
                 "message" => $row['message'],
                 "rate_tag" => $row['name'],
-                "date_updated" => $row['initiation_date']);
+//                "date_updated" => $row['initiation_date']);
+                "date_updated" => self::get_my_carbon_date($row['initiation_date']));
+
+
 
 
             //
@@ -263,6 +270,17 @@ class NotificationRateableItem extends Notification
         }
 
         return $array_of_notifications;
+    }
+
+    public static function get_my_carbon_date($raw_datetime) {
+//        $timestamp = '2014-02-06 16:34:00';
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $raw_datetime, '-4');
+        $date->setTimezone('UTC');
+
+//        $dt = Carbon::parse($raw_datetime);
+//        $dt->setTimezone('-5');
+//        Carbon::now(-1)
+        return $date->diffForHumans();
     }
 
     public static function get_query_for_read_by_offset($offset, $limit = 10)

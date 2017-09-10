@@ -83,4 +83,5 @@ require_once(PUBLIC_PATH .'/helper_functions/icon_manager.php');
 //require_once(PRIVATE_PATH . "/includes/js_functions.php");
 require_once(PRIVATE_PATH . "/helper_classes/validation/Validator.php");
 require_once(PRIVATE_PATH . "/helper_classes/Search.php");
+require_once(PRIVATE_PATH . "/external_api/carbon/vendor/autoload.php");
 ?>

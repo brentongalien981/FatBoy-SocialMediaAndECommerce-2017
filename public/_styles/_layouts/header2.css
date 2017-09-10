@@ -249,3 +249,8 @@ div#main_content {
     cursor: pointer;
     cursor: hand;
 }
+
+.my-time-stamp {
+    font-size: 85%;
+    margin-left: 10px;
+}

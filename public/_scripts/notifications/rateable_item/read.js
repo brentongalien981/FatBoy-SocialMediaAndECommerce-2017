@@ -31,10 +31,10 @@ function get_content_for_rateable_item_notification(notification) {
     msg += "post";
     msg += "</a> ";
     msg += "\"";
-    msg += n["message"].substring(0, 20) + " ...";
+    msg += n["message"].substring(0, 40) + " ...";
     msg += "\" ";
     msg += "\"" + n["rate_tag"] + "\".";
-    msg += " (" + n["date_updated"] + ")";
+    msg += " <i class='my-time-stamp'>(" + n["date_updated"] + ")</i>";
 
     //
     return msg;
