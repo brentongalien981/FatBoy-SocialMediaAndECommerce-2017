@@ -36,19 +36,3 @@ function do_notification_my_shoppings_after_effects(class_name, crud_type, json,
             break;
     }
 }
-
-
-
-function prepare_notification_x_container(class_name) {
-    var id = class_name + "Container";
-    var container = document.getElementById(id);
-    main_content.appendChild(container);
-}
-
-
-
-function get_notification_x_container(class_name) {
-    var id = class_name + "Container";
-    var tbody = document.getElementById(id);
-    return tbody;
-}

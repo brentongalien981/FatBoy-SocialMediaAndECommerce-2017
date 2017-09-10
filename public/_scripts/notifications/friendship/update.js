@@ -52,8 +52,6 @@ function update_fetch_a_friendship_notification() {
 
 
 
-
-
     //
     if (actual_num_notifications <  supposed_num_notifications) {
         var x_notification_obj = new NotificationFriendship(crud_type, request_type, key_value_pairs);

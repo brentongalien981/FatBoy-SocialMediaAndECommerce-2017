@@ -3,9 +3,16 @@ namespace App\Publico\Controller\Notifications;
 
 class NotificationFetcher {
 
-    private static $notifiable_classes = array("Friendship", "MyShopping");
-    private $num_of_notifications_arr = array("Friendship" => 0, "MyShopping" => 0);
-
+    private static $notifiable_classes = array(
+        "Friendship",
+        "MyShopping",
+        "RateableItem");
+//    );
+    private $num_of_notifications_arr = array(
+        "Friendship" => 0,
+        "MyShopping" => 0,
+        "RateableItem" => 0);
+//    );
     /**
      * @return int $notification_count Number of all notifications.
      */
@@ -17,7 +24,17 @@ class NotificationFetcher {
             // $notification_class is like "Notification" . "Friendship" = NotificationFriendship.
             $notification_class = "Notification" . $notifiable_class;
 
-            // $read_all_query for ex is the query for reading all friendship notifications.
+            // TODO: REMINDER: This is just a one-time, special case.
+            // Change this to a more abstract form later.
+            if ($notification_class == "NotificationRateableItem") {
+                $notification_count = $notification_class::get_notification_count();
+                $num_of_notifications_arr[$notifiable_class] = $notification_count;
+                continue;
+            }
+
+
+
+                // $read_all_query for ex is the query for reading all friendship notifications.
             $read_all_query = $notification_class::get_query_for_read_all($session->actual_user_id);
 
 

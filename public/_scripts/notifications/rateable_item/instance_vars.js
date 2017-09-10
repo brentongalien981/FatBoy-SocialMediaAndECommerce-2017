@@ -1,0 +1,1 @@
+var can_my_rateable_item_notifications_update = false;

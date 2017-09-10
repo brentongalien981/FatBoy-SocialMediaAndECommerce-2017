@@ -9,14 +9,7 @@ function do_notification_friendships_after_effects(class_name, crud_type, json, 
             var container = get_notification_x_container(class_name);
 
             //
-            console.log("*********** ++++++ *********");
-            console.log("calling METHOD: populate_container()");
             populate_x_notification_container(container, json.notifications, class_name, crud_type);
-
-            //
-            console.log("*********** ++++++ *********");
-            console.log("UKINNAYO MET!");
-
             break;
         case "create":
             break;

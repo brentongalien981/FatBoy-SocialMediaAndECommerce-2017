@@ -1,0 +1,21 @@
+function do_notification_rateable_items_after_effects(class_name, crud_type, json, x_obj) {
+    switch (crud_type) {
+        case "read":
+            window.alert("TODO: FILE: general_functions.js, METHOD: do_notification_rateable_items_after_effects(), switch case: \"read\"");
+
+            //
+            prepare_notification_x_container(class_name);
+            var container = get_notification_x_container(class_name);
+
+            //
+            populate_x_notification_container2(container, json.notifications, class_name, crud_type);
+            break;
+        case "create":
+            window.alert("TODO: FILE: general_functions.js, METHOD: do_notification_rateable_items_after_effects()");
+            break;
+        case "update":
+            break;
+        case "delete":
+            break;
+    }
+}

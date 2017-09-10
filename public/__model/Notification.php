@@ -55,6 +55,54 @@ class Notification {
         return $is_creation_ok;
     }
 
+    protected function update_parent_obj()
+    {
+        global $database;
+        //uki2
+        $attributes = $this->get_sanitized_attributes();
+        $attribute_pairs = array();
+
+        foreach ($attributes as $key => $value) {
+            $attribute_pairs[] = "{$key}='{$value}'";
+        }
+
+        $query = "UPDATE " . self::$table_name . " SET ";
+        $query .= join(", ", $attribute_pairs);
+
+        // Plus, add an update to the column "updated_at".
+        $query .= ", initiation_date = NOW()";
+
+        $query .= " WHERE id = {$this->id}";
+        $query .= " AND notifier_user_id = {$this->notifier_user_id}";
+
+
+        // Start transaction.
+        if (!$database->start_transaction()) {
+            return false;
+        }
+
+        $database->get_result_from_query($query);
+
+        //
+        $is_update_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+
+        //
+        if ($is_update_ok) {
+            //
+            if (!$database->commit()) {
+                return false;
+            }
+        } else {
+            //
+            $database->rollback();
+
+            //
+            return false;
+        }
+
+    }
+
 
     
     public static function read_all($notified_user_id) {
@@ -94,7 +142,7 @@ class Notification {
     }
 
     // Returns bool.
-    public function create_with_bool() {//uki
+    public function create_with_bool() {
         global $database;
 
         //

@@ -170,16 +170,16 @@ if (!MyDebugMessenger::is_initialized()) {
 
 
 
-<?php // TODO:SECTION: Extentional scripts for TimelinePostRate reaction notifications. ?>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/instance_vars.js"; ?><!--"></script>-->
-<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post/general_functions.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post/create.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/read.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/update.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/delete.js"; ?><!--"></script>-->
-<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post/NotificationPost.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/event_listeners.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post/tasks.js"; ?><!--"></script>-->
+<?php // TODO:SECTION: Extentional scripts for rate-reaction notifications. ?>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_iteminstance_vars.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/general_functions.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/create.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemread.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemupdate.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemdelete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/NotificationRateableItem.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemevent_listeners.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemtasks.js"; ?><!--"></script>-->
 
 
 

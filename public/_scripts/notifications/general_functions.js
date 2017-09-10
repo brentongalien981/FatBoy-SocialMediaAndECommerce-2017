@@ -3,9 +3,6 @@
 // }
 
 
-
-
-
 /**
  *
  * @param new_container_id
@@ -26,6 +23,46 @@ function clone_categorized_notification_template(new_container_id) {
 
 }
 
+function populate_x_notification_container2(container, notifications, class_name, crud_type) {
+
+    if (class_name == "NotificationRateableItem") {
+        var alert_msg = "**********************************";
+        alert_msg += "TODO: Add listener to delete-link of the rateable-item-notificationos.";
+        alert_msg += "**********************************";
+    }
+    
+    for (var i = 0; i < notifications.length; i++) {
+        var notification = notifications[i];
+        var prepared_notification = get_prepared_notification(class_name, notification);
+
+        //
+        append_a_notification(container, prepared_notification);
+
+        // TODO: Add listener to delete-link of the post notificationos.
+        add_listener_to_delete_notification_link(notification, class_name);
+
+    }
+
+    //
+    if (crud_type === "read") {
+        // Prepare the AJAX for update.
+        prepare_update(class_name);
+    }
+
+
+    //
+    show_x_container(container);
+
+
+    // If the x_container doesn't have any notifications to display..
+    // NOTE: I don't know why it's 5 when it only has <h4> and <hr> as
+    //       default children.
+    // window.alert("container.childNodes.length: " + container.childNodes.length);
+    if ($(".rateable_item_notifications").length <= 0) {
+        hide_x_container(container);
+    }
+
+}
 
 function populate_x_notification_container(container, notifications, class_name, crud_type) {
     // console.log("PUTA: notifications.length: " + notifications.length);
@@ -38,11 +75,8 @@ function populate_x_notification_container(container, notifications, class_name,
         //
         append_a_notification(container, prepared_notification);
 
-        // uki
+        //
         add_listener_to_delete_notification_link(notification, class_name);
-
-
-
 
 
         // If the notification is a follow request,
@@ -67,7 +101,9 @@ function populate_x_notification_container(container, notifications, class_name,
     // NOTE: I don't know why it's 5 when it only has <h4> and <hr> as
     //       default children.
     // window.alert("container.childNodes.length: " + container.childNodes.length);
-    if (container.childNodes.length <= 5) { hide_x_container(container); }
+    if (container.childNodes.length <= 5) {
+        hide_x_container(container);
+    }
 
     // console.log("*************************")
     // console.log("DEBUG:VAR:container.childNodes.length: " + container.childNodes.length);
@@ -78,7 +114,6 @@ function populate_x_notification_container(container, notifications, class_name,
 }
 
 
-
 function prepare_update(class_name) {
     switch (class_name) {
         case "NotificationFriendship":
@@ -86,6 +121,9 @@ function prepare_update(class_name) {
             break;
         case "NotificationMyShopping":
             can_my_shopping_notifications_update = true;
+            break;
+        case "NotificationRateableItem":
+            can_my_rateable_item_notifications_update = true;
             break;
         case "zZz":
             break;
@@ -98,6 +136,7 @@ function get_prepared_notification(class_name, notification) {
     // var prepared_notification = "<p class='notifications'>";
     var prepared_notification = document.createElement("p");
     prepared_notification.classList.add("notifications");
+
     prepared_notification.id = "notification" + notification['notification_id'];
 
     var content = "";
@@ -107,7 +146,6 @@ function get_prepared_notification(class_name, notification) {
 
     //
     content += get_delete_notification_link(class_name, notification);
-
 
 
     //
@@ -134,6 +172,10 @@ function get_prepared_notification(class_name, notification) {
             prepared_notification.classList.add("friendship_notifications");
             content += get_notification_for_follow_acceptance(notification);
             break;
+        case "4": // Post has been tag-rated...
+            prepared_notification.classList.add("rateable_item_notifications");
+            content += get_content_for_rateable_item_notification(notification);
+            break;
     }
 
     // prepared_notification += '</p>';
@@ -143,9 +185,36 @@ function get_prepared_notification(class_name, notification) {
     return prepared_notification;
 }
 
+function prepare_notification_x_container(class_name) {
+    var id = class_name + "Container";
+    var container = document.getElementById(id);
+    main_content.appendChild(container);
+}
+
+function get_notification_x_container(class_name) {
+    var id = class_name + "Container";
+    var tbody = document.getElementById(id);
+    return tbody;
+}
+
 
 function append_a_notification(container, prepared_notification) {
     container.appendChild(prepared_notification);
     // container.innerHTML += prepared_notification;
     // console.log("INNERHTML: " + prepared_notification);
+}
+
+function get_num_of_dom_notifications(class_name) {
+    var specific_class_name = "";
+
+    switch (class_name) {
+        case "NotificationPost":
+            specific_class_name = "post_notifications";
+            break;
+        case "NotificationRateableItem":
+            specific_class_name = "rateable_item_notifications";
+            break;
+    }
+
+    return $("." + specific_class_name).length;
 }

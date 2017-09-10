@@ -78,6 +78,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 <?php // TODO:SECTION: Sub-menus ?>
 <?php include(PUBLIC_PATH . "/__view/notifications/friendship/index.php"); ?>
 <?php include(PUBLIC_PATH . "/__view/notifications/my_shopping/index.php"); ?>
+<?php include(PUBLIC_PATH . "/__view/notifications/rateable_item/index.php"); ?>
 
 
 
@@ -92,7 +93,7 @@ if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
 
 
 
-<?php // TODO:SECTION: Supporting scripts when the link "accept" is clicked. ?>
+<?php // TODO:SECTION: Supporting scripts for friends notifications when the link "accept" is clicked. ?>
 <script src="<?php echo LOCAL . "/public/_scripts/friends/Friendship.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/friends/general_functions.js"; ?>"></script>
 

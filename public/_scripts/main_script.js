@@ -36,12 +36,15 @@ function get_subfolder(class_name) {
             subfolder = "friends";
             break;
         case "NotificationFriendship":
-            subfolder = "notifications";
-            break;
+        // subfolder = "notifications";
+        // break;
         case "NotificationMyShopping":
-            subfolder = "notifications";
-            break;
+        // subfolder = "notifications";
+        // break;
         case "NotificationPost":
+        // subfolder = "notifications";
+        // break;
+        case "NotificationRateableItem":
             subfolder = "notifications";
             break;
         case "User":
@@ -65,7 +68,6 @@ function get_subfolder(class_name) {
 }
 
 
-
 function show_x_container(container) {
     container.style.display = "block";
 }
@@ -74,7 +76,6 @@ function show_x_container(container) {
 function hide_x_container(container) {
     container.style.display = "none";
 }
-
 
 
 function decide_ajax_after_effects_class_handlers(x_obj, json) {
@@ -104,6 +105,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "NotificationPost":
             do_notification_posts_after_effects(class_name, crud_type, json, x_obj);
             break;
+        case "NotificationRateableItem":
+            do_notification_rateable_items_after_effects(class_name, crud_type, json, x_obj);
+            break;
         case "User":
             do_users_after_effects(class_name, crud_type, json, x_obj);
             // window.alert("TODO:METHOD:do_notification_users_after_effects()");
@@ -115,13 +119,12 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             do_rateable_item_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "RateableItemUser":
-            do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj);;
+            do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;
     }
 }
-
 
 
 function get_key_value_pairs(key_value_pairs, request_type) {
@@ -155,15 +158,12 @@ function get_key_value_pairs(key_value_pairs, request_type) {
 }
 
 
-
 function my_ajax(x_obj) {
     var caller_class_name = x_obj.class_name;
     var crud_type = x_obj.crud_type;
     var request_type = x_obj.request_type;
     var key_value_pairs_arr = x_obj.key_value_pairs;
     var key_value_pairs_str = get_key_value_pairs(key_value_pairs_arr, request_type);
-
-
 
 
     //
@@ -181,22 +181,12 @@ function my_ajax(x_obj) {
     xhr.open(request_type, url, true);
 
 
-
-
-
-
-
     // TODO:DEBUG
     console.log("REQUEST TYPE: " + request_type);
     console.log("crud_type: " + crud_type);
     console.log("url: " + url);
     console.log("key_value_pairs_str: " + key_value_pairs_str);
     console.log("caller_class_name: " + caller_class_name);
-
-
-
-
-
 
 
     //
@@ -231,7 +221,6 @@ function my_ajax(x_obj) {
                 console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
 
 
-
                 // "After-Effects" tasks if the AJAX is ok.
                 decide_ajax_after_effects_class_handlers(x_obj, json);
 
@@ -239,15 +228,8 @@ function my_ajax(x_obj) {
             }
 
 
-
             // Show a flash notification of the overall result.
             show_flash_notification(x_obj, json);
-
-
-
-
-
-
 
 
             // AJAX Formatted JSON log.
@@ -286,11 +268,6 @@ function my_ajax(x_obj) {
 
         }
     };
-
-
-
-
-
 
 
     // Send.

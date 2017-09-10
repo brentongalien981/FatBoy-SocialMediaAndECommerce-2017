@@ -38,7 +38,8 @@ function do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj)
             post_id = post_id.substring(4);
 
             // Create.
-            create_timeline_post_notification(post_id);
+            // create_timeline_post_notification(post_id);
+            create_rateable_item_notification(rateable_item_id, rate_value);
             break;
         case "delete":
             // //
