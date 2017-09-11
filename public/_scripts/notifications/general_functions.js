@@ -62,18 +62,29 @@ function populate_x_notification_container2(container, notifications, class_name
 
 
     //
-    // show_x_container(container);
     show_x_container2(class_name);
 
 
     // If the x_container doesn't have any notifications to display..
-    // NOTE: I don't know why it's 5 when it only has <h4> and <hr> as
-    //       default children.
-    // window.alert("container.childNodes.length: " + container.childNodes.length);
-    if ($(".rateable_item_notifications").length <= 0) {
-        // hide_x_container(container);
+    set_container_display_visibility(class_name);
+
+
+}
+
+function set_container_display_visibility(class_name) {
+    var actual_class_name = "";
+    switch (class_name) {
+        case "NotificationMyShopping":
+            actual_class_name = "my_shopping_notifications";
+            break;
+        case "NotificationRateableItem":
+            actual_class_name = "rateable_item_notifications";
+            break;
     }
 
+    if ($("." + actual_class_name).length <= 0) {
+        hide_x_container2(class_name);
+    }
 }
 
 function populate_x_notification_container(container, notifications, class_name, crud_type) {
@@ -137,7 +148,7 @@ function prepare_update(class_name) {
             can_friendship_notifications_update = true;
             break;
         case "NotificationMyShopping":
-            can_my_shopping_notifications_update = true;
+            can_my_shopping_notifications_fetch = true;
             break;
         case "NotificationRateableItem":
             can_rateable_item_notifications_fetch = true;
@@ -208,6 +219,8 @@ function prepare_notification_x_container(class_name) {
     var id = class_name + "Container";
     var container = document.getElementById(id);
     main_content.appendChild(container);
+
+
 }
 
 function get_actual_notification_x_container(class_name) {
@@ -233,11 +246,14 @@ function get_num_of_dom_notifications(class_name) {
     var specific_class_name = "";
 
     switch (class_name) {
-        case "NotificationPost":
-            specific_class_name = "post_notifications";
-            break;
+        // case "NotificationPost":
+        //     specific_class_name = "post_notifications";
+        //     break;
         case "NotificationRateableItem":
             specific_class_name = "rateable_item_notifications";
+            break;
+        case "NotificationMyShopping":
+            specific_class_name = "my_shopping_notifications";
             break;
     }
 
@@ -251,6 +267,10 @@ function get_notification_with_latest_date(notification_class_name) {
         case "NotificationRateableItem":
             specific_class_name = "rateable_item_notifications";
             break;
+        case "NotificationMyShopping":
+            specific_class_name = "my_shopping_notifications";
+            break;
+
     }
 
     var the_latest_notification = $("." + specific_class_name)[0];

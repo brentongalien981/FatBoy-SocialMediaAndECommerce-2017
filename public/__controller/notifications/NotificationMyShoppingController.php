@@ -92,7 +92,12 @@ class NotificationMyShoppingController extends MainController
 
     public function read($data)
     {
-        return NotificationMyShopping::read_by_section($data['section']);
+        return NotificationMyShopping::read_by_offset($data);
+    }
+
+    public function fetch($data)
+    {
+        return NotificationMyShopping::fetch($data);
     }
 
 

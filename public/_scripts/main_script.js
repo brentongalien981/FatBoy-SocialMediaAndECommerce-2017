@@ -81,6 +81,11 @@ function hide_x_container(container) {
     container.style.display = "none";
 }
 
+function hide_x_container2(class_name) {
+    // container.style.display = "none";
+    $("#" + class_name + "Container").css("display", "none");
+}
+
 
 function decide_ajax_after_effects_class_handlers(x_obj, json) {
     var class_name = x_obj.class_name;

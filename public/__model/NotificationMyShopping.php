@@ -148,8 +148,10 @@ class NotificationMyShopping extends Notification
 
 
 
-    public static function read_by_section($section, $limit = 2) {
-        $query = self::get_query_for_read_by_section($section, $limit);
+    public static function read_by_offset($data) {
+//        $query = self::get_query_for_read_by_section($section, $limit);
+
+        $query = self::get_query_for_read_by_offset($data);
 
 
 //        $objects_array = self::read_by_query_and_instantiate($query);
@@ -170,8 +172,9 @@ class NotificationMyShopping extends Notification
                 "invoice_id" => $row['invoice_id'],
                 "invoice_item_id" => $row['invoice_item_id'],
                 "item_name" => $row['item_name'],
-                "status_name" => $row['status_name'],
-                "status_date" => $row['status_date']);
+                "status_name" => $row['invoice_item_status'],
+                "date_updated" => $row['date_updated'],
+                "human_date" => parent::get_my_carbon_date($row['date_updated']));
 
 
             //
@@ -183,69 +186,108 @@ class NotificationMyShopping extends Notification
 
 
 
-    public static function get_query_for_read_by_section($section, $limit) {
-        // TODO:REMINDER: Only select the necessary columns.
+    public static function get_query_for_read_by_offset($data) {
 
         global $session;
-        $notified_user_id = $session->actual_user_id;
-        $item_per_section = 2;
+        $d = $data;
+        $limit = 10;
+        $q = "";
 
-        $query = "SELECT n.*";
-//        $query .= " ,nms.invoice_item_id, nms.invoice_item_status_record_id";
-        $query .= " ,nms.*";
-        $query .= " ,iisr.status_start_date AS status_date";
-        $query .= " ,ii.invoice_id";
-        $query .= " ,msi.name AS item_name";
-        $query .= " ,iis.name AS status_name";
-        $query .= " ,u.user_name AS seller_name";
-        $query .= " FROM Notifications n";
-        $query .= " INNER JOIN NotificationsMyShopping nms ON n.id = nms.notification_id";
-        $query .= " INNER JOIN InvoiceItemStatusRecord iisr ON nms.invoice_item_id = iisr.invoice_item_id";
-        $query .= " INNER JOIN InvoiceItem ii ON nms.invoice_item_id = ii.id";
-        $query .= " INNER JOIN MyStoreItems msi ON ii.store_item_id = msi.id";
-        $query .= " INNER JOIN InvoiceItemStatus iis ON iisr.invoice_item_status_id = iis.id";
+        $q .= "SELECT n.notified_user_id, n.notifier_user_id, n.notification_msg_id, n.is_deleted";
+        $q .= " ,nms.notification_id, nms.invoice_item_id, nms.invoice_item_status_record_id";
+        $q .= " ,iisr.invoice_item_status_id, iisr.status_start_date AS date_updated";
+        $q .= " ,iis.name AS invoice_item_status";
+        $q .= " ,ii.invoice_id, ii.store_item_id";
+        $q .= " ,msi.name AS item_name";
+        $q .= " ,u.user_name AS seller_name";
+        $q .= " FROM Notifications n";
+        $q .= " INNER JOIN NotificationsMyShopping nms ON n.id = nms.notification_id";
+        $q .= " INNER JOIN InvoiceItemStatusRecord iisr ON (nms.invoice_item_id, nms.invoice_item_status_record_id) = 		(iisr.invoice_item_id, iisr.id)";
+        $q .= " INNER JOIN InvoiceItemStatus iis ON iisr.invoice_item_status_id = iis.id";
+        $q .= " INNER JOIN InvoiceItem ii ON nms.invoice_item_id = ii.id";
+        $q .= " INNER JOIN MyStoreItems msi ON ii.store_item_id = msi.id";
+        $q .= " INNER JOIN Users u ON n.notifier_user_id = u.user_id";
+        $q .= " WHERE n.notified_user_id = {$session->actual_user_id}";
+        $q .= " AND n.notification_msg_id = 1";
+        $q .= " AND n.is_deleted = 0";
+        $q .= " ORDER BY date_updated DESC";
+        $q .= " LIMIT {$limit} OFFSET {$d['offset']}";
 
-//        $query .= " INNER JOIN (";
-//        $query .= " SELECT MAX(status_start_date), invoice_item_id";
-//        $query .= " FROM InvoiceItemStatusRecord";
-//        $query .= " GROUP BY invoice_item_id";
-//        $query .= ") temp_table ON nms.invoice_item_id = temp_table.invoice_item_id";
 
-        $query .= " INNER JOIN Users u ON n.notifier_user_id = u.user_id";
-        $query .= " WHERE n.notified_user_id = {$session->actual_user_id} ";
-        $query .= " AND n.notification_msg_id = 1";
-        $query .= " AND n.is_deleted = 0";
-
-        $query .= " AND (iisr.status_start_date, nms.invoice_item_id) IN";
-        $query .= " (";
-        $query .= "SELECT MAX(status_start_date), invoice_item_id";
-        $query .= " FROM InvoiceItemStatusRecord";
-        $query .= " GROUP BY invoice_item_id";
-        $query .= ")";
-
-        $query .= " ORDER BY iisr.status_start_date ASC";
-
-        // For update_fetch: fetch only 1 notification.
-        if ($limit == 1) {
-            if ($section == 0) {
-                $query .= " LIMIT {$limit} OFFSET 0";
-            }
-            else {
-                $num_items_to_skip = ($section * $item_per_section) - 1;
-                $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
-            }
-
-        }
-        // For actual read: read 10 notifications.
-        else {
-            $num_items_to_skip = ($section - 1) * $item_per_section;
-            $query .= " LIMIT {$limit} OFFSET {$num_items_to_skip}";
-        }
-
-        MyDebugMessenger::add_debug_message("QUERY: {$query}");
-
-        return $query;
+        return $q;
     }
+
+    public static function get_query_for_fetch($data) {
+
+        global $session;
+        $d = $data;
+        $limit = 2;
+        $q = "";
+
+        $q .= "SELECT n.notified_user_id, n.notifier_user_id, n.notification_msg_id, n.is_deleted";
+        $q .= " ,nms.notification_id, nms.invoice_item_id, nms.invoice_item_status_record_id";
+        $q .= " ,iisr.invoice_item_status_id, iisr.status_start_date AS date_updated";
+        $q .= " ,iis.name AS invoice_item_status";
+        $q .= " ,ii.invoice_id, ii.store_item_id";
+        $q .= " ,msi.name AS item_name";
+        $q .= " ,u.user_name AS seller_name";
+        $q .= " FROM Notifications n";
+        $q .= " INNER JOIN NotificationsMyShopping nms ON n.id = nms.notification_id";
+        $q .= " INNER JOIN InvoiceItemStatusRecord iisr ON (nms.invoice_item_id, nms.invoice_item_status_record_id) = 		(iisr.invoice_item_id, iisr.id)";
+        $q .= " INNER JOIN InvoiceItemStatus iis ON iisr.invoice_item_status_id = iis.id";
+        $q .= " INNER JOIN InvoiceItem ii ON nms.invoice_item_id = ii.id";
+        $q .= " INNER JOIN MyStoreItems msi ON ii.store_item_id = msi.id";
+        $q .= " INNER JOIN Users u ON n.notifier_user_id = u.user_id";
+        $q .= " WHERE n.notified_user_id = {$session->actual_user_id}";
+        $q .= " AND n.notification_msg_id = 1";
+        $q .= " AND n.is_deleted = 0";
+        $q .= " AND iisr.status_start_date > '{$d['latest_notification_date']}'";
+        $q .= " ORDER BY date_updated ASC";
+        $q .= " LIMIT {$limit}";
+
+
+        return $q;
+
+    }
+
+    public static function fetch($data)
+    {
+
+        $d = $data;
+        $query = self::get_query_for_fetch($d);
+        //ish
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_notifications = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_notification = array(
+                "notification_id" => $row['notification_id'],
+                "notifier_user_id" => $row['notifier_user_id'],
+                "notification_msg_id" => $row['notification_msg_id'],
+                "seller_name" => $row['seller_name'],
+                "invoice_id" => $row['invoice_id'],
+                "invoice_item_id" => $row['invoice_item_id'],
+                "item_name" => $row['item_name'],
+                "status_name" => $row['invoice_item_status'],
+                "date_updated" => $row['date_updated'],
+                "human_date" => parent::get_my_carbon_date($row['date_updated']));
+
+
+
+
+            //
+            array_push($array_of_notifications, $a_notification);
+        }
+
+        return $array_of_notifications;
+    }
+
+
 
 
 

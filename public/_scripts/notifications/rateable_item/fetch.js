@@ -13,7 +13,7 @@ function set_rateable_item_notification_fetcher() {
 
 function fetch_a_rateable_item_notification() {
 
-    var offset = get_num_of_dom_notifications("NotificationRateableItem");
+    // var offset = get_num_of_dom_notifications("NotificationRateableItem");
     var latest_notification_date = get_notification_with_latest_date("NotificationRateableItem");
 
     // window.alert("latest_notification_date: " + latest_notification_date);

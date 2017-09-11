@@ -5,6 +5,8 @@
 // probably smart to require it before we start.
 require_once("my_database.php");
 
+use Carbon\Carbon;
+
 class Notification {
 
     protected static $table_name = "Notifications";
@@ -101,6 +103,17 @@ class Notification {
             return false;
         }
 
+    }
+
+    public static function get_my_carbon_date($raw_datetime) {
+//        $timestamp = '2014-02-06 16:34:00';
+        $date = Carbon::createFromFormat('Y-m-d H:i:s', $raw_datetime, '-4');
+        $date->setTimezone('UTC');
+
+//        $dt = Carbon::parse($raw_datetime);
+//        $dt->setTimezone('-5');
+//        Carbon::now(-1)
+        return $date->diffForHumans();
     }
 
 

@@ -2,16 +2,17 @@ function read_my_shopping_notification_objs() {
 // Set up the necessary infos for this x_notification
     var crud_type = "read";
     var request_type = "GET";
+    var offset = get_num_of_dom_notifications("NotificationMyShopping");
+
     var key_value_pairs = {
-        // TODO:REMINDER: Change this to a variable.
         read: "yes",
-        section: 1
+        offset: offset
     };
 
 
     //
-    var my_shopping_notification_obj = new NotificationMyShopping(crud_type, request_type, key_value_pairs);
-    my_shopping_notification_obj.read();
+    var obj = new NotificationMyShopping(crud_type, request_type, key_value_pairs);
+    obj.read();
 }
 
 
@@ -39,7 +40,7 @@ function get_notification_for_invoice_item_status_update(notification) {
     msg += n['status_name'];
     msg += "'";
     msg += " (";
-    msg += n['status_date']
+    msg += n['human_date']
     msg += ")";
 
     msg += " <a";

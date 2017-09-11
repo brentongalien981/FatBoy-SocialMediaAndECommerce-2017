@@ -4,7 +4,7 @@ function dom_remove_notification(caller_class_name, notification_id) {
     console.log("In METHOD:VAR:notification_id: " + notification_id);
 
     // x_notification_container id.
-    var id = caller_class_name + "Container";
+    var id = caller_class_name + "ActualContainer";
 
     // x_notification_container.
     var container = document.getElementById(id);
