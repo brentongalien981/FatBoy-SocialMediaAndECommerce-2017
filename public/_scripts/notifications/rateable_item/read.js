@@ -34,7 +34,7 @@ function get_content_for_rateable_item_notification(notification) {
     msg += n["message"].substring(0, 40) + " ...";
     msg += "\" ";
     msg += "\"" + n["rate_tag"] + "\".";
-    msg += " <i class='my-time-stamp'>(" + n["date_updated"] + ")</i>";
+    msg += " <i class='my-time-stamp'>(" + n["human_date"] + ")</i>";
 
     //
     return msg;

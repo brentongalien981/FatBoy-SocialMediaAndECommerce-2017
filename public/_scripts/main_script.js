@@ -72,6 +72,10 @@ function show_x_container(container) {
     container.style.display = "block";
 }
 
+function show_x_container2(class_name) {
+    $("#" + class_name + "Container").css("display", "block");
+}
+
 
 function hide_x_container(container) {
     container.style.display = "none";

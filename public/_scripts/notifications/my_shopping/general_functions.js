@@ -3,7 +3,7 @@ function do_notification_my_shoppings_after_effects(class_name, crud_type, json,
         case "read":
             //
             prepare_notification_x_container(class_name)
-            var container = get_notification_x_container(class_name);
+            var container = get_actual_notification_x_container(class_name);
 
             //
             populate_x_notification_container(container, json.notifications, class_name, crud_type);
@@ -12,7 +12,7 @@ function do_notification_my_shoppings_after_effects(class_name, crud_type, json,
             break;
         case "update":
             //
-            var container_id = class_name + "Container";
+            var container_id = class_name + "ActualContainer";
             var container = document.getElementById(container_id);
 
             // If there's a replaceable notification, remove that record

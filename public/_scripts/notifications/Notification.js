@@ -22,4 +22,8 @@ function Notification (class_name, crud_type, request_type, key_value_pairs) {
     this.delete = function () {
         my_ajax(this);
     };
+
+    this.fetch = function () {
+        my_ajax(this);
+    };
 }

@@ -1,1 +1,2 @@
-var can_my_rateable_item_notifications_update = false;
+var can_rateable_item_notifications_fetch = false;
+var rateable_item_notifications_fetch_handler = null;

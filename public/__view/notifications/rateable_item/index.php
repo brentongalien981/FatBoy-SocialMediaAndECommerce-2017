@@ -13,6 +13,7 @@
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/read.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_item/update.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_item/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/fetch.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/NotificationRateableItem.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/tasks.js"; ?>"></script>
 

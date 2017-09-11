@@ -46,4 +46,9 @@ class NotificationRateableItemController extends MainController
     {
         return NotificationRateableItem::read_by_offset($data);
     }
+
+    public function fetch($data)
+    {
+        return NotificationRateableItem::fetch($data);
+    }
 }

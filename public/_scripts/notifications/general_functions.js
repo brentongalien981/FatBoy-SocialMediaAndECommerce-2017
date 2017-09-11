@@ -27,8 +27,13 @@ function populate_x_notification_container2(container, notifications, class_name
 
     if (class_name == "NotificationRateableItem") {
         var alert_msg = "**********************************";
+        alert_msg = "**********************************";
+        alert_msg = "**********************************";
         alert_msg += "TODO: Add listener to delete-link of the rateable-item-notificationos.";
         alert_msg += "**********************************";
+        alert_msg = "**********************************";
+        alert_msg = "**********************************";
+        console.log(alert_msg);
     }
     
     for (var i = 0; i < notifications.length; i++) {
@@ -36,7 +41,13 @@ function populate_x_notification_container2(container, notifications, class_name
         var prepared_notification = get_prepared_notification(class_name, notification);
 
         //
-        append_a_notification(container, prepared_notification);
+        if (crud_type == "fetch") {
+            squeeze_first_a_notification(container, prepared_notification);
+        }
+        else {
+            append_a_notification(container, prepared_notification);
+        }
+
 
         // TODO: Add listener to delete-link of the post notificationos.
         add_listener_to_delete_notification_link(notification, class_name);
@@ -51,7 +62,8 @@ function populate_x_notification_container2(container, notifications, class_name
 
 
     //
-    show_x_container(container);
+    // show_x_container(container);
+    show_x_container2(class_name);
 
 
     // If the x_container doesn't have any notifications to display..
@@ -59,7 +71,7 @@ function populate_x_notification_container2(container, notifications, class_name
     //       default children.
     // window.alert("container.childNodes.length: " + container.childNodes.length);
     if ($(".rateable_item_notifications").length <= 0) {
-        hide_x_container(container);
+        // hide_x_container(container);
     }
 
 }
@@ -94,7 +106,8 @@ function populate_x_notification_container(container, notifications, class_name,
 
 
     //
-    show_x_container(container);
+    // show_x_container(container);
+    show_x_container2(class_name);
 
 
     // If the x_container doesn't have any notifications to display..
@@ -102,7 +115,7 @@ function populate_x_notification_container(container, notifications, class_name,
     //       default children.
     // window.alert("container.childNodes.length: " + container.childNodes.length);
     if (container.childNodes.length <= 5) {
-        hide_x_container(container);
+        // hide_x_container(container);
     }
 
     // console.log("*************************")
@@ -114,6 +127,10 @@ function populate_x_notification_container(container, notifications, class_name,
 }
 
 
+/**
+ * @note change the method name to prepare_fetch().
+ * @param class_name
+ */
 function prepare_update(class_name) {
     switch (class_name) {
         case "NotificationFriendship":
@@ -123,7 +140,7 @@ function prepare_update(class_name) {
             can_my_shopping_notifications_update = true;
             break;
         case "NotificationRateableItem":
-            can_my_rateable_item_notifications_update = true;
+            can_rateable_item_notifications_fetch = true;
             break;
         case "zZz":
             break;
@@ -138,6 +155,8 @@ function get_prepared_notification(class_name, notification) {
     prepared_notification.classList.add("notifications");
 
     prepared_notification.id = "notification" + notification['notification_id'];
+
+    prepared_notification.setAttribute("date-updated", notification["date_updated"]);
 
     var content = "";
 
@@ -191,10 +210,10 @@ function prepare_notification_x_container(class_name) {
     main_content.appendChild(container);
 }
 
-function get_notification_x_container(class_name) {
-    var id = class_name + "Container";
-    var tbody = document.getElementById(id);
-    return tbody;
+function get_actual_notification_x_container(class_name) {
+    var id = class_name + "ActualContainer";
+    var actual_container = document.getElementById(id);
+    return actual_container;
 }
 
 
@@ -202,6 +221,12 @@ function append_a_notification(container, prepared_notification) {
     container.appendChild(prepared_notification);
     // container.innerHTML += prepared_notification;
     // console.log("INNERHTML: " + prepared_notification);
+}
+
+function squeeze_first_a_notification(container, prepared_notification) {
+    // container.appendChild(prepared_notification);
+    $(container).prepend($(prepared_notification));
+
 }
 
 function get_num_of_dom_notifications(class_name) {
@@ -217,4 +242,27 @@ function get_num_of_dom_notifications(class_name) {
     }
 
     return $("." + specific_class_name).length;
+}
+
+function get_notification_with_latest_date(notification_class_name) {
+    var specific_class_name = "";
+
+    switch (notification_class_name) {
+        case "NotificationRateableItem":
+            specific_class_name = "rateable_item_notifications";
+            break;
+    }
+
+    var the_latest_notification = $("." + specific_class_name)[0];
+    return $(the_latest_notification).attr("date-updated");
+}
+
+function dom_remove_outdated_notifications(notifications) {
+
+    //
+    for (var i = 0; i < notifications.length; i++) {
+        var old_notification_id = notifications[i]["notification_id"];
+
+        $('#notification' + old_notification_id).remove();
+    }
 }

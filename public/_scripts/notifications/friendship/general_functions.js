@@ -6,7 +6,7 @@ function do_notification_friendships_after_effects(class_name, crud_type, json, 
             // // Container = clone_categorized_noti_templ(container_id)
             // var container = clone_categorized_notification_template(container_id);
             prepare_notification_x_container(class_name)
-            var container = get_notification_x_container(class_name);
+            var container = get_actual_notification_x_container(class_name);
 
             //
             populate_x_notification_container(container, json.notifications, class_name, crud_type);
@@ -15,7 +15,7 @@ function do_notification_friendships_after_effects(class_name, crud_type, json, 
             break;
         case "update":
             //
-            var container_id = class_name + "Container";
+            var container_id = class_name + "ActualContainer";
             var container = document.getElementById(container_id);
 
             // if (container == null) {

@@ -109,36 +109,36 @@ function set_rate_pseudo_button(rateable_item_id, rate_value) {
             img_src_suffix = "/public/_photos/RateIcons/CryingMJ.png";
             break;
         case "-4":
-            reaction_tag_msg += "Bomb";
+            reaction_tag_msg += "BOMB";
             img_src_suffix = "/public/_photos/RateIcons/Bomb.png";
             break;
         case "-3":
-            reaction_tag_msg += "Crazy";
+            reaction_tag_msg += "BUGGY";
             img_src_suffix = "/public/_photos/RateIcons/Shit.png";
             break;
         case "-2":
-            reaction_tag_msg += "Nuts";
+            reaction_tag_msg += "NUTS";
             img_src_suffix = "/public/_photos/RateIcons/Nuts.png";
             break;
         case "-1":
-            reaction_tag_msg += "Sucks";
+            reaction_tag_msg += "SUCKS";
             img_src_suffix = "/public/_photos/RateIcons/Sucks.png";
             break;
         case "0":
-            reaction_tag_msg += "PokerFace";
+            reaction_tag_msg += "POKERFACE";
             img_src_suffix = "/public/_photos/RateIcons/SosoFace.png";
             break;
         case "1":
-            reaction_tag_msg += "Swaggy";
+            reaction_tag_msg += "SWAGGY";
             img_src_suffix = "/public/_photos/RateIcons/Swaggy.png";
             break;
         case "2":
-            reaction_tag_msg += "Cookin";
+            reaction_tag_msg += "COOKIN";
             img_src_suffix = "/public/_photos/RateIcons/Cookin.png";
             break;
         case "3":
             //
-            reaction_tag_msg += "Ballin";
+            reaction_tag_msg += "BALLIN";
             img_src_suffix = "/public/_photos/RateIcons/Ballin.png";
             break;
         case "4":
@@ -232,8 +232,16 @@ function set_rate_average(rateable_item_id, count, rate_value_sum) {
     var pseudo_button_msg = "";
     var avg = parseFloat(rate_value_sum) / parseFloat(count);
 
+
+    if (avg > 0) {
+        pseudo_button_msg += "(Average Rating: +" + roundToTwo(avg) + ") ";
+    }
+    else {
+        pseudo_button_msg += "(Average Rating: " + roundToTwo(avg) + ") ";
+    }
+
     if (avg < -4.5) {
-        pseudo_button_msg += "ASININE";
+        pseudo_button_msg += "MEME";
     }
     else if (avg < -3.5 && avg >= -4.5) {
         pseudo_button_msg += "BOMB";
@@ -245,35 +253,27 @@ function set_rate_average(rateable_item_id, count, rate_value_sum) {
         pseudo_button_msg += "NUTS";
     }
     else if (avg < -0.5 && avg >= -1.5) {
-        pseudo_button_msg += "BOO";
+        pseudo_button_msg += "SUCKS";
     }
     else if (avg < 0.5 && avg >= -0.5) {
-        pseudo_button_msg += "SOSO";
+        pseudo_button_msg += "POKERFACE";
     }
     else if (avg < 1.5 && avg >= 0.5) {
-        pseudo_button_msg += "LEGIT";
+        pseudo_button_msg += "SWAGGY";
     }
     else if (avg < 2.5 && avg >= 1.5) {
-        pseudo_button_msg += "LOVE";
+        pseudo_button_msg += "COOKIN";
     }
     else if (avg < 3.5 && avg >= 2.5) {
-        pseudo_button_msg += "AWESOME";
+        pseudo_button_msg += "BALLIN";
     }
     else if (avg < 4.5 && avg >= 3.5) {
-        pseudo_button_msg += "CRAZY";
+        pseudo_button_msg += "nDzone";
     }
     else if (avg < 5 && avg >= 4.5) {
-        pseudo_button_msg += "LUPET";
+        pseudo_button_msg += "GOAT";
     }
 
-
-
-    if (avg > 0) {
-        pseudo_button_msg += " (average rating: +" + roundToTwo(avg) + ")";
-    }
-    else {
-        pseudo_button_msg += " (average rating: " + roundToTwo(avg) + ")";
-    }
 
 
     // Set the msg.

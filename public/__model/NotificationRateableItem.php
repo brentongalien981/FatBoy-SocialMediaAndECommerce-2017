@@ -241,7 +241,7 @@ class NotificationRateableItem extends Notification
     {
 
         $d = $data;
-        $query = self::get_query_for_read_by_offset($d["offset"]);
+        $query = self::get_query_for_read_by_offset($d);
 
         $result_set = self::read_by_query($query);
 
@@ -259,8 +259,43 @@ class NotificationRateableItem extends Notification
                 "post_id" => $row['post_id'],
                 "message" => $row['message'],
                 "rate_tag" => $row['name'],
-//                "date_updated" => $row['initiation_date']);
-                "date_updated" => self::get_my_carbon_date($row['initiation_date']));
+                "date_updated" => $row['initiation_date'],
+                "human_date" => self::get_my_carbon_date($row['initiation_date']));
+
+
+
+
+            //
+            array_push($array_of_notifications, $a_notification);
+        }
+
+        return $array_of_notifications;
+    }
+
+    public static function fetch($data)
+    {
+
+        $d = $data;
+        $query = self::get_query_for_fetch($d);
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_notifications = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_notification = array(
+                "notification_id" => $row['notification_id'],
+                "notifier_user_id" => $row['notifier_user_id'],
+                "notifier_user_name" => $row['user_name'],
+                "notification_msg_id" => $row['notification_msg_id'],
+                "post_id" => $row['post_id'],
+                "message" => $row['message'],
+                "rate_tag" => $row['name'],
+                "date_updated" => $row['initiation_date'],
+                "human_date" => self::get_my_carbon_date($row['initiation_date']));
 
 
 
@@ -283,10 +318,53 @@ class NotificationRateableItem extends Notification
         return $date->diffForHumans();
     }
 
-    public static function get_query_for_read_by_offset($offset, $limit = 10)
+    public static function get_query_for_read_by_offset($data)
     {
         // TODO:REMINDER: Only select the necessary columns.
 
+        $d = $data;
+        $limit = 10;
+        $is_request_fetch = false;
+        global $session;
+
+        if (isset($d["fetch"]) && $d["fetch"] == "yes") {
+            $limit = 1;
+            $is_request_fetch = true;
+        }
+
+        $q = "SELECT n.*,";
+        $q .= " nri.*,";
+        $q .= " u.user_name,";
+        $q .= " r.name,";
+        $q .= " tp.id AS post_id, tp.message";
+        $q .= " FROM Notifications n";
+        $q .= " INNER JOIN NotificationsRateableItem nri ON n.id = nri.notification_id";
+        $q .= " INNER JOIN Users u ON n.notifier_user_id = u.user_id";
+        $q .= " INNER JOIN Rates r ON nri.rate_value = r.value";
+        $q .= " INNER JOIN RateableItems ri ON nri.rateable_item_id = ri.id";
+        $q .= " INNER JOIN TimelinePosts tp ON ri.item_x_id = tp.id";
+        $q .= " WHERE n.notified_user_id = {$session->actual_user_id}";
+        $q .= " AND n.notification_msg_id = 4";
+        $q .= " AND n.is_deleted = 0";
+
+        if ($is_request_fetch) {
+            $q .= " ORDER BY n.initiation_date ASC";
+        }
+        else {
+            $q .= " ORDER BY n.initiation_date DESC";
+        }
+
+        $q .= " LIMIT {$limit} OFFSET {$d['offset']}";
+
+        return $q;
+    }
+
+    public static function get_query_for_fetch($data)
+    {
+        // TODO:REMINDER: Only select the necessary columns.
+
+        $d = $data;
+        $limit = 2;
         global $session;
 
         $q = "SELECT n.*,";
@@ -303,8 +381,9 @@ class NotificationRateableItem extends Notification
         $q .= " WHERE n.notified_user_id = {$session->actual_user_id}";
         $q .= " AND n.notification_msg_id = 4";
         $q .= " AND n.is_deleted = 0";
-        $q .= " ORDER BY n.initiation_date DESC";
-        $q .= " LIMIT {$limit} OFFSET {$offset}";
+        $q .= " AND n.initiation_date > '{$d['latest_notification_date']}'";
+        $q .= " ORDER BY n.initiation_date ASC";
+        $q .= " LIMIT {$limit}";
 
         return $q;
     }
