@@ -1,0 +1,10 @@
+.widget {
+    width: 370px;
+    height: 150px;
+    background-color: lightblue;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}

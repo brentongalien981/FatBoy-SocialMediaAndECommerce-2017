@@ -45,7 +45,7 @@ function get_delete_notification_link(class_name, notification) {
     var msg = "";
     msg += "<a";
     msg += " id='delete_notification_link" + n['notification_id'] + "'";
-    msg += " href='#'";
+    // msg += " href=''";
 
     msg += " class=' delete_notification_links";
 
@@ -83,6 +83,9 @@ function delete_x_notification_obj(class_name, notification_id) {
         case "NotificationMyShopping":
             x_notification_obj = new NotificationMyShopping(crud_type, request_type, key_value_pairs);
             break;
+        case "NotificationRateableItem":
+            x_notification_obj = new NotificationRateableItem(crud_type, request_type, key_value_pairs);
+            break;
     }
 
 
@@ -92,10 +95,10 @@ function delete_x_notification_obj(class_name, notification_id) {
 
 
 function add_listener_to_delete_notification_link(notification, class_name) {
-    if (class_name == "NotificationRateableItem") {
-        // window.alert("TODO: Add listener to delete-link of the rateable-item-notificationos.");
-        return;
-    }
+    // if (class_name == "NotificationRateableItem") {
+    //     // window.alert("TODO: Add listener to delete-link of the rateable-item-notificationos.");
+    //     return;
+    // }
 
     var n = notification;
     var delete_notification_link = document.getElementById("delete_notification_link" + n['notification_id']);

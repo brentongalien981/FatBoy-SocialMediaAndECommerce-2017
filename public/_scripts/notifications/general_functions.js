@@ -296,7 +296,17 @@ function get_notification_with_latest_date(notification_class_name) {
     }
 
     var the_latest_notification = $(specific_class_name)[0];
-    return $(the_latest_notification).attr("date-updated");
+    var latest_date = $(the_latest_notification).attr("date-updated");
+
+    if (the_latest_notification == null ||
+        latest_date == null ||
+        latest_date == "") {
+
+        return "2010-09-11 10:54:45";
+    }
+    else {
+        return latest_date;
+    }
 }
 
 function dom_remove_outdated_notifications(notifications) {

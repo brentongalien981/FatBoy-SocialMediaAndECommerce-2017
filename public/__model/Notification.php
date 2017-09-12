@@ -204,9 +204,9 @@ class Notification {
     public static function delete($id = 0) {
         global $database;
 
-        $query = "DELETE FROM " . self::$table_name . " ";
-        $query .= "WHERE id = " . $database->escape_value($id) . " ";
-        $query .= "LIMIT 1";
+        $query = "DELETE FROM " . self::$table_name;
+        $query .= " WHERE id = " . $database->escape_value($id);
+        $query .= " LIMIT 1";
 
         // TODO: DEBUG
         MyDebugMessenger::add_debug_message("QUERY: {$query}.");

@@ -176,6 +176,10 @@ echo "'>";
 
 
 
+<!--Widgets-->
+<?php require_once(PUBLIC_PATH . "/__view/widgets/index.php"); ?>
+
+
 
 
 

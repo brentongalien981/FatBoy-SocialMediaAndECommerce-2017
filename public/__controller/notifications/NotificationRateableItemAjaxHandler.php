@@ -153,4 +153,45 @@ if (isset($_GET['fetch']) && $_GET['fetch'] == "yes") {
     //
     echo json_encode($json_errors_array);
 }
+
+if (is_request_post() && isset($_POST["delete"]) && $_POST["delete"] == "yes") {
+
+    /* Validate */
+    $allowed_assoc_indexes = array("notification_id");
+    $required_vars_length_array = array(
+        "notification_id" => ["min" => 1, "max" => 13]
+    );
+
+    $nri_controller = new NotificationRateableItemController();
+
+    $nri_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
+    $nri_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+    $is_validation_ok = $nri_controller->validator->validate();
+    $json_errors_array = $nri_controller->validator->get_json_errors_array();
+
+
+    //
+    if ($is_validation_ok) {
+
+        // Prepare the necessary data to pass to the controller.
+        // Sanitized vars for passing to the controller.
+        $sanitized_vars = array();
+        foreach ($allowed_assoc_indexes as $index) {
+            \MyDebugMessenger::add_debug_message("POST VAR: {$_POST[$index]}");
+            $sanitized_vars[$index] = $_POST[$index];
+        }
+
+
+
+        // Let the controller handle it.
+        $is_deletion_ok = $nri_controller->delete($sanitized_vars);
+
+        //
+        $json_errors_array['is_result_ok'] = $is_deletion_ok;
+    }
+
+
+    //
+    echo json_encode($json_errors_array);
+}
 ?>

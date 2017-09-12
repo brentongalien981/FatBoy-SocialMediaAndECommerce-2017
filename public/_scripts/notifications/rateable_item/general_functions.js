@@ -27,6 +27,8 @@ function do_notification_rateable_items_after_effects(class_name, crud_type, jso
         case "update":
             break;
         case "delete":
+            var notification_id = x_obj.key_value_pairs['notification_id'];
+            dom_remove_notification(class_name, notification_id);
             break;
     }
 }

@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/fetch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/widgets/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/widgets/event_listeners.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/widgets/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/NotificationFriendship.php" afterPath="$PROJECT_DIR$/public/__model/NotificationFriendship.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/notifications/friendship/index.php" afterPath="$PROJECT_DIR$/public/__view/notifications/friendship/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/friendship/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/friendship/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/instance_vars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/friendship/update.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/friendship/update.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/Notification.php" afterPath="$PROJECT_DIR$/public/__model/Notification.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" afterPath="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_layouts/header.php" afterPath="$PROJECT_DIR$/public/_layouts/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/delete.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/delete.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,7 +37,7 @@
     <favorites_list name="FatBoy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.4632353">
+    <splitter split-orientation="vertical" split-proportion="0.6865204">
       <split-first>
         <splitter split-orientation="horizontal" split-proportion="0.48298335">
           <split-first>
@@ -48,7 +48,7 @@
                     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/tasks.js">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="60">
-                          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+                          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
                           <folding />
                         </state>
                       </provider>
@@ -57,31 +57,19 @@
                   <file leaf-file-name="fetch.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/fetch.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="150">
-                          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="154">
-                          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+                        <state relative-caret-position="345">
+                          <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
                   <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions.js">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="183">
-                          <caret line="53" column="42" lean-forward="true" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-                          <folding>
-                            <element signature="n#!!doc" expanded="true" />
-                          </folding>
+                        <state relative-caret-position="97">
+                          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -90,21 +78,21 @@
               </split-first>
               <split-second>
                 <leaf>
-                  <file leaf-file-name="tasks.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks.js">
+                  <file leaf-file-name="delete.js" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/delete.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="75">
-                          <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+                        <state relative-caret-position="164">
+                          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="fetch.js" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="fetch.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/fetch.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="10">
-                          <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+                        <state relative-caret-position="38">
+                          <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
                           <folding />
                         </state>
                       </provider>
@@ -113,11 +101,31 @@
                   <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="152">
-                          <caret line="294" column="0" lean-forward="true" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
+                        <state relative-caret-position="179">
+                          <caret line="193" column="37" lean-forward="true" selection-start-line="193" selection-start-column="37" selection-end-line="193" selection-end-column="37" />
                           <folding>
                             <element signature="n#!!doc" expanded="true" />
                           </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="main_script.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="25">
+                          <caret line="108" column="32" lean-forward="true" selection-start-line="108" selection-start-column="32" selection-end-line="108" selection-end-column="32" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/general_functions.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="163">
+                          <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -127,28 +135,27 @@
             </splitter>
           </split-first>
           <split-second>
-            <splitter split-orientation="vertical" split-proportion="0.5044776">
+            <splitter split-orientation="vertical" split-proportion="0.50972223">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="NotificationRateableItemAjaxHandler.php" pinned="false" current-in-tab="false">
+                  <file leaf-file-name="NotificationRateableItemAjaxHandler.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="230">
-                          <caret line="155" column="2" lean-forward="true" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="2" />
+                        <state relative-caret-position="39">
+                          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
                           <folding>
                             <element signature="e#204#1668#0#PHP" expanded="false" />
                             <element signature="e#1670#3281#0#PHP" expanded="false" />
-                            <element signature="e#3283#4935#0#PHP" expanded="false" />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="NotificationRateableItemController.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="NotificationRateableItemController.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="156">
-                          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="52" selection-end-column="5" />
+                        <state relative-caret-position="175">
+                          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
                           <folding />
                         </state>
                       </provider>
@@ -158,30 +165,38 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="NotificationFriendshipAjaxHandler.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php">
+                  <file leaf-file-name="NotificationMyShoppingAjaxHandler.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="38">
-                          <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+                        <state relative-caret-position="63">
+                          <caret line="97" column="17" lean-forward="false" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
                           <folding>
-                            <element signature="e#319#1861#0#PHP" expanded="false" />
-                            <element signature="e#1864#3594#0#PHP" expanded="false" />
-                            <element signature="e#3598#5121#0#PHP" expanded="false" />
-                            <element signature="e#5124#6726#0#PHP" expanded="false" />
-                            <marker date="1505175251000" expanded="false" signature="8479:8881" ph="..." />
+                            <element signature="e#199#1922#0#PHP" expanded="false" />
+                            <element signature="e#3413#5092#0#PHP" expanded="false" />
+                            <element signature="e#5094#6744#0#PHP" expanded="false" />
+                            <element signature="e#6814#7412#0#PHP" expanded="false" />
+                            <element signature="e#6955#7082#0#PHP" expanded="false" />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="NotificationFriendshipController.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php">
+                  <file leaf-file-name="NotificationMyShoppingController.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingController.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="73">
-                          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#572#922#0#PHP" expanded="false" />
-                          </folding>
+                        <state relative-caret-position="205">
+                          <caret line="107" column="48" lean-forward="true" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationFriendshipAjaxHandler.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="89">
+                          <caret line="238" column="0" lean-forward="true" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -195,34 +210,14 @@
       <split-second>
         <splitter split-orientation="horizontal" split-proportion="0.4685011">
           <split-first>
-            <splitter split-orientation="vertical" split-proportion="0.5905512">
+            <splitter split-orientation="vertical" split-proportion="0.5462069">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/rateable_item/index.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="149">
-                          <caret line="10" column="52" lean-forward="true" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="read.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/rateable_item/read.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="60">
-                          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
                   <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/friendship/index.php">
+                    <entry file="file://$PROJECT_DIR$/public/__view/widgets/index.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="138">
-                          <caret line="16" column="52" lean-forward="true" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+                        <state relative-caret-position="75">
+                          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
                           <folding />
                         </state>
                       </provider>
@@ -233,40 +228,10 @@
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
                   <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/index.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="43">
-                          <caret line="80" column="64" lean-forward="false" selection-start-line="80" selection-start-column="64" selection-end-line="80" selection-end-column="64" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="read.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/read.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="90">
-                          <caret line="6" column="7" lean-forward="false" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/index.php">
+                    <entry file="file://$PROJECT_DIR$/public/__view/my_photos/index.php">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="75">
-                          <caret line="179" column="90" lean-forward="false" selection-start-line="179" selection-start-column="90" selection-end-line="179" selection-end-column="90" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="my_debug_messenger.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__model/my_debug_messenger.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="52">
-                          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+                          <caret line="53" column="33" lean-forward="false" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
                           <folding />
                         </state>
                       </provider>
@@ -280,20 +245,35 @@
             <splitter split-orientation="vertical" split-proportion="0.5221675">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="NotificationRateableItem.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="NotificationRateableItem.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__model/NotificationRateableItem.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="163">
-                          <caret line="376" column="32" lean-forward="true" selection-start-line="376" selection-start-column="32" selection-end-line="376" selection-end-column="32" />
+                        <state relative-caret-position="59">
+                          <caret line="386" column="76" lean-forward="false" selection-start-line="386" selection-start-column="76" selection-end-line="386" selection-end-column="76" />
                           <folding>
                             <element signature="n#get_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
                             <element signature="e#6227#6259#0#PHP" expanded="false" />
                             <element signature="n#fetch#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
                             <element signature="n#get_query_for_read_by_offset#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
-                            <marker date="1505164013000" expanded="true" signature="3215:3254" ph="INSERT INTO ${self::$table_name}... " />
-                            <marker date="1505164013000" expanded="true" signature="4284:4297" ph="SELECT * FRO... " />
-                            <marker date="1505164013000" expanded="true" signature="4284:4298" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1505164013000" expanded="true" signature="6388:6418" ph="SELECT COUNT... ${self::$table_name}" />
+                            <marker date="1505252730000" expanded="true" signature="3215:3254" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1505252730000" expanded="true" signature="4284:4297" ph="SELECT * FRO... " />
+                            <marker date="1505252730000" expanded="true" signature="4284:4298" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1505252730000" expanded="true" signature="6388:6418" ph="SELECT COUNT... ${self::$table_name}" />
+                            <marker date="1505252730000" expanded="true" signature="11600:11612" ph="DELETE FROM " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="Notification.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="116">
+                          <caret line="207" column="64" lean-forward="false" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
+                          <folding>
+                            <marker date="1505252745000" expanded="true" signature="3333:3347" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1505252745000" expanded="true" signature="4921:4960" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1505252745000" expanded="true" signature="5718:5730" ph="DELETE FROM " />
                           </folding>
                         </state>
                       </provider>
@@ -303,7 +283,7 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="NotificationFriendship.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="NotificationFriendship.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="174">
@@ -320,6 +300,26 @@
                             <marker date="1505178825000" expanded="true" signature="4882:4917" ph="SELECT * FRO... ${self::$table_name}" />
                             <marker date="1505178825000" expanded="true" signature="9401:9440" ph="INSERT INTO ${self::$table_name}... " />
                             <marker date="1505178825000" expanded="true" signature="10445:10457" ph="DELETE FROM " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationMyShopping.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__model/NotificationMyShopping.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="84">
+                          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="139" selection-end-column="5" />
+                          <folding>
+                            <element signature="e#5273#5893#0#PHP" expanded="false" />
+                            <element signature="n#get_query_for_read_by_offset#0;n#NotificationMyShopping#0;n#!!top" expanded="false" />
+                            <marker date="1505170681000" expanded="true" signature="1845:1859" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1505170681000" expanded="true" signature="2758:2835" ph="INSERT INTO InvoiceItemStatusRecord... " />
+                            <marker date="1505170681000" expanded="true" signature="3617:3638" ph="SELECT * FRO... Invoice" />
+                            <marker date="1505170681000" expanded="true" signature="10410:10444" ph="SELECT invoi... InvoiceItem" />
+                            <marker date="1505170681000" expanded="true" signature="11190:11227" ph="SELECT * FRO... InvoiceItemStatusRecord" />
+                            <marker date="1505170681000" expanded="true" signature="11950:11989" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1505170681000" expanded="true" signature="13741:13753" ph="DELETE FROM " />
                           </folding>
                         </state>
                       </provider>
@@ -344,14 +344,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>console.log</find>
-      <find>get_query_for_read_by_offset</find>
-      <find>timeline_post/</find>
-      <find>/timeline_post/</find>
-      <find>$np_controller</find>
-      <find>prepare_update</find>
-      <find>populate_x_notification_container</find>
-      <find>parent_obj</find>
       <find>create_wit</find>
       <find>does_record_exist</find>
       <find>does</find>
@@ -367,16 +359,23 @@
       <find>2</find>
       <find>hide_x_container</find>
       <find>popu</find>
-      <find>fetch</find>
       <find>read_by_o</find>
       <find>read_by_sec</find>
       <find>$nri_controller</find>
       <find>read_by_off</find>
-      <find>fetch($</find>
       <find>read_by_offset($</find>
+      <find>/my_photos/</find>
+      <find>$(window</find>
+      <find>$</find>
+      <find>$n_mshopping_controller</find>
+      <find>delete</find>
+      <find>fetch($</find>
+      <find>fetch</find>
+      <find>populate_x_notification_container</find>
+      <find>get_prepared_notification</find>
+      <find>populate</find>
     </findStrings>
     <replaceStrings>
-      <replace>referenced_img</replace>
       <replace>nodes</replace>
       <replace>220</replace>
       <replace>40</replace>
@@ -403,9 +402,10 @@
       <replace>rateable_item</replace>
       <replace>/rateable_item/</replace>
       <replace>use App\Privado\Includes\Carbon\</replace>
-      <replace>$nri_controller</replace>
+      <replace>/widgets/</replace>
       <replace>$nms_controller</replace>
       <replace>$nf_controller</replace>
+      <replace>$nri_controller</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -414,10 +414,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/NotificationPost.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/NotificationRateableItem.js" />
-        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationPostAjaxHandler.php" />
-        <option value="$PROJECT_DIR$/public/__model/NotificationPost.php" />
         <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFetcher.php" />
         <option value="$PROJECT_DIR$/public/__view/notifications/index.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
@@ -436,13 +432,8 @@
         <option value="$PROJECT_DIR$/public/__view/notifications/rateable_item/read.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/tasks.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/read.js" />
-        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php" />
-        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/my_shopping/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/my_shopping/read.js" />
-        <option value="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" />
-        <option value="$PROJECT_DIR$/public/__model/Notification.php" />
         <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
         <option value="$PROJECT_DIR$/public/__view/notifications/my_shopping/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/my_shopping/update.js" />
@@ -453,18 +444,27 @@
         <option value="$PROJECT_DIR$/public/__model/NotificationMyShopping.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/my_shopping/tasks.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/my_shopping/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/delete.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/tasks.js" />
         <option value="$PROJECT_DIR$/public/__view/notifications/friendship/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/update.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/fetch.js" />
         <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php" />
         <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipController.php" />
         <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" />
         <option value="$PROJECT_DIR$/public/__model/NotificationFriendship.php" />
+        <option value="$PROJECT_DIR$/public/_layouts/header.php" />
+        <option value="$PROJECT_DIR$/public/__view/widgets/index.php" />
+        <option value="$PROJECT_DIR$/public/_styles/widgets/index.css" />
+        <option value="$PROJECT_DIR$/public/_scripts/widgets/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php" />
+        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php" />
+        <option value="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" />
+        <option value="$PROJECT_DIR$/public/__model/Notification.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/friendship/fetch.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/delete.js" />
       </list>
     </option>
   </component>
@@ -563,6 +563,32 @@
               <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
               <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="notifications" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__view" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__view" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_photos" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -580,6 +606,14 @@
               <item name="notifications" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="friendship" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="notifications" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="my_shopping" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -592,7 +626,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/general_functions.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/tasks.js&#10;my_aja&#9;null&#9;null&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/general_functions.js&#10;insta&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;instanc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;Notifi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;decide&#9;null&#9;null&#10;read.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/read.php&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/instance_vars.js&#10;fetch&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/fetch.js&#10;my_ajax&#9;null&#9;null&#10;NotificationR&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/NotificationRateableItem.js&#10;main&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/main_script.js&#10;header.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;MainC&#9;null&#9;null&#10;initial&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;validator&#9;null&#9;null&#10;nri&#9;null&#9;null&#10;_/nf&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationFriendship.php&#10;_/riu&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItemUser.php&#10;_/ri&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItem.php&#10;create&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/create.js&#10;header.&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;set_rate&#9;null&#9;null&#10;delete&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/delete.js&#10;n/t/r&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/timeline_post/read.js&#10;gen&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/timeline_post/general_functions.js&#10;n/m/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/general_functions.js&#10;_/U&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/User.php&#10;n/nmsc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/NotificationMyShoppingController.php&#10;n/nms&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/NotificationMyShoppingAjaxHandler.php&#10;n/ge&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/general_functions.js&#10;n/f/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/instance_vars.js&#10;n/f/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/general_functions.js&#10;n/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/general_functions.js&#10;n/f/r&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/read.js&#10;n/f/t&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/tasks.js&#10;wal&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/wall_event_listeners.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/index.js&#10;ge&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/rateable_items/general_functions.js&#10;wall&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/wall_event_listeners.js&#10;riu/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/rateable_Items_users/general_functions.js&#10;t/r_b&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/rateable_items/templates/rate_bar.php&#10;ind&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/index.js&#10;r_i_u/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/rateable_Items_users/general_functions.js&#10;NotificationF&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/NotificationFriendship.js&#10;_/N&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;_/NM&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationMyShopping.php&#10;__model/Not&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationFriendship.php" />
+    <property name="SearchEverywhereHistoryKey" value="my_aja&#9;null&#9;null&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/general_functions.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/tasks.js&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/general_functions.js&#10;insta&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;instanc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;Notifi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;decide&#9;null&#9;null&#10;read.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/read.php&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/instance_vars.js&#10;fetch&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/fetch.js&#10;my_ajax&#9;null&#9;null&#10;NotificationR&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/NotificationRateableItem.js&#10;main&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/main_script.js&#10;header.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;MainC&#9;null&#9;null&#10;initial&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;validator&#9;null&#9;null&#10;nri&#9;null&#9;null&#10;_/nf&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationFriendship.php&#10;_/riu&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItemUser.php&#10;_/ri&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItem.php&#10;create&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/create.js&#10;header.&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;set_rate&#9;null&#9;null&#10;delete&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/delete.js&#10;n/t/r&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/timeline_post/read.js&#10;gen&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/timeline_post/general_functions.js&#10;n/m/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/general_functions.js&#10;_/U&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/User.php&#10;n/nmsc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/NotificationMyShoppingController.php&#10;n/nms&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/NotificationMyShoppingAjaxHandler.php&#10;n/ge&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/general_functions.js&#10;n/f/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/instance_vars.js&#10;n/f/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/general_functions.js&#10;n/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/general_functions.js&#10;n/f/r&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/read.js&#10;n/f/t&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/tasks.js&#10;wal&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/wall_event_listeners.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/index.js&#10;ge&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/rateable_items/general_functions.js&#10;wall&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/wall_event_listeners.js&#10;riu/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/rateable_Items_users/general_functions.js&#10;t/r_b&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/rateable_items/templates/rate_bar.php&#10;ind&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/index.js&#10;r_i_u/g&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/rateable_Items_users/general_functions.js&#10;NotificationF&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/NotificationFriendship.js&#10;_/N&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;_/NM&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationMyShopping.php" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="Constants" value="false" />
@@ -740,12 +774,12 @@
       <workItem from="1503445252315" duration="63535000" />
       <workItem from="1503870231807" duration="6849000" />
       <workItem from="1504444851609" duration="97266000" />
-      <workItem from="1504949684014" duration="58936000" />
+      <workItem from="1504949684014" duration="64191000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="691411000" />
+    <option name="totallyTimeSpent" value="696666000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -790,15 +824,15 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php</url>
-          <line>230</line>
-          <option name="timeStamp" value="88" />
+          <url>file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php</url>
+          <line>110</line>
+          <option name="timeStamp" value="89" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="89" />
+      <option name="time" value="90" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
@@ -810,64 +844,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post/create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="30" lean-forward="false" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post/NotificationPost.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiments/JSPseudoInheritance/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationPostAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#437#519#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="41" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/read.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/__view/notifications/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
@@ -1021,50 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="195" column="31" lean-forward="false" selection-start-line="195" selection-start-column="31" selection-end-line="195" selection-end-column="31" />
-          <folding>
-            <element signature="e#199#1922#0#PHP" expanded="false" />
-            <element signature="e#1926#3409#0#PHP" expanded="false" />
-            <element signature="e#3413#5092#0#PHP" expanded="false" />
-            <element signature="e#6814#7412#0#PHP" expanded="false" />
-            <element signature="e#6955#7082#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <marker date="1505164013000" expanded="true" signature="3333:3347" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1505164013000" expanded="true" signature="4921:4960" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1505164013000" expanded="true" signature="5718:5730" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/NotificationMyShopping.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="276" column="45" lean-forward="false" selection-start-line="276" selection-start-column="45" selection-end-line="276" selection-end-column="45" />
-          <folding>
-            <element signature="e#5273#5893#0#PHP" expanded="false" />
-            <element signature="n#get_query_for_read_by_offset#0;n#NotificationMyShopping#0;n#!!top" expanded="false" />
-            <marker date="1505170681000" expanded="true" signature="1845:1859" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1505170681000" expanded="true" signature="2758:2835" ph="INSERT INTO InvoiceItemStatusRecord... " />
-            <marker date="1505170681000" expanded="true" signature="3617:3638" ph="SELECT * FRO... Invoice" />
-            <marker date="1505170681000" expanded="true" signature="10410:10444" ph="SELECT invoi... InvoiceItem" />
-            <marker date="1505170681000" expanded="true" signature="11190:11227" ph="SELECT * FRO... InvoiceItemStatusRecord" />
-            <marker date="1505170681000" expanded="true" signature="11950:11989" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1505170681000" expanded="true" signature="13741:13753" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/my_shopping/tasks.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1097,22 +1029,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/delete.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="96" column="0" lean-forward="true" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/read.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="121">
@@ -1129,14 +1045,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/notifications/friendship/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="16" column="52" lean-forward="true" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/update.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1145,70 +1053,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="155" column="2" lean-forward="true" selection-start-line="155" selection-start-column="2" selection-end-line="155" selection-end-column="2" />
-          <folding>
-            <element signature="e#204#1668#0#PHP" expanded="false" />
-            <element signature="e#1670#3281#0#PHP" expanded="false" />
-            <element signature="e#3283#4935#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="49" column="0" lean-forward="false" selection-start-line="49" selection-start-column="0" selection-end-line="52" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/fetch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/instance_vars.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="42" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="74" column="9" lean-forward="false" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1226,55 +1074,6 @@
         <state relative-caret-position="75">
           <caret line="5" column="31" lean-forward="false" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/NotificationRateableItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="376" column="32" lean-forward="true" selection-start-line="376" selection-start-column="32" selection-end-line="376" selection-end-column="32" />
-          <folding>
-            <element signature="n#get_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
-            <element signature="e#6227#6259#0#PHP" expanded="false" />
-            <element signature="n#fetch#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
-            <element signature="n#get_query_for_read_by_offset#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
-            <marker date="1505164013000" expanded="true" signature="3215:3254" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1505164013000" expanded="true" signature="4284:4297" ph="SELECT * FRO... " />
-            <marker date="1505164013000" expanded="true" signature="4284:4298" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1505164013000" expanded="true" signature="6388:6418" ph="SELECT COUNT... ${self::$table_name}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="53" column="42" lean-forward="true" selection-start-line="53" selection-start-column="42" selection-end-line="53" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/fetch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-          <folding>
-            <element signature="e#319#1861#0#PHP" expanded="false" />
-            <element signature="e#1864#3594#0#PHP" expanded="false" />
-            <element signature="e#3598#5121#0#PHP" expanded="false" />
-            <element signature="e#5124#6726#0#PHP" expanded="false" />
-            <marker date="1505175251000" expanded="false" signature="8479:8881" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1305,6 +1104,236 @@
             <marker date="1505178825000" expanded="true" signature="9401:9440" ph="INSERT INTO ${self::$table_name}... " />
             <marker date="1505178825000" expanded="true" signature="10445:10457" ph="DELETE FROM " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/friendship/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="12" column="62" lean-forward="false" selection-start-line="12" selection-start-column="62" selection-end-line="12" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="179" column="90" lean-forward="false" selection-start-line="179" selection-start-column="90" selection-end-line="179" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/my_debug_messenger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/my_photos/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="53" column="33" lean-forward="false" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_layouts/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="5" lean-forward="false" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#script#5;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/widgets/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/widgets/event_listeners.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/widgets/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="107" column="48" lean-forward="true" selection-start-line="107" selection-start-column="48" selection-end-line="107" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationMyShopping.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="139" selection-end-column="5" />
+          <folding>
+            <element signature="e#5273#5893#0#PHP" expanded="false" />
+            <element signature="n#get_query_for_read_by_offset#0;n#NotificationMyShopping#0;n#!!top" expanded="false" />
+            <marker date="1505170681000" expanded="true" signature="1845:1859" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505170681000" expanded="true" signature="2758:2835" ph="INSERT INTO InvoiceItemStatusRecord... " />
+            <marker date="1505170681000" expanded="true" signature="3617:3638" ph="SELECT * FRO... Invoice" />
+            <marker date="1505170681000" expanded="true" signature="10410:10444" ph="SELECT invoi... InvoiceItem" />
+            <marker date="1505170681000" expanded="true" signature="11190:11227" ph="SELECT * FRO... InvoiceItemStatusRecord" />
+            <marker date="1505170681000" expanded="true" signature="11950:11989" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1505170681000" expanded="true" signature="13741:13753" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="57" column="1" lean-forward="true" selection-start-line="57" selection-start-column="1" selection-end-line="57" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/tasks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationRateableItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="386" column="76" lean-forward="false" selection-start-line="386" selection-start-column="76" selection-end-line="386" selection-end-column="76" />
+          <folding>
+            <element signature="n#get_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+            <element signature="e#6227#6259#0#PHP" expanded="false" />
+            <element signature="n#fetch#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+            <element signature="n#get_query_for_read_by_offset#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+            <marker date="1505252730000" expanded="true" signature="3215:3254" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1505252730000" expanded="true" signature="4284:4297" ph="SELECT * FRO... " />
+            <marker date="1505252730000" expanded="true" signature="4284:4298" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505252730000" expanded="true" signature="6388:6418" ph="SELECT COUNT... ${self::$table_name}" />
+            <marker date="1505252730000" expanded="true" signature="11600:11612" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="207" column="64" lean-forward="false" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
+          <folding>
+            <marker date="1505252745000" expanded="true" signature="3333:3347" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505252745000" expanded="true" signature="4921:4960" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1505252745000" expanded="true" signature="5718:5730" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="97" column="17" lean-forward="false" selection-start-line="97" selection-start-column="17" selection-end-line="97" selection-end-column="17" />
+          <folding>
+            <element signature="e#199#1922#0#PHP" expanded="false" />
+            <element signature="e#3413#5092#0#PHP" expanded="false" />
+            <element signature="e#5094#6744#0#PHP" expanded="false" />
+            <element signature="e#6814#7412#0#PHP" expanded="false" />
+            <element signature="e#6955#7082#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationFriendshipAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="238" column="0" lean-forward="true" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/fetch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="15" column="51" lean-forward="true" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="39">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="e#204#1668#0#PHP" expanded="false" />
+            <element signature="e#1670#3281#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/fetch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="27" lean-forward="true" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="108" column="32" lean-forward="true" selection-start-line="108" selection-start-column="32" selection-end-line="108" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/friendship/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="193" column="37" lean-forward="true" selection-start-line="193" selection-start-column="37" selection-end-line="193" selection-end-column="37" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/delete.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

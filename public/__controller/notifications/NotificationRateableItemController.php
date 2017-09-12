@@ -51,4 +51,8 @@ class NotificationRateableItemController extends MainController
     {
         return NotificationRateableItem::fetch($data);
     }
+
+    public function delete($data) {
+        return NotificationRateableItem::delete($data['notification_id']);
+    }
 }

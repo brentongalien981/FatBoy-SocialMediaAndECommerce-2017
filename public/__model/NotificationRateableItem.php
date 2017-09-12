@@ -378,4 +378,23 @@ class NotificationRateableItem extends Notification
 
         return $q;
     }
+
+    public static function delete($id = 0) {
+
+        global $database;
+
+        $query = "DELETE FROM " . self::$table_name;
+        $query .= " WHERE notification_id = " . $database->escape_value($id);
+        $query .= " LIMIT 1";
+
+
+        $database->get_result_from_query($query);
+        $is_deletion_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+        if ($is_deletion_ok) {
+            $is_deletion_ok = parent::delete($id);
+        }
+
+        return $is_deletion_ok;
+    }
 }
