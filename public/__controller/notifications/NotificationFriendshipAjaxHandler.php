@@ -176,25 +176,93 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 
 if (isset($_GET['read']) && $_GET['read'] == "yes") {
     // Instance
-    $notification_friendship = new NotificationFriendshipController();
+    $nf_controller = new NotificationFriendshipController();
 
 
     // Validate
-    $allowed_assoc_indexes = array("section");
-    $required_vars_length_array = array("section" => ["min" => 1, "max" => 3]);
+    $allowed_assoc_indexes = array("offset");
+    $required_vars_length_array = array("offset" => ["min" => 1, "max" => 3]);
     // Do this for GET requests.
-    $notification_friendship->validator->set_request_type("get");
-    $notification_friendship->validator->set_allowed_post_vars($allowed_assoc_indexes);
-    $notification_friendship->validator->set_required_post_vars_length_array($required_vars_length_array);
-    $is_validation_ok = $notification_friendship->validator->validate();
-    $json_errors_array = $notification_friendship->validator->get_json_errors_array();
+    $nf_controller->validator->set_request_type("get");
+    $nf_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
+    $nf_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+    $is_validation_ok = $nf_controller->validator->validate();
+    $json_errors_array = $nf_controller->validator->get_json_errors_array();
 
 
     if ($is_validation_ok) {
-        // Everything is ok.
+        // Prepare the necessary data to pass to the controller.
+        // Sanitized vars for passing to the controller.
+        $sanitized_vars = array();
+        foreach ($allowed_assoc_indexes as $index) {
+            \MyDebugMessenger::add_debug_message("GET VAR: {$_GET[$index]}");
+            $sanitized_vars[$index] = $_GET[$index];
+        }
+
+
+
+        // Let the controller handle it.
+        $json_errors_array['notifications'] = $nf_controller->read($sanitized_vars);
+
+
+        // If everything is ok.
+//        if (isset($json_errors_array['notifications']) &&
+//            $json_errors_array['notifications'] != null &&
+//            count($json_errors_array['notifications']) > 0)
+//        {
+//
+//            $json_errors_array['is_result_ok'] = true;
+//
+//        }
         $json_errors_array['is_result_ok'] = true;
-        $section = $_GET['section'];
-        $json_errors_array['notifications'] = $notification_friendship->read($section);
+    }
+
+
+    //
+    echo json_encode($json_errors_array);
+}
+
+if (isset($_GET['fetch']) && $_GET['fetch'] == "yes") {
+    // Instance
+    $nf_controller = new NotificationFriendshipController();
+
+
+    // Validate
+    $allowed_assoc_indexes = array("latest_notification_date");
+    $required_vars_length_array = array("latest_notification_date" => ["min" => 19, "max" => 20]);
+    // Do this for GET requests.
+    $nf_controller->validator->set_request_type("get");
+    $nf_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
+    $nf_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+    $is_validation_ok = $nf_controller->validator->validate();
+    $json_errors_array = $nf_controller->validator->get_json_errors_array();
+
+
+    if ($is_validation_ok) {
+        // Prepare the necessary data to pass to the controller.
+        // Sanitized vars for passing to the controller.
+        $sanitized_vars = array();
+        foreach ($allowed_assoc_indexes as $index) {
+            \MyDebugMessenger::add_debug_message("GET VAR: {$_GET[$index]}");
+            $sanitized_vars[$index] = $_GET[$index];
+        }
+
+
+
+        // Let the controller handle it.
+        $json_errors_array['notifications'] = $nf_controller->fetch($sanitized_vars);
+
+
+        // If everything is ok.
+//        if (isset($json_errors_array['notifications']) &&
+//            $json_errors_array['notifications'] != null &&
+//            count($json_errors_array['notifications']) > 0)
+//        {
+//
+//            $json_errors_array['is_result_ok'] = true;
+//
+//        }
+        $json_errors_array['is_result_ok'] = true;
     }
 
 

@@ -1,5 +1,16 @@
 function do_notification_friendships_after_effects(class_name, crud_type, json, x_obj) {
     switch (crud_type) {
+        case "fetch":
+            // console.log("TODO: FILE: general_functions.js, METHOD: do_notification_rateable_items_after_effects(), switch case: \"fetch\"");
+
+            //
+            // prepare_notification_x_container(class_name);
+            var container = get_actual_notification_x_container(class_name);
+
+            //
+            dom_remove_outdated_notifications(json.notifications);
+            populate_x_notification_container2(container, json.notifications, class_name, crud_type);
+            break;
         case "read":
             // // Container_id = notification_info.class_name + “container”
             // var container_id = class_name + "Container";
@@ -9,7 +20,7 @@ function do_notification_friendships_after_effects(class_name, crud_type, json, 
             var container = get_actual_notification_x_container(class_name);
 
             //
-            populate_x_notification_container(container, json.notifications, class_name, crud_type);
+            populate_x_notification_container2(container, json.notifications, class_name, crud_type);
             break;
         case "create":
             break;

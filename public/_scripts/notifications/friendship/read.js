@@ -2,18 +2,19 @@ function read_friendship_notification_objs() {
 // Set up the necessary infos for this x_notification
     var crud_type = "read";
     var request_type = "GET";
+
+    var offset = get_num_of_dom_notifications("NotificationFriendship");
+
     var key_value_pairs = {
-        // TODO:REMINDER: Change this to a variable.
         read: "yes",
-        section: 1,
-        tae: "shit"
+        // section: 1
+        offset: offset
     };
 
 
-// Create a NotificationFriendship object.
-// Then call its read method.
-    var friendship_notification_obj = new NotificationFriendship(crud_type, request_type, key_value_pairs);
-    friendship_notification_obj.read();
+    //
+    var obj = new NotificationFriendship(crud_type, request_type, key_value_pairs);
+    obj.read();
 }
 
 
@@ -48,6 +49,8 @@ function get_notification_for_follow_request(notification) {
     msg += " notification_id='" + n['notification_id'] + "'";
     msg += ">accept</a>";
 
+    msg += "<i class='my-time-stamp'>(" + n["human_date"] + ")</i>";
+
     //
     return msg;
 }
@@ -70,6 +73,8 @@ function get_notification_for_follow_acceptance(notification) {
     msg += "</a>";
 
     msg += " accepted your follow request ";
+
+    msg += "<i class='my-time-stamp'>(" + n["human_date"] + ")</i>";
 
     //
     return msg;

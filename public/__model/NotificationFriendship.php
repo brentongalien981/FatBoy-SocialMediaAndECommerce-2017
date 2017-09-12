@@ -115,6 +115,84 @@ class NotificationFriendship extends Notification {
         return $query;
     }
 
+    public static function get_query_for_read_by_offset($data) {
+        // TODO:REMINDER: Only select the necessary columns.
+
+        global $session;
+        $limit = 10;
+        $d = $data;
+
+
+        $query = "SELECT * FROM " . self::$table_name;
+        $query .= " INNER JOIN " . parent::$table_name;
+        $query .= " ON " . self::$table_name . ".notification_id = " . parent::$table_name . ".id";
+        $query .= " INNER JOIN Users";
+        $query .= " ON " . parent::$table_name . ".notifier_user_id = Users.user_id";
+        $query .= " WHERE is_deleted = 0";
+        $query .= " AND notified_user_id = {$session->actual_user_id}";
+        $query .= " ORDER BY " . parent::$table_name . ".initiation_date DESC";
+        $query .= " LIMIT {$limit} OFFSET {$d['offset']}";
+
+
+        return $query;
+    }
+
+    public static function get_query_for_fetch($data)
+    {
+        // TODO:REMINDER: Only select the necessary columns.
+
+        $d = $data;
+        $limit = 2;
+        global $session;
+
+        $query = "SELECT * FROM " . self::$table_name;
+        $query .= " INNER JOIN " . parent::$table_name;
+        $query .= " ON " . self::$table_name . ".notification_id = " . parent::$table_name . ".id";
+        $query .= " INNER JOIN Users";
+        $query .= " ON " . parent::$table_name . ".notifier_user_id = Users.user_id";
+        $query .= " WHERE is_deleted = 0";
+        $query .= " AND notified_user_id = {$session->actual_user_id}";
+        $query .= " AND initiation_date > '{$d['latest_notification_date']}'";
+        $query .= " ORDER BY initiation_date ASC";
+        $query .= " LIMIT {$limit}";
+
+
+        return $query;
+    }
+
+
+    public static function fetch($data)
+    {
+
+        $d = $data;
+        $query = self::get_query_for_fetch($d);
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_notifications = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+            //
+            $a_notification = array(
+                "notification_id" => $row['notification_id'],
+                "notifier_user_id" => $row['notifier_user_id'],
+                "notification_msg_id" => $row['notification_msg_id'],
+                "user_name" => $row['user_name'],
+                "date_updated" => $row['initiation_date'],
+                "human_date" => parent::get_my_carbon_date($row['initiation_date']));
+
+
+
+
+            //
+            array_push($array_of_notifications, $a_notification);
+        }
+
+        return $array_of_notifications;
+    }
+
     public static function read_all($notified_user_id) {
         $query = self::get_query_for_read_all($notified_user_id);
 
@@ -145,9 +223,9 @@ class NotificationFriendship extends Notification {
 
 
 
-    public static function read_by_section($section, $limit = 2) {
-        $query = self::get_query_for_read_by_section($section, $limit);
-
+    public static function read_by_offset($data) {
+//        $query = self::get_query_for_read_by_section($section, $limit);
+        $query = self::get_query_for_read_by_offset($data);
 
 //        $objects_array = self::read_by_query_and_instantiate($query);
         $result_set = self::read_by_query($query);
@@ -163,7 +241,9 @@ class NotificationFriendship extends Notification {
                 "notification_id" => $row['notification_id'],
                 "notifier_user_id" => $row['notifier_user_id'],
                 "notification_msg_id" => $row['notification_msg_id'],
-                "user_name" => $row['user_name']);
+                "user_name" => $row['user_name'],
+                "date_updated" => $row['initiation_date'],
+                "human_date" => parent::get_my_carbon_date($row['initiation_date']));
 
 
             //

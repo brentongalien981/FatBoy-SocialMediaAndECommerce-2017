@@ -25,9 +25,9 @@ class NotificationFriendshipController extends MainController
     }
 
 
-    public function read($section)
+    public function read($data)
     {
-        return NotificationFriendship::read_by_section($section);
+        return NotificationFriendship::read_by_offset($data);
     }
 
     public function update_fetch($data)
@@ -38,6 +38,11 @@ class NotificationFriendshipController extends MainController
         // TODO:REMINDER: Make the $section a variable in the scripts of _script/notifications
         // and the rest of the Notification sub-menus.
         return NotificationFriendship::read_by_section($data['section'], $limit);
+    }
+
+    public function fetch($data)
+    {
+        return NotificationFriendship::fetch($data);
     }
 
 

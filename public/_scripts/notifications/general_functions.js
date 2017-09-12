@@ -51,6 +51,7 @@ function populate_x_notification_container2(container, notifications, class_name
 
         // TODO: Add listener to delete-link of the post notificationos.
         add_listener_to_delete_notification_link(notification, class_name);
+        add_other_listeners(notification);
 
     }
 
@@ -71,18 +72,33 @@ function populate_x_notification_container2(container, notifications, class_name
 
 }
 
+function add_other_listeners(notification) {
+    var n = notification;
+
+    switch (n["notification_msg_id"]) {
+        case "2":
+            add_listener_to_accept_follow_request_link(notification);
+            break;
+        case "":
+            break;
+    }
+}
+
 function set_container_display_visibility(class_name) {
     var actual_class_name = "";
     switch (class_name) {
         case "NotificationMyShopping":
-            actual_class_name = "my_shopping_notifications";
+            actual_class_name = ".my_shopping_notifications";
             break;
         case "NotificationRateableItem":
-            actual_class_name = "rateable_item_notifications";
+            actual_class_name = ".rateable_item_notifications";
+            break;
+        case "NotificationFriendship":
+            actual_class_name = ".friendship_notifications";
             break;
     }
 
-    if ($("." + actual_class_name).length <= 0) {
+    if ($(actual_class_name).length <= 0) {
         hide_x_container2(class_name);
     }
 }
@@ -145,7 +161,7 @@ function populate_x_notification_container(container, notifications, class_name,
 function prepare_update(class_name) {
     switch (class_name) {
         case "NotificationFriendship":
-            can_friendship_notifications_update = true;
+            can_friendship_notifications_fetch = true;
             break;
         case "NotificationMyShopping":
             can_my_shopping_notifications_fetch = true;
@@ -255,6 +271,9 @@ function get_num_of_dom_notifications(class_name) {
         case "NotificationMyShopping":
             specific_class_name = "my_shopping_notifications";
             break;
+        case "NotificationFriendship":
+            specific_class_name = "friendship_notifications";
+            break;
     }
 
     return $("." + specific_class_name).length;
@@ -265,15 +284,18 @@ function get_notification_with_latest_date(notification_class_name) {
 
     switch (notification_class_name) {
         case "NotificationRateableItem":
-            specific_class_name = "rateable_item_notifications";
+            specific_class_name = ".rateable_item_notifications";
             break;
         case "NotificationMyShopping":
-            specific_class_name = "my_shopping_notifications";
+            specific_class_name = ".my_shopping_notifications";
+            break;
+        case "NotificationFriendship":
+            specific_class_name = ".friendship_notifications";
             break;
 
     }
 
-    var the_latest_notification = $("." + specific_class_name)[0];
+    var the_latest_notification = $(specific_class_name)[0];
     return $(the_latest_notification).attr("date-updated");
 }
 
