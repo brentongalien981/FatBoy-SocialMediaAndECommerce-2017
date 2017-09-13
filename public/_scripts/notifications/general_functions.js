@@ -225,7 +225,7 @@ function prepare_notification_x_container(class_name) {
     var id = class_name + "Container";
     var container = document.getElementById(id);
     // main_content.appendChild(container);
-    b_widget.appendChild(container);
+    notifications_widget_main_container.appendChild(container);
 }
 
 

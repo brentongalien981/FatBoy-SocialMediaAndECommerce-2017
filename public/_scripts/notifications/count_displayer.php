@@ -1,6 +1,6 @@
 <?php
 // TODO: SECTION: Protected page.
-if (!$session->is_logged_in() || !$session->is_viewing_own_account()) {
+if (!$session->is_logged_in()) {
     return;
 }
 ?>
