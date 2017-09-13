@@ -1,10 +1,14 @@
-<?php if (!$session->is_logged_in() || !$session->is_viewing_own_account()) { return; } ?>
+<?php if (!$session->is_logged_in()) { return; } ?>
 
 <!--Styles-->
 <link href="<?php echo LOCAL . "/public/_styles/widgets/index.css"; ?>" rel="stylesheet" type="text/css">
 
 <div id="b-widget" class="widget">
+    <div id="notifications-menu-bar"><i id="collapse-notifications-icon" class="fa fa-angle-double-down" style="font-size:18px"></i></div>
+    <?php require_once(PUBLIC_PATH . "/__view/notifications_widget/index.php"); ?>
 </div>
+
+<div id="the-widget"></div>
 
 
 

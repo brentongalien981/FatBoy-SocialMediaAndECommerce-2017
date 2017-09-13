@@ -24,17 +24,6 @@ function clone_categorized_notification_template(new_container_id) {
 }
 
 function populate_x_notification_container2(container, notifications, class_name, crud_type) {
-
-    if (class_name == "NotificationRateableItem") {
-        var alert_msg = "**********************************";
-        alert_msg = "**********************************";
-        alert_msg = "**********************************";
-        alert_msg += "TODO: Add listener to delete-link of the rateable-item-notificationos.";
-        alert_msg += "**********************************";
-        alert_msg = "**********************************";
-        alert_msg = "**********************************";
-        console.log(alert_msg);
-    }
     
     for (var i = 0; i < notifications.length; i++) {
         var notification = notifications[i];
@@ -103,55 +92,56 @@ function set_container_display_visibility(class_name) {
     }
 }
 
-function populate_x_notification_container(container, notifications, class_name, crud_type) {
-    // console.log("PUTA: notifications.length: " + notifications.length);
-
-    for (var i = 0; i < notifications.length; i++) {
-        var notification = notifications[i];
-        // console.log("PUTA: notification[notification_msg_id]: " + notification['notification_msg_id']);
-        var prepared_notification = get_prepared_notification(class_name, notification);
-
-        //
-        append_a_notification(container, prepared_notification);
-
-        //
-        add_listener_to_delete_notification_link(notification, class_name);
-
-
-        // If the notification is a follow request,
-        // add listener to the "accept" link.
-        if (notification['notification_msg_id'] == 2) {
-            add_listener_to_accept_follow_request_link(notification);
-        }
-    }
-
-    //
-    if (crud_type === "read") {
-        // Prepare the AJAX for update.
-        prepare_update(class_name);
-    }
-
-
-    //
-    // show_x_container(container);
-    show_x_container2(class_name);
-
-
-    // If the x_container doesn't have any notifications to display..
-    // NOTE: I don't know why it's 5 when it only has <h4> and <hr> as
-    //       default children.
-    // window.alert("container.childNodes.length: " + container.childNodes.length);
-    if (container.childNodes.length <= 5) {
-        // hide_x_container(container);
-    }
-
-    // console.log("*************************")
-    // console.log("DEBUG:VAR:container.childNodes.length: " + container.childNodes.length);
-    // console.log("DEBUG:VAR:container.id: " + container.id);
-    // console.log("DEBUG:VAR:crud_type: " + crud_type);
-    // console.log("*************************")
-
-}
+// // @deprecated
+// function populate_x_notification_container(container, notifications, class_name, crud_type) {
+//     // console.log("PUTA: notifications.length: " + notifications.length);
+//
+//     for (var i = 0; i < notifications.length; i++) {
+//         var notification = notifications[i];
+//         // console.log("PUTA: notification[notification_msg_id]: " + notification['notification_msg_id']);
+//         var prepared_notification = get_prepared_notification(class_name, notification);
+//
+//         //
+//         append_a_notification(container, prepared_notification);
+//
+//         //
+//         add_listener_to_delete_notification_link(notification, class_name);
+//
+//
+//         // If the notification is a follow request,
+//         // add listener to the "accept" link.
+//         if (notification['notification_msg_id'] == 2) {
+//             add_listener_to_accept_follow_request_link(notification);
+//         }
+//     }
+//
+//     //
+//     if (crud_type === "read") {
+//         // Prepare the AJAX for update.
+//         prepare_update(class_name);
+//     }
+//
+//
+//     //
+//     // show_x_container(container);
+//     show_x_container2(class_name);
+//
+//
+//     // If the x_container doesn't have any notifications to display..
+//     // NOTE: I don't know why it's 5 when it only has <h4> and <hr> as
+//     //       default children.
+//     // window.alert("container.childNodes.length: " + container.childNodes.length);
+//     if (container.childNodes.length <= 5) {
+//         // hide_x_container(container);
+//     }
+//
+//     // console.log("*************************")
+//     // console.log("DEBUG:VAR:container.childNodes.length: " + container.childNodes.length);
+//     // console.log("DEBUG:VAR:container.id: " + container.id);
+//     // console.log("DEBUG:VAR:crud_type: " + crud_type);
+//     // console.log("*************************")
+//
+// }
 
 
 /**
@@ -234,10 +224,11 @@ function get_prepared_notification(class_name, notification) {
 function prepare_notification_x_container(class_name) {
     var id = class_name + "Container";
     var container = document.getElementById(id);
-    main_content.appendChild(container);
-
-
+    // main_content.appendChild(container);
+    b_widget.appendChild(container);
 }
+
+
 
 function get_actual_notification_x_container(class_name) {
     var id = class_name + "ActualContainer";
