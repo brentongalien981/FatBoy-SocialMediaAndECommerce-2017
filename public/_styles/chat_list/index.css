@@ -1,11 +1,18 @@
 #chat-list {
-
+    background-color: white;
+    margin-bottom: 1px;
+    padding: 15px;
+    overflow-y: auto;
+    height: 120px;
+    max-height: 120px;
 }
 
 #chat-list-menu-bar {
     background-color: lightblue;
     text-align: right;
     padding: 10px 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #chat-list-menu-bar * {
@@ -26,6 +33,7 @@
     height: 30px;
     border-radius: 15px;
     box-shadow: 2px 2px 10px rgb(170, 170, 170);
+    color: black;
 }
 
 .chat-list-item-name {
@@ -33,6 +41,7 @@
     vertical-align: top;
     margin-top: 8px;
     font-weight: 100;
+    color: black;
 }
 
 .chat-list-item-button {
@@ -57,6 +66,7 @@
 
 .chat-list-menu-icons {
     color: rgb(100, 100, 100);
+    font-size: 12px;
 }
 
 .chat-list-menu-icons:hover {
@@ -64,7 +74,7 @@
     cursor: pointer;
 }
 
-#expand-chat-list-icon {
+#collapse-chat-list-icon {
     display: none;
 
 }
@@ -74,10 +84,12 @@
 .widget-header-bar {
     text-align: left;
     float: left;
+    color: rgb(70, 70, 70);
 }
 
 .widget-header-bar * {
     display: inline-block;
+    margin-right: 10px;
 }
 
 .widget-action-bar {

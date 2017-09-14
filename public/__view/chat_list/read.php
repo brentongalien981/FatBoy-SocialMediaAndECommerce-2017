@@ -1,16 +1,14 @@
 <div class="">
     <div id="chat-list-menu-bar" class="">
         <div class="widget-header-bar">
-            <i class="fa fa-list" style="font-size:18px"></i>
-            <h5>Chat List</h5>
+            <i id="friend-list-icon" class="fa fa-list chat-list-menu-icons" style="font-size:14px"></i>
+            <h5 class="widget-title">Chat List</h5>
         </div>
 
 
         <div class="widget-action-bar">
-            <i id="collapse-chat-list-icon" class="chat-list-menu-icons fa fa-angle-double-down"
-               style="font-size:18px"></i>
-            <i id="expand-chat-list-icon" class="chat-list-menu-icons fa fa-angle-double-up"
-               style="font-size:18px"></i>
+            <i id="expand-chat-list-icon" class="chat-list-menu-icons fa fa-expand"></i>
+            <i id="collapse-chat-list-icon" class="chat-list-menu-icons fa fa-window-minimize"></i>
         </div>
     </div>
 

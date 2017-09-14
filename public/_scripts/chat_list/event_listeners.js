@@ -1,16 +1,26 @@
-$("#collapse-chat-list-icon").click(function () {
-    $("#chat-list").css("display", "none");
-    $(this).css("display", "none");
-    $("#expand-chat-list-icon").css("display", "block");
+$("#friend-list-icon").click(function () {
 
-    // $("#notifications-menu-bar").css("border-radius", "5px");
+    if ($("#chat-list").css("display") == "none") {
+        $("#chat-list").css("display", "block");
+    }
+    else {
+        $("#chat-list").css("display", "none");
+    }
+
 });
 
 $("#expand-chat-list-icon").click(function () {
-    $("#chat-list").css("display", "block");
-    $("#expand-chat-list-icon").css("display", "none");
+    $("#chat-wall").css("display", "block");
+    $("#chat-textarea-container").css("display", "block");
+    $("#keyboard-area").css("display", "block");
     $("#collapse-chat-list-icon").css("display", "block");
+    $(this).css("display", "none");
+});
 
-    // $("#notifications-menu-bar").css("border-bottom-left-radius", "0px");
-    // $("#notifications-menu-bar").css("border-bottom-right-radius", "0px");
+$("#collapse-chat-list-icon").click(function () {
+    $("#chat-wall").css("display", "none");
+    $("#chat-textarea-container").css("display", "none");
+    $("#keyboard-area").css("display", "none");
+    $("#expand-chat-list-icon").css("display", "block");
+    $(this).css("display", "none");
 });

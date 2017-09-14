@@ -26,6 +26,35 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
 
 
     <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/_layouts/header.css"; ?>">
+
+
+
+
+
+    <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
+    </script>
+
+    <?php
+    // TODO:SECTION: General js scripts that needs <php> tags.
+    ?>
+    <script>
+        function get_csrf_token() {
+            return "<?php echo sessionize_csrf_token(); ?>";
+        }
+
+        function get_local_url() {
+            return "http://localhost/myPersonalProjects/FatBoy";
+        }
+    </script>
+
+
+    <script src="<?php echo LOCAL . "/public/_scripts/general.js"; ?>">
+    </script>
+
+    <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/main_script2.js"; ?>"></script>
+
+    <script src="<?php echo LOCAL . "/public/_scripts/main_script_part2.js"; ?>"></script>
 </head>
 <body id="the_body">
 <?php // TODO:REMINDER: Display this later. ?>
@@ -84,6 +113,8 @@ echo "'>";
                     <iframe id="the_ad" class="ad" frameborder="0" allowfullscreen="false" mozallowfullscreen="false"
                             scrolling="no" seamless=""></iframe>
                 </div>
+
+                <?php include(PUBLIC_PATH . "/__view/chat/index.php"); ?>
             </td>
         </tr>
     </table>
@@ -100,35 +131,17 @@ echo "'>";
 <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/animate.css"; ?>">
 
 
-<script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
-</script>
-
-<?php
-// TODO:SECTION: General js scripts that needs <php> tags.
-?>
-<script>
-    function get_csrf_token() {
-        return "<?php echo sessionize_csrf_token(); ?>";
-    }
-
-    function get_local_url() {
-        return "http://localhost/myPersonalProjects/FatBoy";
-    }
-</script>
 
 
-<script src="<?php echo LOCAL . "/public/_scripts/general.js"; ?>">
-</script>
+
 
 <?php
 // TODO: SECTION: Script for popping-in and
 // popping out of the sign-in, sign-up links.
 ?>
 
-<script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
-</script>
 
-<script src="<?php echo LOCAL . "/public/_scripts/main_script_part2.js"; ?>"></script>
+
 
 <script>
 

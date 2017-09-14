@@ -2,21 +2,44 @@
     width: 100%;
     height: 200px;
     background-color: rgb(240, 240, 240);
+    overflow-y: auto;
+    /*padding: 0px 15px;*/
+    display: none;
+    /*border-bottom-left-radius: 5px;*/
+    /*border-bottom-right-radius: 5px;*/
+}
+
+#chat-pod {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#chat-textarea-container {
+    width: 100%;
+    background-color: white;
+    display: none;
 }
 
 #chat-textarea {
-    width: 100%;
-    height: 100px;
-    resize: vertical;
+    width: 90%;
+    height: 90px;
+    resize: none;
+    /*border-radius: 0px;*/
+    padding: 5px 10px;
+    display: block;
+    margin: auto;
 }
 
 #keyboard-area {
-    background-color: rgb(238, 238, 238);
+    /*background-color: rgb(238, 238, 238);*/
+    background-color: rgb(130, 130, 130);
+    display: none;
 }
 
 #keyboard-container {
     width: 317px;
-    background-color: rgb(240, 240, 240);
+    /*background-color: rgb(240, 240, 240);*/
+    background-color: rgb(130, 130, 130);
     margin: auto;
     height: 115px;
     overflow-y: auto;
@@ -39,7 +62,8 @@
     padding: 1px 5px;
     margin-bottom: 1px;
     border-radius: 2px;
-    background-color: rgb(240, 240, 240);
+    /*background-color: rgb(240, 240, 240);*/
+    background-color: rgb(130, 130, 130);
 }
 
 .keyboard-keys:hover {
@@ -48,5 +72,52 @@
 }
 
 .chat-pod-bar-button-icon {
-    font-size: 24px;
+    font-size: 16px;
+}
+
+.chat-pod-bar-buttons {
+    display: inline-block;
+    padding: 5px 20px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-color: rgb(140, 140, 140);
+}
+
+.chat-pod-bar-buttons:hover {
+    background-color: rgb(209, 255, 183);
+    cursor: pointer;
+}
+
+#chat-pod-buttons-bar {
+    background-color: rgb(100, 100, 100);
+    padding: 5px 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: 1px;
+}
+
+.chat-wall-default-msg {
+    background-color: rgb(255, 254, 249);
+    padding: 10px;
+    font-weight: 100;
+    font-size: 9px;
+    font-style: italic;
+    margin: auto;
+    /*margin-top: 20px;*/
+    text-align: center;
+    /*top: 20px;*/
+    color: rgb(180, 180, 180);
+    border-radius: 5px;
+    width: 70%;
+}
+
+#chat-wall-reference {
+    width: 1px;
+    height: 1px;
+    color: red;
+    margin-bottom: 20px;
+}
+
+#chat-pod-buttons-nav {
+    border-radius: 5px;
 }

@@ -1,4 +1,5 @@
-$(".keyboard-keys").click(function () {
+$(".keyboard-keys").click(function (event) {
+    event.stopPropagation();
     clicked_key = this;
 
     //
@@ -12,8 +13,17 @@ $(".keyboard-keys").click(function () {
     setTimeout(animate_key, 150);
 });
 
+$(".keyboard-keys").mouseover(function () {
+    $(this).css("background-color", "rgb(160, 160, 160)");
+});
+
+$(".keyboard-keys").mouseout(function () {
+    $(this).css("background-color", "rgb(130, 130, 130)");
+});
+
 function animate_key() {
     $(clicked_key).css("background-color", "rgb(240, 240, 240)");
     $(clicked_key).css("box-shadow", "none");
+    clicked_key = null;
 
 }

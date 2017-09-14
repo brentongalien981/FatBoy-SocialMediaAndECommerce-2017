@@ -1,4 +1,8 @@
-#main_content {
+#chat_widget {
     width: 370px;
     max-width: 370px;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgb(80, 80, 80);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
