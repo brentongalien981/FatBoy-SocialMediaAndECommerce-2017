@@ -1,0 +1,85 @@
+#chat-list {
+
+}
+
+#chat-list-menu-bar {
+    background-color: lightblue;
+    text-align: right;
+    padding: 10px 15px;
+}
+
+#chat-list-menu-bar * {
+    display: inline-block;
+}
+
+.chat-list-items {
+    margin-bottom: 10px;
+}
+
+.chat-list-items * {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.chat-list-item-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(170, 170, 170);
+}
+
+.chat-list-item-name {
+    /*background-color: lightgreen;*/
+    vertical-align: top;
+    margin-top: 8px;
+    font-weight: 100;
+}
+
+.chat-list-item-button {
+    vertical-align: top;
+    margin-top: 7px;
+    font-size: 10px;
+    font-weight: 100;
+    background-color: greenyellow;
+    /*border: 1px solid greenyellow;*/
+    padding: 4px 10px;
+    padding-top: 2px;
+    border-radius: 10px;
+    /*color: white;*/
+}
+
+.chat-list-item-button:hover {
+    background-color: orange;
+    box-shadow: 0 0 10px orange;
+    cursor: pointer;
+    color: white;
+}
+
+.chat-list-menu-icons {
+    color: rgb(100, 100, 100);
+}
+
+.chat-list-menu-icons:hover {
+    color: orange;
+    cursor: pointer;
+}
+
+#expand-chat-list-icon {
+    display: none;
+
+}
+
+
+
+.widget-header-bar {
+    text-align: left;
+    float: left;
+}
+
+.widget-header-bar * {
+    display: inline-block;
+}
+
+.widget-action-bar {
+    text-align: right;
+}

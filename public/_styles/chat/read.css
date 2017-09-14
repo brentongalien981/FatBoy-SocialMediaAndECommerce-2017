@@ -1,0 +1,52 @@
+#chat-wall {
+    width: 100%;
+    height: 200px;
+    background-color: rgb(240, 240, 240);
+}
+
+#chat-textarea {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+}
+
+#keyboard-area {
+    background-color: rgb(238, 238, 238);
+}
+
+#keyboard-container {
+    width: 317px;
+    background-color: rgb(240, 240, 240);
+    margin: auto;
+    height: 115px;
+    overflow-y: auto;
+    padding: 3px 5px;
+}
+
+.emoji-keyboard {
+    display: none;
+}
+
+#smileys-keyboard {
+    display: block;
+}
+
+
+.keyboard-keys {
+    zoom: 1.7;
+    /*width: 20px;*/
+    margin: 0;
+    padding: 1px 5px;
+    margin-bottom: 1px;
+    border-radius: 2px;
+    background-color: rgb(240, 240, 240);
+}
+
+.keyboard-keys:hover {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+}
+
+.chat-pod-bar-button-icon {
+    font-size: 24px;
+}

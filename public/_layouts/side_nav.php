@@ -105,6 +105,10 @@
     }
     ?>
 
+    <?php if ($session->is_logged_in() && $session->is_viewing_own_account()) { ?>
+        <h4 class="menus"><a href="<?=LOCAL . "/public/__view/chat"?>">Next Chat</a></h4>
+    <?php } ?>
+
 
     <!--    Ads-->
     <?php

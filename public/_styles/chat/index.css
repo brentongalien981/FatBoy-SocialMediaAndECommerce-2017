@@ -1,12 +1,4 @@
-#middle_content {
-    background-color: rgb(250, 250, 250);
-    padding-bottom: 30px;
-    color: black;
-    /*width: 600px;*/
-}
-
-#sub_menus_nav {
-    background-color: rgb(60, 60, 60);
-}#sub_menus_nav a {
-    color: rgb(220, 220, 220);
+#main_content {
+    width: 370px;
+    max-width: 370px;
 }

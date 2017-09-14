@@ -471,7 +471,8 @@ if (isset($_POST["input_chat_with_friend"])) {
         $session->set_chat_thread_id(get_existing_chat_thread($_POST["input_chat_with_friend_user_id"]));
 
         MyDebugMessenger::add_debug_message("\$session->chat_thread_id: {$session->chat_thread_id}");
-    } else {
+    }
+    else {
         MyDebugMessenger::add_debug_message("Chat thread doesn't exist.");
 
         //

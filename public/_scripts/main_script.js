@@ -59,6 +59,9 @@ function get_subfolder(class_name) {
         case "RateableItemUser":
             subfolder = "rateable_items_users";
             break;
+        case "ChatList":
+            subfolder = "chat_list";
+            break;
         case "zZz":
             break;
     }
@@ -129,6 +132,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "RateableItemUser":
             do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "ChatList":
+            do_chat_list_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;

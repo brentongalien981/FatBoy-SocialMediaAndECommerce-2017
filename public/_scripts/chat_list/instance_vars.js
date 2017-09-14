@@ -1,0 +1,1 @@
+var is_chat_list_ajax_reading = false;
