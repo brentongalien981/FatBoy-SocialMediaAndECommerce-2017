@@ -95,3 +95,24 @@
 .widget-action-bar {
     text-align: right;
 }
+
+#widget-status-bar {
+    float: left;
+    font-size: 15px;
+    font-weight: 100;
+    color: rgb(98, 255, 7);
+    padding: 0 10px;
+    border-left: 1px solid black
+}
+
+#widget-status-bar * {
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.widget-status-bar-img {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+}

@@ -10,17 +10,10 @@ $("#friend-list-icon").click(function () {
 });
 
 $("#expand-chat-list-icon").click(function () {
-    $("#chat-wall").css("display", "block");
-    $("#chat-textarea-container").css("display", "block");
-    $("#keyboard-area").css("display", "block");
-    $("#collapse-chat-list-icon").css("display", "block");
-    $(this).css("display", "none");
+    show_chat_pod();
+
 });
 
 $("#collapse-chat-list-icon").click(function () {
-    $("#chat-wall").css("display", "none");
-    $("#chat-textarea-container").css("display", "none");
-    $("#keyboard-area").css("display", "none");
-    $("#expand-chat-list-icon").css("display", "block");
-    $(this).css("display", "none");
+    hide_chat_pod();
 });

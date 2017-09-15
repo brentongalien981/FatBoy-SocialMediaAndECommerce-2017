@@ -1,6 +1,8 @@
 <?php
 namespace App\Publico\Controller\ChatList;
 
+use App\Publico\Model\ChatList;
+
 require_once("ChatListController.php");
 
 //use App\Publico\Controller\MyPhotos\ChatListController;
@@ -56,6 +58,12 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
 
         // Let the controller handle it.
         $json_errors_array['objs'] = $cl_controller->read($sanitized_vars);
+
+
+        // Extra: Set the initial chat thread if there was an existing one.
+        if (isset($session->chat_thread_id)) {
+            $json_errors_array['chat_friend_user_id'] = ChatList::get_thread_friend_id($session->chat_thread_id);
+        }
 
 
         // Should reading of the objs here always be ok?

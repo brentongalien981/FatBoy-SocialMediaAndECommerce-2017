@@ -21,9 +21,11 @@ $(".keyboard-keys").mouseout(function () {
     $(this).css("background-color", "rgb(130, 130, 130)");
 });
 
-function animate_key() {
-    $(clicked_key).css("background-color", "rgb(240, 240, 240)");
-    $(clicked_key).css("box-shadow", "none");
-    clicked_key = null;
+$("#send-chat-button").click(function () {
+    if (!is_chat_thread_id_set) {
+        window.alert("Select first your friend you wanna chat with :)");
+        return;
+    }
 
-}
+    create_chat_msg();
+});

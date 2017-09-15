@@ -62,6 +62,9 @@ function get_subfolder(class_name) {
         case "ChatList":
             subfolder = "chat_list";
             break;
+        case "ChatMessage":
+            subfolder = "chat_message";
+            break;
         case "zZz":
             break;
     }
@@ -135,6 +138,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "ChatList":
             do_chat_list_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "ChatMessage":
+            do_chat_message_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;

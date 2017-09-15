@@ -5,6 +5,8 @@
             <h5 class="widget-title">Chat List</h5>
         </div>
 
+        <div id="widget-status-bar"></div>
+
 
         <div class="widget-action-bar">
             <i id="expand-chat-list-icon" class="chat-list-menu-icons fa fa-expand"></i>

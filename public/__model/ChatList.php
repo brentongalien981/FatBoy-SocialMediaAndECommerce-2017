@@ -95,6 +95,28 @@ class ChatList
         }
     }
 
+    public static function get_thread_friend_id($thread_id) {
+        global $session;
+        $query = "SELECT * FROM ChatThread ";
+        $query .= "WHERE id = {$thread_id} ";
+        $query .= " LIMIT 1";
+
+        $record_result = ChatList::read_by_query($query);
+
+        global $database;
+        $friend_id = null;
+        while ($row = $database->fetch_array($record_result)) {
+            if ($row["initiator_user_id"] == $session->actual_user_id) {
+                $friend_id = $row["responder_user_id"];
+            }
+            else {
+                $friend_id = $row["initiator_user_id"];
+            }
+
+            return $friend_id;
+        }
+    }
+
     public static function read_by_query($query = "")
     {
         global $database;

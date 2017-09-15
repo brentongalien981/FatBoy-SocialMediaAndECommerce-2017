@@ -52,3 +52,10 @@ function update_the_cursor_position_value() {
 
     document.getElementById("input_cursor_position").value = current_cursor_position;
 }
+
+function animate_key() {
+    $(clicked_key).css("background-color", "rgb(240, 240, 240)");
+    $(clicked_key).css("box-shadow", "none");
+    clicked_key = null;
+
+}

@@ -98,16 +98,14 @@
 
     <!--    Chat-->
     <?php
-    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-        echo "<a id='menu_chat' class='menus' href='" . LOCAL . "/public/__view/view_chat'>";
-        echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
-        echo "Chat</a>";
-    }
+//    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+//        echo "<a id='menu_chat' class='menus' href='" . LOCAL . "/public/__view/view_chat'>";
+//        echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
+//        echo "Chat</a>";
+//    }
     ?>
 
-    <?php if ($session->is_logged_in() && $session->is_viewing_own_account()) { ?>
-        <h4 class="menus"><a href="<?=LOCAL . "/public/__view/chat"?>">Next Chat</a></h4>
-    <?php } ?>
+
 
 
     <!--    Ads-->

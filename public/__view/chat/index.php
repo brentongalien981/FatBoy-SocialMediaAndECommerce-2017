@@ -18,11 +18,6 @@ if (!$session->is_logged_in()) {
 ?>
 
 
-    <!--uki-->
-    <link href="<?php echo LOCAL . "/public/_styles/chat/index.css"; ?>" rel="stylesheet" type="text/css">
-    <link href="<?php echo LOCAL . "/public/_styles/chat/read.css"; ?>" rel="stylesheet" type="text/css">
-
-
     <!--    <main id="middle_content">-->
 
     <!--        <nav id="sub_menus_nav">-->
@@ -54,14 +49,14 @@ if (!$session->is_logged_in()) {
 
     <!--Scripts-->
     <script src="<?php echo LOCAL . "/public/_scripts/chat/instance_vars.js"; ?>"></script>
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/general_functions.js"; ?><!--"></script>-->
+    <script src="<?php echo LOCAL . "/public/_scripts/chat/general_functions.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/general_functions2.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/general_functions3.js"; ?><!--"></script>-->
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/create.js"; ?><!--"></script>-->
+    <script src="<?php echo LOCAL . "/public/_scripts/chat/create.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/chat/read.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/update.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/delete.js"; ?><!--"></script>-->
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/Photo.js"; ?><!--"></script>-->
+    <script src="<?php echo LOCAL . "/public/_scripts/chat/ChatMessage.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/chat/event_listeners.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/event_listeners2.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/chat/event_handlers.js"; ?>"></script>
@@ -81,6 +76,12 @@ if (!$session->is_logged_in()) {
 
     <!--Script for ad displayer-->
 <?php // require_once(PUBLIC_PATH . "/_scripts/ad_displayer.php"); ?>
+
+
+    <!--uki-->
+    <link href="<?php echo LOCAL . "/public/_styles/chat/index.css"; ?>" rel="stylesheet" type="text/css">
+    <link href="<?php echo LOCAL . "/public/_styles/chat/read.css"; ?>" rel="stylesheet" type="text/css">
+
 
     <!--Footer-->
 <?php //include(PUBLIC_PATH . "/_layouts/footer.php"); ?>

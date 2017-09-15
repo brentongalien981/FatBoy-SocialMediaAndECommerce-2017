@@ -51,7 +51,7 @@ function show_user_home_icon($user_id = 0, $icon_class, $menu, $label = "")
     $src = b_get_profile_pic_src($user_id);
 
     if (isset($src)) {
-        echo "<img src=\"{$src}\" class=\"{$icon_class}\">{$label}";
+        echo "<img id='profile_pic' src=\"{$src}\" class=\"{$icon_class}\">{$label}";
     } else {
         show_default_user_home_icon($icon_class, $menu, $label);
     }
@@ -85,7 +85,7 @@ function show_default_user_home_icon($icon_class, $menu, $label = "")
     switch ($menu) {
         case "user_home":
         case "profile":
-            echo "<i class=\"fa fa-user-circle-o {$icon_class} b-i-{$icon_class}\"></i>";
+            echo "<i id='profile-pic' class=\"fa fa-user-circle-o {$icon_class} b-i-{$icon_class}\"></i>";
             break;
         case "wall":
             echo "<i class=\"fa fa-th-list {$icon_class} b-i-{$icon_class}\"></i>";

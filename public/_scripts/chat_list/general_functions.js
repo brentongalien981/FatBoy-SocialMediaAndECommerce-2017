@@ -6,14 +6,30 @@ function do_chat_list_after_effects(class_name, crud_type, json, x_obj) {
     switch (crud_type) {
         case "read":
             populate_chat_list_container(json.objs, class_name, crud_type, x_obj, json);
+
+            if (json.chat_friend_user_id != null) {
+                var chat_friend_info = get_chat_friend_info(json.chat_friend_user_id)
+
+                var c = chat_friend_info;
+                if (c != null) {
+
+                    set_widget_status_bar(c.user_name, c.profile_pic_src);
+                    is_chat_thread_id_set = true;
+                    // read_chat_msgs();
+                }
+
+            }
+
             break;
         case "create":
             // This is actually for the manage_thread functionality.
-            console.log("**********************************");
-            console.log("**********************************");
-            console.log("Is manage_thread AJAX ok? " + json.is_result_ok);
-            console.log("**********************************");
-            console.log("**********************************");
+            is_chat_thread_id_set = true;
+
+            var user_name = x_obj.key_value_pairs["user_name"];
+            var profile_pic_src = x_obj.key_value_pairs["profile_pic_src"];
+
+            set_widget_status_bar(user_name, profile_pic_src);
+            read_chat_msgs();
             break;
         case "update":
             break;
@@ -34,15 +50,20 @@ function populate_chat_list_container(objs, class_name, crud_type, x_obj, json) 
         item.classList.add("chat-list-items");
 
         var img = null;
+        var profile_pic_src = null;
         if (o["profile_pic_src"] == null) {
             img = document.createElement("i");
             img.classList.add("fa");
             img.classList.add("fa-user-circle-o");
             $(img).css("font-size", "30px");
+
+            profile_pic_src = "";
         }
         else {
             img = document.createElement("img");
             $(img).attr("src", o["profile_pic_src"]);
+
+            profile_pic_src = o["profile_pic_src"];
         }
 
         img.classList.add("chat-list-item-img");
@@ -55,6 +76,8 @@ function populate_chat_list_container(objs, class_name, crud_type, x_obj, json) 
         var button = document.createElement("button");
         button.classList.add("chat-list-item-button");
         $(button).attr("user-id", o["user_id"]);
+        $(button).attr("user-name", o["user_name"]);
+        $(button).attr("profile-pic-src", profile_pic_src);
         $(button).html("chat");
 
         //

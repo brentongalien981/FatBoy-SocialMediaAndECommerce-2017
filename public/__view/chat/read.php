@@ -27,7 +27,7 @@
 
     <div id="chat-pod-buttons-bar">
         <nav id="chat-pod-buttons-nav">
-            <button class="chat-pod-bar-buttons"><i class="fa fa-paper-plane chat-pod-bar-button-icon"></i></button>
+            <button id="send-chat-button" class="chat-pod-bar-buttons"><i class="fa fa-paper-plane chat-pod-bar-button-icon"></i></button>
             <button class="chat-pod-bar-buttons"><i class="fa fa-meh-o chat-pod-bar-button-icon"></i></button>
         </nav>
     </div>
