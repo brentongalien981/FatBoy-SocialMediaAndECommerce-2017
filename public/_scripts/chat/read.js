@@ -43,6 +43,7 @@ function populate_chat_wall(json) {
         //
         var chat_msg_container = document.createElement("div");
         chat_msg_container.classList.add("chat-msg-container");
+        $(chat_msg_container).attr("date-posted", c["date_posted"]);
 
 
         //
@@ -107,5 +108,7 @@ function populate_chat_wall(json) {
 
         $("#chat-wall").append(chat_msg_container);
     }
+
+    scroll_chat_wall_to_bottom();
 
 }

@@ -141,6 +141,80 @@ class ChatMessage
         return $array_of_objs;
     }
 
+    public static function get_query_for_fetch($data)
+    {
+
+        $d = $data;
+        $limit = 5;
+        global $session;
+
+        $query = "SELECT * FROM ChatMessage";
+        $query .= " WHERE chat_thread_id = {$session->chat_thread_id}";
+        $query .= " AND is_new = 1";
+        $query .= " AND date_posted > '{$d['latest_chat_msg_date']}'";
+        $query .= " ORDER BY date_posted ASC";
+        $query .= " LIMIT {$limit}";
+
+
+        return $query;
+    }
+
+    public static function fetch($data)
+    {
+
+        $d = $data;
+        $query = self::get_query_for_fetch($d);
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_objs = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+
+            // If the chat_msg is new..
+            if ($row["is_new"] == 1) {
+                // ..check if it hasn't been seen by the user.
+                $current_chat_msg_id = $row["id"];
+
+                $is_log_creation_ok = null;
+
+                if (!self::has_user_seen_chat_msg($current_chat_msg_id)) {
+                    $is_log_creation_ok = self::create_chat_msg_seen_log_record($current_chat_msg_id);
+
+                    // If there's an error, disregard everything.
+                    if (!$is_log_creation_ok) {
+                        return false;
+                    }
+                }
+
+                //
+                if (self::has_chat_msg_seen_by_all($current_chat_msg_id)) {
+                    $is_update_ok = self::set_chat_msg_old($current_chat_msg_id);
+
+                    // Error? Then quit..
+                    if (!$is_update_ok) {
+                        return false;
+                    }
+                }
+            }
+
+            //
+            $an_obj = array(
+                "chatter_user_id" => $row['chatter_user_id'],
+                "date_posted" => $row['date_posted'],
+                "message" => $row['message']
+            );
+
+            //
+            array_push($array_of_objs, $an_obj);
+
+        }
+
+        return $array_of_objs;
+    }
+
     public static function create_chat_msg_seen_log_record($chat_msg_id)
     {
         global $session;

@@ -4,6 +4,7 @@ namespace App\Publico\Controller\ChatMessage;
 require_once("ChatMessageController.php");
 
 use App\Publico\Controller\ChatMessage\ChatMessageController;
+use App\Publico\Model\ChatMessage;
 
 ?>
 
@@ -71,6 +72,51 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
     $json_errors_array['is_result_ok'] = true;
 
     $json_errors_array['actual_user_id'] = $session->actual_user_id;
+
+    //
+    echo json_encode($json_errors_array);
+}
+
+if (isset($_GET['fetch']) && $_GET['fetch'] == "yes") {
+    // Instance
+    $cm_controller = new ChatMessageController();
+//    ish
+
+
+    // Validate
+    $allowed_assoc_indexes = array("latest_chat_msg_date");
+    $required_vars_length_array = array("latest_chat_msg_date" => ["min" => 19, "max" => 20]);
+    // Do this for GET requests.
+    $cm_controller->validator->set_request_type("get");
+    $cm_controller->validator->set_allowed_post_vars($allowed_assoc_indexes);
+    $cm_controller->validator->set_required_post_vars_length_array($required_vars_length_array);
+    $is_validation_ok = $cm_controller->validator->validate();
+    $json_errors_array = $cm_controller->validator->get_json_errors_array();
+
+
+    if ($is_validation_ok) {
+        // Prepare the necessary data to pass to the controller.
+        // Sanitized vars for passing to the controller.
+        $sanitized_vars = array();
+        foreach ($allowed_assoc_indexes as $index) {
+            \MyDebugMessenger::add_debug_message("GET VAR: {$_GET[$index]}");
+            $sanitized_vars[$index] = $_GET[$index];
+        }
+
+
+
+        // Let the controller handle it.
+        $json_errors_array['objs'] = $cm_controller->fetch($sanitized_vars);
+
+
+        //
+        if ($json_errors_array['objs'] != false) {
+            $json_errors_array['is_result_ok'] = true;
+            $json_errors_array['actual_user_id'] = $session->actual_user_id;
+        }
+
+    }
+
 
     //
     echo json_encode($json_errors_array);

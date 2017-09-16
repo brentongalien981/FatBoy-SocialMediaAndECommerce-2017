@@ -30,6 +30,9 @@ function do_chat_list_after_effects(class_name, crud_type, json, x_obj) {
 
             set_widget_status_bar(user_name, profile_pic_src);
             read_chat_msgs();
+
+            show_chat_pod();
+            scroll_chat_wall_to_bottom();
             break;
         case "update":
             break;

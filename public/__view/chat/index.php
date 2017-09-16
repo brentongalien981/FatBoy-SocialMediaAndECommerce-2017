@@ -56,6 +56,7 @@ if (!$session->is_logged_in()) {
     <script src="<?php echo LOCAL . "/public/_scripts/chat/read.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/update.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/delete.js"; ?><!--"></script>-->
+        <script src="<?php echo LOCAL . "/public/_scripts/chat/fetch.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/chat/ChatMessage.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/chat/event_listeners.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/chat/event_listeners2.js"; ?><!--"></script>-->

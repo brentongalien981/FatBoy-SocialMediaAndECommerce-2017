@@ -52,4 +52,9 @@ class ChatMessageController extends MainController
 
         return ChatMessage::read();
     }
+
+    public function fetch($data)
+    {
+        return ChatMessage::fetch($data);
+    }
 }
