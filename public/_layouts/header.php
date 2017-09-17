@@ -28,9 +28,6 @@ if ($session->is_logged_in() && $session->is_viewing_own_account()) {
     <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/_layouts/header.css"; ?>">
 
 
-
-
-
     <script src="<?php echo LOCAL . "/private/external_lib/jquery-3.2.1.js"; ?>">
     </script>
 
@@ -131,16 +128,10 @@ echo "'>";
 <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/animate.css"; ?>">
 
 
-
-
-
-
 <?php
 // TODO: SECTION: Script for popping-in and
 // popping out of the sign-in, sign-up links.
 ?>
-
-
 
 
 <script>
@@ -149,6 +140,7 @@ echo "'>";
         //                window.alert("main content loaded");
         console.log("this tab is now focused and active: " + document.getElementById("title").innerHTML);
         set_session_currently_viewed_user_id();
+
     };
 
     function set_session_currently_viewed_user_id() {
@@ -188,16 +180,9 @@ echo "'>";
 <?php require_once(PUBLIC_PATH . "/_scripts/notifications/count_displayer.php"); ?>
 
 
-
 <!--Widgets-->
 <?php require_once(PUBLIC_PATH . "/__view/widgets/index.php"); ?>
 
 
-
-
-
-
-
-
-
-
+<!--App Settings-->
+<?php require_once(PUBLIC_PATH . "/__view/app_settings/index.php"); ?>

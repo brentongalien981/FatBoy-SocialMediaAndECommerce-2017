@@ -36,6 +36,7 @@ if (!$session->is_logged_in()) {
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/delete.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/Notification.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/event_listeners.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/event_handlers.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/tasks.js"; ?><!--"></script>-->
 
 

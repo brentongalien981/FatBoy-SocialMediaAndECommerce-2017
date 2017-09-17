@@ -65,6 +65,9 @@ function get_subfolder(class_name) {
         case "ChatMessage":
             subfolder = "chat_message";
             break;
+        case "AppSetting":
+            subfolder = "app_settings";
+            break;
         case "zZz":
             break;
     }
@@ -141,6 +144,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "ChatMessage":
             do_chat_message_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "AppSetting":
+            do_app_setting_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;
