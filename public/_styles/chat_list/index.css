@@ -5,14 +5,16 @@
     overflow-y: auto;
     height: 120px;
     max-height: 120px;
+    display: none;
 }
 
 #chat-list-menu-bar {
     background-color: lightblue;
     text-align: right;
     padding: 10px 15px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    /*border-top-left-radius: 5px;*/
+    /*border-top-right-radius: 5px;*/
+    border-radius: 5px;
 }
 
 #chat-list-menu-bar * {
@@ -74,7 +76,7 @@
     cursor: pointer;
 }
 
-#collapse-chat-list-icon {
+#collapse-chat-pod-icon {
     display: none;
 
 }

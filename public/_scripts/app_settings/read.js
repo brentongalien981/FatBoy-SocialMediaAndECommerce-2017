@@ -14,6 +14,10 @@ function read_app_settings() {
 function set_app(json) {
     var o = json.objs;
     var notifications_is_maximized = o["notifications_is_maximized"];
+    var chat_list_is_maximized = o["chat_list_is_maximized"];
+    var chat_pod_is_maximized = o["chat_pod_is_maximized"];
 
     (notifications_is_maximized == "true") ? maximize_notifications_window() : minimize_notifications_window();
+    (chat_list_is_maximized == "true") ? maximize_chat_list_window() : minimize_chat_list_window();
+    (chat_pod_is_maximized == "true") ? maximize_chat_pod_window() : minimize_chat_pod_window();
 }

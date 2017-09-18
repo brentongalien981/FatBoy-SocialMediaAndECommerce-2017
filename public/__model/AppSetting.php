@@ -14,13 +14,28 @@ class AppSetting
     public static function read() {
         $app_settings = array();
 
-
+        //
         if (isset($_SESSION["notifications_is_maximized"])) {
             $app_settings["notifications_is_maximized"] = $_SESSION["notifications_is_maximized"];
         } else {
             $app_settings["notifications_is_maximized"] = false;
         }
 
+        //
+        if (isset($_SESSION["chat_list_is_maximized"])) {
+            $app_settings["chat_list_is_maximized"] = $_SESSION["chat_list_is_maximized"];
+        } else {
+            $app_settings["chat_list_is_maximized"] = false;
+        }
+
+        //
+        if (isset($_SESSION["chat_pod_is_maximized"])) {
+            $app_settings["chat_pod_is_maximized"] = $_SESSION["chat_pod_is_maximized"];
+        } else {
+            $app_settings["chat_pod_is_maximized"] = false;
+        }
+
+        //
         return $app_settings;
     }
 
@@ -30,10 +45,12 @@ class AppSetting
         $d = $data;
 
 
-        while (!isset($d["notifications_is_maximized"])) {
-            usleep(5000);
-        }
         $_SESSION["notifications_is_maximized"] = $d["notifications_is_maximized"];
+
+        $_SESSION["chat_list_is_maximized"] = $d["chat_list_is_maximized"];
+
+        $_SESSION["chat_pod_is_maximized"] = $d["chat_pod_is_maximized"];
+
 
         return true;
 

@@ -15,9 +15,16 @@ use App\Publico\Model\AppSetting;
 if (is_request_post() && isset($_POST["update"]) && $_POST["update"] == "yes") {
 
     /* Validate */
-    $allowed_assoc_indexes = array("notifications_is_maximized");
+    $allowed_assoc_indexes = array(
+        "notifications_is_maximized",
+        "chat_list_is_maximized",
+        "chat_pod_is_maximized"
+    );
+
     $required_vars_length_array = array(
-        "notifications_is_maximized" => ["min" => 4, "max" => 5]
+        "notifications_is_maximized" => ["min" => 4, "max" => 5],
+        "chat_list_is_maximized" => ["min" => 4, "max" => 5],
+        "chat_pod_is_maximized" => ["min" => 4, "max" => 5]
 
     );
 

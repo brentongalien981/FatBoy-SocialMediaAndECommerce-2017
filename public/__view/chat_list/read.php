@@ -9,8 +9,8 @@
 
 
         <div class="widget-action-bar">
-            <i id="expand-chat-list-icon" class="chat-list-menu-icons fa fa-expand"></i>
-            <i id="collapse-chat-list-icon" class="chat-list-menu-icons fa fa-window-minimize"></i>
+            <i id="expand-chat-pod-icon" class="chat-list-menu-icons fa fa-expand"></i>
+            <i id="collapse-chat-pod-icon" class="chat-list-menu-icons fa fa-window-minimize"></i>
         </div>
     </div>
 
