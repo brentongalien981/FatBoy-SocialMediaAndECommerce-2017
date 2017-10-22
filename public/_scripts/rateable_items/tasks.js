@@ -1,2 +1,2 @@
-set_rateable_item_ids();
+// set_rateable_item_ids();
 

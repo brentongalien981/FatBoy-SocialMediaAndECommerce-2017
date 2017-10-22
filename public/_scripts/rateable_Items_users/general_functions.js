@@ -2,6 +2,7 @@ function do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj)
     switch (crud_type) {
         case "read":
 
+            // to_read is the options for these 3 pseudo-buttons..
             var to_read = x_obj.key_value_pairs["to_read"];
 
             switch (to_read) {

@@ -50,7 +50,7 @@ function get_response_bar()
     $response_bar .= "<div class='response-icon-container rate-sigma-pseudo-button'>";
     $response_bar .= "<img title='Number of Reactions' class='response-bar-icons' src='" . LOCAL . "/public/_photos/sum.png" . "'>";
     $response_bar .= "<h6 class='response-icon-label'>No rate tag</h6>";
-    $response_bar .= "</div class='response-icon-container'>";
+    $response_bar .= "</div>";
 
     $response_bar .= "<div class='response-icon-container rate-average-pseudo-button'>";
     $response_bar .= "<img title='Average Reaction' class='response-bar-icons' src='" . LOCAL . "/public/_photos/average.png" . "'>";
@@ -165,8 +165,11 @@ function create_timeline_post_record()
     $is_creation_ok = create_timeline_post_record_bruh();
 
 
+
+
     if ($is_creation_ok) {
-        return_completely_presented_post();
+//        return_completely_presented_post();
+        echo "true";
     }
 }
 
@@ -218,7 +221,7 @@ function return_completely_presented_post()
         $completely_presented_timeline_notification .= "<p class='timeline_post_p'>" . "{$row['message']}" . "</p>";
         $completely_presented_timeline_notification .= "</div>";
 
-        //
+        //ish9
         $completely_presented_timeline_notification .= get_response_bar();
 
 

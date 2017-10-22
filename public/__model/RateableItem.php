@@ -42,6 +42,22 @@ class RateableItem
         return $sanitized_attributes;
     }
 
+    public static function does_record_exist($rateable_item) {
+        $d = $rateable_item;
+        global $database;
+//        global $session;
+
+        $query = "SELECT * FROM " . self::$table_name;
+        $query .= " WHERE item_x_id = {$d->item_x_id}";
+        $query .= " AND item_x_type_id = {$d->item_x_type_id}";
+
+        $result_set = $database->get_result_from_query($query);
+        $num_of_records = $database->get_num_rows_of_result_set($result_set);
+
+        if ($num_of_records > 0) { return true; }
+        return false;
+    }
+
     public function create()
     {
         global $database;

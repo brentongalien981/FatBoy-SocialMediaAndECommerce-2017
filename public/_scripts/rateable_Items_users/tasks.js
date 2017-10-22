@@ -1,1 +1,1 @@
-init_read_response_bar_details();
+// init_read_response_bar_details();

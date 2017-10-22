@@ -14,15 +14,29 @@ function do_rateable_item_after_effects(class_name, crud_type, json, x_obj) {
             console.log("TODO: switch case 'read'.");
             console.log("***************************************************");
 
-            // set_rateable_item_ids
+            /* set_rateable_item_ids */
             attach_rateable_item_ids(json.rateable_items);
+
+
+            /* */
+            var rateable_item_id = json.rateable_items[0]["rateable_item_id"];
+            var rateable_item_ids = [rateable_item_id];
+
+            // Because I initially created this method "read_rate_tag()" that accepts
+            // an array argument, I just kinna stick with it cause I don't wanna
+            // re-write the whole RateableItemController file.
+            read_rate_tag(rateable_item_ids);
+            read_rate_sigma(rateable_item_ids);
+            read_rate_value_sigma(rateable_item_ids);
+
             break;
         case "create":
-            // //
-            // clear_photos_container();
-            // read_photos();
-            // clear_add_photo_form();
-            // clear_error_labels();
+            var item_x_id = json["item_x_id"];
+
+            /* Read the rateable item. */
+            var post_ids = [item_x_id];
+            read_rateable_item_ids(post_ids);
+
             break;
 
         case "update":

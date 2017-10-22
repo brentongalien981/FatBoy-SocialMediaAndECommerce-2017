@@ -68,6 +68,9 @@ function get_subfolder(class_name) {
         case "AppSetting":
             subfolder = "app_settings";
             break;
+        case "TimelinePost":
+            subfolder = "timeline_posts";
+            break;
         case "zZz":
             break;
     }
@@ -147,6 +150,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "AppSetting":
             do_app_setting_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "TimelinePost":
+            do_timeline_post_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;

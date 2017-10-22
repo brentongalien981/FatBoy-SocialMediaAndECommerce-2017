@@ -11,10 +11,10 @@ async function init_read_response_bar_details() {
     read_rate_value_sigma();
 }
 
-function read_rate_value_sigma() {
+function read_rate_value_sigma(rateable_item_ids) {
 
-    var response_bars = $(".b-post-response-bar");
-    var rateable_item_ids = get_rateable_item_ids(response_bars);
+    // var response_bars = $(".b-post-response-bar");
+    // var rateable_item_ids = get_rateable_item_ids(response_bars);
 
     var crud_type = "read";
     var request_type = "GET";
@@ -33,10 +33,10 @@ function read_rate_value_sigma() {
 }
 
 
-function read_rate_sigma() {
+function read_rate_sigma(rateable_item_ids) {
 
-    var response_bars = $(".b-post-response-bar");
-    var rateable_item_ids = get_rateable_item_ids(response_bars);
+    // var response_bars = $(".b-post-response-bar");
+    // var rateable_item_ids = get_rateable_item_ids(response_bars);
 
     var crud_type = "read";
     var request_type = "GET";
@@ -75,6 +75,23 @@ function read_rate_tags() {
 
 }
 
+function read_rate_tag(rateable_item_ids) {
+    var crud_type = "read";
+    var request_type = "GET";
+
+
+    var key_value_pairs = {
+        read: "yes",
+        rateable_item_ids: rateable_item_ids,
+        to_read: "rate_tags"
+    };
+
+
+    var obj = new RateableItemUser(crud_type, request_type, key_value_pairs);
+    obj.read();
+
+}
+
 function get_rateable_item_ids(response_bars) {
     var rateable_item_ids = [];
 
@@ -92,6 +109,8 @@ function set_rate_pseudo_button(rateable_item_id, rate_value) {
 
     // Reference the rate-pseudo-button based in that response-bar.
     var rate_pseudo_button = $(response_bar).find(".rate-pseudo-button").get(0);
+
+    if (rate_pseudo_button == null) { return; }
 
     // TODO: Set the img for this rate-tag.
     var the_img_el = rate_pseudo_button.childNodes[0];
@@ -200,6 +219,8 @@ function set_rate_sigma(rateable_item_id, count) {
     // Reference the rate-sigma-pseudo-button based in that response-bar.
     var rate_sigma_pseudo_button = $(response_bar).find(".rate-sigma-pseudo-button").get(0);
 
+    if (rate_sigma_pseudo_button == null) { return; }
+
     // TODO: Set the img for this rate-tag.
 
 
@@ -225,6 +246,7 @@ function set_rate_average(rateable_item_id, count, rate_value_sum) {
     // Reference the rate-average-pseudo-button based in that response-bar.
     var rate_average_pseudo_button = $(response_bar).find(".rate-average-pseudo-button").get(0);
 
+    if (rate_average_pseudo_button == null) { return; }
     // TODO: Set the img for this rate-tag.
 
 

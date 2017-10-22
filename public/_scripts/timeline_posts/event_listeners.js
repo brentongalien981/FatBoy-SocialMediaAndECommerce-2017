@@ -1,3 +1,10 @@
+$('#create_post_button').click(function (event) {
+    event.stopPropagation();
+
+    create_timeline_post();
+});
+
+
 $('#cancel_create_post_button').click(function (event) {
     event.stopPropagation();
 
@@ -125,6 +132,7 @@ function add_rate_pseudo_button_hover_listener(post_id) {
     $('#' + post_id).find('.rate-bar-hover-trigger').mouseover(function (event) {
         event.stopPropagation();
 
+        // window.alert("this.id: " + this.id);
         if (this.id == "the-rate-bar") { return; }
 
         clearTimeout(the_rate_bar_mouseout_handler);

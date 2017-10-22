@@ -100,7 +100,7 @@ function populate_chat_list_container(objs, class_name, crud_type, x_obj, json) 
 
     // Set the chat-list's pseudo-visibility.
     if (get_num_of_chat_list_items() == 0) {
-        $("#empty_chat_list_div").css("display", "block");
+        $("#empty_chat_list_msg").css("display", "block");
         $("#chat_list").css("display", "none");
     }
     else {

@@ -45,6 +45,10 @@ class RateableItemController extends MainController
 
         $rateable_item->item_x_type_id = $d['item_x_type_id'];
 
+        if (RateableItem::does_record_exist($rateable_item)) {
+            return true;
+        }
+
         //
         return $rateable_item->create();
     }

@@ -53,6 +53,10 @@ if (is_request_post() && isset($_POST["create"]) && $_POST["create"] == "yes") {
 
         //
         if ($is_creation_ok) {
+            //
+//            item_x_id
+            $json_errors_array["item_x_id"] = $sanitized_vars["item_x_id"];
+
             // Everything is ok.
             $json_errors_array['is_result_ok'] = true;
         }
@@ -125,7 +129,7 @@ if (isset($_GET['read']) && $_GET['read'] == "yes") {
         $json_errors_array['rateable_items'] = $ri_controller->read_rateable_item_ids($sanitized_vars);
 //ish
 
-        // Should reading of the photos here always be ok?
+        // Should reading of the objs here always be ok?
         $json_errors_array['is_result_ok'] = true;
     }
 

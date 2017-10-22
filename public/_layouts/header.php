@@ -1,12 +1,7 @@
 <?php require_once("/Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/session.php"); ?>
 <?php require_once(PUBLIC_PATH . "/__model/model_profile.php"); ?>
-<?php
-if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-    // TODO:REMINDER: Delete this after you've completely refactored the notification subsystem.
-//    require_once(PUBLIC_PATH . "/__controller/controller_notifications_notifier.php");
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

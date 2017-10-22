@@ -19,7 +19,7 @@ function attach_rateable_item_ids(rateable_items) {
     //     add_rate_pseudo_button_hover_listener(post_id);
     // }
 
-    are_rateable_item_ids_set = true;
+    // are_rateable_item_ids_set = true;
 }
 
 //

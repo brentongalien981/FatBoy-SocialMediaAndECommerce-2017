@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <h5 id="empty_chat_list_div">Sorry but you have no friends to chat with yet..</h5>
+    <h5 id="empty_chat_list_msg">Sorry but you have no friends to chat with yet..</h5>
 
     <ul id="chat-list"></ul>
 </div>
