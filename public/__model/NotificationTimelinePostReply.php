@@ -11,7 +11,10 @@
 //require_once("my_database.php");
 require_once("Notification.php");
 
+
 //use App\Publico\Model\Notification;
+//use TimelinePostReply;
+//use User;
 
 
 class NotificationTimelinePostReply extends Notification
@@ -114,5 +117,111 @@ class NotificationTimelinePostReply extends Notification
             if (!$database->rollback()) { return false; }
             return false;
         }
+    }
+
+    public static function get_query_for_read($data)
+    {
+
+        $d = $data;
+        $limit = 10;
+        global $session;
+
+
+        $q = "SELECT *";
+        $q .= " FROM Notifications";
+        $q .= " INNER JOIN NotificationsTimelinePostReply";
+        $q .= " ON Notifications.id = NotificationsTimelinePostReply.notification_id";
+        $q .= " WHERE notified_user_id = {$session->actual_user_id}";
+        $q .= " AND notification_msg_id = 5";
+        $q .= " AND initiation_date > '{$d['latest_notification_date']}'";
+        $q .= " ORDER BY initiation_date DESC";
+        $q .= " LIMIT {$limit}";
+
+        return $q;
+    }
+
+
+    /**
+     * @param $id
+     * @return array|null
+     * @note This was supposed to be a method inside class TimelinePostReply.
+     * But because php messes up the reading of TimelinePostReply objs when
+     * I do that (through removing the line of code "namespace App\Public..."),
+     * I just stuck to this. But in properly namespaced project, I will do the other.
+     */
+    private static function timeline_post_reply_read_by_id($id) {
+
+        $query = "SELECT * FROM TimelinePostReplies";
+        $query .= " WHERE id = {$id}";
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $an_obj = null;
+
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+
+            //
+            $an_obj = array(
+                "timeline_post_id" => $row["parent_post_id"],
+                "message" => $row["message"]
+            );
+        }
+
+        //
+        return $an_obj;
+    }
+
+    public static function read($data)
+    {
+
+        $d = $data;
+        $query = self::get_query_for_read($d);
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $array_of_notifications = array();
+
+        global $database;
+
+        /* */
+        require_once(PUBLIC_PATH . "/__model/my_user.php");
+//        require_once(PUBLIC_PATH . "/__model/TimelinePostReply.php");
+
+
+        /* */
+        while ($row = $database->fetch_array($result_set)) {
+
+            /* Another query to figure out the user-name of the timeline-poster. */
+            $user = User::read_by_id($row["notifier_user_id"]);
+
+            /* Another query to figure out the parent-timeline-post-id of every comment. */
+//            $timeline_post_reply = TimelinePostReply::read_by_id($row["timeline_post_reply_id"]);
+            $timeline_post_reply = self::timeline_post_reply_read_by_id($row["timeline_post_reply_id"]);
+
+
+            //
+            $a_notification = array(
+                "notification_id" => $row['notification_id'],
+                "notifier_user_id" => $row['notifier_user_id'],
+                "notifier_user_name" => $user['user_name'],
+                "notification_msg_id" => $row['notification_msg_id'],
+                "timeline_post_id" => $timeline_post_reply["timeline_post_id"],
+                "timeline_post_reply_id" => $row["timeline_post_reply_id"],
+                "message" => $timeline_post_reply['message'],
+                "date_updated" => $row['initiation_date'],
+                "human_date" => self::get_my_carbon_date($row['initiation_date']));
+
+
+
+
+            //
+            array_push($array_of_notifications, $a_notification);
+        }
+
+        return $array_of_notifications;
     }
 }

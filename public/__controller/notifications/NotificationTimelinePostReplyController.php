@@ -8,8 +8,12 @@ require_once(PUBLIC_PATH . "/__model/NotificationTimelinePostReply.php");
 require_once(PUBLIC_PATH . "/__controller/timeline_post_subscriptions/TimelinePostSubscriptionController.php");
 
 
+
+
 use App\Publico\Controller\MainController;
 use NotificationTimelinePostReply;
+//use TimelinePostReply;
+//use User;
 use App\Publico\Controller\TimelinePostSubscriptions\TimelinePostSubscriptionController;
 
 class NotificationTimelinePostReplyController extends MainController
@@ -55,5 +59,10 @@ class NotificationTimelinePostReplyController extends MainController
 
 
 
+    }
+
+    public function read($data)
+    {
+        return NotificationTimelinePostReply::read($data);
     }
 }

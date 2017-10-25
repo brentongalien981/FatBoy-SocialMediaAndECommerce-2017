@@ -15,15 +15,30 @@ class User {
     public $hashed_password;
     public $user_type_id;
     public $signup_token;
-    
+
 
     public static function read_by_id($id = 0) {
-//        $query = "SELECT * FROM " . self::$table_name . " WHERE UserId = ?";
-//        $stmt = $mysqli->prepare($sql);
-//
-//        if (!$stmt) {
-//            die("Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error);
-//        }
+
+        $query = "SELECT * FROM " . self::$table_name;
+        $query .= " WHERE user_id = {$id}";
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $an_obj = null;
+
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+
+            //
+            $an_obj = array(
+                "user_name" => $row["user_name"]
+            );
+        }
+
+        //
+        return $an_obj;
     }
 
     public static function read_by_query($query = "") {

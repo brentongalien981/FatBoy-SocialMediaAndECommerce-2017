@@ -344,10 +344,10 @@ function should_crud_type_log(x_obj) {
     //
     switch (x_obj.crud_type) {
         case "create":
-            return true;
+            return false;
             break;
         case "read":
-            return false;
+            return true;
             break;
         case "update":
             return false;

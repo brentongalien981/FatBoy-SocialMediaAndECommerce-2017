@@ -180,6 +180,31 @@ class TimelinePostReply
         return $result_set;
     }
 
+    public static function read_by_id($id = 0) {
+
+        $query = "SELECT * FROM " . self::$table_name;
+        $query .= " WHERE id = {$id}";
+
+        $result_set = self::read_by_query($query);
+
+        //
+        $an_obj = null;
+
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+
+            //
+            $an_obj = array(
+                "timeline_post_id" => $row["parent_post_id"],
+                "message" => $row["message"]
+            );
+        }
+
+        //
+        return $an_obj;
+    }
+
     public static function get_query_for_read($data)
     {
         //

@@ -85,6 +85,9 @@ function set_container_display_visibility(class_name) {
         case "NotificationFriendship":
             actual_class_name = ".friendship_notifications";
             break;
+        case "NotificationTimelinePostReply":
+            actual_class_name = ".timeline_post_reply_notifications";
+            break;
     }
 
     if ($(actual_class_name).length <= 0) {
@@ -212,6 +215,10 @@ function get_prepared_notification(class_name, notification) {
             prepared_notification.classList.add("rateable_item_notifications");
             content += get_content_for_rateable_item_notification(notification);
             break;
+        case "5": // There's a new comment for a post
+            prepared_notification.classList.add("timeline_post_reply_notifications");
+            content += get_content_for_timeline_post_reply_notification(notification);
+            break;
     }
 
     // prepared_notification += '</p>';
@@ -264,12 +271,23 @@ function get_num_of_dom_notifications(class_name) {
             break;
         case "NotificationFriendship":
             specific_class_name = "friendship_notifications";
+        case "NotificationTimelinePostReply":
+            specific_class_name = "timeline_post_reply_notifications";
             break;
     }
 
-    return $("." + specific_class_name).length;
+    var length = $("." + specific_class_name).length;
+
+    if (length == null) { length = 0; }
+
+    return length;
 }
 
+/**
+ *
+ * @param notification_class_name
+ * @return The currently dom-displayed latest date for that type of notification.
+ */
 function get_notification_with_latest_date(notification_class_name) {
     var specific_class_name = "";
 
@@ -282,6 +300,8 @@ function get_notification_with_latest_date(notification_class_name) {
             break;
         case "NotificationFriendship":
             specific_class_name = ".friendship_notifications";
+        case "NotificationTimelinePostReply":
+            specific_class_name = ".timeline_post_reply_notifications";
             break;
 
     }
