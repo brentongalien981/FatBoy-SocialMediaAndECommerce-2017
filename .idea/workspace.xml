@@ -2,41 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Snippets/DeleteRatingRecords.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostAjaxHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/TimelinePost.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/timeline_posts/create.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/timeline_posts/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/TimelinePost.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/create.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/fetch.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/instance_vars.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/read.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/tasks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Snippets/browser-js-logging-template.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyAjaxHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyAjaxHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/timeline_post_subscriptions/TimelinePostSubscriptionAjaxHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/timeline_post_subscriptions/TimelinePostSubscriptionController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/NotificationTimelinePostReply.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/TimelinePostReply.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/TimelinePostSubscription.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/notifications/timeline_post_replies/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/timeline_post_replies/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/timeline_posts/settings_pop_up_window.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/NotificationTimelinePostReply.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/create.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/general_functions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/TimelinePostReply.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/create.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/fetch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/read.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_replies/tasks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_subscriptions/TimelinePostSubscription.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_subscriptions/create.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_post_subscriptions/general_functions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/event_handlers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/timeline_post_replies/read.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/timeline_posts/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/controller_timeline_posts.php" afterPath="$PROJECT_DIR$/public/__controller/controller_timeline_posts.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/rateable_items/RateableItemAjaxHandler.php" afterPath="$PROJECT_DIR$/public/__controller/rateable_items/RateableItemAjaxHandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/rateable_items/RateableItemController.php" afterPath="$PROJECT_DIR$/public/__controller/rateable_items/RateableItemController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/RateableItem.php" afterPath="$PROJECT_DIR$/public/__model/RateableItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/chat_list/read.php" afterPath="$PROJECT_DIR$/public/__view/chat_list/read.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_layouts/header.php" afterPath="$PROJECT_DIR$/public/_layouts/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/chat_list/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/chat_list/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/index.js" afterPath="$PROJECT_DIR$/public/_scripts/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" afterPath="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/notifications_widget/index.php" afterPath="$PROJECT_DIR$/public/__view/notifications_widget/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/timeline_posts/index.php" afterPath="$PROJECT_DIR$/public/__view/timeline_posts/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/main_script.js" afterPath="$PROJECT_DIR$/public/_scripts/main_script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/read.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/read.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/tasks.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/tasks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_items/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_items/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_items/read.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_items/read.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_items/tasks.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_items/tasks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/wall_event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/wall_event_listeners.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/wall_tasks.js" afterPath="$PROJECT_DIR$/public/_scripts/wall_tasks.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_styles/chat/read.css" afterPath="$PROJECT_DIR$/public/_styles/chat/read.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/timeline_posts/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/instance_vars.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/timeline_posts/tasks.js" afterPath="$PROJECT_DIR$/public/_scripts/timeline_posts/tasks.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_styles/index.css" afterPath="$PROJECT_DIR$/public/_styles/index.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,18 +65,38 @@
     <favorites_list name="FatBoy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.7972689">
+    <splitter split-orientation="vertical" split-proportion="0.43382353">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.50036204">
+        <splitter split-orientation="horizontal" split-proportion="0.5054308">
           <split-first>
-            <splitter split-orientation="vertical" split-proportion="0.5">
+            <splitter split-orientation="vertical" split-proportion="0.54408604">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/general_functions.js">
+                  <file leaf-file-name="create.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/create.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="57">
-                          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                        <state relative-caret-position="105">
+                          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/general_functions.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="31">
+                          <caret line="7" column="54" lean-forward="true" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="145">
+                          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
                           <folding />
                         </state>
                       </provider>
@@ -81,42 +106,14 @@
               </split-first>
               <split-second>
                 <leaf>
-                  <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/read.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-12">
-                          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="create.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/create.js">
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="0">
-                          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="80">
-                          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="fetch.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/fetch.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="390">
-                          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-                          <folding />
+                          <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="1" />
+                          <folding>
+                            <element signature="n#!!block;n#do_notification_rateable_items_after_effects#0" expanded="false" />
+                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -126,52 +123,27 @@
             </splitter>
           </split-first>
           <split-second>
-            <splitter split-orientation="vertical" split-proportion="0.5">
+            <splitter split-orientation="vertical" split-proportion="0.52669555">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="TimelinePostController.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostController.php">
+                  <file leaf-file-name="NotificationTimelinePostReplyAjaxHandler.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-58">
-                          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-                          <folding>
-                            <element signature="e#154#196#0#PHP" expanded="true" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="TimelinePostAjaxHandler.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostAjaxHandler.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="363">
-                          <caret line="107" column="24" lean-forward="true" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
-                          <folding>
-                            <element signature="e#100#164#0#PHP" expanded="true" />
-                            <element signature="e#1523#1961#0#PHP" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="RateableItemAjaxHandler.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items/RateableItemAjaxHandler.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="31">
-                          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#2008#4104#0#PHP" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="RateableItemController.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items/RateableItemController.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="38">
-                          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+                        <state relative-caret-position="32">
+                          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
                           <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationTimelinePostReplyController.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyController.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="32">
+                          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+                          <folding>
+                            <element signature="e#284#326#0#PHP" expanded="true" />
+                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -180,66 +152,95 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="controller_timeline_posts.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/controller_timeline_posts.php">
+                  <file leaf-file-name="my_database.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/my_database.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="139">
-                          <caret line="252" column="5" lean-forward="false" selection-start-line="252" selection-start-column="5" selection-end-line="252" selection-end-column="5" />
-                          <folding>
-                            <element signature="n#validate_new_timeline_post#0;n#!!top" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="ChatMessageAjaxHandler.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/chat_message/ChatMessageAjaxHandler.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="98">
-                          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="56" selection-end-column="1" />
-                          <folding>
-                            <element signature="e#97#158#0#PHP" expanded="true" />
-                            <element signature="e#206#1523#0#PHP" expanded="false" />
-                            <element signature="e#1525#2028#0#PHP" expanded="false" />
-                            <element signature="e#2030#3507#0#PHP" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="ChatMessageController.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/chat_message/ChatMessageController.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="230">
-                          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#232#274#0#PHP" expanded="true" />
-                            <element signature="e#861#1121#0#PHP" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="RateableItemUserController.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items_users/RateableItemUserController.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="56">
-                          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+                        <state relative-caret-position="63">
+                          <caret line="142" column="28" lean-forward="false" selection-start-line="142" selection-start-column="28" selection-end-line="142" selection-end-column="28" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="RateableItemUser.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__model/RateableItemUser.php">
+                  <file leaf-file-name="NotificationRateableItemAjaxHandler.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-102">
-                          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+                        <state relative-caret-position="60">
+                          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                           <folding>
-                            <element signature="e#3652#4182#0#PHP" expanded="false" />
-                            <marker date="1504705816000" expanded="true" signature="1612:1651" ph="INSERT INTO ${self::$table_name}... " />
-                            <marker date="1504705816000" expanded="true" signature="3784:3798" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1504705816000" expanded="true" signature="4420:4434" ph="SELECT * FRO... ${self::$table_name}" />
+                            <element signature="e#204#1668#0#PHP" expanded="false" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationRateableItemController.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="132">
+                          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationMyShoppingController.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingController.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="78">
+                          <caret line="67" column="50" lean-forward="false" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="TimelinePostReplyAjaxHandler.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyAjaxHandler.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="27">
+                          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+                          <folding>
+                            <element signature="e#112#187#0#PHP" expanded="true" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="TimelinePostReplyController.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyController.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="32">
+                          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+                          <folding>
+                            <element signature="e#245#287#0#PHP" expanded="true" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="TimelinePostReply.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePostReply.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="32">
+                          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+                          <folding>
+                            <element signature="e#491#916#0#PHP" expanded="false" />
+                            <element signature="e#922#1265#0#PHP" expanded="false" />
+                            <element signature="e#2886#3647#0#PHP" expanded="false" />
+                            <element signature="e#4422#4614#0#PHP" expanded="false" />
+                            <marker date="1508901235000" expanded="true" signature="1404:1443" ph="INSERT INTO ${self::$table_name}... " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="TimelinePostSubscriptionController.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_post_subscriptions/TimelinePostSubscriptionController.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="27">
+                          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+                          <folding>
+                            <element signature="e#259#301#0#PHP" expanded="true" />
                           </folding>
                         </state>
                       </provider>
@@ -254,24 +255,44 @@
       <split-second>
         <splitter split-orientation="horizontal" split-proportion="0.5068791">
           <split-first>
-            <splitter split-orientation="vertical" split-proportion="0.43991417">
+            <splitter split-orientation="vertical" split-proportion="0.5">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__view/timeline_posts/index.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-191">
-                          <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+                        <state relative-caret-position="255">
+                          <caret line="66" column="48" lean-forward="false" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/timeline_posts/create.php">
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/timeline_post_replies/index.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="60">
-                          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="33" />
+                        <state relative-caret-position="152">
+                          <caret line="29" column="77" lean-forward="false" selection-start-line="29" selection-start-column="77" selection-end-line="29" selection-end-column="77" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/notifications_widget/index.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="143">
+                          <caret line="46" column="72" lean-forward="false" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="72" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/timeline_post_replies/index.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="195">
+                          <caret line="16" column="98" lean-forward="false" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
                           <folding />
                         </state>
                       </provider>
@@ -280,22 +301,32 @@
                 </leaf>
               </split-first>
               <split-second>
-                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+                <leaf>
                   <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__view/my_photos/index.php">
+                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/rateable_item/index.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="112">
-                          <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="80" />
+                        <state relative-caret-position="62">
+                          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/chat/index.php">
+                  <file leaf-file-name="read.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/notifications/rateable_item/read.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-640">
-                          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+                        <state relative-caret-position="0">
+                          <caret line="0" column="42" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="42" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_styles/notifications/index.css">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="54">
+                          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
                           <folding />
                         </state>
                       </provider>
@@ -309,30 +340,29 @@
             <splitter split-orientation="vertical" split-proportion="0.4613734">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="TimelinePost.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePost.php">
+                  <file leaf-file-name="NotificationTimelinePostReply.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__model/NotificationTimelinePostReply.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-254">
-                          <caret line="83" column="47" lean-forward="true" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
+                        <state relative-caret-position="54">
+                          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
                           <folding>
-                            <element signature="e#426#964#0#PHP" expanded="false" />
-                            <element signature="e#1750#2291#0#PHP" expanded="false" />
-                            <element signature="e#4738#4930#0#PHP" expanded="false" />
-                            <marker date="1508629084000" expanded="true" signature="3188:3227" ph="INSERT INTO ${self::$table_name}... " />
+                            <element signature="n#get_sanitized_uninherited_attributes#0;n#NotificationTimelinePostReply#0;n#!!top" expanded="false" />
+                            <element signature="n#get_uninherited_attributes#0;n#NotificationTimelinePostReply#0;n#!!top" expanded="false" />
+                            <marker date="1508902365000" expanded="true" signature="2536:2575" ph="INSERT INTO ${self::$table_name}... " />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="RateableItem.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__model/RateableItem.php">
+                  <file leaf-file-name="Notification.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="3">
-                          <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
+                        <state relative-caret-position="54">
+                          <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
                           <folding>
-                            <marker date="1508711405000" expanded="true" signature="1338:1352" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1508711405000" expanded="true" signature="2083:2122" ph="INSERT INTO ${self::$table_name}... " />
-                            <marker date="1508711405000" expanded="true" signature="3044:3058" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1505252745000" expanded="true" signature="3333:3347" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1505252745000" expanded="true" signature="4921:4960" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1505252745000" expanded="true" signature="5718:5730" ph="DELETE FROM " />
                           </folding>
                         </state>
                       </provider>
@@ -342,42 +372,72 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="ChatMessage.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__model/ChatMessage.php">
+                  <file leaf-file-name="TimelinePost.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePost.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="60">
-                          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+                        <state relative-caret-position="660">
+                          <caret line="183" column="4" lean-forward="false" selection-start-line="183" selection-start-column="4" selection-end-line="191" selection-end-column="5" />
                           <folding>
-                            <element signature="e#865#1208#0#PHP" expanded="false" />
-                            <element signature="e#2168#3879#0#PHP" expanded="false" />
-                            <element signature="e#3885#4348#0#PHP" expanded="false" />
-                            <element signature="e#4704#5616#0#PHP" expanded="false" />
-                            <element signature="e#5655#5836#0#PHP" expanded="false" />
-                            <element signature="e#6595#7304#0#PHP" expanded="false" />
-                            <element signature="e#7310#8120#0#PHP" expanded="false" />
-                            <element signature="e#8126#8392#0#PHP" expanded="false" />
-                            <element signature="e#8398#8614#0#PHP" expanded="false" />
-                            <element signature="e#8620#8812#0#PHP" expanded="false" />
-                            <marker date="1505541156000" expanded="true" signature="1347:1386" ph="INSERT INTO ${self::$table_name}... " />
-                            <marker date="1505541156000" expanded="true" signature="2270:2295" ph="SELECT * FRO... ChatMessage" />
-                            <marker date="1505541156000" expanded="true" signature="4026:4051" ph="SELECT * FRO... ChatMessage" />
-                            <marker date="1505541156000" expanded="true" signature="6075:6101" ph="INSERT INTO ChatMsgSeenLog... " />
-                            <marker date="1505541156000" expanded="true" signature="6712:6737" ph="SELECT * FRO... ChatMessage" />
-                            <marker date="1505541156000" expanded="true" signature="7421:7449" ph="SELECT * FRO... ChatMsgSeenLog" />
+                            <element signature="e#426#964#0#PHP" expanded="false" />
+                            <element signature="e#970#1395#0#PHP" expanded="false" />
+                            <element signature="e#1401#1744#0#PHP" expanded="false" />
+                            <element signature="e#1750#2291#0#PHP" expanded="false" />
+                            <element signature="e#2297#3049#0#PHP" expanded="false" />
+                            <element signature="e#3055#4003#0#PHP" expanded="false" />
+                            <element signature="e#4224#4694#0#PHP" expanded="false" />
+                            <element signature="e#4738#4930#0#PHP" expanded="false" />
+                            <marker date="1508629084000" expanded="true" signature="3188:3227" ph="INSERT INTO ${self::$table_name}... " />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="timeline_posts.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__model/timeline_posts.php">
+                  <file leaf-file-name="TimelinePostSubscription.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePostSubscription.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="97">
-                          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+                        <state relative-caret-position="48">
+                          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
                           <folding>
-                            <marker date="1495057568000" expanded="true" signature="3864:3878" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1495057568000" expanded="true" signature="4341:4355" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1495057568000" expanded="true" signature="5107:5146" ph="INSERT INTO ${self::$table_name}... " />
+                            <element signature="e#395#820#0#PHP" expanded="false" />
+                            <element signature="e#826#1169#0#PHP" expanded="false" />
+                            <element signature="e#1175#2159#0#PHP" expanded="false" />
+                            <element signature="e#2998#3190#0#PHP" expanded="false" />
+                            <marker date="1508897727000" expanded="true" signature="1308:1347" ph="INSERT INTO ${self::$table_name}... " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationMyShopping.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/NotificationMyShopping.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="42">
+                          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+                          <folding>
+                            <marker date="1505170681000" expanded="true" signature="1845:1859" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1505170681000" expanded="true" signature="2758:2835" ph="INSERT INTO InvoiceItemStatusRecord... " />
+                            <marker date="1505170681000" expanded="true" signature="3617:3638" ph="SELECT * FRO... Invoice" />
+                            <marker date="1505170681000" expanded="true" signature="10410:10444" ph="SELECT invoi... InvoiceItem" />
+                            <marker date="1505170681000" expanded="true" signature="11190:11227" ph="SELECT * FRO... InvoiceItemStatusRecord" />
+                            <marker date="1505170681000" expanded="true" signature="11950:11989" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1505170681000" expanded="true" signature="13741:13753" ph="DELETE FROM " />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="NotificationRateableItem.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__model/NotificationRateableItem.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="75">
+                          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+                          <folding>
+                            <element signature="n#get_sanitized_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+                            <element signature="n#get_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+                            <marker date="1508900807000" expanded="true" signature="3248:3287" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1508900807000" expanded="true" signature="4317:4331" ph="SELECT * FRO... ${parent::$table_name}" />
+                            <marker date="1508900807000" expanded="true" signature="6421:6451" ph="SELECT COUNT... " />
+                            <marker date="1508900807000" expanded="true" signature="11633:11645" ph="DELETE FROM " />
                           </folding>
                         </state>
                       </provider>
@@ -402,26 +462,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>function read</find>
-      <find>notifications</find>
-      <find>widget</find>
-      <find>notifications-widget-main-container</find>
-      <find>chat-list</find>
-      <find>expand-chat</find>
-      <find>chat-pod</find>
-      <find>list</find>
-      <find>chat-list-menu-bar</find>
-      <find>#exp</find>
-      <find>$session</find>
-      <find>close</find>
-      <find>do_fri</find>
-      <find>has_attri</find>
-      <find>animate</find>
-      <find>empty_chat_list_div</find>
-      <find>POST[&quot;create</find>
-      <find>main_script</find>
-      <find>uki</find>
-      <find>/my_photos/</find>
       <find>$tm_controller</find>
       <find>fetch</find>
       <find>return_completely_presented_post</find>
@@ -431,18 +471,29 @@
       <find>$cm_controller</find>
       <find>ish9</find>
       <find>$new_timeline_post_obj</find>
+      <find>ish69</find>
+      <find>b-post-response-bar</find>
+      <find>rateable_item</find>
       <find>create(</find>
+      <find>$post</find>
+      <find>pre_log</find>
+      <find>notifications/</find>
+      <find>the-rate</find>
+      <find>/my_photos/</find>
+      <find>$photo_controller</find>
+      <find>objs</find>
+      <find>p</find>
+      <find>.replies</find>
+      <find>$tp_controller</find>
+      <find>NotificationRateableItemContainer</find>
+      <find>/rateable_item/</find>
+      <find>$nri_controller</find>
+      <find>$notification</find>
+      <find>query_for_rea</find>
+      <find>create</find>
+      <find>create_wit</find>
     </findStrings>
     <replaceStrings>
-      <replace>$riu_controller</replace>
-      <replace>$riu</replace>
-      <replace>$q</replace>
-      <replace>/timeline_post</replace>
-      <replace>/timeline_post/</replace>
-      <replace>$np_controller</replace>
-      <replace>window.alert</replace>
-      <replace>&quot;;</replace>
-      <replace>rateable_item</replace>
       <replace>/rateable_item/</replace>
       <replace>use App\Privado\Includes\Carbon\</replace>
       <replace>/widgets/</replace>
@@ -462,8 +513,17 @@
       <replace>/timeline_posts/</replace>
       <replace>$tm_controller</replace>
       <replace>&quot;</replace>
-      <replace>$post</replace>
       <replace>$tp_controller</replace>
+      <replace>timeline_post_subscription</replace>
+      <replace>$tps_controller</replace>
+      <replace>$tps</replace>
+      <replace>$post</replace>
+      <replace>replies</replace>
+      <replace>r</replace>
+      <replace>/timeline_post_replies/</replace>
+      <replace>$n</replace>
+      <replace>$tpr_controller</replace>
+      <replace>$ntpr_controller</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -472,57 +532,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/_scripts/app_settings/instance_vars.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/app_settings/event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/notifications/event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/_styles/notifications/index.css" />
-        <option value="$PROJECT_DIR$/public/__view/chat_list/index.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/app_settings/update.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/app_settings/read.js" />
-        <option value="$PROJECT_DIR$/public/__controller/app_settings/AppSettingAjaxHandler.php" />
-        <option value="$PROJECT_DIR$/public/__model/AppSetting.php" />
-        <option value="$PROJECT_DIR$/public/_styles/chat_list/index.css" />
-        <option value="$PROJECT_DIR$/public/_scripts/chat_list/event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/chat_list/event_handlers.js" />
-        <option value="$PROJECT_DIR$/public/__model/my_database.php" />
-        <option value="$PROJECT_DIR$/public/_layouts/header.php" />
-        <option value="$PROJECT_DIR$/public/__controller/controller_log_in.php" />
-        <option value="$PROJECT_DIR$/public/__view/chat_list/read.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/chat_list/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/_styles/chat/read.css" />
-        <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/chat/fetch.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/TimelinePost.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/fetch.js" />
-        <option value="$PROJECT_DIR$/public/__model/TiimelinePost.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/__view/timeline_posts/create.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/read.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/tasks.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/wall_tasks.js" />
-        <option value="$PROJECT_DIR$/public/__controller/controller_timeline_posts.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/rateable_Items_users/tasks.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/rateable_items/read.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/rateable_items/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/rateable_Items_users/read.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/rateable_items/tasks.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js" />
         <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/create.js" />
         <option value="$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostController.php" />
-        <option value="$PROJECT_DIR$/public/__view/timeline_posts/index.php" />
         <option value="$PROJECT_DIR$/public/__model/TimelinePost.php" />
         <option value="$PROJECT_DIR$/public/_scripts/wall_event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners.js" />
         <option value="$PROJECT_DIR$/public/_scripts/rateable_items/instance_vars.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/__controller/rateable_items/RateableItemAjaxHandler.php" />
         <option value="$PROJECT_DIR$/public/_scripts/index.js" />
         <option value="$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostAjaxHandler.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js" />
         <option value="$PROJECT_DIR$/public/__controller/rateable_items/RateableItemController.php" />
         <option value="$PROJECT_DIR$/public/__model/RateableItem.php" />
         <option value="$PROJECT_DIR$/Snippets/DeleteRatingRecords.txt" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners2.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/instance_vars.js" />
+        <option value="$PROJECT_DIR$/public/_styles/timeline_posts/index.css" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/tasks.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/event_handlers.js" />
+        <option value="$PROJECT_DIR$/public/__view/timeline_posts/settings_pop_up_window.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_subscriptions/TimelinePostSubscription.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_subscriptions/create.js" />
+        <option value="$PROJECT_DIR$/public/__controller/timeline_post_subscriptions/TimelinePostSubscriptionAjaxHandler.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_subscriptions/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/__view/timeline_posts/index.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/tasks.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/read.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/TimelinePostReply.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/create.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/_styles/index.css" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions2.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/fetch.js" />
+        <option value="$PROJECT_DIR$/public/_styles/timeline_post_replies/read.css" />
+        <option value="$PROJECT_DIR$/public/__view/notifications_widget/index.php" />
+        <option value="$PROJECT_DIR$/public/__view/timeline_post_replies/index.php" />
+        <option value="$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyController.php" />
+        <option value="$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyAjaxHandler.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/create.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/NotificationTimelinePostReply.js" />
+        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyAjaxHandler.php" />
+        <option value="$PROJECT_DIR$/public/__controller/timeline_post_subscriptions/TimelinePostSubscriptionController.php" />
+        <option value="$PROJECT_DIR$/public/__model/TimelinePostSubscription.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
+        <option value="$PROJECT_DIR$/public/__view/notifications/timeline_post_replies/index.php" />
+        <option value="$PROJECT_DIR$/public/__model/NotificationRateableItem.php" />
+        <option value="$PROJECT_DIR$/public/__model/TimelinePostReply.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions.js" />
+        <option value="$PROJECT_DIR$/Snippets/browser-js-logging-template.txt" />
+        <option value="$PROJECT_DIR$/public/__model/NotificationTimelinePostReply.php" />
+        <option value="$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyController.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/general_functions.js" />
       </list>
     </option>
   </component>
@@ -620,7 +680,27 @@
             <path>
               <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
               <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Snippets" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="timeline_post_subscriptions" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__model" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -634,7 +714,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="are_rateable_item_ids_set&#9;null&#9;null&#10;my_ajax&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;head&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;redirect_to&#9;null&#9;null&#10;validator&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/helper_classes/validation/Validator.php&#10;config&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/config.php&#10;_/my_da&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_database.php&#10;_/se&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/session.php&#10;_/n/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/app_settings/instance_vars.js&#10;my_aj&#9;null&#9;null&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/tasks.js&#10;side_na&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;index.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;inst&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;my_aja&#9;null&#9;null&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;cre&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/my_photos/create.js&#10;c_l/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat_list/index.css&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;c/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;index.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;sid&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;side&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;icon_mana&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/helper_functions/icon_manager.php&#10;initiali&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;count_dis&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/count_displayer.php&#10;header.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;span_num_of_notifications&#9;null&#9;null&#10;notifications/ind&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;hea&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/general_functions.js&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/general_functions.js&#10;insta&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;instanc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;Notifi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;decide&#9;null&#9;null&#10;read.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/read.php&#10;fetch&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/fetch.js&#10;NotificationR&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/NotificationRateableItem.js&#10;main&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/main_script.js&#10;header.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;MainC&#9;null&#9;null&#10;initial&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;nri&#9;null&#9;null&#10;_/nf&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationFriendship.php&#10;_/riu&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItemUser.php&#10;_/ri&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItem.php" />
+    <property name="SearchEverywhereHistoryKey" value="my_ajax&#9;null&#9;null&#10;genera&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/timeline_post_replies/general_functions.js&#10;my_aja&#9;null&#9;null&#10;are_rateable_item_ids_set&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;head&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;redirect_to&#9;null&#9;null&#10;validator&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/helper_classes/validation/Validator.php&#10;config&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/config.php&#10;_/my_da&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_database.php&#10;_/se&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/session.php&#10;_/n/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/app_settings/instance_vars.js&#10;my_aj&#9;null&#9;null&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/tasks.js&#10;side_na&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;index.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;inst&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;cre&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/my_photos/create.js&#10;c_l/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat_list/index.css&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;c/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;index.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;sid&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;side&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;icon_mana&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/helper_functions/icon_manager.php&#10;initiali&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;count_dis&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/count_displayer.php&#10;header.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;span_num_of_notifications&#9;null&#9;null&#10;notifications/ind&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;hea&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/general_functions.js&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/friendship/general_functions.js&#10;insta&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;instanc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;Notifi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;decide&#9;null&#9;null&#10;read.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/read.php&#10;fetch&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/fetch.js&#10;NotificationR&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/NotificationRateableItem.js&#10;main&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/main_script.js&#10;header.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;MainC&#9;null&#9;null&#10;initial&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;nri&#9;null&#9;null&#10;_/nf&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/NotificationFriendship.php&#10;_/riu&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/RateableItemUser.php" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="Constants" value="false" />
@@ -649,11 +729,11 @@
       <recent name="$PROJECT_DIR$/public/__controller/friends" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies" />
       <recent name="$PROJECT_DIR$/public/_scripts/timeline_posts" />
       <recent name="$PROJECT_DIR$/public/__view/timeline_posts" />
       <recent name="$PROJECT_DIR$/public/_scripts/chat_list" />
       <recent name="$PROJECT_DIR$/public/__view/notifications_widget" />
-      <recent name="$PROJECT_DIR$/private/external_api" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -788,12 +868,12 @@
       <workItem from="1506126497807" duration="29895000" />
       <workItem from="1507217401141" duration="1500000" />
       <workItem from="1508341324299" duration="2156000" />
-      <workItem from="1508471938300" duration="65891000" />
+      <workItem from="1508471938300" duration="110465000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="953374000" />
+    <option name="totallyTimeSpent" value="997948000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -808,17 +888,17 @@
     <frame x="0" y="22" width="1680" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.7342437" order="1" side_tool="true" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.73510975" order="1" side_tool="true" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.2657563" order="2" side_tool="false" content_ui="tabs" x="324" y="650" width="359" height="915" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.26489028" order="2" side_tool="false" content_ui="tabs" x="324" y="650" width="359" height="915" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5038251" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -838,20 +918,15 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/public/__controller/rateable_items/RateableItemController.php</url>
-          <line>48</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/public/__model/RateableItem.php</url>
-          <line>49</line>
-          <option name="timeStamp" value="104" />
+          <url>file://$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyController.php</url>
+          <line>29</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="105" />
+      <option name="time" value="111" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
@@ -863,485 +938,501 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/__model/timeline_posts.php">
+    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        <state relative-caret-position="102">
+          <caret line="265" column="0" lean-forward="false" selection-start-line="265" selection-start-column="0" selection-end-line="265" selection-end-column="0" />
           <folding>
-            <marker date="1495057568000" expanded="true" signature="3864:3878" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1495057568000" expanded="true" signature="4341:4355" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1495057568000" expanded="true" signature="5107:5146" ph="INSERT INTO ${self::$table_name}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/helper_functions/icon_manager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-          <folding>
-            <marker date="1505467104000" expanded="true" signature="218:239" ph="SELECT * FRO... Profile" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/app_settings/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="18" lean-forward="true" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/chat/ChatMessage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/chat/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="38" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#get_chat_msg_latest_date#0" expanded="false" />
+            <element signature="n#!!block;n#get_post_main_content#0" expanded="false" />
+            <element signature="n#!!block;n#get_post_details_bar#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/chat/fetch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="14" column="39" lean-forward="false" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
+        <state relative-caret-position="103">
+          <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_photos/icon_profile.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_layouts/header.php">
+    <entry file="file://$PROJECT_DIR$/public/__controller/controller_timeline_post_replies.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="36" column="17" lean-forward="false" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/chat/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="39" column="20" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/my_photos/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="33" column="12" lean-forward="false" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="155" column="18" lean-forward="false" selection-start-line="155" selection-start-column="18" selection-end-line="155" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="11" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/timeline_posts/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="1" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/chat_message/ChatMessageAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="56" selection-end-column="1" />
+        <state relative-caret-position="101">
+          <caret line="57" column="60" lean-forward="false" selection-start-line="57" selection-start-column="60" selection-end-line="57" selection-end-column="69" />
           <folding>
-            <element signature="e#97#158#0#PHP" expanded="true" />
-            <element signature="e#206#1523#0#PHP" expanded="false" />
-            <element signature="e#1525#2028#0#PHP" expanded="false" />
-            <element signature="e#2030#3507#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/controller_timeline_posts.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="252" column="5" lean-forward="false" selection-start-line="252" selection-start-column="5" selection-end-line="252" selection-end-column="5" />
-          <folding>
-            <element signature="n#validate_new_timeline_post#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/my_database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="20" column="20" lean-forward="false" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="27" lean-forward="false" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/ChatMessage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-          <folding>
-            <element signature="e#865#1208#0#PHP" expanded="false" />
-            <element signature="e#2168#3879#0#PHP" expanded="false" />
-            <element signature="e#3885#4348#0#PHP" expanded="false" />
-            <element signature="e#4704#5616#0#PHP" expanded="false" />
-            <element signature="e#5655#5836#0#PHP" expanded="false" />
-            <element signature="e#6595#7304#0#PHP" expanded="false" />
-            <element signature="e#7310#8120#0#PHP" expanded="false" />
-            <element signature="e#8126#8392#0#PHP" expanded="false" />
-            <element signature="e#8398#8614#0#PHP" expanded="false" />
-            <element signature="e#8620#8812#0#PHP" expanded="false" />
-            <marker date="1505541156000" expanded="true" signature="1347:1386" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1505541156000" expanded="true" signature="2270:2295" ph="SELECT * FRO... ChatMessage" />
-            <marker date="1505541156000" expanded="true" signature="4026:4051" ph="SELECT * FRO... ChatMessage" />
-            <marker date="1505541156000" expanded="true" signature="6075:6101" ph="INSERT INTO ChatMsgSeenLog... " />
-            <marker date="1505541156000" expanded="true" signature="6712:6737" ph="SELECT * FRO... ChatMessage" />
-            <marker date="1505541156000" expanded="true" signature="7421:7449" ph="SELECT * FRO... ChatMsgSeenLog" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/chat_message/ChatMessageController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="e#232#274#0#PHP" expanded="true" />
-            <element signature="e#861#1121#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/my_photos/create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="2" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/rateable_items/templates/rate_bar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/wall_tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="15" lean-forward="true" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/wall_event_listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="100" column="36" lean-forward="false" selection-start-line="100" selection-start-column="36" selection-end-line="100" selection-end-column="36" />
-          <folding>
-            <element signature="e#167#717#0" expanded="false" />
-            <element signature="e#799#1661#0" expanded="false" />
-            <element signature="e#1742#1954#0" expanded="false" />
-            <element signature="e#2593#2753#0" expanded="false" />
-            <element signature="e#2801#3223#0" expanded="false" />
-            <element signature="e#3263#3506#0" expanded="false" />
-            <element signature="n#!!block;n#add_rate_pseudo_button_hover_listener#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/private/helper_classes/validation/RateableItemValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="33" column="56" lean-forward="false" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/timeline_posts/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-191">
-          <caret line="82" column="20" lean-forward="false" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/event_listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="126" column="16" lean-forward="false" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
-          <folding>
-            <element signature="e#48#109#0" expanded="false" />
-            <element signature="e#169#231#0" expanded="false" />
-            <element signature="e#281#831#0" expanded="false" />
-            <element signature="e#913#1775#0" expanded="false" />
-            <element signature="e#1856#2068#0" expanded="false" />
-            <element signature="e#2149#2658#0" expanded="false" />
-            <element signature="e#2707#2867#0" expanded="false" />
-            <element signature="e#2915#3337#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_Items_users/update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-65">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_Items_users/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="24" lean-forward="false" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_Items_users/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="109" column="34" lean-forward="false" selection-start-line="109" selection-start-column="34" selection-end-line="109" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!block;n#read_rate_tags#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items_users/RateableItemUserAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding>
-            <element signature="e#195#1918#0#PHP" expanded="false" />
-            <element signature="e#400#519#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="152" column="2" lean-forward="true" selection-start-line="152" selection-start-column="2" selection-end-line="152" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/fetch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/create.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePost.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-254">
-          <caret line="83" column="47" lean-forward="true" selection-start-line="83" selection-start-column="47" selection-end-line="83" selection-end-column="47" />
-          <folding>
-            <element signature="e#426#964#0#PHP" expanded="false" />
-            <element signature="e#1750#2291#0#PHP" expanded="false" />
-            <element signature="e#4738#4930#0#PHP" expanded="false" />
-            <marker date="1508629084000" expanded="true" signature="3188:3227" ph="INSERT INTO ${self::$table_name}... " />
+            <element signature="n#return_completely_presented_reply_post#0;n#!!top" expanded="false" />
+            <element signature="n#validate_reply_post#0;n#!!top" expanded="false" />
+            <element signature="n#create_reply_post_record#0;n#!!top" expanded="false" />
+            <element signature="n#create_reply_post_record_bruh#0;n#!!top" expanded="false" />
+            <element signature="e#6764#8190#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-58">
-          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        <state relative-caret-position="85">
+          <caret line="20" column="11" lean-forward="false" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
           <folding>
-            <element signature="e#154#196#0#PHP" expanded="true" />
+            <element signature="e#154#196#0#PHP" expanded="false" />
+            <element signature="e#459#834#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_posts/general_functions.js">
+    <entry file="file://$PROJECT_DIR$/public/__controller/chat_message/ChatMessageAjaxHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+        <state relative-caret-position="-438">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="56" selection-end-column="1" />
+          <folding>
+            <element signature="e#206#1523#0#PHP" expanded="false" />
+            <element signature="e#1525#2028#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="81" column="24" lean-forward="false" selection-start-line="81" selection-start-column="24" selection-end-line="81" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#get_comment_details_bar#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/timeline_post_replies/read.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding>
+            <element signature="e#151#516#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/read2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications_widget/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="46" column="72" lean-forward="false" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="61">
+          <caret line="125" column="25" lean-forward="true" selection-start-line="125" selection-start-column="25" selection-end-line="125" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/widgets/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/notifications/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/rateable_item/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="42" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/timeline_posts/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="66" column="48" lean-forward="false" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/timeline_post_replies/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="29" column="77" lean-forward="false" selection-start-line="29" selection-start-column="77" selection-end-line="29" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/rateable_item/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/chat/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#get_chat_msg_latest_date#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_post_replies/fetch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/Notification.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/NotificationTimelinePostReply.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/__controller/timeline_posts/TimelinePostAjaxHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="107" column="24" lean-forward="true" selection-start-line="107" selection-start-column="24" selection-end-line="107" selection-end-column="24" />
+        <state relative-caret-position="75">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
           <folding>
-            <element signature="e#100#164#0#PHP" expanded="true" />
+            <element signature="e#203#1521#0#PHP" expanded="false" />
             <element signature="e#1523#1961#0#PHP" expanded="false" />
+            <element signature="e#1963#3576#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items_users/RateableItemUserController.php">
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="42" column="34" lean-forward="false" selection-start-line="42" selection-start-column="34" selection-end-line="42" selection-end-column="34" />
+        <state relative-caret-position="132">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/RateableItemUser.php">
+    <entry file="file://$PROJECT_DIR$/public/__controller/MainController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
+        <state relative-caret-position="95">
+          <caret line="16" column="6" lean-forward="false" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationFriendship.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3652#4182#0#PHP" expanded="false" />
-            <marker date="1504705816000" expanded="true" signature="1612:1651" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1504705816000" expanded="true" signature="3784:3798" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1504705816000" expanded="true" signature="4420:4434" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505178825000" expanded="true" signature="1916:1930" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505178825000" expanded="true" signature="2710:2724" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505178825000" expanded="true" signature="4072:4086" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505178825000" expanded="true" signature="4882:4896" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505178825000" expanded="true" signature="9401:9440" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1505178825000" expanded="true" signature="10445:10457" ph="DELETE FROM " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items/RateableItemController.php">
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationMyShoppingController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="67" column="50" lean-forward="false" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/NotificationRateableItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/my_shopping/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/rateable_item/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#do_notification_rateable_items_after_effects#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="352" column="25" lean-forward="true" selection-start-line="352" selection-start-column="25" selection-end-line="352" selection-end-column="25" />
+          <folding>
+            <element signature="e#12465#12896#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/notifications/timeline_post_replies/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="16" column="98" lean-forward="false" selection-start-line="16" selection-start-column="98" selection-end-line="16" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/mysqli/mysqli.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <caret line="1957" column="9" lean-forward="false" selection-start-line="1957" selection-start-column="9" selection-end-line="1957" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/rateable_items/RateableItemAjaxHandler.php">
+    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="183" column="4" lean-forward="false" selection-start-line="183" selection-start-column="4" selection-end-line="191" selection-end-column="5" />
+          <folding>
+            <element signature="e#426#964#0#PHP" expanded="false" />
+            <element signature="e#970#1395#0#PHP" expanded="false" />
+            <element signature="e#1401#1744#0#PHP" expanded="false" />
+            <element signature="e#1750#2291#0#PHP" expanded="false" />
+            <element signature="e#2297#3049#0#PHP" expanded="false" />
+            <element signature="e#3055#4003#0#PHP" expanded="false" />
+            <element signature="e#4224#4694#0#PHP" expanded="false" />
+            <element signature="e#4738#4930#0#PHP" expanded="false" />
+            <marker date="1508629084000" expanded="true" signature="3188:3227" ph="INSERT INTO ${self::$table_name}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationRateableItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+          <folding>
+            <element signature="n#get_sanitized_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+            <element signature="n#get_uninherited_attributes#0;n#NotificationRateableItem#0;n#!!top" expanded="false" />
+            <marker date="1508900807000" expanded="true" signature="3248:3287" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1508900807000" expanded="true" signature="4317:4331" ph="SELECT * FRO... ${parent::$table_name}" />
+            <marker date="1508900807000" expanded="true" signature="6421:6451" ph="SELECT COUNT... " />
+            <marker date="1508900807000" expanded="true" signature="11633:11645" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationRateableItemAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#204#1668#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/my_database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="142" column="28" lean-forward="false" selection-start-line="142" selection-start-column="28" selection-end-line="142" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePostReply.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#491#916#0#PHP" expanded="false" />
+            <element signature="e#922#1265#0#PHP" expanded="false" />
+            <element signature="e#2886#3647#0#PHP" expanded="false" />
+            <element signature="e#4422#4614#0#PHP" expanded="false" />
+            <marker date="1508901235000" expanded="true" signature="1404:1443" ph="INSERT INTO ${self::$table_name}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#245#287#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Snippets/browser-js-logging-template.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/timeline_post_replies/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_post_replies/TimelinePostReplyAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#112#187#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationMyShopping.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="4" column="43" lean-forward="true" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding>
+            <marker date="1505170681000" expanded="true" signature="1845:1859" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505170681000" expanded="true" signature="2758:2835" ph="INSERT INTO InvoiceItemStatusRecord... " />
+            <marker date="1505170681000" expanded="true" signature="3617:3638" ph="SELECT * FRO... Invoice" />
+            <marker date="1505170681000" expanded="true" signature="10410:10444" ph="SELECT invoi... InvoiceItem" />
+            <marker date="1505170681000" expanded="true" signature="11190:11227" ph="SELECT * FRO... InvoiceItemStatusRecord" />
+            <marker date="1505170681000" expanded="true" signature="11950:11989" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1505170681000" expanded="true" signature="13741:13753" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/timeline_post_subscriptions/TimelinePostSubscriptionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="e#259#301#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/TimelinePostSubscription.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding>
+            <element signature="e#395#820#0#PHP" expanded="false" />
+            <element signature="e#826#1169#0#PHP" expanded="false" />
+            <element signature="e#1175#2159#0#PHP" expanded="false" />
+            <element signature="e#2998#3190#0#PHP" expanded="false" />
+            <marker date="1508897727000" expanded="true" signature="1308:1347" ph="INSERT INTO ${self::$table_name}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/Notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="192" column="0" lean-forward="false" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <folding>
+            <marker date="1505252745000" expanded="true" signature="3333:3347" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1505252745000" expanded="true" signature="4921:4960" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1505252745000" expanded="true" signature="5718:5730" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/NotificationTimelinePostReply.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="110" column="0" lean-forward="false" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="n#get_sanitized_uninherited_attributes#0;n#NotificationTimelinePostReply#0;n#!!top" expanded="false" />
+            <element signature="n#get_uninherited_attributes#0;n#NotificationTimelinePostReply#0;n#!!top" expanded="false" />
+            <marker date="1508902365000" expanded="true" signature="2536:2575" ph="INSERT INTO ${self::$table_name}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#284#326#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/notifications/NotificationTimelinePostReplyAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/notifications/timeline_post_replies/general_functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="31">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="e#2008#4104#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/RateableItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="47" column="26" lean-forward="true" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-          <folding>
-            <marker date="1508711405000" expanded="true" signature="1338:1352" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1508711405000" expanded="true" signature="2083:2122" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1508711405000" expanded="true" signature="3044:3058" ph="SELECT * FRO... ${self::$table_name}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Snippets/DeleteRatingRecords.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="42" lean-forward="true" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/rateable_items/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="7" column="54" lean-forward="true" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
           <folding />
         </state>
       </provider>

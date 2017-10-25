@@ -44,6 +44,7 @@ if (!$session->is_logged_in()) {
 <?php include(PUBLIC_PATH . "/__view/notifications/friendship/index.php"); ?>
 <?php include(PUBLIC_PATH . "/__view/notifications/my_shopping/index.php"); ?>
 <?php include(PUBLIC_PATH . "/__view/notifications/rateable_item/index.php"); ?>
+<?php include(PUBLIC_PATH . "/__view/notifications/timeline_post_replies/index.php"); ?>
 
 
 

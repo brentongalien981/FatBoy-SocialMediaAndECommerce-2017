@@ -39,19 +39,31 @@ if (!MyDebugMessenger::is_initialized()) {
     <!--Templates-->
     <?php require_once(PUBLIC_PATH . "/__view/rateable_items/templates/rate_bar.php"); ?>
 
+    <!--    Extentional -->
+    <?php require_once(PUBLIC_PATH . "/__view/timeline_posts/settings_pop_up_window.php"); ?>
+
 </main>
 
 
 <link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/index.css"; ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo LOCAL . "/public/_styles/timeline_posts/index.css"; ?>">
 
 
 <!--Scripts-->
+<!--Extentional scripts for timeline-post-replies.-->
+<?php require_once(PUBLIC_PATH . "/__view/timeline_post_replies/index.php"); ?>
+
+
+
+<!--Maybe delete this on production. The functionality of these scripts are already replaced-->
+<!--by the next chunk of scripts.-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/main_script.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/main_script2.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/index.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/wall_tasks.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/wall_event_listeners.js"; ?><!--"></script>-->
 
+<!--Main scripts for timeline-posts-->
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/general_functions.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/general_functions2.js"; ?>"></script>
@@ -62,6 +74,7 @@ if (!MyDebugMessenger::is_initialized()) {
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_posts/delete.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/fetch.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/TimelinePost.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/event_handlers.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/event_listeners.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_posts/event_listeners2.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/tasks.js"; ?>"></script>
@@ -133,6 +146,20 @@ if (!MyDebugMessenger::is_initialized()) {
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/rateable_item/NotificationRateableItem.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemevent_listeners.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/rateable_itemtasks.js"; ?><!--"></script>-->
+
+
+
+
+<!--Extentional scripts for timeline-post-subscriptions.-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_post_subscriptions/instance_vars.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/timeline_post_subscriptions/general_functions.js"; ?>"></script>
+<script src="<?php echo LOCAL . "/public/_scripts/timeline_post_subscriptions/create.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_post_subscriptions/read.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_post_subscriptions/update.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_post_subscriptions/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/timeline_post_subscriptions/TimelinePostSubscription.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_post_subscriptions/event_listeners.js"; ?><!--"></script>-->
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_post_subscriptions/tasks.js"; ?><!--"></script>-->
 
 
 

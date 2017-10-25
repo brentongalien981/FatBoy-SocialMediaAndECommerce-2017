@@ -87,8 +87,17 @@ function display_timeline_post(crud_type, json) {
         dom_append_post(crud_type, post_container);
 
 
+        /* Append a view-more-comments-button. */
+        append_view_more_comments_button(p["post_id"]);
+
+
         /* Add the post's reply-form */
         append_a_comment_form(p["post_id"]);
+
+
+
+        /* Read the post's comments. */
+        read_timeline_post_replies(p["post_id"]);
 
 
 
@@ -98,13 +107,6 @@ function display_timeline_post(crud_type, json) {
             //
             create_rateable_item(p["post_id"]);
 
-            // if (json.is_user_viewing_own_account == "true") { create_rateable_item(p["post_id"]); }
-            // else {
-            //     // This will always just read one rateable_item with one post_id.
-            //     var post_ids = [p["post_id"]];
-            //     read_rateable_item_ids(post_ids);
-            // }
-
         }
         else if (crud_type == "read") {
 
@@ -112,7 +114,6 @@ function display_timeline_post(crud_type, json) {
             var post_ids = [p["post_id"]];
             read_rateable_item_ids(post_ids);
         }
-
     }
 
 

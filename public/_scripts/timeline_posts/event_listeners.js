@@ -110,12 +110,16 @@ $('#main_content').scroll(function (event) {
     event.stopPropagation();
     the_rate_bar_mouseout_handler = setTimeout(function () {
         var scroll_top = parseInt($('#main_content').scrollTop());
-        $('#the-rate-bar').css("margin-top", "-" + scroll_top + "px");
-        $('#the-rate-bar').css("display", "none");
-        $('#main_content').append($('#the-rate-bar'));
-        // $('#main_content').append($('#the-rate-bar'));
+        var new_top_pos = scroll_top + 50;
+        $('#tpspw').css("margin-top", "-" + new_top_pos + "px");
+        $('#tpspw').css("display", "none");
+        $('#main_content').append($('#tpspw'));
 
     }, 1);
+
+
+    //
+    set_timeline_post_settings_popup_position();
 });
 
 $('.rate-option').click(function () {
@@ -125,6 +129,12 @@ $('.rate-option').click(function () {
     var rateable_item_id = $(response_bar).attr("rateable-item-id");
 
     update_rateable_item(rateable_item_id, rate_value);
+});
+
+
+$("#subscribe-to-post-button").click(function () {
+
+    create_timeline_post_subscription();
 });
 
 function add_rate_pseudo_button_hover_listener(post_id) {
@@ -170,3 +180,5 @@ function add_rate_pseudo_button_hover_listener(post_id) {
 
     });
 }
+
+

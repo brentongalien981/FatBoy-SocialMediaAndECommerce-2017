@@ -8,6 +8,7 @@
 
 //namespace App\Publico\Model;
 
+require_once("my_database.php");
 require_once("Notification.php");
 
 //require_once(PRIVATE_PATH . "/includes/Carbon.php");

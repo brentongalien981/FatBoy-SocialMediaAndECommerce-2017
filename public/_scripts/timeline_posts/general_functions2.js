@@ -197,11 +197,16 @@ function get_post_details_bar(post) {
     var settings_icon_el = document.createElement("i");
     $(settings_icon_el).addClass("fa fa-sliders settings-icon");
 
+
     // Append
     $(settings_icon_container_el).append($(settings_icon_el));
 
     //
     $(post_details_bar).append($(settings_icon_container_el));
+
+    // Add event-listeners to the trigger elements of the post-settings-pop-up.
+    add_post_popup_trigger_el_listeners(settings_icon_container_el);
+    // add_post_popup_trigger_el_listeners(settings_icon_el);
 
 
 
@@ -210,7 +215,7 @@ function get_post_details_bar(post) {
 
 }
 
-function append_a_comment_form(parentPostId) {
+function append_a_comment_form(parent_post_id) {
 
     // // Disable the reply button when the form shows up.
     // document.getElementById("replyButton" + parentPostId).setAttribute("disabled", "disabled");
@@ -222,7 +227,7 @@ function append_a_comment_form(parentPostId) {
     // var cancelButton = document.createElement("input");
 
 
-    replyForm.id = "replyForm" + parentPostId;
+    replyForm.id = "replyForm" + parent_post_id;
     replyForm.setAttribute("class", "replyForm");
 
     replyTextAre.setAttribute("placeholder", "Comment here...");
@@ -235,7 +240,7 @@ function append_a_comment_form(parentPostId) {
     replyButton.setAttribute("class", "form_buttons");
 
     replyButton.onclick = function () {
-        create_reply_post(parentPostId);
+        create_timeline_post_reply(parent_post_id);
     };
 
 
@@ -246,6 +251,23 @@ function append_a_comment_form(parentPostId) {
     // replyForm.appendChild(cancelButton);
 
     // document.getElementById(parentPostId).insertBefore(replyForm, document.getElementById(parentPostId).childNodes[3]);
-    var post = document.getElementById("post" + parentPostId);
+    var post = document.getElementById("post" + parent_post_id);
     post.appendChild(replyForm);
+}
+
+function append_view_more_comments_button(post_id) {
+
+    /* */
+    var view_more_comments_button = document.createElement("button");
+
+    $(view_more_comments_button).addClass("my-view-more-btn");
+    $(view_more_comments_button).addClass("my-view-more-comments-btn");
+    $(view_more_comments_button).html("view more comments");
+
+    $("#post" + post_id).append($(view_more_comments_button));
+
+    /* Add event-listener. */
+    $(view_more_comments_button).click(function () {
+        fetch_timeline_post_replies(post_id);
+    });
 }

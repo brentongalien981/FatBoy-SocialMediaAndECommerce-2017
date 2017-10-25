@@ -1,4 +1,11 @@
 function show_flash_notification(x_obj, json) {
+
+    //
+    //
+    if (should_class_log(x_obj) && should_crud_type_log(x_obj)) {}
+    else { return; }
+
+
     // TODO:REMINDER: Make the notification more presentable in production.
     if (json == null || !json.is_result_ok) {
         // FAIL on [crud]ing [x]Notification.
@@ -44,6 +51,9 @@ function get_subfolder(class_name) {
         case "NotificationPost":
         // subfolder = "notifications";
         // break;
+        case "NotificationTimelinePostReply":
+        // subfolder = "notifications";
+        // break;
         case "NotificationRateableItem":
             subfolder = "notifications";
             break;
@@ -71,7 +81,14 @@ function get_subfolder(class_name) {
         case "TimelinePost":
             subfolder = "timeline_posts";
             break;
+        case "TimelinePostSubscription":
+            subfolder = "timeline_post_subscriptions";
+            break;
+        case "TimelinePostReply":
+            subfolder = "timeline_post_replies";
+            break;
         case "zZz":
+            //
             break;
     }
 
@@ -129,6 +146,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "NotificationRateableItem":
             do_notification_rateable_items_after_effects(class_name, crud_type, json, x_obj);
             break;
+        case "NotificationTimelinePostReply":
+            do_notification_timeline_post_replies_after_effects(class_name, crud_type, json, x_obj);
+            break;
         case "User":
             do_users_after_effects(class_name, crud_type, json, x_obj);
             // window.alert("TODO:METHOD:do_notification_users_after_effects()");
@@ -153,6 +173,12 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "TimelinePost":
             do_timeline_post_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "TimelinePostSubscription":
+            do_timeline_post_subscription_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "TimelinePostReply":
+            do_timeline_post_reply_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "zZz":
             break;
@@ -214,25 +240,17 @@ function my_ajax(x_obj) {
     xhr.open(request_type, url, true);
 
 
-    // TODO:DEBUG
-    console.log("REQUEST TYPE: " + request_type);
-    console.log("crud_type: " + crud_type);
-    console.log("url: " + url);
-    console.log("key_value_pairs_str: " + key_value_pairs_str);
-    console.log("caller_class_name: " + caller_class_name);
-
 
     //
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = xhr.responseText.trim();
-            // Log before JSON parsing.
-            console.log("*******************************");
-            console.log("*** AJAX invoked by class: " + caller_class_name);
-            console.log("*** CRUD Type: " + crud_type);
 
-            console.log("*** Log before JSON parsing ***");
-            console.log("response: " + response);
+            //
+            var response = xhr.responseText.trim();
+
+
+            // Log before JSON parsing.
+            do_browser_ajax_pre_log(x_obj, response, url)
 
 
             //
@@ -246,12 +264,17 @@ function my_ajax(x_obj) {
             }
 
 
+            //
+            do_ajax_result_log(x_obj, json);
+
+
+
             // If the response is not successful..
             if (json === null || !json.is_result_ok) {
-                console.log("RESULT:json.is_result_ok: null/false");
+                // ("RESULT:json.is_result_ok: null/false");
             } else if (json.is_result_ok) {
                 // Else if it's successful..
-                console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
+                // ("RESULT:json.is_result_ok: " + json.is_result_ok);
 
 
                 // "After-Effects" tasks if the AJAX is ok.
@@ -266,39 +289,7 @@ function my_ajax(x_obj) {
 
 
             // AJAX Formatted JSON log.
-            console.log("*******************************");
-            console.log("*** Formatted JSON in class: " + caller_class_name);
-            console.log("*** CRUD Type: " + crud_type);
-            for (var key in json) {
-                if (json.hasOwnProperty(key)) {
-                    var val = json[key];
-
-                    // Display in the console.
-                    console.log(key + " => " + val);
-
-
-                    // continue;
-                    // Display errors in the form.
-                    if (json.form_errors_showable) {
-                        var error_label = document.getElementById(key);
-                        if (error_label != null) {
-                            // Reset the error labels.
-                            error_label.innerHTML = "error";
-                            error_label.style.visibility = "hidden";
-
-
-                            // Display error labels.
-                            if (val != "") {
-                                error_label.innerHTML = val;
-                                error_label.style.visibility = "visible";
-                            }
-
-                        }
-                    }
-                }
-            }
-
-
+            do_browser_ajax_post_log(x_obj, json);
         }
     };
 
@@ -312,5 +303,150 @@ function my_ajax(x_obj) {
         // You need this for AJAX POST requests.
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(key_value_pairs_str);
+    }
+}
+
+function do_ajax_result_log(x_obj, json) {
+    //
+    if (should_class_log(x_obj) && should_crud_type_log(x_obj)) {}
+    else { return; }
+
+    // If the response is not successful..
+    if (json === null || !json.is_result_ok) {
+        console.log("RESULT:json.is_result_ok: null/false");
+    } else if (json.is_result_ok) {
+        // Else if it's successful..
+        console.log("RESULT:json.is_result_ok: " + json.is_result_ok);
+    }
+}
+
+function should_class_log(x_obj) {
+
+    //
+    switch (x_obj.class_name) {
+        case "TimelinePost":
+            return false;
+        case "TimelinePostSubscription":
+            return false;
+            break;
+        case "TimelinePostReply":
+            return false;
+            break;
+        case "NotificationTimelinePostReply":
+            return true;
+            break;
+    }
+}
+
+
+function should_crud_type_log(x_obj) {
+
+    //
+    switch (x_obj.crud_type) {
+        case "create":
+            return true;
+            break;
+        case "read":
+            return false;
+            break;
+        case "update":
+            return false;
+            break;
+        case "delete":
+            return false;
+        case "fetch":
+            return false;
+        case "patch":
+            return false;
+            break;
+    }
+}
+
+function do_browser_ajax_pre_log(x_obj, response, url) {
+
+    //
+    if (should_class_log(x_obj) && should_crud_type_log(x_obj)) {}
+    else { return; }
+
+
+
+    //
+    var caller_class_name = x_obj.class_name;
+    var crud_type = x_obj.crud_type;
+    var request_type = x_obj.request_type;
+    var key_value_pairs_arr = x_obj.key_value_pairs;
+    var key_value_pairs_str = get_key_value_pairs(key_value_pairs_arr, request_type);
+
+
+
+    //
+    console.log("REQUEST TYPE: " + request_type);
+    console.log("crud_type: " + crud_type);
+    console.log("url: " + url);
+    console.log("key_value_pairs_str: " + key_value_pairs_str);
+    console.log("caller_class_name: " + caller_class_name);
+
+
+
+    //
+    console.log("*******************************");
+    console.log("*** AJAX invoked by class: " + caller_class_name);
+    console.log("*** CRUD Type: " + crud_type);
+
+    console.log("*** Log before JSON parsing ***");
+    console.log("response: " + response);
+}
+
+function do_browser_ajax_post_log(x_obj, json) {
+
+    //
+    if (should_class_log(x_obj) && should_crud_type_log(x_obj)) {}
+    else { return; }
+
+    //
+    var caller_class_name = x_obj.class_name;
+    var crud_type = x_obj.crud_type;
+    // var request_type = x_obj.request_type;
+    // var key_value_pairs_arr = x_obj.key_value_pairs;
+    // var key_value_pairs_str = get_key_value_pairs(key_value_pairs_arr, request_type);
+
+
+
+    //
+    console.log("*******************************");
+    console.log("*** Formatted JSON in class: " + caller_class_name);
+    console.log("*** CRUD Type: " + crud_type);
+
+
+    for (var key in json) {
+        if (json.hasOwnProperty(key)) {
+            var val = json[key];
+
+            // Display in the console.
+            console.log(key + " => " + val);
+
+
+            //
+            show_form_errors(key, val, json);
+        }
+    }
+}
+
+function show_form_errors(key, val, json) {
+    if (json.form_errors_showable) {
+        var error_label = document.getElementById(key);
+        if (error_label != null) {
+            // Reset the error labels.
+            error_label.innerHTML = "error";
+            error_label.style.visibility = "hidden";
+
+
+            // Display error labels.
+            if (val != "") {
+                error_label.innerHTML = val;
+                error_label.style.visibility = "visible";
+            }
+
+        }
     }
 }
