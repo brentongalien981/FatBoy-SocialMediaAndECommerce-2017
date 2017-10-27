@@ -6,10 +6,12 @@ class NotificationFetcher {
     private static $notifiable_classes = array(
         "Friendship",
         "MyShopping",
+        "TimelinePostReply",
         "RateableItem");
 //    );
     private $num_of_notifications_arr = array(
         "Friendship" => 0,
+        "MyShopping" => 0,
         "MyShopping" => 0,
         "RateableItem" => 0);
 //    );
@@ -26,22 +28,25 @@ class NotificationFetcher {
 
             // TODO: REMINDER: This is just a one-time, special case.
             // Change this to a more abstract form later.
-            if ($notification_class == "NotificationRateableItem") {
+            if ($notification_class == "NotificationRateableItem" ||
+                $notification_class == "NotificationTimelinePostReply") {
+
+                //
                 $notification_count = $notification_class::get_notification_count();
                 $num_of_notifications_arr[$notifiable_class] = $notification_count;
-                continue;
+//                continue;
             }
-
-
+            else {
 
                 // $read_all_query for ex is the query for reading all friendship notifications.
-            $read_all_query = $notification_class::get_query_for_read_all($session->actual_user_id);
+                $read_all_query = $notification_class::get_query_for_read_all($session->actual_user_id);
 
+                //
+                $result_set = $database->get_result_from_query($read_all_query);
+                $notification_count = $database->get_num_rows_of_result_set($result_set);
+            }
 
-
-            $result_set = $database->get_result_from_query($read_all_query);
-            $notification_count = $database->get_num_rows_of_result_set($result_set);
-
+            //
             $num_of_notifications_arr[$notifiable_class] = $notification_count;
         }
 

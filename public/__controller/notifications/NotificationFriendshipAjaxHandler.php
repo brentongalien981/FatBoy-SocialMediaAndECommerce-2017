@@ -278,6 +278,7 @@ if (isset($_GET["get_all_notifications_count"]) &&
     require_once(PUBLIC_PATH . "/__model/NotificationMyShopping.php");
     require_once(PUBLIC_PATH . "/__model/NotificationFriendship.php");
     require_once(PUBLIC_PATH . "/__model/NotificationRateableItem.php");
+    require_once(PUBLIC_PATH . "/__model/NotificationTimelinePostReply.php");
 
     $notification_count = NotificationFetcher::get_all_notification_count();
 

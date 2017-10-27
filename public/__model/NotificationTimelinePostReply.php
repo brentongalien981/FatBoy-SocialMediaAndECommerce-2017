@@ -74,6 +74,25 @@ class NotificationTimelinePostReply extends Notification
         return $is_creation_ok;
     }
 
+    public static function get_notification_count()
+    {
+        global $session;
+        global $database;
+
+        $query = "SELECT COUNT(*) AS count FROM " . parent::$table_name;
+        $query .= " INNER JOIN " . self::$table_name;
+        $query .= " ON " . parent::$table_name . ".id = " . self::$table_name . ".notification_id";
+        $query .= " WHERE is_deleted = 0";
+        $query .= " AND notified_user_id = {$session->actual_user_id}";
+
+
+        $result_set = $database->get_result_from_query($query);
+        while ($row = $database->fetch_array($result_set)) {
+            return $row["count"];
+        }
+
+    }
+
     public function create() {
         if (!$this->create_parent_obj()) {
             return false;
