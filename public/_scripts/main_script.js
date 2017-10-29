@@ -87,9 +87,13 @@ function get_subfolder(class_name) {
         case "TimelinePostReply":
             subfolder = "timeline_post_replies";
             break;
-        case "zZz":
-            //
+        case "Invoice":
+            subfolder = "invoices";
             break;
+        case "InvoiceItem":
+            subfolder = "invoice_items";
+            break;
+
     }
 
 
@@ -113,6 +117,19 @@ function hide_x_container(container) {
 function hide_x_container2(class_name) {
     // container.style.display = "none";
     $("#" + class_name + "Container").css("display", "none");
+}
+
+function decide_ajax_pre_after_effects(x_obj, json) {
+    var class_name = x_obj.class_name;
+    var crud_type = x_obj.crud_type;
+
+
+    //
+    switch (class_name) {
+        case "Invoice":
+            do_invoice_pre_after_effects(class_name, crud_type, json);
+            break;
+    }
 }
 
 
@@ -180,7 +197,11 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "TimelinePostReply":
             do_timeline_post_reply_after_effects(class_name, crud_type, json, x_obj);
             break;
-        case "zZz":
+        case "Invoice":
+            do_invoice_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "InvoiceItem":
+            do_invoice_item_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -267,6 +288,8 @@ function my_ajax(x_obj) {
             //
             do_ajax_result_log(x_obj, json);
 
+            /**/
+            decide_ajax_pre_after_effects(x_obj, json);
 
 
             // If the response is not successful..
@@ -324,18 +347,13 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "TimelinePost":
-            return false;
-        case "TimelinePostSubscription":
-            return false;
-            break;
-        case "TimelinePostReply":
-            return false;
-            break;
-        case "NotificationTimelinePostReply":
+        case "Invoice":
             return true;
             break;
     }
+
+    //
+    return false;
 }
 
 
@@ -344,20 +362,20 @@ function should_crud_type_log(x_obj) {
     //
     switch (x_obj.crud_type) {
         case "create":
-            return false;
+            return true;
             break;
         case "read":
             return true;
             break;
         case "update":
-            return false;
+            return true;
             break;
         case "delete":
-            return false;
+            return true;
         case "fetch":
-            return false;
+            return true;
         case "patch":
-            return false;
+            return true;
             break;
     }
 }

@@ -86,6 +86,9 @@ function delete_x_notification_obj(class_name, notification_id) {
         case "NotificationRateableItem":
             x_notification_obj = new NotificationRateableItem(crud_type, request_type, key_value_pairs);
             break;
+        case "NotificationTimelinePostReply":
+            x_notification_obj = new NotificationTimelinePostReply(crud_type, request_type, key_value_pairs);
+            break;
     }
 
 

@@ -1,0 +1,23 @@
+.invoice-items-containers {
+    padding: 30px 60px;
+    background-color: rgb(245, 245, 245);
+    border-bottom: 1px solid rgb(225, 225, 225);
+}
+
+.last-item-containers {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.invoice-item-imgs {
+    width: 300px;
+    margin-right: 40px;
+    border-radius: 5px;
+}
+
+.invoice-item-title {
+    background-color: rgb(245, 245, 245);
+    margin: 0;
+    padding: 30px 60px;
+    padding-bottom: 0;
+}

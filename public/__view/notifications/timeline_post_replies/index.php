@@ -12,7 +12,8 @@
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/create.js"; ?><!--"></script>-->
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/read.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/update.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/delete.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/delete.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/fetch.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/event_listeners.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/NotificationTimelinePostReply.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/notifications/timeline_post_replies/tasks.js"; ?>"></script>

@@ -142,7 +142,7 @@ class NotificationTimelinePostReply extends Notification
     {
 
         $d = $data;
-        $limit = 10;
+        $limit = 3;
         global $session;
 
 
@@ -152,8 +152,10 @@ class NotificationTimelinePostReply extends Notification
         $q .= " ON Notifications.id = NotificationsTimelinePostReply.notification_id";
         $q .= " WHERE notified_user_id = {$session->actual_user_id}";
         $q .= " AND notification_msg_id = 5";
+
+//        if ($d["is_very_first_read"] == "true")
         $q .= " AND initiation_date > '{$d['latest_notification_date']}'";
-        $q .= " ORDER BY initiation_date DESC";
+        $q .= " ORDER BY initiation_date ASC";
         $q .= " LIMIT {$limit}";
 
         return $q;
@@ -242,5 +244,24 @@ class NotificationTimelinePostReply extends Notification
         }
 
         return $array_of_notifications;
+    }
+
+    public static function delete($id = 0) {
+
+        global $database;
+
+        $query = "DELETE FROM " . self::$table_name;
+        $query .= " WHERE notification_id = " . $database->escape_value($id);
+        $query .= " LIMIT 1";
+
+
+        $database->get_result_from_query($query);
+        $is_deletion_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+        if ($is_deletion_ok) {
+            $is_deletion_ok = parent::delete($id);
+        }
+
+        return $is_deletion_ok;
     }
 }

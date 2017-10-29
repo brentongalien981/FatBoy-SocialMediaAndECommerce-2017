@@ -4,6 +4,7 @@ function read_timeline_post_reply_notifications() {
     var request_type = "GET";
     var offset = get_num_of_dom_notifications("NotificationTimelinePostReply");
     var latest_notification_date = get_notification_with_latest_date("NotificationTimelinePostReply");
+    // var is_very_first_read_bruh = (is_very_first_read == true) ? true : false;
 
     var key_value_pairs = {
         read: "yes",
@@ -23,7 +24,7 @@ function get_content_for_timeline_post_reply_notification(notification) {
 
     // CJ commented "ayots to ah:)" a post.
 
-    msg += n["notifier_user_name"] + "commented";
+    msg += n["notifier_user_name"] + " commented";
     msg += " \"" + n["message"].substring(0, 40) + " ...\"" + " on a post.";
 
     // msg += "<a href='" + get_local_url() + "/public/index.php/#post" + n["post_id" +

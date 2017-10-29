@@ -65,4 +65,8 @@ class NotificationTimelinePostReplyController extends MainController
     {
         return NotificationTimelinePostReply::read($data);
     }
+
+    public function delete($data) {
+        return NotificationTimelinePostReply::delete($data['notification_id']);
+    }
 }

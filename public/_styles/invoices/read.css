@@ -1,0 +1,179 @@
+#left {
+    width: 250px;
+}
+#right {
+    display: none;
+}
+#middle {
+    width: calc(80% + 100px);
+    padding-right: 15px;
+}
+
+#sub_menus_nav {
+    display: none;
+}
+
+
+
+#middle_content {
+    /*background-color: rgba(230, 230, 230, 0.8);*/
+    padding-bottom: 30px;
+
+}
+
+#container_sales_history {
+    margin: 30px;
+    padding: 30px;
+    padding-top: 40px;
+    border-radius: 5px;
+    background-color: rgb(240, 240,240);
+    box-shadow: 5px 5px 5px rgb(150, 150, 150);
+}
+
+#container_sales_history table {
+    width: 90%;
+    border-collapse: collapse;
+    color: black;
+}
+
+table.invoice_items_details {
+    margin: 20px;
+}
+
+table.invoice_items_details select {
+    height: 20px;
+    background-color: rgb(224, 255, 193);
+    /*background-color: rgb(240, 240, 240);*/
+    /*color: white;*/
+}
+
+#container_sales_history td {
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+#container_sales_history #td_header {
+    /*background-color: rgb(255, 221, 178);*/
+    background-color: rgb(220, 220, 220);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#container_sales_history table tr:nth-child(even) {
+    /*background-color: rgb(242, 255, 253);*/
+    background-color: rgb(242, 252, 255);
+
+}
+
+#container_sales_history table tr:nth-child(odd) {
+    background-color: rgb(255, 254, 219);
+    background-color: white;
+}
+
+.form_button {
+    /*text-align: center;*/
+    margin: 0;
+    /*width: 60px;*/
+    /*border: 1px solid rgb(224, 255, 193);*/
+    border: none;
+    background-color: rgb(224, 255, 193);
+    /*color: white;*/
+}
+
+
+
+.invoice-containers {
+    background-color: white;
+    border-radius: 5px;
+    width: 95%;
+    margin: auto;
+    margin-bottom: 100px;
+    box-shadow: 0 0 10px rgb(150, 150, 150);
+}
+
+.invoice-details-options-containers {
+    background-color: rgb(240, 240, 240);
+    padding: 10px 20px;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.invoice-details-containers {
+    background-color: white;
+    padding: 30px 60px;
+}
+
+.invoice-x-details {
+    /*display: inline-block;*/
+    display: none;
+}
+
+.invoice-details-table {
+    display: inline-block;
+}
+
+.invoice-sales-summary-container {
+    display: block;
+}
+
+
+.invoice-options-buttons {
+    padding: 8px 15px;
+    margin-right: 10px;
+    border-radius: 25px;
+    border: 1px solid rgb(184, 255, 137);
+    background-color: white;
+    font-size: 12px;
+    font-weight: 100;
+}
+
+.invoice-summary-buttons {
+    background-color: rgb(184, 255, 137);
+}
+
+
+.invoice-options-buttons:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(144, 255, 71);
+}
+
+
+
+
+
+.invoice-containers table {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    font-size: 13px;
+    display: inline-block;
+    /*margin-right: 100px;*/
+    width: 50%;
+    max-width: 50%;
+    vertical-align: top;
+    /*background-color: yellow;*/
+    /* width: 100%; */
+}
+
+.invoice-containers table th,
+.invoice-containers table td {
+    padding: 8px;
+}
+
+.invoice-detail-labels,
+.invoice-item-detail-labels {
+    /*border: 1px solid rgb(240, 240, 240);*/
+    border-right: 1px solid rgb(200, 200, 200);
+    font-weight: 400;
+}
+
+.invoice-containers tr:nth-child(even){
+    background-color: rgb(247, 252, 255);
+}
+
+.invoice-details-title {
+    margin-bottom: 20px;
+}

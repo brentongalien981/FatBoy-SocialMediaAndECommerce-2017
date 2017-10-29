@@ -254,3 +254,9 @@ div#main_content {
     font-size: 85%;
     margin-left: 10px;
 }
+
+.load-more-objs-reference {
+    width: 200px;
+    height: 1px;
+    background-color: red;
+}

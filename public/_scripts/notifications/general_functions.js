@@ -290,6 +290,7 @@ function get_num_of_dom_notifications(class_name) {
  */
 function get_notification_with_latest_date(notification_class_name) {
     var specific_class_name = "";
+    var specific_class_name_latest_index = 0;
 
     switch (notification_class_name) {
         case "NotificationRateableItem":
@@ -302,11 +303,13 @@ function get_notification_with_latest_date(notification_class_name) {
             specific_class_name = ".friendship_notifications";
         case "NotificationTimelinePostReply":
             specific_class_name = ".timeline_post_reply_notifications";
+
+            specific_class_name_latest_index = $(specific_class_name).length - 1;
             break;
 
     }
 
-    var the_latest_notification = $(specific_class_name)[0];
+    var the_latest_notification = $(specific_class_name)[specific_class_name_latest_index];
     var latest_date = $(the_latest_notification).attr("date-updated");
 
     if (the_latest_notification == null ||

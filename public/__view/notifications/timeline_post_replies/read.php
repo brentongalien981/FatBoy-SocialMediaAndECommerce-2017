@@ -3,4 +3,5 @@
     <hr>
 
     <div id="NotificationTimelinePostReplyActualContainer" class="actual_notification_x_container"></div>
+    <button id="view-more-timeline-post-reply-button" class="my-view-more-btn">view more</button>
 </div>
