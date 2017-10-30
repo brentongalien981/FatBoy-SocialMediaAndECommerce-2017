@@ -31,7 +31,7 @@
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/invoice_items/delete.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/invoice_items/fetch.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/invoice_items/InvoiceItem.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/invoice_items/event_handlers.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/invoice_items/event_handlers.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/invoice_items/event_listeners.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/invoice_items/event_listeners2.js"; ?><!--"></script>-->
 <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/invoice_items/tasks.js"; ?><!--"></script>-->

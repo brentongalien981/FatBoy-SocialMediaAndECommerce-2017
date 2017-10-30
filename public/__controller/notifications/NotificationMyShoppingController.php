@@ -47,7 +47,7 @@ class NotificationMyShoppingController extends MainController
 
 
             //
-            $invoice_id = NotificationMyShopping::get_invoice_id_for_invoice_item($data['invoice_item_id']);
+            $invoice_id = NotificationMyShopping::get_invoice_id_for_invoice_item($data['the_invoice_item_id']);
 
             // Set the $a_sales_notification_obj's attributes by
             // querying the table Invoice with the invoice_id.
@@ -67,7 +67,7 @@ class NotificationMyShoppingController extends MainController
             $n_mshopping->notifier_user_id = $data["notifier_user_id"];
             $n_mshopping->notification_msg_id = $data["notification_msg_id"];
             $n_mshopping->is_deleted = false;
-            $n_mshopping->invoice_item_id = $data["invoice_item_id"];
+            $n_mshopping->invoice_item_id = $data["the_invoice_item_id"];
             $n_mshopping->invoice_item_status_record_id = $data["invoice_item_status_record_id"];
             $is_creation_ok = $n_mshopping->create_with_bool();
 

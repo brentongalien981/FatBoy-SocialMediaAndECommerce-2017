@@ -347,7 +347,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "Invoice":
+        case "NotificationMyShopping":
             return true;
             break;
     }
@@ -364,18 +364,8 @@ function should_crud_type_log(x_obj) {
         case "create":
             return true;
             break;
-        case "read":
-            return true;
-            break;
-        case "update":
-            return true;
-            break;
-        case "delete":
-            return true;
-        case "fetch":
-            return true;
-        case "patch":
-            return true;
+        default:
+            return false;
             break;
     }
 }

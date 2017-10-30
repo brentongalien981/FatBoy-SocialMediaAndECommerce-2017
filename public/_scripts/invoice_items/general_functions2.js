@@ -29,6 +29,7 @@ function get_invoice_item_details_el(invoice_item) {
 
     /**/
     var invoice_item_details_el = document.createElement("table");
+    invoice_item_details_el.id = "invoice-item" + ii["invoice_item_id"];
     $(invoice_item_details_el).addClass("invoice-item-details");
 
 
@@ -71,6 +72,7 @@ function get_invoice_item_x_row_el(data_label, data_value) {
     if (data_label == "Status") {
         /**/
         var status_select_el = document.createElement("select");
+        $(status_select_el).attr("old-value", data_value);
 
         /**/
         //
@@ -140,10 +142,21 @@ function get_invoice_item_x_row_el(data_label, data_value) {
 
         /**/
         $(invoice_item_x_value_el).append($(status_select_el));
+
+
+        /**/
+        add_listeners_to_invoice_item_status_select_el(status_select_el);
     }
     else {
         $(invoice_item_x_value_el).html(data_value);
     }
+
+
+    /* Extra attributes. */
+    if (data_label == "Item Id") {
+        $(invoice_item_x_value_el).addClass("invoice-item-id-data");
+    }
+
 
 
     /**/

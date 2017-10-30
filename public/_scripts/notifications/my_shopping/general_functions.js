@@ -21,6 +21,9 @@ function do_notification_my_shoppings_after_effects(class_name, crud_type, json,
             populate_x_notification_container2(container, json.notifications, class_name, crud_type);
             break;
         case "create":
+            // Because the code got here, meaning the update is successful.
+            // So update the selected value of the invoice-item's status.
+            set_status_of_invoice_item(x_obj);
             break;
         case "update":
             //

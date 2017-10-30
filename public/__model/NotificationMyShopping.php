@@ -85,7 +85,7 @@ class NotificationMyShopping extends Notification
     public static function create_invoice_item_status_record(&$data) {
 
         $query = "INSERT INTO InvoiceItemStatusRecord (invoice_item_id, invoice_item_status_id) ";
-        $query .= "VALUES ({$data['invoice_item_id']}, {$data['update_status_id']})";
+        $query .= "VALUES ({$data['the_invoice_item_id']}, {$data['new_invoice_item_status_id']})";
 
         $is_creation_ok = self::create_by_query($query);
 
@@ -327,8 +327,8 @@ class NotificationMyShopping extends Notification
     // TODO:REMINDER: Maybe put this to a class "InvoiceItemStatusRecord".
     public static function does_status_for_invoice_item_exist($data) {
         $query = "SELECT * FROM InvoiceItemStatusRecord ";
-        $query .= "WHERE invoice_item_id = {$data['invoice_item_id']} ";
-        $query .= "AND invoice_item_status_id = {$data['update_status_id']}";
+        $query .= "WHERE invoice_item_id = {$data['the_invoice_item_id']} ";
+        $query .= "AND invoice_item_status_id = {$data['new_invoice_item_status_id']}";
 
         $record_result = self::read_by_query($query);
 

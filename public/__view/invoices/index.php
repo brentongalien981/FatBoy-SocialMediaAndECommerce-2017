@@ -41,6 +41,10 @@
     <?php require_once(PUBLIC_PATH . "/__view/invoice_items/index.php"); ?>
 
 
+    <!--Extentional Scripts for creating my-shopping-notifications-->
+    <script src="<?php echo LOCAL . "/public/_scripts/notifications/my_shopping/create.js"; ?>"></script>
+
+
     <!--Main scripts-->
     <script src="<?php echo LOCAL . "/public/_scripts/invoices/instance_vars.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/invoices/general_functions.js"; ?>"></script>
@@ -56,9 +60,6 @@
     <script src="<?php echo LOCAL . "/public/_scripts/invoices/event_listeners.js"; ?>"></script>
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/invoices/event_listeners2.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/invoices/tasks.js"; ?>"></script>
-
-
-    <!--Extentional Scripts-->
 
 
     <!--Footer-->
