@@ -93,6 +93,9 @@ function get_subfolder(class_name) {
         case "InvoiceItem":
             subfolder = "invoice_items";
             break;
+        case "StoreItem":
+            subfolder = "store_items";
+            break;
 
     }
 
@@ -128,6 +131,9 @@ function decide_ajax_pre_after_effects(x_obj, json) {
     switch (class_name) {
         case "Invoice":
             do_invoice_pre_after_effects(class_name, crud_type, json);
+            break;
+        case "StoreItem":
+            do_store_item_pre_after_effects(class_name, crud_type, json);
             break;
     }
 }
@@ -202,6 +208,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "InvoiceItem":
             do_invoice_item_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "StoreItem":
+            do_store_item_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -347,7 +356,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "NotificationMyShopping":
+        case "StoreItem":
             return true;
             break;
     }
@@ -361,7 +370,8 @@ function should_crud_type_log(x_obj) {
 
     //
     switch (x_obj.crud_type) {
-        case "create":
+        case "read":
+        case "update":
             return true;
             break;
         default:

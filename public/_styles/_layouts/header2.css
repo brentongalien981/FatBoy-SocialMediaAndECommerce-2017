@@ -222,7 +222,7 @@ div#the_spinner_div {
     padding-top: 200px;;
 }
 
-label.error_msg {
+.error_msg {
     font-size: 12px;
     font-weight: 100;
     color: red;

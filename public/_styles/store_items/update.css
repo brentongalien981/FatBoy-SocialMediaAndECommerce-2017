@@ -1,0 +1,20 @@
+#product-items-list-container {
+    display: none;
+    max-height: 200px;
+    border: 1px solid black;
+    margin: 20px 30px;
+    overflow-y: auto;
+    vertical-align: top;
+}
+
+#product-items-list-container img {
+    width: 100px;
+}
+
+#product-items-list-container * {
+    display: inline-block;
+}
+
+#edit-product-template {
+    display: none;
+}

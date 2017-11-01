@@ -70,6 +70,8 @@ class Validator
     private $request_type = "post";
     public $validate_email = false;
     protected $vars_to_be_number_uniformly_checked = null;
+    public $vars_to_be_of_decimal_value_checked = null;
+    public $vars_to_be_of_min_value_checked = null;
 
 
     function __construct()
@@ -80,6 +82,16 @@ class Validator
     public function set_vars_to_be_number_uniformly_checked($vars_to_be_number_uniformly_checked)
     {
         $this->vars_to_be_number_uniformly_checked = $vars_to_be_number_uniformly_checked;
+    }
+
+    public function set_vars_to_be_of_decimal_value_checked($vars_to_be_of_decimal_value_checked)
+    {
+        $this->vars_to_be_of_decimal_value_checked = $vars_to_be_of_decimal_value_checked;
+    }
+
+    public function set_vars_to_be_of_min_value_checked($vars_to_be_of_min_value_checked)
+    {
+        $this->vars_to_be_of_min_value_checked = $vars_to_be_of_min_value_checked;
     }
 
     public function set_allowed_post_vars($allowed_post_vars_array)
@@ -104,6 +116,35 @@ class Validator
 
     }
 
+    public static function is_of_decimal_value($value)
+    {
+        $value_length = strlen($value);
+
+        for ($i = 0; $i < $value_length; $i++) {
+            $char = substr($value, $i, 1);
+
+            // If it's a period ".", then it is accepetable, so
+            // just proceed to the next character.
+            if ($char == ".") {
+                continue;
+            }
+
+            if (!is_numeric($char)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    public static function is_of_min_value($actual_value, $min_value)
+    {
+        if ($actual_value < $min_value) { return false; }
+
+        return true;
+    }
+
     protected function validate_number_uniformity()
     {
 
@@ -126,7 +167,56 @@ class Validator
         }
     }
 
+    //ish44
+    protected function validate_of_decimal_value()
+    {
 
+        if ($this->request_type == "post") {
+            foreach ($this->vars_to_be_of_decimal_value_checked as $v) {
+                if (!self::is_of_decimal_value($_POST[$v])) {
+                    MyValidationErrorLogger::log("{$v}::: {$v} is not valid.");
+                    return false;
+                }
+            }
+        }
+
+
+        if ($this->request_type == "get") {
+            foreach ($this->vars_to_be_of_decimal_value_checked as $v) {
+                if (!self::is_of_decimal_value($_GET[$v])) {
+                    MyValidationErrorLogger::log("{$v}::: {$v} is not valid.");
+                    return false;
+                }
+            }
+        }
+    }
+
+    protected function validate_of_min_value()
+    {
+
+//        $is_validation_ok = true;
+
+        if ($this->request_type == "post") {
+            foreach ($this->vars_to_be_of_min_value_checked as $k => $v) {
+                //ish444
+                if (!self::is_of_min_value($_POST[$k], $v)) {
+                    MyValidationErrorLogger::log("{$k}::: {$k} can not be less than {$v}.");
+//                    $is_validation_ok = false;
+                }
+            }
+        }
+
+
+        if ($this->request_type == "get") {
+            foreach ($this->vars_to_be_of_min_value_checked as $k => $v) {
+                //ish444
+                if (!self::is_of_min_value($_GET[$k], $v)) {
+                    MyValidationErrorLogger::log("{$k}::: {$k} can not be less than {$v}.");
+//                    $is_validation_ok = false;
+                }
+            }
+        }
+    }
 
 
     public function set_unique_vars($vars_to_be_unique_checked)
@@ -380,7 +470,9 @@ class Validator
 
     protected function validate_length()
     {
-        if (!isset($this->required_post_vars_length_array)) { return; }
+        if (!isset($this->required_post_vars_length_array)) {
+            return;
+        }
 
         // 
         $validation_value = true;
