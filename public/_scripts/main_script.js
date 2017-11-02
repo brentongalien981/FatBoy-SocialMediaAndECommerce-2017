@@ -96,6 +96,15 @@ function get_subfolder(class_name) {
         case "StoreItem":
             subfolder = "store_items";
             break;
+        case "StoreCart":
+            subfolder = "store_carts";
+            break;
+        case "Session":
+            subfolder = "session";
+            break;
+        case "CartItem":
+            subfolder = "cart_items";
+            break;
 
     }
 
@@ -211,6 +220,15 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "StoreItem":
             do_store_item_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "StoreCart":
+            do_store_cart_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "Session":
+            do_session_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "CartItem":
+            do_cart_item_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -356,7 +374,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "StoreItem":
+        case "CartItem":
             return true;
             break;
     }
@@ -371,7 +389,6 @@ function should_crud_type_log(x_obj) {
     //
     switch (x_obj.crud_type) {
         case "read":
-        case "update":
             return true;
             break;
         default:

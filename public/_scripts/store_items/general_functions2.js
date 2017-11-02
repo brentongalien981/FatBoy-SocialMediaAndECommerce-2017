@@ -49,9 +49,13 @@ function reset_product_details_table() {
     $("#a-product-details-table-container").find(".error_msg").css("visibility", "hidden");
 }
 
-function get_num_of_store_items() {
+function get_num_of_store_items(for_what) {
 
-    var objs = $(".edit-product");
+    var objs = null;
+
+    if (for_what == "nothing") { objs = $(".products"); }
+    else if (for_what == "edit") { objs = $(".edit-product"); }
+
     var length = parseInt(objs.length) - 1; // Minus 1 because of the template.
 
 

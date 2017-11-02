@@ -1,4 +1,5 @@
 function do_store_item_pre_after_effects(class_name, crud_type, json) {
+    is_store_item_reading_for_edit = false;
     is_store_item_reading = false;
 }
 
@@ -46,12 +47,11 @@ function display_store_items(json) {
 
 
         /* Append the product-el. */
-        $("#main_content").append($(product_el));
-
-
-        /* Re-append the reference el. */
-        $("#main_content").append($("#read-more-store-items-initiator-reference"));
+        $("#products-container").append($(product_el));
     }
+
+    /* Re-append the reference el. */
+    $("#main_content").append($("#read-more-store-items-initiator-reference"));
 
 }
 
@@ -62,7 +62,8 @@ function get_product_el(store_item) {
 
     /**/
     var product_el = $("#product-el-template").clone(true);
-    product_el.id = "product" + si["product_id"];
+    // product_el.id = "product" + si["product_id"];
+    product_el.attr("id", "product" + si["product_id"]);
     $(product_el).css("display", "inline-block");
 
 

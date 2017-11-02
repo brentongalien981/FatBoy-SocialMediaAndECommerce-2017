@@ -6,7 +6,8 @@
 // inadvisable to store DB-related objects in sessions
 require_once("model_address.php");
 
-class Session {
+class Session
+{
 
 //    public $my_static_counter;
     private $logged_in = false;
@@ -64,7 +65,8 @@ class Session {
 
 //    public $message;
 
-    function __construct() {
+    function __construct()
+    {
 // TODO: How do I deal with this session_start()?
 //        session_start();
 //        $this->check_message();
@@ -76,34 +78,24 @@ class Session {
         }
     }
 
-//    public function get_cart() {
-//        if ($this->is_logged_in()) {
-//            if (isset($this->cart)) {
-//                require_once("model_store_cart.php");
-//                $session_cart = new StoreCart();
-//
-//                $session_cart->cart_id = $this->
-//
-//                return $this->cart;
-//            } else {
-//                die("No current cart is available.");
-//            }
-//        }
-//    }
 
-    public function set_can_now_checkout($what) {
+    public function set_can_now_checkout($what)
+    {
         $this->can_now_checkout = $_SESSION["can_now_checkout"] = $what;
     }
 
-    public function set_invoice_id($new_invoice_id) {
+    public function set_invoice_id($new_invoice_id)
+    {
         $this->invoice_id = $_SESSION["invoice_id"] = $new_invoice_id;
     }
 
-    public function set_refund_invoice_item_id($id) {
+    public function set_refund_invoice_item_id($id)
+    {
         $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"] = $id;
     }
 
-    public function set_refund_item_quantity($quantity) {
+    public function set_refund_item_quantity($quantity)
+    {
         $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = $quantity;
     }
 
@@ -117,7 +109,8 @@ class Session {
 //        $this->ad_status_id = $_SESSION["ad_status_id"] = $ad_obj->status_id;       
 //    }
 
-    public function set_chat_thread_id($chat_thread_id) {
+    public function set_chat_thread_id($chat_thread_id)
+    {
         $this->chat_thread_id = $_SESSION["chat_thread_id"] = $chat_thread_id;
     }
 
@@ -125,54 +118,69 @@ class Session {
 //        $this->chat_with_user_id = $_SESSION["chat_with_user_id"] = chat_with_user_id;
 //    }
 
-    public function set_ad_name($ad_name) {
+    public function set_ad_name($ad_name)
+    {
         $this->ad_name = $_SESSION["ad_name"] = $ad_name;
     }
 
-    public function set_ad_description($ad_description) {
+    public function set_ad_description($ad_description)
+    {
         $this->ad_description = $_SESSION["ad_description"] = $ad_description;
     }
 
-    public function set_ad_photo_url_address($ad_photo_url_address) {
+    public function set_ad_photo_url_address($ad_photo_url_address)
+    {
         $this->ad_photo_url_address = $_SESSION["ad_photo_url_address"] = $ad_photo_url_address;
     }
 
-    public function set_ad_target_num_airings($ad_target_num_airings) {
+    public function set_ad_target_num_airings($ad_target_num_airings)
+    {
         $this->ad_target_num_airings = $_SESSION["ad_target_num_airings"] = $ad_target_num_airings;
     }
 
-    public function set_ad_budget($ad_budget) {
+    public function set_ad_budget($ad_budget)
+    {
         $this->ad_budget = $_SESSION["ad_budget"] = $ad_budget;
     }
 
-    public function set_ad_air_time($ad_air_time) {
+    public function set_ad_air_time($ad_air_time)
+    {
         $this->ad_air_time = $_SESSION["ad_air_time"] = $ad_air_time;
     }
 
-    public function set_ad_status_id($ad_status_id) {
+    public function set_ad_status_id($ad_status_id)
+    {
         $this->ad_status_id = $_SESSION["ad_status_id"] = $ad_status_id;
     }
 
-    public function get_can_now_checkout() {
+    public function get_can_now_checkout()
+    {
         return $this->can_now_checkout;
     }
-    
-    public static function get_my_static_counter() {
+
+    public static function get_my_static_counter()
+    {
         return ++$_SESSION["my_static_counter"];
-        
-    }
-    
-    
 
-    public function set_cart($new_cart) {
-        if ($this->is_logged_in()) {
-            $this->cart_id = $_SESSION["cart_id"] = $new_cart->cart_id;
-            $this->seller_user_id = $_SESSION["seller_user_id"] = $new_cart->seller_user_id;
-            $this->buyer_user_id = $_SESSION["buyer_user_id"] = $new_cart->buyer_user_id;
-        }
     }
 
-    public function set_ship_to_address_vars($address_obj) {
+
+
+//    public function set_cart($new_cart) {
+//        if ($this->is_logged_in()) {
+//            $this->cart_id = $_SESSION["cart_id"] = $new_cart->cart_id;
+//            $this->seller_user_id = $_SESSION["seller_user_id"] = $new_cart->seller_user_id;
+//            $this->buyer_user_id = $_SESSION["buyer_user_id"] = $new_cart->buyer_user_id;
+//        }
+//    }
+
+    public function set_cart_id($cart_id)
+    {
+        $this->cart_id = $_SESSION["cart_id"] = $cart_id;
+    }
+
+    public function set_ship_to_address_vars($address_obj)
+    {
         if ($this->is_logged_in()) {
             $this->ship_to_address_id = $_SESSION["ship_to_address_id"] = $address_obj->id;
             $this->ship_to_address_user_id = $_SESSION["ship_to_address_user_id"] = $address_obj->user_id;
@@ -187,7 +195,8 @@ class Session {
         }
     }
 
-    public function initialize_ship_to_address_vars() {
+    public function initialize_ship_to_address_vars()
+    {
         if ($this->is_logged_in()) {
 //            $a_ship_to_address_obj = (Address);
             // Default values.
@@ -214,7 +223,8 @@ class Session {
 //        }
 //    }
 
-    public function is_viewing_own_account() {
+    public function is_viewing_own_account()
+    {
         if ($this->actual_user_id === $this->currently_viewed_user_id) {
             return true;
         } else {
@@ -223,19 +233,22 @@ class Session {
     }
 
 
-
-    public function is_admin() {
-        if ($this->actual_user_type_id == 1) { return true; }
+    public function is_admin()
+    {
+        if ($this->actual_user_type_id == 1) {
+            return true;
+        }
         return false;
     }
 
 
-
-    public function is_logged_in() {
+    public function is_logged_in()
+    {
         return $this->logged_in;
     }
 
-    public function login($user) {
+    public function login($user)
+    {
 // database should find user based on username/password
 
         session_regenerate_id();
@@ -243,7 +256,7 @@ class Session {
 
         if ($user) {
             $_SESSION["my_static_counter"] = 0;
-            
+
             $this->actual_user_id = $_SESSION["actual_user_id"] = $user->user_id;
             $this->actual_user_name = $_SESSION["actual_user_name"] = $user->user_name;
             $this->actual_user_type_id = $_SESSION["actual_user_type_id"] = $user->user_type_id;
@@ -254,14 +267,14 @@ class Session {
             $this->logged_in = true;
 
 
-// Initialize cart.
-            require_once("model_store_cart.php");
-// This could be an initialized cart object without values in it.
-            $initial_cart_obj = StoreCart::get_initialized_cart($this->actual_user_id);
-//             $this->cart_id = $_SESSION["cart_id"]
-            if ($initial_cart_obj != null) {
-                $this->set_cart($initial_cart_obj);
-            }
+//// Initialize cart.
+//            require_once("model_store_cart.php");
+//// This could be an initialized cart object without values in it.
+//            $initial_cart_obj = StoreCart::get_initialized_cart($this->actual_user_id);
+////             $this->cart_id = $_SESSION["cart_id"]
+//            if ($initial_cart_obj != null) {
+//                $this->set_cart($initial_cart_obj);
+//            }
 
 
             //
@@ -300,11 +313,13 @@ class Session {
         }
     }
 
-    public function set_num_of_notifications($num_of_new_notifications) {
+    public function set_num_of_notifications($num_of_new_notifications)
+    {
         $this->num_of_notifications = $_SESSION["num_of_notifications"] = $num_of_new_notifications;
     }
 
-    public function logout() {
+    public function logout()
+    {
         unset($_SESSION["actual_user_id"]);
         unset($_SESSION["actual_user_name"]);
         unset($_SESSION["actual_user_type_id"]);
@@ -360,12 +375,6 @@ class Session {
         // Chat.           
         unset($_SESSION["chat_thread_id"]);
 //        unset($_SESSION["chat_with_user_id"]);
-
-
-
-
-
-
 
 
         unset($this->actual_user_id);
@@ -428,9 +437,6 @@ class Session {
 //        unset($this->chat_with_user_id);
 
 
-
-
-
         $this->logged_in = false;
         session_unset();
         session_destroy();
@@ -452,7 +458,8 @@ class Session {
 // and everytime that happens, an instantiation happens at the end
 // of this file. And with that, we create a new user object everytime.
 // So we check.
-    private function check_login() {
+    private function check_login()
+    {
         if (isset($_SESSION["actual_user_id"])) {
             $this->actual_user_id = $_SESSION["actual_user_id"];
             $this->actual_user_name = $_SESSION["actual_user_name"];
@@ -478,8 +485,6 @@ class Session {
             }
 
 
-//
-//            $this->cart = $_SESSION["cart"];
 //            $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
 //
             // For shipping vars.
@@ -498,10 +503,6 @@ class Session {
                 //
                 $this->can_now_checkout = $_SESSION["can_now_checkout"];
             }
-
-
-
-
 
 
             // For transcation vars.
@@ -592,18 +593,18 @@ class Session {
 //            unset($this->chat_with_user_id);
 
 
-
-
             $this->logged_in = false;
         }
     }
 
-    public function set_currently_viewed_user($now_currently_viewed_user_id, $now_currently_viewed_user_name) {
+    public function set_currently_viewed_user($now_currently_viewed_user_id, $now_currently_viewed_user_name)
+    {
         $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $now_currently_viewed_user_id;
         $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $now_currently_viewed_user_name;
     }
 
-    public function reset_currently_viewed_user() {
+    public function reset_currently_viewed_user()
+    {
         $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"] = $_SESSION["actual_user_id"];
         $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"] = $_SESSION["actual_user_name"];
     }

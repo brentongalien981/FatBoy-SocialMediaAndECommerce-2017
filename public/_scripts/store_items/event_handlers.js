@@ -2,6 +2,7 @@ function prepare_product_creation() {
     // window.alert("in method prepare_product_creation()");
 
     /* Hide the products. */
+    $("#products-container").css("display", "none");
     $(".products").css("display", "none");
 
     /* Hide the edit-product-list-container. */
@@ -27,6 +28,7 @@ function prepare_product_editing() {
     maximize_main_content();
 
     /* Hide the products. */
+    $("#products-container").css("display", "none");
     $(".products").css("display", "none");
 
     /* Clear the previous contents of the prodcut-items-list-container. */
@@ -83,7 +85,8 @@ function prepare_products_display() {
     $("#product-items-list-container").css("display", "none");
 
     /* Show the products. */
-    // $(".products").css("display", "inline-block");
+    $("#products-container").css("display", "block");
+    $(".products").css("display", "inline-block");
     $("#product-el-template").css("display", "none");
 
     /**/

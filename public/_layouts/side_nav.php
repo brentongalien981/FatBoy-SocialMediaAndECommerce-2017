@@ -143,6 +143,13 @@
     }
     ?>
 
+    <!--    New cart-->
+    <?php if ($session->is_logged_in() && $session->is_viewing_own_account()) { ?>
+        <a id="" class="menus" href="<?= LOCAL . "/public/__view/store_carts/index.php"?>">
+            <img src="<?= LOCAL . "/public/_photos/icon_cart.png" ?>" class="icon">New My Cart (beta)
+        </a>
+    <?php } ?>
+
 
     <!--    Sales-->
     <?php
