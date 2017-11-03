@@ -30,4 +30,17 @@ class CartItemController extends MainController
 
         return CartItem::read($data);
     }
+
+    public function update($data)
+    {
+        //
+        $d = $data;
+        global $session;
+
+
+        /**/
+        $is_update_ok = CartItem::update($d);
+
+        return $is_update_ok;
+    }
 }

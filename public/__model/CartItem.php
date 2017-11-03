@@ -95,6 +95,7 @@ class CartItem
 
             //
             $an_obj = array(
+                "store_item_id" => $store_item_details["store_item_id"],
                 "cart_item_id" => $row["id"],
                 "quantity" => $row["quantity"],
                 "product_name" => $store_item_details["product_name"],
@@ -126,6 +127,7 @@ class CartItem
 
             //
             $an_obj = array(
+                "store_item_id" => $row["id"],
                 "product_name" => $row["name"],
                 "product_price" => $row["price"],
                 "product_photo_address" => $row["photo_address"],
@@ -136,5 +138,67 @@ class CartItem
             //
             return $an_obj;
         }
+    }
+
+    public static function update($data) {
+
+        /**/
+        $d = $data;
+        global $database;
+
+        /**/
+        if (!self::is_new_quantity_within_stock_quantity($d)) { return false; }
+
+
+
+        /**/
+        $query = "UPDATE " . self::$table_name;
+        $query .= " SET quantity = {$d['new_quantity']}";
+        $query .= " WHERE id = {$d['cart_item_id']}";
+
+
+        // Start transaction.
+        if (!$database->start_transaction()) {
+            return false;
+        }
+
+        $database->get_result_from_query($query);
+
+        //
+        $is_update_ok = ($database->get_num_of_affected_rows() == 1) ? true : false;
+
+
+        //
+        if ($is_update_ok) {
+            //
+            if (!$database->commit()) {
+                return false;
+            }
+
+            //
+            return true;
+        } else {
+            //
+            $database->rollback();
+
+            //
+            return false;
+        }
+    }
+
+    private static function is_new_quantity_within_stock_quantity($data) {
+
+        /**/
+        $new_quantity = $data["new_quantity"];
+
+        /**/
+        $store_item_details = self::read_store_item($data["store_item_id"]);
+        $stock_quantity = $store_item_details["product_stock_quantity"];
+
+        /**/
+        if (($new_quantity > $stock_quantity) ||
+            ($new_quantity < 0)) { return false; }
+
+        return true;
     }
 }

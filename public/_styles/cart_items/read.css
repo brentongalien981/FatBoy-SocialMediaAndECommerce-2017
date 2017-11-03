@@ -1,0 +1,28 @@
+#cart-items-container {
+    display: block;
+}
+
+#cart-items-title {
+    margin-bottom: 20px;
+}
+
+#cart-items-container table {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#cart-item-template {
+    display: none;
+}
+
+
+#cart-items-container table td {
+    max-width: 300px;
+}
+
+.cart-item-img {
+    width: 300px;
+    min-height: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+}

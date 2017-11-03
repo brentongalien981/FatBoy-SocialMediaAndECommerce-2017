@@ -20,11 +20,18 @@
             <?php require_once(PUBLIC_PATH . "/__view/store_carts/read.php"); ?>
 
 
+            <!--    Extentional -->
+            <?php require_once(PUBLIC_PATH . "/__view/cart_items/index.php"); ?>
+
+            <div>
+                <button id="continue-to-shipping-address-btn" class="cart-next-step-btn">Fill in shipping address</button>
+            </div>
+
             <!-- Reference for reading more objs. -->
         </div>
 
         <!--Templates-->
-        <!--    Extentional -->
+
 
     </main>
 
@@ -56,24 +63,6 @@
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/event_listeners.js"; ?><!--"></script>-->
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/session/event_listeners2.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/tasks.js"; ?><!--"></script>-->
-
-
-    <!--Scripts for cart items.-->
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/instance_vars.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/cart_items/general_functions.js"; ?>"></script>
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/general_functions2.js"; ?><!--"></script>-->
-    <!--<script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/general_functions3.js"; ?><!--"></script>-->
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/create.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/cart_items/read.js"; ?>"></script>
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/update.js"; ?><!--"></script>-->
-    <!--<script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/delete.js"; ?><!--"></script>-->
-    <!--<script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/fetch.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/cart_items/CartItem.js"; ?>"></script>
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/event_handlers.js"; ?><!--"></script>-->
-    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/event_listeners.js"; ?><!--"></script>-->
-    <!--<script src="--><?php //echo LOCAL . "/public/_scripts/cart_items/event_listeners2.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/cart_items/tasks.js"; ?>"></script>
-
 
 
     <!--Main scripts-->

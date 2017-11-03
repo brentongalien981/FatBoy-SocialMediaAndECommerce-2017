@@ -144,6 +144,9 @@ function decide_ajax_pre_after_effects(x_obj, json) {
         case "StoreItem":
             do_store_item_pre_after_effects(class_name, crud_type, json);
             break;
+        case "CartItem":
+            do_cart_item_pre_after_effects(class_name, crud_type, json);
+            break;
     }
 }
 
@@ -388,7 +391,7 @@ function should_crud_type_log(x_obj) {
 
     //
     switch (x_obj.crud_type) {
-        case "read":
+        case "update":
             return true;
             break;
         default:

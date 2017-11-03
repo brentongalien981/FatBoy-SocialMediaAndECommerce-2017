@@ -1,0 +1,1 @@
+var is_cart_item_updating = false;

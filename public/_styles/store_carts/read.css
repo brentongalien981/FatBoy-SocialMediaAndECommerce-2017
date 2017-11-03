@@ -1,0 +1,8 @@
+#cart-list-container {
+    margin-bottom: 30px;
+}
+
+.cart-next-step-btn {
+    float: right;
+    background-color: greenyellow;
+}

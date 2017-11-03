@@ -2,41 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/session/SessionAjaxHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/session/SessionController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/store_carts/StoreCartAjaxHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/store_carts/StoreCartController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/CartItem.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/StoreCart.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/store_carts/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/store_carts/read.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/CartItem.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/read.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/tasks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/session/Session.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/session/general_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/session/update.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/StoreCart.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/general_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/read.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/tasks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/store_carts/index.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/store_carts/read.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/cart_items/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/cart_items/read.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/general_functions2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/update.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/cart_items/read.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/session.php" afterPath="$PROJECT_DIR$/public/__model/session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/store_items/read.php" afterPath="$PROJECT_DIR$/public/__view/store_items/read.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_layouts/side_nav.php" afterPath="$PROJECT_DIR$/public/_layouts/side_nav.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php" afterPath="$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php" afterPath="$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/CartItem.php" afterPath="$PROJECT_DIR$/public/__model/CartItem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/store_carts/index.php" afterPath="$PROJECT_DIR$/public/__view/store_carts/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/main_script.js" afterPath="$PROJECT_DIR$/public/_scripts/main_script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_items/event_handlers.js" afterPath="$PROJECT_DIR$/public/_scripts/store_items/event_handlers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_items/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/store_items/event_listeners.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_items/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/store_items/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_items/general_functions2.js" afterPath="$PROJECT_DIR$/public/_scripts/store_items/general_functions2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_items/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/store_items/instance_vars.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_items/read.js" afterPath="$PROJECT_DIR$/public/_scripts/store_items/read.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_styles/store_carts/read.css" afterPath="$PROJECT_DIR$/public/_styles/store_carts/read.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -60,48 +40,58 @@
     <favorites_list name="FatBoy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.4789916">
+    <splitter split-orientation="vertical" split-proportion="0.2710084">
       <split-first>
         <splitter split-orientation="horizontal" split-proportion="0.5054308">
           <split-first>
             <splitter split-orientation="vertical" split-proportion="0.52446187">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/read.js">
+                  <file leaf-file-name="event_handlers.js" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="90">
-                          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+                        <state relative-caret-position="165">
+                          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="main_script.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="121">
-                          <caret line="230" column="38" lean-forward="false" selection-start-line="230" selection-start-column="12" selection-end-line="230" selection-end-column="38" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="30">
-                          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="tasks.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/tasks.js">
+                  <file leaf-file-name="update.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/update.js">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="0">
-                          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+                          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="general_functions2.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions2.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="125">
+                          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="100">
+                          <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="instance_vars.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="0">
+                          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="25" />
                           <folding />
                         </state>
                       </provider>
@@ -111,36 +101,22 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/read.js">
+                  <file leaf-file-name="main_script.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="0">
-                          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
-                          <folding>
-                            <element signature="n#!!block;n#read_store_carts#0" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/session/general_functions.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="105">
-                          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+                        <state relative-caret-position="76">
+                          <caret line="393" column="20" lean-forward="false" selection-start-line="393" selection-start-column="20" selection-end-line="393" selection-end-column="20" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="StoreCart.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/StoreCart.js">
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="0">
-                          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-                          <folding>
-                            <element signature="n#!!block;n#StoreCart#0" expanded="false" />
-                          </folding>
+                          <caret line="0" column="29" lean-forward="true" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -156,9 +132,11 @@
                   <file leaf-file-name="CartItemAjaxHandler.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="64">
-                          <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
-                          <folding />
+                        <state relative-caret-position="-22">
+                          <caret line="119" column="67" lean-forward="false" selection-start-line="119" selection-start-column="67" selection-end-line="119" selection-end-column="67" />
+                          <folding>
+                            <element signature="e#151#1685#0#PHP" expanded="false" />
+                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -166,8 +144,8 @@
                   <file leaf-file-name="CartItemController.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="64">
-                          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+                        <state relative-caret-position="130">
+                          <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
                           <folding>
                             <element signature="e#226#268#0#PHP" expanded="true" />
                             <element signature="e#356#428#0#PHP" expanded="false" />
@@ -183,8 +161,8 @@
                   <file leaf-file-name="StoreCartAjaxHandler.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="105">
-                          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+                        <state relative-caret-position="90">
+                          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
                           <folding>
                             <element signature="e#155#1950#0#PHP" expanded="false" />
                           </folding>
@@ -192,7 +170,7 @@
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="StoreCartController.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="StoreCartController.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartController.php">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="162">
@@ -200,6 +178,33 @@
                           <folding>
                             <element signature="e#228#270#0#PHP" expanded="true" />
                             <element signature="e#361#433#0#PHP" expanded="false" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="StoreItemAjaxHandler.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/store_items/StoreItemAjaxHandler.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="75">
+                          <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+                          <folding>
+                            <element signature="e#155#1668#0#PHP" expanded="false" />
+                            <element signature="e#1670#4588#0#PHP" expanded="false" />
+                            <element signature="e#4590#7591#0#PHP" expanded="false" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="StoreItemController.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/store_items/StoreItemController.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="163">
+                          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+                          <folding>
+                            <element signature="e#718#1384#0#PHP" expanded="false" />
+                            <element signature="e#1390#2066#0#PHP" expanded="false" />
                           </folding>
                         </state>
                       </provider>
@@ -220,18 +225,28 @@
                   <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__view/store_carts/index.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="144">
-                          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+                        <state relative-caret-position="90">
+                          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
                   <file leaf-file-name="read.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/read.php">
+                    <entry file="file://$PROJECT_DIR$/public/__view/cart_items/read.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="30">
-                          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="25" />
+                        <state relative-caret-position="137">
+                          <caret line="24" column="65" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="65" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/cart_items/index.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="68">
+                          <caret line="23" column="74" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="74" />
                           <folding />
                         </state>
                       </provider>
@@ -274,7 +289,7 @@
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="controller_store_cart.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="controller_store_cart.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/controller_store_cart.php">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="-102">
@@ -285,6 +300,16 @@
                             <marker date="1495200832000" expanded="true" signature="7515:7652" ph="SELECT * FRO... StoreCart" />
                             <marker date="1495200832000" expanded="true" signature="8567:8687" ph="SELECT * FRO... StoreCart" />
                           </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="read.css" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_styles/invoice_items/read.css">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="90">
+                          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -310,14 +335,14 @@
                   <file leaf-file-name="CartItem.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__model/CartItem.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-11">
-                          <caret line="76" column="27" lean-forward="false" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+                        <state relative-caret-position="161">
+                          <caret line="199" column="30" lean-forward="false" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
                           <folding>
                             <element signature="e#388#813#0#PHP" expanded="false" />
                             <element signature="e#819#1162#0#PHP" expanded="false" />
                             <element signature="e#1168#1360#0#PHP" expanded="false" />
-                            <marker date="1509611195000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1509611195000" expanded="true" signature="2785:2811" ph="SELECT * FRO... MyStoreItems" />
+                            <marker date="1509691974000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1509691974000" expanded="true" signature="2858:2884" ph="SELECT * FRO... MyStoreItems" />
                           </folding>
                         </state>
                       </provider>
@@ -345,27 +370,27 @@
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="StoreItem.php" pinned="false" current-in-tab="false">
+                  <file leaf-file-name="StoreItem.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__model/StoreItem.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="33">
-                          <caret line="226" column="2" lean-forward="false" selection-start-line="226" selection-start-column="2" selection-end-line="237" selection-end-column="50" />
+                        <state relative-caret-position="75">
+                          <caret line="85" column="1" lean-forward="false" selection-start-line="85" selection-start-column="1" selection-end-line="116" selection-end-column="9" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="CartItem.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="CartItem.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__model/CartItem.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="215">
-                          <caret line="131" column="39" lean-forward="false" selection-start-line="131" selection-start-column="17" selection-end-line="131" selection-end-column="39" />
+                        <state relative-caret-position="84">
+                          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
                           <folding>
                             <element signature="e#388#813#0#PHP" expanded="false" />
                             <element signature="e#819#1162#0#PHP" expanded="false" />
                             <element signature="e#1168#1360#0#PHP" expanded="false" />
-                            <marker date="1509611195000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1509611195000" expanded="true" signature="2785:2811" ph="SELECT * FRO... MyStoreItems" />
+                            <marker date="1509691974000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1509691974000" expanded="true" signature="2858:2884" ph="SELECT * FRO... MyStoreItems" />
                           </folding>
                         </state>
                       </provider>
@@ -390,9 +415,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$ii_controller</find>
-      <find>uki69</find>
-      <find>invoice-details-table</find>
       <find>Carbon</find>
       <find>$ntpr_controller</find>
       <find>my_ca</find>
@@ -414,15 +436,17 @@
       <find>si</find>
       <find>&lt;script</find>
       <find>/cart_items/</find>
-      <find>$si_controller</find>
       <find>cart</find>
       <find>$sc_controller</find>
       <find>set_cart_id</find>
-      <find>read(</find>
       <find>my_aja</find>
+      <find>invoice</find>
+      <find>order</find>
+      <find>invoice_items</find>
+      <find>$si_controller</find>
+      <find>read(</find>
     </findStrings>
     <replaceStrings>
-      <replace>$n</replace>
       <replace>$ntpr_controller</replace>
       <replace>$tpr_controller</replace>
       <replace>invoices</replace>
@@ -446,11 +470,12 @@
       <replace>$si</replace>
       <replace>230</replace>
       <replace>&quot;</replace>
-      <replace>cart_items</replace>
       <replace>$sc_controller</replace>
       <replace>sc</replace>
       <replace>/session/</replace>
       <replace>$s_controller</replace>
+      <replace>cart</replace>
+      <replace>cart_items</replace>
       <replace>$ci_controller</replace>
     </replaceStrings>
   </component>
@@ -460,13 +485,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/_styles/store_items/read.css" />
-        <option value="$PROJECT_DIR$/public/__view/invoices/read.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/store_items/create.js" />
-        <option value="$PROJECT_DIR$/private/helper_classes/validation/StoreItemValidator.php" />
-        <option value="$PROJECT_DIR$/private/helper_classes/validation/Validator.php" />
-        <option value="$PROJECT_DIR$/Snippets/debug.txt" />
-        <option value="$PROJECT_DIR$/public/_scripts/main_script2.js" />
         <option value="$PROJECT_DIR$/public/_scripts/store_items/tasks.js" />
         <option value="$PROJECT_DIR$/public/_styles/store_items/index.css" />
         <option value="$PROJECT_DIR$/public/__view/store_items/create.php" />
@@ -485,7 +503,6 @@
         <option value="$PROJECT_DIR$/public/_scripts/store_items/general_functions.js" />
         <option value="$PROJECT_DIR$/public/_scripts/store_items/event_handlers.js" />
         <option value="$PROJECT_DIR$/public/_styles/store_carts/index.css" />
-        <option value="$PROJECT_DIR$/public/_styles/store_carts/read.css" />
         <option value="$PROJECT_DIR$/public/_layouts/side_nav.php" />
         <option value="$PROJECT_DIR$/public/_scripts/store_carts/tasks.js" />
         <option value="$PROJECT_DIR$/public/_scripts/store_carts/StoreCart.js" />
@@ -504,13 +521,21 @@
         <option value="$PROJECT_DIR$/public/_scripts/session/general_functions.js" />
         <option value="$PROJECT_DIR$/public/_scripts/cart_items/read.js" />
         <option value="$PROJECT_DIR$/public/_scripts/cart_items/CartItem.js" />
-        <option value="$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php" />
-        <option value="$PROJECT_DIR$/public/__model/CartItem.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
-        <option value="$PROJECT_DIR$/public/__view/store_carts/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/cart_items/tasks.js" />
+        <option value="$PROJECT_DIR$/public/_styles/cart_items/read.css" />
+        <option value="$PROJECT_DIR$/public/_styles/store_carts/read.css" />
         <option value="$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php" />
+        <option value="$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php" />
+        <option value="$PROJECT_DIR$/public/__view/store_carts/index.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/cart_items/update.js" />
+        <option value="$PROJECT_DIR$/public/__view/cart_items/read.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/cart_items/general_functions2.js" />
+        <option value="$PROJECT_DIR$/public/__view/cart_items/index.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js" />
         <option value="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/__model/CartItem.php" />
       </list>
     </option>
   </component>
@@ -573,6 +598,32 @@
               <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
               <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="store_items" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__view" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__view" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="cart_items" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -587,13 +638,6 @@
               <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="store_carts" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="store_items" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -601,6 +645,20 @@
               <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="cart_items" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="invoice_items" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
@@ -676,7 +734,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="my_aj&#9;null&#9;null&#10;my_aja&#9;null&#9;null&#10;hea&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;header.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;my_ajax&#9;null&#9;null&#10;header2.&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;header.cs&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header.css&#10;header.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/header.css&#10;handlers&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/event_handlers.js&#10;genera&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoice_items/general_functions.js&#10;read&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/read.js&#10;are_rateable_item_ids_set&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;head&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;redirect_to&#9;null&#9;null&#10;validator&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/helper_classes/validation/Validator.php&#10;config&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/config.php&#10;_/my_da&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_database.php&#10;_/se&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/session.php&#10;_/n/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/app_settings/instance_vars.js&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/tasks.js&#10;side_na&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;index.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;inst&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;cre&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/my_photos/create.js&#10;c_l/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat_list/index.css&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;c/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;index.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;sid&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;side&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;icon_mana&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/helper_functions/icon_manager.php&#10;initiali&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;count_dis&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/count_displayer.php&#10;span_num_of_notifications&#9;null&#9;null&#10;notifications/ind&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;insta&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;instanc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;Notifi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;decide&#9;null&#9;null&#10;read.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/read.php&#10;fetch&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/fetch.js&#10;NotificationR&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/NotificationRateableItem.js&#10;main&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/main_script.js&#10;header.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css" />
+    <property name="SearchEverywhereHistoryKey" value="my_aja&#9;null&#9;null&#10;my_aj&#9;null&#9;null&#10;hea&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;header.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;my_ajax&#9;null&#9;null&#10;header2.&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;header.cs&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header.css&#10;header.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/header.css&#10;handlers&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/event_handlers.js&#10;genera&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoice_items/general_functions.js&#10;read&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/read.js&#10;are_rateable_item_ids_set&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;head&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;redirect_to&#9;null&#9;null&#10;validator&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/helper_classes/validation/Validator.php&#10;config&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/config.php&#10;_/my_da&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_database.php&#10;_/se&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/session.php&#10;_/n/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/app_settings/instance_vars.js&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/tasks.js&#10;side_na&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;index.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;inst&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;cre&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/my_photos/create.js&#10;c_l/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat_list/index.css&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;c/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;index.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;sid&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;side&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;icon_mana&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/helper_functions/icon_manager.php&#10;initiali&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;count_dis&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/count_displayer.php&#10;span_num_of_notifications&#9;null&#9;null&#10;notifications/ind&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;insta&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;instanc&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/my_shopping/instance_vars.js&#10;Notifi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/Notification.php&#10;decide&#9;null&#9;null&#10;read.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__controller/notifications/read.php&#10;fetch&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/fetch.js&#10;NotificationR&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/rateable_item/NotificationRateableItem.js&#10;main&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/main_script.js&#10;header.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="Constants" value="false" />
@@ -832,12 +890,12 @@
       <workItem from="1508341324299" duration="2156000" />
       <workItem from="1508471938300" duration="134973000" />
       <workItem from="1509101710347" duration="103212000" />
-      <workItem from="1509577275151" duration="18459000" />
+      <workItem from="1509577275151" duration="32473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1144127000" />
+    <option name="totallyTimeSpent" value="1158141000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -895,171 +953,11 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/_styles/store_carts/read.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_layouts/side_nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="148" column="101" lean-forward="false" selection-start-line="148" selection-start-column="101" selection-end-line="148" selection-end-column="101" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/event_handlers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="94" column="1" lean-forward="true" selection-start-line="94" selection-start-column="1" selection-end-line="94" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/invoices/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="18" column="18" lean-forward="true" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding>
-            <element signature="n#!!block;n#get_num_of_invoices#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/event_listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/read.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!block;n#read_store_items#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/StoreItem.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="31" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#StoreItem#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/private/helper_classes/validation/StoreItemValidator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="82" column="30" lean-forward="false" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/my_photos/PhotoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="79" column="31" lean-forward="false" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
-          <folding>
-            <element signature="e#374#430#0#PHP" expanded="false" />
-            <element signature="e#917#1375#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/invoices/InvoiceController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="29" selection-end-column="5" />
-          <folding>
-            <element signature="e#225#267#0#PHP" expanded="false" />
-            <element signature="e#354#426#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/store_items/StoreItemController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="29" column="28" lean-forward="false" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-          <folding>
-            <element signature="e#310#370#0#PHP" expanded="false" />
-            <element signature="e#503#628#0#PHP" expanded="false" />
-            <element signature="e#718#1384#0#PHP" expanded="false" />
-            <element signature="e#1390#2066#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="19" lean-forward="false" selection-start-line="0" selection-start-column="19" selection-end-line="0" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="90" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#get_product_el#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/store_items/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="54" column="42" lean-forward="false" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding>
-            <element signature="e#181#1254#0#HTML" expanded="false" />
-            <element signature="e#572#1183#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/view_store_cart/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="84" column="10" lean-forward="false" selection-start-line="84" selection-start-column="10" selection-end-line="84" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_layouts/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-130">
           <caret line="131" column="7" lean-forward="false" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="7" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/update.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="29" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#update_store_item#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1076,18 +974,6 @@
         <state relative-caret-position="15">
           <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/store_items/StoreItemAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#155#1668#0#PHP" expanded="false" />
-            <element signature="e#1670#4588#0#PHP" expanded="false" />
-            <element signature="e#4590#7591#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1131,14 +1017,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/read.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/session/update.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="59">
@@ -1174,7 +1052,7 @@
     <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/read.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+          <caret line="13" column="1" lean-forward="false" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
             <element signature="n#!!block;n#read_store_carts#0" expanded="false" />
           </folding>
@@ -1186,27 +1064,6 @@
         <state relative-caret-position="15">
           <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#155#1950#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-          <folding>
-            <element signature="e#228#270#0#PHP" expanded="true" />
-            <element signature="e#361#433#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1292,14 +1149,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/StoreItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="226" column="2" lean-forward="false" selection-start-line="226" selection-start-column="2" selection-end-line="237" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/StoreCart.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1310,10 +1159,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/read.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="230" column="38" lean-forward="false" selection-start-line="230" selection-start-column="12" selection-end-line="230" selection-end-column="38" />
+        <state relative-caret-position="30">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/invoice_items/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1326,10 +1183,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/index.php">
+    <entry file="file://$PROJECT_DIR$/public/_scripts/invoice_items/general_functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="75" column="0" lean-forward="true" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+        <state relative-caret-position="80">
+          <caret line="50" column="47" lean-forward="false" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/invoice_items/general_functions2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="56" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#get_invoice_item_details_el#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/tasks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1342,32 +1217,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/tasks.js">
+    <entry file="file://$PROJECT_DIR$/public/_styles/invoice_items/read.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+        <state relative-caret-position="90">
+          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/CartItem.php">
+    <entry file="file://$PROJECT_DIR$/public/_styles/store_carts/index.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="76" column="27" lean-forward="false" selection-start-line="76" selection-start-column="27" selection-end-line="76" selection-end-column="27" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/store_carts/read.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="34" lean-forward="false" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/cart_items/read.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/invoice_items/event_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="e#388#813#0#PHP" expanded="false" />
-            <element signature="e#819#1162#0#PHP" expanded="false" />
-            <element signature="e#1168#1360#0#PHP" expanded="false" />
-            <marker date="1509611195000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1509611195000" expanded="true" signature="2785:2811" ph="SELECT * FRO... MyStoreItems" />
+            <element signature="e#155#1950#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding>
+            <element signature="e#228#270#0#PHP" expanded="true" />
+            <element signature="e#361#433#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/store_items/StoreItemAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="48" lean-forward="false" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+          <folding>
+            <element signature="e#155#1668#0#PHP" expanded="false" />
+            <element signature="e#1670#4588#0#PHP" expanded="false" />
+            <element signature="e#4590#7591#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+        <state relative-caret-position="130">
+          <caret line="41" column="34" lean-forward="false" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
           <folding>
             <element signature="e#226#268#0#PHP" expanded="true" />
             <element signature="e#356#428#0#PHP" expanded="false" />
@@ -1375,19 +1301,134 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/StoreItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="85" column="1" lean-forward="false" selection-start-line="85" selection-start-column="1" selection-end-line="116" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="53" column="53" lean-forward="false" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+        <state relative-caret-position="-22">
+          <caret line="119" column="67" lean-forward="false" selection-start-line="119" selection-start-column="67" selection-end-line="119" selection-end-column="67" />
+          <folding>
+            <element signature="e#151#1685#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="393" column="20" lean-forward="false" selection-start-line="393" selection-start-column="20" selection-end-line="393" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/cart_items/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="24" column="65" lean-forward="false" selection-start-line="24" selection-start-column="60" selection-end-line="24" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/store_items/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="29" lean-forward="true" selection-start-line="0" selection-start-column="29" selection-end-line="0" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/cart_items/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="23" column="74" lean-forward="false" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="25" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="20" lean-forward="false" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        <state relative-caret-position="100">
+          <caret line="53" column="34" lean-forward="false" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/store_items/StoreItemController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="e#718#1384#0#PHP" expanded="false" />
+            <element signature="e#1390#2066#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/CartItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="199" column="30" lean-forward="false" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
+          <folding>
+            <element signature="e#388#813#0#PHP" expanded="false" />
+            <element signature="e#819#1162#0#PHP" expanded="false" />
+            <element signature="e#1168#1360#0#PHP" expanded="false" />
+            <marker date="1509691974000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1509691974000" expanded="true" signature="2858:2884" ph="SELECT * FRO... MyStoreItems" />
+          </folding>
         </state>
       </provider>
     </entry>
