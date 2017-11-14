@@ -21,7 +21,7 @@ class Session
     public $seller_user_id;
     public $buyer_user_id;
     private $cart;
-//    public $ship_to_address_id;
+
 //    private $ship_to_address_obj;
 // Vars for shipping.
     public $ship_to_address_id;
@@ -179,6 +179,13 @@ class Session
         $this->cart_id = $_SESSION["cart_id"] = $cart_id;
     }
 
+    public function set_ship_to_address_id($id)
+    {
+        if ($this->is_logged_in()) {
+            $this->ship_to_address_id = $_SESSION["ship_to_address_id"] = $id;
+        }
+    }
+
     public function set_ship_to_address_vars($address_obj)
     {
         if ($this->is_logged_in()) {
@@ -277,8 +284,8 @@ class Session
 //            }
 
 
-            //
-            $this->initialize_ship_to_address_vars();
+//            //
+//            $this->initialize_ship_to_address_vars();
 
             //
             $this->can_now_checkout = $_SESSION["can_now_checkout"] = false;
@@ -468,7 +475,11 @@ class Session
             $this->currently_viewed_user_id = $_SESSION["currently_viewed_user_id"];
             $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"];
 
-//        $this->ship_to_address_id = $_SESSION["ship_to_address_id"] = null;
+
+
+            if (isset($_SESSION["ship_to_address_id"])) {
+                $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
+            }
 
             $this->logged_in = true;
 
@@ -484,11 +495,8 @@ class Session
                 $this->buyer_user_id = $_SESSION["buyer_user_id"];
             }
 
-
-//            $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
-//
             // For shipping vars.
-            if (isset($_SESSION["ship_to_address_id"])) {
+            if (isset($_SESSION["ship_to_address_idzZzZz"])) {
                 $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
                 $this->ship_to_address_user_id = $_SESSION["ship_to_address_user_id"];
                 $this->ship_to_address_address_type_code = $_SESSION["ship_to_address_address_type_code"];

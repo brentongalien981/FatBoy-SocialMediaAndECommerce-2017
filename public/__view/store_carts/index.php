@@ -9,9 +9,34 @@
     <main id="middle_content">
 
         <nav id="sub_menus_nav">
-            <button class="store-cart-steps-btn">1 Cart Selection</button>
-            <button class="store-cart-steps-btn">2 Shipping Address</button>
-            <button class="store-cart-steps-btn">3 Shipping Options</button>
+            <button
+                    id="go-to-cart-selection-nav-btn"
+                    class="store-cart-steps-btn
+                        go-to-cart-selection-btn
+                        my-cart-current-step-navigation-btn">1 Cart
+                Selection
+            </button>
+            <button
+                    id="continue-to-shipping-address-nav-btn"
+                    class="store-cart-steps-btn
+                    continue-to-shipping-address-btn">
+                2 Shipping Address
+            </button>
+
+            <button
+                    id="go-to-shipping-options-nav-btn"
+                    class="store-cart-steps-btn
+                    go-to-shipping-options-btn">
+                3 Shipping Options
+            </button>
+
+
+            <button
+                    id="go-to-transaction-summary-nav-btn"
+                    class="store-cart-steps-btn
+                        go-to-transaction-summary-btn">
+                4 Transaction Summary
+            </button>
         </nav>
 
 
@@ -20,11 +45,58 @@
             <?php require_once(PUBLIC_PATH . "/__view/store_carts/read.php"); ?>
 
 
-            <!--    Extentional -->
+            <!--    Extentional: Cart Items -->
             <?php require_once(PUBLIC_PATH . "/__view/cart_items/index.php"); ?>
 
-            <div>
-                <button id="continue-to-shipping-address-btn" class="cart-next-step-btn">Fill in shipping address</button>
+            <!--    Extentional: Shipping -->
+            <?php require_once(PUBLIC_PATH . "/__view/shipping/index.php"); ?>
+
+            <!--    Extentional: Shipping Options -->
+            <?php require_once(PUBLIC_PATH . "/__view/shipping_options/index.php"); ?>
+
+
+            <div id="my-cart-step-incremental-btn-container">
+
+
+                <button
+                        id="continue-to-shipping-address-incremental-btn"
+                        class="my-cart-step-incremental-btn
+                        my-cart-current-step-incremental-btn
+                        continue-to-shipping-address-btn">
+                    Fill in shipping address
+                </button>
+
+                <button id="go-to-cart-selection-incremental-btn"
+                        class="my-cart-step-incremental-btn go-to-cart-selection-btn">
+                    Go back to cart selection
+                </button>
+
+                <button id="go-to-shipping-options-incremental-btn"
+                        class="my-cart-step-incremental-btn go-to-shipping-options-btn">
+                    Go to shipping option
+                </button>
+
+
+                <button
+                        id="go-back-to-shipping-address-incremental-btn"
+                        class="my-cart-step-incremental-btn
+                        continue-to-shipping-address-btn">
+                    Go back to shipping address
+                </button>
+
+
+                <button
+                        id="go-to-transaction-summary-incremental-btn"
+                        class="my-cart-step-incremental-btn
+                        go-to-transaction-summary-btn">
+                    Go to transaction summary
+                </button>
+
+
+                <button id="go-back-to-shipping-options-incremental-btn"
+                        class="my-cart-step-incremental-btn go-to-shipping-options-btn">
+                    Go back to shipping option
+                </button>
             </div>
 
             <!-- Reference for reading more objs. -->
@@ -48,17 +120,20 @@
 
     <!--Extentional scripts-->
 
+    <!--    Extentional: Transaction Summary -->
+<?php require_once(PUBLIC_PATH . "/__view/transaction_summary/index.php"); ?>
+
     <!--    Scripts for session-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/instance_vars.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/session/general_functions.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/session/general_functions.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/general_functions2.js"; ?><!--"></script>-->
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/session/general_functions3.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/create.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/read.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/session/update.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/session/update.js"; ?>"></script>
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/session/delete.js"; ?><!--"></script>-->
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/session/fetch.js"; ?><!--"></script>-->
-        <script src="<?php echo LOCAL . "/public/_scripts/session/Session.js"; ?>"></script>
+    <script src="<?php echo LOCAL . "/public/_scripts/session/Session.js"; ?>"></script>
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/event_handlers.js"; ?><!--"></script>-->
     <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/session/event_listeners.js"; ?><!--"></script>-->
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/session/event_listeners2.js"; ?><!--"></script>-->
@@ -66,17 +141,17 @@
 
 
     <!--Main scripts-->
-<!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/instance_vars.js"; ?><!--"></script>-->
+    <script src="<?php echo LOCAL . "/public/_scripts/store_carts/instance_vars.js"; ?>"></script>
     <script src="<?php echo LOCAL . "/public/_scripts/store_carts/general_functions.js"; ?>"></script>
-<!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/general_functions2.js"; ?><!--"></script>-->
+    <script src="<?php echo LOCAL . "/public/_scripts/store_carts/general_functions2.js"; ?>"></script>
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/general_functions3.js"; ?><!--"></script>-->
-<!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/create.js"; ?><!--"></script>-->
+    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/create.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/store_carts/read.js"; ?>"></script>
-<!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/update.js"; ?><!--"></script>-->
+    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/update.js"; ?><!--"></script>-->
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/delete.js"; ?><!--"></script>-->
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/fetch.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/store_carts/StoreCart.js"; ?>"></script>
-<!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/event_handlers.js"; ?><!--"></script>-->
+    <!--    <script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/event_handlers.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/store_carts/event_listeners.js"; ?>"></script>
     <!--<script src="--><?php //echo LOCAL . "/public/_scripts/store_carts/event_listeners2.js"; ?><!--"></script>-->
     <script src="<?php echo LOCAL . "/public/_scripts/store_carts/tasks.js"; ?>"></script>

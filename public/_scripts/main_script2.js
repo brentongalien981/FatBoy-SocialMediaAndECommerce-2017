@@ -23,3 +23,40 @@ function minimize_main_content() {
     $("#main_content").css("width", "initial");
     $("#main_content").css("min-width", "initial");
 }
+
+function mcnLogObject(obj) {
+
+    /**/
+    console.log("###########################");
+    console.log("IN METHOD mcnLogObject()");
+    
+    /**/
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            var val = obj[key];
+
+            // Display in the console.
+            console.log(key + " => " + val);
+        }
+    }
+
+    console.log("###########################");
+}
+
+function set_loader_el(container_id, loading_comment) {
+
+    //
+    $("#" + container_id).append($("#mcn-loader-el"));
+    $("#mcn-loader-el").find("loading-comment").html(loading_comment);
+    $("#mcn-loader-el").css("display", "block");
+}
+
+function unset_loader_el() {
+
+    //
+    $("#mcn-loader-el").css("display", "none");
+}
+
+function roundToTwo(num) {
+    return +(Math.round(num + "e+2")  + "e-2");
+}

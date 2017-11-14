@@ -21,7 +21,7 @@ function add_listener_to_cart_item_quantity_input(input, cart_item) {
 
         /**/
         $("#continue-to-shipping-address-btn").attr("disable", "true");
-        // $("#continue-to-shipping-address-btn").attr("disable", "true");
+        $("#continue-to-shipping-address-btn").css("background-color", "rgb(150, 150, 150)");
 
         /**/
         update_cart_item(new_quantity, old_quantity, cart_item_id, store_item_id);

@@ -1,4 +1,4 @@
-<div id="cart-items-container">
+<div id="cart-items-container" class="cart-menu-containers">
     <h4 id="cart-items-title">Cart Items</h4>
 
     <h5 id="empty-cart-item-comment">Sorry, but your cart currently doesn't have any item..</h5>
@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td class="cart-item-detail-labels">Quantity</td>
-                <td class="cart-item-detail-value"><input type="number" min="0" multiple="1" old-value="" class="cart-item-quantity" stock-quantity=""></td>
+                <td class="cart-item-detail-value"><input type="number" min="0" multiple="1" old-value="" class="cart-item-quantity" stock-quantity="" value="-69"></td>
             </tr>
 
             <tr>

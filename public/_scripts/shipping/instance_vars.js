@@ -1,0 +1,1 @@
+var is_shipping_address_set = false;

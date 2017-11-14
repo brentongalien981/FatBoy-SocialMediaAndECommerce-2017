@@ -111,6 +111,38 @@ class StoreCart
         return $array_of_objs;
     }
 
+    public static function read_by_id($id)
+    {
+
+        $q = "SELECT * FROM " . self::$table_name;
+        $q .= " WHERE cart_id = {$id}";
+        $q .= " LIMIT 1";
+
+        $result_set = self::read_by_query($q);
+
+
+
+        //
+        $an_obj = null;
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+
+            //
+            $an_obj = array(
+                "cart_id" => $row["cart_id"],
+                "seller_user_id" => $row["seller_user_id"],
+                "buyer_user_id" => $row["buyer_user_id"],
+                "is_complete" => $row["is_complete"]
+            );
+
+
+
+        }
+
+        return $an_obj;
+    }
+
     private static function read_user($user_id)
     {
 

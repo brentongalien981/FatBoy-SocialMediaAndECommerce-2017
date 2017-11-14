@@ -105,6 +105,12 @@ function get_subfolder(class_name) {
         case "CartItem":
             subfolder = "cart_items";
             break;
+        case "Shipping":
+            subfolder = "shipping";
+            break;
+        case "ShippingOption":
+            subfolder = "shipping_options";
+            break;
 
     }
 
@@ -146,6 +152,12 @@ function decide_ajax_pre_after_effects(x_obj, json) {
             break;
         case "CartItem":
             do_cart_item_pre_after_effects(class_name, crud_type, json);
+            break;
+        case "Shipping":
+            do_shipping_pre_after_effects(class_name, crud_type, json);
+            break;
+        case "ShippingOption":
+            do_shipping_option_pre_after_effects(class_name, crud_type, json);
             break;
     }
 }
@@ -232,6 +244,12 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "CartItem":
             do_cart_item_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "Shipping":
+            do_shipping_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "ShippingOption":
+            do_shipping_option_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -377,7 +395,10 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "CartItem":
+        case "Shipping":
+            return true;
+            break;
+        case "ShippingOption":
             return true;
             break;
     }
@@ -389,13 +410,14 @@ function should_class_log(x_obj) {
 
 function should_crud_type_log(x_obj) {
 
+
     //
     switch (x_obj.crud_type) {
-        case "update":
-            return true;
+        case "xxx":
+            return false;
             break;
         default:
-            return false;
+            return true;
             break;
     }
 }

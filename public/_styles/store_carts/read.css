@@ -6,3 +6,16 @@
     float: right;
     background-color: greenyellow;
 }
+
+.my-cart-current-step-navigation-btn {
+    background-color: greenyellow;
+}
+
+.my-cart-step-incremental-btn {
+    display: none;
+}
+
+.my-cart-current-step-incremental-btn {
+    display: inline-block;
+    background-color: greenyellow;
+}

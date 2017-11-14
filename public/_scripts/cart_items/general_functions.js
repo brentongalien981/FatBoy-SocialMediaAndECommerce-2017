@@ -42,10 +42,17 @@ function display_cart_items(x_obj, json) {
 
     /**/
     if (cart_items.length > 0) {
+        //
         $("#empty-cart-item-comment").css("display", "none");
+
+        //
+        can_fill_shipping_address = true;
     }
     else {
+        //
         $("#empty-cart-item-comment").css("display", "block");
+
+        can_fill_shipping_address = false;
     }
 
 }
@@ -53,4 +60,5 @@ function display_cart_items(x_obj, json) {
 function do_cart_item_pre_after_effects(class_name, crud_type, json) {
     is_cart_item_updating = false;
     $("#continue-to-shipping-address-btn").removeAttr("disable");
+    $("#continue-to-shipping-address-btn").css("background-color", "greenyellow");
 }

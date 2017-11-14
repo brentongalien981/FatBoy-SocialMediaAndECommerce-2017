@@ -51,6 +51,6 @@ function do_rateable_item_user_after_effects(class_name, crud_type, json, x_obj)
     }
 }
 
-function roundToTwo(num) {
-    return +(Math.round(num + "e+2")  + "e-2");
-}
+// function roundToTwo(num) {
+//     return +(Math.round(num + "e+2")  + "e-2");
+// }
