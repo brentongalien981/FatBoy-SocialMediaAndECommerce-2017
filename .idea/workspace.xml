@@ -2,52 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1faf9541-cf75-4cb9-93d7-46dbe4395bbe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/shipping/ShippingAjaxHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/shipping/ShippingController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionAjaxHandler.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/Address.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__model/ShippingOption.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/shipping/create.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/shipping/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/shipping_options/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/shipping_options/read.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/shipping_options/shipping_options_loader.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/transaction_summary/index.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/transaction_summary/read.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping/Shipping.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping/create.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping/general_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping/instance_vars.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/ShippingOption.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/read.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/tasks.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/transaction_summary/read.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/shipping/create.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/shipping_options/read.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/transaction_summary/read.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__controller/paypal_payment/PaypalPaymentAjaxHandler.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/paypal_payment/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/__view/paypal_payment/read.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/paypal_payment/PaypalSellerAccountAuthentication.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/paypal_payment/general_functions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/instance_vars.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/_styles/paypal_payment/read.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__controller/controller_shipping.php" afterPath="$PROJECT_DIR$/public/__controller/controller_shipping.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/StoreCart.php" afterPath="$PROJECT_DIR$/public/__model/StoreCart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/session.php" afterPath="$PROJECT_DIR$/public/__model/session.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/cart_items/read.php" afterPath="$PROJECT_DIR$/public/__view/cart_items/read.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__model/Address.php" afterPath="$PROJECT_DIR$/public/__model/Address.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/shipping/create.php" afterPath="$PROJECT_DIR$/public/__view/shipping/create.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/shipping_options/index.php" afterPath="$PROJECT_DIR$/public/__view/shipping_options/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/store_carts/index.php" afterPath="$PROJECT_DIR$/public/__view/store_carts/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/__view/store_carts/read.php" afterPath="$PROJECT_DIR$/public/__view/store_carts/read.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/main_script.js" afterPath="$PROJECT_DIR$/public/_scripts/main_script.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/main_script2.js" afterPath="$PROJECT_DIR$/public/_scripts/main_script2.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/shipping_options/read.js" afterPath="$PROJECT_DIR$/public/_scripts/shipping_options/read.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_carts/general_functions.js" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/general_functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_styles/store_carts/read.css" afterPath="$PROJECT_DIR$/public/_styles/store_carts/read.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js" afterPath="$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js" afterPath="$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -71,7 +49,7 @@
     <favorites_list name="FatBoy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.17436975">
+    <splitter split-orientation="vertical" split-proportion="0.5010504">
       <split-first>
         <splitter split-orientation="horizontal" split-proportion="0.5054308">
           <split-first>
@@ -81,31 +59,32 @@
                   <file leaf-file-name="event_listeners.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="90">
-                          <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="51" />
+                        <state relative-caret-position="106">
+                          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="37" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="general_functions2.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js">
+                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/paypal_payment/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="151">
-                          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/transaction_summary/read.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="137">
-                          <caret line="81" column="56" lean-forward="false" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
+                        <state relative-caret-position="23">
+                          <caret line="11" column="51" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="51" />
                           <folding>
-                            <element signature="n#!!block;n#populate_transaction_charges_container#0" expanded="false" />
-                            <element signature="n#!!block;n#populate_shipping_summary_container#0" expanded="false" />
+                            <element signature="n#!!block;n#do_paypal_payment_after_effects#0" expanded="false" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="main_script.js" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="56">
+                          <caret line="309" column="114" lean-forward="false" selection-start-line="309" selection-start-column="114" selection-end-line="309" selection-end-column="114" />
+                          <folding>
+                            <element signature="n#!!block;n#get_subfolder#0" expanded="false" />
                           </folding>
                         </state>
                       </provider>
@@ -116,22 +95,10 @@
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
                   <file leaf-file-name="event_listeners.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="105">
-                          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#35#186#0" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="instance_vars.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/instance_vars.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="0">
-                          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+                        <state relative-caret-position="315">
+                          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
                           <folding />
                         </state>
                       </provider>
@@ -140,66 +107,32 @@
                   <file leaf-file-name="read.js" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/read.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="30">
-                          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+                        <state relative-caret-position="60">
+                          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js">
+                  <file leaf-file-name="ShippingOption.js" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/ShippingOption.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="120">
-                          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+                        <state relative-caret-position="28">
+                          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
                           <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="main_script.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="4755">
-                          <caret line="400" column="28" lean-forward="false" selection-start-line="400" selection-start-column="28" selection-end-line="400" selection-end-column="28" />
-                          <folding>
-                            <element signature="e#907#3363#0" expanded="false" />
-                          </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
                   <file leaf-file-name="general_functions.js" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/general_functions.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="73">
-                          <caret line="52" column="39" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="39" />
-                          <folding>
-                            <element signature="n#!!block;n#do_shipping_after_effects#0" expanded="false" />
-                            <element signature="n#!!block;n#do_shipping_pre_after_effects#0" expanded="false" />
-                            <element signature="n#!!block;n#disable_all_my_cart_menu_buttons#0" expanded="false" />
-                            <element signature="n#!!block;n#enable_all_my_cart_menu_buttons#0" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="event_listeners.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js">
+                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js">
                       <provider selected="true" editor-type-id="text-editor">
                         <state relative-caret-position="0">
-                          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="event_listeners.js" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="73">
-                          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-                          <folding />
+                          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+                          <folding>
+                            <element signature="n#!!block;n#do_shipping_option_pre_after_effects#0" expanded="false" />
+                            <element signature="n#!!block;n#do_shipping_option_after_effects#0" expanded="false" />
+                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -212,57 +145,12 @@
             <splitter split-orientation="vertical" split-proportion="0.52669555">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="ShippingOptionAjaxHandler.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionAjaxHandler.php">
+                  <file leaf-file-name="PaypalPaymentAjaxHandler.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/paypal_payment/PaypalPaymentAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="105">
-                          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#175#1731#0#PHP" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="ShippingAjaxHandler.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/shipping/ShippingAjaxHandler.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="15">
-                          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+                        <state relative-caret-position="177">
+                          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
                           <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="CartItemAjaxHandler.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="945">
-                          <caret line="63" column="6" lean-forward="false" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="CartItemController.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="270">
-                          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-                          <folding />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="ShippingOptionController.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionController.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="570">
-                          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#428#470#0#PHP" expanded="true" />
-                            <element signature="e#635#707#0#PHP" expanded="false" />
-                          </folding>
                         </state>
                       </provider>
                     </entry>
@@ -271,10 +159,10 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="StoreCartAjaxHandler.php" pinned="false" current-in-tab="true">
+                  <file leaf-file-name="StoreCartAjaxHandler.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartAjaxHandler.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="130">
+                        <state relative-caret-position="197">
                           <caret line="68" column="13" lean-forward="false" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
                           <folding />
                         </state>
@@ -294,6 +182,18 @@
                       </provider>
                     </entry>
                   </file>
+                  <file leaf-file-name="ShippingOptionAjaxHandler.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionAjaxHandler.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="57">
+                          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="66" selection-end-column="1" />
+                          <folding>
+                            <element signature="e#175#1731#0#PHP" expanded="false" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
                 </leaf>
               </split-second>
             </splitter>
@@ -303,28 +203,37 @@
       <split-second>
         <splitter split-orientation="horizontal" split-proportion="0.5068791">
           <split-first>
-            <splitter split-orientation="vertical" split-proportion="0.46028513">
+            <splitter split-orientation="vertical" split-proportion="0.4653846">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__view/transaction_summary/index.php">
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/index.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-77">
-                          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+                        <state relative-caret-position="82">
+                          <caret line="116" column="28" lean-forward="true" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="51" />
+                          <folding>
+                            <element signature="e#260#1304#0#HTML" expanded="false" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/paypal_payment/index.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="60">
+                          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
                           <folding />
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="read.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/transaction_summary/read.php">
+                  <file leaf-file-name="read.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__view/paypal_payment/read.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="144">
-                          <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
-                          <folding>
-                            <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
-                            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
-                          </folding>
+                        <state relative-caret-position="0">
+                          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="37" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -333,38 +242,40 @@
               </split-first>
               <split-second>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="sub_menu_content2.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content2.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="40">
-                          <caret line="57" column="19" lean-forward="true" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
-                          <folding>
-                            <element signature="n#style#0;n#!!top" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
                   <file leaf-file-name="controller_payment.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__controller/controller_payment.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-824">
-                          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                        <state relative-caret-position="-244">
+                          <caret line="303" column="38" lean-forward="false" selection-start-line="303" selection-start-column="38" selection-end-line="303" selection-end-column="38" />
                           <folding>
+                            <element signature="e#871#894#0#PHP" expanded="true" />
+                            <element signature="e#1128#1150#0#PHP" expanded="true" />
+                            <element signature="e#1426#1485#0#PHP" expanded="false" />
+                            <element signature="e#1645#2100#0#PHP" expanded="false" />
+                            <element signature="e#2108#4809#0#PHP" expanded="false" />
                             <element signature="e#2825#4369#0#PHP" expanded="false" />
+                            <element signature="e#4819#4869#0#PHP" expanded="false" />
                           </folding>
                         </state>
                       </provider>
                     </entry>
                   </file>
-                  <file leaf-file-name="paypal_seller_authentication.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__controller/paypal_seller_authentication.php">
+                  <file leaf-file-name="sub_menu_content2.php" pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content2.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="252">
-                          <caret line="95" column="27" lean-forward="false" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
-                          <folding>
-                            <marker date="1493290786000" expanded="true" signature="1224:1255" ph="SELECT * FRO... UserPayPalAccount" />
-                          </folding>
+                        <state relative-caret-position="66">
+                          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+                          <folding />
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file leaf-file-name="sub_menu_content3.php" pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content3.php">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="158">
+                          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+                          <folding />
                         </state>
                       </provider>
                     </entry>
@@ -377,60 +288,15 @@
             <splitter split-orientation="vertical" split-proportion="0.46209913">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file leaf-file-name="session.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__model/session.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="55">
-                          <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-                          <folding>
-                            <element signature="e#16841#17866#0#PHP" expanded="false" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="model_paypal_account.php" pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/public/__model/model_paypal_account.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="38">
-                          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-                          <folding>
-                            <marker date="1493282895000" expanded="true" signature="528:579" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1493282895000" expanded="true" signature="2521:2633" ph="SELECT * FRO... StoreCart" />
-                            <marker date="1493282895000" expanded="true" signature="3008:3022" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1493282895000" expanded="true" signature="3832:3871" ph="INSERT INTO ${self::$table_name}... " />
-                            <marker date="1493282895000" expanded="true" signature="4376:4388" ph="DELETE FROM " />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="CartItem.php" pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/public/__model/CartItem.php">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="2490">
-                          <caret line="199" column="30" lean-forward="false" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
-                          <folding>
-                            <element signature="e#388#813#0#PHP" expanded="false" />
-                            <element signature="e#819#1162#0#PHP" expanded="false" />
-                            <element signature="e#1168#1360#0#PHP" expanded="false" />
-                            <marker date="1509691974000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1509691974000" expanded="true" signature="2858:2884" ph="SELECT * FRO... MyStoreItems" />
-                          </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file leaf-file-name="ShippingOption.php" pinned="false" current-in-tab="false">
+                  <file leaf-file-name="ShippingOption.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__model/ShippingOption.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="121">
-                          <caret line="303" column="31" lean-forward="false" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="31" />
+                        <state relative-caret-position="-50">
+                          <caret line="143" column="25" lean-forward="false" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
                           <folding>
                             <element signature="e#145#570#0#PHP" expanded="false" />
                             <element signature="e#576#919#0#PHP" expanded="false" />
                             <element signature="e#925#1117#0#PHP" expanded="false" />
-                            <element signature="e#1123#3390#0#PHP" expanded="false" />
                             <element signature="e#4975#5311#0#PHP" expanded="false" />
                             <element signature="e#5933#6535#0#PHP" expanded="false" />
                             <element signature="e#6542#6805#0#PHP" expanded="false" />
@@ -447,7 +313,7 @@
                   <file leaf-file-name="model_address.php" pinned="false" current-in-tab="false">
                     <entry file="file://$PROJECT_DIR$/public/__model/model_address.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="510">
+                        <state relative-caret-position="160">
                           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
                           <folding>
                             <marker date="1497819363000" expanded="true" signature="1021:1112" ph="SELECT * FRO... ${self::$table_name}" />
@@ -461,21 +327,21 @@
                   <file leaf-file-name="Address.php" pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/public/__model/Address.php">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="105">
-                          <caret line="118" column="10" lean-forward="false" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
+                        <state relative-caret-position="172">
+                          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
                           <folding>
                             <element signature="e#544#969#0#PHP" expanded="false" />
                             <element signature="e#975#1318#0#PHP" expanded="false" />
                             <element signature="e#1324#1516#0#PHP" expanded="false" />
                             <element signature="e#1522#2203#0#PHP" expanded="false" />
-                            <marker date="1510170483000" expanded="true" signature="1633:1646" ph="SELECT COUNT... " />
-                            <marker date="1510170483000" expanded="true" signature="1633:1647" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1510170483000" expanded="true" signature="2357:2396" ph="INSERT INTO ${self::$table_name}... " />
-                            <marker date="1510170483000" expanded="true" signature="2875:2889" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1510170483000" expanded="true" signature="2875:2946" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1510170483000" expanded="true" signature="3873:3964" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1510170483000" expanded="true" signature="3873:4001" ph="SELECT * FRO... ${self::$table_name}" />
-                            <marker date="1510170483000" expanded="true" signature="4864:4878" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1510941836860" expanded="true" signature="1633:1646" ph="SELECT COUNT... " />
+                            <marker date="1510941836860" expanded="true" signature="1633:1647" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1510941836860" expanded="true" signature="2357:2396" ph="INSERT INTO ${self::$table_name}... " />
+                            <marker date="1510941836860" expanded="true" signature="2875:2889" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1510941836860" expanded="true" signature="2875:2946" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1510941836860" expanded="true" signature="3956:4047" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1510941836860" expanded="true" signature="3956:4084" ph="SELECT * FRO... ${self::$table_name}" />
+                            <marker date="1510941836860" expanded="true" signature="4947:4961" ph="SELECT * FRO... ${self::$table_name}" />
                           </folding>
                         </state>
                       </provider>
@@ -520,12 +386,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>decide_af</find>
-      <find>$session</find>
-      <find>$sc_controller</find>
-      <find>$an_obj</find>
-      <find>read_by_id</find>
-      <find>&quot;{</find>
       <find>{$seller_ship_from_address_obj-&gt;</find>
       <find>}&quot;</find>
       <find>=&gt; &quot;</find>
@@ -550,11 +410,14 @@
       <find>go-to-shipping-options-incremental-btn</find>
       <find>/shipping/</find>
       <find>-</find>
+      <find>is_shipping_address_set</find>
+      <find>&lt;input</find>
+      <find>getApprovalLink</find>
+      <find>payment_validation_success</find>
+      <find>/shipping_options/</find>
+      <find>subfol</find>
     </findStrings>
     <replaceStrings>
-      <replace>store_items</replace>
-      <replace>seller</replace>
-      <replace>&lt;td class=&quot;product-details-table-data&quot; id=&quot;</replace>
       <replace>&quot; =&gt; [&quot;min&quot; =&gt; 5, &quot;max&quot; =&gt; 256],</replace>
       <replace>$si_controller</replace>
       <replace>$si</replace>
@@ -582,6 +445,9 @@
       <replace>-</replace>
       <replace>/transaction_summary/</replace>
       <replace>_</replace>
+      <replace>&lt;input class=&quot;shipping-address-details-input&quot;</replace>
+      <replace>&lt;input class=&quot;shipping-address-details-input&quot;</replace>
+      <replace>/paypal_payment/</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -590,13 +456,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/_scripts/cart_items/general_functions2.js" />
-        <option value="$PROJECT_DIR$/public/__view/cart_items/index.php" />
-        <option value="$PROJECT_DIR$/public/__model/CartItem.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js" />
-        <option value="$PROJECT_DIR$/public/_styles/shipping/read.css" />
-        <option value="$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php" />
-        <option value="$PROJECT_DIR$/public/__view/shipping/read.php" />
         <option value="$PROJECT_DIR$/public/_scripts/shipping/Shipping.js" />
         <option value="$PROJECT_DIR$/public/_scripts/shipping/create.js" />
         <option value="$PROJECT_DIR$/public/__controller/shipping/ShippingController.php" />
@@ -607,40 +466,47 @@
         <option value="$PROJECT_DIR$/public/__model/StoreCart.php" />
         <option value="$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionAjaxHandler.php" />
         <option value="$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionController.php" />
-        <option value="$PROJECT_DIR$/public/__model/Address.php" />
         <option value="$PROJECT_DIR$/public/__model/ShippingOption.php" />
         <option value="$PROJECT_DIR$/public/__view/store_carts/read.php" />
         <option value="$PROJECT_DIR$/public/__view/cart_items/read.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js" />
         <option value="$PROJECT_DIR$/public/__controller/shipping/ShippingAjaxHandler.php" />
         <option value="$PROJECT_DIR$/public/__view/shipping_options/shipping_options_loader.php" />
         <option value="$PROJECT_DIR$/public/__view/shipping/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/shipping/instance_vars.js" />
-        <option value="$PROJECT_DIR$/public/__view/shipping/create.php" />
         <option value="$PROJECT_DIR$/public/_scripts/store_carts/general_functions.js" />
         <option value="$PROJECT_DIR$/public/_styles/store_carts/read.css" />
-        <option value="$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/__view/shipping_options/index.php" />
         <option value="$PROJECT_DIR$/public/_scripts/shipping_options/tasks.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/read.js" />
         <option value="$PROJECT_DIR$/public/__view/shipping_options/read.php" />
         <option value="$PROJECT_DIR$/public/_styles/shipping_options/read.css" />
-        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js" />
         <option value="$PROJECT_DIR$/public/_styles/transaction_summary/read.css" />
-        <option value="$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js" />
-        <option value="$PROJECT_DIR$/public/__view/store_carts/index.php" />
         <option value="$PROJECT_DIR$/public/__view/transaction_summary/index.php" />
-        <option value="$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js" />
         <option value="$PROJECT_DIR$/public/__view/transaction_summary/read.php" />
         <option value="$PROJECT_DIR$/public/_scripts/rateable_Items_users/general_functions.js" />
-        <option value="$PROJECT_DIR$/public/_scripts/main_script2.js" />
         <option value="$PROJECT_DIR$/public/_scripts/transaction_summary/read.js" />
         <option value="$PROJECT_DIR$/public/_scripts/shipping/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/__view/shipping/create.php" />
+        <option value="$PROJECT_DIR$/public/__view/shipping_options/index.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/instance_vars.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/__model/Address.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/shipping_options/read.js" />
+        <option value="$PROJECT_DIR$/public/__view/store_carts/index.php" />
+        <option value="$PROJECT_DIR$/public/_styles/paypal_payment/read.css" />
         <option value="$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/main_script2.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js" />
+        <option value="$PROJECT_DIR$/public/__view/paypal_payment/index.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/paypal_payment/PaypalSellerAccountAuthentication.js" />
+        <option value="$PROJECT_DIR$/public/__controller/paypal_payment/PaypalPaymentAjaxHandler.php" />
+        <option value="$PROJECT_DIR$/public/__view/paypal_payment/read.php" />
+        <option value="$PROJECT_DIR$/public/_scripts/paypal_payment/general_functions.js" />
+        <option value="$PROJECT_DIR$/public/_scripts/main_script.js" />
       </list>
     </option>
   </component>
@@ -686,60 +552,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="shipping_options" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="store_carts" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="transaction_summary" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Snippets" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -784,6 +596,86 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="paypal_payment" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__view" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="__view" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="paypal_payment" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="paypal_payment" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_scripts" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="shipping_options" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="_styles" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="paypal_payment" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="FatBoy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FatBoy" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Snippets" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scratches" />
     </panes>
   </component>
@@ -792,7 +684,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="_m/p_a&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/model_paypal_account.php&#10;is_shipp&#9;null&#9;null&#10;round&#9;null&#9;null&#10;_s/t_s/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/transaction_summary&#10;my_aja&#9;null&#9;null&#10;styles/store_carts/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/store_carts&#10;scripts/store_carts/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/store_carts&#10;scripts/shipping&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/shipping_options/ShippingOption.js&#10;scripts/shipping_options/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/shipping_options&#10;handler&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoice_items/event_handlers.js&#10;han&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/cart_items/event_handlers.js&#10;my_aj&#9;null&#9;null&#10;hea&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;header.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;my_ajax&#9;null&#9;null&#10;header2.&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;header.cs&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header.css&#10;header.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/header.css&#10;handlers&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/event_handlers.js&#10;genera&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoice_items/general_functions.js&#10;read&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/read.js&#10;are_rateable_item_ids_set&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;head&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;redirect_to&#9;null&#9;null&#10;validator&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/helper_classes/validation/Validator.php&#10;config&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/config.php&#10;_/my_da&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_database.php&#10;_/se&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/session.php&#10;_/n/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/app_settings/instance_vars.js&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/tasks.js&#10;side_na&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;index.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;inst&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;cre&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/my_photos/create.js&#10;c_l/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat_list/index.css&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;c/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;index.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;sid&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;side&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;icon_mana&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/helper_functions/icon_manager.php&#10;initiali&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php&#10;count_dis&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/notifications/count_displayer.php&#10;span_num_of_notifications&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="my_aja&#9;null&#9;null&#10;gene&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/shipping_options/general_functions.js&#10;_v/shipping/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__view/shipping&#10;_s/shi&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/shipping/Shipping.js&#10;_m/p_a&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/model_paypal_account.php&#10;is_shipp&#9;null&#9;null&#10;round&#9;null&#9;null&#10;_s/t_s/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/transaction_summary&#10;styles/store_carts/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/store_carts&#10;scripts/store_carts/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/store_carts&#10;scripts/shipping&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/shipping_options/ShippingOption.js&#10;scripts/shipping_options/&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/shipping_options&#10;handler&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoice_items/event_handlers.js&#10;han&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/cart_items/event_handlers.js&#10;my_aj&#9;null&#9;null&#10;hea&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;header.p&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;my_ajax&#9;null&#9;null&#10;header2.&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header2.css&#10;header.cs&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/_layouts/header.css&#10;header.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/header.css&#10;handlers&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/event_handlers.js&#10;genera&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;general&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/general_functions.js&#10;read&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/invoices/read.js&#10;are_rateable_item_ids_set&#9;null&#9;null&#10;header&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;head&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;redirect_to&#9;null&#9;null&#10;validator&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/helper_classes/validation/Validator.php&#10;config&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/config.php&#10;_/my_da&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/my_database.php&#10;_/se&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/__model/session.php&#10;_/n/i&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/app_settings/instance_vars.js&#10;ins&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;tasks&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/tasks.js&#10;side_na&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;index.c&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;inst&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/chat/instance_vars.js&#10;inde&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;cre&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_scripts/my_photos/create.js&#10;c_l/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat_list/index.css&#10;header.php&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/header.php&#10;c/in&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/chat/index.css&#10;index.css&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_styles/notifications/index.css&#10;sid&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;side&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/_layouts/side_nav.php&#10;icon_mana&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/public/helper_functions/icon_manager.php&#10;initiali&#9;FILE&#9;file:///Applications/XAMPP/xamppfiles/htdocs/myPersonalProjects/FatBoy/private/includes/initializations.php" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="Constants" value="false" />
@@ -952,12 +844,14 @@
       <workItem from="1510151642599" duration="16182000" />
       <workItem from="1510239916046" duration="438000" />
       <workItem from="1510332957598" duration="26675000" />
-      <workItem from="1510604421571" duration="13632000" />
+      <workItem from="1510604421571" duration="13830000" />
+      <workItem from="1510774678770" duration="88000" />
+      <workItem from="1510932379709" duration="15329000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1229483000" />
+    <option name="totallyTimeSpent" value="1245098000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -972,14 +866,14 @@
     <frame x="0" y="22" width="1680" height="1024" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.7489496" order="1" side_tool="true" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.75315124" order="1" side_tool="true" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32878152" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983193" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.2510504" order="2" side_tool="false" content_ui="tabs" x="324" y="650" width="359" height="915" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17797619" sideWeight="0.24684873" order="2" side_tool="false" content_ui="tabs" x="324" y="650" width="359" height="915" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32896176" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5038251" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25735295" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1015,274 +909,10 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/__view/cart_items/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/event_handlers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/tasks.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="25" lean-forward="true" selection-start-line="0" selection-start-column="25" selection-end-line="0" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/shipping_options/shipping_options_loader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_styles/store_carts/read.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="19" column="34" lean-forward="false" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4755">
-          <caret line="400" column="28" lean-forward="false" selection-start-line="400" selection-start-column="28" selection-end-line="400" selection-end-column="28" />
-          <folding>
-            <element signature="e#907#3363#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#175#1731#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="6" lean-forward="false" selection-start-line="63" selection-start-column="6" selection-end-line="63" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/cart_items/CartItemController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="20" lean-forward="false" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="e#428#470#0#PHP" expanded="true" />
-            <element signature="e#635#707#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/shipping/ShippingAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartAjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="68" column="13" lean-forward="false" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/store_carts/StoreCartController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="e#228#270#0#PHP" expanded="true" />
-            <element signature="e#361#433#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/shipping_options/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_styles/shipping_options/read.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="31" lean-forward="false" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/CartItem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2490">
-          <caret line="199" column="30" lean-forward="false" selection-start-line="199" selection-start-column="30" selection-end-line="199" selection-end-column="30" />
-          <folding>
-            <element signature="e#388#813#0#PHP" expanded="false" />
-            <element signature="e#819#1162#0#PHP" expanded="false" />
-            <element signature="e#1168#1360#0#PHP" expanded="false" />
-            <marker date="1509691974000" expanded="true" signature="1516:1530" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1509691974000" expanded="true" signature="2858:2884" ph="SELECT * FRO... MyStoreItems" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/ShippingOption.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="303" column="31" lean-forward="false" selection-start-line="303" selection-start-column="17" selection-end-line="303" selection-end-column="31" />
-          <folding>
-            <element signature="e#145#570#0#PHP" expanded="false" />
-            <element signature="e#576#919#0#PHP" expanded="false" />
-            <element signature="e#925#1117#0#PHP" expanded="false" />
-            <element signature="e#1123#3390#0#PHP" expanded="false" />
-            <element signature="e#4975#5311#0#PHP" expanded="false" />
-            <element signature="e#5933#6535#0#PHP" expanded="false" />
-            <element signature="e#6542#6805#0#PHP" expanded="false" />
-            <element signature="e#6810#9125#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/model_address.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <marker date="1497819363000" expanded="true" signature="1021:1112" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1497819363000" expanded="true" signature="2383:2397" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1497819363000" expanded="true" signature="3207:3246" ph="INSERT INTO ${self::$table_name}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/StoreCart.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#431#856#0#PHP" expanded="false" />
-            <element signature="e#862#1205#0#PHP" expanded="false" />
-            <element signature="e#1211#1403#0#PHP" expanded="false" />
-            <element signature="e#1409#1802#0#PHP" expanded="false" />
-            <element signature="e#1808#2663#0#PHP" expanded="false" />
-            <element signature="e#3332#3812#0#PHP" expanded="false" />
-            <marker date="1510161266000" expanded="true" signature="1557:1571" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1510161266000" expanded="true" signature="2729:2743" ph="SELECT * FRO... ${$result_set = self::read_by_query($query)}" />
-            <marker date="1510161266000" expanded="true" signature="3401:3420" ph="SELECT * FRO... Users" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/Address.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="118" column="10" lean-forward="false" selection-start-line="118" selection-start-column="10" selection-end-line="118" selection-end-column="10" />
-          <folding>
-            <element signature="e#544#969#0#PHP" expanded="false" />
-            <element signature="e#975#1318#0#PHP" expanded="false" />
-            <element signature="e#1324#1516#0#PHP" expanded="false" />
-            <element signature="e#1522#2203#0#PHP" expanded="false" />
-            <marker date="1510170483000" expanded="true" signature="1633:1646" ph="SELECT COUNT... " />
-            <marker date="1510170483000" expanded="true" signature="1633:1647" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1510170483000" expanded="true" signature="2357:2396" ph="INSERT INTO ${self::$table_name}... " />
-            <marker date="1510170483000" expanded="true" signature="2875:2889" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1510170483000" expanded="true" signature="2875:2946" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1510170483000" expanded="true" signature="3873:3964" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1510170483000" expanded="true" signature="3873:4001" ph="SELECT * FRO... ${self::$table_name}" />
-            <marker date="1510170483000" expanded="true" signature="4864:4878" ph="SELECT * FRO... ${self::$table_name}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content1.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
           <caret line="100" column="35" lean-forward="false" selection-start-line="100" selection-start-column="35" selection-end-line="100" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/shipping_options/read.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/shipping/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1290,15 +920,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="95" column="28" lean-forward="false" selection-start-line="95" selection-start-column="28" selection-end-line="95" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1306,23 +927,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="19" column="113" lean-forward="false" selection-start-line="19" selection-start-column="113" selection-end-line="19" selection-end-column="131" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="61" column="1" lean-forward="false" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="51" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1330,30 +934,83 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/transaction_summary/read.js">
+    <entry file="file://$PROJECT_DIR$/public/__controller/controller_shipping.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="137">
-          <caret line="81" column="56" lean-forward="false" selection-start-line="81" selection-start-column="56" selection-end-line="81" selection-end-column="56" />
+        <state relative-caret-position="230">
+          <caret line="181" column="22" lean-forward="true" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2445">
+          <caret line="166" column="0" lean-forward="false" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#populate_transaction_charges_container#0" expanded="false" />
-            <element signature="n#!!block;n#populate_shipping_summary_container#0" expanded="false" />
+            <element signature="e#16841#17866#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/read.js">
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/Shipping.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="4" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/shipping/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/instance_vars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="18" lean-forward="false" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/shipping/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="44" lean-forward="false" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/session/update.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/session/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/event_listeners.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/general_functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1363,117 +1020,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/event_listeners.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="83">
+          <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
           <folding>
-            <element signature="e#35#186#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/instance_vars.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/general_functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="52" column="39" lean-forward="false" selection-start-line="52" selection-start-column="9" selection-end-line="52" selection-end-column="39" />
-          <folding>
-            <element signature="n#!!block;n#do_shipping_after_effects#0" expanded="false" />
-            <element signature="n#!!block;n#do_shipping_pre_after_effects#0" expanded="false" />
-            <element signature="n#!!block;n#disable_all_my_cart_menu_buttons#0" expanded="false" />
-            <element signature="n#!!block;n#enable_all_my_cart_menu_buttons#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="41" column="41" lean-forward="true" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/shipping/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="27" column="34" lean-forward="false" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/controller_shipping.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="181" column="22" lean-forward="true" selection-start-line="181" selection-start-column="22" selection-end-line="181" selection-end-column="22" />
-          <folding>
-            <marker date="1510155254000" expanded="true" signature="839:860" ph="SELECT * FRO... Country" />
-            <marker date="1510155254000" expanded="true" signature="3761:3782" ph="SELECT * FRO... Address" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content2.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="57" column="19" lean-forward="true" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__view/transaction_summary/read.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="78" column="17" lean-forward="true" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/controller_payment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-824">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#2825#4369#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__controller/paypal_seller_authentication.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="95" column="27" lean-forward="false" selection-start-line="95" selection-start-column="27" selection-end-line="95" selection-end-column="27" />
-          <folding>
-            <marker date="1493290786000" expanded="true" signature="1224:1255" ph="SELECT * FRO... UserPayPalAccount" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/__model/session.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="166" column="0" lean-forward="true" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-          <folding>
-            <element signature="e#16841#17866#0#PHP" expanded="false" />
+            <element signature="e#330#409#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1492,11 +1042,339 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/ShippingOption.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="143" column="25" lean-forward="false" selection-start-line="143" selection-start-column="25" selection-end-line="143" selection-end-column="25" />
+          <folding>
+            <element signature="e#145#570#0#PHP" expanded="false" />
+            <element signature="e#576#919#0#PHP" expanded="false" />
+            <element signature="e#925#1117#0#PHP" expanded="false" />
+            <element signature="e#4975#5311#0#PHP" expanded="false" />
+            <element signature="e#5933#6535#0#PHP" expanded="false" />
+            <element signature="e#6542#6805#0#PHP" expanded="false" />
+            <element signature="e#6810#9125#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/instance_vars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="9" lean-forward="false" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/cart_items/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/instance_vars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+          <folding>
+            <element signature="e#428#470#0#PHP" expanded="true" />
+            <element signature="e#635#707#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/model_address.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1497819363000" expanded="true" signature="1021:1112" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1497819363000" expanded="true" signature="2383:2397" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1497819363000" expanded="true" signature="3207:3246" ph="INSERT INTO ${self::$table_name}... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__model/Address.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding>
+            <element signature="e#544#969#0#PHP" expanded="false" />
+            <element signature="e#975#1318#0#PHP" expanded="false" />
+            <element signature="e#1324#1516#0#PHP" expanded="false" />
+            <element signature="e#1522#2203#0#PHP" expanded="false" />
+            <marker date="1510941836860" expanded="true" signature="1633:1646" ph="SELECT COUNT... " />
+            <marker date="1510941836860" expanded="true" signature="1633:1647" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1510941836860" expanded="true" signature="2357:2396" ph="INSERT INTO ${self::$table_name}... " />
+            <marker date="1510941836860" expanded="true" signature="2875:2889" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1510941836860" expanded="true" signature="2875:2946" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1510941836860" expanded="true" signature="3956:4047" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1510941836860" expanded="true" signature="3956:4084" ph="SELECT * FRO... ${self::$table_name}" />
+            <marker date="1510941836860" expanded="true" signature="4947:4961" ph="SELECT * FRO... ${self::$table_name}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/paypal_seller_authentication.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1090">
+          <caret line="95" column="57" lean-forward="false" selection-start-line="95" selection-start-column="57" selection-end-line="95" selection-end-column="57" />
+          <folding>
+            <element signature="e#979#1006#0#PHP" expanded="true" />
+            <marker date="1493290786000" expanded="true" signature="1224:1255" ph="SELECT * FRO... UserPayPalAccount" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/private/external_api/PayPal-PHP-SDK/paypal/rest-api-sdk-php/lib/PayPal/Api/Payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="542" column="20" lean-forward="false" selection-start-line="542" selection-start-column="20" selection-end-line="542" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/controller_payment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-244">
+          <caret line="303" column="38" lean-forward="false" selection-start-line="303" selection-start-column="38" selection-end-line="303" selection-end-column="38" />
+          <folding>
+            <element signature="e#871#894#0#PHP" expanded="true" />
+            <element signature="e#1128#1150#0#PHP" expanded="true" />
+            <element signature="e#1426#1485#0#PHP" expanded="false" />
+            <element signature="e#1645#2100#0#PHP" expanded="false" />
+            <element signature="e#2108#4809#0#PHP" expanded="false" />
+            <element signature="e#2825#4369#0#PHP" expanded="false" />
+            <element signature="e#4819#4869#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/transaction_summary/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="919">
+          <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/__view/transaction_summary/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="4" column="11" lean-forward="true" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        <state relative-caret-position="144">
+          <caret line="31" column="45" lean-forward="true" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/instance_vars.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="24" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/transaction_summary/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#populate_transaction_charges_container#0" expanded="false" />
+            <element signature="n#!!block;n#populate_shipping_summary_container#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/shipping_options/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/shipping_options/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/view_transaction/sub_menu_content3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="80" column="0" lean-forward="true" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!block;n#do_shipping_pre_after_effects#0" expanded="false" />
+            <element signature="n#!!block;n#enable_all_my_cart_menu_buttons#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/event_listeners.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_styles/paypal_payment/read.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/store_carts/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="116" column="28" lean-forward="true" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="51" />
+          <folding>
+            <element signature="e#260#1304#0#HTML" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="49" column="31" lean-forward="false" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/read.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/store_carts/general_functions2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1358">
+          <caret line="143" column="39" lean-forward="false" selection-start-line="143" selection-start-column="39" selection-end-line="143" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/shipping_options/ShippingOptionAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="66" selection-end-column="1" />
+          <folding>
+            <element signature="e#175#1731#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__controller/paypal_payment/PaypalPaymentAjaxHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="26" column="42" lean-forward="false" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/transaction_summary/event_listeners.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="29" column="37" lean-forward="false" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/ShippingOption.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/paypal_payment/PaypalSellerAccountAuthentication.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="56" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/shipping_options/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="23" column="1" lean-forward="true" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#do_shipping_option_pre_after_effects#0" expanded="false" />
+            <element signature="n#!!block;n#do_shipping_option_after_effects#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/paypal_payment/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/__view/paypal_payment/read.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/paypal_payment/general_functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="11" column="51" lean-forward="false" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="51" />
+          <folding>
+            <element signature="n#!!block;n#do_paypal_payment_after_effects#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/_scripts/main_script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="309" column="114" lean-forward="false" selection-start-line="309" selection-start-column="114" selection-end-line="309" selection-end-column="114" />
+          <folding>
+            <element signature="n#!!block;n#get_subfolder#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -17,6 +17,7 @@ function do_shipping_option_pre_after_effects(class_name, crud_type, json) {
         $("#shipping-options-error-comment").css("display", "block");
     } else if (json.is_result_ok) {
         // Else if it's successful..
+        $("#shipping-options-error-comment").css("display", "none");
         $("#shipping-options-title").css("display", "block");
         $("#shipping-options-list").css("display", "block");
     }
@@ -49,6 +50,22 @@ function display_shipping_options(shipping_options) {
 
     /**/
     var so = shipping_options;
+
+    //
+    if (so.length < 1) {
+        set_is_shipping_options_set(false);
+        $("#shipping-options-error-comment").css("display", "block");
+        $("#shipping-options-title").css("display", "none");
+        $("#shipping-options-list").css("display", "none");
+
+    }
+    else {
+        set_is_shipping_options_set(true);
+        $("#shipping-options-error-comment").css("display", "none");
+        $("#shipping-options-title").css("display", "block");
+        $("#shipping-options-list").css("display", "block");
+    }
+
 
 
     /**/

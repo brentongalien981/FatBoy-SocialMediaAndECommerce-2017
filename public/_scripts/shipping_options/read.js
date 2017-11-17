@@ -1,4 +1,8 @@
 function read_shipping_options() {
+
+    /**/
+    disable_all_my_cart_menu_buttons();
+
     //
     set_my_cart_current_step_content(SHIPPING_OPTION_SELECTION);
 

@@ -145,7 +145,10 @@ class Address
 
     public static function read_by_user_id($user_id = 0)
     {
+//        $home_address_type_code = 1;
         $business_address_type_code = 2;
+//        $one_time_address_type_code = 3;
+
 
         $q = "SELECT * FROM " . self::$table_name . " WHERE user_id = {$user_id} AND address_type_code = {$business_address_type_code} LIMIT 1";
 

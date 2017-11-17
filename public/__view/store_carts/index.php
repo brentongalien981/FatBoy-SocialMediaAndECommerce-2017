@@ -54,6 +54,9 @@
             <!--    Extentional: Shipping Options -->
             <?php require_once(PUBLIC_PATH . "/__view/shipping_options/index.php"); ?>
 
+            <!--    Extentional: Paypal Payment -->
+            <?php require_once(PUBLIC_PATH . "/__view/paypal_payment/index.php"); ?>
+
 
             <div id="my-cart-step-incremental-btn-container">
 
@@ -96,6 +99,24 @@
                 <button id="go-back-to-shipping-options-incremental-btn"
                         class="my-cart-step-incremental-btn go-to-shipping-options-btn">
                     Go back to shipping option
+                </button>
+
+
+                <button id="pay-transaction-incremental-btn"
+                        class="my-cart-step-incremental-btn pay-transaction-incremental-btn">
+                    Pay
+                </button>
+
+
+                <button id="go-back-to-transaction-summary-incremental-btn"
+                        class="my-cart-step-incremental-btn go-to-transaction-summary-btn">
+                    Go back to transaction summary
+                </button>
+
+
+                <button id="cancel-payment-temp-btn"
+                        class="my-cart-step-incremental-btn">
+                    cancel-payment-temp-btn
                 </button>
             </div>
 

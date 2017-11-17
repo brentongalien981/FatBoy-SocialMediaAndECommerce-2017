@@ -22,7 +22,7 @@
 
 
 <!--Main scripts-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/shipping_options/instance_vars.js"; ?><!--"></script>-->
+<script src="<?php echo LOCAL . "/public/_scripts/shipping_options/instance_vars.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/shipping_options/general_functions.js"; ?>"></script>
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/shipping_options/general_functions2.js"; ?><!--"></script>-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/shipping_options/general_functions3.js"; ?><!--"></script>-->

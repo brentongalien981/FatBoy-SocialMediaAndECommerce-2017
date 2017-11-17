@@ -3,6 +3,10 @@ $("#cart-list").change(function () {
     // window.alert("cart_id: " + $(this).val());
     var cart_id = $(this).val();
     update_session(cart_id);
+
+    //
+    set_are_cart_items_set(false);
+    set_is_shipping_options_set(false);
 });
 
 $(".continue-to-shipping-address-btn").click(function () {

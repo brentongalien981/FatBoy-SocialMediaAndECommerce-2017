@@ -111,6 +111,9 @@ function get_subfolder(class_name) {
         case "ShippingOption":
             subfolder = "shipping_options";
             break;
+        case "PaypalSellerAccountAuthentication":
+            subfolder = "paypal_payment";
+            break;
 
     }
 
@@ -158,6 +161,9 @@ function decide_ajax_pre_after_effects(x_obj, json) {
             break;
         case "ShippingOption":
             do_shipping_option_pre_after_effects(class_name, crud_type, json);
+            break;
+        case "PaypalSellerAccountAuthentication":
+            do_paypal_payment_pre_after_effects(class_name, crud_type, json)
             break;
     }
 }
@@ -251,6 +257,9 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
         case "ShippingOption":
             do_shipping_option_after_effects(class_name, crud_type, json, x_obj);
             break;
+        case "PaypalSellerAccountAuthentication":
+            do_paypal_payment_after_effects(class_name, crud_type, json, x_obj);
+            break;
     }
 }
 
@@ -295,7 +304,15 @@ function my_ajax(x_obj) {
 
 
     //
-    var url = get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + caller_class_name + "AjaxHandler.php";
+    var url = "";
+
+    if (caller_class_name == "PaypalSellerAccountAuthentication") {
+        url += get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + "PaypalPayment" + "AjaxHandler.php";
+    }
+    else {
+        url += get_local_url() + "/public/__controller/" + get_subfolder(caller_class_name) + "/" + caller_class_name + "AjaxHandler.php";
+    }
+
     var xhr = new XMLHttpRequest();
 
 
@@ -395,10 +412,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "Shipping":
-            return true;
-            break;
-        case "ShippingOption":
+        case "PaypalSellerAccountAuthentication":
             return true;
             break;
     }

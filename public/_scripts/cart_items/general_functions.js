@@ -3,6 +3,13 @@ function do_cart_item_after_effects(class_name, crud_type, json, x_obj) {
         case "read":
             remove_previous_cart_items();
             display_cart_items(x_obj, json);
+
+            set_are_cart_items_set(true);
+
+            // TODO: Remove this.
+            console.log("####################################");
+            console.log("TODO: get_are_cart_items_set(): " + get_are_cart_items_set());
+            console.log("####################################");
             break;
         case "create":
             break;

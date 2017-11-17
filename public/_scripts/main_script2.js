@@ -47,7 +47,7 @@ function set_loader_el(container_id, loading_comment) {
 
     //
     $("#" + container_id).append($("#mcn-loader-el"));
-    $("#mcn-loader-el").find("loading-comment").html(loading_comment);
+    $("#mcn-loader-el").find("#loading-comment").html(loading_comment);
     $("#mcn-loader-el").css("display", "block");
 }
 
