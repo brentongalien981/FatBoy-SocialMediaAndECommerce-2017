@@ -102,10 +102,22 @@
                 </button>
 
 
-                <button id="pay-transaction-incremental-btn"
-                        class="my-cart-step-incremental-btn pay-transaction-incremental-btn">
-                    Pay
-                </button>
+<!--                <button id="pay-transaction-incremental-btn"-->
+<!--                        class="my-cart-step-incremental-btn pay-transaction-incremental-btn">-->
+<!--                    Pay-->
+<!--                </button>-->
+
+
+                <form id="pay-form" method="post" action="<?= LOCAL . "/public/__controller/paypal_payment/PaypalPaymentAjaxHandler.php"; ?>">
+                    <input type="hidden" name="shit" value="shit">
+                    <input type="hidden" id="input_csrf_token" name="csrf_token" value="<?=sessionize_csrf_token();?>">
+                    <input type="hidden" id="shipping-fee-in-pay-form" name="shipping_fee">
+                    <input type="hidden" name="authenticate_paypal_seller_acount" value="yes">
+                    <input type="hidden" name="prepare_paypal_payment_details" value="yes">
+                    <input type="submit" name="pay" value="pay" id="pay-transaction-incremental-btn" class="my-cart-step-incremental-btn pay-transaction-incremental-btn">
+                </form>
+
+
 
 
                 <button id="go-back-to-transaction-summary-incremental-btn"

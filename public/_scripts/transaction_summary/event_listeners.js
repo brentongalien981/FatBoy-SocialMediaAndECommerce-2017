@@ -16,7 +16,9 @@ $(".go-to-transaction-summary-btn").click(function () {
 
 $(".pay-transaction-incremental-btn").click(function () {
 
-    /**/
+    return;
+
+    //
     set_my_cart_current_step_content(PAYING_TRANSACTION);
 
     //

@@ -44,6 +44,9 @@ function populate_transaction_charges_container() {
     $("#sales-tax-summary").html("$" + roundToTwo(sales_tax));
     $("#shipping-fee-summary").html("$" + roundToTwo(shipping_fee));
     $("#total-summary").html("$" + roundToTwo(total));
+
+    // Also add the value for the pay-form.
+    $("#shipping-fee-in-pay-form").val(roundToTwo(shipping_fee));
 }
 
 function populate_shipping_summary_container() {

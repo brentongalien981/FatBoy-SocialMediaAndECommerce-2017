@@ -94,6 +94,30 @@ class Session
         $this->refund_invoice_item_id = $_SESSION["refund_invoice_item_id"] = $id;
     }
 
+
+    public function set_transaction_subtotal($val)
+    {
+        $this->transaction_subtotal = $_SESSION["transaction_subtotal"] = $val;
+    }
+
+
+    public function set_transaction_sales_tax($val)
+    {
+        $this->transaction_sales_tax = $_SESSION["transaction_sales_tax"] = $val;
+    }
+
+    public function set_transaction_total($val)
+    {
+        $this->transaction_total = $_SESSION["transaction_total"] = $val;
+    }
+
+
+    public function set_transaction_shipping_fee($val)
+    {
+        $this->transaction_shipping_fee = $_SESSION["transaction_shipping_fee"] = $val;
+    }
+
+
     public function set_refund_item_quantity($quantity)
     {
         $this->refund_item_quantity = $_SESSION["refund_item_quantity"] = $quantity;
@@ -476,7 +500,6 @@ class Session
             $this->currently_viewed_user_name = $_SESSION["currently_viewed_user_name"];
 
 
-
             if (isset($_SESSION["ship_to_address_id"])) {
                 $this->ship_to_address_id = $_SESSION["ship_to_address_id"];
             }
@@ -514,14 +537,18 @@ class Session
 
 
             // For transcation vars.
-            if (isset($_SESSION["transaction_shipping_charge"])) {
-                $this->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"];
+            if (isset($_SESSION["transaction_total"])) {
+//                $this->transaction_shipping_charge = $_SESSION["transaction_shipping_charge"];
 
-                $this->transaction_subtotal = $_SESSION["transaction_subtotal"];
-                $this->transaction_sales_tax = $_SESSION["transaction_sales_tax"];
-                $this->transaction_shipping_fee = $_SESSION["transaction_shipping_fee"];
-                $this->transaction_total = $_SESSION["transaction_total"];
+                $this->set_transaction_subtotal($_SESSION["transaction_subtotal"]);
+                $this->set_transaction_sales_tax($_SESSION["transaction_sales_tax"]);
+                $this->set_transaction_shipping_fee($_SESSION["transaction_shipping_fee"]);
+                $this->set_transaction_total($_SESSION["transaction_total"]);
             }
+
+
+
+
 
             if (isset($_SESSION["paypal_transaction_id"])) {
                 $this->paypal_transaction_id = $_SESSION["paypal_transaction_id"];

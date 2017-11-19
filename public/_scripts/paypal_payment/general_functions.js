@@ -2,10 +2,15 @@ function authenticate_paypal_seller_acount() {
 
     var crud_type = "read";
     var request_type = "GET";
+
+    var shipping_fee = $("#shipping-fee-summary").html().substring(1);
+
     var key_value_pairs = {
         read : "yes",
         shit: "shit",
-        authenticate_paypal_seller_acount: "yes"
+        authenticate_paypal_seller_acount: "yes",
+        prepare_paypal_payment_details: "yes",
+        shipping_fee: shipping_fee
     };
 
 

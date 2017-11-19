@@ -1,3 +1,9 @@
 #transaction-summary-container {
     display: none;
 }
+
+#pay-form {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
