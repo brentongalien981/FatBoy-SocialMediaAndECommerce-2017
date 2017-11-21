@@ -551,7 +551,7 @@ class Session
 
 
             if (isset($_SESSION["paypal_transaction_id"])) {
-                $this->paypal_transaction_id = $_SESSION["paypal_transaction_id"];
+                $this->set_paypal_transaction_id($_SESSION["paypal_transaction_id"]);
             }
 
 
@@ -631,6 +631,11 @@ class Session
             $this->logged_in = false;
         }
     }
+
+    public function set_paypal_transaction_id($paypal_transaction_id) {
+        $this->paypal_transaction_id = $_SESSION["paypal_transaction_id"] = $paypal_transaction_id;
+    }
+
 
     public function set_currently_viewed_user($now_currently_viewed_user_id, $now_currently_viewed_user_name)
     {

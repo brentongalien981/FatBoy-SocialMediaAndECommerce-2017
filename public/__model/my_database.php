@@ -143,6 +143,13 @@ class MySQLDatabase {
         return mysqli_insert_id($this->connection);
     }
 
+    /**
+     * * @note that when debugging any UPDATE query here in PhpStorm, the method
+     *      $database->get_num_of_affected_rows() will return -1, an erronous
+     *      value. But if it's a regular mode (not debugging) it works perfectly.
+     *      WEIRD!
+     * @return int
+     */
     public function get_num_of_affected_rows() {
         return mysqli_affected_rows($this->connection);
     }

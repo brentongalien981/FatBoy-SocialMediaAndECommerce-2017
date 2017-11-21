@@ -8,8 +8,12 @@
 
 namespace App\Publico\Model;
 
+require_once(PUBLIC_PATH . "/__model/MainModel.php");
 
-class CartItem
+use App\Publico\Model\MainModel;
+
+
+class CartItem extends MainModel
 {
     protected static $table_name = "CartItems";
     protected static $db_fields = array(
@@ -72,6 +76,42 @@ class CartItem
 
 
         return $q;
+    }
+
+    // This is called if you're reading the user db
+    // and instantiating user objects, then displaying them.
+    private static function instantiate($record) {
+        $object = new self;
+
+        foreach ($record as $attribute => $value) {
+            if ($object->has_attribute($attribute)) {
+                $object->$attribute = $value;
+            }
+        }
+        return $object;
+    }
+
+    public static function read_items_by_cart_id($cart_id) {
+
+        $query = "SELECT *";
+        $query .= " FROM " . self::$table_name;
+        $query .= " WHERE cart_id = {$cart_id}";
+        $query .= " AND quantity > 0";
+
+        //
+        $result_set = self::read_by_query($query);
+
+        //
+        global $database;
+        $array_of_objs = array();
+
+        while ($row = $database->fetch_array($result_set)) {
+
+            $an_obj = self::instantiate($row);
+            array_push($array_of_objs, $an_obj);
+        }
+
+        return $array_of_objs;
     }
 
     public static function read($data)

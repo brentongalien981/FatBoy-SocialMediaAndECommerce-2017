@@ -8,10 +8,13 @@
 
 namespace App\Publico\Model;
 
+require_once(PUBLIC_PATH . "/__model/MainModel.php");
+
+use App\Publico\Model\MainModel;
 use Carbon\Carbon;
 
 
-class Invoice
+class Invoice extends MainModel
 {
     protected static $table_name = "Invoice";
     protected static $db_fields = array("id", "seller_user_id", "buyer_user_id", "ship_from_address_id", "ship_to_address_id");
@@ -43,6 +46,31 @@ class Invoice
             }
         }
         return $attributes;
+    }
+
+    public function create() {
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - INSERT INTO table (key, key) VALUES ('value', 'value')
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+
+        $attributes = $this->get_sanitized_attributes();
+
+        $query = "INSERT INTO " . self::$table_name . " (";
+        $query .= join(", ", array_keys($attributes));
+        $query .= ") VALUES ('";
+        $query .= join("', '", array_values($attributes));
+        $query .= "')";
+
+        $query_result = $database->get_result_from_query($query);
+
+        if ($query_result) {
+//            $this->id = $database->get_last_inserted_id();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function read_by_query($query = "")

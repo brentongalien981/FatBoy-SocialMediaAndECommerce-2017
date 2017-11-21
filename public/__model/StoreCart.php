@@ -8,8 +8,12 @@
 
 namespace App\Publico\Model;
 
+require_once(PUBLIC_PATH . "/__model/MainModel.php");
 
-class StoreCart
+use App\Publico\Model\MainModel;
+
+
+class StoreCart extends MainModel
 {
     protected static $table_name = "StoreCart";
     protected static $db_fields = array(
@@ -73,6 +77,25 @@ class StoreCart
 
 
         return $q;
+    }
+
+    public static function get_seller_user_id() {
+        global $session;
+
+        $cart = StoreCart::read_by_id($session->cart_id);
+        return $cart["seller_user_id"];
+    }
+
+    public static function finalize_cart() {
+        global $session;
+
+        $q = "UPDATE " . self::$table_name;
+        $q .= " SET is_complete = 1";
+        $q .= " WHERE cart_id = {$session->cart_id}";
+
+        global $database;
+        $database->get_result_from_query($q);
+        return ($database->get_num_of_affected_rows() == 1) ? true : false;
     }
 
     public static function read($data)

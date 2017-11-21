@@ -290,9 +290,12 @@ class PaypalPaymentController extends MainController
 //    generate_invoice();
 
 
-        $paypal_payment_preparation_result_msg = "SUCCESS on your payment.";
-        $successful_payment_result_url = "/public/__view/paypal_payment/payment_preparation_result.php?paypal_payment_preparation_result_msg={$paypal_payment_preparation_result_msg}";
-        $successful_payment_result_url .= "&paypal_invoice_id={$paypal_invoice_id}";
+        global $session;
+        $session->set_invoice_id($paypal_invoice_id);
+
+        $paypal_payment_result_msg = "SUCCESS on your payment.";
+        $successful_payment_result_url = "/public/__controller/paypal_payment/PaypalPaymentResult.php?paypal_payment_result_msg={$paypal_payment_result_msg}";
+        $successful_payment_result_url .= "&paypal_payment_result=1";
         redirect_to(LOCAL . $successful_payment_result_url);
     }
 

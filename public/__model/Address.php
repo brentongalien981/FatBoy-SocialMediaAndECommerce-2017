@@ -8,8 +8,12 @@
 
 namespace App\Publico\Model;
 
+require_once(PUBLIC_PATH . "/__model/MainModel.php");
 
-class Address
+use App\Publico\Model\MainModel;
+
+
+class Address extends MainModel
 {
     protected static $table_name = "Address";
     protected static $db_fields = array("id", "user_id", "address_type_code", "street1", "street2", "city", "state", "zip", "country_code", "phone");

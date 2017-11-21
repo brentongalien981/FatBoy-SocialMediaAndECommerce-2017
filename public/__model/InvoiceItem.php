@@ -8,8 +8,12 @@
 
 namespace App\Publico\Model;
 
+require_once(PUBLIC_PATH . "/__model/MainModel.php");
 
-class InvoiceItem
+use App\Publico\Model\MainModel;
+
+
+class InvoiceItem extends MainModel
 {
     protected static $table_name = "InvoiceItem";
     protected static $db_fields = array("id", "invoice_id", "store_item_id", "price_per_item", "quantity");
@@ -30,6 +34,65 @@ class InvoiceItem
         }
         return $sanitized_attributes;
     }
+
+    public static function read_by_id($id) {
+
+        $query = "SELECT *";
+        $query .= " FROM " . self::$table_name;
+        $query .= " WHERE id = {$id}";
+
+        //
+        $result_set = self::read_by_query();
+
+        //
+        global $database;
+
+        while ($row = $database->fetch_array($result_set)) {
+
+            return self::instantiate($row);
+        }
+    }
+
+    private static function instantiate($record) {
+        $object = new self;
+
+        foreach ($record as $attribute => $value) {
+            if ($object->has_attribute($attribute)) {
+                $object->$attribute = $value;
+            }
+        }
+        return $object;
+    }
+
+
+
+
+    public function create() {
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - INSERT INTO table (key, key) VALUES ('value', 'value')
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+
+        $attributes = $this->get_sanitized_attributes();
+
+        $query = "INSERT INTO " . self::$table_name . " (";
+        $query .= join(", ", array_keys($attributes));
+        $query .= ") VALUES ('";
+        $query .= join("', '", array_values($attributes));
+        $query .= "')";
+
+        $query_result = $database->get_result_from_query($query);
+
+        if ($query_result) {
+//            $this->id = $database->get_last_inserted_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 
     protected function get_attributes()
     {
@@ -112,6 +175,31 @@ class InvoiceItem
             //
             return $an_obj;
         }
+    }
+
+    public static function read_by_sessions_invoice_id() {
+
+        global $session;
+
+        $query = "SELECT *";
+        $query .= " FROM " . self::$table_name;
+        $query .= " WHERE invoice_id = '{$session->invoice_id}'";
+
+        //
+        $result_set = self::read_by_query($query);
+
+        //
+        global $database;
+        $array_of_objs = array();
+
+        while ($row = $database->fetch_array($result_set)) {
+
+            $an_obj = self::instantiate($row);
+
+            array_push($array_of_objs, $an_obj);
+        }
+
+        return $array_of_objs;
     }
 
     public static function read($data)
