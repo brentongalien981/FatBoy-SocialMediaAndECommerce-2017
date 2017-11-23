@@ -114,6 +114,47 @@ class CartItem extends MainModel
         return $array_of_objs;
     }
 
+    public static function read_items_to_be_checked_out()
+    {
+        global $session;
+
+        $q = "SELECT * FROM " . self::$table_name;
+        $q .= " WHERE cart_id = {$session->cart_id}";
+        $q .= " AND quantity > 0";
+
+        $result_set = self::read_by_query($q);
+
+
+
+        //
+        $array_of_objs = array();
+
+        global $database;
+        while ($row = $database->fetch_array($result_set)) {
+
+            /* Get the store-item's record. */
+            $store_item_details = self::read_store_item($row["item_id"]);
+
+
+            //
+            $an_obj = array(
+                "store_item_id" => $store_item_details["store_item_id"],
+                "cart_item_id" => $row["id"],
+                "quantity" => $row["quantity"],
+                "product_name" => $store_item_details["product_name"],
+                "product_price" => $store_item_details["product_price"],
+                "product_photo_address" => $store_item_details["product_photo_address"],
+                "product_stock_quantity" => $store_item_details["product_stock_quantity"]
+            );
+
+            //
+            array_push($array_of_objs, $an_obj);
+
+        }
+
+        return $array_of_objs;
+    }
+
     public static function read($data)
     {
 

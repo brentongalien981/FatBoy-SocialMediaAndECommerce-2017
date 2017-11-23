@@ -6,8 +6,6 @@
 <?php } ?>
 
 
-
-
 <main id="middle_content">
 
     <nav id="sub_menus_nav">
@@ -15,9 +13,14 @@
 
 
     <div id="main_content">
-        <?php if (isset($_GET["paypal_payment_preparation_result_msg"])) { ?>
-            <h4><?= $_GET["paypal_payment_preparation_result_msg"]; ?></h4>
+        <?php if (isset($_GET["payment_finalization_result"])) { ?>
+
+            <?php if (isset($_GET["payment_finalization_result_msg"])) { ?>
+                <h4><?= $_GET["payment_finalization_result_msg"]; ?></h4>
+            <?php } ?>
+
         <?php } ?>
+
 
         <!--        Redirection links.-->
         <div>
@@ -29,13 +32,11 @@
     </div>
 
 
-
 </main>
 
 
 <!--Styles-->
 <!--<link rel="stylesheet" type="text/css" href="--><?php //echo LOCAL . "/public/_styles/paypal_payment/index.css"; ?><!--">-->
-
 
 
 <!--Scripts-->

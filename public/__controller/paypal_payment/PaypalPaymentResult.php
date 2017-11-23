@@ -67,40 +67,53 @@ class PaypalPaymentResult extends MainController
     public static function do_successful_payment_result_finalizations() {
 
         $is_creation_ok = self::create_invoice_record();
+        $payment_finalization_result = 0;
+        $payment_finalization_result_msg = "";
+        
 
         if ($is_creation_ok) {
-            echo "SUCCESS on creating invoice record.";
+            $payment_finalization_result_msg .= "SUCCESS on creating invoice record.";
             $is_creation_ok = self::create_invoice_item_records();
         }
 
 
         if ($is_creation_ok) {
-            echo "<br>";
-            echo "SUCCESS on creating invoice item records.";
+            $payment_finalization_result_msg .= "<br>";
+            $payment_finalization_result_msg .= "SUCCESS on creating invoice item records.";
             $is_creation_ok = self::create_invoice_item_status_record();
         }
 
         $is_update_ok = false;
         if ($is_creation_ok) {
-            echo "<br>";
-            echo "SUCCESS on creating invoice item status records.";
+            $payment_finalization_result_msg .= "<br>";
+            $payment_finalization_result_msg .= "SUCCESS on creating invoice item status records.";
             $is_update_ok = self::update_item_stock_quantities();
         }
 
 
         if ($is_update_ok) {
-            echo "<br>";
-            echo "SUCCESS on updating item stock quantities.";
+            $payment_finalization_result_msg .= "<br>";
+            $payment_finalization_result_msg .= "SUCCESS on updating item stock quantities.";
             $is_update_ok = StoreCart::finalize_cart();
         }
 
 
         if ($is_update_ok) {
-            echo "<br>";
-            echo "SUCCESS on finalizing store cart.";
+            $payment_finalization_result_msg .= "<br>";
+            $payment_finalization_result_msg .= "SUCCESS on finalizing store cart.";
         }
 
-        // If $is_creation_ok is false, then
+        // Finalize
+        if ($is_update_ok) {
+            $payment_finalization_result_msg .= "OH YEAH!! YOU'VE SUCCESSFULLY COMPLETED YOUR PAYMENT.";
+            $payment_finalization_result = 1;
+
+            $result_page_url = LOCAL . "/public/__view/paypal_payment/payment_finalization.php";
+            $result_page_url .= "?payment_finalization_result={$payment_finalization_result}";
+            $result_page_url .= "&payment_finalization_result_msg={$payment_finalization_result_msg}";
+
+            redirect_to($result_page_url);
+        }
     }
 
     private static function update_item_stock_quantities() {
@@ -171,3 +184,7 @@ if (isset($_GET["paypal_payment_result"]) && ($_GET["paypal_payment_result"]) ==
     PaypalPaymentResult::do_successful_payment_result_finalizations();
 //    echo $_GET["paypal_payment_result_msg"];
 }
+//if (isset($_GET["paypal_payment_result"]) && ($_GET["paypal_payment_result"]) == "0") {
+//
+//    echo $_GET["paypal_payment_result_msg"];
+//}

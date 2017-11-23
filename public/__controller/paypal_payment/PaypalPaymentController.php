@@ -53,13 +53,13 @@ class PaypalPaymentController extends MainController
     public function read($data)
     {
         $this->set_paypal_api();
-
         // TODO
         $this->prepare_payment_details($data);
 
     }
 
-    private function set_paypal_api() {
+    private function set_paypal_api()
+    {
         /**/
         global $session;
         $cart_id = $session->cart_id;
@@ -71,6 +71,20 @@ class PaypalPaymentController extends MainController
 
         $pp = new UserPayPalAccount();
         $paypal_accounts = $pp->read($data);
+
+        // Check if the seller has a Paypal Account.
+        if (!isset($paypal_accounts[0])) {
+            $paypal_payment_preparation_result_msg = "shit<br>";
+            $paypal_payment_preparation_result_msg .= "ERROR BRUH!<br>";
+            $paypal_payment_preparation_result_msg .= "The seller doesn't have a paypal account.";
+
+            $result_page_url = LOCAL . "/public/__view/paypal_payment/payment_preparation_result.php";
+            $result_page_url .= "?paypal_payment_result=0";
+            $result_page_url .= "&paypal_payment_preparation_result_msg={$paypal_payment_preparation_result_msg}";
+
+            redirect_to($result_page_url);
+            
+        }
         $paypal_account = $paypal_accounts[0];
 
 
@@ -99,7 +113,7 @@ class PaypalPaymentController extends MainController
         $payer->setPaymentMethod("paypal");
 
 
-        $cart_items = CartItem::read(null);
+        $cart_items = CartItem::read_items_to_be_checked_out();
         $items_array = array();
         $transaction_subtotal = 0;
         // ### Itemized information
@@ -131,7 +145,7 @@ class PaypalPaymentController extends MainController
         global $session;
         $session->set_transaction_subtotal($transaction_subtotal);
         $session->set_transaction_sales_tax($transaction_subtotal * 0.13);
-        $session->set_transaction_shipping_fee((float) $data["shipping_fee"]);
+        $session->set_transaction_shipping_fee((float)$data["shipping_fee"]);
 
         $transaction_total = $session->transaction_subtotal + $session->transaction_sales_tax + $session->transaction_shipping_fee;
         $session->set_transaction_total($transaction_total);
@@ -147,9 +161,6 @@ class PaypalPaymentController extends MainController
             ->setSubtotal($session->transaction_subtotal);
 
 
-
-
-
         // ### Amount
 // Lets you specify a payment amount.
 // You can also specify additional details
@@ -158,9 +169,6 @@ class PaypalPaymentController extends MainController
         $amount->setCurrency("USD")
             ->setTotal($session->transaction_total)
             ->setDetails($details);
-
-
-
 
 
 // ### Transaction
@@ -174,10 +182,6 @@ class PaypalPaymentController extends MainController
             ->setInvoiceNumber(uniqid());
 
 
-
-
-
-
         // ### Redirect urls
 // Set the urls that the buyer must be redirected to after
 // payment approval/ cancellation.
@@ -187,8 +191,6 @@ class PaypalPaymentController extends MainController
         $redirect_urls = new RedirectUrls();
         $redirect_urls->setReturnUrl("{$base_url}?payment_preparation_result=1")
             ->setCancelUrl("{$base_url}?payment_preparation_result=0");
-
-
 
 
         // ### Payment
@@ -201,9 +203,6 @@ class PaypalPaymentController extends MainController
             ->setTransactions(array($transaction));
 
 
-
-
-
         try {
             $payment->create($this->paypal_api);
         } catch (Exception $ex) {
@@ -214,14 +213,14 @@ class PaypalPaymentController extends MainController
         redirect_to($approval_url);
     }
 
-    public function receive_payment_preparation_result() {
+    public function receive_payment_preparation_result()
+    {
         if ($_GET["payment_preparation_result"] == 1) {
 //                $json_errors_array["is_result_ok"] = true;
 //                $json_errors_array["paypal_payment_preparation_result_msg"] = "SUCCESS preparing your payment.";
             $this->set_paypal_api();
             $this->pay_now();
-        }
-        else {
+        } else {
 //                $json_errors_array["is_result_ok"] = false;
 //                $json_errors_array["paypal_payment_preparation_result_msg"] = "FAILURE: You cancelled preparing your payment.";
             $paypal_payment_preparation_result_msg = "FAILURE: You cancelled preparing your payment.";
@@ -229,7 +228,8 @@ class PaypalPaymentController extends MainController
         }
     }
 
-    private function pay_now() {
+    private function pay_now()
+    {
 
         //
         // Get the payment Object by passing paymentId
@@ -246,17 +246,14 @@ class PaypalPaymentController extends MainController
         $execution->setPayerId($_GET['PayerID']);
 
 
-
         //
         $paypal_invoice_id = null;
-
 
 
         try {
             // Execute the payment
             // (See bootstrap.php for more on `ApiContext`)
             $result = $payment->execute($execution, $this->paypal_api);
-
 
 
             // TODO: REMINDER: This method "getTransactions()" will return an array in AJAX form
@@ -266,7 +263,6 @@ class PaypalPaymentController extends MainController
 
             $decoded_paypal_transactions = json_decode($paypal_transactions[0]);
             $paypal_invoice_id = $decoded_paypal_transactions->{'invoice_number'};
-
 
 
             try {
@@ -300,7 +296,6 @@ class PaypalPaymentController extends MainController
     }
 
 }
-
 
 
 if (isset($_GET["payment_preparation_result"])) {
