@@ -52,6 +52,31 @@ class StoreCart extends MainModel
         return $attributes;
     }
 
+    public function create() {
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - INSERT INTO table (key, key) VALUES ('value', 'value')
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+
+        $attributes = $this->get_sanitized_attributes();
+
+        $query = "INSERT INTO " . self::$table_name . " (";
+        $query .= join(", ", array_keys($attributes));
+        $query .= ") VALUES ('";
+        $query .= join("', '", array_values($attributes));
+        $query .= "')";
+
+        $query_result = $database->get_result_from_query($query);
+
+        if ($query_result) {
+            $this->id = $database->get_last_inserted_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function read_by_query($query = "")
     {
         global $database;
@@ -60,6 +85,50 @@ class StoreCart extends MainModel
 
         //
         return $result_set;
+    }
+
+    /**
+     * Check if there's already a valid (not yet complete) cart with details
+     * for the seller-user-id and buyer-user-id.
+     * @return bool
+     */
+    public static function does_cart_exist() {
+        //
+        global $session;
+
+        //
+        $q = "SELECT * FROM " . self::$table_name;
+        $q .= " WHERE seller_user_id = {$session->currently_viewed_user_id}";
+        $q .= " AND buyer_user_id = {$session->actual_user_id}";
+        $q .= " AND is_complete = 0";
+
+        //
+        $result_set = self::read_by_query($q);
+
+        //
+        global $database;
+        $num_of_rows = $database->get_num_rows_of_result_set($result_set);
+
+        if ($num_of_rows > 0) {
+
+            //
+            self::set_cart_id($result_set);
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function set_cart_id($result_set) {
+
+        global $database;
+        global $session;
+
+        while ($row = $database->fetch_array($result_set)) {
+            $session->set_cart_id($row["cart_id"]);
+            return;
+        }
     }
 
     public static function get_query_for_read($data)

@@ -33,7 +33,7 @@ function can_i_edit_more_store_items() {
 
 
     // DEBUG:
-    console.log("REL POS: " + relative_position_of_reference_el);
+    // console.log("REL POS: " + relative_position_of_reference_el);
 
 
     //
@@ -57,7 +57,7 @@ function can_i_read_more_store_items() {
 
 
     // DEBUG:
-    console.log("REL POS: " + relative_position_of_reference_el);
+    // console.log("REL POS: " + relative_position_of_reference_el);
 
 
     //

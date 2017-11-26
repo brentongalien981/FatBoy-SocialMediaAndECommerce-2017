@@ -93,3 +93,15 @@ function prepare_products_display() {
     $("#add-product-btn").css("display", "inline-block");
     $(".cancel-add-product-btn").css("display", "none");
 }
+
+function add_event_listener_to_add_to_cart_btn() {
+    $(".add-to-cart-btn").click(function () {
+
+        /* Get the product id. */
+        var product_el = $(this).closest(".products");
+        // Remove the "product" prefix from product3...
+        var store_item_id = $(product_el).attr("id").substr(7);
+
+        create_cart_item(store_item_id);
+    });
+}

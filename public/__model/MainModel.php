@@ -16,4 +16,6 @@ class MainModel
         // Will return true or false
         return array_key_exists($attribute, $this->get_attributes());
     }
+
+
 }

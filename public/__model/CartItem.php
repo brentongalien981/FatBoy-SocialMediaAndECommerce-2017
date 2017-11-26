@@ -40,6 +40,34 @@ class CartItem extends MainModel
         return $sanitized_attributes;
     }
 
+
+
+    public static function is_store_item_already_in_cart($data) {
+
+        //
+        global $session;
+
+        //
+        $q = "SELECT * FROM " . self::$table_name;
+        $q .= " WHERE cart_id = {$session->cart_id}";
+        $q .= " AND item_id = {$data['store_item_id']}";
+
+        //
+        $result_set = self::read_by_query($q);
+
+        //
+        global $database;
+        $num_of_rows = $database->get_num_rows_of_result_set($result_set);
+
+        if ($num_of_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
     protected function get_attributes()
     {
         // return an array of attribute names and their values
@@ -60,6 +88,31 @@ class CartItem extends MainModel
 
         //
         return $result_set;
+    }
+
+    public function create() {
+        global $database;
+        // Don't forget your SQL syntax and good habits:
+        // - INSERT INTO table (key, key) VALUES ('value', 'value')
+        // - single-quotes around all values
+        // - escape all values to prevent SQL injection
+
+        $attributes = $this->get_sanitized_attributes();
+
+        $query = "INSERT INTO " . self::$table_name . " (";
+        $query .= join(", ", array_keys($attributes));
+        $query .= ") VALUES ('";
+        $query .= join("', '", array_values($attributes));
+        $query .= "')";
+
+        $query_result = $database->get_result_from_query($query);
+
+        if ($query_result) {
+            $this->id = $database->get_last_inserted_id();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static function get_query_for_read($data)

@@ -38,11 +38,12 @@
     <!--Extentional scripts-->
 
     <!--    Invoice items-->
-    <?php require_once(PUBLIC_PATH . "/__view/invoice_items/index.php"); ?>
+<?php require_once(PUBLIC_PATH . "/__view/invoice_items/index.php"); ?>
 
 
     <!--Extentional Scripts for creating my-shopping-notifications-->
     <script src="<?php echo LOCAL . "/public/_scripts/notifications/my_shopping/create.js"; ?>"></script>
+
 
 
     <!--Main scripts-->
