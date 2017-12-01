@@ -60,3 +60,75 @@ function unset_loader_el() {
 function roundToTwo(num) {
     return +(Math.round(num + "e+2")  + "e-2");
 }
+
+function hide_element(el) {
+    $(el).css("display", "none");
+}
+
+function show_element(el, display) {
+    $(el).css("display", display);
+}
+
+function b_remove_animation(el, a) {
+    el.classList.remove(a);
+}
+
+function b_add_animation(el, a) {
+    el.classList.add(a);
+
+
+}
+
+/**
+ *
+ * @param embed_code
+ * @param attribute
+ * @return {attribute value or bool false}
+ */
+function get_attribute_value(embed_code, attribute) {
+    var start_index = embed_code.indexOf(attribute);
+
+    // If the attribute is not present. eg (hre, hef, ref, and not href).
+    if (start_index == -1) { return false; }
+
+    /*
+     * For ex:
+     *      $start_offset = "href" + "=\"";
+     *                    = 4 + 2
+     *                    = 6
+     */
+    start_index += attribute.length + 2;
+
+    var end_index = embed_code.indexOf('"', start_index);
+
+    // If the attribute is not present. eg (hre, hef, ref, and not href).
+    if (end_index == -1) { return false; }
+
+    // var attribute_value_length = end_index - start_index;
+
+    var attribute_value = embed_code.substring(start_index, end_index);
+
+    return attribute_value;
+}
+
+function get_date_of_latest_el(class_name, order) {
+
+    var els = $("." + class_name);
+    var length = els.length;
+
+    var latest_el = null;
+    if (order == "ASC") { latest_el = els[length - 1]; }
+    else { latest_el = els[0]; }
+
+    var latest_date = $(latest_el).attr("created-at");
+
+    if (latest_el == null ||
+        latest_date == null ||
+        latest_date == "") {
+
+        return "2010-09-11 10:54:45";
+    }
+    else {
+        return latest_date;
+    }
+}

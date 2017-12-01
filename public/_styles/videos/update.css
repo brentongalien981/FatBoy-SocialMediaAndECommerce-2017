@@ -1,0 +1,12 @@
+#update-video-form {
+    display: none;
+    width: 100%;
+    background-color: cornflowerblue;
+}
+
+
+
+#update-video-form * {
+    display: block;
+    width: 95%;
+}

@@ -175,6 +175,11 @@ echo "'>";
 <?php require_once(PUBLIC_PATH . "/_scripts/notifications/count_displayer.php"); ?>
 
 
+
+<!--mcn-loader-el-->
+<?php require_once(PUBLIC_PATH . "/general_loader_el.php"); ?>
+
+
 <!--Widgets-->
 <?php require_once(PUBLIC_PATH . "/__view/widgets/index.php"); ?>
 

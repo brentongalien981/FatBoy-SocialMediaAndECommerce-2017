@@ -108,6 +108,8 @@ $("#the-rate-bar").mouseout(function (event) {
 $('#main_content').scroll(function (event) {
     // return;
     event.stopPropagation();
+
+    // This is for the timeline-post-options-popup.
     the_rate_bar_mouseout_handler = setTimeout(function () {
         var scroll_top = parseInt($('#main_content').scrollTop());
         var new_top_pos = scroll_top + 50;
@@ -118,7 +120,7 @@ $('#main_content').scroll(function (event) {
     }, 1);
 
 
-    //
+    // This is for the timeline-post-rate-bar-popup.
     set_timeline_post_settings_popup_position();
 });
 

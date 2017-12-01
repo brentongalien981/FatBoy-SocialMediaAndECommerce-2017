@@ -114,6 +114,9 @@ function get_subfolder(class_name) {
         case "PaypalSellerAccountAuthentication":
             subfolder = "paypal_payment";
             break;
+        case "MyVideo":
+            subfolder = "videos";
+            break;
 
     }
 
@@ -164,6 +167,10 @@ function decide_ajax_pre_after_effects(x_obj, json) {
             break;
         case "PaypalSellerAccountAuthentication":
             do_paypal_payment_pre_after_effects(class_name, crud_type, json)
+            break;
+        case "MyVideo":
+            // do_shipping_option_pre_after_effects(class_name, crud_type, json);
+            do_my_video_pre_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -259,6 +266,10 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             break;
         case "PaypalSellerAccountAuthentication":
             do_paypal_payment_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "MyVideo":
+            // do_store_item_after_effects(class_name, crud_type, json, x_obj);
+            do_my_video_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -412,7 +423,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "CartItem":
+        case "MyVideo":
             return true;
             break;
     }
@@ -427,7 +438,8 @@ function should_crud_type_log(x_obj) {
 
     //
     switch (x_obj.crud_type) {
-        case "xxx":
+        // case "xxx":
+        case "fetch":
             return false;
             break;
         default:

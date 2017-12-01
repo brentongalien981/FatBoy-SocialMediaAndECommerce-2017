@@ -8,7 +8,7 @@
 <!-- Reference for reading more objs. -->
 <!--Templates-->
 <!--    Extentional -->
-<?php require_once(PUBLIC_PATH . "/__view/shipping_options/shipping_options_loader.php"); ?>
+<?php //require_once(PUBLIC_PATH . "/__view/shipping_options/shipping_options_loader.php"); ?>
 
 
 <!--Styles-->

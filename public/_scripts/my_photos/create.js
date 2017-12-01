@@ -30,37 +30,7 @@ function create_photo() {
     photo.create();
 }
 
-/**
- *
- * @param embed_code
- * @param attribute
- * @return {attribute value or bool false}
- */
-function get_attribute_value(embed_code, attribute) {
-    var start_index = embed_code.indexOf(attribute);
 
-    // If the attribute is not present. eg (hre, hef, ref, and not href).
-    if (start_index == -1) { return false; }
-
-    /*
-     * For ex:
-     *      $start_offset = "href" + "=\"";
-     *                    = 4 + 2
-     *                    = 6
-     */
-    start_index += attribute.length + 2;
-
-    var end_index = embed_code.indexOf('"', start_index);
-
-    // If the attribute is not present. eg (hre, hef, ref, and not href).
-    if (end_index == -1) { return false; }
-
-    // var attribute_value_length = end_index - start_index;
-
-    var attribute_value = embed_code.substring(start_index, end_index);
-
-    return attribute_value;
-}
 
 function clear_add_photo_form() {
     $('#photo_title').val("");

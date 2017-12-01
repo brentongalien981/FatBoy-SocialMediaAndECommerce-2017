@@ -96,6 +96,20 @@
         <img src="<?php echo LOCAL . '/public/_photos/icon_video.png'; ?>" class="icon">MyVideos</a>
 
 
+<!--    ********************************-->
+    <!--    Videos-->
+    <a id="menu_my_videos" class='menus' href="
+                                <?php
+    if ($session->is_logged_in()) {
+        echo LOCAL . '/public/__view/videos';
+    } else {
+        echo "#";
+    }
+    ?>" class="">
+        <img src="<?php echo LOCAL . '/public/_photos/icon_video.png'; ?>" class="icon">Beta - MyVideos</a>
+
+
+
     <!--    Chat-->
     <?php
 //    if ($session->is_logged_in() && $session->is_viewing_own_account()) {

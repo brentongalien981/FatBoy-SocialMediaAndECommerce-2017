@@ -1,0 +1,146 @@
+#add_video_form {
+    display: none;
+}
+
+#my_videos_table td {
+    /*padding-top: 100px;*/
+}
+
+div.video-container {
+    width: 660px;
+    /*background-color: yellow;*/
+    padding: 20px 30px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+iframe.timeline_iframe_video_div {
+    width: 660px;
+    height: 370px;
+}
+
+
+#add_video_form h6.field_title {
+    /*display: inline;*/
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 100;
+}
+
+input.form_input {
+    width: 300px;
+    height: 35px;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+textarea.form_input {
+    width: 600px;
+    height: 180px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+
+#my_videos_table .timeline_iframe_video_div {
+    background-color: rgba(220, 220, 220, 0.30);
+
+    /*padding-bottom: 30px;*/
+}
+
+.timeline_iframe_video_div h4 {
+    color: black;
+    font-size: 14px;
+    font-weight: 100;
+    margin-bottom: 15px;
+}
+
+#lupetness_a {
+    color: black;
+    font-size: 12px;
+    font-weight: 100;
+    display: block;
+    margin-top: 15px;
+}
+
+#lupetness_a:hover {
+    color: orange;
+}
+
+
+#my_videos_h4 {
+    margin-top: 100px;
+    margin-left: 30px;
+}
+
+
+#my_videos_table td {
+    /*margin-bottom: 30px;*/
+}
+
+/*    #ad_container {
+        visibility: hidden;
+    }*/
+
+
+.my-video-title {
+    display: inline-block;
+    max-width: 620px;
+    word-wrap: break-word;
+}
+
+.my-video-options {
+    display: inline-block;
+    /* background-color: red; */
+    float: right;
+    padding: 3px 5px;
+    border-radius: 3px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.my-video-options:hover {
+    box-shadow: 0 0 10px yellowgreen;
+    cursor: pointer;
+}
+
+.my-video-header {
+    margin-bottom: 20px;
+}
+
+#video-options-popup-el button {
+    display: block;
+    /*width: 60px;*/
+    margin-bottom: 3px;
+    background: none;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 3px 5px;
+}
+
+#video-options-popup-el button:hover {
+    box-shadow: 0 0 10px yellowgreen;
+}
+
+#video-options-popup-el {
+    display: none;
+
+    margin: 0;
+    width: 50px;
+    margin-top: -50px;
+    margin-left: 550px;
+    padding: 15px 15px;
+    background-color: rgb(250, 250, 230);
+    position: absolute;
+    /*box-shadow: 0 0 20px rgb(200, 200, 200);*/
+    border-radius: 10px;
+
+    /*border: 1px solid orange;*/
+    box-shadow: 0 0 20px rgb(130, 130, 130);
+    cursor: pointer;
+
+
+}
+
+.video-options-popup-trigger-el {
+    cursor: pointer;
+}

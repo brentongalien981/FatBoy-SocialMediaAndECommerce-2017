@@ -1,0 +1,55 @@
+
+.my-video-form {
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    border: 1px solid rgb(100, 100, 100);
+    margin-top: 30px;
+}
+
+.my-video-form-section table {
+    color: black;
+    margin-top: 20px;
+}
+
+.my-video-form-section {
+    display: none;
+}
+
+.my-form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 5px;
+}
+
+.my-video-form .form_button {
+    box-shadow: none;
+    color: white;
+}
+
+.my-video-form .form_button:hover {
+    /*box-shadow: none;*/
+    background-color: rgb(100, 100, 100);
+    color: white;
+}
+
+.my-video-form h5 {
+    color: white;
+}
+
+.my-video-form input {
+    background-color: rgb(50, 50, 50);
+    color: rgb(200, 200, 200);
+}
+
+.my-video-form textarea {
+    background-color: rgb(50, 50, 50);
+    color: rgb(200, 200, 200);
+    resize: none;
+}
+
+#add_video_form {
+    background-color: black;
+    box-shadow: none;
+}

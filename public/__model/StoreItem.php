@@ -138,7 +138,7 @@ class StoreItem extends MainModel
         }
     }
 
-    private static function instantiate($record) {
+    protected static function instantiate($record) {
         $object = new self;
 
         foreach ($record as $attribute => $value) {
