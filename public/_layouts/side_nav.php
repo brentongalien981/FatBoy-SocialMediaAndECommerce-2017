@@ -28,14 +28,14 @@
 
 
     <?php
-//    // Notifications.
-//    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-//        echo "<a id='menu_notifications' class='menus' href='" . LOCAL . "/public/__view/notifications'>";
-//        echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
-//        echo "Notifications";
-//        echo "<span id='span_num_of_notifications' style='display: none;'></span>";
-//        echo "</a>";
-//    }
+    //    // Notifications.
+    //    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    //        echo "<a id='menu_notifications' class='menus' href='" . LOCAL . "/public/__view/notifications'>";
+    //        echo "<img src='" . LOCAL . "/public/_photos/icon_notification_bell.png' class='icon'>";
+    //        echo "Notifications";
+    //        echo "<span id='span_num_of_notifications' style='display: none;'></span>";
+    //        echo "</a>";
+    //    }
     ?>
 
 
@@ -57,6 +57,21 @@
         <?php show_user_home_icon(-69, "icon", "profile", "Profile") ?>
 
     </a>
+
+
+
+
+    <!--#######################################-->
+    <!--    Beta-Profile    -->
+    <!--#######################################-->
+    <?php if ($session->is_logged_in()) { ?>
+        <a id="menu_profile" class="menus" href="<?= LOCAL . "/public/__view/profile2/index.php"; ?>">
+            <?php show_user_home_icon(-69, "icon", "profile", "Profile-Beta") ?>
+        </a>
+    <?php } ?>
+
+
+
 
 
     <!--    Friends-->
@@ -96,7 +111,7 @@
         <img src="<?php echo LOCAL . '/public/_photos/icon_video.png'; ?>" class="icon">MyVideos</a>
 
 
-<!--    ********************************-->
+    <!--    ********************************-->
     <!--    Videos-->
     <a id="menu_my_videos" class='menus' href="
                                 <?php
@@ -109,17 +124,14 @@
         <img src="<?php echo LOCAL . '/public/_photos/icon_video.png'; ?>" class="icon">Beta - MyVideos</a>
 
 
-
     <!--    Chat-->
     <?php
-//    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
-//        echo "<a id='menu_chat' class='menus' href='" . LOCAL . "/public/__view/view_chat'>";
-//        echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
-//        echo "Chat</a>";
-//    }
+    //    if ($session->is_logged_in() && $session->is_viewing_own_account()) {
+    //        echo "<a id='menu_chat' class='menus' href='" . LOCAL . "/public/__view/view_chat'>";
+    //        echo "<img src='" . LOCAL . "/public/_photos/icon_chat.png' class='icon'>";
+    //        echo "Chat</a>";
+    //    }
     ?>
-
-
 
 
     <!--    Ads-->
@@ -159,7 +171,7 @@
 
     <!--    New cart-->
     <?php if ($session->is_logged_in() && $session->is_viewing_own_account()) { ?>
-        <a id="" class="menus" href="<?= LOCAL . "/public/__view/store_carts/index.php"?>">
+        <a id="" class="menus" href="<?= LOCAL . "/public/__view/store_carts/index.php" ?>">
             <img src="<?= LOCAL . "/public/_photos/icon_cart.png" ?>" class="icon">New My Cart (beta)
         </a>
     <?php } ?>

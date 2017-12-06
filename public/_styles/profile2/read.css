@@ -1,0 +1,15 @@
+#profile-header-pic {
+    width: 256px;
+    height: 256px;
+    border-radius: 3px;
+    float: left;
+    margin: 0;
+    margin-right: 15px;
+    margin-bottom: 5px;
+    padding: 0;
+    display: inline;
+}
+
+#profile-description {
+    min-height: 280px;
+}

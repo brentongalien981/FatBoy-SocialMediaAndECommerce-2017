@@ -117,6 +117,9 @@ function get_subfolder(class_name) {
         case "MyVideo":
             subfolder = "videos";
             break;
+        case "Profile":
+            subfolder = "profile2";
+            break;
 
     }
 
@@ -268,8 +271,10 @@ function decide_ajax_after_effects_class_handlers(x_obj, json) {
             do_paypal_payment_after_effects(class_name, crud_type, json, x_obj);
             break;
         case "MyVideo":
-            // do_store_item_after_effects(class_name, crud_type, json, x_obj);
             do_my_video_after_effects(class_name, crud_type, json, x_obj);
+            break;
+        case "Profile":
+            do_profile_after_effects(class_name, crud_type, json, x_obj);
             break;
     }
 }
@@ -423,7 +428,7 @@ function should_class_log(x_obj) {
 
     //
     switch (x_obj.class_name) {
-        case "MyVideo":
+        case "Profile":
             return true;
             break;
     }

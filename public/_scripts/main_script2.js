@@ -132,3 +132,7 @@ function get_date_of_latest_el(class_name, order) {
         return latest_date;
     }
 }
+
+function get_default_pic_url() {
+    return "https://farm5.staticflickr.com/4505/37111709784_57d987a8bf_m.jpg";
+}

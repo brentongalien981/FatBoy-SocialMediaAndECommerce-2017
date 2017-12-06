@@ -15,7 +15,8 @@ use App\Publico\Model\MainModel;
 
 class MyVideo extends MainModel
 {
-    private static function init() {
+    /** @override */
+    protected static function init() {
         self::$db_fields = array(
             "id",
             "user_id",

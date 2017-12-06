@@ -41,6 +41,13 @@ class MainModel
 
     }
 
+    protected static function init() {
+
+        // Initialize self::$db_fields = array();
+
+        // Initialize self::$table_name = "TableName";
+    }
+
     private function create_properties() {
         foreach (self::$db_fields as $property) {
             $this->$property = null;
