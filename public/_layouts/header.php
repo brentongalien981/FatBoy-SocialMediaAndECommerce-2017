@@ -93,7 +93,7 @@ echo "'>";
         <tr>
             <td id="left" class="main">
                 <div id="container_for_nav_side">
-                    <?php require_once(PUBLIC_PATH . "/_layouts/side_nav.php"); ?>
+                    <?php require_once(PUBLIC_PATH . "/_layouts/`.php"); ?>
                 </div>
             </td>
 

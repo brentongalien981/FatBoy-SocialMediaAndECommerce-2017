@@ -1,15 +1,20 @@
 <?php require_once("master.php"); ?>
 
 
-<nav id="the-navbar" class="navbar navbar-expand-xl navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">FatBoy &copy;</a>
+<nav id="the-navbar" class="navbar navbar-expand-xl sticky-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img id="home-profile-img" src="https://farm5.staticflickr.com/4557/24004359337_33f64e5a90_q.jpg" class="rounded">
+    </a>
+
 
 
     <form id="the-search-bar" class="form-row">
         <div class="input-group">
             <input id="the-search-box" type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
             <span class="input-group-btn">
-             <button class="btn btn-secondary" type="button">Go!</button>
+             <button class="btn btn-secondary" type="button">
+                 <i class="fa fa-search"></i>
+             </button>
             </span>
         </div>
     </form>
@@ -36,7 +41,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown05" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">Business</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown05">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown05">
                     <a class="dropdown-item" href="#">Action</a>
                     <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
@@ -47,7 +52,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="admin-dropdown-toggle"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
-                <div class="dropdown-menu" aria-labelledby="admin-dropdown-toggle">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="admin-dropdown-toggle">
                     <a class="dropdown-item" href="#">User Managament</a>
                     <a class="dropdown-item" href="#">Ad Managament</a>
                 </div>
@@ -59,19 +64,65 @@
     </div>
 </nav>
 
+<?php require_once("sub-menu.php"); ?>
 
-<!--Inside <nav></nav>-->
-<!--<form class="form-inline my-2 my-md-0">-->
-<!--    <input class="form-control" type="text" placeholder="Search">-->
-<!--</form>-->
+<div id="my-container1" class="container my-container"></div>
+
+<div id="my-container2" class="container-fluid my-container"></div>
+
+<div id="widget" class="fixed-bottom">widget</div>
 
 
 <script>
     $("body").append($("#the-navbar"));
+    $("body").append($("#sub-menu"));
+    $("body").append($("#my-container1"));
+    $("body").append($("#my-container2"));
+    $("body").append($("#widget"));
 </script>
 
 <style>
-    #the-search-box {
-        min-width: 300px;
+    #the-navbar {
+        font-weight: 100;
+        font-size: 85%;
     }
+
+    #the-search-box {
+        min-width: 400px;
+        font-size: 14px;
+        font-weight: 100;
+    }
+
+    .dropdown-menu {
+        font-size: 85%;
+    }
+
+    #the-search-bar {
+        margin: auto;
+    }
+
+
+    .my-container {
+        width: 100%;
+        height: 700px;
+    }
+
+    #my-container1 {
+        background-color: lightcyan;
+    }
+
+    #my-container2 {
+        background-color: #73787f;
+    }
+
+    #widget {
+        text-align: right;
+    }
+
+    #home-profile-img {
+        width: 33px;
+    }
+
 </style>
+
+<?php require_once("footer.php"); ?>

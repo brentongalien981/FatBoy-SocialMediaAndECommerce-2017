@@ -10,7 +10,7 @@ function is_textarea_empty(textarea) {
 
 function dom_append_post(crud_type, post_container) {
     if (crud_type == "read") {
-        $("#main_content").append($(post_container));
+        $("#main_content2").append($(post_container));
     }
     else if (crud_type == "fetch") {
         //

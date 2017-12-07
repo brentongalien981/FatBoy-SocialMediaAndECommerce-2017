@@ -39,12 +39,6 @@ if ($session->is_logged_in()) {
 
 <main id="middle_content">
 
-    <!--Sub-menus-->
-    <nav id="sub_menus_nav">
-        <!--<a href="#">Sub-menu1</a>-->
-        <!--<a href="#">Sub-menu2</a>-->
-    </nav>
-
 
 
 

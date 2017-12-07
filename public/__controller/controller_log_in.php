@@ -2,8 +2,6 @@
 <?php require_once("../__model/session.php"); ?>
 <?php require_once("../__model/my_user.php"); ?>
 
-<?php //define("LOCAL", "http://localhost/myPersonalProjects/FatBoy"); ?>
-
 
 
 
@@ -15,16 +13,6 @@ if ($session->is_logged_in()) {
 }
 ?>
 
-
-
-
-
-<?php
-// TODO: LOG
-if (!MyDebugMessenger::is_initialized()) {
-    MyDebugMessenger::initialize();
-}
-?>
 
 
 
@@ -51,8 +39,8 @@ if (isset($_POST["log_in"])) {
             ($logging_user->signup_token != "")) {
 
             //kobakoba1
-            MyDebugMessenger::add_debug_message("Account has not been verified yet. Verify it by checking your email.");
-            redirect_to("../__view/view_log_in.php");
+//            MyDebugMessenger::add_debug_message("Account has not been verified yet. Verify it by checking your email.");
+            redirect_to("../__view/log_in.php");
         }
 
 
@@ -81,11 +69,11 @@ if (isset($_POST["log_in"])) {
             redirect_to("../index.php");
         }
         else {
-            MyDebugMessenger::add_debug_message("Username/password can not be authenticated.");
+//            MyDebugMessenger::add_debug_message("Username/password can not be authenticated.");
         }
     }
     else {
-        MyDebugMessenger::add_debug_message("Username/password can not be found.");
+//        MyDebugMessenger::add_debug_message("Username/password can not be found.");
     }
 }
 ?>
@@ -95,5 +83,6 @@ if (isset($_POST["log_in"])) {
 
 
 <?php
-redirect_to("../__view/view_log_in.php");
+//redirect_to("../__view/view_log_in.php");
+redirect_to("../__view/log_in.php");
 ?>
