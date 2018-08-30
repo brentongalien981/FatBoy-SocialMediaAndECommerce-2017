@@ -2,7 +2,7 @@
 
 
 <?php // Authorization. ?>
-<?php if (!$session->is_logged_in()) { redirect_to(LOCAL . "/public/index.php"); } ?>
+<?php //if (!$session->is_logged_in()) { redirect_to(LOCAL . "/public/index.php"); } ?>
 
 
 <!--Main content-->

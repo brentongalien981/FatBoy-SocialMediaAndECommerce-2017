@@ -418,6 +418,7 @@ function do_ajax_result_log(x_obj, json) {
     // If the response is not successful..
     if (json === null || !json.is_result_ok) {
         console.log("RESULT:json.is_result_ok: null/false");
+
     } else if (json.is_result_ok) {
         // Else if it's successful..
         console.log("RESULT:json.is_result_ok: " + json.is_result_ok);

@@ -1,6 +1,0 @@
-<?php
-// Setters and Getters
-
-
-
-?>

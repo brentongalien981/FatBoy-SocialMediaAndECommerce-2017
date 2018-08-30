@@ -40,6 +40,7 @@
 
 
 
+<!--TODO: Delete these on demo?-->
 <!--Maybe delete this on production. The functionality of these scripts are already replaced-->
 <!--by the next chunk of scripts.-->
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/main_script.js"; ?><!--"></script>-->
@@ -49,20 +50,8 @@
 <!--<script src="--><?php //echo LOCAL . "/public/_scripts/wall_event_listeners.js"; ?><!--"></script>-->
 
 <!--Main scripts for timeline-posts-->
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/instance_vars.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/general_functions.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/general_functions2.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_posts/general_functions3.js"; ?><!--"></script>-->
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/create.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/read.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_posts/update.js"; ?><!--"></script>-->
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_posts/delete.js"; ?><!--"></script>-->
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/fetch.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/TimelinePost.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/event_handlers.js"; ?>"></script>
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/event_listeners.js"; ?>"></script>
-<!--<script src="--><?php //echo LOCAL . "/public/_scripts/timeline_posts/event_listeners2.js"; ?><!--"></script>-->
-<script src="<?php echo LOCAL . "/public/_scripts/timeline_posts/tasks.js"; ?>"></script>
+<?php require_once(PUBLIC_PATH . "/_scripts/timeline_posts/master.php"); ?>
+
 
 
 <!--Late-bind scripts-->

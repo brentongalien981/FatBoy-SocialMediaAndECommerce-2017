@@ -7,7 +7,7 @@ require_once("../__model/session.php");
 
 
 <?php
-//global $session;
+global $session;
 if ($session->is_logged_in()) {
     $session->logout();
 }

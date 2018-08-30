@@ -29,6 +29,12 @@
     <div class="navbar-collapse collapse" id="navbarsExample05" style="">
 <!--        <ul class="nav navbar-nav ml-auto w-100 justify-content-end">-->
         <ul class="nav navbar-nav ml-auto justify-content-end">
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-ellipsis-h"></i> Subs</a>
+            </li>
+
             <li class="nav-item active">
                 <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -66,19 +72,28 @@
 
 <?php require_once("sub-menu.php"); ?>
 
+<?php require_once("cn-main-section.php"); ?>
+
 <div id="my-container1" class="container my-container"></div>
 
 <div id="my-container2" class="container-fluid my-container"></div>
 
-<div id="widget" class="fixed-bottom">widget</div>
+<?php require_once("notification/index.php"); ?>
+
+<?php require_once("flash-message-section.php"); ?>
+
+<?php require_once("cn-sticky-bottom2.php"); ?>
+
 
 
 <script>
     $("body").append($("#the-navbar"));
     $("body").append($("#sub-menu"));
+    $("body").append($("#cn-main-section"));
     $("body").append($("#my-container1"));
     $("body").append($("#my-container2"));
-    $("body").append($("#widget"));
+    $("body").append($("#flash-message-section"));
+    $("body").append($("#cn-sticky-bottom"));
 </script>
 
 <style>
@@ -115,12 +130,17 @@
         background-color: #73787f;
     }
 
-    #widget {
-        text-align: right;
-    }
 
     #home-profile-img {
         width: 33px;
+    }
+
+    #sub-menu {
+        z-index: 3000;
+    }
+
+    body {
+        min-width: 640px;
     }
 
 </style>

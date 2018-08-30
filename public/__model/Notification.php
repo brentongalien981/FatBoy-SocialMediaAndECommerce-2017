@@ -105,6 +105,7 @@ class Notification {
 
     }
 
+    //ish
     public static function get_my_carbon_date($raw_datetime) {
 //        $timestamp = '2014-02-06 16:34:00';
         $date = Carbon::createFromFormat('Y-m-d H:i:s', $raw_datetime, '-4');

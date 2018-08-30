@@ -36,6 +36,23 @@ class TimelinePost
         return $query;
     }
 
+    public static function get_query_for_read()
+    {
+        $limit = 10;
+        global $session;
+
+        $query = "SELECT * ";
+        $query .= "FROM TimelinePosts ";
+        $query .= "INNER JOIN Users ON TimelinePosts.poster_user_id = Users.user_id ";
+        $query .= "INNER JOIN Profile ON TimelinePosts.poster_user_id = Profile.user_id ";
+        $query .= "WHERE owner_user_id = {$session->currently_viewed_user_id} ";
+        $query .= "ORDER BY date_posted DESC ";
+        $query .= "LIMIT {$limit}";
+
+
+        return $query;
+    }
+
     protected function get_sanitized_attributes()
     {
         global $database;
@@ -60,22 +77,7 @@ class TimelinePost
         return $attributes;
     }
 
-    public static function get_query_for_read()
-    {
-        $limit = 10;
-        global $session;
 
-        $query = "SELECT * ";
-        $query .= "FROM TimelinePosts ";
-        $query .= "INNER JOIN Users ON TimelinePosts.poster_user_id = Users.user_id ";
-        $query .= "INNER JOIN Profile ON TimelinePosts.poster_user_id = Profile.user_id ";
-        $query .= "WHERE owner_user_id = {$session->currently_viewed_user_id} ";
-        $query .= "ORDER BY date_posted DESC ";
-        $query .= "LIMIT {$limit}";
-
-
-        return $query;
-    }
 
     public static function fetch($data)
     {

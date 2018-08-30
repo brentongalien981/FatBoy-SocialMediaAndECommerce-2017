@@ -174,7 +174,7 @@ function get_caption_content2(w, h) {
 }
 
 function get_caption_content(h, json) {
-    content = document.createElement("div");
+    var content = document.createElement("div");
     content.classList.add("caption_action_bar");
 
     // content.innerHTML = "<i class=\"fa fa-sliders my-photo-icons my-photo-icons-edit\" style=\"font-size:20px\">";

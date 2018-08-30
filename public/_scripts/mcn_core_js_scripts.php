@@ -19,4 +19,4 @@
 <script src="<?php echo LOCAL . "/public/_scripts/main_script.js"; ?>"></script>
 <script src="<?php echo LOCAL . "/public/_scripts/main_script2.js"; ?>"></script>
 
-<script src="<?php echo LOCAL . "/public/_scripts/main_script_part2.js"; ?>"></script>
+<!--<script src="--><?php //echo LOCAL . "/public/_scripts/main_script_part2.js"; ?><!--"></script>-->

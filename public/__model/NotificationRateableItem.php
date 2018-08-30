@@ -94,7 +94,7 @@ class NotificationRateableItem extends Notification
         // - INSERT INTO table (key, key) VALUES ('value', 'value')
         // - single-quotes around all values
         // - escape all values to prevent SQL injection
-
+        // ish
         $attributes = $this->get_sanitized_uninherited_attributes();
         //
 

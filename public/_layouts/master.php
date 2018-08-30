@@ -36,7 +36,7 @@
 
 
 <!--nav-->
-<?php include(PUBLIC_PATH . "/_layouts/nav.php"); ?>
+<?php require_once(PUBLIC_PATH . "/_layouts/nav.php"); ?>
 
 
 
@@ -62,6 +62,7 @@
 
 
 <!-- Script for updating the session-user-attributes. -->
+<!--TODO: Refactor this updating of the session-attributes just like what you did in dawesdental.-->
 <?php require_once(PUBLIC_PATH . "/_scripts/mcn_core_js_scripts2.php"); ?>
 
 <!--mcn-loader-el-->

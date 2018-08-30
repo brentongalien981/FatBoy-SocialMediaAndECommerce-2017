@@ -124,6 +124,10 @@ $('#main_content').scroll(function (event) {
     set_timeline_post_settings_popup_position();
 });
 
+
+
+
+
 $('.rate-option').click(function () {
     var rate_value = $(this).attr("rate-value");
 
@@ -134,6 +138,9 @@ $('.rate-option').click(function () {
 });
 
 
+
+
+//ish
 $("#subscribe-to-post-button").click(function () {
 
     create_timeline_post_subscription();
